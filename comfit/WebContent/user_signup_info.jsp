@@ -48,7 +48,13 @@
 
 <link href="headers.css" rel="stylesheet">
 <script type="text/javascript" src="/js/bootstrap.js"></script>
-
+<script type="text/javascript">
+	function findAddr()
+	{
+		window.open("user_signup_find_address.jsp", "주소검색", "width=800, height=550");
+	}
+	
+</script>
 
 <style type="text/css">
 	*
@@ -175,7 +181,7 @@
 			</th>
 			<th>
 				<input type="text" class="txtbox"/>
-				<button type="button" class="btn btn-primary">주소검색</button>
+				<button type="button" class="btn btn-primary" onclick="findAddr()">주소검색</button>
 			</th>
 		</tr>
 		<tr>

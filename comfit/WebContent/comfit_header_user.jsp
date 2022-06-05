@@ -22,6 +22,7 @@
         -moz-user-select: none;
         user-select: none;
       }
+
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
           font-size: 3.5rem;
@@ -33,6 +34,12 @@
       	margin-left: 14px;
       	
       }
+      #mypage
+      {
+      	font-family: 맑은 고딕;
+      	font-weight: bold;
+      	font-size: 18pt;
+      }
       #sellBtn
       {
       	width: 200px;
@@ -41,33 +48,36 @@
       {
       	width: 200px;
       }
-    </style>
+    
+   
+  </style>
 
 <link href="headers.css" rel="stylesheet">
+
 
 </head>
 <body>
 <div>
   <header class="bg-white text-dark">
-    <div class="container" style="margin-top: 1.5%;">
+    <div class="container" style="margin-top: 1%;">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start" >
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-decoration-none text-dark "> 
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-decoration-none text-dark" style=""> 
         	<img alt="logo" src="<%=cp%>/images/logo.png" style="width: 200px;">
         </a>
-	
-    <div class="input-group mb-1 col-xl-7 justify-content-center" >
+    <div class="input-group mb-1 col-xl-6" >
 	  <span class="input-group-text" id="inputGroup-sizing-default"><i class="bi bi-search"></i></span>
 	  <input type="text" class="form-control" placeholder="원하시는 상품을 검색하세요.">
 	</div>
-
-        <div class="text-end col-xl-4 justify-content-end" >
-          <button type="button" class="btn btn-primary">로그인</button>
-          <button type="button" class="btn btn-secondary">회원가입</button>
-          <button type="button" class="btn btn-dark">고객센터</button>
-        </div>
+     <div class="text-end col-xl-4 " >
+       <button type="button" class="btn btn-primary">고객센터</button>
+       <button type="button" class="btn btn-secondary">로그아웃</button>
+       <button type="button" class="btn btn-link text-decoration-none text-dark" id="mypage">마이페이지</button>
+       <button type="button" class="btn btn-link text-decoration-none text-dark" id="mypage" style="width: 30px;">
+       		<i class="bi bi-bell" style="font-size: 24pt; color: black;"></i>
+       </button>		
+     </div>
       
     </div>
-    
      <br />
      	<div class="text-end">
 			<button id="sellBtn" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -79,6 +89,7 @@
 		    </ul>
     	</div>
     </div>
+    
   </header>
 </div>  
 </body>

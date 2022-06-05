@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+.star
+{
+	color:red;
+}
+
+tr
+{
+	width: 50%;
+	height: 80px;
+}
+tr>th
+{
+	width: 300px;
+}
+td
+{
+	height: 10%;
+}
+tr>td
+{
+  width:200px;
+}
+
+input[type=text]
+{
+	height: 35px;
+}

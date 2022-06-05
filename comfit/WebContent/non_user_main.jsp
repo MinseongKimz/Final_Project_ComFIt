@@ -9,7 +9,40 @@
 <meta charset="UTF-8">
 <title>non_user_main.jsp</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-<link rel="stylesheet" href="/css/bootstrap.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+      .input-group
+      {
+      	width: 50%;
+      	margin-left: 14px;
+      	
+      }
+      #sellBtn
+      {
+      	width: 200px;
+      }
+      #dropdown-item
+      {
+      	width: 200px;
+      }
+    </style>
+
+<link href="headers.css" rel="stylesheet">
 <script type="text/javascript" src="/js/bootstrap.js"></script>
  
 
@@ -21,8 +54,8 @@
 	.content
 	{
 		margin-top: 3%;
-		margin-left: 17%; 
-		margin-right: 17%;
+		margin-left: 15%; 
+		margin-right: 15%;
 	}
 	
 	.category

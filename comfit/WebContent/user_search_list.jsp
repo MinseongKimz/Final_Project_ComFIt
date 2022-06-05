@@ -7,7 +7,7 @@
 
 
 <meta charset="UTF-8">
-<title>user_main.jsp</title>
+<title>user_search_list.jsp</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -43,7 +43,6 @@
     </style>
 
 <link href="headers.css" rel="stylesheet">
-
 <script type="text/javascript" src="/js/bootstrap.js"></script>
  
 
@@ -86,43 +85,17 @@
 	<!-- Content 영역 -->
 	<div class="content">
 	
-		<!-- 카테고리 -->
-		<div class="category">
-			<div>
-				<span style="font-size:30pt;">카테고리</span>
-			</div>
-			
-			<div style="margin-left: 20%; margin-right: 20%s">
-			<!-- 페이징 처리 -->
-			<button type="button" class="btn btn-primary">◀ prev</button>
-			<button type="button" class="btn btn-light">그래픽카드</button>
-			<button type="button" class="btn btn-light">SSD</button>  
-			<button type="button" class="btn btn-light">CPU</button>   
-			<button type="button" class="btn btn-light">HDD</button> 
-			<button type="button" class="btn btn-light">모니터</button>
-			<button type="button" class="btn btn-light">키보드</button>   
-			<button type="button" class="btn btn-light">마우스</button>   
-			<button type="button" class="btn btn-primary">next ▶</button>
-			<br />
-			</div>
-			<!-- 페이징 -->
-			<div style="margin-left: 40%; margin-right: 40%;">
-				<span style="color:blue;">●</span>
-				<span style="color:gray;">●</span>
-				<span style="color:gray;">●</span>
-				<span style="color:gray;">●</span>
-			</div>
-								
-			
-		</div>
-		
-		<!-- 최근 등록 상품 -->
+		<!-- 상품 검색 결과 -->
 		<div class="pd_list new">
 			<div>
-				<span style="font-size: 30pt;">내 주변 상품</span>
+				<span style="font-size: 30pt;">상품에 대한 검색 결과</span>
 			</div>
-			<div  style="margin-left: 85%; margint-bottom:3%">	
-				<button type="button" class="btn btn-primary">전체보기</button>
+			<div  style="margin-left: 60%; margint-bottom:3%">	
+				<button type="button" class="btn btn-primary">최신순</button>
+				<button type="button" class="btn btn-secondary">고가순</button>
+				<button type="button" class="btn btn-secondary">저가순</button>
+				<button type="button" class="btn btn-secondary">직거래만</button>
+				<button type="button" class="btn btn-secondary">택배거래만</button>
 			</div>
 			<table class="table">
 				<tr>
@@ -152,50 +125,36 @@
 						가격
 					</th>
 				</tr>
-			</table>
-		
-		
-		</div>
-		
-		<!-- 인기 상품 -->
-		<div class="pd_list hot">
-			<div>
-				<span style="font-size: 30pt;">인기 상품</span>
-			</div>
-			<div  style="margin-left: 85%; margint-bottom:3%">	
-				<button type="button" class="btn btn-primary">전체보기</button>
-			</div>		
-			<table class="table">
-			<tr>
-				<th>
-					<img alt="" src="images/graphicCard.jpg" style="width: 150px; height:150px;"><br />
-					상품명 <br />
-					가격
-				</th>
-				<th>
-					<img alt="" src="images/HDD.jpg" style="width: 150px; height:150px;">	<br />
-					상품명 <br />
-					가격
-				</th>
-				<th>
-					<img alt="" src="images/keyboard.png" style="width: 150px; height:150px;">	<br />
-					상품명 <br />
-					가격
-				</th>
-				<th>
-					<img alt="" src="images/monitor.jpg" style="width: 150px; height:150px;">	<br />
-					상품명 <br />
-					가격
-				</th>
-				<th>
-					<img alt="" src="images/ssd.jpg" style="width: 150px; height:150px;">	<br />
-					상품명 <br />
-					가격
-				</th>
-			</tr>
+				<tr>
+					<th>
+						<img alt="" src="images/graphicCard.jpg" style="width: 150px; height:150px;"><br />
+						상품명  <br />
+						가격 
+					</th>
+					<th>
+						<img alt="" src="images/HDD.jpg" style="width: 150px; height:150px;">	<br />
+						상품명 <br />
+						가격
+					</th>
+					<th>
+						<img alt="" src="images/keyboard.png" style="width: 150px; height:150px;">	<br />
+						상품명 <br />
+						가격
+					</th>
+					<th>
+						<img alt="" src="images/monitor.jpg" style="width: 150px; height:150px;">	<br />
+						상품명 <br />
+						가격
+					</th>
+					<th>
+						<img alt="" src="images/ssd.jpg" style="width: 150px; height:150px;">	<br />
+						상품명 <br />
+						가격
+					</th>
+				</tr>
 			</table>
 		</div>
-	</div>
+	</div>	<!-- content  -->
 	
 	
 	<!-- Footer 영역 -->

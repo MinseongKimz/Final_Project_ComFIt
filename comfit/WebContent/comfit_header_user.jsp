@@ -72,9 +72,19 @@
        <button type="button" class="btn btn-primary">고객센터</button>
        <button type="button" class="btn btn-secondary">로그아웃</button>
        <button type="button" class="btn btn-link text-decoration-none text-dark" id="mypage">마이페이지</button>
-       <button type="button" class="btn btn-link text-decoration-none text-dark" id="mypage" style="width: 30px;">
-       		<i class="bi bi-bell" style="font-size: 24pt; color: black;"></i>
-       </button>		
+       <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id="mypage" style="width: 35px;">
+       		<!-- <i class="bi bi-bell" style="font-size: 15pt; color: black;"></i> -->
+       		<span class="bi bi-bell" style="font-size: 15pt; color:black;"></span>
+       		<span style="color:red; background-color:white; font-weight: bold;" class="badge text-bg-secondary">3</span>
+       </button>
+       <!-- <button type="button" style="background-color: white;">
+       <span style="color:red; background-color:white; font-weight: bold;" class="badge text-bg-secondary">4</span>
+       </button> -->
+       <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+      	  <li class="dropdown-item"><a class="dropdown-item" href="#">[직거래/제안] 『HP노트북중고』 상품이 2022-06-01 17:52..</a></li>
+		  <li class="dropdown-item"><a class="dropdown-item" href="#">[직거래/판매] 『SSD 최저가 판매해요』 상품이 2022-06-01 12:00..</a></li>
+	      <li class="dropdown-item"><a class="dropdown-item" href="#">[문의] 『구매확정 어떻게해요?』 문의가 2022-05-30 15:25..</a></li>
+	   </ul>		
      </div>
       
     </div>

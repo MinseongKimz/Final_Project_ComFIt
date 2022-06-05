@@ -53,7 +53,7 @@
 	</h3>
 	
 	<div class="input_box" style="padding-left: 5%; padding-top: 10%;">
-		<table style="border: 1px solid; width: 100%;">
+		<table style="width: 100%;">
 			<tr>
 				<th>제목<span class="star">*</span></th>
 				<td colspan="3"><input class="form-control" id="exampleFormControlInput1" type="text" placeholder="제목을 입력해주세요." style="width: 86%;"/>

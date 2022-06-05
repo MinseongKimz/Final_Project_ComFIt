@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>comfit 나만의 컴퓨터</title>
+<title>comfit_header.jsp</title>
 <link rel="stylesheet" href="css/main.css" type="text/css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -31,7 +31,7 @@
       .input-group
       {
       	width: 40%;
-      	margin-left: 10%;
+      	margin-left: 3%;
       }
     </style>
 
@@ -41,10 +41,10 @@
 <body>
 <div>
   <header class="bg-white text-dark">
-    <div class="container" style="margin-top: 1%; margin-left: 16%;">
+    <div class="container" style="margin-top: 1%; margin-left: 15%;">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start" >
         <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-decoration-none text-dark "> 
-        	<img alt="logo" src="<%=cp%>/images/logo.png">
+        	<img alt="logo" src="<%=cp%>/images/logo.png" style="width: 270px;">
         </a>
 	
     <div class="input-group mb-2 col-xl-7" >

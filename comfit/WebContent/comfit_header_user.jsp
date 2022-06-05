@@ -31,7 +31,7 @@
       .input-group
       {
       	width: 50%;
-      	margin-left: 5px;
+      	margin-left: 14px;
       	
       }
       #mypage
@@ -48,18 +48,7 @@
       {
       	width: 200px;
       }
-      .circle
-      {
-      	
-      	border-radius:50%;
-      	background-color: red;
-      	text-align: center;
-      	font-family: 맑은 고딕;
-      	color: white; 
-      	outline: none;
-      	width: 30px;
-      	height: 30px;
-      }
+    
    
   </style>
 
@@ -70,12 +59,12 @@
 <body>
 <div>
   <header class="bg-white text-dark">
-    <div class="container" style="margin-top: 1%; margin-left: 16%;">
+    <div class="container" style="margin-top: 1%;">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start" >
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-decoration-none text-dark "> 
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-decoration-none text-dark" style=""> 
         	<img alt="logo" src="<%=cp%>/images/logo.png" style="width: 200px;">
         </a>
-    <div class="input-group mb-2 col-xl-6" >
+    <div class="input-group mb-1 col-xl-6" >
 	  <span class="input-group-text" id="inputGroup-sizing-default"><i class="bi bi-search"></i></span>
 	  <input type="text" class="form-control" placeholder="원하시는 상품을 검색하세요.">
 	</div>

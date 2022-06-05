@@ -34,14 +34,6 @@
       	margin-left: 5px;
       	
       }
-      #sellBtn
-      {
-      	width: 200px;
-      }
-      #dropdown-item
-      {
-      	width: 200px;
-      }
     </style>
 
 <link href="headers.css" rel="stylesheet">
@@ -61,25 +53,13 @@
 	  <input type="text" class="form-control" placeholder="원하시는 상품을 검색하세요.">
 	</div>
 
-        <div class="text-end col-xl-3 justify-content-end" style="margin-left: 9%;" >
+        <div class="text-end col-xl-3 justify-content-end" >
           <button type="button" class="btn btn-primary">로그인</button>
           <button type="button" class="btn btn-secondary">회원가입</button>
           <button type="button" class="btn btn-dark">고객센터</button>
         </div>
       
     </div>
-    
-     <br />
-     	<div class="text-end">
-			<button id="sellBtn" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-     			판매 하기
-    		</button>
-			<ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-		      <li class="dropdown-item"><a class="dropdown-item" href="#">직거래 판매하기</a></li>
-		      <li class="dropdown-item"><a class="dropdown-item" href="#">택배거래 판매하기</a></li>
-		    </ul>
-    	</div>
-    
     </div>
   </header>
 </div>  

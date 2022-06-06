@@ -52,7 +52,6 @@ h5
 	font-size: 10pt;
 	display: none;
 }
-
 </style>
 
 <script type="text/javascript">
@@ -100,7 +99,7 @@ h5
 				
 				<!-- 테이블  -->
 				<div >
-					<table class="table" style="width: 60%;">
+					<table class="table table-borderless" id="drawtable" style="width: 60%;">
 						<tr>
 							<th colspan="2">보유금액</th><th class="ibgum">80,000P</th>
 						</tr>

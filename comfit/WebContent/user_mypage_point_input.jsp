@@ -105,7 +105,7 @@ h5
 				
 				<!-- 테이블  -->
 				<div >
-					<table class="table" style="width: 60%;">
+					<table class="table table-borderless" style="width: 60%;">
 						<tr>
 							<th colspan="2">보유금액</th><th class="ibgum">40,000P</th>
 						</tr>

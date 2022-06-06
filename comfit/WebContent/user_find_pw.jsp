@@ -58,7 +58,7 @@
 		margin-right: 30%;
 	}
 	
-	.txtbox
+	.form-control
 	{
 		width: 350px;
 	}
@@ -106,11 +106,11 @@
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<button type="button" class="btn btn-primary" style="width: 150px;">PW 찾기</button>
 	<br /><br />
-	<input type="text" class="txtbox" placeholder="이메일을 입력하세요"/>
+	<input type="text" class="form-control" placeholder="이메일을 입력하세요"/>
 	<br /><br />
-	<input type="text" class="txtbox" placeholder="이름을 입력하세요"/>
+	<input type="text" class="form-control" placeholder="이름을 입력하세요"/>
 	<br /><br />
-	<input type="text" class="txtbox" placeholder="전화번호를 입력하세요"/>
+	<input type="text" class="form-control" placeholder="전화번호를 입력하세요"/>
 	<br /><br />
 	<input type="text" class="errMsg" placeholder="등록된 이름과 전화번호와 이메일이 일치하지 않습니다. 다시 입력해주세요." style="color:red; display: none;"/>
 	

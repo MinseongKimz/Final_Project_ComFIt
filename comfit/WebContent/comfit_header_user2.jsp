@@ -47,11 +47,16 @@
       {
          width: 200px;
       }
-      #dropdown-item
+      .dropdown-item
       {
-         width: 200px;
+         font-size: 8pt;
       }
-
+	.navbar-toggler #navbarSupportedContent .navbar-toggler-icon
+	{
+		margin-top: 3%;
+		text-align: center;
+		
+	}
   </style>
 
 <link href="headers.css" rel="stylesheet">
@@ -62,50 +67,62 @@
 <div>
   <header>
     <!-- nav 상단 고정-->
-        <nav class="navbar navbar-expand-md">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container">
             <a href="/" > 
 	           <img alt="logo" src="<%=cp%>/images/logo.png" style="width: 200px;">
 	        </a>
 	        
-            <button class="navbar-toggler bg-dark " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav-menu"
-                aria-controls="navbarNav-menu" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+              	<button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			      <span class="navbar-toggler-icon"></span>
+			    </button>
             
-            <div class="collapse navbar-collapse justify-content-between " id="navbarNav-menu">
-                 <form class="form-inline" style="width: 50%;">
-				     	<div class="input-group" style="width:80%;">
+              	<div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+              		<br />
+                 	<form class="form-inline" style="width: 65%;">
+				     	<div class="input-group" style="width:100%;">
 						     <span class="input-group-text" id="inputGroup-sizing-default"><i class="bi bi-search"></i></span>
 						     <input type="text" class="form-control" placeholder="원하시는 상품을 검색하세요.">
 	  					</div>
-                </form>
-                <ul class="navbar-nav ">
-                    <li class="nav-item">
-                        <button type="button" class="btn btn-primary">고객센터</button>
-                    </li>
-                    <li class="nav-item" style="margin-left: 2px;">
-                        <button type="button" class="btn btn-secondary" >로그아웃</button>
+                	</form>
+                <ul class="navbar-nav">
+                    <li class="nav-item ">
+                        <a class="nav-link primary active" aria-current="page" href="#">고객센터</a>
                     </li>
                     <li class="nav-item">
-                      	<button type="button" class="btn btn-link text-decoration-none text-dark" id="mypage">마이페이지</button>
+                        <a class="nav-link active" href="#">로그아웃</a>
+                    </li>
+                    <li class="nav-item">
+                      	<a class="nav-link active" href="#">마이페이지</a>
                     </li>
                     <li class="nav-item dropdown">
-                    	 <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            				 <span class="bi bi-bell" style="font-size: 15pt; color:black;"></span>
-				             <span style="color:red; background-color:white; font-weight: bold;" class="badge text-bg-secondary">3</span>
+                    	 <a class="nav-link active dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            				 <span class="bi bi-bell" style="font-size: 15pt; color:black;">
+            				 	<span style="color:red; font-weight: bold; padding: -10%; font-size: 10pt;">3</span>
+            				 </span>
+				             
           				 </a>
                     	 
                     	 <ul class="dropdown-menu " aria-labelledby="btnGroupDrop1" >
-					        <li class="dropdown-item"><a class="dropdown-item" href="#">[직거래/제안] 『HP노트북중고』 상품이 2022-06-01 17:52..</a></li>
-					        <li class="dropdown-item"><a class="dropdown-item" href="#">[직거래/판매] 『SSD 최저가 판매해요』 상품이 2022-06-01 12:00..</a></li>
-					        <li class="dropdown-item"><a class="dropdown-item" href="#">[문의] 『구매확정 어떻게해요?』 문의가 2022-05-30 15:25..</a></li>
+					        <li class="dropdown-item"><a class="dropdown-item" href="#">[직거래/제안] HP노트북중고....</a></li>
+					        <li class="dropdown-item"><a class="dropdown-item" href="#">[직거래/판매] SSD 최저가....</a></li>
+					        <li class="dropdown-item"><a class="dropdown-item" href="#">[문의] 구매확정 어떻게해...</a></li>
 					    </ul> 
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+    <br />
+    <div class="text-end" style="margin-right: 10%;">
+	         <button id="sellBtn" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+	              판매 하기
+	         </button>
+	         <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+	            <li class="dropdown-item"><a class="dropdown-item" href="#">직거래 판매하기</a></li>
+	            <li class="dropdown-item"><a class="dropdown-item" href="#">택배거래 판매하기</a></li>
+	         </ul>
+	</div>
   </header>
 </div>  
 </body>

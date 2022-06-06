@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>배송 상품 페이지.jsp</title>
+<title>직거래 상품 페이지.jsp</title>
 
 <link rel="stylesheet" href="<%=cp %>/css/bootstrap.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
@@ -68,7 +68,7 @@ th,td
 <div class="container">
 	<div style="padding-top: 5%;">
 	
-			<p class="fs-4" style="text-align: center; font-weight: bold;">[카테고리]2022 GTX 0000 아주 합리적인 가격에 드립니다.</p>
+			<p class="fs-4" style="text-align: center; font-weight: bold;">[카테고리]2022 GTX 1060 3GB 급처해요~</p>
 		
 		<div class="content">
 		<div class="product_image col-md-6" style="float: left; width: 530px; height: 400px; margin-right: 3%;">	
@@ -80,19 +80,23 @@ th,td
 			<tr>
 				<td colspan="2"><p>거래방식</p>
 				<!-- 속성에 따라 직거래/배송 표기 -->
-				<p class="content_text">배송(경매)</p></td>
+				<p class="content_text">직거래</p></td>
 			</tr>
 			<tr>
-				<td colspan="2"><p>시작가격</p>
-				<p class="content_text">100,000 원</p></td>
+				<td colspan="2"><p>희망가격</p>
+				<p class="content_text" style="color: blue;">160,000 원</p></td>
 			</tr>
 			<tr>
-				<td colspan="2"><p>현재가격</p>
-
-					<!-- 입찰최고가가 반영 -->
-					<!-- 입찰이 완료된 상품입니다. -->
-					<!-- <p class="content_text" style="color: blue;">입찰이 완료된 상품입니다.</p> -->
-					<p class="content_text" style="color: blue;">100,000 원</p>
+				<td><p>희망 날짜</p>
+					<p class="content_text">5월 16일 ~ 5월 21일 </p>
+				</td>
+				<td><p>희망 시간대</p>
+					<p class="content_text">17시 ~ 19시</p>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2"><p>희망 장소</p>
+					<p class="content_text" style="color: blue;">인천광역시 계양구 새벌로 112번길</p>
 				</td>
 			</tr>
 			<tr>
@@ -114,16 +118,6 @@ th,td
 
 					<!-- 제조사/물품명 표기 -->
 					<p style="font-weight: bold;">제조사/물품명</p>
-				</th>
-			</tr>
-			<tr>
-				<td>
-					<p>즉시구매가격</p>
-				</td>
-				<th>
-
-					<!-- 즉시구매가 표기 -->
-					<p>143,200원</p>
 				</th>
 			</tr>
 			<tr>
@@ -177,7 +171,7 @@ th,td
 		<button class="btn btn-primary" style="margin-left: 3%;">목록으로</button>
 		</div>
 		
-<p class="content_text" style="padding-left: 4%;">현재 입찰 정보</p>
+<p class="content_text" style="padding-left: 4%;">현재 제안 정보</p>
 		
 		<!-- 입찰정보가 출력될 폼 -->
 		<div class="content_bid" style="margin-left: 5%; margin-right:9%;">
@@ -199,11 +193,12 @@ th,td
 				</th>
 				<td>
 					<p style="padding-left:10%;">가격 : 143,000원<br>
-					배송지 : 서울시 왕십리 111번지</p>
+					날짜 : 5월 18일 18시 10분<br>
+					장소 : 인천광역시 새벌로 112번길 13 403동 경비실 앞</p>
 				</td>
 				<td style="text-align: right; margin-left: 20%;">
-					<p>22-05-26    10:56 AM</p>
-					<button type="button" class="btn btn-primary">낙찰하기</button>
+					<p>22-05-16    10:56 AM</p>
+					<button type="button" class="btn btn-primary">채택하기</button>
 				</td>
 			</tr>
 			</table>
@@ -224,11 +219,13 @@ th,td
 					</p>
 				</th>
 				<td>
-					<p style="padding-left:10%;">가격 : 135,000원<br>
-					배송지 : 인천 새벌로 112번길</p>
+					<p style="padding-left:10%;">가격 : 138,000원<br>
+					날짜 : 5월 19일 17시 25분<br>
+					장소 : 인천광역시 새벌로 112번길 13 101동 경비실 앞</p>
 				</td>
 				<td style="text-align: right;">
-					<p>22-05-26    10:56 AM</p>
+					<p>22-05-15    10:55 AM</p>
+					<button type="button" class="btn btn-primary">채택하기</button>
 				</td>
 			</tr>
 			</table>

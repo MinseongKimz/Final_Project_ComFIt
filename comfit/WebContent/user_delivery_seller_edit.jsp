@@ -71,7 +71,7 @@
 					<option>마우스</option>
 					<option>키보드</option>
 					</select>
-				</td>
+					</td>
 				<td>물품명
 					<br>
 					<input type="text" class="form-control" id="productName" placeholder="물품명을 입력해 주세요." style="width: 90%;">

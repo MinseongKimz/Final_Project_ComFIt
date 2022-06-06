@@ -22,6 +22,7 @@
         -moz-user-select: none;
         user-select: none;
       }
+
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
           font-size: 3.5rem;
@@ -29,7 +30,7 @@
       }
       .input-group
       {
-      	width: 55%;
+      	width: 50%;
       	margin-left: 5px;
       	
       }
@@ -41,7 +42,7 @@
 <body>
 <div>
   <header class="bg-white text-dark">
-    <div class="container" style="margin-top: 1%; margin-left: 10%;">
+    <div class="container" style="margin-top: 1%; margin-left: 16%;">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start" >
         <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-decoration-none text-dark "> 
         	<img alt="logo" src="<%=cp%>/images/logo.png" style="width: 200px;">

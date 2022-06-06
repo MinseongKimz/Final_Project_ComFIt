@@ -22,6 +22,7 @@
         -moz-user-select: none;
         user-select: none;
       }
+
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
           font-size: 3.5rem;
@@ -29,9 +30,15 @@
       }
       .input-group
       {
-      	width: 55%;
+      	width: 50%;
       	margin-left: 5px;
       	
+      }
+      #mypage
+      {
+      	font-family: 맑은 고딕;
+      	font-weight: bold;
+      	font-size: 18pt;
       }
     </style>
 
@@ -41,21 +48,21 @@
 <body>
 <div>
   <header class="bg-white text-dark">
-    <div class="container" style="margin-top: 1%; margin-left: 10%;">
+    <div class="container" style="margin-top: 1%; margin-left: 16%;">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start" >
         <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-decoration-none text-dark "> 
         	<img alt="logo" src="<%=cp%>/images/logo.png" style="width: 200px;">
         </a>
 	
-    <div class="input-group mb-2 col-xl-7" >
+    <div class="input-group mb-2 col-xl-6" >
 	  <span class="input-group-text" id="inputGroup-sizing-default"><i class="bi bi-search"></i></span>
 	  <input type="text" class="form-control" placeholder="원하시는 상품을 검색하세요.">
 	</div>
 
-        <div class="text-end col-xl-3 justify-content-end" >
-          <button type="button" class="btn btn-primary">로그인</button>
-          <button type="button" class="btn btn-secondary">회원가입</button>
-          <button type="button" class="btn btn-dark">고객센터</button>
+        <div class="text-end col-xl-4 " >
+          <button type="button" class="btn btn-primary">고객센터</button>
+          <button type="button" class="btn btn-secondary">로그아웃</button>
+          <button type="button" class="btn btn-link text-decoration-none text-dark" id="mypage">마이페이지</button>
         </div>
       
     </div>

@@ -17,7 +17,6 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap.js"></script>
 <script type="text/javascript">
-
 	$(document).ready(function()
 	{
 		// 테스트
@@ -36,8 +35,6 @@
 		});
 		
 	});
-
-
 </script>
 
 </head>

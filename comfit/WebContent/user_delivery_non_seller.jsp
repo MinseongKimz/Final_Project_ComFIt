@@ -22,13 +22,11 @@ p
 {
 	font-size: 9pt;
 }
-
 /* 내용 div */
 .content
 {
 	padding: 4%;
 }
-
 /* 내용 안에 들어가는 p */
 .content_text
 {
@@ -36,26 +34,20 @@ p
 	font-weight: bold; 
 	line-height: 50%;
 }
-
 /* 아래 입찰정보 출력단 */
 .content_bid
 {
-
 /* 유저 사진 */
 .user_image
 {
 	width: 100px;
 	height: 100px;
 }
-
 th,td
 {
 	border: 1px solid #444444;
 }
-
-
 /* 사진 전체 */
-
 </style>
 
 </head>

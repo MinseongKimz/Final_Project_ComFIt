@@ -13,19 +13,15 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 
 <style type="text/css">
-
 .list-group {
 	width: 120px;
 	text-align: center;
 }
-
 .title {
 	margin-left: 11%;
 	font-family: 맑은 고딕;
 	font-size: 30pt;
 }
-
-
 .list-group-item {
 	text-align: center;
 	font-weight: bold;
@@ -38,7 +34,6 @@ h5
 {
 	font-weight: bold;
 }
-
 </style>
 
 

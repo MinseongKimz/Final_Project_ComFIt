@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
-	request.setCharacterEncoding("UTF-8");
-	String cp = request.getContextPath();
+   request.setCharacterEncoding("UTF-8");
+   String cp = request.getContextPath();
 %>
 <!DOCTYPE html>
 <html>
@@ -22,7 +22,6 @@
         -moz-user-select: none;
         user-select: none;
       }
-
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
           font-size: 3.5rem;
@@ -30,23 +29,23 @@
       }
       .input-group
       {
-      	width: 50%;
-      	margin-left: 14px;
-      	
+         width: 50%;
+         margin-left: 14px;
+         
       }
       #mypage
       {
-      	font-family: 맑은 고딕;
-      	font-weight: bold;
-      	font-size: 18pt;
+         font-family: 맑은 고딕;
+         font-weight: bold;
+         font-size: 18pt;
       }
       #sellBtn
       {
-      	width: 200px;
+         width: 200px;
       }
       #dropdown-item
       {
-      	width: 200px;
+         width: 200px;
       }
     
    
@@ -62,42 +61,42 @@
     <div class="container" style="margin-top: 1%;">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start" >
         <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-decoration-none text-dark" style=""> 
-        	<img alt="logo" src="<%=cp%>/images/logo.png" style="width: 200px;">
+           <img alt="logo" src="<%=cp%>/images/logo.png" style="width: 200px;">
         </a>
     <div class="input-group mb-1 col-xl-6" >
-	  <span class="input-group-text" id="inputGroup-sizing-default"><i class="bi bi-search"></i></span>
-	  <input type="text" class="form-control" placeholder="원하시는 상품을 검색하세요.">
-	</div>
+     <span class="input-group-text" id="inputGroup-sizing-default"><i class="bi bi-search"></i></span>
+     <input type="text" class="form-control" placeholder="원하시는 상품을 검색하세요.">
+   </div>
      <div class="text-end col-xl-4 " >
        <button type="button" class="btn btn-primary">고객센터</button>
        <button type="button" class="btn btn-secondary">로그아웃</button>
        <button type="button" class="btn btn-link text-decoration-none text-dark" id="mypage">마이페이지</button>
        <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id="mypage" style="width: 35px;">
-       		<!-- <i class="bi bi-bell" style="font-size: 15pt; color: black;"></i> -->
-       		<span class="bi bi-bell" style="font-size: 15pt; color:black;"></span>
-       		<span style="color:red; background-color:white; font-weight: bold;" class="badge text-bg-secondary">3</span>
+             <!-- <i class="bi bi-bell" style="font-size: 15pt; color: black;"></i> -->
+             <span class="bi bi-bell" style="font-size: 15pt; color:black;"></span>
+             <span style="color:red; background-color:white; font-weight: bold;" class="badge text-bg-secondary">3</span>
        </button>
        <!-- <button type="button" style="background-color: white;">
        <span style="color:red; background-color:white; font-weight: bold;" class="badge text-bg-secondary">4</span>
        </button> -->
        <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-      	  <li class="dropdown-item"><a class="dropdown-item" href="#">[직거래/제안] 『HP노트북중고』 상품이 2022-06-01 17:52..</a></li>
-		  <li class="dropdown-item"><a class="dropdown-item" href="#">[직거래/판매] 『SSD 최저가 판매해요』 상품이 2022-06-01 12:00..</a></li>
-	      <li class="dropdown-item"><a class="dropdown-item" href="#">[문의] 『구매확정 어떻게해요?』 문의가 2022-05-30 15:25..</a></li>
-	   </ul>		
+           <li class="dropdown-item"><a class="dropdown-item" href="#">[직거래/제안] 『HP노트북중고』 상품이 2022-06-01 17:52..</a></li>
+        <li class="dropdown-item"><a class="dropdown-item" href="#">[직거래/판매] 『SSD 최저가 판매해요』 상품이 2022-06-01 12:00..</a></li>
+         <li class="dropdown-item"><a class="dropdown-item" href="#">[문의] 『구매확정 어떻게해요?』 문의가 2022-05-30 15:25..</a></li>
+      </ul>      
      </div>
       
     </div>
      <br />
-     	<div class="text-end">
-			<button id="sellBtn" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-     			판매 하기
-    		</button>
-			<ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-		      <li class="dropdown-item"><a class="dropdown-item" href="#">직거래 판매하기</a></li>
-		      <li class="dropdown-item"><a class="dropdown-item" href="#">택배거래 판매하기</a></li>
-		    </ul>
-    	</div>
+        <div class="text-end">
+         <button id="sellBtn" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              판매 하기
+          </button>
+         <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <li class="dropdown-item"><a class="dropdown-item" href="#">직거래 판매하기</a></li>
+            <li class="dropdown-item"><a class="dropdown-item" href="#">택배거래 판매하기</a></li>
+          </ul>
+       </div>
     </div>
     
   </header>

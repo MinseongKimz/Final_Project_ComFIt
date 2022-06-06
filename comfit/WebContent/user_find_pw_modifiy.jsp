@@ -58,7 +58,7 @@
 		margin-right: 30%;
 	}
 	
-	.txtbox
+	.form-control
 	{
 		width: 350px;
 	}
@@ -106,11 +106,11 @@
 	<br /><br />
 	<span style="font-size: 15pt; font-weight: bold">새 비밀번호 입력</span>
 	<br /> 
-	<input type="text" class="txtbox" placeholder="새 비밀번호를 입력하세요"/>
+	<input type="text" class="form-control" placeholder="새 비밀번호를 입력하세요"/>
 	<br /><br />
 	<span style="font-size: 15pt; font-weight: bold">새 비밀번호 확인</span>
 	<br />
-	<input type="text" class="txtbox" placeholder="비밀번호를 한번 더 입력하세요"/>
+	<input type="text" class="form-control" placeholder="비밀번호를 한번 더 입력하세요"/>
 	<br /><br />
 	<input type="text" class="errMsg" placeholder="입력하신 비밀번호가 일치하지 않습니다. 다시 입력해주세요" style="color:red; display: none;"/>
 	

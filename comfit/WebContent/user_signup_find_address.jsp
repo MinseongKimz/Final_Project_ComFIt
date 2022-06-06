@@ -56,7 +56,7 @@
 		margin-left: 5%;
 	}
 	
-	.txtbox
+	.form-control
 	{
 		width: 350px;
 	}
@@ -92,12 +92,11 @@
 <div class="content">
 	<span style="font-size: 30pt; font-weight: bold;">주소 검색</span>
 	<br />
-	<input type="text" class="txtbox" placeholder="도로명 주소 혹은 지번 입력"/>
-	<button type="button" class="btn btn-primary" style="width: 60px; font-size: 10pt;">검색</button>
-	<br />
+	<div class="input-group mb-1 col-xl-6" >
+     <span class="input-group-text" id="inputGroup-sizing-default"><i class="bi bi-search"></i></span>
+     <input type="text" class="form-control" placeholder="도로명 혹은 지번으로 주소 입력">
+   </div>
 	<span style="font-size: 10pt; font-weight: bold; color: skyblue;">검색어 예 : 도로명(반포대로 58), 건물명(독립기념관), 지번(삼성동85)</span>
-	<br /><br />
-	
 </div>	
 	
 

@@ -11,7 +11,9 @@
 <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>배송 상품 페이지.jsp</title>
+
 <link rel="stylesheet" href="<%=cp %>/css/bootstrap.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap.js"></script>
@@ -38,8 +40,6 @@ p
 /* 아래 입찰정보 출력단 */
 .content_bid
 {
-	padding: 3%;
-}
 
 /* 유저 사진 */
 .user_image
@@ -88,6 +88,7 @@ th,td
 			</tr>
 			<tr>
 				<td colspan="2"><p>현재가격</p>
+
 					<!-- 입찰최고가가 반영 -->
 					<!-- 입찰이 완료된 상품입니다. -->
 					<!-- <p class="content_text" style="color: blue;">입찰이 완료된 상품입니다.</p> -->
@@ -102,6 +103,7 @@ th,td
 				
 				<!-- 종료 시 최종가 표기  -->
 				<!-- <p class="content_text" style="color: blue;">최종 가격 : 143,000원</p> -->
+
 				</td>
 			</tr>
 			<tr>
@@ -109,6 +111,7 @@ th,td
 					<p>제조사/물품명</p>
 				</td>
 				<th style="padding-top: 10px;">
+
 					<!-- 제조사/물품명 표기 -->
 					<p style="font-weight: bold;">제조사/물품명</p>
 				</th>
@@ -118,6 +121,7 @@ th,td
 					<p>즉시구매가격</p>
 				</td>
 				<th>
+
 					<!-- 즉시구매가 표기 -->
 					<p>143,200원</p>
 				</th>
@@ -129,6 +133,7 @@ th,td
 				<th>
 					<!-- 상품에 따른 추천가 표기 -->
 					<p style="color: blue;">189,200원</p>
+
 				</th>
 			</tr>
 			
@@ -172,7 +177,7 @@ th,td
 		<button class="btn btn-primary" style="margin-left: 3%;">목록으로</button>
 		</div>
 		
-		<p class="content_text" style="padding-left: 4%;">현재 입찰 정보</p>
+<p class="content_text" style="padding-left: 4%;">현재 입찰 정보</p>
 		
 		<!-- 입찰정보가 출력될 폼 -->
 		<div class="content_bid" style="margin-left: 5%; margin-right:9%;">

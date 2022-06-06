@@ -11,12 +11,13 @@
 <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>배송 판매글 등록</title>
+<title>직거래 판매글 등록</title>
 <link rel="stylesheet" href="<%=cp %>/css/bootstrap.css">
 <link rel="stylesheet" href="<%=cp %>/css/inputstyle.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap.js"></script>
 <script type="text/javascript">
+
 	$(document).ready(function()
 	{
 		// 테스트
@@ -35,6 +36,8 @@
 		});
 		
 	});
+
+
 </script>
 
 </head>
@@ -46,7 +49,7 @@
 
 <div class="container" style="padding-top: 80px;">
 	<p class="fs-3" style="font-weight: bold;">
-		판매글 등록-배송	
+		판매글 등록-직거래	
 	</p>
 	
 	<div class="input_box" style="padding-left: 5%; padding-top: 10%;">
@@ -55,6 +58,50 @@
 				<th>제목<span class="star">*</span></th>
 				<td colspan="3"><input class="form-control" id="exampleFormControlInput1" type="text" placeholder="제목을 입력해주세요." style="width: 86%;"/>
 				<p align="right" style="font-size: 3px; margin-right: 16%;">32/32</p>
+				</td>
+			</tr>
+			
+			<tr>
+				<th>거래 가능 장소<span class="star">*</span></th>
+				<td>
+					지역 검색
+					<div class="input-group mb-5">
+					  <button class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></button>
+					  <input type="text" class="form-control" placeholder="검색" style="height:40px;">
+					</div>
+				</td>
+				
+				<!-- 지도 출력 -->
+				<td colspan="2">
+					지도
+				</td>
+			</tr>
+			
+			<tr>
+				<th>거래 가능 일시<span class="star">*</span></th>
+				<td style="padding-top: 5%;">
+					날짜 입력
+					<div class="input-group mb-5">
+					  <button class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></button>
+					  <input type="text" class="form-control" placeholder="검색" style="height:40px;">
+					</div>
+				</td>
+				<td colspan="2">
+					시간 선택
+					<br>
+					<select class="form-select" aria-label="Default select example" style="width: 30%; display: inline-block;">
+					  <option selected>00:00</option>
+					  <option value="1">01:00</option>
+					  <option value="2">02:00</option>
+					  <option value="3">03:00</option>
+					</select>
+					~
+					<select class="form-select" aria-label="Default select example" style="width: 30%; display: inline-block;">
+					  <option selected>00:00</option>
+					  <option value="1">01:00</option>
+					  <option value="2">02:00</option>
+					  <option value="3">03:00</option>
+					</select>
 				</td>
 			</tr>
 			
@@ -90,7 +137,7 @@
 				<td colspan="2">
 					물품검색
 					<div class="input-group mb-5">
-					  <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+					  <button class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></button>
 					  <input type="text" class="form-control" placeholder="물품검색" style="height:40px; width:100px;">
 					</div>
 				</td>
@@ -104,16 +151,7 @@
                 <p style="color:blue; font-size: 10px;">추천 가격보다 2배 이상은 입력할 수 없습니다.</p>
                 </td>
 			</tr>
-			
-			<tr>
-				<th>즉시 구매 가격<span class="star">*</span>
-				 <p style="font-weight: normal; font-size: 7pt;">즉시 거래 가격을 적어주세요.</p>
-                </th>
-                <td colspan="3"><input class="form-control" id="price2" type="text" placeholder="즉시구매 가격을 입력해주세요." style="width: 86%;"/>
-                <p style="color:blue; font-size: 10px;">추천 가격보다 2배 이상은 입력할 수 없습니다.</p>
-                </td>
-			</tr>
-			
+					
 			<tr>
 				<th>물품 사진<span class="star">*</span>
 				 <p style="font-weight: normal; font-size: 7pt;">최소 두장 이상 등록해 주세요.</p>

@@ -24,18 +24,6 @@
 
 	$(document).ready(function()
 	{
-		$("#a").hover(function()
-		{
-			$(this).css('color', 'grey');
-		}, function()
-		{
-			$(this).css('color', 'black');
-		});
-		
-		$("#a").click(function()
-		{
-			$( '#b' ).toggle(150);
-		})
 		
 		
 		$("#notice").hover(function()             
@@ -83,6 +71,14 @@
 
 </script>
 
+<script type="text/javascript">
+$(".que").click(function() {
+     $(this).next(".anw").stop().slideToggle(300);
+     $(this).toggleClass('on').siblings().removeClass('on');
+     $(this).next(".anw").siblings(".anw").slideUp(300); // 1개씩 펼치기
+   });
+</script>
+
 <div>
 	<c:import url="comfit_header.jsp"></c:import>
 </div>
@@ -105,11 +101,11 @@
 		<div class="accordion" id="accordionExample">
 		  <div class="accordion-item">
 		    <h2 class="accordion-header" id="headingOne">
-		      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+		      <button class="accordion-button que" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" style="overflow:hidden" >
 		        <strong>Q.  [상품] 주문한 상품은 언제 배송되나요?</strong>
 		      </button>
 		    </h2>
-		    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+		    <div id="collapseOne" class="accordion-collapse collapse anw" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
 		      <div class="accordion-body">
 		        주문하신 상품은 결제 완료 후 안내된 배송예정일까지 배송됩니다.
 		<br /><br />배송예정일은 판매자 및 배송지에 따라 차이가 있을 수 있습니다.

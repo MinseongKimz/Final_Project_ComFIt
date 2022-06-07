@@ -58,8 +58,9 @@ d-block
       top: 0;
       left: 0;
       min-width: 100%;
-      min-height: 100%;
-      max-height: 350px;
+      max-width: 100%;
+      min-height: 380px;
+      max-height: 380px;
       object-fit: cover;
   } 
 
@@ -82,7 +83,7 @@ carousel-item
 		
 		<div class="content">
 		<div class="col-md-6" style="float: left; width: 560px; height: 420px; padding-top: 3%; margin-right: 3%;">	
-			<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="true">
+			<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-touch="false" data-bs-ride="true">
 			  <div class="carousel-indicators">
 			    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
 			    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -130,10 +131,10 @@ carousel-item
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" style="border-bottom: 2px solid gray;"><p>경매 종료까지</p>
+				<td colspan="2" style="border-bottom: 2px solid gray; "><p>경매 종료까지</p>
 				<!-- 경매 종료시간 적용/경매 종료시 경매종료라고 표기 -->
 				<!-- <td colspan="2" style="border-bottom: 2px solid gray;"><p>경매 종료</p> -->
-				<p class="fs-3" style="font-weight: bold;">[<span class="fs-3" style="color: #ffd700;">08:51:37</span>]</p>
+				<p class="fs-2" style="font-weight: bold;">[<span class="fs-2" style="color: #ffd700;">08:51:37</span>]</p>
 				
 				<!-- 종료 시 최종가 표기  -->
 				<!-- <p class="content_text" style="color: blue;">최종 가격 : 143,000원</p> -->
@@ -176,42 +177,73 @@ carousel-item
 				<!-- 상태에 따라 버튼 변경 -->
 				<!-- 판매자)입찰자 없을 때 :수정하기/삭제하기-->
 				<!-- 판매자)입찰자 있을 때 :즉시낙찰/삭제하기 -->
+				<!-- 구매자) 제안하기/신고 -->
 				<!-- <button type="button" class="btn btn-warning" style="width: 48%;">즉시낙찰</button> -->
+				<!-- <button type="button" class="btn btn-primary" style="width: 48%;">제안하기</button> -->
+				<!-- <button type="button" class="btn btn-secondary" style="width: 48%;">신고</button> -->
 				<button type="button" class="btn btn-primary" style="width: 48%;">수정하기</button>
 				<button type="button" class="btn btn-secondary" style="width: 48%;">삭제하기</button>
 				</td>
 			</tr>
 		</table>
 		</div>
-		
-		<div class="content" style="height: 300px;">
-		<table class="col-md-6" style="float: left;">
-			<tr class="table-secondary">
-				<th style="height:25px; width: 75%; text-align: center;">
-				<p style="font-size: 18pt;">상품 상세정보</p>
-				</th>
-			</tr>
+		<div>
+			<div class="col-md-6" style="display: inline-block; float:left;">
+			<table>
+				<tr class="table-secondary">
+					<th style="height:25px; width: 100%; text-align: center;">
+						<p style="font-size: 18pt;">상품 상세정보</p>
+					</th>
+				</tr>
+				
+				<!-- 공간분리용 tr -->
+				<tr style="height: 10px;">
+					<th>
+					</th>
+				</tr>
+				
+				<tr class="table-secondary">
+					<td style="padding:5%;">
+					<p>상품 상세정보<br><br>
+					1. 제조사 A/S 가능여부 : 무상 5개월까지 가능<br><br>
+					2. 특이사항 : 외관상 흠집 및 오염 없음, 작동상태 양호, 사용기간 3개월
+					</p>
+					</td>
+				</tr>
+			</table>
+			</div>
 			
-			<!-- 공간분리용 tr -->
-			<tr style="height: 10px;">
-				<th>
-				</th>
-			</tr>
+			<!-- 구매자) 판매자 정보 -->
+			<div class="seller_info col-md-5" style="display: inline-block;">
 			
-			<tr class="table-secondary">
-				<td style="padding:5%;">
-				<p>상품 상세정보<br><br>
-				1. 제조사 A/S 가능여부 : 무상 5개월까지 가능<br><br>
-				2. 특이사항 : 외관상 흠집 및 오염 없음, 작동상태 양호, 사용기간 3개월
-				</p>
-				</td>
-			</tr>
-		</table>
-		
-		<button class="btn btn-primary" style="margin-left: 3%;">목록으로</button>
+			<div class="card" style="width: 100%; padding:3%;">
+				<div>
+					<div class="user_image" style="float: left;">
+						<img alt="" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"
+						style="object-fit:cover; height: 100%; width: 100%;">
+					</div>
+					<div style="padding-left: 25%;">
+						<p class="fs-2" style="margin-top: 5%; font-weight: bold;">아몰랑</p>
+					</div>
+				</div>
+				    
+				  <div class="card-body">
+				    <h5 class="card-title"></h5>
+				    <p class="card-text">소개글 : 최저가 판매상
+										<br>누적 판매 수 : 25회
+		 								<br>Level : 5</p>
+				    <div style="text-align: right;">
+				    	<a href="#" style="text-decoration: none;">상세보기</a>
+				    </div>
+				  </div>
+				</div>
+				<!-- 판매자 정보 아래 버튼  -->
+				<div style="text-align: center; margin-top: 1%;">
+					<button class="btn btn-primary" style="width: 25%; margin-right: 15%;">목록으로</button>
+					<button class="btn btn-primary" style="width: 25%;">찜하기</button>
+				</div>
+			</div>
 		</div>
-		
-		
 		
 		<!-- 입찰정보가 출력될 폼 -->
 		<div class="content_bid" style="margin-top: 5%; margin-left: 5%; margin-right:9%;">

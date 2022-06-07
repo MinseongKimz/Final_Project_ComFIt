@@ -34,9 +34,7 @@ p
 	font-weight: bold; 
 	line-height: 50%;
 }
-/* 아래 입찰정보 출력단 */
-.content_bid
-{
+
 /* 유저 사진 */
 .user_image
 {
@@ -47,6 +45,26 @@ th,td
 {
 	border: 1px solid #444444;
 }
+
+d-block
+{
+	width: 100%; 
+	height: 100%;
+	object-fit: cover;
+}
+
+ .carousel-inner > .carousel-item > img 
+ {
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      max-height: 350px;
+      object-fit: cover;
+  } 
+
+carousel-item
+
 /* 사진 전체 */
 </style>
 
@@ -63,9 +81,33 @@ th,td
 			<p class="fs-4" style="text-align: center; font-weight: bold;">[카테고리]2022 GTX 0000 아주 합리적인 가격에 드립니다.</p>
 		
 		<div class="content">
-		<div class="product_image col-md-6" style="float: left; width: 530px; height: 400px; margin-right: 3%;">	
-			<img src="https://cdn.pixabay.com/photo/2014/09/24/14/29/macbook-459196__340.jpg" class="img-thumbnail" alt="이미지가 없습니다."
-			style="width: 100%; height:100%; object-fit: cover;">
+		<div class="col-md-6" style="float: left; width: 560px; height: 420px; padding-top: 3%; margin-right: 3%;">	
+			<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="true">
+			  <div class="carousel-indicators">
+			    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+			    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+			    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+			  </div>
+			  <div class="carousel-inner">
+			    <div class="carousel-item active">
+			      <img src="https://cdn.pixabay.com/photo/2015/09/04/23/28/wordpress-923188__340.jpg" class="d-block w-100 rounded" alt="...">
+			    </div>
+			    <div class="carousel-item">
+			      <img src="https://cdn.pixabay.com/photo/2016/03/26/13/09/cup-of-coffee-1280537__340.jpg" class="d-block w-100 rounded" alt="...">
+			    </div>
+			    <div class="carousel-item">
+			      <img src="https://cdn.pixabay.com/photo/2016/06/15/16/16/man-1459246__340.png" class="d-block w-100 rounded" alt="...">
+			    </div>
+			  </div>
+			  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+			    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			    <span class="visually-hidden">Previous</span>
+			  </button>
+			  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+			    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+			    <span class="visually-hidden">Next</span>
+			  </button>
+			</div>
 		</div>
 		
 		<table class="col-md-5">
@@ -91,7 +133,7 @@ th,td
 				<td colspan="2" style="border-bottom: 2px solid gray;"><p>경매 종료까지</p>
 				<!-- 경매 종료시간 적용/경매 종료시 경매종료라고 표기 -->
 				<!-- <td colspan="2" style="border-bottom: 2px solid gray;"><p>경매 종료</p> -->
-				<p class="content_text" style="font-size: 20pt;">[<span style="color: #ffd700;">08:51:37</span>]</p>
+				<p class="fs-3" style="font-weight: bold;">[<span class="fs-3" style="color: #ffd700;">08:51:37</span>]</p>
 				
 				<!-- 종료 시 최종가 표기  -->
 				<!-- <p class="content_text" style="color: blue;">최종 가격 : 143,000원</p> -->
@@ -169,11 +211,12 @@ th,td
 		<button class="btn btn-primary" style="margin-left: 3%;">목록으로</button>
 		</div>
 		
-<p class="content_text" style="padding-left: 4%;">현재 입찰 정보</p>
+		
 		
 		<!-- 입찰정보가 출력될 폼 -->
-		<div class="content_bid" style="margin-left: 5%; margin-right:9%;">
-			
+		<div class="content_bid" style="margin-top: 5%; margin-left: 5%; margin-right:9%;">
+		<p class="fs-3" style="padding-left: 4%; font-weight: bold;">현재 입찰 정보</p>
+		
 			<!-- 입찰 폼 한개 -->
 			<div class="shadow p-3 mb-5 bg-body rounded">
 			<table style="width: 100%;">
@@ -185,7 +228,7 @@ th,td
 					</div>
 				</td>
 				<th style="padding-left: 2%;">
-					<p class="fs-5">
+					<p class="fs-4">
 					김상기
 					</p>
 				</th>
@@ -211,7 +254,7 @@ th,td
 					</div>
 				</td>
 				<th style="padding-left: 2%;">
-					<p class="fs-5">
+					<p class="fs-4">
 					김민성
 					</p>
 				</th>
@@ -227,7 +270,20 @@ th,td
 			</div>
 			
 		</div>
-		
+	
+<!-- bootstrap card 사용해서 구성 가능 -->	
+<!-- 
+<div class="card">
+  <div class="card-header">
+    Featured
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+ -->
 		
 	<br />
 	<br />

@@ -74,7 +74,7 @@
 
   
 
-  <header>
+  <header style="margin-left: 20%; margin-right: 20%;">
     <!-- nav 상단 고정-->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container">
@@ -142,7 +142,5 @@
   </header>
 </div>  
 
-
-</div>  
 </body>
 </html>

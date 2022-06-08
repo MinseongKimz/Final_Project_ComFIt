@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>FAQ</title>
+<title>메인화면</title>
 <link rel="stylesheet" href="css/main.css" type="text/css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -136,8 +136,9 @@
 </script>
 </head>
 
-
-<c:import url="comfit_header.jsp"></c:import>
+<div>
+	<c:import url="comfit_header.jsp"></c:import>
+</div>
 
 
 <br /><br /><br />
@@ -146,52 +147,52 @@
 		<div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"  data-interval="1000">
             <div class="MultiCarousel-inner">
                 <div class="item">
-                    <div class="pad15">
+                    <div class="pad15 shadow">
                         <p class="lead" style="vertical-align: middle;">그래픽카드</p>
                     </div>
                 </div>
                 <div class="item">
-                    <div class="pad15">
+                    <div class="pad15 shadow">
                         <p class="lead">CPU</p>
                     </div>
                 </div>
                 <div class="item">
-                    <div class="pad15">
+                    <div class="pad15 shadow">
                         <p class="lead">HDD</p>
                     </div>
                 </div>
                 <div class="item">
-                    <div class="pad15">
+                    <div class="pad15 shadow">
                         <p class="lead">모니터</p>
                     </div>
                 </div>
                 <div class="item">
-                    <div class="pad15">
+                    <div class="pad15 shadow">
                         <p class="lead">오디오</p>
                     </div>
                 </div>
                 <div class="item">
-                    <div class="pad15">
+                    <div class="pad15 shadow">
                         <p class="lead">주변기기</p>
                     </div>
                 </div>
                 <div class="item">
-                    <div class="pad15">
+                    <div class="pad15 shadow">
                         <p class="lead">메모리</p>
                     </div>
                 </div>
                 <div class="item">
-                    <div class="pad15">
+                    <div class="pad15 shadow">
                         <p class="lead">키보드</p>
                     </div>
                 </div>
                 <div class="item">
-                    <div class="pad15">
+                    <div class="pad15 shadow">
                         <p class="lead">메인보드</p>
                     </div>
                 </div>
                 <div class="item">
-                    <div class="pad15">
+                    <div class="pad15 shadow">
                         <p class="lead">케이스</p>
                     </div>
                 </div>
@@ -201,13 +202,89 @@
             <button class="btn btn-primary rightLst">></button>
         </div>
 	</div>
+	<br /><br />
 	<div class="row">
 	    <div class="col-md-12 text-center">
-	        <br/><br/><br/>
-	        <hr/>
-	        <p>Settings</p>
-	        <p>Change data items for xs,sm,md and lg display items respectively. Ex:data-items="1,3,5,6"</p>
-	        <p>Change data slide for slides per click Ex:data-slide="1"</p>
+		<!-- 최근 등록 상품 -->
+		<div class="pd_list new">
+			<div>
+				<span style="font-size: 20pt; font-weight:bold; float: left">최근 등록 상품</span>
+			</div>
+			<div  style="margin-left: 85%; margint-bottom:3%">	
+				<button type="button" class="btn btn-primary">전체보기</button>
+			</div>
+			<table class="table">
+				<tr>
+					<th>
+						<img alt="" src="images/graphicCard.jpg" style="width: 150px; height:150px;"><br />
+						상품명  <br />
+						가격 
+					</th>
+					<th>
+						<img alt="" src="images/HDD.jpg" style="width: 150px; height:150px;">	<br />
+						상품명 <br />
+						가격
+					</th>
+					<th>
+						<img alt="" src="images/keyboard.png" style="width: 150px; height:150px;">	<br />
+						상품명 <br />
+						가격
+					</th>
+					<th>
+						<img alt="" src="images/monitor.jpg" style="width: 150px; height:150px;">	<br />
+						상품명 <br />
+						가격
+					</th>
+					<th>
+						<img alt="" src="images/ssd.jpg" style="width: 150px; height:150px;">	<br />
+						상품명 <br />
+						가격
+					</th>
+				</tr>
+			</table>
+		
+		
+		</div>
+		
+		<!-- 인기 상품 -->
+		<div class="pd_list hot">
+			<div>
+				<span style="font-size: 20pt; font-weight:bold; float: left;">인기 상품</span>
+			</div>
+			<div  style="margin-left: 85%; margint-bottom:3%">	
+				<button type="button" class="btn btn-primary" style="height: 40px; font-size: small;">전체보기</button>
+			</div>		
+			<table class="table">
+			<tr>
+				<th>
+					<img alt="" src="images/graphicCard.jpg" style="width: 150px; height:150px;"><br />
+					상품명 <br />
+					가격
+				</th>
+				<th>
+					<img alt="" src="images/HDD.jpg" style="width: 150px; height:150px;">	<br />
+					상품명 <br />
+					가격
+				</th>
+				<th>
+					<img alt="" src="images/keyboard.png" style="width: 150px; height:150px;">	<br />
+					상품명 <br />
+					가격
+				</th>
+				<th>
+					<img alt="" src="images/monitor.jpg" style="width: 150px; height:150px;">	<br />
+					상품명 <br />
+					가격
+				</th>
+				<th>
+					<img alt="" src="images/ssd.jpg" style="width: 150px; height:150px;">	<br />
+					상품명 <br />
+					가격
+				</th>
+			</tr>
+			</table>
+		</div>
+	</div>	        
 	    </div>
 	</div>
 </div>

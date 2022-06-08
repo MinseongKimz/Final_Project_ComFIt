@@ -11,7 +11,7 @@
 <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>배송 판매글 등록</title>
+<title>배송 판매글 수정(입찰 없을 시)</title>
 <link rel="stylesheet" href="<%=cp %>/css/bootstrap.css">
 <link rel="stylesheet" href="<%=cp %>/css/inputstyle.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
@@ -35,7 +35,6 @@
 		});
 		
 	});
-	
 </script>
 
 </head>
@@ -47,9 +46,11 @@
 
 <div class="container" style="padding-top: 80px;">
 	<p class="fs-3" style="font-weight: bold;">
-		판매글 등록-배송	
+		판매글 수정-배송(입찰 없을 시)	
 	</p>
 	
+	<!-- 입력 페이지를 복사해서 만든 수정 페이지 -->
+	<!-- 기존에 입력해둔 값을 넣어주는 속성만 추가하면 됨 -->
 	<div class="input_box" style="padding-left: 5%; padding-top: 10%;">
 		<table style="width: 100%;">
 			<tr>

@@ -59,7 +59,7 @@
       }
       #dropdown-item
       {
-         width: 200px;
+         width: 100%;
       }
     
    
@@ -74,7 +74,7 @@
 
   
 
-  <header style="margin-left: 20%; margin-right: 20%;">
+  <header style="margin-left:10%; margin-right:10%;">
     <!-- nav 상단 고정-->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container">
@@ -117,12 +117,12 @@
 				             
           				 </a>
                     	 
-                    	 <ul class="dropdown-menu " aria-labelledby="btnGroupDrop1" >
+                    	 <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
 					        <li class="dropdown-item"><a class="dropdown-item" href="#">[직거래/제안] HP노트북중고....</a></li>
 					        <li class="dropdown-item"><a class="dropdown-item" href="#">[직거래/판매] SSD 최저가....</a></li>
 					        <li class="dropdown-item"><a class="dropdown-item" href="#">[문의] 구매확정 어떻게해...</a></li>
 					    </ul> 
-                    </li>
+					 </li>
                 </ul>
             </div>
         </div>
@@ -142,5 +142,7 @@
   </header>
 </div>  
 
+
+</div>  
 </body>
 </html>

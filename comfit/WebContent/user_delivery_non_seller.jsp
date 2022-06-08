@@ -17,6 +17,29 @@
 <link rel="stylesheet" href="<%=cp %>/css/bootstrap.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function()
+	{
+		$("#productDelBtn").click(function() 
+		{
+			var result = confirm('정말로 삭제하시겠습니까?');
+		
+			if(result) 
+			{
+				//삭제 명령 넣어야됨
+				alert("『글제목』 게시물이 정상적으로 삭제되었습니다.");
+			} 
+			else 
+			{
+			    return;
+			}
+			        
+		});
+				
+	});
+		
+</script>
 <style type="text/css">
 p
 {
@@ -64,9 +87,6 @@ d-block
       object-fit: cover;
   } 
 
-carousel-item
-
-/* 사진 전체 */
 </style>
 
 </head>
@@ -79,7 +99,7 @@ carousel-item
 <div class="container">
 	<div style="padding-top: 5%;">
 	
-			<p class="fs-4" style="text-align: center; font-weight: bold;">[카테고리]2022 GTX 0000 아주 합리적인 가격에 드립니다.</p>
+			<p class="fs-2" style="text-align: center; font-weight: bold;">[카테고리]2022 GTX 0000 아주 합리적인 가격에 드립니다.</p>
 		
 		<div class="content">
 		<div class="col-md-6" style="float: left; width: 560px; height: 420px; padding-top: 3%; margin-right: 3%;">	
@@ -88,6 +108,8 @@ carousel-item
 			    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
 			    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
 			    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+			    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+			    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
 			  </div>
 			  <div class="carousel-inner">
 			    <div class="carousel-item active">
@@ -98,6 +120,12 @@ carousel-item
 			    </div>
 			    <div class="carousel-item">
 			      <img src="https://cdn.pixabay.com/photo/2016/06/15/16/16/man-1459246__340.png" class="d-block w-100 rounded" alt="...">
+			    </div>
+			    <div class="carousel-item">
+			      <img src="https://cdn.pixabay.com/photo/2015/09/04/23/28/wordpress-923188__340.jpg" class="d-block w-100 rounded" alt="...">
+			    </div>
+			    <div class="carousel-item">
+			      <img src="https://cdn.pixabay.com/photo/2016/03/26/13/09/cup-of-coffee-1280537__340.jpg" class="d-block w-100 rounded" alt="...">
 			    </div>
 			  </div>
 			  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -182,14 +210,14 @@ carousel-item
 				<!-- <button type="button" class="btn btn-primary" style="width: 48%;">제안하기</button> -->
 				<!-- <button type="button" class="btn btn-secondary" style="width: 48%;">신고</button> -->
 				<button type="button" class="btn btn-primary" style="width: 48%;">수정하기</button>
-				<button type="button" class="btn btn-secondary" style="width: 48%;">삭제하기</button>
+				<button type="button" class="btn btn-secondary" id="productDelBtn" style="width: 48%;">삭제하기</button>
 				</td>
 			</tr>
 		</table>
 		</div>
 		<div>
-			<div class="col-md-6" style="display: inline-block; float:left;">
-			<table>
+			<div class="col-md-6" style="width:100%; display: inline-block; float:left;">
+			<table style="margin-left:5%; width:90%;">
 				<tr class="table-secondary">
 					<th style="height:25px; width: 100%; text-align: center;">
 						<p style="font-size: 18pt;">상품 상세정보</p>
@@ -198,8 +226,6 @@ carousel-item
 				
 				<!-- 공간분리용 tr -->
 				<tr style="height: 10px;">
-					<th>
-					</th>
 				</tr>
 				
 				<tr class="table-secondary">
@@ -214,7 +240,7 @@ carousel-item
 			</div>
 			
 			<!-- 구매자) 판매자 정보 -->
-			<div class="seller_info col-md-5" style="display: inline-block;">
+			<div class="seller_info col-md-5" style="display: inline-block; padding-left: 3%; height: 270px;">
 			
 			<div class="card" style="width: 100%; padding:3%;">
 				<div>
@@ -223,17 +249,17 @@ carousel-item
 						style="object-fit:cover; height: 100%; width: 100%;">
 					</div>
 					<div style="padding-left: 25%;">
-						<p class="fs-2" style="margin-top: 5%; font-weight: bold;">아몰랑</p>
+						<p class="fs-2" style="margin-top: 5%; font-weight: bold;">아몰랑 
+						<span class="fs-6" style="color: green;">Level : 5</span>
+						</p>
 					</div>
 				</div>
 				    
-				  <div class="card-body">
+				  <div class="card-body" style="height: 85px;">
 				    <h5 class="card-title"></h5>
-				    <p class="card-text">소개글 : 최저가 판매상
-										<br>누적 판매 수 : 25회
-		 								<br>Level : 5</p>
 				    <div style="text-align: right;">
-				    	<a href="#" style="text-decoration: none;">상세보기</a>
+				    	<p class="card-text" style="font-weight: bold;">누적 판매 수 : 25회</p>
+				    	<a href="user_detail_sell.jsp" style="text-decoration: none;">상세보기</a>
 				    </div>
 				  </div>
 				</div>

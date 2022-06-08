@@ -146,7 +146,7 @@
 
 	$(document).ready(function()
 	{
-		$(".btn").hover(function()                
+		$(".hover").hover(function()                
 		{                                         
 			//alert("테스트");                       
 			                                      

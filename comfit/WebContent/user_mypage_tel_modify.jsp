@@ -51,6 +51,9 @@
 	   	<div>
 	   		<p class="subheader">마이페이지</p>
 	   		<p class="subheader_header">회원정보</p>
+	   		<div style="float:left; margin-left:15%;">
+	   		<c:import url="user_sidebar.jsp"></c:import>
+	   		</div>
 	   	</div>
 	   	<table class="tablebts">
 	   		<tr>

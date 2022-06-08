@@ -11,6 +11,12 @@
 <meta charset="UTF-8">
 <title>마이페이지</title>
 <link rel="stylesheet" type="text/css" href="/css/main.css">
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="<%=cp %>/css/bootstrap.css">
+<link rel="stylesheet" href="<%=cp %>/css/inputstyle.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.js"></script>
 <style type="text/css">
 
 	.subheader
@@ -22,7 +28,7 @@
 	}
 	.logo
 	{
-		margin-left: 15%;
+		margin-left: 55%;
 		margin-bottom:12%;
 	}
 	.testbox
@@ -36,10 +42,7 @@
 		font-weight: bold;
 		margin-left: 25%;
 	}
-	.all_list
-	{
-		margin-left:77%;
-	}
+	
 	.neyuk
 	{
 		font-size: 10pt;
@@ -49,10 +52,27 @@
 	}
 	.btn-primary
 	{
-		margin-left:37%;
+		
 		border-radius:5px;
 	}
-	.able
+	.tablebts
+	{
+		width:40%;
+		margin-left:40%;
+		border-radius:5px;
+		table-layout:fixed;
+    	font-weight: bold;
+    	background-color: #D3D3D3;
+	}
+	.mypage
+	{
+		margin-bottom: 5%;
+	}
+	.user_image
+	{
+		width: 100px;
+		height: 100px;
+	}
 </style>
 </head>
 <body>
@@ -65,22 +85,40 @@
    	
    	<div>
    		<p class="subheader">마이페이지</p>
-   		<table class="able">
-			<tbody>
-				<tr>
-					<th>test</th>
-				</tr>
-			</tbody>
-		</table>
    	</div>
    	
-	<div>
-		<img alt="logo" src="<%=cp%>/images/logo.png" style="width: 200px;" class="logo">
-	</div>
+	
+		<div class="shadow p-3 mb-5 bg-body rounded">
+			<table style="width: 100%;">
+			<tr>
+				<td style="width: 20%; padding-left:23%;">
+					<div class="user_image">
+						<img alt="" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"
+						style="object-fit:cover; height: 100%; width: 100%;">
+					</div>
+				</td>
+				
+				<th>
+					<p style="padding-left:30%;">닉네임 : 김민성<br>
+					LV : 2</p>
+				</th>
+				<td>
+					<button type="button" class="btn btn-primary">찜한상품보기</button>
+					<button type="button" class="btn btn-primary">내 정보 보기/수정</button>
+				</td>
+			</tr>
+			</table>
+			</div>
+		
+			
+	
 	
 	 <div class="content" >
-		<h3 class="inout_point">입출금 내역 내 포인트 : test p</h3> <a href="" class="all_list" style="margin-bottom: 5%;">전체보기</a>
-		<table class="table" style="width: 1000px;">
+						 <div>
+							<h3 class="inout_point">입출금 내역 내 포인트 : test p</h3> 
+							<a class="btn btn-link" style="margin-left:77%;">전체보기</a>
+						 </div>
+		<table class="table table-bordered" style="width: 1000px;">
 		    <thead>
 		        <tr>
 		            <th>날짜</th>
@@ -111,7 +149,7 @@
 		
 		<div class="content" >
 		<h3 class="inout_point">내 판매</h3> <p class="neyuk">1개월 간 내역</p>
-		<table class="table" style="width: 1000px;">
+		<table class="table table-bordered" style="width: 1000px;">
 		    <thead>
 		        <tr>
 		            <th>낙찰일/채택일</th>
@@ -145,12 +183,12 @@
 		        </tr>  
 		    </tbody>
 		</table>
-		<button type="button" class="btn btn-primary btn-sm"id="sellBtn" style="width: 400px; height: 40px; font-size: 15pt;">판매내역 자세히보기</button>
+		<button type="button" class="btn btn-primary btn-sm"id="sellBtn" style="width: 400px; height: 40px; font-size: 15pt; margin-left:47%;">판매내역 자세히보기</button>
 		           
 		
 		<div class="content" >
 		<h3 class="inout_point">내 구매</h3> <p class="neyuk">1개월 간 내역</p>
-		<table class="table" style="width: 1000px;">
+		<table class="table table-bordered" style="width: 1000px;">
 		    <thead>
 		        <tr>
 		            <th>낙찰일/채택일</th>
@@ -186,7 +224,7 @@
 		        </tr>  
 		    </tbody>
 		</table>
-		<button type="button" class="btn btn-primary btn-sm"id="buyBtn" style="width: 400px; height: 40px; font-size: 15pt;">구매내역 자세히보기</button>
+		<button type="button" class="btn btn-primary btn-sm"id="buyBtn" style="width: 400px; height: 40px; font-size: 15pt;margin-left:47%;">구매내역 자세히보기</button>
 		
 			</div>
 		</div>

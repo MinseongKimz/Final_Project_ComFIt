@@ -30,7 +30,7 @@
 	{
 		border-radius:5px;
 		margin-top:5%;
-		margin-left: 38%;
+		margin-left: 15%;
     	width: 40%;
     	font-weight: bold;
   	}
@@ -40,6 +40,8 @@
   		margin-left:-20%;
   		width:80%;
   	}
+  	
+  	
 </style>
 </head>
 <body>
@@ -49,11 +51,16 @@
 	      <c:import url="comfit_header.jsp"></c:import>
 	   	</div>
 	   	
+	   	<!--Content  -->
 	   	<div>
 	   		<p class="subheader">마이페이지</p>
 	   		<p class="subheader_header">회원정보</p>
+	   		<div style="float:left; margin-left:15%;">
+	   		<c:import url="user_sidebar.jsp"></c:import>
+	   		</div>
 	   	</div>
-	   	<table class="tablebts">
+	   
+	   	<table class="tablebts" style="float: left;">
 	   		<tr>
 	   			<td>현재비밀번호</td><td><input type="text" class="hi" placeholder="비밀번호를 입력하세요" /></td>
 	   		</tr>

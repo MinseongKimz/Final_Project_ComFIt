@@ -26,19 +26,22 @@
 		font-weight: bold;
 		margin-left: 25%;
 	}
-	.tablebts
-	{
-		margin-top:5%;
-		margin-left: 38%;
-    	width: 40%;
-    	font-weight: bold;
-  	}
   	.hi
   	{
   		margin-left:3%;
   		border-radius:5px;
   		width:80%;
+  	
   	}
+  	table
+  	{
+  		
+  		display:inline;
+  		margin-left:30%;
+  		width:70%;
+  		margin-top: -5%;
+  	}
+  	
   	
 </style>
 </head>
@@ -47,93 +50,98 @@
 		<!--Header  -->
 		<div class="header">
 	      <c:import url="comfit_header.jsp"></c:import>
+	      
 	   	</div>
 	   	
 	   	<div>
 	   		<p class="subheader">마이페이지</p>
 	   		<p class="subheader_header">구매내역</p>
+	   		<p style="font-size: 18pt; font-weight: bolder;margin-left: 25%;">내 판매</p>
+	   		<!--sidebar  -->
+	   			<div style="float:left; margin-left:15%;">
+	   						<c:import url="user_sidebar.jsp"></c:import>
+	   			</div>
+	   		
 	   	</div>
-	   
+	    <div>
+	    	<!--table  -->
+					   		<table class="table table-bordered"  style="float:left;">
+							<thead>
+						        <tr style="background-color: white;">
+						            <th>제안/입찰일</th>
+						            <th>금액</th>
+						            <th>상품정보</th>
+						            <th>방식</th>
+						            <th>직거래 예정 장소/배송 예정 장소</th>
+						            <th>직거래 예정 일시</th>
+						            <th>실제 거리 일시</th>
+						            <th>상태</th>
+						        </tr>
+						     </thead>
+						        <tr>
+						            <td>2022-05-20</td>
+						            <td>40,000</td>
+						            <td>레이저 무선 마우스</td>
+						            <td>(배송)경매</td>
+						            <td style="font-size: 8pt;">인천 계양구 새빛 아파트 104동 203호</td>
+						            <td style="font-size: 8pt;">　</td>
+						            <td style="font-size: 8pt;">2022-05-19 08:12:12</td>
+									<td>낙찰 &nbsp;
+													<button type="button" class="btn btn-primary btn-sm"
+														id="sellBtn"
+														style="width: 60px; height: 30px; font-size: 6pt;"
+														data-bs-toggle="modal" data-bs-target="#directSellCheck">구매확정</button>
+													<button type="button" class="btn btn-danger btn-sm"
+														id="danger"
+														style="width: 60px; height: 30px; font-size: 6pt;">신고하기</button>
+												
+									</td>		        
+												
+								</tr>     
+						        <tr>
+						            <td>2022-04-30</td>
+						            <td>80,000</td>
+						            <td>커세어 무선 헤드셋</td>
+						            <td>직거래(구매제안)</td>
+						            <td style="font-size: 8pt;">경비실 뒤</td>
+						            <td style="font-size: 8pt;">2022-05-18 00:00:00</td>
+						            <td style="font-size: 8pt;">2022-05-19 08:12:58</td>
+									<td>채택 &nbsp;
+													<button type="button" class="btn btn-primary btn-sm"
+														id="sellBtn"
+														style="width: 60px; height: 30px; font-size: 6pt;"
+														data-bs-toggle="modal" data-bs-target="#directSellCheck">구매확정</button>
+													<button type="button" class="btn btn-danger btn-sm"
+														id="danger"
+														style="width: 60px; height: 30px; font-size: 6pt;">신고하기</button>		
+									</td>				         
+						         </tr> 
+						         <tr>
+						            <td>2022-04-25</td>
+						            <td>167,000</td>
+						            <td>대형 모니터</td>
+						            <td>직거래(구매제안)</td>
+						            <td style="font-size: 8pt;">주차장 계단 뒤</td>
+						            <td style="font-size: 8pt;">　</td>
+						            <td style="font-size: 8pt;">　</td>
+						            <td>구매완료</td>
+						         </tr>
+						         <tr>
+						            <td>2022-04-14</td>
+						            <td>70,000</td>
+						            <td>게이밍 키보드</td>
+						            <td>(배송)경매</td>
+						            <td style="font-size: 8pt;">일산 동구 백석동</td>
+						            <td style="font-size: 8pt;">　</td>
+						            <td style="font-size: 8pt;">　</td>
+						            <td>구매완료</td>
+						        </tr>  
+						</table>
+	    </div>
 
 
 
-		<div class="content" >
-		<h3 class="inout_point">내 구매</h3> 
-		<table class="table" style="width: 1000px;">
-		    <thead>
-		        <tr>
-		            <th>제안/입찰일</th>
-		            <th>금액</th>
-		            <th>상품정보</th>
-		            <th>방식</th>
-		            <th>직거래 예정 장소/배송 예정 장소</th>
-		            <th>직거래 예정 일시</th>
-		            <th>실제 거리 일시</th>
-		            <th>상태</th>
-		        </tr>
-		    </thead>
-		    <tbody>
-		        <tr>
-		            <td>2022-05-20</td>
-		            <td>40,000</td>
-		            <td>레이저 무선 마우스</td>
-		            <td>(배송)경매</td>
-		            <td>인천 계양구 새빛 아파트 104동 앞</td>
-		            <td>　</td>
-		            <td>2022-05-19 08:12:12</td>
-		            <td>
-		            	낙찰
-		            	<button type="button" class="btn btn-primary btn-sm"id="sellBtn" style="width: 50px; height: 40px; font-size: 15pt;">판매내역 자세히보기</button>
-		            	<button type="button" class="btn btn-primary btn-sm"id="sellBtn" style="width: 50px; height: 40px; font-size: 15pt;">판매내역 자세히보기</button>
-		            </td>
-		        </tr>     
-		        <tr>
-		            <td>2022-05-20</td>
-		            <td>40,000</td>
-		            <td>레이저 무선 마우스</td>
-		            <td>(배송)경매</td>
-		            <td>인천 계양구 새빛 아파트 104동 앞</td>
-		            <td>　</td>
-		            <td>2022-05-19 08:12:12</td>
-		            <td>
-		            	낙찰
-		            	<button type="button" class="btn btn-primary btn-sm"id="sellBtn" style="width: 50px; height: 40px; font-size: 15pt;">판매내역 자세히보기</button>
-		            	<button type="button" class="btn btn-primary btn-sm"id="sellBtn" style="width: 50px; height: 40px; font-size: 15pt;">판매내역 자세히보기</button>
-		            </td>
-		        </tr> 
-		         <tr>
-		            <td>2022-05-20</td>
-		            <td>40,000</td>
-		            <td>레이저 무선 마우스</td>
-		            <td>(배송)경매</td>
-		            <td>인천 계양구 새빛 아파트 104동 앞</td>
-		            <td>　</td>
-		            <td>2022-05-19 08:12:12</td>
-		            <td>
-		            	낙찰
-		            	<button type="button" class="btn btn-primary btn-sm"id="sellBtn" style="width: 50px; height: 40px; font-size: 15pt;">판매내역 자세히보기</button>
-		            	<button type="button" class="btn btn-primary btn-sm"id="sellBtn" style="width: 50px; height: 40px; font-size: 15pt;">판매내역 자세히보기</button>
-		            </td>
-		        </tr>
-		         <tr>
-		            <td>2022-05-20</td>
-		            <td>40,000</td>
-		            <td>레이저 무선 마우스</td>
-		            <td>(배송)경매</td>
-		            <td>인천 계양구 새빛 아파트 104동 앞</td>
-		            <td>　</td>
-		            <td>2022-05-19 08:12:12</td>
-		            <td>
-		            	낙찰
-		            	<button type="button" class="btn btn-primary btn-sm"id="sellBtn" style="width: 50px; height: 40px; font-size: 15pt;">판매내역 자세히보기</button>
-		            	<button type="button" class="btn btn-primary btn-sm"id="sellBtn" style="width: 50px; height: 40px; font-size: 15pt;">판매내역 자세히보기</button>
-		            </td>
-		        </tr>  
-		    </tbody>
-		</table>
-		<button type="button" class="btn btn-primary btn-sm"id="sellBtn" style="width: 400px; height: 40px; font-size: 15pt;">판매내역 자세히보기</button>
-		           
-	 </div>  	
+			
 </div>
 
 </body>

@@ -115,7 +115,7 @@ NOCACHE;
 --==>> Sequence AUTH_CATEGORY_SEQ이(가) 생성되었습니다.
 
 
--- 
+-- sd
 
 
 

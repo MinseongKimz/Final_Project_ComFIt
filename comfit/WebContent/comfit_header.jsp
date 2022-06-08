@@ -41,7 +41,7 @@
 <body>
 <div>
   <header class="bg-white text-dark">
-    <div class="container" style="margin-top: 1%; margin-left: 10%;">
+    <div class="container" style="margin-top: 1%;">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start" >
         <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-decoration-none text-dark "> 
         	<img alt="logo" src="<%=cp%>/images/logo.png" style="width: 200px;">

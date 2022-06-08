@@ -1,6 +1,3 @@
-<%@page import="bbs.Bbs"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="bbs.bbsDAO"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
@@ -12,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <!-- 기기별 크기 담당 -->
-<meta name="viewport" content="width=device-width", initial-scale="1">
+<meta name="viewport" content="width=device-width" initial-scale="1">
 <title>ad_productlist_direct.jsp</title>
 <style type="text/css">
   #set {

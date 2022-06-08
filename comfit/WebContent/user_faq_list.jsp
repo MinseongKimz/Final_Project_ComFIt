@@ -102,7 +102,7 @@ $(".que").click(function() {
 		  <div class="accordion-item">
 		    <h2 class="accordion-header" id="headingOne">
 		      <button class="accordion-button que" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" style="overflow:hidden" >
-		        <strong>Q.  [상품] 주문한 상품은 언제 배송되나요?</strong>
+		        <strong>Q.  주문한 상품은 언제 배송되나요?</strong>
 		      </button>
 		    </h2>
 		    <div id="collapseOne" class="accordion-collapse collapse anw" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -116,7 +116,7 @@ $(".que").click(function() {
 		  <div class="accordion-item">
 		    <h2 class="accordion-header" id="headingTwo">
 		      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-		        <strong>[공지] 특정 전자기기 거래 금지 시행 안내</strong>
+		        <strong>Q.   특정 전자기기 거래 금지 시행 안내</strong>
 		      </button>
 		    </h2>
 		    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
@@ -139,7 +139,7 @@ $(".que").click(function() {
 		  <div class="accordion-item">
 		    <h2 class="accordion-header" id="headingThree">
 		      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-		        <strong>[공지] Comfit 개인정보처리방침 개정 안내</strong>
+		        <strong>Q.   Comfit 개인정보처리방침 개정 안내</strong>
 		      </button>
 		    </h2>
 		    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
@@ -162,7 +162,7 @@ $(".que").click(function() {
 		  <div class="accordion-item">
 		    <h2 class="accordion-header" id="headingFour">
 		      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-		        <strong>[공지] '비트코인/가상화폐/암호화폐' 거래 금지 안내</strong>
+		        <strong>Q.   '비트코인/가상화폐/암호화폐' 거래 금지 안내</strong>
 		      </button>
 		    </h2>
 		    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">

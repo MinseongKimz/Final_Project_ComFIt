@@ -95,7 +95,7 @@
 <div>
 	<!--Header  -->
 	<div class="header">
-      <c:import url="comfit_header.jsp"></c:import>
+      <c:import url="comfit_header_user.jsp"></c:import>
    	</div>
    	
 	<div>

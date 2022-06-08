@@ -87,9 +87,6 @@ d-block
       object-fit: cover;
   } 
 
-carousel-item
-
-/* 사진 전체 */
 </style>
 
 </head>
@@ -243,7 +240,7 @@ carousel-item
 			</div>
 			
 			<!-- 구매자) 판매자 정보 -->
-			<div class="seller_info col-md-5" style="display: inline-block;">
+			<div class="seller_info col-md-5" style="display: inline-block; padding-left: 3%; height: 270px;">
 			
 			<div class="card" style="width: 100%; padding:3%;">
 				<div>
@@ -252,16 +249,16 @@ carousel-item
 						style="object-fit:cover; height: 100%; width: 100%;">
 					</div>
 					<div style="padding-left: 25%;">
-						<p class="fs-2" style="margin-top: 5%; font-weight: bold;">아몰랑</p>
+						<p class="fs-2" style="margin-top: 5%; font-weight: bold;">아몰랑 
+						<span class="fs-6" style="color: green;">Level : 5</span>
+						</p>
 					</div>
 				</div>
 				    
-				  <div class="card-body">
+				  <div class="card-body" style="height: 85px;">
 				    <h5 class="card-title"></h5>
-				    <p class="card-text">소개글 : 최저가 판매상
-										<br>누적 판매 수 : 25회
-		 								<br>Level : 5</p>
 				    <div style="text-align: right;">
+				    	<p class="card-text" style="font-weight: bold;">누적 판매 수 : 25회</p>
 				    	<a href="user_detail_sell.jsp" style="text-decoration: none;">상세보기</a>
 				    </div>
 				  </div>

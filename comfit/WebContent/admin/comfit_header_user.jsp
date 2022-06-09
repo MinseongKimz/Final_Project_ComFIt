@@ -131,7 +131,7 @@
     <div class="text-end " style="margin-right:">
     <div class="container">
 	         <button id="sellBtn" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-	              판매 하기
+	              판매하기
 	         </button>
 	         <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
 	            <li class="dropdown-item"><a class="dropdown-item" href="#">직거래 판매하기</a></li>

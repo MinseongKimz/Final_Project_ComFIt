@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
+	<name>Final_Project_ComFIt</name>
+=======
 	<name>mapPrt</name>
+>>>>>>> 293da5102d7a72704fe61016bc747803753b1121
 	<comment></comment>
 	<projects>
 	</projects>
 	<buildSpec>
+<<<<<<< HEAD
+	</buildSpec>
+	<natures>
+=======
 		<buildCommand>
 			<name>org.eclipse.jdt.core.javabuilder</name>
 			<arguments>
@@ -27,5 +35,6 @@
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
+>>>>>>> 293da5102d7a72704fe61016bc747803753b1121
 	</natures>
 </projectDescription>

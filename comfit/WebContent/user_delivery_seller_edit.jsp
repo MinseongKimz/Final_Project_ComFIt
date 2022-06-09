@@ -17,7 +17,6 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap.js"></script>
 <script type="text/javascript">
-
 	$(document).ready(function()
 	{
 		// 테스트
@@ -36,8 +35,7 @@
 		});
 		
 	});
-
-
+	
 </script>
 
 </head>
@@ -48,9 +46,9 @@
 </div>
 
 <div class="container" style="padding-top: 80px;">
-	<h3>
+	<p class="fs-3" style="font-weight: bold;">
 		판매글 등록-배송	
-	</h3>
+	</p>
 	
 	<div class="input_box" style="padding-left: 5%; padding-top: 10%;">
 		<table style="width: 100%;">
@@ -161,7 +159,7 @@
 			
 			<tr>
 				<th>
-					<div style="background-color: #C9E0F5; height: 70px; padding: 10px;">
+					<div style="background-color: #C9E0F5; height: 70px; padding: 10px; width: 85%;">
 						<p style="font-size: 9pt;"> ※ 게시글 유지 기간</p>
 						<p style="font-size: 7pt; font-weight: normal;">게시글 등록 시간부터 00일까지 유지됩니다.</p>
 					</div>
@@ -174,9 +172,9 @@
 			
 			<tr>
 				<th style="margin-right: 10%;">
-					<div style="background-color: #C9E0F5; height: 100px; padding: 10px;">
+					<div style="background-color: #C9E0F5; height: 100px; padding: 10px; width: 85%;">
 						<p style="font-size: 9pt;"> ※ 코멘트 작성 시 주의사항</p>
-						<p style="font-size: 7pt; font-weight: normal;">불필요한 개인 정보 노출 및 판매와 관련없는 문구를
+						<p style="font-size: 7pt; font-weight: normal;">불필요한 개인 정보 노출 및 판매와 관련없는 문구
 						<br>등록 시 약관에 위배되어 제재될 수 있습니다.</p>
 					</div>
 				</th>

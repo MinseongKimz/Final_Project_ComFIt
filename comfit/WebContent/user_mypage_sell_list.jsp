@@ -13,19 +13,15 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 
 <style type="text/css">
-
 .list-group {
 	width: 120px;
 	text-align: center;
 }
-
 .title {
 	margin-left: 11%;
 	font-family: 맑은 고딕;
 	font-size: 30pt;
 }
-
-
 .list-group-item {
 	text-align: center;
 	font-weight: bold;
@@ -38,7 +34,6 @@ h5
 {
 	font-weight: bold;
 }
-
 </style>
 
 
@@ -70,7 +65,7 @@ h5
 				</div>
 			</div>
 
-			<div class="col-lg-10 col-sm-12 col-md-12"  style="margin-left: 3%;">
+			<div class="col-lg-10 col-sm-12 col-md-12"  style="margin-left: 4%;">
 				<div class="d-flex justify-content-between">
 					<p style="font-size: 18pt; font-weight: bolder;">내 판매</p>
 					<select class="selectpicker" style="width: 100px; text-align: center; height: 30px;">

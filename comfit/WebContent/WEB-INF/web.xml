@@ -13,5 +13,14 @@
   <!-- ※ Spring MVC Framework 등록 -->
   <!--    → Front Controller 등록 -->
   <!--    → DispatcherServlet 객체 등록 -->
+<!--   <servlet>
+  	<servlet-name>dispatcher</servlet-name>
+  	<servlet-class>org.</servlet-class>
+  </servlet>
   
+  <servlet-mapping>
+  	<servlet-name>dispatcher</servlet-name>
+  	<url-pattern>*.action</url-pattern>
+  </servlet-mapping> -->
+ 
 </web-app>

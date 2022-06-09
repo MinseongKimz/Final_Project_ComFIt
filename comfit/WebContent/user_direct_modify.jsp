@@ -6,83 +6,126 @@
    String cp = request.getContextPath();
 %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>직거래 판매자 등록</title>
-
+<meta charset="UTF-8">
+<title>user_direct_modify.jsp</title>
 <link rel="stylesheet" href="<%=cp %>/css/bootstrap.css">
 <link rel="stylesheet" href="<%=cp %>/css/inputstyle.css">
-<link rel="stylesheet" type="text/css" href="<%=cp %>/css/main.css">
-<link rel="stylesheet" type="text/css" href="<%=cp %>/css/jquery-ui.js">
-
-
-<script type="text/javascript" src="/js/bootstrap.js"></script>
-<script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
-
-
+<link rel="stylesheet" href="css/main.css" type="text/css"> 
 <script type="text/javascript">
-	$(document).ready(function()
-	{
-		// 테스트
-		//alert("창열림");
-		
-		/* $("[name=asRadio]").change(function()
-		{
-			$("#asDate").attr("disabled", false);
-			//alert($(this).val());
-			
-			if ($(this).val() == "불가능")
-			{
-				 $("#asDate").attr("disabled", true);
-			}
-			
-		}); */
-		
-		$("#apple").datepicker();
-		
-	});
-	
-	
+	function readURL(input) {
+	  if (input.files && input.files[0]) {
+	    var reader = new FileReader();
+	    reader.onload = function(e) {
+	      document.getElementById('preview').src = e.target.result;
+	    };
+	    reader.readAsDataURL(input.files[0]);
+	  } else {
+	    document.getElementById('preview').src = "";
+	  }
+	}
 </script>
-
+<style type="text/css">
+	.subheader
+	{
+		font-size:25pt;
+		font-weight: bold;
+		margin-left: 15%;
+		margin-top:3%;
+	}
+	.share
+	{
+		margin-left: 25%;
+		margin-top:3%;
+		font-size:25pt;;
+	}
+	.txt
+	{
+		margin-left:5%;
+		border-radius:5px;
+		width:300px;
+		height:30pt;
+	}
+	.category,.product_name,.jejosa_name,.hope_price,.date,.hope_day,.hope_place
+	{
+		margin-left:5%;
+		border-radius:5px;
+		width:240px;
+		height:30pt;
+	}
+	.p_share,.j_share
+	{
+		margin-left:5%;
+		font-weight:bold;
+		font-size:20pt;
+	}
+	.as_btn
+	{
+		margin-left:5%;
+		border-radius:5px;
+	}
+	.as_btn:hover,.btn_modify:hover,.btn_reset:hover
+	{
+		background:black;
+		color:white;
+	}
+	#comment
+	{
+		margin-top: 5%;
+	}
+	.gazi
+	{
+		margin-top: 5%;
+		margin-left:5%;
+		border-radius:5px;
+		width:200px;
+		height:30pt;
+	}
+	.btn_modify,.btn_reset
+	{
+		border-radius:5px;
+		width:150px;
+		height:30pt;
+	}
+</style>
 </head>
 <body>
-
-
-
-
-
-
-<div class="header">
-	<c:import url="comfit_header_user.jsp"></c:import>
-</div>
-
-<div class="container" style="padding-top: 80px;">
-	<h3>
-		판매글 등록-직거래	
-	</h3>
-	
-	<div class="input_box" style="padding-left: 5%; padding-top: 10%;">
-		<table style="width: 100%;">
-			<tr>
-				<th>제목<span class="star">*</span></th>
-				<td colspan="3"><input class="form-control" id="exampleFormControlInput1" type="text" placeholder="제목을 입력해주세요." style="width: 86%;"/>
-				<p align="right" style="font-size: 3px; margin-right: 16%;">32/32</p>
-				</td>
-			</tr>
-			
-			<tr>
-				<th>물품 카테고리<span class="star">*</span>
-				 <p style="font-weight: normal; font-size: 7pt;">상품과 일치하는 카테고리를 선택해주세요.
-                 <br>적합하지 않을 경우 운영자에 의해 조정될 수 있습니다.</p>
-                </th>
-				<td width="20%;">카테고리
-					<br>
-					<select class="form-select" name="category" style="width: 90%; height: 35px;">
-					<option value="" selected="selected">카테고리</option>
+<div>
+	<!--Header  -->
+	<div class="header">
+      <c:import url="comfit_header_user.jsp"></c:import>
+   	</div>
+   	
+	<div>
+		<p class="subheader">판매글 수정-직거래</p>
+		<hr />
+	</div>
+	<div class="share">
+		<form action="">
+			<table>
+				<tr>
+					<th class="share">제목</th>
+					<th>
+						<input type="text" class="txt" name="txt" placeholder="제목을 입력해주세요"/>
+					</th>
+				</tr>
+				<tr>
+					<th class="share">물품검색</th>
+					<td>
+						<div class="input-group">
+    						<div>
+    							<button class="input-group-text" id="btnGroupAddon">검색</button>
+    						</div>
+   						    <input type="text" class="form-control" placeholder="물품검색" aria-label="Input group example" aria-describedby="btnGroupAddon">
+  						</div>
+					</td>
+				</tr>
+				<tr>
+					<th class="share">카테고리</th>
+					<td>
+						<select name="category" id="category" class="category">
+							<option value="" selected="selected">물품카테고리</option>
 							<option value="">CPU</option>
 							<option value="">쿨러/튜닝</option>
 							<option value="">메인 보드</option>
@@ -95,94 +138,71 @@
 							<option value="">키보드/마우스</option>
 							<option value="">모니터</option>
 							<option value="">오디오</option>
-					</select>
+						</select>
 					</td>
-				<td>물품명
-					<br>
-					<input type="text" class="form-control" id="productName" placeholder="물품명을 입력해 주세요." style="width: 90%;">
-				</td>	
-				<td>제조사
-					<br>
-					<input type="text" class="form-control" id="productMaker" placeholder="제조사를 입력해 주세요." style="width: 90%;"/>
-				</td>
-			</tr>
-			
-			<tr>
-				<!-- 공간맞추기용 th -->
-				<th>
-				</th>
-				
-				<td colspan="2">
-					물품검색
-					<div class="input-group mb-5">
-					  <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
-					  <input type="text" class="form-control" placeholder="물품검색" style="height:40px; width:100px;">
-					</div>
-				</td>
-			</tr>
-			
-			<tr>
-				<th>희망 시작 가격<span class="star">*</span>
-				 <p style="font-weight: normal; font-size: 7pt;">희망하는 가격을 적어주세요.</p>
-                </th>
-                <td colspan="3"><input class="form-control" id="price1" type="text" placeholder="희망 가격을 입력해주세요." style="width: 86%;"/>
-                <p style="color:blue; font-size: 10px;">추천 가격보다 2배 이상은 입력할 수 없습니다.</p>
-                </td>
-			</tr>
-			
-			<tr>
-					<th>거래 가능 일시<span class="star">*</span>
-					<p style="font-size: 10px;">시작일로부터 최대 5일까지 거래가 가능합니다.</p>
-					<td>
-						<p><input type="date" id="apple"></p>
-					</td>
-					
+						<td class="p_share">물품명</td>
+						<td>
+						<input type="text" class="product_name"placeholder="물품명을 입력하세요" />
+						</td>
+						<td class="j_share">제조사</td>
+						<td>
+						<input type="text" class="jejosa_name"placeholder="제조사를 입력하세요" />
+						</td>
 				</tr>
 				<tr>
-					<th>거래 가능 장소<span class="star">*</span>
+					<th class="share">희망가격</th>
 					<td>
-						<input type="text" class="hope_place"placeholder="거래가능장소 입력" />
+						<input type="text" class="hope_price"placeholder="희망가격을 입력하세요." />원
 					</td>
-			</tr>
-			
-			<tr>
+				</tr>
+				<tr>
+					<th class="share">거래 가능 일시</th>
+					<td>
+						<input type="date" class="date">
+					</td>
+				</tr>
+				<tr>
+					<th class="share">거래 가능 장소</th>
+					<td>
+						<input type="text" class="hope_place"placeholder="거래가능장소를 입력하세요." />
+					</td>
+				</tr>
+				<tr>
 				<th>물품 사진<span class="star">*</span>
-				 <p style="font-weight: normal; font-size: 7pt;">최소 두장 이상 등록해 주세요.</p>
-                </th>
-                <td colspan="3">
-                	<div style="width: 86%; height: 100%; border: 1px solid;">
-                		<p style="text-align: center; font-size: 9px;">
-                		<br>
-                		이미지 업로드(0/5)
-                		<br><br>
-                		최소 2개, 최대 5개까지 업로드 가능<br>
-                		파일 형식 : jpg / png 사이즈 : 가로 ??px, 세로 ??px 이상<br>
-                		※ 이미지를 등록하면 반영됩니다.
-                		</p>
-                	</div>
-                	<div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-right: 14%;">
-                	<button type="button" class="btn btn-primary btn-sm">이미지 업로드</button>
-                	<button type="button" class="btn btn-secondary btn-sm">이미지 삭제</button>
-                	</div>
-				</td>
+						 <p style="font-weight: normal; font-size: 7pt;">최소 두장 이상 등록해 주세요.</p>
+		                </th>
+		                <td colspan="3">
+		                	<div style="width: 86%; height: 100%; border: 1px solid;">
+		                		<p style="text-align: center; font-size: 9px;">
+		                		<br>
+		                		이미지 업로드(0/5)
+		                		<br><br>
+		                		최소 2개, 최대 5개까지 업로드 가능<br>
+		                		파일 형식 : jpg / png 사이즈 : 가로 ??px, 세로 ??px 이상<br>
+		                		※ 이미지를 등록하면 반영됩니다.
+		                		</p>
+		                	</div>
+		                	<div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-right: 14%;">
+		                	<button type="button" class="btn btn-primary btn-sm">이미지 업로드</button>
+		                	<button type="button" class="btn btn-secondary btn-sm">이미지 삭제</button>
+		                	</div>
+						</td>
 			</tr>
-			
-			<tr>
-				<th>A/S 가능 여부
-                </th>
-                <td colspan="3">
-                <div class="form-check form-check-inline">
-				  <input class="form-check-input" type="radio" name="asRadio" id="inlineRadio1" value="유상" checked="checked">
-				  <label class="form-check-label" for="inlineRadio1">유상</label>
-				</div>
-				<div class="form-check form-check-inline">
-				  <input class="form-check-input" type="radio" name="asRadio" id="inlineRadio2" value="무상">
-				  <label class="form-check-label" for="inlineRadio2">무상</label>
-				</div>
-				<div class="form-check form-check-inline">
-				  <input class="form-check-input" type="radio" name="asRadio" id="inlineRadio3" value="불가능">
-				  <label class="form-check-label" for="inlineRadio3">불가능</label>
-				</div>
+				<tr>
+				<th>A/S 가능 여부</th>
+			                <td colspan="3">
+			                <div class="form-check form-check-inline">
+							  <input class="form-check-input" type="radio" name="asRadio" id="inlineRadio1" value="유상" checked="checked">
+							  <label class="form-check-label" for="inlineRadio1">유상</label>
+							</div>
+							<div class="form-check form-check-inline">
+							  <input class="form-check-input" type="radio" name="asRadio" id="inlineRadio2" value="무상">
+							  <label class="form-check-label" for="inlineRadio2">무상</label>
+							</div>
+							<div class="form-check form-check-inline">
+							  <input class="form-check-input" type="radio" name="asRadio" id="inlineRadio3" value="불가능">
+							  <label class="form-check-label" for="inlineRadio3">불가능</label>
+							</div>
 				
 				<input class="form-control" id="asDate" type="text" placeholder="유효날짜 (연/월/일)" style="width: 86%;"/>
 			</tr>
@@ -199,6 +219,7 @@
 				<textarea placeholder="코멘트 특이사항" style="width:86%; height: 150px;"></textarea>
 				</td>
 			</tr>
+			
 			
 			<tr>
 				<th style="margin-right: 10%;">
@@ -218,20 +239,11 @@
 	                </div>
                 </td>
 			</tr>
-			
-		</table>
+			</table>
+		</form>
 	</div>
-	
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
+
+
 </div>
-
-
-
 </body>
 </html>

@@ -68,7 +68,7 @@
 
 
 <div class="container">
-	<div class="row">
+	<div class="row" style="background-color: white; padding-bottom: 20px">
 	<div style="margin-bottom: 20px"><h1><b>자주 묻는 질문</b></h1></div>
 		<div id="Accordion">
 		     <div class="que">
@@ -79,8 +79,7 @@
 					배송예정일은 판매자 및 배송지에 따라 차이가 있을 수 있습니다.<br>
 					또한, 도서산간 지역 배송 혹은 천재지변으로 읺애 배송일정이 변동될 수 있습니다.<br> 
 			 </span>
-			 <div style="margin-top: 50px; border: 1px solid red;">
-			 오른쪽 정렬하게 해주세요...
+			 <div style="margin-top: 50px; text-align: right;">
 					<button class="btn btn-primary" value="글쓰기" style="width: 100px;">수정하기</button>
 					<button class="btn btn-outline-secondary" value="글쓰기" style="width: 100px;">삭제하기</button>			 
 		     </div>
@@ -93,8 +92,7 @@
 					배송예정일은 판매자 및 배송지에 따라 차이가 있을 수 있습니다.<br>
 					또한, 도서산간 지역 배송 혹은 천재지변으로 읺애 배송일정이 변동될 수 있습니다.<br> 
 			 </span>
-			 <div style="margin-top: 50px; border: 1px solid red;">
-			 오른쪽 정렬하게 해주세요...
+			 <div style="margin-top: 50px; text-align: right;">
 					<button class="btn btn-primary" value="글쓰기" style="width: 100px;">수정하기</button>
 					<button class="btn btn-outline-secondary" value="글쓰기" style="width: 100px;">삭제하기</button>			 
 		     </div>
@@ -107,8 +105,7 @@
 					배송예정일은 판매자 및 배송지에 따라 차이가 있을 수 있습니다.<br>
 					또한, 도서산간 지역 배송 혹은 천재지변으로 읺애 배송일정이 변동될 수 있습니다.<br> 
 			 </span>
-			 <div style="margin-top: 50px; border: 1px solid red;">
-			 오른쪽 정렬하게 해주세요...
+			 <div style="margin-top: 50px; text-align: right;">
 					<button class="btn btn-primary" value="글쓰기" style="width: 100px;">수정하기</button>
 					<button class="btn btn-outline-secondary" value="글쓰기" style="width: 100px;">삭제하기</button>			 
 		     </div>
@@ -117,7 +114,7 @@
 	</div>	
 </div>
 
-<div class="container" style="border: 1px solid gray; margin-top: 10px; text-align: right;">
+<div class="container" style="margin-top: 10px; text-align: right;">
 	<button class="btn btn-primary pull-right" value="글쓰기" style="width: 100px;" onclick="location.href='ad_notice_write.jsp'">글쓰기</button>
 </div>
 

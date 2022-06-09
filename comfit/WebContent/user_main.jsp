@@ -176,8 +176,20 @@
 <div>
 	<c:import url="admin/comfit_header_user.jsp"></c:import>
 </div>
-<br /><br /><br />
 
+<!-- 220610 추가한 부분 지워도 됩니다! 큼직하게 이미지 넣는게 밀도있을 것 같아보여서 추가했어요 -->
+<section>
+  <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+    <div class="col-md-5 p-lg-5 mx-auto my-5">
+      <h1 class="display-4 fw-normal">이미지 추가</h1>
+      <p class="lead fw-normal">And an even wittier subheading to boot. Jumpstart your marketing efforts with this example based on Apple’s marketing pages.</p>
+      <a class="btn btn-outline-secondary" href="#">Coming soon</a>
+    </div>
+    <div class="product-device shadow-sm d-none d-md-block"></div>
+    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+  </div>
+</section>  
+<!-- 220610 추가한 부분 -->  
 
 <!-- 카테고리 -->
 <div class="container">
@@ -494,9 +506,9 @@
 
 
 
-
-<c:import url="admin/footer.jsp"></c:import>
-
+<div class="row">
+	<c:import url="admin/footer.jsp"></c:import>
+</div>
 
 
 

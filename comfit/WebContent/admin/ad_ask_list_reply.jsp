@@ -65,7 +65,7 @@
 				<div>	
 					<textarea class="form-control" placeholder="글 내용" name="bbsContent" maxlength="2048" style="height: 300px; width: 1100px;"></textarea></div>
 				</div>
-				<div style="margin-top: 20px; width: 1100px;"> 오른쪽 정렬... 어케함
+				<div style="margin-top: 20px; width: 1100px; text-align: right;">
 					<button class="btn btn-primary" value="글쓰기" style="width: 150px">글쓰기</button>
 					<button class="btn btn-outline-secondary" value="돌아가기" style="width: 150px" onclick="location.href='ad_ask_list.jsp'">돌아가기</button>				
 				</div>

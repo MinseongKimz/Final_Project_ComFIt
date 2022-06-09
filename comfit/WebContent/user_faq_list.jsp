@@ -102,7 +102,7 @@ $(".que").click(function() {
 		  <div class="accordion-item">
 		    <h2 class="accordion-header" id="headingOne">
 		      <button class="accordion-button que" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" style="overflow:hidden" >
-		        <strong>Q.  [상품] 주문한 상품은 언제 배송되나요?</strong>
+		        <strong>Q.  주문한 상품은 언제 배송되나요?</strong>
 		      </button>
 		    </h2>
 		    <div id="collapseOne" class="accordion-collapse collapse anw" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -113,76 +113,76 @@ $(".que").click(function() {
 		      </div>
 		    </div>
 		  </div>
-	  <div class="accordion-item">
-	    <h2 class="accordion-header" id="headingTwo">
-	      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-	        [공지] 특정 전자기기 거래 금지 시행 안내
-	      </button>
-	    </h2>
-	    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-	      <div class="accordion-body">
-	        안녕하세요. 번개장터입니다. <br /><br />
-			번개장터 앱을 벗어나 거래를 하며 발생되는 분쟁과 사기 피해가 지속됨에 따라
-			<br />외부 채널 유도에 대한 운영 정책이 아래와 같이 강화되오니 고객님들의 적극적인 협조 부탁 드립니다.
-			<br /><br />[운영정책 강화 항목]
-			<br />- 외부 채널로의 문의/상담으로 연결되는 링크(URL) 기재 및 연락 유도 불가
-			<br />- 타 사이트로의 결제 유도 및 결제 페이지 공유 불가
-			<br />(예시 : 카카오톡/라인 등의 메신저 ID기재, 휴대폰 번호 등의 연락처 기재, 카카오톡 플러스 친구, 오픈카톡 링크 기재 또는 대화 유도 등)
-	 		<br /><br />- 적용 일시 : 22년 6월 1일 부터 ~
-			<br /><br />안전한 거래를 위해 번개톡과 번개페이 안전결제를 활용해주시기 바라며
-			<br />위의 운영정책을 위반하는 경우 내부 제재 정책에 따라 상품삭제 및 이용제한 등의 조치가 진행되오니 이용에 참고 부탁 드립니다.
-			<br />안전한 거래 환경이 유지될 수 있도록 고객님의 적극적인 협조 부탁드립니다. 
-			<br />감사합니다. <br />
-	      </div>
-	    </div>
-	  </div>
-	  <div class="accordion-item">
-	    <h2 class="accordion-header" id="headingThree">
-	      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-	        [공지] Comfit 개인정보처리방침 개정 안내
-	      </button>
-	    </h2>
-	    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-	      <div class="accordion-body">
-	        안녕하세요. 번개장터입니다. <br /><br />
-			번개장터 앱을 벗어나 거래를 하며 발생되는 분쟁과 사기 피해가 지속됨에 따라
-			<br />외부 채널 유도에 대한 운영 정책이 아래와 같이 강화되오니 고객님들의 적극적인 협조 부탁 드립니다.
-			<br /><br />[운영정책 강화 항목]
-			<br />- 외부 채널로의 문의/상담으로 연결되는 링크(URL) 기재 및 연락 유도 불가
-			<br />- 타 사이트로의 결제 유도 및 결제 페이지 공유 불가
-			<br />(예시 : 카카오톡/라인 등의 메신저 ID기재, 휴대폰 번호 등의 연락처 기재, 카카오톡 플러스 친구, 오픈카톡 링크 기재 또는 대화 유도 등)
-	 		<br /><br />- 적용 일시 : 22년 6월 1일 부터 ~
-			<br /><br />안전한 거래를 위해 번개톡과 번개페이 안전결제를 활용해주시기 바라며
-			<br />위의 운영정책을 위반하는 경우 내부 제재 정책에 따라 상품삭제 및 이용제한 등의 조치가 진행되오니 이용에 참고 부탁 드립니다.
-			<br />안전한 거래 환경이 유지될 수 있도록 고객님의 적극적인 협조 부탁드립니다. 
-			<br />감사합니다. <br />
-	      </div>
-	    </div>
-	  </div>
-	  <div class="accordion-item">
-	    <h2 class="accordion-header" id="headingFour">
-	      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-	        [공지] '비트코인/가상화폐/암호화폐' 거래 금지 안내
-	      </button>
-	    </h2>
-	    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-	      <div class="accordion-body">
-	        안녕하세요. 번개장터입니다. <br /><br />
-			번개장터 앱을 벗어나 거래를 하며 발생되는 분쟁과 사기 피해가 지속됨에 따라
-			<br />외부 채널 유도에 대한 운영 정책이 아래와 같이 강화되오니 고객님들의 적극적인 협조 부탁 드립니다.
-			<br /><br />[운영정책 강화 항목]
-			<br />- 외부 채널로의 문의/상담으로 연결되는 링크(URL) 기재 및 연락 유도 불가
-			<br />- 타 사이트로의 결제 유도 및 결제 페이지 공유 불가
-			<br />(예시 : 카카오톡/라인 등의 메신저 ID기재, 휴대폰 번호 등의 연락처 기재, 카카오톡 플러스 친구, 오픈카톡 링크 기재 또는 대화 유도 등)
-	 		<br /><br />- 적용 일시 : 22년 6월 1일 부터 ~
-			<br /><br />안전한 거래를 위해 번개톡과 번개페이 안전결제를 활용해주시기 바라며
-			<br />위의 운영정책을 위반하는 경우 내부 제재 정책에 따라 상품삭제 및 이용제한 등의 조치가 진행되오니 이용에 참고 부탁 드립니다.
-			<br />안전한 거래 환경이 유지될 수 있도록 고객님의 적극적인 협조 부탁드립니다. 
-			<br />감사합니다. <br />
-	      </div>
-	    </div>
-	  </div>
-	</div>
+		  <div class="accordion-item">
+		    <h2 class="accordion-header" id="headingTwo">
+		      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+		        <strong>Q.   특정 전자기기 거래 금지 시행 안내</strong>
+		      </button>
+		    </h2>
+		    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+		      <div class="accordion-body">
+		        안녕하세요. 번개장터입니다.<br /><br />
+				번개장터 앱을 벗어나 거래를 하며 발생되는 분쟁과 사기 피해가 지속됨에 따라
+				<br />외부 채널 유도에 대한 운영 정책이 아래와 같이 강화되오니 고객님들의 적극적인 협조 부탁 드립니다.
+				<br /><br />[운영정책 강화 항목]
+				<br />- 외부 채널로의 문의/상담으로 연결되는 링크(URL) 기재 및 연락 유도 불가
+				<br />- 타 사이트로의 결제 유도 및 결제 페이지 공유 불가
+				<br />(예시 : 카카오톡/라인 등의 메신저 ID기재, 휴대폰 번호 등의 연락처 기재, 카카오톡 플러스 친구, 오픈카톡 링크 기재 또는 대화 유도 등)
+		 		<br /><br />- 적용 일시 : 22년 6월 1일 부터 ~
+				<br /><br />안전한 거래를 위해 번개톡과 번개페이 안전결제를 활용해주시기 바라며
+				<br />위의 운영정책을 위반하는 경우 내부 제재 정책에 따라 상품삭제 및 이용제한 등의 조치가 진행되오니 이용에 참고 부탁 드립니다.
+				<br />안전한 거래 환경이 유지될 수 있도록 고객님의 적극적인 협조 부탁드립니다. 
+				<br />감사합니다. <br />
+		      </div>
+		    </div>
+		  </div>
+		  <div class="accordion-item">
+		    <h2 class="accordion-header" id="headingThree">
+		      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+		        <strong>Q.   Comfit 개인정보처리방침 개정 안내</strong>
+		      </button>
+		    </h2>
+		    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+		      <div class="accordion-body">
+		        안녕하세요. 번개장터입니다. <br /><br />
+				번개장터 앱을 벗어나 거래를 하며 발생되는 분쟁과 사기 피해가 지속됨에 따라
+				<br />외부 채널 유도에 대한 운영 정책이 아래와 같이 강화되오니 고객님들의 적극적인 협조 부탁 드립니다.
+				<br /><br />[운영정책 강화 항목]
+				<br />- 외부 채널로의 문의/상담으로 연결되는 링크(URL) 기재 및 연락 유도 불가
+				<br />- 타 사이트로의 결제 유도 및 결제 페이지 공유 불가
+				<br />(예시 : 카카오톡/라인 등의 메신저 ID기재, 휴대폰 번호 등의 연락처 기재, 카카오톡 플러스 친구, 오픈카톡 링크 기재 또는 대화 유도 등)
+		 		<br /><br />- 적용 일시 : 22년 6월 1일 부터 ~
+				<br /><br />안전한 거래를 위해 번개톡과 번개페이 안전결제를 활용해주시기 바라며
+				<br />위의 운영정책을 위반하는 경우 내부 제재 정책에 따라 상품삭제 및 이용제한 등의 조치가 진행되오니 이용에 참고 부탁 드립니다.
+				<br />안전한 거래 환경이 유지될 수 있도록 고객님의 적극적인 협조 부탁드립니다. 
+				<br />감사합니다. <br />
+		      </div>
+		    </div>
+		  </div>
+		  <div class="accordion-item">
+		    <h2 class="accordion-header" id="headingFour">
+		      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+		        <strong>Q.   '비트코인/가상화폐/암호화폐' 거래 금지 안내</strong>
+		      </button>
+		    </h2>
+		    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+		      <div class="accordion-body">
+		        안녕하세요. 번개장터입니다. <br /><br />
+				번개장터 앱을 벗어나 거래를 하며 발생되는 분쟁과 사기 피해가 지속됨에 따라
+				<br />외부 채널 유도에 대한 운영 정책이 아래와 같이 강화되오니 고객님들의 적극적인 협조 부탁 드립니다.
+				<br /><br />[운영정책 강화 항목]
+				<br />- 외부 채널로의 문의/상담으로 연결되는 링크(URL) 기재 및 연락 유도 불가
+				<br />- 타 사이트로의 결제 유도 및 결제 페이지 공유 불가
+				<br />(예시 : 카카오톡/라인 등의 메신저 ID기재, 휴대폰 번호 등의 연락처 기재, 카카오톡 플러스 친구, 오픈카톡 링크 기재 또는 대화 유도 등)
+		 		<br /><br />- 적용 일시 : 22년 6월 1일 부터 ~
+				<br /><br />안전한 거래를 위해 번개톡과 번개페이 안전결제를 활용해주시기 바라며
+				<br />위의 운영정책을 위반하는 경우 내부 제재 정책에 따라 상품삭제 및 이용제한 등의 조치가 진행되오니 이용에 참고 부탁 드립니다.
+				<br />안전한 거래 환경이 유지될 수 있도록 고객님의 적극적인 협조 부탁드립니다. 
+				<br />감사합니다. <br />
+		      </div>
+		    </div>
+		  </div>
+		</div>
 		
 </div>
 		

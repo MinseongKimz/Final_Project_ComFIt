@@ -276,7 +276,7 @@ d-block
 		<p class="fs-3" style="padding-left: 4%; font-weight: bold;">현재 입찰 정보</p>
 		
 			<!-- 입찰 폼 한개 -->
-			<div class="shadow p-3 mb-5 bg-body rounded">
+			<div class="shadow-lg p-3 mb-5 bg-body rounded" style="font-weight: bold;">
 			<table style="width: 100%;">
 			<tr>
 				<td style="width: 20%; padding-left: 3%;">
@@ -291,18 +291,18 @@ d-block
 					</p>
 				</th>
 				<td>
-					<p style="padding-left:10%;">가격 : 143,000원<br>
-					배송지 : 서울시 왕십리 111번지</p>
+					<p style="padding-left:10%;">가격 : 143,000원</p><br>
+					<p style="padding-left:10%;">배송지 : 서울시 왕십리 111번지</p>
 				</td>
 				<td style="text-align: right; margin-left: 20%;">
 					<p>22-05-26    10:56 AM</p>
-					<button type="button" class="btn btn-primary">낙찰하기</button>
+					<button type="button" class="btn btn-primary">채택됨</button>
 				</td>
 			</tr>
 			</table>
 			</div>
 			
-			<div class="shadow p-3 mb-5 bg-body rounded">
+			<div class="shadow-lg p-3 mb-5 bg-body rounded">
 			<table style="width: 100%;">
 			<tr>
 				<td style="width: 20%;padding-left: 3%;">

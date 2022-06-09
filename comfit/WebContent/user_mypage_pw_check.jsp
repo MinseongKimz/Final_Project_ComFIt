@@ -68,6 +68,7 @@
 			<p class="pwcheck">비밀번호 확인</p>
 			<p class="check">현재 사용하고 계시는 비밀번호를 입력해주세요</p>
 			<input type="text" class="pwinsert" placeholder="비밀번호를 입력해주세요"/>
+			<input type="text" class="errMsg" placeholder="입력하신 비밀번호가 일치하지 않습니다. 다시 입력해주세요" style="color:red; display: none;"/>
 		</div>
 		<div class="btns">
 			<button type="button" class="btn btn-primary btn-sm"id="buyBtn" style="width: 200px; height: 40px; font-size: 15pt;">확인</button>

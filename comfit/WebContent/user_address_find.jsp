@@ -101,6 +101,7 @@
 	               infowindow.open(map, marker);
 	               
 	               document.getElementById("addr").value = result[0].address.address_name;
+	               document.getElementById("subAddr").focus();
 	               
 	           }   
 	       });

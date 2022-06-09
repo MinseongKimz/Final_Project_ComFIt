@@ -489,9 +489,7 @@
 
 
 
-
-
-<br /><br /><br /><br /><br /><br /><br />
+<c:import url="admin/footer.jsp"></c:import>
 
 
 

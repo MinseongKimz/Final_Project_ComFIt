@@ -14,7 +14,6 @@
 <link rel="stylesheet" href="<%=cp %>/css/inputstyle.css">
 <link rel="stylesheet" href="css/main.css" type="text/css"> 
 <script type="text/javascript">
-
 	function readURL(input) {
 	  if (input.files && input.files[0]) {
 	    var reader = new FileReader();

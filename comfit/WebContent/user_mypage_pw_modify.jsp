@@ -30,7 +30,7 @@
 	{
 		border-radius:5px;
 		margin-top:5%;
-		margin-left: 38%;
+		margin-left: 15%;
     	width: 40%;
     	font-weight: bold;
   	}
@@ -40,7 +40,10 @@
   		margin-left:-20%;
   		width:80%;
   	}
+  	
+  	
 </style>
+
 </head>
 <body>
 <div>
@@ -49,11 +52,16 @@
 	      <c:import url="comfit_header.jsp"></c:import>
 	   	</div>
 	   	
+	   	<!--Content  -->
 	   	<div>
 	   		<p class="subheader">마이페이지</p>
 	   		<p class="subheader_header">회원정보</p>
+	   		<div style="float:left; margin-left:15%;">
+	   		<c:import url="user_sidebar.jsp"></c:import>
+	   		</div>
 	   	</div>
-	   	<table class="tablebts">
+	   
+	   	<table class="tablebts" style="float: left;">
 	   		<tr>
 	   			<td>현재비밀번호</td><td><input type="text" class="hi" placeholder="비밀번호를 입력하세요" /></td>
 	   		</tr>
@@ -64,9 +72,36 @@
 	   			<td>새 비밀번호 확인</td><td><input type="text" class="hi" placeholder="새비밀번호를 한 번더 입력하세요" /></td>
 	   		</tr>
 	   		<tr>
-	   			<td><button type="button" class="btn btn-primary btn-sm"id="btn" style="margin-left:50%; margin-top:5%;width:80%;">확인</button></td>
+	   			<td>
+	   			
+	   			<button class="btn btn-primary" style="margin-left: 80%; width: 150px; margin-top:5%;"
+								data-bs-toggle="modal" data-bs-target="#check"
+								>확인</button>
+	   			</td>
 	   		</tr>
 	   	</table>
+	   	
+	   	
+		<!-- Modal 입금 확인 -->
+		<div class="modal fade" id="check" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		         <h3 style="color: #0000ff; font-weight: bold;">Comfit</h3><br />
+		         
+		         <span class="ibgum" style="font-size: 15px;">비밀번호 수정이 완료되었습니다.</span><br />
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-primary" aria-label="Close" data-bs-dismiss="modal">확인</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+	   	
 </div>
 
 </body>

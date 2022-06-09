@@ -30,6 +30,12 @@
 		margin: 10px;
 	}
 	
+	.lead
+	{
+		margin-top: 8px; margin-bottom: 8px;
+	}
+	
+	
 </style>
 <script type="text/javascript">
 
@@ -179,8 +185,8 @@
 		<div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"  data-interval="1000">
             <div class="MultiCarousel-inner">
                 <div class="item">
-                    <div class="pad15 shadow">
-                        <p class="lead" style="vertical-align: middle;">그래픽카드</p>
+                    <div class="pad15 shadow" style="align-items: center;">
+                        <p class="lead" style="font-size: large; margin-top: 8px; margin-bottom: 8px;">그래픽카드</p>
                     </div>
                 </div>
                 <div class="item">
@@ -230,8 +236,8 @@
                 </div>
                 
             </div>
-            <button class="btn btn-primary leftLst"><</button>
-            <button class="btn btn-primary rightLst">></button>
+            <button class="btn btn-primary leftLst"> <i class="bi bi-arrow-left"></i> </button>
+            <button class="btn btn-primary rightLst"> <i class="bi bi-arrow-right"></i> </button>
         </div>
 	</div>
 	<br />

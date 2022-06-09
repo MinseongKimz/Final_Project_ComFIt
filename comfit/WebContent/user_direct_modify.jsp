@@ -6,23 +6,30 @@
    String cp = request.getContextPath();
 %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>직거래 판매자 등록</title>
+
 <link rel="stylesheet" href="<%=cp %>/css/bootstrap.css">
 <link rel="stylesheet" href="<%=cp %>/css/inputstyle.css">
-<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<%=cp %>/css/main.css">
+<link rel="stylesheet" type="text/css" href="<%=cp %>/css/jquery-ui.js">
+
+
 <script type="text/javascript" src="/js/bootstrap.js"></script>
+<script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
+
+
 <script type="text/javascript">
 	$(document).ready(function()
 	{
 		// 테스트
 		//alert("창열림");
 		
-		$("[name=asRadio]").change(function()
+		/* $("[name=asRadio]").change(function()
 		{
 			$("#asDate").attr("disabled", false);
 			//alert($(this).val());
@@ -32,13 +39,22 @@
 				 $("#asDate").attr("disabled", true);
 			}
 			
-		});
+		}); */
+		
+		$("#apple").datepicker();
 		
 	});
+	
+	
 </script>
 
 </head>
 <body>
+
+
+
+
+
 
 <div class="header">
 	<c:import url="comfit_header_user.jsp"></c:import>
@@ -118,7 +134,7 @@
 					<th>거래 가능 일시<span class="star">*</span>
 					<p style="font-size: 10px;">시작일로부터 최대 5일까지 거래가 가능합니다.</p>
 					<td>
-						<input type="date" class="date">
+						<p><input type="date" id="apple"></p>
 					</td>
 					
 				</tr>

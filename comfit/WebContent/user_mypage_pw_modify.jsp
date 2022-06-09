@@ -43,6 +43,7 @@
   	
   	
 </style>
+
 </head>
 <body>
 <div>
@@ -71,9 +72,36 @@
 	   			<td>새 비밀번호 확인</td><td><input type="text" class="hi" placeholder="새비밀번호를 한 번더 입력하세요" /></td>
 	   		</tr>
 	   		<tr>
-	   			<td><button type="button" class="btn btn-primary btn-sm"id="btn" style="margin-left:50%; margin-top:5%;width:80%;">확인</button></td>
+	   			<td>
+	   			
+	   			<button class="btn btn-primary" style="margin-left: 80%; width: 150px; margin-top:5%;"
+								data-bs-toggle="modal" data-bs-target="#check"
+								>확인</button>
+	   			</td>
 	   		</tr>
 	   	</table>
+	   	
+	   	
+		<!-- Modal 입금 확인 -->
+		<div class="modal fade" id="check" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		         <h3 style="color: #0000ff; font-weight: bold;">Comfit</h3><br />
+		         
+		         <span class="ibgum" style="font-size: 15px;">비밀번호 수정이 완료되었습니다.</span><br />
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-primary" aria-label="Close" data-bs-dismiss="modal">확인</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+	   	
 </div>
 
 </body>

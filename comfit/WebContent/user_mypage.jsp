@@ -116,7 +116,7 @@
 	 <div class="content" >
 						 <div>
 							<h3 class="inout_point">입출금 내역 내 포인트 : test p</h3> 
-							<a class="btn btn-link" style="margin-left:77%;">전체보기</a>
+						 	<button type="button" class="btn btn-link" style="margin-left: 70%;">전체보기</button>
 						 </div>
 		<table class="table table-bordered" style="width: 1000px;">
 		    <thead>

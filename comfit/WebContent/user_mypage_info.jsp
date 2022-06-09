@@ -26,19 +26,15 @@
 		font-weight: bold;
 		margin-left: 25%;
 	}
-	.logo
-	{
-		margin-left: 45%;
-	}
+	
 	.tablebts
 	{
 		width:30%;
 		margin-left:40%;
-		margin-top:10%;
 		border-radius:5px;
 		table-layout:fixed;
     	font-weight: bold;
-    	background-color: #D3D3D3;
+    	background-color: #FAEBD7;
   	}
   	
   	.hi
@@ -75,15 +71,19 @@
 	   		<p class="subheader">마이페이지</p>
 	   		<p class="subheader_header">회원정보</p>
 	   	</div>
-	   
-				<a href="/" > 
-				<img alt="logo" src="<%=cp%>/images/logo.png" style="width: 200px; margin-left:25%;">
-				</a>
 				<div style="float:left; margin-left:15%;">
 								<c:import url="user_sidebar.jsp" ></c:import>
-				</div>		   			
+				</div>		  
+				<div>
+					
+				</div> 			
 	   				<table class="tablebts"  style="colspan:2;">
-	   				
+	   								<tr>
+	   									<th>
+	   										<img alt="" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"
+						style="object-fit:cover; height: 70%; width: 70%; margin-left:120%;">
+	   									</th>
+	   								</tr>
 							        <tr>
 							          <td>이메일</td><td>Test@gmail.com</td>
 							        </tr>

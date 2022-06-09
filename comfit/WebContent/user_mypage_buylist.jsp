@@ -37,9 +37,9 @@
   	{
   		
   		display:inline;
-  		margin-left:30%;
+  		margin-left:25%;
   		width:70%;
-  		margin-top: -5%;
+  		margin-top: -10%;
   	}
   	
   	
@@ -58,7 +58,7 @@
 	   		<p class="subheader_header">구매내역</p>
 	   		<p style="font-size: 18pt; font-weight: bolder;margin-left: 25%;">내 판매</p>
 	   		<!--sidebar  -->
-	   			<div style="float:left; margin-left:15%;">
+	   			<div style="float:left; margin-left: 15%; ">
 	   						<c:import url="user_sidebar.jsp"></c:import>
 	   			</div>
 	   		

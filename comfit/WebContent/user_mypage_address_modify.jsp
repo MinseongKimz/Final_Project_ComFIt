@@ -59,7 +59,7 @@
 	   	<table class="tablebts">
 	   		<tr>
 	   			<td>기존 주소</td>
-	   			<td><input type="text" class="form-control" placeholder="서울 서초구 00동 아이파크아파트 103동205호"  style="width:70%;"/></td>
+	   			<td><input type="text" class="form-control" placeholder="서울 서초구 00동 아이파크아파트 103동205호"  style="width:100%;"/></td>
 	   		</tr>
 	   		<tr>
 				<th class="share">새 주소 입력</th>

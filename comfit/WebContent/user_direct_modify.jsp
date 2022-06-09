@@ -10,22 +10,15 @@
 <head>
 <meta charset="UTF-8">
 <title>user_direct_modify.jsp</title>
-<link rel="stylesheet" href="<%=cp %>/css/bootstrap.css">
+
 <link rel="stylesheet" href="<%=cp %>/css/inputstyle.css">
 <link rel="stylesheet" href="css/main.css" type="text/css"> 
-<script type="text/javascript">
-	function readURL(input) {
-	  if (input.files && input.files[0]) {
-	    var reader = new FileReader();
-	    reader.onload = function(e) {
-	      document.getElementById('preview').src = e.target.result;
-	    };
-	    reader.readAsDataURL(input.files[0]);
-	  } else {
-	    document.getElementById('preview').src = "";
-	  }
-	}
-</script>
+<link rel="stylesheet" type="text/css" href="<%=cp %>/css/jquery-ui.min.css">
+
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+
+
 <style type="text/css">
 	.subheader
 	{
@@ -89,6 +82,17 @@
 		height:30pt;
 	}
 </style>
+
+
+<script type="text/javascript">
+
+
+		$(function()
+		{
+			$("#datepiker").datepicker();
+		})
+</script>
+
 </head>
 <body>
 <div>
@@ -96,6 +100,8 @@
 	<div class="header">
       <c:import url="comfit_header_user.jsp"></c:import>
    	</div>
+   	
+ 
    	
 	<div>
 		<p class="subheader">판매글 수정-직거래</p>
@@ -158,7 +164,7 @@
 				<tr>
 					<th class="share">거래 가능 일시</th>
 					<td>
-						<input type="date" class="date">
+						<input type="text" class="date" id="datepicker">
 					</td>
 				</tr>
 				<tr>

@@ -101,6 +101,7 @@
 	               infowindow.open(map, marker);
 	               
 	               document.getElementById("addr").value = result[0].address.address_name;
+	               document.getElementById("subAddr").focus();
 	               
 	           }   
 	       });
@@ -153,7 +154,7 @@
 	      if (map.getLevel()=='6')                                // 지도의 맥스 레벨이 6레벨이 되면 
 	         map.setCenter(new kakao.maps.LatLng(37.525916,+126.717543)); // 지도의 중심좌표 (게시물마다 중심 좌표가 될 값) 로 다시 이동
 	      
-	      if (map.getLevel()<='4') // 지도 레벨이 4이하 (구체적 건물표현정도)
+	      if (map.getLevel()<='2') // 지도 레벨이 4이하 (구체적 건물표현정도)
 	         setDraggable(true);   // 로 떨어지면 드래그로 지도 위치를 바꿀수 있음
 	      else 
 	         setDraggable(false);

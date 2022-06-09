@@ -80,7 +80,7 @@ d-block
 			<p class="fs-2" style="text-align: center; font-weight: bold;">[카테고리]2022 GTX 0000 아주 합리적인 가격에 드립니다.</p>
 		
 		<div class="content">
-		<div class="col-md-6" style="float: left; width: 560px; height: 420px; padding-top: 3%; margin-right: 3%;">	
+		<div class="col-md-6" style="float: left; width: 560px; height: 420px; padding-top: 5%; margin-right: 3%;" >	
 			<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-touch="false" data-bs-ride="true">
 			  <div class="carousel-indicators">
 			    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -119,7 +119,17 @@ d-block
 		
 		<table class="col-md-5">
 			<tr>
-				<td colspan="2"><p>거래방식</p>
+				<td colspan="2">
+					<div style="text-align: right;">
+						<button style="border: 0; outline: 0; background: none;">
+							<!-- 좋아요 -->
+							<!-- 빈 하트 -->
+							<i class="bi bi-heart fs-2"></i>
+							<!-- 채워진 하트 -->
+							<i class="bi bi-heart-fill fs-2" style="display:none;"></i>
+						</button>
+					</div>
+				<p>거래방식</p>
 				<!-- 속성에 따라 직거래/배송 표기 -->
 				<p class="content_text">직거래</p></td>
 			</tr>

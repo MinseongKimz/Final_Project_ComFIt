@@ -26,30 +26,38 @@
 		font-weight: bold;
 		margin-left: 25%;
 	}
-	.logo
-	{
-		margin-left: 45%;
-	}
+	
 	.tablebts
 	{
+		width:30%;
+		margin-left:40%;
 		border-radius:5px;
-		
-		margin-left: 38%;
-    	width: 40%;
+		table-layout:fixed;
     	font-weight: bold;
-    	background-color: #D3D3D3;
+    	background-color: #FAEBD7;
   	}
-  	.tablebtn
-  	{
-  		
-  		margin-left: 5%;
-  		background-color: #D3D3D3;
-  	}
+  	
   	.hi
   	{
   		margin-left: 38%;
   	}
   	
+  	.title
+	{
+		margin-left: 11%;
+		font-family: 맑은 고딕;
+		font-size: 30pt;
+	}
+	.list-group 
+	{
+		width: 120px;
+		text-align: center;
+	}
+	.list-group-item 
+	{
+		text-align: center;
+		font-weight: bold;
+	}
 </style>
 </head>
 <body>
@@ -62,39 +70,47 @@
 	   	<div>
 	   		<p class="subheader">마이페이지</p>
 	   		<p class="subheader_header">회원정보</p>
-	   		<img alt="logo" src="<%=cp%>/images/logo.png" style="width: 200px;" class="logo">
 	   	</div>
-	   
-	   	<table class="tablebts" style="folat:left;">
-	   		<tbody>
-	   		
-		        <tr>
-		          <td>이메일</td><td>Test@gmail.com</td>
-		        </tr>
-		        <tr>
-		          <td>이름</td><td>김민성</td>
-		        </tr>
-		        <tr>
-		          <td>닉네임</td><td>김인성</td>
-		        </tr>
-		        <tr>
-		          <td>레벨</td><td>5</td>
-		        </tr>
-		        <tr>
-		          <td>비밀번호</td><td>T******</td>
-		          <td><button type="button" class="btn btn-primary btn-sm"id="btn" style="margin-left:28%;">변경하기</button></td>
-		        </tr>
-		        <tr>
-		          <td>휴대폰번호</td><td>010-1111-1111</td>
-		          <td><button type="button" class="btn btn-primary btn-sm"id="btn" style="margin-left:28%;">변경하기</button></td>
-		        </tr>
-		        <tr>
-		          <td>주소</td><td>서울시 서초구..</td>
-		          <td><button type="button" class="btn btn-primary btn-sm"id="btn" style="margin-left:28%;">변경하기</button></td>
-		        </tr>
-		      </tbody>
-    	</table>
+				<div style="float:left; margin-left:15%;">
+								<c:import url="user_sidebar.jsp" ></c:import>
+				</div>		  
+				<div>
+					
+				</div> 			
+	   				<table class="tablebts"  style="colspan:2;">
+	   								<tr>
+	   									<th>
+	   										<img alt="" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"
+						style="object-fit:cover; height: 70%; width: 70%; margin-left:120%;">
+	   									</th>
+	   								</tr>
+							        <tr>
+							          <td>이메일</td><td>Test@gmail.com</td>
+							        </tr>
+							        <tr>
+							          <td>이름</td><td>김민성</td>
+							        </tr>
+							        <tr>
+							          <td>닉네임</td><td>김인성</td>
+							        </tr>
+							        <tr>
+							          <td>레벨</td><td>5</td>
+							        </tr>
+							        <tr>
+							          <td>비밀번호</td><td>T******</td>
+							          <td><button type="button" class="btn btn-primary btn-sm"id="btn" style="margin-left:45%;">변경하기</button></td>
+							        </tr>
+							        <tr>
+							          <td>휴대폰번호</td><td>010-1111-1111</td>
+							          <td><button type="button" class="btn btn-primary btn-sm"id="btn" style="margin-left:45%;">변경하기</button></td>
+							        </tr>
+							        <tr>
+							          <td>주소</td><td>서울시 서초구..</td>
+							          <td><button type="button" class="btn btn-primary btn-sm"id="btn" style="margin-left:45%;">변경하기</button></td>
+							        </tr>
+					    	</table>
+	  			</div>
 	  
-</div>
+
 </body>
 </html>

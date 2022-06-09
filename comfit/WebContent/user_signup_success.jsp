@@ -55,7 +55,6 @@
 	{
 		margin-top: 3%;
 		margin-left: 40%;
-		margin-right: 30%;
 	}
 	
 	.txtbox
@@ -83,10 +82,7 @@
 	{
 		margin-top: 3%; 
 	}
-	hr
-	{
-		width: 350px;
-	}
+	
 
 </style>
 </head>
@@ -103,22 +99,20 @@
 	<img src="images/logo.png" alt="" style="width: 300px; height: auto;"/>
 </div>
 
-
+<br /><br />
 	
-<div class="content">
-	<span style="font-size: 25pt; font-weight: bold;">회원가입이 완료되었습니다.</span>
+<div style="margin-left: 30%; margin-right: 30%; text-align: center;">
+	<span style="font-size: 25pt; font-weight: bold;" >회원가입이 완료되었습니다.</span>
 	<hr />
 		<span style="font-weight:bold; color:blue;">이메일 인증</span>을 한 이후 
 		서비스 이용이 가능합니다. 
 	<hr />
 	<br />
 	<button type="button" class="btn btn-primary" style="width: 150px;" >로그인</button>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
 	<button type="button" class="btn btn-primary" style="width: 150px;" >메인페이지로</button>
 	<br /><br />
-	
 </div>	
-	
 
 		
 		

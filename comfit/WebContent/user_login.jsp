@@ -102,12 +102,13 @@
 </div>
 	
 <div class="content">
-	<input type="text" class="form-control" placeholder="이메일을 입력하세요"/>
-	 
-	<br /><br />
-	<input type="text" class="form-control" placeholder="비밀번호를 입력하세요"/>
-	<br /><br />
-	<input type="text" class="errMsg" placeholder="아이디 혹은 비밀번호가 틀렸습니다. 다시 로그인해주세요." style="color:red; display: none;"/>
+
+	<form action="" class="form form-group"></form>
+		<input type="text" class="form-control" placeholder="이메일을 입력하세요"/>	 
+		<br />
+		<input type="text" class="form-control" placeholder="비밀번호를 입력하세요"/>
+		<br />
+		<input type="text" class="errMsg" placeholder="아이디 혹은 비밀번호가 틀렸습니다. 다시 로그인해주세요." style="color:red; display: none;"/>
 	
 		<!-- reCAPCHA -->
 		<div style="display: none;">

@@ -114,8 +114,8 @@
 		</div>
 				
 		<div style="float: right; margin-right: 11%">
-		<button type="button" class="btn btn-primary" id="account" style="margin: 7px; float: right;" data-bs-toggle="modal" data-bs-target="#Modal">등록</button>
-		<button type="button" class="btn btn-primary" id="reset" style="margin: 7px; float: right;" onclick="location.href='user_ask_list.jsp'">취소</button>
+		<button type="button" class="btn btn-primary" id="account" style="margin: 7px; float: right; width: 100px;" data-bs-toggle="modal" data-bs-target="#Modal">등록</button>
+		<button type="button" class="btn btn-primary" id="reset" style="margin: 7px; float: right; width: 100px;" onclick="location.href='user_ask_list.jsp'">취소</button>
 		</div>
 
 

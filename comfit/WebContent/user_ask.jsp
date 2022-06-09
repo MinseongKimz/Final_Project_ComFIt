@@ -134,8 +134,10 @@
 		        정말로 삭제하시겠습니까?
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="location.href='user_ask.jsp'">아니오</button>
-		        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#complete">네</button>
+		      	<div style="margin:auto; display:block;">
+		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="width: 100px;" onclick="location.href='user_ask.jsp'">아니오</button>
+		        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#complete" style="width: 100px;">네</button>
+		        </div>
 		      </div>
 		    </div>
 		  </div>
@@ -152,7 +154,7 @@
 		        삭제가 완료되었습니다
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="location.href='user_ask_list.jsp'" style="width: 100%;">확인</button>
+		        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="location.href='user_ask_list.jsp'" style="margin:auto; display:block; width: 50%;">확인</button>
 		        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">네</button> -->
 		      </div>
 		    </div>

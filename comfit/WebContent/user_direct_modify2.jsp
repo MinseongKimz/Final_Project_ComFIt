@@ -1,23 +1,16 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%
-   request.setCharacterEncoding("UTF-8");
-   String cp = request.getContextPath();
+	request.setCharacterEncoding("UTF-8");
+	String cp = request.getContextPath();
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>user_direct_modify.jsp</title>
-
 <link rel="stylesheet" href="<%=cp %>/css/inputstyle.css">
-<link rel="stylesheet" href="css/main.css" type="text/css"> 
-<link rel="stylesheet" type="text/css" href="<%=cp %>/css/jquery-ui.min.css">
-
-  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-
+<link rel="stylesheet" type="text/css" href="<%=cp %>/css/jquery-ui.css">
 
 <style type="text/css">
 	.subheader
@@ -84,24 +77,55 @@
 </style>
 
 
-<script type="text/javascript">
-
-
-		$(function()
-		{
-			$("#datepiker").datepicker();
-		})
-</script>
-
 </head>
 <body>
+
+<!-- <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script> -->
+
+
+
+
+
+
 <div>
 	<!--Header  -->
 	<div class="header">
       <c:import url="comfit_header_user.jsp"></c:import>
-   	</div>
+   	</div> 
    	
- 
+ <script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
+   	
+   	<script type="text/javascript">
+
+	//$();
+	//jquery();
+	$(document).ready(function()
+	{
+		//Ajax 요청 및 응답 처리
+		
+		//테스트
+		//alert("확인");
+		
+		//테스트
+		//alert($("#minBasicPay").val());						//--X
+		//alert($("#minBasicPay").text());						//--O
+			
+			
+		
+		
+		//jQuery-UI 캘린더를 불러오는 함수 처리(dataPicker()) 속성값 불러오기
+		$("#birthday").datepicker(
+		{
+			dateFormat: "yy-mm-dd" 
+			, changeMonth: true
+			, changeYear: true
+		});
+		
+		
+	});
+
+</script>
+   	
    	
 	<div>
 		<p class="subheader">판매글 수정-직거래</p>
@@ -164,7 +188,7 @@
 				<tr>
 					<th class="share">거래 가능 일시</th>
 					<td>
-						<input type="text" class="date" id="datepicker">
+						<input type="text" class="date birthday" id="birthday">
 					</td>
 				</tr>
 				<tr>
@@ -251,5 +275,9 @@
 
 
 </div>
+
+
+
+
 </body>
 </html>

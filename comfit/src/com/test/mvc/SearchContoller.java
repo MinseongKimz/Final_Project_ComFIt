@@ -17,8 +17,29 @@ public class SearchContoller
 		
 		result = NaversearchAPI.search(name);
 		
+		
+		model.addAttribute("pdname", name);
 		model.addAttribute("result", result);
 		
 		return "user_search_product.jsp";
 	}
+	
+	@RequestMapping(value = "/retunsell.action", method = RequestMethod.POST)
+	public String returnSeach(Model model, @RequestParam("name") String name
+			                             , @RequestParam("category") String category
+			                             , @RequestParam("maker") String maker
+			                             , @RequestParam("cfPrice") String cfPrice)
+	{
+		
+		System.out.println(name);
+		System.out.println(category);
+		System.out.println(maker);
+		System.out.println(cfPrice);
+		
+		
+		return "s";
+	}
+	
+	
+	
 }

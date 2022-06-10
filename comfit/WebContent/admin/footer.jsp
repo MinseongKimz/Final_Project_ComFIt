@@ -16,16 +16,19 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap" rel="stylesheet">
 <style type="text/css">
-.blog-footer {
-  padding: 2.5rem 0;
-  color: #727272;
-  text-align: center;
-  background-color: #f9f9f9;
-  border-top: .05rem solid #e5e5e5;
-}
-.blog-footer p:last-child {
-  margin-bottom: 0;
-}
+	.blog-footer {
+	  padding: 2.5rem 0;
+	  color: #727272;
+	  text-align: center;
+	  background-color: #f9f9f9;
+	  border-top: .05rem solid #e5e5e5;
+	}
+	.blog-footer p:last-child {
+	  margin-bottom: 0;
+	}
+
+
+
 </style>
 </head>
 <body>

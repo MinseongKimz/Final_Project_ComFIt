@@ -93,7 +93,7 @@
 	</div> --%>
 
 <div>
-	<c:import url="admin/comfit_header_user.jsp"></c:import>
+	<c:import url="admin/comfit_header_nolog.jsp"></c:import>
 </div>
 
 	
@@ -122,23 +122,15 @@
 	<br /><br />
 	
 	
-	<button type="button" class="btn btn-primary" style="width: 150px;" >회원가입</button>
-	<button type="button" class="btn btn-primary" style="width: 150px; float: right;">ID/PW 찾기</button>
+	<button type="button" class="btn btn-secondary" style="width: 150px;" >회원가입</button>
+	<button type="button" class="btn btn-secondary" style="width: 150px; float: right;">ID/PW 찾기</button>
 	</div>
 	
 </div>
 
-	
 
 		
-		
-		
-		
-		
-		
-<div>
-	<c:import url="admin/footer.jsp"></c:import>
-<div>
+
 	
 
 

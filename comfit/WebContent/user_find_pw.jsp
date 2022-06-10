@@ -96,9 +96,8 @@
 	</div> --%>
 	
 	<!-- title -->
-<div class="title">
-	<img src="images/logo.png" alt="" style="width: 300px; height: auto;"/>
-			<!-- Content 영역 -->
+<div>
+	<c:import url="admin/comfit_header_user.jsp"></c:import>
 </div>
 	
 <div class="content">

@@ -51,88 +51,57 @@
 	{
 		font-family: 맑은 고딕;
 	}
-	.content
+	
+	.container
 	{
-		margin-top: 3%;
-		margin-left: 40%;
-		margin-right: 30%;
+		margin-top: 8%;
 	}
 	
-	.txtbox
+	.btn
 	{
-		width: 350px;
+		margin: 10px;
 	}
-	.category
-	{
-		padding-top: 3%;
-	}
-	
-	.pd_list
-	{
-		padding-top: 3%;
-	}
-	
-	.title
-	{
-		margin-left: 42%;
-		margin-top: 10%;
-		font-size: 30pt;
-	}
-	
-	.main
-	{
-		margin-top: 3%; 
-	}
-	hr
-	{
-		width: 350px;
-	}
-
 </style>
 </head>
 
 
 <body>
 
-	<!-- Header 영역 -->
-	<%-- <div style="display: none;">
-		<c:import url="comfit_header_user.jsp"></c:import>
-	</div> --%>
-	
-	<!-- title -->
-<div class="title">
-	<img src="images/logo.png" alt="" style="width: 300px; height: auto;"/>
-			<!-- Content 영역 -->
+<div>
+	<c:import url="comfit_header.jsp"></c:import>
 </div>
 	
-<div class="content">
-	<hr />
-		회원님의 아이디는 <span style="font-weight:bold; color:blue;">Test001@gmail.com</span> 입니다.
+<div class="container">
+	
+	<div style="width: 500px; margin: auto;">	
+		<div style="font-size: 28pt; font-weight: bold; text-align: center;">
+			이메일 찾기 완료
+		</div>
+		<hr />
+		<div style="text-align: center;">
+			회원님은 <span style="color: #0174DF">Test001@gmail.com</span>(으)로 등록하셨습니다.
+			<br />
+			가입일자는 <span style="color: #0174DF">2022.05.21</span>입니다.
+		</div>
+		<hr />
+		
 		<br />
-		가입일자 : <span style="font-weight:bold; color:blue;">2022.05.21</span>
-	<hr />
-	<br />
-	<button type="button" class="btn btn-primary" style="width: 150px;" >로그인</button>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<button type="button" class="btn btn-primary" style="width: 150px;" >비밀번호찾기</button>
-	<br /><br />
+		
+		<div style="text-align: center;">
+			<div style="display: block;">
+				<button type="button" class="btn btn-primary">로그인</button>
+				<button type="button" class="btn btn-secondary">비밀번호 찾기</button>
+			</div>
+		</div>
+	</div>	
+	
+	
 	
 </div>	
 	
-
-		
-		
-		
-		
-		
-		
-	<!-- content  -->
 	
-	
-	<!-- Footer 영역 -->
-<!-- 	<div class="footer">
-	</div> -->
-	
+		
+		
 
 
 

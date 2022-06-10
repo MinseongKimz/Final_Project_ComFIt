@@ -30,6 +30,11 @@
 		margin: 10px;
 	}
 	
+	.lead
+	{
+		font-weight: bold;
+	}
+	
 </style>
 <script type="text/javascript">
 
@@ -180,7 +185,7 @@
             <div class="MultiCarousel-inner">
                 <div class="item">
                     <div class="pad15 shadow">
-                        <p class="lead" style="vertical-align: middle;">그래픽카드</p>
+                        <p class="lead">그래픽카드</p>
                     </div>
                 </div>
                 <div class="item">

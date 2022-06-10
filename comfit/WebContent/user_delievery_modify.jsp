@@ -41,7 +41,7 @@
 <body>
 
 <div class="header">
-	<c:import url="comfit_header_user.jsp"></c:import>
+	<c:import url="admin/comfit_header_user.jsp"></c:import>
 </div>
 
 <div class="container" style="padding-top: 80px;">

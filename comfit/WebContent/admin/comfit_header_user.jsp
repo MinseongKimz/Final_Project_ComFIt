@@ -13,17 +13,23 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+<!-- 폰트 적용 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap" rel="stylesheet">
 
 <style>
+*{font-family: 'Noto Sans KR', sans-serif;}
 .navbar
 {
 	 background-color:white !important;
+	 box-shadow: 0 1px 3px 0 rgba(0,0,0,0.20);
 }
 
 .nav li a{
 	background-color:red;
 } 
-
+	
 .nav .active a
 {
 	background-color:orange !important;
@@ -59,7 +65,7 @@
       }
       #dropdown-item
       {
-         width: 100%;
+         width: 200px;
       }
     
    
@@ -74,7 +80,7 @@
 
   
 
-  <header style="margin-left:10%; margin-right:10%;">
+  <header>
     <!-- nav 상단 고정-->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container">
@@ -88,14 +94,15 @@
             
               	<div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
               		<br />
-                 	<form class="form-inline" style="width: 65%;">
-				     	<div class="input-group" style="width:100%;">
+                 	<form class="form-inline" style="width: 100%;">
+				     	<div class="input-group" style="width:75%; padding-left: 20%">
 						     <input type="text" class="form-control" placeholder="원하시는 상품을 검색하세요.">
 					         <button id="Btn" type="button" class="btn btn-outline-primary">
 							 <i class="bi bi-search"></i>
 					         </button>							     
 	  					</div>
                 	</form>
+                </div>	
                 <ul class="navbar-nav">
                     <li class="nav-item ">
                         <a class="nav-link primary active" aria-current="page" href="#">고객센터</a>
@@ -117,18 +124,19 @@
 				             
           				 </a>
                     	 
-                    	 <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    	 <ul class="dropdown-menu " aria-labelledby="btnGroupDrop1" >
 					        <li class="dropdown-item"><a class="dropdown-item" href="#">[직거래/제안] HP노트북중고....</a></li>
 					        <li class="dropdown-item"><a class="dropdown-item" href="#">[직거래/판매] SSD 최저가....</a></li>
 					        <li class="dropdown-item"><a class="dropdown-item" href="#">[문의] 구매확정 어떻게해...</a></li>
 					    </ul> 
-					 </li>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
+    
     <br />
-    <div class="text-end " style="margin-right:">
+    <div class="text-end " style="">
     <div class="container">
 	         <button id="sellBtn" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 	              판매 하기

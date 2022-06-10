@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +23,7 @@
     .input-form {
       max-width: 680px;
 
-      margin-top: 80px;
+      margin-top: 20px;
       padding: 32px;
 
       background: #fff;
@@ -167,14 +168,13 @@
 </div>
 
 
-
 <!-- 회원가입 폼 -->
 <body>
   <div class="container">
     <div class="input-form-backgroud row">
       <div class="input-form col-md-12 mx-auto">
         
-        <h4 class="mb-3"><img src="images/logo.png" alt="" style="width: 250px; height: auto;"/> 회원가입</h4>
+        <h4 class="mb-3"><img src="images/logo.png" alt="" style="width: 250px; height: auto;"/></h4>
         <form class="validation-form" novalidate>
           <div class="row">
             <div class="col-md-6 mb-3">

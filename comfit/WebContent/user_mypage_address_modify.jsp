@@ -52,19 +52,21 @@
 	   	<div>
 	   		<p class="subheader">마이페이지</p>
 	   		<p class="subheader_header">회원정보</p>
+	   		<div style="float:left; margin-left:15%;">
+	   		<c:import url="user_sidebar.jsp"></c:import>
+	   		</div>
 	   	</div>
 	   	<table class="tablebts">
 	   		<tr>
-	   			<td>기존 주소</td><td><input type="text" class="hi" placeholder="서울 서초구 00동 아이파크아파트 103동205호" /></td>
+	   			<td>기존 주소</td>
+	   			<td><input type="text" class="form-control" placeholder="서울 서초구 00동 아이파크아파트 103동205호"  style="width:100%;"/></td>
 	   		</tr>
 	   		<tr>
 				<th class="share">새 주소 입력</th>
 					<td>
 						<div class="input-group">
-    						<div>
-    							<button class="input-group-text" id="btnGroupAddon">검색</button>
-    						</div>
-   						    <input type="text" class="form-control" placeholder="물품검색" aria-label="Input group example" aria-describedby="btnGroupAddon">
+    							<input type="text" class="form-control" placeholder="물품검색" aria-label="Input group example" aria-describedby="btnGroupAddon">
+    							<button class="input-group-text" id="btnGroupAddon" >검색</button>   						    
   						</div>
 					</td>
 				</tr>

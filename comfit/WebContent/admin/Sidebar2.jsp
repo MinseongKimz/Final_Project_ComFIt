@@ -11,130 +11,116 @@
 <!-- 기기별 크기 담당 -->
 <meta name="viewport" content="width=device-width", initial-scale="1">
 <!-- 디자인 담당 -->
-<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/custom.css">
-<title>ad_Header</title>
-<style type="text/css">
-/* 초기화 */
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  list-style: none;
-  text-decoration: none;
-  font-family: 'Josefin Sans', sans-serif;
-}
-/* 배경색 */
-body{
-   background-color: #ffffff;
-}
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 
-.wrapper{
-  display: flex;
-  position: relative;
-}
-/* 사이드바 꾸미기 */
-.wrapper .sidebar{
-  width: 200px;
-  height: 100%;
-  background: #ffffff;
-  padding: 30px 0px;
-  box-shadow: 1px 1px 10px 5px gray;
-  position: fixed;
-}
+<style>
+  /* 사이드바 래퍼 스타일 */
+  
+  #page-wrapper {
+    padding-left: 250px;
+  }
+  
+  #sidebar-wrapper {
+    position: fixed;
+    width: 250px;
+    height: 100%;
+    margin-left: -250px;
+    background: white;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  .
 
-.wrapper .sidebar h2{
-  color: black;
-  text-transform: uppercase;
-  text-align: center;
-  margin-bottom: 30px;
-}
 
-.wrapper .sidebar ul li{
-  padding: 15px;
-  border-bottom: 1px solid #bdb8d7;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
-  border-top: 1px solid rgba(255,255,255,0.05);
-}    
-
-.wrapper .sidebar ul li a{
-  color: #1C1C1C;
-  display: block;
-}
-
-.wrapper .sidebar ul li a .fas{
-  width: 25px;
-}
-
-.wrapper .sidebar ul li:hover{
-  background-color: #1486ff;
-  border-radius: 10px;  
-}
-    
-.wrapper .sidebar ul li:hover a{
-  color: #fff;
-}
- 
-.wrapper .sidebar .social_media{
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-}
-
-.wrapper .main_content{
-  width: 100%;
-  margin-left: 200px;
-}
-
-.wrapper .main_content .header{
-  padding: 20px;
-  background: #fff;
-  color: #717171;
-  border-bottom: 1px solid #e0e4e8;
-}
-
-.wrapper .main_content .info{
-  margin: 20px;
-  color: #717171;
-  line-height: 25px;
-}
-
-.wrapper .main_content .info div{
-  margin-bottom: 20px;
-}
 </style>
+
+<!-- Custom styles for this template -->
+<link href="css/sidebars.css" rel="stylesheet">
 
 </head>
 <body>
+<div id="page-wrapper">
 
-<body>
+  <!-- 사이드바 -->
+  <div id="sidebar-wrapper">
+    <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+      <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+      <span class="fs-5 fw-semibold">Comfit admin</span>
+    </a>  
+  
+    <ul class="list-unstyled ps-0">
+      <li class="mb-1">
+      <div class="d-grid gap-2">         
+        <button class="btn-toggle" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+          회원관리
+        </button>
+      </div>
+        <div class="collapse" id="home-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="#" class="link-dark rounded">일반회원 관리</a></li>
+            <li><a href="#" class="link-dark rounded">차단회원 관리</a></li>
+            <li><a href="#" class="link-dark rounded">탈퇴회원 관리</a></li>
+          </ul>
+        </div>
+      </li>
+      
+      <hr />
+      
+      <li class="mb-1">
+      <div class="d-grid gap-2">
+        <button class="btn-toggle" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+          거래관리
+        </button>
+      </div>  
+        <div class="collapse" id="dashboard-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="#" class="link-dark rounded">상품관리</a></li>
+            <li><a href="#" class="link-dark rounded">입출금관리</a></li>
+          </ul>
+        </div>
+      </li>
+      
+      <hr /> 
+      
+      <li class="mb-1">
+      <div class="d-grid gap-2">
+        <button class="btn-toggle" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+          카테고리 관리
+        </button>
+      </div>  
+      </li>
+      
+      <hr />
+      
+      <li class="mb-1">
+      <div class="d-grid gap-2">      
+        <button class="btn-toggle" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+          고객센터
+        </button>
+      </div>
+        <div class="collapse" id="account-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="#" class="link-dark rounded">신고관리</a></li>
+            <li><a href="#" class="link-dark rounded">문의관리</a></li>
+            <li><a href="#" class="link-dark rounded">공지사항</a></li>
+            <li><a href="#" class="link-dark rounded">FAQ</a></li>
+          </ul>
+        </div>
+      </li>      
+    </ul>
+    
+    
+  </div>
 
-
-<div class="wrapper">
-    <div class="sidebar">
-        <h2><a href="ad_main.jsp">Comfit</a></h2>
-        <ul>
-            <li><a href="ad_userlist.jsp"><i class="fas fa-user"></i>회원 관리</a>         
-            </li>            
-            <li><a href="ad_product_list.jsp"><i class="fas fa-address-book"></i>거래 관리</a></li>
-            <li><a href="ad_category_list.jsp"><i class="fas fa-address-card"></i>카테고리 관리</a></li>
-            <li><a href="ad_report_list.jsp"><i class="fas fa-blog"></i>고객센터</a></li>
-        </ul> 
+  <!-- 본문 -->
+    <div class="container-fluid">
+      <h1>공간확인</h1>
     </div>
-        
-    <div class="main_content">
-        <div class="header">Comfit 관리자 계정입니다.</div>  
-    </div>
+  <!-- /본문 -->
+  
 </div>
-
-
-
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="js/bootstrap.js"></script>
-
-
 </body>
 </html>

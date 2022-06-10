@@ -20,18 +20,18 @@
 <div class="container">
 	<div class="row">
 	<div style="margin-bottom: 20px"><h1><b>차단 회원 관리</b></h1></div> 
-		<table class="table table-bordered" style="text-align: center; border: 1px solid #dddddd">
-			<thead><!-- 제목 -->
+		<table class="table table-bordered" style="text-align: center; border: 1px solid #dddddd; box-shadow: 0 1px 3px 0 rgba(0,0,0,0.20);">
+			<thead style="background-color: #f9fafd"><!-- 제목 -->
 				<tr><!-- 1행 -->
-					<th style="background-color: #eeeeee; text-align: center;">E-mail</th>
-					<th style="background-color: #eeeeee; text-align: center;">닉네임</th>
-					<th style="background-color: #eeeeee; text-align: center;">차단기간</th>
-					<th style="background-color: #eeeeee; text-align: center;">차단일시</th>
-					<th style="background-color: #eeeeee; text-align: center;">차단내용</th>
-					<th style="background-color: #eeeeee; text-align: center;">차단상세</th>
+					<th style="text-align: center;">E-mail</th>
+					<th style="text-align: center;">닉네임</th>
+					<th style="text-align: center;">차단기간</th>
+					<th style="text-align: center;">차단일시</th>
+					<th style="text-align: center;">차단내용</th>
+					<th style="text-align: center;">차단상세</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody style="background-color: white;">
 				<tr>
 					<td>yjooo0816@gmail.com</td>
 					<td>이연주</td>

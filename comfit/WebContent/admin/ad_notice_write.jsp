@@ -48,9 +48,9 @@
 				</tr>
 			</tbody>
 		</table>
-				<div style="margin-top: 20px; width: 1100px;"> 오른쪽 정렬... 어케함
+				<div style="margin-top: 20px; width: 1300px; text-align: right;">
 					<button class="btn btn-primary" value="글쓰기" style="width: 150px">글쓰기</button>
-					<button class="btn btn-outline-secondary" value="돌아가기" style="width: 150px" onclick="location.href='ad_ask_list.jsp'">돌아가기</button>				
+					<button class="btn btn-outline-secondary" value="돌아가기" style="width: 150px" onclick="ad_notice_list.jsp">돌아가기</button>				
 				</div>	
 	</form>
 	</div>

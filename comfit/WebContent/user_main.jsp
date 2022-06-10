@@ -35,6 +35,10 @@
       margin-top: 8px; margin-bottom: 8px;
    }
    
+   .card
+   {
+		width: 14rem;
+   }
    
 </style>
 <script type="text/javascript">
@@ -172,7 +176,7 @@
 
 
 </head>
-
+<body>
 <div>
    <c:import url="admin/comfit_header_user.jsp"></c:import>
 </div>
@@ -275,7 +279,7 @@
        <div class="col-md-12 text-center">
    
          <div class="newList">
-            <div class="card" style="width: 10rem;">
+            <div class="card">
                <img src="images/ssd.jpg" class="card-img-top">
                <div class="card-body">
                   <h5 class="card-title" style="text-align: center;">SSD</h5>
@@ -283,7 +287,7 @@
                   <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
                </div>
             </div>
-            <div class="card" style="width: 10rem;">
+            <div class="card">
                <img src="images/ssd.jpg" class="card-img-top">
                <div class="card-body">
                   <h5 class="card-title" style="text-align: center;">SSD</h5>
@@ -291,7 +295,7 @@
                   <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
                </div>
             </div>
-            <div class="card" style="width: 10rem;">
+            <div class="card">
                <img src="images/ssd.jpg" class="card-img-top">
                <div class="card-body">
                   <h5 class="card-title" style="text-align: center;">SSD</h5>
@@ -299,7 +303,7 @@
                   <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
                </div>
             </div>
-            <div class="card" style="width: 10rem;">
+            <div class="card">
                <img src="images/ssd.jpg" class="card-img-top">
                <div class="card-body">
                   <h5 class="card-title" style="text-align: center;">SSD</h5>
@@ -307,7 +311,7 @@
                   <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
                </div>
             </div>
-            <div class="card" style="width: 10rem;">
+            <div class="card">
                <img src="images/ssd.jpg" class="card-img-top">
                <div class="card-body">
                   <h5 class="card-title" style="text-align: center;">SSD</h5>
@@ -315,7 +319,7 @@
                   <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
                </div>
             </div>
-            <div class="card" style="width: 10rem;">
+            <div class="card">
                <img src="images/ssd.jpg" class="card-img-top">
                <div class="card-body">
                   <h5 class="card-title" style="text-align: center;">SSD</h5>
@@ -323,7 +327,7 @@
                   <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
                </div>
             </div>
-            <div class="card" style="width: 10rem;">
+            <div class="card">
                <img src="images/ssd.jpg" class="card-img-top">
                <div class="card-body">
                   <h5 class="card-title" style="text-align: center;">SSD</h5>
@@ -331,7 +335,7 @@
                   <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
                </div>
             </div>
-            <div class="card" style="width: 10rem;">
+            <div class="card">
                <img src="images/ssd.jpg" class="card-img-top">
                <div class="card-body">
                   <h5 class="card-title" style="text-align: center;">SSD</h5>
@@ -339,7 +343,7 @@
                   <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
                </div>
             </div>
-            <div class="card" style="width: 10rem;">
+            <div class="card">
                <img src="images/ssd.jpg" class="card-img-top">
                <div class="card-body">
                   <h5 class="card-title" style="text-align: center;">SSD</h5>
@@ -347,7 +351,7 @@
                   <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
                </div>
             </div>
-            <div class="card" style="width: 10rem;">
+            <div class="card">
                <img src="images/ssd.jpg" class="card-img-top">
                <div class="card-body">
                   <h5 class="card-title" style="text-align: center;">SSD</h5>
@@ -355,22 +359,7 @@
                   <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
                </div>
             </div>
-            <div class="card" style="width: 10rem;">
-               <img src="images/ssd.jpg" class="card-img-top">
-               <div class="card-body">
-                  <h5 class="card-title" style="text-align: center;">SSD</h5>
-                  <p class="card-text"  style="text-align: center;">120,000</p>
-                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
-               </div>
-            </div>
-            <div class="card" style="width: 10rem;">
-               <img src="images/ssd.jpg" class="card-img-top">
-               <div class="card-body">
-                  <h5 class="card-title" style="text-align: center;">SSD</h5>
-                  <p class="card-text"  style="text-align: center;">120,000</p>
-                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
-               </div>
-            </div>
+            
             
             
          </div>
@@ -392,7 +381,7 @@
       <div class="col-md-12 text-center">
    
          <div class="newList">
-            <div class="card" style="width: 10rem;">
+            <div class="card">
                <img src="images/ssd.jpg" class="card-img-top">
                <div class="card-body">
                   <h5 class="card-title" style="text-align: center;">SSD</h5>
@@ -400,7 +389,7 @@
                   <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
                </div>
             </div>
-            <div class="card" style="width: 10rem;">
+            <div class="card">
                <img src="images/ssd.jpg" class="card-img-top">
                <div class="card-body">
                   <h5 class="card-title" style="text-align: center;">SSD</h5>
@@ -408,7 +397,7 @@
                   <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
                </div>
             </div>
-            <div class="card" style="width: 10rem;">
+            <div class="card">
                <img src="images/ssd.jpg" class="card-img-top">
                <div class="card-body">
                   <h5 class="card-title" style="text-align: center;">SSD</h5>
@@ -416,7 +405,7 @@
                   <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
                </div>
             </div>
-            <div class="card" style="width: 10rem;">
+            <div class="card">
                <img src="images/ssd.jpg" class="card-img-top">
                <div class="card-body">
                   <h5 class="card-title" style="text-align: center;">SSD</h5>
@@ -424,7 +413,7 @@
                   <a href="#" class="btn btn-secondary" style="margin: auto; display: block;">상세페이지</a>
                </div>
             </div>
-            <div class="card" style="width: 10rem;">
+            <div class="card">
                <img src="images/ssd.jpg" class="card-img-top">
                <div class="card-body">
                   <h5 class="card-title" style="text-align: center;">SSD</h5>
@@ -432,7 +421,7 @@
                   <a href="#" class="btn btn-secondary" style="margin: auto; display: block;">상세페이지</a>
                </div>
             </div>
-            <div class="card" style="width: 10rem;">
+            <div class="card">
                <img src="images/ssd.jpg" class="card-img-top">
                <div class="card-body">
                   <h5 class="card-title" style="text-align: center;">SSD</h5>
@@ -440,7 +429,7 @@
                   <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
                </div>
             </div>
-            <div class="card" style="width: 10rem;">
+            <div class="card">
                <img src="images/ssd.jpg" class="card-img-top">
                <div class="card-body">
                   <h5 class="card-title" style="text-align: center;">SSD</h5>
@@ -448,7 +437,7 @@
                   <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
                </div>
             </div>
-            <div class="card" style="width: 10rem;">
+            <div class="card">
                <img src="images/ssd.jpg" class="card-img-top">
                <div class="card-body">
                   <h5 class="card-title" style="text-align: center;">SSD</h5>
@@ -456,7 +445,7 @@
                   <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
                </div>
             </div>
-            <div class="card" style="width: 10rem;">
+            <div class="card">
                <img src="images/ssd.jpg" class="card-img-top">
                <div class="card-body">
                   <h5 class="card-title" style="text-align: center;">SSD</h5>
@@ -464,7 +453,7 @@
                   <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
                </div>
             </div>
-            <div class="card" style="width: 10rem;">
+            <div class="card">
                <img src="images/ssd.jpg" class="card-img-top">
                <div class="card-body">
                   <h5 class="card-title" style="text-align: center;">SSD</h5>
@@ -472,22 +461,7 @@
                   <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
                </div>
             </div>
-            <div class="card" style="width: 10rem;">
-               <img src="images/ssd.jpg" class="card-img-top">
-               <div class="card-body">
-                  <h5 class="card-title" style="text-align: center;">SSD</h5>
-                  <p class="card-text"  style="text-align: center;">120,000</p>
-                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
-               </div>
-            </div>
-            <div class="card" style="width: 10rem;">
-               <img src="images/ssd.jpg" class="card-img-top">
-               <div class="card-body">
-                  <h5 class="card-title" style="text-align: center;">SSD</h5>
-                  <p class="card-text"  style="text-align: center;">120,000</p>
-                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
-               </div>
-            </div>
+           
             
             
          </div>
@@ -498,27 +472,10 @@
 </div>
 
             
-         
-   
 
-
-
-
-
-
-<div class="row">
+<div>
    <c:import url="admin/footer.jsp"></c:import>
 </div>
-
-
-
-
-
-
-
-
-
-
 
 
 

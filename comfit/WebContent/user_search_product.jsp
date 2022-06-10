@@ -32,24 +32,21 @@
 	{
 		font-size: 25pt;
 		font-weight: bold;
-		margin-left: 25%;
 		margin-top:10%;
 	}
 	.input_text
 	{
-		margin-left:25%;
+		
 		width: 200pt;
 		font-size:15pt;
 		height:30pt;
 		border-radius:5px;
-		
 	}
 	.btn1
 	{
-		background-color:#B2D7FC;
 		text-align:center;
 		border-radius:5px;
-		width:150px;
+		width:100px;
 		height:30pt;
 	
 	}
@@ -57,7 +54,7 @@
 	{
 		text-align:center;
 		border-radius:5px;
-		width:150px;
+		width:120px;
 		height:30pt;
 	}
 	.btn:hover,.btn1:hover
@@ -121,7 +118,7 @@
 				
 				if (maker!="")
 				{
-					txt += "<img class='image' src='" + image +"' >"+"<p>" + name + " 최소가 : [" + price + "]<br> 카테고리 : "
+					txt += "<img class='image' style='width: 200px; height:auto;' src='" + image +"' >"+"<p>" + name + " 최소가 : [" + price + "]<br> 카테고리 : "
 					  +"/"+ category1 +"/"+ category2 + "/"+category3 +"/["+ maker +"]<input type='checkbox'></p><br>";
 				}
 				
@@ -186,23 +183,26 @@
 </head>
 <body>
 
-<div class="subheader">
+<div style="text-align: center;">
 	<p class="title">물품 검색</p>
 </div>
 
-<div class="outer">	
+<div class="outer" style="text-align: center;">	
 		<div>
 			<form action="search.action" method="post" id="form">
 			<input type = "text" class="input_text" name="name" id="name" placeholder="물품을 입력하세요"/>
-			<button class="btn1" id="loadBtn">검색하기</button>
-			</form>
-			<button class="btn" type="reset" id="clearBtn">지우기</button>
+			<button class="btn1" id="loadBtn" style="background-color:#B2D7FC;">검색하기</button>
+			<button class="btn1" type="reset" id="clearBtn">지우기</button>
 			<button class="btn">찾는 물건 없음</button>
+			</form>
+			
+			<div id="result" style="text-align: center; font-size: 23pt;">
+	
+	
+			</div>
 		</div>
-	<div id="result" >
+		
 	
-	
-	</div>
 </div>
 
 </body>

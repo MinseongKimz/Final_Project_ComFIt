@@ -63,7 +63,7 @@
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">카테고리</th>
 				    <td>
-						<select class="form-select" style="width: 50%; align-content: center;">
+						<select class="form-select" style="width: 50%; display: inline-block;">
 						    <option selected>카테고리</option>
 						    <option value="">1</option>
 						    <option value="">2</option>

@@ -51,26 +51,15 @@
 	{
 		font-family: 맑은 고딕;
 	}
-	.content
-	{
-		margin-left: 5%;
-	}
+
 	
 	.form-control
 	{
-		width: 350px;
+		width: 500px;
 	}
 	
-	.title
-	{
-		margin-left: 2%;
-		font-size: 30pt;
-	}
 	
-	.main
-	{
-		margin-top: 3%; 
-	}
+	
 
 </style>
 </head>
@@ -84,21 +73,21 @@
 	</div> --%>
 	
 	<!-- title -->
-<div class="title">
-	<img src="images/logo.png" alt="" style="width: 300px; height: auto;"/>
-			<!-- Content 영역 -->
+<div>
+	<c:import url="admin/comfit_header_nolog.jsp"></c:import>
 </div>
 	
-<div class="content">
-	<span style="font-size: 30pt; font-weight: bold;">주소 검색</span>
-	<br />
-	<div class="input-group mb-1 col-xl-6" >
-     <span class="input-group-text" id="inputGroup-sizing-default"><i class="bi bi-search"></i></span>
-     <input type="text" class="form-control" placeholder="도로명 혹은 지번으로 주소 입력">
-   </div>
-	<span style="font-size: 10pt; font-weight: bold; color: skyblue;">검색어 예 : 도로명(반포대로 58), 건물명(독립기념관), 지번(삼성동85)</span>
-</div>	
-	
+<div style="margin-top: 5%;">
+	<div style="width: 800px; margin: auto; text-align: center;">
+		<span style="font-size: 30pt; font-weight: bold; ">주소 검색</span>
+		<hr />
+		<div class="input-group mb-1 col-xl-6" style="margin: auto;">
+    		<span class="input-group-text" id="inputGroup-sizing-default"><i class="bi bi-search"></i></span>
+    		<input type="text" class="form-control" placeholder="도로명 혹은 지번으로 주소 입력">
+    	</div>
+		<span style="font-size: 10pt; font-weight: bold; color: skyblue;">검색어 예 : 도로명(반포대로 58), 건물명(독립기념관), 지번(삼성동85)</span>
+	</div>	
+</div>
 
 		
 		

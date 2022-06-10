@@ -34,7 +34,9 @@
 		border-radius:5px;
 		table-layout:fixed;
     	font-weight: bold;
-    	background-color: #FAEBD7;
+    	background-color: #FFFFFF;
+    	outline: 1px solid #E0E6F8;
+    	
   	}
   	
   	.hi

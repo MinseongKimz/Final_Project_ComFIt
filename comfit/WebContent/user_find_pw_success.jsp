@@ -26,12 +26,12 @@
           font-size: 3.5rem;
         }
       }
-      .input-group
+      /* .input-group
       {
       	width: 50%;
       	margin-left: 14px;
       	
-      }
+      } */
       #sellBtn
       {
       	width: 200px;
@@ -51,88 +51,58 @@
 	{
 		font-family: 맑은 고딕;
 	}
-	.content
+	
+	.container
 	{
-		margin-top: 3%;
-		margin-left: 40%;
-		margin-right: 30%;
+		/* margin-top: 8%; */
 	}
 	
-	.txtbox
+	/* .btn
 	{
-		width: 350px;
-	}
-	.category
-	{
-		padding-top: 3%;
-	}
-	
-	.pd_list
-	{
-		padding-top: 3%;
-	}
-	
-	.title
-	{
-		margin-left: 42%;
-		margin-top: 10%;
-		font-size: 30pt;
-	}
-	
-	.main
-	{
-		margin-top: 3%; 
-	}
-	hr
-	{
-		width: 350px;
-	}
-
+		margin: 10px;
+	} */
 </style>
 </head>
 
 
+
+
 <body>
 
-	<!-- Header 영역 -->
-	<%-- <div style="display: none;">
-		<c:import url="comfit_header_user.jsp"></c:import>
-	</div> --%>
-	
-<div class="title">
-	<img src="images/logo.png" alt="" style="width: 300px; height: auto;"/>
+<div>
+	<c:import url="admin/comfit_header_nolog.jsp"></c:import>
 </div>
 
-
 	
-<div class="content">
-	<hr />
-		<span style="font-weight:bold; color:blue;">Test001@gmail.com</span>(으)로 메일을 보냈습니다. 
+<div class="container">
+	
+	<div style="width: 500px; margin: auto; margin-top: 10%;">
+		
+		<hr />
+		<div style="text-align: center;">
+			<span style="color: #0174DF">Test001@gmail.com</span>(으)로 메일을 보냈습니다.
+			<br />
+			메일 확인 후 비밀번호를 변경해주세요.
+		</div>
+		<hr />
+		
 		<br />
-			메일 확인후 비밀번호를 변경해주세요. 
-	<hr />
-	<br />
-	<button type="button" class="btn btn-primary" style="width: 150px;" >로그인</button>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<button type="button" class="btn btn-primary" style="width: 150px;" >메인페이지로</button>
-	<br /><br />
+		
+		<div style="text-align: center;">
+			<div style="display: block;">
+				<button type="button" class="btn btn-primary" style="margin-right: 20px;">로그인</button>
+				<button type="button" class="btn btn-secondary" style="margin-left: 20px;">메인페이지</button>
+			</div>
+		</div>
+	</div>	
+	
+	
 	
 </div>	
 	
-
-		
-		
-		
-		
-		
-		
-	<!-- content  -->
 	
-	
-	<!-- Footer 영역 -->
-<!-- 	<div class="footer">
-	</div> -->
-	
+		
+		
 
 
 

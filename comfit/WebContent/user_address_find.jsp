@@ -25,7 +25,7 @@
 
 
 <div class="container">
-	<div>
+	<div style="margin-top: 8%;">
 	   <h1 style="text-align: center;">주소 검색</h1>
 	   <hr />
 	</div>
@@ -40,7 +40,7 @@
 			    
 		<div style="margin-top: 20px;">
 			<form action="maptest01.jsp" method="get" style="display: inline-block; ">
-		      <input type="text"  id="addr" readonly="readonly" style="width: 250px; height: 25px; " />
+		      <input type="text"  id="addr" readonly="readonly" style="width: 280px; height: 25px; " />
 		      <br /><input type="text"  id="subAddr"  style="width: 350px; height: 25px; margin-top: 5px;" required="required" placeholder="상세 주소를 입력하세요"> 
 		      <br>
 		      <button type="submit" class="btn btn-primary" style="width: 70px; height: 35px; margin-top: 8px;">확인</button>

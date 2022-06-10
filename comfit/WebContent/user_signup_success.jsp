@@ -88,20 +88,22 @@
 </head>
 
 
+
+
 <body>
 
 	<!-- Header 영역 -->
 	<%-- <div style="display: none;">
 		<c:import url="comfit_header_user.jsp"></c:import>
 	</div> --%>
-	
-<div class="title">
-	<img src="images/logo.png" alt="" style="width: 300px; height: auto;"/>
-</div>
+<div>
+	<c:import url="admin/comfit_header_nolog.jsp"></c:import>
+</div>	
+
 
 <br /><br />
 	
-<div style="margin-left: 30%; margin-right: 30%; text-align: center;">
+<div style="margin-left: 30%; margin-right: 30%; text-align: center; margin-top: 5%;">
 	<span style="font-size: 25pt; font-weight: bold;" >회원가입이 완료되었습니다.</span>
 	<hr />
 		<span style="font-weight:bold; color:blue;">이메일 인증</span>을 한 이후 

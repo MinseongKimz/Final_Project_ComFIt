@@ -51,12 +51,7 @@
 	{
 		font-family: 맑은 고딕;
 	}
-	.content
-	{
-		margin-top: 3%;
-		margin-left: 40%;
-		margin-right: 30%;
-	}
+	
 	
 	.form-control
 	{
@@ -83,6 +78,8 @@
 	{
 		margin-top: 3%; 
 	}
+	
+	
 
 </style>
 </head>
@@ -94,48 +91,46 @@
 	<%-- <div style="display: none;">
 		<c:import url="comfit_header_user.jsp"></c:import>
 	</div> --%>
-	
-	<!-- title -->
-<div class="title">
-	<img src="images/logo.png" alt="" style="width: 300px; height: auto;"/>
-			<!-- Content 영역 -->
-</div>
-	
-<div class="content">
 
-	<form action="" class="form form-group"></form>
-		<input type="text" class="form-control" placeholder="이메일을 입력하세요"/>	 
-		<br />
-		<input type="text" class="form-control" placeholder="비밀번호를 입력하세요"/>
-		<br />
-		<input type="text" class="errMsg" placeholder="아이디 혹은 비밀번호가 틀렸습니다. 다시 로그인해주세요." style="color:red; display: none;"/>
+<div>
+	<c:import url="admin/comfit_header_nolog.jsp"></c:import>
+</div>
+
+	
+<div class="container" style="margin-top: 4%;">
+
+	<!--
+	<div class="title" style="margin: auto;">
+		<img src="images/logo.png" alt="" style="width: 300px; height: auto; display: block; margin: 0px auto;"/>
+	</div>
+	-->
+	<br /><br /><br />
+	<div style="width: 400px; margin: auto;">
+		<form action="" class="form form-group">
+			<input type="text" class="form-control" placeholder="이메일을 입력하세요"/>	 
+			<br />
+			<input type="text" class="form-control" placeholder="비밀번호를 입력하세요"/>
+			<br />
+			<input type="text" class="errMsg" placeholder="아이디 혹은 비밀번호가 틀렸습니다. 다시 로그인해주세요." style="color:red; display: none;"/>
+		</form>
 	
 		<!-- reCAPCHA -->
-		<div style="display: none;">
-		</div>
+		<div style="display: none;"></div>
 		
-	<button type="button" class="btn btn-primary" style="width: 350px;" >로그인</button>
+	<button type="button" class="btn btn-primary" style="width: 100%;" >로그인</button>
+
 	<br /><br />
 	
 	
-	<button type="button" class="btn btn-primary" style="width: 150px;" >회원가입</button>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<button type="button" class="btn btn-primary" style="width: 150px;">ID/PW 찾기</button>
-</div>	
+	<button type="button" class="btn btn-secondary" style="width: 150px;" >회원가입</button>
+	<button type="button" class="btn btn-secondary" style="width: 150px; float: right;">ID/PW 찾기</button>
+	</div>
 	
+</div>
+
 
 		
-		
-		
-		
-		
-		
-	<!-- content  -->
-	
-	
-	<!-- Footer 영역 -->
-<!-- 	<div class="footer">
-	</div> -->
+
 	
 
 

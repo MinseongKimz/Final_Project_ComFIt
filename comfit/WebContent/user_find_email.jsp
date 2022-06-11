@@ -40,6 +40,17 @@
       {
       	width: 200px;
       }
+      
+	#wrapper{
+	  height: auto;
+	  min-height: 100%;
+	  padding-bottom: (footer높이);
+	}
+	footer{
+	  height: (footer높이);
+	  position : relative;
+	  transform : translateY(-100%);
+	}
 </style>
 
 <link href="headers.css" rel="stylesheet">
@@ -51,12 +62,7 @@
 	{
 		font-family: 맑은 고딕;
 	}
-	.content
-	{
-		margin-top: 3%;
-		margin-left: 40%;
-		margin-right: 30%;
-	}
+	
 	
 	.form-control
 	{
@@ -83,6 +89,12 @@
 	{
 		margin-top: 3%; 
 	}
+	
+	.btn
+	{
+		/* margin: 20px; */
+	}
+	
 
 </style>
 </head>
@@ -94,43 +106,47 @@
 	<%-- <div style="display: none;">
 		<c:import url="comfit_header_user.jsp"></c:import>
 	</div> --%>
-	
-	<!-- title -->
-<div class="title">
-	<img src="images/logo.png" alt="" style="width: 300px; height: auto;"/>
-			<!-- Content 영역 -->
-</div>
-	
-<div class="content">
-	<button type="button" class="btn btn-primary" style="width: 150px;" >ID 찾기</button>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<button type="button" class="btn btn-secondary" style="width: 150px;">PW 찾기</button>
-	<br /><br />
-	<input type="text" class="form-control" placeholder="이름을 입력하세요"/>
-	 
-	<br /><br />
-	<input type="text" class="form-control" placeholder="전화번호를 입력하세요"/>
-	<br /><br />
-	<input type="text" class="errMsg" placeholder="이름과 전화번호가 일치하지 않습니다. 다시 입력해주세요." style="color:red; display: none;"/>
-	
-	<button type="button" class="btn btn-primary" style="width: 350px;" >확인</button>
-	<br /><br />
-	
-</div>	
-	
 
-		
-		
-		
-		
-		
-		
-	<!-- content  -->
+<div>
+	<c:import url="admin/comfit_header_nolog.jsp"></c:import>
+</div>
+
+	
+<div class="container" style="margin-top: 4%;">
+
+	<!--
+	<div class="title" style="margin: auto;">
+		<img src="images/logo.png" alt="" style="width: 300px; height: auto; display: block; margin: 0px auto;"/>
+	</div>
+	-->
+	<br /><br /><br />
+	<div style="width: 400px; margin: auto;" id="wrapper">
+		<form action="" class="form form-group">
+			
+			<div style="text-align: center; margin-bottom: 10%;">
+			<button type="button" class="btn btn-primary" style="width: 150px; margin-right:20px; display: inline-block;" >이메일찾기</button>
+			<button type="button" class="btn btn-secondary" style="width: 150px; margin-left:20px; display: inline-block;">비밀번호찾기</button>
+			</div>
+			<input type="text" class="form-control" placeholder="가입하신 이메일을 입력하세요"/>	 
+			<br />
+			<input type="text" class="form-control" placeholder="가입하신 전화번호를 입력하세요"/>
+			<br />
+			<input type="text" class="errMsg" placeholder="아이디 혹은 비밀번호가 틀렸습니다. 다시 로그인해주세요." style="color:red; display: none;"/>
+		</form>
+	
+		<!-- reCAPCHA -->
+		<div style="display: none;"></div>
+	
+	<div style="text-align: center;">	
+	<button type="button" class="btn btn-primary" style="width: 100%; display: inline-block;" >찾기</button>
+	</div>
+	<br /><br />
 	
 	
-	<!-- Footer 영역 -->
-<!-- 	<div class="footer">
-	</div> -->
+	
+	</div>
+	
+</div>
 	
 
 

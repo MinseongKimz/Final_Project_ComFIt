@@ -51,88 +51,46 @@
 	{
 		font-family: 맑은 고딕;
 	}
-	.content
-	{
-		margin-top: 3%;
-		margin-left: 40%;
-		margin-right: 30%;
-	}
-	
 	.form-control
 	{
-		width: 350px;
-	}
-	.category
-	{
-		padding-top: 3%;
+		width: 200px;
 	}
 	
-	.pd_list
-	{
-		padding-top: 3%;
-	}
-	
-	.title
-	{
-		margin-left: 42%;
-		margin-top: 10%;
-		font-size: 30pt;
-	}
-	
-	.main
-	{
-		margin-top: 3%; 
-	}
-
 </style>
 </head>
 
 
 <body>
 
-	<!-- Header 영역 -->
-	<%-- <div style="display: none;">
-		<c:import url="comfit_header_user.jsp"></c:import>
-	</div> --%>
-	
-	<!-- title -->
-<div class="title">
-	<img src="images/logo.png" alt="" style="width: 300px; height: auto;"/>
-			<!-- Content 영역 -->
+<div>
+	<c:import url="admin/comfit_header_nolog.jsp"></c:import>
 </div>
 	
-<div class="content">
-	<button type="button" class="btn btn-secondary" style="width: 150px;" >ID 찾기</button>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<button type="button" class="btn btn-primary" style="width: 150px;">PW 찾기</button>
-	<br /><br />
+<div style="margin: auto;">
+	<div style="text-align: center; margin-top: 6% ">
+		<button type="button" class="btn btn-secondary" style="margin-right: 20px; width: 120px;" >ID 찾기</button>
+		<button type="button" class="btn btn-primary" style="margin-left: 20px; width: 120px;">PW 찾기</button>
+	</div>
+	<br />
+	<div style="width: 300px; margin: auto;">
 	<input type="text" class="form-control" placeholder="이메일을 입력하세요"/>
-	<br /><br />
+	<br />
 	<input type="text" class="form-control" placeholder="이름을 입력하세요"/>
-	<br /><br />
+	<br />
 	<input type="text" class="form-control" placeholder="전화번호를 입력하세요"/>
-	<br /><br />
+	<br />
 	<input type="text" class="errMsg" placeholder="등록된 이름과 전화번호와 이메일이 일치하지 않습니다. 다시 입력해주세요." style="color:red; display: none;"/>
+	<br />
+	<button type="button" class="btn btn-primary" style="width: 300px;" >확인</button>
+	</div>
 	
-	<button type="button" class="btn btn-primary" style="width: 350px;" >확인</button>
 	<br /><br />
 	
 </div>	
 	
 
 		
-		
-		
-		
-		
-		
-	<!-- content  -->
-	
-	
-	<!-- Footer 영역 -->
-<!-- 	<div class="footer">
-	</div> -->
-	
+
 
 
 

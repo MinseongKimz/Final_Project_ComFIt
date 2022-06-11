@@ -23,15 +23,10 @@
   /* 사이드바 래퍼 스타일 */
   *{font-family: 'Noto Sans KR', sans-serif;}
   
-  #page-wrapper {
-    padding-left: 250px;
-  }
-  
   #sidebar-wrapper {
     position: fixed;
     width: 250px;
     height: 100%;
-    margin-left: -250px;
     background: white;
     overflow-x: hidden;
     overflow-y: auto;
@@ -145,7 +140,7 @@ tbody {background-color: white;}
   <div id="sidebar-wrapper">
     <a href="ad_main.jsp" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
       <svg class="bi me-2" width="30" height="24"><use xlink:href="ad_main.jsp"/></svg>
-      <img alt="" src="images/logo-admin.png" style="width: 100%; margin-top: 10px">
+	    <img alt="logo" src="<%=cp%>/images/logo-admin.png" style="width: 200px;">
     </a>  
   
     <ul class="list-unstyled ps-0">
@@ -213,7 +208,7 @@ tbody {background-color: white;}
   </div>
 
   <!-- 본문 -->
-  <div class="container-fluid" style="height: 30px; width: 25; background-color: #f3f8ff;">
+  <div class="container-fluid" style="height: 30px; width: 25; background-color: #f3f8ff; margin-left: 250px">
   <span style="color: #bbbbbb">관리자페이지입니다</span>
   </div>
   <!-- /본문 -->

@@ -7,7 +7,7 @@
 
 
 <meta charset="UTF-8">
-<title>user_search_list.jsp</title>
+<title>찜한상품</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -68,7 +68,17 @@
 		padding-top: 3%;
 	}
 	
+	   .card
+   {
+		width: 14rem;
+   }
 
+   .newList > div.card 
+   {
+      display: inline-block;
+      /* float: left; */
+      margin: 10px;
+   }
 </style>
 </head>
 
@@ -93,64 +103,93 @@
 				<h5>전체 <span style="color: #0080FF;">10</span>개</h5>
 			</div>
 			
-			<div class="table-responsive">
-			<table class="table">
-				<tr>
-					<th>
-						<img alt="" src="images/graphicCard.jpg" style="width: 150px; height:150px;"><br />
-						상품명  <br />
-						가격 
-					</th>
-					<th>
-						<img alt="" src="images/HDD.jpg" style="width: 150px; height:150px;">	<br />
-						상품명 <br />
-						가격
-					</th>
-					<th>
-						<img alt="" src="images/keyboard.png" style="width: 150px; height:150px;">	<br />
-						상품명 <br />
-						가격
-					</th>
-					<th>
-						<img alt="" src="images/monitor.jpg" style="width: 150px; height:150px;">	<br />
-						상품명 <br />
-						가격
-					</th>
-					<th>
-						<img alt="" src="images/ssd.jpg" style="width: 150px; height:150px;">	<br />
-						상품명 <br />
-						가격
-					</th>
-				</tr>
-				<tr>
-					<th>
-						<img alt="" src="images/graphicCard.jpg" style="width: 150px; height:150px;"><br />
-						상품명  <br />
-						가격 
-					</th>
-					<th>
-						<img alt="" src="images/HDD.jpg" style="width: 150px; height:150px;">	<br />
-						상품명 <br />
-						가격
-					</th>
-					<th>
-						<img alt="" src="images/keyboard.png" style="width: 150px; height:150px;">	<br />
-						상품명 <br />
-						가격
-					</th>
-					<th>
-						<img alt="" src="images/monitor.jpg" style="width: 150px; height:150px;">	<br />
-						상품명 <br />
-						가격
-					</th>
-					<th>
-						<img alt="" src="images/ssd.jpg" style="width: 150px; height:150px;">	<br />
-						상품명 <br />
-						가격
-					</th>
-				</tr>
-			</table>
-			</div>
+			 <div class="col-md-12 text-center">
+   
+         <div class="newList">
+            <div class="card">
+               <img src="images/ssd.jpg" class="card-img-top">
+               <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;">SSD</h5>
+                  <p class="card-text"  style="text-align: center;">120,000</p>
+                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
+               </div>
+            </div>
+            <div class="card">
+               <img src="images/ssd.jpg" class="card-img-top">
+               <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;">SSD</h5>
+                  <p class="card-text"  style="text-align: center;">120,000</p>
+                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
+               </div>
+            </div>
+            <div class="card">
+               <img src="images/ssd.jpg" class="card-img-top">
+               <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;">SSD</h5>
+                  <p class="card-text"  style="text-align: center;">120,000</p>
+                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
+               </div>
+            </div>
+            <div class="card">
+               <img src="images/ssd.jpg" class="card-img-top">
+               <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;">SSD</h5>
+                  <p class="card-text"  style="text-align: center;">120,000</p>
+                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
+               </div>
+            </div>
+            <div class="card">
+               <img src="images/ssd.jpg" class="card-img-top">
+               <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;">SSD</h5>
+                  <p class="card-text"  style="text-align: center;">120,000</p>
+                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
+               </div>
+            </div>
+            <div class="card">
+               <img src="images/ssd.jpg" class="card-img-top">
+               <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;">SSD</h5>
+                  <p class="card-text"  style="text-align: center;">120,000</p>
+                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
+               </div>
+            </div>
+            <div class="card">
+               <img src="images/ssd.jpg" class="card-img-top">
+               <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;">SSD</h5>
+                  <p class="card-text"  style="text-align: center;">120,000</p>
+                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
+               </div>
+            </div>
+            <div class="card">
+               <img src="images/ssd.jpg" class="card-img-top">
+               <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;">SSD</h5>
+                  <p class="card-text"  style="text-align: center;">120,000</p>
+                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
+               </div>
+            </div>
+            <div class="card">
+               <img src="images/ssd.jpg" class="card-img-top">
+               <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;">SSD</h5>
+                  <p class="card-text"  style="text-align: center;">120,000</p>
+                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
+               </div>
+            </div>
+            <div class="card">
+               <img src="images/ssd.jpg" class="card-img-top">
+               <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;">SSD</h5>
+                  <p class="card-text"  style="text-align: center;">120,000</p>
+                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
+               </div>
+            </div>
+            
+            
+            
+         </div>
 		</div>
 	</div>	<!-- content  -->
 	

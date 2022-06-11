@@ -14,13 +14,13 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 
 <style>
-      .bd-placeholder-img {
+     /* 	.bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
         -webkit-user-select: none;
         -moz-user-select: none;
         user-select: none;
-      }
+      } 
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
           font-size: 3.5rem;
@@ -39,7 +39,7 @@
       #dropdown-item
       {
       	width: 200px;
-      }
+      } */
 </style>
 
 <link href="headers.css" rel="stylesheet">
@@ -52,15 +52,11 @@
 		font-family: 맑은 고딕;
 	}
 	
-	.container
-	{
-		margin-top: 8%;
-	}
-	
+	/* 
 	.btn
 	{
 		margin: 10px;
-	}
+	} */
 </style>
 </head>
 
@@ -68,12 +64,12 @@
 <body>
 
 <div>
-	<c:import url="comfit_header.jsp"></c:import>
+	<c:import url="admin/comfit_header_nolog.jsp"></c:import>
 </div>
 	
 <div class="container">
 	
-	<div style="width: 500px; margin: auto;">	
+	<div style="width: 500px; margin: auto; margin-top: 10%;">	
 		<div style="font-size: 28pt; font-weight: bold; text-align: center;">
 			이메일 찾기 완료
 		</div>

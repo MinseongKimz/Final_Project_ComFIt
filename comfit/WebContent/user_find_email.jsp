@@ -108,7 +108,7 @@
 	</div> --%>
 
 <div>
-	<c:import url="admin/comfit_header_user.jsp"></c:import>
+	<c:import url="admin/comfit_header_nolog.jsp"></c:import>
 </div>
 
 	
@@ -124,8 +124,8 @@
 		<form action="" class="form form-group">
 			
 			<div style="text-align: center; margin-bottom: 10%;">
-			<button type="button" class="btn btn-primary" style="width: 150px; margin: auto; display: inline-block;" >이메일찾기</button>
-			<button type="button" class="btn btn-secondary" style="width: 150px; margin: auto; display: inline-block;">비밀번호찾기</button>
+			<button type="button" class="btn btn-primary" style="width: 150px; margin-right:20px; display: inline-block;" >이메일찾기</button>
+			<button type="button" class="btn btn-secondary" style="width: 150px; margin-left:20px; display: inline-block;">비밀번호찾기</button>
 			</div>
 			<input type="text" class="form-control" placeholder="가입하신 이메일을 입력하세요"/>	 
 			<br />
@@ -148,11 +148,6 @@
 	
 </div>
 	
-	
-	<!-- Footer 영역 -->
-<footer>
-	<c:import url="admin/footer.jsp"></c:import>
-</footer>
 
 
 

@@ -13,7 +13,7 @@
 <link rel="stylesheet" type="text/css" href="css/user_search_product.css">
 <style type="text/css">
 	
-		.image{
+	.image{
 		width: 100px;
 		height: 100px;
 	
@@ -71,6 +71,16 @@
 		margin-left:25%;
 		font-weight: bolder;
 	}
+	.imglink 
+	{
+		text-decoration: none; 
+		color: black;
+		outline: 0;
+		border: 0;
+		background-color: white;
+		font-size: 14pt;
+				
+	}
 </style>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
@@ -78,10 +88,11 @@
 
 	$(function()
 	{
+		var pdname = "";
+		
 		$("#loadBtn").click(function()
 		{
-			
-			var pdname = $("#name").val();
+			pdname = $("#name").val();
 			
 			if(pdname == "")
 			{
@@ -98,6 +109,8 @@
 		
 		if(result != null)
 		{
+			pdname= '${pdname}';
+			
 			var searchXml = $.parseXML(result);
 			//alert(searchXml);
 			var txt = "";
@@ -110,17 +123,21 @@
 				var name = $(this).find('title').text(); // 타이틀 : 물건 이름
 				var price = $(this).find('lprice').text();	// lprice : 각 항목의 최저가 → 최고가는 안나오는듯..?
 				var image = $(this).find('image').text();	// image : 각 항목의 사진 
-				var category1 = $(this).find('category1').text();
-				var category2 = $(this).find('category2').text();
 				var category3 = $(this).find('category3').text();
-				var category4 = $(this).find('category4').text();
 				var maker = $(this).find('maker').text();
+				
+				if(index!=0&&index%3==0)
+					txt += "<br>";
+				
 				
 				if (maker!="")
 				{
-					txt += "<img class='image' style='width: 200px; height:auto;' src='" + image +"' >"+"<p>" + name + " 최소가 : [" + price + "]<br> 카테고리 : "
-					  +"/"+ category1 +"/"+ category2 + "/"+category3 +"/["+ maker +"]<input type='checkbox'></p><br>";
+					txt += "<button class='imglink' value='" + pdname + "/"+ category3 + "/"+ maker +"'>";
+					txt += "<img class='image' style='width: 200px; height:auto;' src='" + image +"' >"+"<p>" + name + "<br> 카테고리 : "
+					  +category3 +"<br>제조사 : "+ maker +"</p></button>";
 				}
+				
+				
 				
 				arr[index] = Number(price);
 				
@@ -146,11 +163,8 @@
 				//alert(arr.length)
 				
 				for(var i=0; i<arr.length; i++)
-				{
 					tprice2 += arr[i]; 
-					console.log(tprice2);
 					
-				}
 				
 				//console.log(tprice2);
 				var realAvgPrice = (tprice2/arr.length) * 0.65;
@@ -169,13 +183,34 @@
 					 + "<p class='caption'>이 가격은 단지 참고용이며 절대적이지 않습니다.<br>제품명을 정확히 적으면 정확도가 올라갑니다.</p>";
 					$("#result").html(txt2 + txt);
 				}
+				
 		}	
 		
 		$("#clearBtn").click(function()
 		{
 			$("#result").empty();
 		});	
+		
+		$(".imglink").click(function()
+		{
+			var value = $(this).val();
 					
+			var valArr = value.split('/');		
+			
+			var name = valArr[0];
+			var category = valArr[1];
+			var maker = valArr[2];
+			
+			$.post("retunsell.action", {
+				name : name
+			  , category : category
+			  , maker : maker
+			  , cfPrice : realAvgPrice
+			}, function(data)
+			{
+				console.log(data);
+			})
+		})
 	})	
 	
 </script>
@@ -196,10 +231,12 @@
 			<button class="btn">찾는 물건 없음</button>
 			</form>
 			
-			<div id="result" style="text-align: center; font-size: 23pt;">
-	
-	
-			</div>
+				<div id="result" style="text-align: center; font-size: 23pt;">
+				</div>
+			
+			
+			
+			
 		</div>
 		
 	

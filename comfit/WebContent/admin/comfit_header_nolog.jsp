@@ -82,7 +82,8 @@
 
   <header>
     <!-- nav 상단 고정-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white"> 
+    
         <div class="container">
             <a href="/" > 
 	           <img alt="logo" src="<%=cp%>/images/logo.png" style="width: 200px;">
@@ -105,41 +106,23 @@
                 </div>	
                 <ul class="navbar-nav">
                     <li class="nav-item ">
-                        <a class="nav-link primary active" aria-current="page" href="#">고객센터</a>
+                        <a class="nav-link primary active" aria-current="page" href="#">로그인</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">로그아웃</a>
+                        <a class="nav-link active" href="#" style="">회원가입</a>
                     </li>
                     <li class="nav-item">
-                      	<a class="nav-link active" href="#">마이페이지</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                    	 <a class="nav-link active dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            				 <span class="bi bi-bell" style="font-size: 15pt; color:black;">
-						  	 <span class="position-absolute badge bg-info text-white" style="size: 5">
-						    	99+
-						     <span class="visually-hidden">unread messages</span>
-						     </span>
-            				 </span>
-				             
-          				 </a>
-                    	 
-                    	 <ul class="dropdown-menu " aria-labelledby="btnGroupDrop1" >
-					        <li class="dropdown-item"><a class="dropdown-item" href="#">[직거래/제안] HP노트북중고....</a></li>
-					        <li class="dropdown-item"><a class="dropdown-item" href="#">[직거래/판매] SSD 최저가....</a></li>
-					        <li class="dropdown-item"><a class="dropdown-item" href="#">[문의] 구매확정 어떻게해...</a></li>
-					    </ul> 
+                      	<a class="nav-link active" href="#">고객센터</a>
                     </li>
                 </ul>
             </div>
-        </div>
     </nav>
     
     <br />
     <div class="text-end " style="">
     <div class="container">
 	         <button id="sellBtn" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-	              판매하기
+	              판매 하기
 	         </button>
 	         <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
 	            <li class="dropdown-item"><a class="dropdown-item" href="#">직거래 판매하기</a></li>
@@ -151,7 +134,6 @@
 </div>  
 
 
-</div>
-  
+</div>  
 </body>
 </html>

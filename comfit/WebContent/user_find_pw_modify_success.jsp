@@ -51,12 +51,7 @@
 	{
 		font-family: 맑은 고딕;
 	}
-	.content
-	{
-		margin-top: 3%;
-		margin-left: 40%;
-		margin-right: 30%;
-	}
+
 	
 	.txtbox
 	{
@@ -72,20 +67,16 @@
 		padding-top: 3%;
 	}
 	
-	.title
-	{
-		margin-left: 42%;
-		margin-top: 10%;
-		font-size: 30pt;
-	}
-	
+
 	.main
 	{
 		margin-top: 3%; 
 	}
+	
 	hr
 	{
 		width: 350px;
+		
 	}
 
 </style>
@@ -100,21 +91,29 @@
 	</div> --%>
 	
 <div class="title">
-	<img src="images/logo.png" alt="" style="width: 300px; height: auto;"/>
+	<c:import url="admin/comfit_header_nolog.jsp"></c:import>
 </div>
 
 
 	
-<div class="content">
-	<hr />
-		비밀번호 변경이 완료되었습니다.
+<div class="container" style="margin-top: 8%;">
+
+	<div style="font-size: 28pt; font-weight: bold; text-align: center;">
+		비밀번호 변경 완료
+	</div>
+	<div style="text-align: center;">
+		<hr style="margin: 0px auto;">
+			비밀번호 변경이 완료되었습니다.
+			<br />
+			<div>
+			<span style="font-weight:bold; color:blue;">변경된 비밀번호</span>(으)로 로그인 해주세요.
+			</div> 
+		<hr style="margin: 0px auto;">
 		<br />
-		<span style="font-weight:bold; color:blue;">변경된 비밀번호</span>(으)로 로그인 해주세요. 
-	<hr />
-	<br />
-	<button type="button" class="btn btn-primary" style="width: 150px;" >로그인</button>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<button type="button" class="btn btn-primary" style="width: 150px;" >메인페이지로</button>
+		<button type="button" class="btn btn-primary" style="width: 150px;" >로그인</button>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<button type="button" class="btn btn-primary" style="width: 150px;" >메인페이지로</button>
+	</div>
 	<br /><br />
 	
 </div>	

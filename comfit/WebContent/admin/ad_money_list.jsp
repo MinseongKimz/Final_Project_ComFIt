@@ -9,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <!-- 기기별 크기 담당 -->
-<meta name="viewport" content="width=device-width" initial-scale="1">
+<meta name="viewport" content="width=device-width", initial-scale="1">
 <!-- 디자인 담당 -->
 <title>ad_money_list.jsp</title>
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/main.css">
@@ -24,13 +24,13 @@
 		<table class="table table-bordered table-hover" style="text-align: center; border: 1px solid #dddddd">
 			<thead><!-- 제목 -->
 				<tr><!-- 1행 -->
-					<th style="background-color: #eeeeee; text-align: center;">회원ID</th>
-					<th style="background-color: #eeeeee; text-align: center;">이름</th>
-					<th style="background-color: #eeeeee; text-align: center;">입,출금</th>
-					<th style="background-color: #eeeeee; text-align: center;">입출금 시간</th>
-					<th style="background-color: #eeeeee; text-align: center;">입출금 은행</th>
-					<th style="background-color: #eeeeee; text-align: center;">계좌</th>
-					<th style="background-color: #eeeeee; text-align: center;">금액</th>
+					<th style="text-align: center;">회원ID</th>
+					<th style="text-align: center;">이름</th>
+					<th style="text-align: center;">입,출금</th>
+					<th style="text-align: center;">입출금 시간</th>
+					<th style="text-align: center;">입출금 은행</th>
+					<th style="text-align: center;">계좌</th>
+					<th style="text-align: center;">금액</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -61,8 +61,7 @@
 		</div>
 		</div>
 		</div>
-	</div>
-</div>
+
 
 </body>
 </html>

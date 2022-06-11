@@ -15,25 +15,71 @@
 </head>
 <body>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">카테고리 추가</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="ms-auto" style="margin-bottom: 10px">
+            <b>차단 기간</b>
+            <select class="form-select" style="width: 40%;">
+			    <option value="">10일 차단</option>
+			    <option value="">1달 차단</option>
+			    <option value="">영구 차단</option>            
+            </select>
+            <hr />
+          </div>
+          <div class="ms-auto" style="margin-bottom: 10px">
+            <b>차단 사유</b>
+            <select class="form-select" style="width: 40%;">
+			    <option value="">부적절한 게시물</option>
+			    <option value="">광고홍보</option>
+            </select>
+          	<hr />
+          </div>       
+          <div class="ms-auto">
+          	<div style="margin-bottom: 10px"><b><span style="color: #0080FF">차단 상세</span></b></div>	
+          	<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="내용을 입력해주세요" ></textarea>
+          </div>       
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+        <button type="button" class="btn btn-primary">입력</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div>
+
+<div>
 <c:import url="ad_Header.jsp"></c:import>
+</div>
 
 <div class="container">
 	<div class="row">
-	<h1>일반 회원 리스트</h1> <!-- 왜 서체가? 배민서체지? 커스텀 css해놔서 그럼 -->
-		<table class="table table-boreded" style="text-align: center; border: 1px solid #dddddd">
-			<thead><!-- 제목 -->
+	<div class="" style="margin-bottom: 20px"><h1><b>일반 회원 리스트</b></h1></div>  <!-- 왜 서체가? 배민서체지? 커스텀 css해놔서 그럼 -->
+		<table class="table table-bordered " style="text-align: center; border: 1px solid #dddddd; box-shadow: 0 1px 3px 0 rgba(0,0,0,0.20);">
+			<thead style="background-color: #f9fafd"><!-- 제목 -->
 				<tr><!-- 1행 -->
-					<th style="background-color: #eeeeee; text-align: center;">E-mail</th>
-					<th style="background-color: #eeeeee; text-align: center;">이름</th>
-					<th style="background-color: #eeeeee; text-align: center;">닉네임</th>
-					<th style="background-color: #eeeeee; text-align: center;">전화</th>
-					<th style="background-color: #eeeeee; text-align: center;">레벨</th>
-					<th style="background-color: #eeeeee; text-align: center;">가입일</th>
-					<th style="background-color: #eeeeee; text-align: center;">상태</th>
-					<th style="background-color: #eeeeee; text-align: center;">누적 차단 횟수</th>
+					<th style="background-color: #; text-align: center;">E-mail</th>
+					<th style="background-color: #; text-align: center;">이름</th>
+					<th style="background-color: #; text-align: center;">닉네임</th>
+					<th style="background-color: #; text-align: center;">전화</th>
+					<th style="background-color: #; text-align: center;">레벨</th>
+					<th style="background-color: #; text-align: center;">가입일</th>
+					<th style="background-color: #; text-align: center;">상태</th>
+					<th style="background-color: #; text-align: center;">누적 차단 횟수</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody style="background-color: white;">
 				<tr>
 					<td>yjooo0816@gmail.com</td>
 					<td>이연주</td>
@@ -41,26 +87,16 @@
 					<td>010-1111-1111</td>
 					<td>1LV</td>
 					<td>2022.05.05</td>
-					<td>
+					<td style="margin-left: 20px">
 					
 						<!-- 셀렉트박스 -->
-						<select class="form-select" style="width: 40%; text-align: right;">
-						    <option selected>카테고리</option>
+						<div style="text-align: center;">
+						<select class="form-select" style="width: 60%; display: inline-block;">
+						    <option selected>가운데정렬</option>
 						    <option value="">1</option>
 						    <option value="">2</option>
-						</select> 
-						
-						<!-- 드롭다운 -->
-						<div class="btn-group">
-						  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-						    카테고리 <span class="caret"></span>
-						  </button>
-						  <ul class="dropdown-menu" role="menu">
-						    <li><a href="#">정상</a></li>
-						    <li><a href="#" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">차단</a></li>
-						  </ul>	  
-						</div>		
-											
+						</select>
+						</div>											
 					</td>
 					<td>1회</td>
 				</tr>
@@ -69,7 +105,7 @@
 
 		<div style="text-align: right;">
 			<div class="btn-group" style="width: 30%; text-align: right;">
-				<select class="form-select" style="width: 40%; text-align: right;">
+				<select class="form-select" style="width: 40%; text-align: ;">
 				    <option selected>카테고리</option>
 				    <option value="">1</option>
 				    <option value="">2</option>
@@ -100,7 +136,7 @@
         <form>
           <div class="form-group">
             <b>차단 기간</b>
-            <select name="" id="" >
+            <select class="form-select" style="width: 40%; text-align: right;">
 			    <option value="">10일 차단</option>
 			    <option value="">1달 차단</option>
 			    <option value="">영구 차단</option>            
@@ -108,7 +144,7 @@
           </div>
           <div class="form-group">
             <b>차단 사유</b>
-            <select name="" id="">
+            <select class="form-select" style="width: 40%; text-align: right;">
 			    <option value="">부적절한 게시물</option>
 			    <option value="">광고홍보</option>
             </select>
@@ -129,7 +165,7 @@
   </div>
 </div>
 
-
+</div>
 
 </body>
 </html>

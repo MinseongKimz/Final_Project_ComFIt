@@ -22,13 +22,13 @@
 		<table class="table table-bordered" style="text-align: center; border: 1px solid #dddddd">
 			<thead><!-- 제목 -->
 				<tr><!-- 1행 -->
-					<th style="background-color: #eeeeee; text-align: center;">상품ID</th>
-					<th style="background-color: #eeeeee; text-align: center;">카테고리</th>
-					<th style="background-color: #eeeeee; text-align: center;">등록일자</th>
-					<th style="background-color: #eeeeee; text-align: center;">판매자ID</th>
-					<th style="background-color: #eeeeee; text-align: center;">제목</th>
-					<th style="background-color: #eeeeee; text-align: center;">거래방식</th>
-					<th style="background-color: #eeeeee; text-align: center;">상태</th>
+					<th style="text-align: center;">상품ID</th>
+					<th style="text-align: center;">카테고리</th>
+					<th style="text-align: center;">등록일자</th>
+					<th style="text-align: center;">판매자ID</th>
+					<th style="text-align: center;">제목</th>
+					<th style="text-align: center;">거래방식</th>
+					<th style="text-align: center;">상태</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -51,7 +51,7 @@
 			<input type="checkbox" name="xxx" value="yyy" checked>블라인드 처리된 게시글만 보기
 		</div>
 		<div class="btn-group" style="width: 30%; text-align: right;">
-			<select class="form-select" style="width: 40%; text-align: right;">
+			<select class="form-select" style="width: 40%; display: inline-block;">
 			    <option selected>카테고리</option>
 			    <option value="">1</option>
 			    <option value="">2</option>

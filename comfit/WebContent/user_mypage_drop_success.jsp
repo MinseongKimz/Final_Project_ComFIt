@@ -57,7 +57,7 @@ h5
 <div>
 	<div>
 		<!-- 헤더 영역 -->
-		<c:import url="comfit_header_user.jsp"></c:import>
+		<c:import url="admin/comfit_header_user.jsp"></c:import>
 	</div>
 	
 	<div>

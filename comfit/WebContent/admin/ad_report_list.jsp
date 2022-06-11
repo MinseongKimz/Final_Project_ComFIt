@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
@@ -22,7 +21,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">카테고리 추가</h5>
+        <h5 class="modal-title" id="exampleModalLabel">신고 처리</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -61,13 +60,13 @@
 		<table class="table table-bordered" style="text-align: center; border: 1px solid #dddddd">
 			<thead><!-- 제목 -->
 				<tr><!-- 1행 -->
-					<th style="background-color: #eeeeee; text-align: center;">회원 ID</th>
-					<th style="background-color: #eeeeee; text-align: center;">게시물 ID</th>
-					<th style="background-color: #eeeeee; text-align: center;">신고자 ID</th>
-					<th style="background-color: #eeeeee; text-align: center;">신고내용</th>
-					<th style="background-color: #eeeeee; text-align: center;">관리자 조치</th>
-					<th style="background-color: #eeeeee; text-align: center;">접수시간</th>
-					<th style="background-color: #eeeeee; text-align: center;">처리시간</th>
+					<th style="text-align: center;">회원 ID</th>
+					<th style="text-align: center;">게시물 ID</th>
+					<th style="text-align: center;">신고자 ID</th>
+					<th style="text-align: center;">신고내용</th>
+					<th style="text-align: center;">관리자 조치</th>
+					<th style="text-align: center;">접수시간</th>
+					<th style="text-align: center;">처리시간</th>
 				</tr>
 			</thead>
 			<tbody>

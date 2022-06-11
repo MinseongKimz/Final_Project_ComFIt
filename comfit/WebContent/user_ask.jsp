@@ -90,11 +90,10 @@
 	</div>
 	<br /><br />
 	
-	<div style="margin-left: 20%; font-weight: bold; font-size: 22pt;">문의 게시글</div>
-	<br /><br />
 	<div style="margin-left: 20%; margin-right: 20%;">
 		<div class="container"> 
-		
+			<div style="font-weight: bold; font-size: 22pt;">문의 게시글</div>
+			<br />
 		
 			<table class="table table-bordered" >
 				<tr >

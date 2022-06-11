@@ -51,16 +51,11 @@
 	{
 		font-family: 맑은 고딕;
 	}
-	.content
-	{
-		margin-top: 3%;
-		margin-left: 40%;
-		margin-right: 30%;
-	}
+
 	
 	.form-control
 	{
-		width: 350px;
+		width: 250px;
 	}
 	.category
 	{
@@ -72,12 +67,7 @@
 		padding-top: 3%;
 	}
 	
-	.title
-	{
-		margin-left: 42%;
-		margin-top: 10%;
-		font-size: 30pt;
-	}
+
 	
 	.main
 	{
@@ -97,26 +87,27 @@
 	
 	<!-- title -->
 <div class="title">
-	<img src="images/logo.png" alt="" style="width: 300px; height: auto;"/>
-			<!-- Content 영역 -->
+	<c:import url="admin/comfit_header_nolog.jsp"></c:import>
 </div>
 	
-<div class="content">
-	<span style="font-size: 25pt; font-weight: bold">비밀번호 변경</span>
-	<br /><br />
-	<span style="font-size: 15pt; font-weight: bold">새 비밀번호 입력</span>
-	<br /> 
-	<input type="text" class="form-control" placeholder="새 비밀번호를 입력하세요"/>
-	<br /><br />
-	<span style="font-size: 15pt; font-weight: bold">새 비밀번호 확인</span>
-	<br />
-	<input type="text" class="form-control" placeholder="비밀번호를 한번 더 입력하세요"/>
-	<br /><br />
-	<input type="text" class="errMsg" placeholder="입력하신 비밀번호가 일치하지 않습니다. 다시 입력해주세요" style="color:red; display: none;"/>
-	
-	<button type="button" class="btn btn-primary" style="width: 350px;" >확인</button>
-	<br /><br />
-	
+<div class="container" style="margin-top: 8%;">
+	<div style="width: 500px; margin: auto;">
+		<span style="font-size: 25pt; font-weight: bold">비밀번호 변경</span>
+		<br /><br />
+		<span style="font-size: 15pt; font-weight: bold">새 비밀번호 입력</span>
+		<br /> 
+		<input type="text" class="form-control" placeholder="새 비밀번호를 입력하세요"/>
+		<br /><br />
+		<span style="font-size: 15pt; font-weight: bold">새 비밀번호 확인</span>
+		<br />
+		<input type="text" class="form-control" placeholder="비밀번호를 한번 더 입력하세요"/>
+		<br /><br />
+		<input type="text" class="errMsg" placeholder="입력하신 비밀번호가 일치하지 않습니다. 다시 입력해주세요" style="color:red; display: none;"/>
+		
+		<button type="button" class="btn btn-primary" style="width: 200px; margin: auto; display: block;" >확인</button>
+	</div>	
+		<br /><br />
+		
 </div>	
 	
 

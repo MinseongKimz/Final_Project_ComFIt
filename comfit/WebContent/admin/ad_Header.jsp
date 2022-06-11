@@ -15,398 +15,209 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
-<title>Insert title here</title>
-
-<style type="text/css">
-body {
-    position: relative;
-}
-body,
-html { height: 100%;}
-.nav .open > a, 
-.nav .open > a:hover, 
-.nav .open > a:focus {background-color: transparent;}
-
-/*-------------------------------*/
-/*           Wrappers            */
-/*-------------------------------*/
-
-#wrapper {
-    padding-left: 0;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-  width: 100%;
-  margin-left: 200px;    
-}
-
-#wrapper.toggled {
-    padding-left: 220px;
-}
-
-#sidebar-wrapper {
-    z-index: 1000;
-    left: 220px;
-    width: 0;
-    height: 100%;
-    margin-left: -220px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    background: #ffffff;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-}
-
-#sidebar-wrapper::-webkit-scrollbar {
-  display: none;
-}
-
-#wrapper.toggled #sidebar-wrapper {
-    width: 220px;
-}
-
-#page-content-wrapper {
-    width: 100%;
-    padding-top: 70px;
-}
-
-#wrapper.toggled #page-content-wrapper {
-    position: absolute;
-    margin-right: -220px;
-}
-
-/*-------------------------------*/
-/*     Sidebar nav styles        */
-/*-------------------------------*/
-
-.sidebar-nav {
-    position: absolute;
-    top: 0;
-    width: 220px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.sidebar-nav li {
-    position: relative; 
-    line-height: 20px;
-    display: inline-block;
-    width: 100%;
-}
-
-.sidebar-nav li:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    height: 100%;
-    width: 3px;
-    background-color: black;
-    -webkit-transition: width .2s ease-in;
-      -moz-transition:  width .2s ease-in;
-       -ms-transition:  width .2s ease-in;
-            transition: width .2s ease-in;
-
-}
-.sidebar-nav li:first-child a {
-    color: #0080FF;
-    background-color: #fff;
-}
-.sidebar-nav li:nth-child(2):before {
-    background-color: #ec1b5a;   
-}
-.sidebar-nav li:nth-child(3):before {
-    background-color: #79aefe;   
-}
-.sidebar-nav li:nth-child(4):before {
-    background-color: #314190;   
-}
-.sidebar-nav li:nth-child(5):before {
-    background-color: #279636;   
-}
-.sidebar-nav li:nth-child(6):before {
-    background-color: #7d5d81;   
-}
-.sidebar-nav li:nth-child(7):before {
-    background-color: #ead24c;   
-}
-.sidebar-nav li:nth-child(8):before {
-    background-color: #2d2366;   
-}
-.sidebar-nav li:nth-child(9):before {
-    background-color: #35acdf;   
-}
-.sidebar-nav li:hover:before,
-.sidebar-nav li.open:hover:before {
-    width: 100%;
-    -webkit-transition: width .2s ease-in;
-      -moz-transition:  width .2s ease-in;
-       -ms-transition:  width .2s ease-in;
-            transition: width .2s ease-in;
-
-}
-
-.sidebar-nav li a {
-	/* 얘는 네모박스 */
-    display: block;
-    color: black;
-    text-decoration: none;
-    padding: 10px 15px 10px 30px;   
-}
-
-.sidebar-nav li a:hover,
-.sidebar-nav li a:active,
-.sidebar-nav li a:focus,
-.sidebar-nav li.open a:hover,
-.sidebar-nav li.open a:active,
-.sidebar-nav li.open a:focus{
-    color: #fff;
-    text-decoration: none;
-    background-color: transparent;
-}
-
-.sidebar-nav > .sidebar-brand {
-    height: 65px;
-    font-size: 20px;
-    line-height: 44px;
-}
-.sidebar-nav .dropdown-menu {
-    position: relative;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    border-radius: 0;
-    border: none;
-    background-color: #fff;
-    box-shadow: none;
-}
-
-.sidebar-nav .dropdown-menu a{
-font-size: 8px;
-}
-
-/*-------------------------------*/
-/*       Hamburger-Cross         */
-/*-------------------------------*/
-
-.hamburger {
-  position: fixed;
-  top: 20px;  
-  z-index: 999;
-  display: block;
-  width: 32px;
-  height: 32px;
-  margin-left: 15px;
-  background: transparent;
-  border: none;
-}
-.hamburger:hover,
-.hamburger:focus,
-.hamburger:active {
-  outline: none;
-}
-.hamburger.is-closed:before {
-  content: '';
-  display: block;
-  width: 100px;
-  font-size: 14px;
-  color: #fff;
-  line-height: 32px;
-  text-align: center;
-  opacity: 0;
-  -webkit-transform: translate3d(0,0,0);
-  -webkit-transition: all .35s ease-in-out;
-}
-.hamburger.is-closed:hover:before {
-  opacity: 1;
-  display: block;
-  -webkit-transform: translate3d(-100px,0,0);
-  -webkit-transition: all .35s ease-in-out;
-}
-
-.hamburger.is-closed .hamb-top,
-.hamburger.is-closed .hamb-middle,
-.hamburger.is-closed .hamb-bottom,
-.hamburger.is-open .hamb-top,
-.hamburger.is-open .hamb-middle,
-.hamburger.is-open .hamb-bottom {
-  position: absolute;
-  left: 0;
-  height: 4px;
-  width: 100%;
-}
-.hamburger.is-closed .hamb-top,
-.hamburger.is-closed .hamb-middle,
-.hamburger.is-closed .hamb-bottom {
-  background-color: #1a1a1a;
-}
-.hamburger.is-closed .hamb-top { 
-  top: 5px; 
-  -webkit-transition: all .35s ease-in-out;
-}
-.hamburger.is-closed .hamb-middle {
-  top: 50%;
-  margin-top: -2px;
-}
-.hamburger.is-closed .hamb-bottom {
-  bottom: 5px;  
-  -webkit-transition: all .35s ease-in-out;
-}
-
-.hamburger.is-closed:hover .hamb-top {
-  top: 0;
-  -webkit-transition: all .35s ease-in-out;
-}
-.hamburger.is-closed:hover .hamb-bottom {
-  bottom: 0;
-  -webkit-transition: all .35s ease-in-out;
-}
-.hamburger.is-open .hamb-top,
-.hamburger.is-open .hamb-middle,
-.hamburger.is-open .hamb-bottom {
-  background-color: #1a1a1a;
-}
-.hamburger.is-open .hamb-top,
-.hamburger.is-open .hamb-bottom {
-  top: 50%;
-  margin-top: -2px;  
-}
-.hamburger.is-open .hamb-top { 
-  -webkit-transform: rotate(45deg);
-  -webkit-transition: -webkit-transform .2s cubic-bezier(.73,1,.28,.08);
-}
-.hamburger.is-open .hamb-middle { display: none; }
-.hamburger.is-open .hamb-bottom {
-  -webkit-transform: rotate(-45deg);
-  -webkit-transition: -webkit-transform .2s cubic-bezier(.73,1,.28,.08);
-}
-.hamburger.is-open:before {
-  content: '';
-  display: block;
-  width: 100px;
-  font-size: 14px;
-  color: #fff;
-  line-height: 32px;
-  text-align: center;
-  opacity: 0;
-  -webkit-transform: translate3d(0,0,0);
-  -webkit-transition: all .35s ease-in-out;
-}
-.hamburger.is-open:hover:before {
-  opacity: 1;
-  display: block;
-  -webkit-transform: translate3d(-100px,0,0);
-  -webkit-transition: all .35s ease-in-out;
-}
-
-/*-------------------------------*/
-/*            Overlay            */
-/*-------------------------------*/
-
-.overlay {
+<!-- 폰트 적용 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap" rel="stylesheet">
+<style>
+  /* 사이드바 래퍼 스타일 */
+  *{font-family: 'Noto Sans KR', sans-serif;}
+  
+  #page-wrapper {
+    padding-left: 250px;
+  }
+  
+  #sidebar-wrapper {
     position: fixed;
-    display: none;
-    width: 100%;
+    width: 250px;
     height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(250,250,250,.8);
-    z-index: 1;
+    margin-left: -250px;
+    background: white;
+    overflow-x: hidden;
+    overflow-y: auto;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.50);
+  }
+body {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
 }
+
+html {
+  height: -webkit-fill-available;
+}
+
+main {
+  display: flex;
+  flex-wrap: nowrap;
+  height: 100vh;
+  height: -webkit-fill-available;
+  max-height: 100vh;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.b-example-divider {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, .1);
+  border: solid rgba(0, 0, 0, .15);
+  border-width: 1px 0;
+  box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+}
+
+.bi {
+  vertical-align: -.125em;
+  pointer-events: none;
+  fill: currentColor;
+}
+
+.dropdown-toggle { outline: 0; }
+
+.nav-flush .nav-link {
+  border-radius: 0;
+}
+
+.btn-toggle {
+  display: inline-flex;
+  align-items: center;
+  padding: .25rem .5rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, .65);
+  background-color: transparent;
+  border: 0;
+}
+.btn-toggle:hover,
+.btn-toggle:focus {
+  color: rgba(0, 0, 0, .85);
+  background-color: #d2f4ea;
+}
+
+.btn-toggle::before {
+  width: 1.25em;
+  line-height: 0;
+  content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
+  transition: transform .35s ease;
+  transform-origin: .5em 50%;
+}
+
+.btn-toggle[aria-expanded="true"] {
+  color: rgba(0, 0, 0, .85);
+}
+.btn-toggle[aria-expanded="true"]::before {
+  transform: rotate(90deg);
+}
+
+.btn-toggle-nav a {
+  display: inline-flex;
+  padding: .1875rem .5rem;
+  margin-top: .125rem;
+  margin-left: 1.25rem;
+  text-decoration: none;
+}
+.btn-toggle-nav a:hover,
+.btn-toggle-nav a:focus {
+  background-color: #d2f4ea;
+}
+
+.scrollarea {
+  overflow-y: auto;
+}
+
+.fw-semibold { font-weight: 600; }
+.lh-tight { line-height: 1.25; }
+  
+  
+body{background-color: #edf2f9;}
+table {box-shadow: 0 1px 3px 0 rgba(0,0,0,0.20);} 
+table > thead {background-color: white;}
+tbody {background-color: white;} 
 </style>
+
+<!-- 사이드바 스타일 참조 안먹는 이유??? -->
+<!-- <link href="css/sidebars.css" rel="stylesheet"> -->
+
 </head>
 <body>
+<div id="page-wrapper">
 
-    <div id="wrapper">
-        <div class="overlay"></div>
+  <!-- 사이드바 -->
+  <div id="sidebar-wrapper">
+    <a href="ad_main.jsp" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+      <svg class="bi me-2" width="30" height="24"><use xlink:href="ad_main.jsp"/></svg>
+      <img alt="" src="images/logo-admin.png" style="width: 100%; margin-top: 10px">
+    </a>  
+  
+    <ul class="list-unstyled ps-0">
+      <li class="mb-1">
+      <div class="d-grid gap-2">         
+        <button class="btn-toggle" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+          회원관리
+        </button>
+      </div>
+        <div class="collapse" id="home-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="ad_userlist.jsp" class="link-dark rounded">일반회원 관리</a></li>
+            <li><a href="ad_userbanned_list.jsp" class="link-dark rounded">차단회원 관리</a></li>
+            <li><a href="ad_userout_search.jsp" class="link-dark rounded">탈퇴회원 관리</a></li>
+          </ul>
+        </div>
+      </li>
+      
+      <hr />
+      
+      <li class="mb-1">
+      <div class="d-grid gap-2">
+        <button class="btn-toggle" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+          거래관리
+        </button>
+      </div>  
+        <div class="collapse" id="dashboard-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="ad_product_list.jsp" class="link-dark rounded">상품관리</a></li>
+            <li><a href="ad_money_list.jsp" class="link-dark rounded">입출금관리</a></li>
+          </ul>
+        </div>
+      </li>
+      
+      <hr /> 
+      
+      <li class="mb-1">
+      <div class="d-grid gap-2">
+        <button class="btn-toggle" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false" onclick="location.href='ad_category_list.jsp'">
+          카테고리 관리
+        </button>
+      </div>  
+      </li>
+      
+      <hr />
+      
+      <li class="mb-1">
+      <div class="d-grid gap-2">      
+        <button class="btn-toggle" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+          고객센터
+        </button>
+      </div>
+        <div class="collapse" id="account-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="ad_report_list.jsp" class="link-dark rounded">신고관리</a></li>
+            <li><a href="ad_ask_list.jsp" class="link-dark rounded">문의관리</a></li>
+            <li><a href="ad_notice_list.jsp" class="link-dark rounded">공지사항</a></li>
+            <li><a href="ad_faq_list.jsp" class="link-dark rounded">FAQ</a></li>
+          </ul>
+        </div>
+      </li>      
+    </ul>
     
-        <!-- Sidebar -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
-            <ul class="nav sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="ad_main.jsp">
-                       Comfit
-                    </a>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">회원관리<span class="caret"></span></a>
-	                  <ul class="dropdown-menu" role="menu">
-	                    <li class="dropdown-header">관리자 모드</li>
-	                    <li><a href="ad_userlist.jsp">일반회원 관리</a></li>
-	                    <li><a href="ad_userbanned_list.jsp">차단회원 관리</a></li>
-	                    <li><a href="ad_userout_list.jsp">탈퇴회원 관리</a></li>
-	                  </ul>                    
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">거래관리<span class="caret"></span></a>
-	                  <ul class="dropdown-menu" role="menu">
-	                    <li class="dropdown-header">관리자 모드</li>
-	                    <li><a href="ad_product_list.jsp">상품 관리</a></li>
-	                    <li><a href="ad_money_list.jsp">입출금 관리</a></li>
-	                  </ul>                    
-                </li>
-                <li>
-                    <a href="ad_category_list.jsp">카테고리 관리</a>
-                </li>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">고객센터 <span class="caret"></span></a>
-                  <ul class="dropdown-menu" role="menu">
-                    <li class="dropdown-header">관리자 모드</li>
-                    <li><a href="ad_report_list.jsp">신고 관리</a></li>
-                    <li><a href="ad_ask_list.jsp">문의 관리</a></li>
-                    <li><a href="ad_notice_list.jsp">공지사항 관리</a></li>
-                    <li><a href="ad_faq_list.jsp">FAQ 관리</a></li>
-                  </ul>                  
-                </li>	
-            </ul>
-        </nav>
-        <!-- /#sidebar-wrapper -->
+    
+  </div>
 
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
-                <span class="hamb-top"></span>
-    			<span class="hamb-middle"></span>
-				<span class="hamb-bottom"></span>
-            </button>
-        </div>
-        </div>
-
-<script type="text/javascript">
-	$(document).ready(function () {
-		  var trigger = $('.hamburger'),
-		      overlay = $('.overlay'),
-		     isClosed = false;
-		   /* 
-		    function hamburger_cross() {
-	
-		      if (isClosed == true) {          
-		        overlay.hide();
-		        trigger.removeClass('is-open');
-		        trigger.addClass('is-closed');
-		        isClosed = false;
-		      } else {   
-		        overlay.show();
-		        trigger.removeClass('is-closed');
-		        trigger.addClass('is-open');
-		        isClosed = true;
-		      }
-		  }
-		  */
-		  //열리게 만드는 함수
-		  $('[data-toggle="offcanvas"]').click(function () {
-		        $('#wrapper').toggleClass('toggled');
-		  });  
-		});
-</script>
-
-   
+  <!-- 본문 -->
+  <div class="container-fluid" style="height: 30px; width: 25; background-color: #f3f8ff;">
+  <span style="color: #bbbbbb">관리자페이지입니다</span>
+  </div>
+  <!-- /본문 -->
+  
+</div>
 </body>
 </html>

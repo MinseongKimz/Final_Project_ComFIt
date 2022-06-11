@@ -1,209 +1,484 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-
-
 <meta charset="UTF-8">
-<title>non_user_main.jsp</title>
+<title>메인화면</title>
+<link rel="stylesheet" href="css/main.css" type="text/css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
-
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-      .input-group
-      {
-      	width: 50%;
-      	margin-left: 14px;
-      	
-      }
-      #sellBtn
-      {
-      	width: 200px;
-      }
-      #dropdown-item
-      {
-      	width: 200px;
-      }
-    </style>
-
-<link href="headers.css" rel="stylesheet">
-<script type="text/javascript" src="/js/bootstrap.js"></script>
- 
-
 <style type="text/css">
-	*
-	{
-		font-family: 맑은 고딕;
-	}
-	.content
-	{
-		margin-top: 3%;
-		margin-left: 15%; 
-		margin-right: 15%;
-	}
-	
-	.category
-	{
-		padding-top: 3%;
-	}
-	
-	.pd_list
-	{
-		padding-top: 3%;
-	}
-	
 
+   /* div {border: 1px solid black;} */
+   .MultiCarousel { float: left; overflow: hidden; padding: 15px; width: 100%; position:relative; }
+    .MultiCarousel .MultiCarousel-inner { transition: 1s ease all; float: left; }
+    .MultiCarousel .MultiCarousel-inner .item { float: left;}
+    .MultiCarousel .MultiCarousel-inner .item > div { text-align: center; padding:10px; margin:10px; background:#f1f1f1; color:#666;}
+    .MultiCarousel .leftLst, .MultiCarousel .rightLst { position:absolute; border-radius:50%;top:calc(50% - 20px); }
+    .MultiCarousel .leftLst { left:0; }
+    .MultiCarousel .rightLst { right:0; }
+    
+    .MultiCarousel .leftLst.over, .MultiCarousel .rightLst.over { pointer-events: none; background:#ccc; }
+   
+   .newList > div.card 
+   {
+      display: inline-block;
+      /* float: left; */
+      margin: 10px;
+   }
+   
+   .lead
+   {
+      margin-top: 8px; margin-bottom: 8px;
+   }
+   
+   .card
+   {
+		width: 14rem;
+   }
+   
 </style>
+<script type="text/javascript">
+
+   $(document).ready(function () {
+       var itemsMainDiv = ('.MultiCarousel');
+       var itemsDiv = ('.MultiCarousel-inner');
+       var itemWidth = "";
+   
+       $('.leftLst, .rightLst').click(function () {
+           var condition = $(this).hasClass("leftLst");
+           if (condition)
+               click(0, this);
+           else
+               click(1, this)
+       });
+   
+       ResCarouselSize();
+   
+   
+   
+   
+       $(window).resize(function () {
+           ResCarouselSize();
+       });
+   
+       //this function define the size of the items
+       function ResCarouselSize() {
+           var incno = 0;
+           var dataItems = ("data-items");
+           var itemClass = ('.item');
+           var id = 0;
+           var btnParentSb = '';
+           var itemsSplit = '';
+           var sampwidth = $(itemsMainDiv).width();
+           var bodyWidth = $('body').width();
+           $(itemsDiv).each(function () {
+               id = id + 1;
+               var itemNumbers = $(this).find(itemClass).length;
+               btnParentSb = $(this).parent().attr(dataItems);
+               itemsSplit = btnParentSb.split(',');
+               $(this).parent().attr("id", "MultiCarousel" + id);
+   
+   
+               if (bodyWidth >= 1200) {
+                   incno = itemsSplit[3];
+                   itemWidth = sampwidth / incno;
+               }
+               else if (bodyWidth >= 992) {
+                   incno = itemsSplit[2];
+                   itemWidth = sampwidth / incno;
+               }
+               else if (bodyWidth >= 768) {
+                   incno = itemsSplit[1];
+                   itemWidth = sampwidth / incno;
+               }
+               else {
+                   incno = itemsSplit[0];
+                   itemWidth = sampwidth / incno;
+               }
+               $(this).css({ 'transform': 'translateX(0px)', 'width': itemWidth * itemNumbers });
+               $(this).find(itemClass).each(function () {
+                   $(this).outerWidth(itemWidth);
+               });
+   
+               $(".leftLst").addClass("over");
+               $(".rightLst").removeClass("over");
+   
+           });
+       }
+   
+   
+       //this function used to move the items
+       function ResCarousel(e, el, s) {
+           var leftBtn = ('.leftLst');
+           var rightBtn = ('.rightLst');
+           var translateXval = '';
+           var divStyle = $(el + ' ' + itemsDiv).css('transform');
+           var values = divStyle.match(/-?[\d\.]+/g);
+           var xds = Math.abs(values[4]);
+           if (e == 0) {
+               translateXval = parseInt(xds) - parseInt(itemWidth * s);
+               $(el + ' ' + rightBtn).removeClass("over");
+   
+               if (translateXval <= itemWidth / 2) {
+                   translateXval = 0;
+                   $(el + ' ' + leftBtn).addClass("over");
+               }
+           }
+           else if (e == 1) {
+               var itemsCondition = $(el).find(itemsDiv).width() - $(el).width();
+               translateXval = parseInt(xds) + parseInt(itemWidth * s);
+               $(el + ' ' + leftBtn).removeClass("over");
+   
+               if (translateXval >= itemsCondition - itemWidth / 2) {
+                   translateXval = itemsCondition;
+                   $(el + ' ' + rightBtn).addClass("over");
+               }
+           }
+           $(el + ' ' + itemsDiv).css('transform', 'translateX(' + -translateXval + 'px)');
+       }
+   
+       //It is used to get some elements from btn
+       function click(ell, ee) {
+           var Parent = "#" + $(ee).parent().attr("id");
+           var slide = $(Parent).attr("data-slide");
+           ResCarousel(ell, Parent, slide);
+       }
+
+      });
+
+</script>
+<script type="text/javascript">
+
+
+   $(document).ready(function()
+   {
+      $(".hover").hover(function()                
+      {                                         
+         //alert("테스트");                       
+                                               
+         $(this).removeClass("btn-secondary"); 
+         $(this).addClass("btn-primary");      
+      }, function()                             
+      {                                         
+         $(this).removeClass("btn-primary");   
+         $(this).addClass("btn-secondary");    
+      });
+   })
+
+      
+
+
+</script>
+
+
 </head>
-
-
-
-
 <body>
+<div>
+   <c:import url="admin/comfit_header_nolog.jsp"></c:import>
+</div>
+
+<!-- 220610 추가한 부분 지워도 됩니다! 큼직하게 이미지 넣는게 밀도있을 것 같아보여서 추가했어요 -->
+<section>
+  <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+    <div class="col-md-5 p-lg-5 mx-auto my-5">
+      <h1 class="display-4 fw-normal">이미지 추가</h1>
+      <p class="lead fw-normal">And an even wittier subheading to boot. Jumpstart your marketing efforts with this example based on Apple’s marketing pages.</p>
+      <a class="btn btn-outline-secondary" href="#">Coming soon</a>
+    </div>
+    <div class="product-device shadow-sm d-none d-md-block"></div>
+    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+  </div>
+</section>  
+<!-- 220610 추가한 부분 -->  
+
+<!-- 카테고리 -->
+<div class="container">
+   <div class="row">
+      <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"  data-interval="1000">
+            <div class="MultiCarousel-inner">
+                <div class="item">
+                    <div class="pad15 shadow" style="align-items: center;">
+                        <p class="lead" style="font-size: large; margin-top: 8px; margin-bottom: 8px;">그래픽카드</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="pad15 shadow">
+                        <p class="lead">CPU</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="pad15 shadow">
+                        <p class="lead">HDD</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="pad15 shadow">
+                        <p class="lead">모니터</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="pad15 shadow">
+                        <p class="lead">오디오</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="pad15 shadow">
+                        <p class="lead">주변기기</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="pad15 shadow">
+                        <p class="lead">메모리</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="pad15 shadow">
+                        <p class="lead">키보드</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="pad15 shadow">
+                        <p class="lead">메인보드</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="pad15 shadow">
+                        <p class="lead">케이스</p>
+                    </div>
+                </div>
+                
+            </div>
+            <button class="btn btn-primary leftLst"> <i class="bi bi-arrow-left"></i> </button>
+            <button class="btn btn-primary rightLst"> <i class="bi bi-arrow-right"></i> </button>
+        </div>
+   </div>
+   <br />
+   
+   <hr />
+   
+   <br />
+   
+   <div class="row">
+       
+      <!-- 최근 등록 상품 -->
+      <div style="font-size: 20pt; font-weight:bold; display: inline-block; width: 1100px;">
+         최근 등록 상품
+      </div>
+         
+      <div style="display: inline-block; width: 200px; float: right;">   
+         <button type="button" class="btn btn-primary" style="float:right; width: 150px; float: right;">전체보기</button>
+      </div>
+      
+      <br /><br />
+   
+   
+       <div class="col-md-12 text-center">
+   
+         <div class="newList">
+            <div class="card">
+               <img src="images/ssd.jpg" class="card-img-top">
+               <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;">SSD</h5>
+                  <p class="card-text"  style="text-align: center;">120,000</p>
+                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
+               </div>
+            </div>
+            <div class="card">
+               <img src="images/ssd.jpg" class="card-img-top">
+               <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;">SSD</h5>
+                  <p class="card-text"  style="text-align: center;">120,000</p>
+                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
+               </div>
+            </div>
+            <div class="card">
+               <img src="images/ssd.jpg" class="card-img-top">
+               <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;">SSD</h5>
+                  <p class="card-text"  style="text-align: center;">120,000</p>
+                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
+               </div>
+            </div>
+            <div class="card">
+               <img src="images/ssd.jpg" class="card-img-top">
+               <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;">SSD</h5>
+                  <p class="card-text"  style="text-align: center;">120,000</p>
+                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
+               </div>
+            </div>
+            <div class="card">
+               <img src="images/ssd.jpg" class="card-img-top">
+               <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;">SSD</h5>
+                  <p class="card-text"  style="text-align: center;">120,000</p>
+                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
+               </div>
+            </div>
+            <div class="card">
+               <img src="images/ssd.jpg" class="card-img-top">
+               <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;">SSD</h5>
+                  <p class="card-text"  style="text-align: center;">120,000</p>
+                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
+               </div>
+            </div>
+            <div class="card">
+               <img src="images/ssd.jpg" class="card-img-top">
+               <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;">SSD</h5>
+                  <p class="card-text"  style="text-align: center;">120,000</p>
+                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
+               </div>
+            </div>
+            <div class="card">
+               <img src="images/ssd.jpg" class="card-img-top">
+               <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;">SSD</h5>
+                  <p class="card-text"  style="text-align: center;">120,000</p>
+                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
+               </div>
+            </div>
+            <div class="card">
+               <img src="images/ssd.jpg" class="card-img-top">
+               <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;">SSD</h5>
+                  <p class="card-text"  style="text-align: center;">120,000</p>
+                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
+               </div>
+            </div>
+            <div class="card">
+               <img src="images/ssd.jpg" class="card-img-top">
+               <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;">SSD</h5>
+                  <p class="card-text"  style="text-align: center;">120,000</p>
+                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
+               </div>
+            </div>
+            
+            
+            
+         </div>
+         <br />   
+      </div>
+      <hr />
+      <br />   
+      <!-- 인기 상품 -->
+      <div style="font-size: 20pt; font-weight:bold; display: inline-block; width: 1100px;">
+         인기 상품
+      </div>
+         
+      <div style="display: inline-block; width: 200px; float: right;">   
+         <button type="button" class="btn btn-primary" style="float:right; width: 150px; float: right;">전체보기</button>
+      </div>         
+      <br /><br />
+      
+      
+      <div class="col-md-12 text-center">
+   
+         <div class="newList">
+            <div class="card">
+               <img src="images/ssd.jpg" class="card-img-top">
+               <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;">SSD</h5>
+                  <p class="card-text"  style="text-align: center;">120,000</p>
+                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
+               </div>
+            </div>
+            <div class="card">
+               <img src="images/ssd.jpg" class="card-img-top">
+               <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;">SSD</h5>
+                  <p class="card-text"  style="text-align: center;">120,000</p>
+                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
+               </div>
+            </div>
+            <div class="card">
+               <img src="images/ssd.jpg" class="card-img-top">
+               <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;">SSD</h5>
+                  <p class="card-text"  style="text-align: center;">120,000</p>
+                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
+               </div>
+            </div>
+            <div class="card">
+               <img src="images/ssd.jpg" class="card-img-top">
+               <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;">SSD</h5>
+                  <p class="card-text"  style="text-align: center;">120,000</p>
+                  <a href="#" class="btn btn-secondary" style="margin: auto; display: block;">상세페이지</a>
+               </div>
+            </div>
+            <div class="card">
+               <img src="images/ssd.jpg" class="card-img-top">
+               <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;">SSD</h5>
+                  <p class="card-text"  style="text-align: center;">120,000</p>
+                  <a href="#" class="btn btn-secondary" style="margin: auto; display: block;">상세페이지</a>
+               </div>
+            </div>
+            <div class="card">
+               <img src="images/ssd.jpg" class="card-img-top">
+               <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;">SSD</h5>
+                  <p class="card-text"  style="text-align: center;">120,000</p>
+                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
+               </div>
+            </div>
+            <div class="card">
+               <img src="images/ssd.jpg" class="card-img-top">
+               <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;">SSD</h5>
+                  <p class="card-text"  style="text-align: center;">120,000</p>
+                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
+               </div>
+            </div>
+            <div class="card">
+               <img src="images/ssd.jpg" class="card-img-top">
+               <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;">SSD</h5>
+                  <p class="card-text"  style="text-align: center;">120,000</p>
+                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
+               </div>
+            </div>
+            <div class="card">
+               <img src="images/ssd.jpg" class="card-img-top">
+               <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;">SSD</h5>
+                  <p class="card-text"  style="text-align: center;">120,000</p>
+                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
+               </div>
+            </div>
+            <div class="card">
+               <img src="images/ssd.jpg" class="card-img-top">
+               <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;">SSD</h5>
+                  <p class="card-text"  style="text-align: center;">120,000</p>
+                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
+               </div>
+            </div>
+           
+            
+            
+         </div>
+                        
+      </div>
+         
+   </div>           
+</div>
+
+            
 
 <div>
-	<!-- Header 영역 -->
-	<div>
-		<c:import url="comfit_header.jsp"></c:import>
-	</div>
-	
-	
-	<!-- Content 영역 -->
-	<div class="content">
-	
-		<!-- 카테고리 -->
-		<div class="category">
-			<div>
-				<span style="font-size:30pt;">카테고리</span>
-			</div>
-			
-			<div style="margin-left: 20%; margin-right: 20%s">
-			<!-- 페이징 처리 -->
-			<button type="button" class="btn btn-primary">◀ prev</button>
-			<button type="button" class="btn btn-light">그래픽카드</button>
-			<button type="button" class="btn btn-light">SSD</button>  
-			<button type="button" class="btn btn-light">CPU</button>   
-			<button type="button" class="btn btn-light">HDD</button> 
-			<button type="button" class="btn btn-light">모니터</button>
-			<button type="button" class="btn btn-light">키보드</button>   
-			<button type="button" class="btn btn-light">마우스</button>   
-			<button type="button" class="btn btn-primary">next ▶</button>
-			<br />
-			</div>
-			<!-- 페이징 -->
-			<div style="margin-left: 40%; margin-right: 40%;">
-				<span style="color:blue;">●</span>
-				<span style="color:gray;">●</span>
-				<span style="color:gray;">●</span>
-				<span style="color:gray;">●</span>
-			</div>
-								
-			
-		</div>
-		
-		<!-- 최근 등록 상품 -->
-		<div class="pd_list new">
-			<div>
-				<span style="font-size: 30pt;">최근 등록 상품</span>
-			</div>
-			<div  style="margin-left: 85%; margint-bottom:3%">	
-				<button type="button" class="btn btn-primary">전체보기</button>
-			</div>
-			<table class="table">
-				<tr>
-					<th>
-						<img alt="" src="images/graphicCard.jpg" style="width: 150px; height:150px;"><br />
-						상품명  <br />
-						가격 
-					</th>
-					<th>
-						<img alt="" src="images/HDD.jpg" style="width: 150px; height:150px;">	<br />
-						상품명 <br />
-						가격
-					</th>
-					<th>
-						<img alt="" src="images/keyboard.png" style="width: 150px; height:150px;">	<br />
-						상품명 <br />
-						가격
-					</th>
-					<th>
-						<img alt="" src="images/monitor.jpg" style="width: 150px; height:150px;">	<br />
-						상품명 <br />
-						가격
-					</th>
-					<th>
-						<img alt="" src="images/ssd.jpg" style="width: 150px; height:150px;">	<br />
-						상품명 <br />
-						가격
-					</th>
-				</tr>
-			</table>
-		
-		
-		</div>
-		
-		<!-- 인기 상품 -->
-		<div class="pd_list hot">
-			<div>
-				<span style="font-size: 30pt;">인기 상품</span>
-			</div>
-			<div  style="margin-left: 85%; margint-bottom:3%">	
-				<button type="button" class="btn btn-primary">전체보기</button>
-			</div>		
-			<table class="table">
-			<tr>
-				<th>
-					<img alt="" src="images/graphicCard.jpg" style="width: 150px; height:150px;"><br />
-					상품명 <br />
-					가격
-				</th>
-				<th>
-					<img alt="" src="images/HDD.jpg" style="width: 150px; height:150px;">	<br />
-					상품명 <br />
-					가격
-				</th>
-				<th>
-					<img alt="" src="images/keyboard.png" style="width: 150px; height:150px;">	<br />
-					상품명 <br />
-					가격
-				</th>
-				<th>
-					<img alt="" src="images/monitor.jpg" style="width: 150px; height:150px;">	<br />
-					상품명 <br />
-					가격
-				</th>
-				<th>
-					<img alt="" src="images/ssd.jpg" style="width: 150px; height:150px;">	<br />
-					상품명 <br />
-					가격
-				</th>
-			</tr>
-			</table>
-		</div>
-	</div>
-	
-	
-	<!-- Footer 영역 -->
-	<div class="footer">
-	</div>
-	
+   <c:import url="admin/footer.jsp"></c:import>
 </div>
+
+
+
 
 
 

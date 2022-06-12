@@ -178,7 +178,7 @@
 </head>
 <body>
 <div>
-   <c:import url="admin/comfit_header_nolog.jsp"></c:import>
+   <c:import url="/WEB-INF/view/user/main/comfit_header_nolog.jsp"></c:import>
 </div>
 
 <!-- 220610 추가한 부분 지워도 됩니다! 큼직하게 이미지 넣는게 밀도있을 것 같아보여서 추가했어요 -->
@@ -474,7 +474,7 @@
             
 
 <div>
-   <c:import url="admin/footer.jsp"></c:import>
+   <c:import url="/WEB-INF/view/user/main/footer.jsp"></c:import>
 </div>
 
 

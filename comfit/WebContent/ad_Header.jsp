@@ -159,7 +159,7 @@ tbody {background-color: white;}
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
             <li><a href="/admin_userlist.action" class="link-dark rounded">일반회원 관리</a></li>
             <li><a href="/admin_bannedlist.action" class="link-dark rounded">차단회원 관리</a></li>
-            <li><a href="/admin_userout_search.action" class="link-dark rounded">탈퇴회원 관리</a></li>
+            <li><a href="/admin_userout_list.action" class="link-dark rounded">탈퇴회원 관리</a></li>
           </ul>
         </div>
       </li>

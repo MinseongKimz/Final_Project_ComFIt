@@ -108,10 +108,10 @@
                         <a class="nav-link primary active" aria-current="page" href="user_svc.action">고객센터</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">로그아웃</a>
+                        <a class="nav-link active" href="comfit.action">로그아웃</a>
                     </li>
                     <li class="nav-item">
-                      	<a class="nav-link active" href="#">마이페이지</a>
+                      	<a class="nav-link active" href="user_mypage.action">마이페이지</a>
                     </li>
                     <li class="nav-item dropdown">
                     	 <a class="nav-link active dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">

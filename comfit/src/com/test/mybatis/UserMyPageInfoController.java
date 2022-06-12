@@ -11,6 +11,19 @@ public class UserMyPageInfoController
 {
 	private SqlSession sqlSession;
 	
+	@RequestMapping(value = "/user_mypage.action", method = RequestMethod.GET)
+	public String userMypage(Model model)
+	{
+		String result = null;
+		
+		result = "/WEB-INF/view/user/mypage/user_mypage.jsp";
+		
+		return result;
+	}
+	
+	
+	
+	
 	@RequestMapping(value = "/user_information.action", method = RequestMethod.GET)
 	public String userInformation(Model model)
 	{

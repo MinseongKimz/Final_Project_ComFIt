@@ -59,25 +59,7 @@
 	</select>
 
 
-	<!-- 
-	<insert id="add">
-		INSERT INTO TBL_STUDENT(SID, NAME, TEL)
-		VALUES(#{sid}, #{name}, #{tel})
-	</insert>
 	
-	<select id="search" resultType="com.test.mybatis.StudentDTO">
-		SELECT SID, NAME, TEL
-		FROM TBL_STUDENT
-		WHERE SID = #{sid}
-	</select>
-	
-	
-	<update id="update">
-		UPDATE TBL_STUDENT
-		SET NAME= #{name}, TEL= #{tel}
-		WHERE SID = #{sid}
-	</update> 
-	-->
 	
 	
 </mapper>

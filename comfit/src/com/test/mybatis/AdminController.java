@@ -53,7 +53,7 @@ public class AdminController
 	// 관리자 차단회원 관리
 	@RequestMapping(value = "/admin_bannedlist.action", method = RequestMethod.GET)
 	public String adBannedList(Model model)
-	{
+	{	
 		return "/WEB-INF/view/admin/ad_userbanned_list.jsp";
 	}
 	
@@ -61,7 +61,15 @@ public class AdminController
 	@RequestMapping(value = "/admin_userout_list.action", method = RequestMethod.GET)
 	public String adUserout(Model model)
 	{
-		return "/WEB-INF/view/admin/ad_userout_list.jsp";
+		String result = null;
+		
+		IAdmin dao = sqlSession.getMapper(IAdmin.class);
+		
+		model.addAttribute("useroutList", dao.adminUseroutList());
+		
+		result =  "/WEB-INF/view/admin/ad_userout_list.jsp";
+		
+		return result;
 	}
 	
 	// 관리자 상품관리

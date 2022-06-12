@@ -15,13 +15,13 @@ public class Maillog
 	@Autowired
 	private JavaMailSender mailSender;
 	
-	@RequestMapping(value = "auth.action" ,method = RequestMethod.GET)
-	public void auth()
+	@RequestMapping(value = "/auth.action" ,method = RequestMethod.GET)
+	public String auth()
 	{
 		String from  = "comfit0612@naver.com";
-		String to  = "hjui78@naver.com";
+		String to  = "cseon230@gmail.com";
 		String subject = "[Comfit] 이메일 인증 메일입니다.";
-		String content = "ㅇㄴㅁㄹㅇㄴㄹ";
+		String content = "<a href='http://localhost:8090/comfit/comfit.action'>인증하러가기</a>";
 		
 		try
 		{
@@ -39,7 +39,7 @@ public class Maillog
 		{
 			System.out.println(e.toString());
 		}
-				
+		return "admin_category_list.action";		
 	}
 
 }

@@ -167,8 +167,8 @@
 
 </head>
 
-<div>
-	<c:import url="admin/comfit_header_user.jsp"></c:import>
+<div class="header">
+	<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
 </div>
 <br /><br /><br />
 
@@ -230,8 +230,8 @@
                 </div>
                 
             </div>
-            <button class="btn btn-primary leftLst"><</button>
-            <button class="btn btn-primary rightLst">></button>
+            <button class="btn btn-primary leftLst"></button>
+            <button class="btn btn-primary rightLst"></button>
         </div>
 	</div>
 	<br />

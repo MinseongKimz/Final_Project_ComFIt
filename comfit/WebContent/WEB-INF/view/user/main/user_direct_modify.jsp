@@ -174,9 +174,9 @@
 </head>
 <body>
    <!--Header  -->
-   <div class="header">
-      <c:import url="comfit_header_user.jsp"></c:import>
-      </div>
+    <div class="header">
+	<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
+	</div>
 <!--날짜 처리  -->
 <script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
 <script type="text/javascript" src="<%=cp%>/js/jquery.timepicker.js."></script>
@@ -319,7 +319,7 @@
          	<th>물품검색<span class="star">*</span></th>
          	  <td>
                <div class="input-group mb-5" style="width: 70%; margin-top: 15%;">
-                 <button class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></button>
+                 <button class="input-group-text" id="basic-addon1"><i class="bi bi-search" onclick="location.href='searchproduct.action';"></i></button>
                  <input type="text" class="form-control" placeholder="물품 검색" style="height:40px;">
                </div>
               </td>

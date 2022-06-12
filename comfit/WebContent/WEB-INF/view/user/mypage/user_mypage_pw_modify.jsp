@@ -11,6 +11,21 @@
 <meta charset="UTF-8">
 <title>비밀번호 수정</title>
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/main.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+	$(document).ready(function()
+	{
+		$("#btn-modify-success").click(function()
+		{
+			location.href="user_information.action";
+		})
+	})
+	
+
+</script>
+
 <style type="text/css">
 
 	.subheader
@@ -19,6 +34,7 @@
 		font-weight: bold;
 		margin-left: 15%;
 		margin-top:5%;
+		
 	}
 	.subheader_header
 	{
@@ -49,7 +65,7 @@
 <div>
 		<!--Header  -->
 		<div class="header">
-	      <c:import url="comfit_header.jsp"></c:import>
+	      <c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
 	   	</div>
 	   	
 	   	<!--Content  -->
@@ -57,7 +73,7 @@
 	   		<p class="subheader">마이페이지</p>
 	   		<p class="subheader_header">회원정보</p>
 	   		<div style="float:left; margin-left:15%;">
-	   		<c:import url="user_sidebar.jsp"></c:import>
+	   		<c:import url="/WEB-INF/view/user/main/user_sidebar.jsp"></c:import>
 	   		</div>
 	   	</div>
 	   
@@ -66,17 +82,16 @@
 	   			<td>현재비밀번호</td><td><input type="text" class="hi" placeholder="비밀번호를 입력하세요" /></td>
 	   		</tr>
 	   		<tr>
-	   			<td>새 비밀번호</td><td><input type="text" class="hi" placeholder="새비밀번호를 입력하세요" /></td>
+	   			<td>새 비밀번호</td><td><input type="text" class="hi" placeholder="새 비밀번호를 입력하세요" /></td>
 	   		</tr>
 	   		<tr>
-	   			<td>새 비밀번호 확인</td><td><input type="text" class="hi" placeholder="새비밀번호를 한 번더 입력하세요" /></td>
+	   			<td>새 비밀번호 확인</td><td><input type="text" class="hi" placeholder="새 비밀번호를 한 번 더 입력하세요" /></td>
 	   		</tr>
 	   		<tr>
 	   			<td>
 	   			
 	   			<button class="btn btn-primary" style="margin-left: 80%; width: 150px; margin-top:5%;"
-								data-bs-toggle="modal" data-bs-target="#check"
-								>확인</button>
+				data-bs-toggle="modal" data-bs-target="#check">확인</button>
 	   			</td>
 	   		</tr>
 	   	</table>
@@ -95,7 +110,7 @@
 		         <span class="ibgum" style="font-size: 15px;">비밀번호 수정이 완료되었습니다.</span><br />
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-primary" aria-label="Close" data-bs-dismiss="modal">확인</button>
+		        <button type="button" class="btn btn-primary" id="btn-modify-success" aria-label="Close" data-bs-dismiss="modal">확인</button>
 		      </div>
 		    </div>
 		  </div>

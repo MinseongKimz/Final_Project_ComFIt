@@ -143,7 +143,7 @@ tbody {background-color: white;}
 
   <!-- 사이드바 -->
   <div id="sidebar-wrapper">
-    <a href="ad_main.action" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+    <a href="/ad_main.action" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
       <svg class="bi me-2" width="30" height="24"><use xlink:href="admin_main.jsp"/></svg>
       <img alt="" src="images/logo-admin.png" style="width: 100%; margin-top: 10px">
     </a>  
@@ -157,9 +157,9 @@ tbody {background-color: white;}
       </div>
         <div class="collapse" id="home-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="admin_userlist.action" class="link-dark rounded">일반회원 관리</a></li>
-            <li><a href="admin_bannedlist.action" class="link-dark rounded">차단회원 관리</a></li>
-            <li><a href="admin_userout_list.action" class="link-dark rounded">탈퇴회원 관리</a></li>
+            <li><a href="/admin_userlist.action" class="link-dark rounded">일반회원 관리</a></li>
+            <li><a href="/admin_bannedlist.action" class="link-dark rounded">차단회원 관리</a></li>
+            <li><a href="/admin_userout_search.action" class="link-dark rounded">탈퇴회원 관리</a></li>
           </ul>
         </div>
       </li>
@@ -174,8 +174,8 @@ tbody {background-color: white;}
       </div>  
         <div class="collapse" id="dashboard-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="admin_product_list.action" class="link-dark rounded">상품관리</a></li>
-            <li><a href="admin_money_list.action" class="link-dark rounded">입출금관리</a></li>
+            <li><a href="/admin_product_list.action" class="link-dark rounded">상품관리</a></li>
+            <li><a href="/admin_money_list.action" class="link-dark rounded">입출금관리</a></li>
           </ul>
         </div>
       </li>
@@ -184,7 +184,7 @@ tbody {background-color: white;}
       
       <li class="mb-1">
       <div class="d-grid gap-2">
-        <button class="btn-toggle" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false" onclick="location.href='/comfit/admin_category_list.action'">
+        <button class="btn-toggle" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false" onclick="location.href='/admin_category_list.action'">
           카테고리 관리
         </button>
       </div>  
@@ -200,10 +200,10 @@ tbody {background-color: white;}
       </div>
         <div class="collapse" id="account-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="admin_report_list.action" class="link-dark rounded">신고관리</a></li>
-            <li><a href="admin_ask_list.action" class="link-dark rounded">문의관리</a></li>
-            <li><a href="admin_notice_list.action" class="link-dark rounded">공지사항</a></li>
-            <li><a href="admin_faq_list.action" class="link-dark rounded">FAQ</a></li>
+            <li><a href="/admin_report_list.action" class="link-dark rounded">신고관리</a></li>
+            <li><a href="/admin_ask_list.action" class="link-dark rounded">문의관리</a></li>
+            <li><a href="/admin_notice_list.action" class="link-dark rounded">공지사항</a></li>
+            <li><a href="/admin_faq_list.action" class="link-dark rounded">FAQ</a></li>
           </ul>
         </div>
       </li>      

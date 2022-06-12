@@ -68,8 +68,7 @@
 		<div class="header">
 	      <c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
 	   	</div>
-	   	
- 	   	<div>
+	   	<div>
 	   		<p class="subheader">마이페이지</p>
 	   		<p class="subheader_header">회원정보</p>
 	   	</div>

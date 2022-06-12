@@ -21,7 +21,6 @@ public class MainController
 	@RequestMapping("/comfit.action")
 	public String hello(Model model)
 	{
-		
 		return "/WEB-INF/view/user/main/non_user_main.jsp";
 	}
 	
@@ -41,6 +40,7 @@ public class MainController
 	@RequestMapping("/svc.action")
 	public String svc(Model model)
 	{
+		
 		return "/WEB-INF/view/user/main/user_svcenter_main.jsp";
 	}
 }

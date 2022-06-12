@@ -11,6 +11,21 @@
 <meta charset="UTF-8">
 <title>비밀번호 수정</title>
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/main.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+	$(document).ready(function()
+	{
+		$("#btn-modify-success").click(function()
+		{
+			location.href="user_information.action";
+		})
+	})
+	
+
+</script>
+
 <style type="text/css">
 
 	.subheader
@@ -95,7 +110,7 @@
 		         <span class="ibgum" style="font-size: 15px;">비밀번호 수정이 완료되었습니다.</span><br />
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-primary" aria-label="Close" data-bs-dismiss="modal">확인</button>
+		        <button type="button" class="btn btn-primary" id="btn-modify-success" aria-label="Close" data-bs-dismiss="modal">확인</button>
 		      </div>
 		    </div>
 		  </div>

@@ -11,6 +11,20 @@
 <meta charset="UTF-8">
 <title>주소 번호 수정</title>
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/main.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+	$(document).ready(function()
+	{
+		$("#btn-modify-success").click(function()
+		{
+			location.href="user_information.action";
+		})
+	})
+	
+
+</script>
 <style type="text/css">
 
 	.subheader
@@ -72,7 +86,7 @@
 					</td>
 				</tr>
 	   		<tr>
-	   			<td><button type="button" class="btn btn-primary btn-sm"id="btn" style="margin-left:50%; margin-top:5%; width:80%;">확인</button></td>
+	   			<td><button type="button" class="btn btn-primary btn-sm"id="btn-modify-success" style="margin-left:50%; margin-top:5%; width:80%;">확인</button></td>
 	   		</tr>
 	   	</table>
 </div>

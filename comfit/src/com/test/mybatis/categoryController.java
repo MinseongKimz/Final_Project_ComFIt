@@ -28,7 +28,7 @@ public class categoryController
 		
 		model.addAttribute("categorylist", dao.categoryList());
 		
-		result = "/WEB-INF/view/ad_category_list.jsp";
+		result = "/WEB-INF/view/admin/ad_category_list.jsp";
 		
 		return result;
 		

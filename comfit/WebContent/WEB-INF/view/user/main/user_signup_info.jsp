@@ -212,7 +212,7 @@
           <div class="mb-3">
             <label for="password">비밀번호</label>
             <input type="password" class="form-control" id="password" placeholder="비밀번호를 입력해주세요." required>
-             &nbsp;<span style="font-size: 12pt; color: skyblue;">8자리 이상(영어, 숫자, 특수문자 각 1개 포함) </span>
+             &nbsp;<span style="font-size: 10pt; color: #FF8000; font-weight: bold;">8자리 이상(영어, 숫자, 특수문자 각 1개 포함) </span>
             <div class="invalid-feedback">
               비밀번호를 확인해주세요.
             </div>

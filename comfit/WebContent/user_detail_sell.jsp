@@ -21,7 +21,10 @@
 		float: left;
 		margin-left: 20px;
 	}
-	
+	th .fs-4
+	{
+		text-align: right;
+	}
 	
 </style>
 </head>
@@ -41,30 +44,30 @@
 			style="width: 100%; height:100%; object-fit: cover;">
 		</div>
 		
-		<table class="col-md-5">
+		<table class="col-md-5" >
 			<tr>
-				<th style="text-align: right;"><p class="fs-4">닉네임 : </p>
+				<th style="text-align: left;"><p class="fs-4">닉네임 : </p>
 				</th>
 				<td>
 				<p class="fs-6"> 아몰랑</p>
 				</td>
 			</tr>
 			<tr>
-				<th style="text-align: right;"><p class="fs-4">Level : </p>
+				<th style="text-align: left;"><p class="fs-4">Level : </p>
 				</th>
 				<td>
 				<p class="fs-6"> 5</p>
 				</td>
 			</tr>
 			<tr>
-				<th style="text-align: right;"><p class="fs-4">누적판매 수 : </p>
+				<th style="text-align: left;"><p class="fs-4">누적판매 수 : </p>
 				</th>
 				<td>
 				<p class="fs-6"> 25회</p>
 				</td>
 			</tr>
 			<tr>
-				<th style="text-align: right;"><p class="fs-4">가입일 : </p>
+				<th style="text-align: left;"><p class="fs-4">가입일 : </p>
 				</th>
 				<td>
 				<p class="fs-6"> 2022. 05. 20</p>
@@ -77,7 +80,7 @@
 	<p class="fs-4" style="font-weight: bold;">아몰랑 님으로부터 거래한 사람들의 후기</p>
 	
 	<!-- 해시태그 div -->
-	<div class="hashtag" style="width: 100%; border-top: 2px solid gray; border-bottom: 2px solid gray">
+	<div class="hashtag" style="width: 100%;">
 		<div style="float:left; text-align: left;">
 		<ul>
 			<!-- 해시태그 리스트 -->
@@ -88,8 +91,7 @@
 		</ul>
 		</div>
 		
-		<div style="text-align: right; height: 100%;">
-		<button type="button" class="btn btn-primary">더보기</button>
+		<div style="text-align: right; height: 30px;">
 		</div>
 		
 	</div>

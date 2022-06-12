@@ -157,8 +157,8 @@ tbody {background-color: white;}
       </div>
         <div class="collapse" id="home-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="ad_userlist.jsp" class="link-dark rounded">일반회원 관리</a></li>
-            <li><a href="ad_userbanned_list.jsp" class="link-dark rounded">차단회원 관리</a></li>
+            <li><a href="admin_userlist.action" class="link-dark rounded">일반회원 관리</a></li>
+            <li><a href="admin_bannedlist.action" class="link-dark rounded">차단회원 관리</a></li>
             <li><a href="ad_userout_search.jsp" class="link-dark rounded">탈퇴회원 관리</a></li>
           </ul>
         </div>

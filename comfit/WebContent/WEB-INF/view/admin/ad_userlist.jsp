@@ -120,7 +120,7 @@
 				</tr>
 			</thead>
 			<tbody style="background-color: white;">
-				<c:forEach var="user" items="${userBanList }">
+				<c:forEach var="user" items="${userList }">
 					<tr>
 						<td>${user.u_id }</td>
 						<td>${user.u_email }</td>

@@ -50,23 +50,16 @@ h5
 </head>
 <body>
 <div>
-	<div>
-		<!-- 헤더 영역 -->
-		<c:import url="comfit_header_user.jsp"></c:import>
-	</div>
+		<div class="header">
+	      <c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
+	   	</div>
+	   	
 	
 	<div>
 		<div class="row">
-			<div class="col-md-12 col-sm-12 col-lg-1" style="margin-left: 3%;">
-				<div class="list-group ">
-					<a href="#" class="list-group-item list-group-item-action">회원정보</a>
-					<br /> <a href="#" class="list-group-item list-group-item-action">구매내역</a>
-					<br /> <a href="#"
-						class="list-group-item list-group-item-action">판매내역</a> <br />
-					<a href="#" class="list-group-item list-group-item-action">입출금내역</a>
-					<br /> <a href="#" class="list-group-item list-group-item-action active">회원탈퇴</a>
-				</div>
-			</div>
+				<div style="float:left; margin-left:15%;">
+								<c:import url="/WEB-INF/view/user/main/user_sidebar.jsp" ></c:import>
+				</div>	
 
 			<div class="col-lg-10 col-sm-12 col-md-12"  style="margin-left: 4%;">
 				<div class="d-flex justify-content-between">

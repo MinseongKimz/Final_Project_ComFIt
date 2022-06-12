@@ -18,8 +18,9 @@ public class categoryController
 	@Autowired
 	private SqlSession sqlSession;
 	
-	// 관리자 카테고리 리스트
-	@RequestMapping(value = "/ad_category_list.action", method = RequestMethod.GET)
+	// 관리자 카테고리 리스트 -- AdminController로 이동
+	/*
+	@RequestMapping(value = "/admin_category_list.action", method = RequestMethod.GET)
 	public String categoryList(Model model)
 	{
 		String result = null;
@@ -28,14 +29,15 @@ public class categoryController
 		
 		model.addAttribute("categorylist", dao.categoryList());
 		
-		result = "/WEB-INF/view/ad_category_list.jsp";
+		result = "/WEB-INF/view/admin/ad_category_list.jsp";
 		
 		return result;
 		
 	}
+	*/
 	
 	// 관리자 카테고리 insert
-	@RequestMapping(value = "/categoryInsert.action", method = RequestMethod.GET)
+	@RequestMapping(value = "/categoryinsert.action", method = RequestMethod.GET)
 	public String categoryInsert(String category_name)
 	{
 		String result = null;
@@ -44,13 +46,13 @@ public class categoryController
 		
 		dao.categoryInsert(category_name);
 		
-		result = "redirect:ad_category_list.action";
+		result = "redirect:admin_category_list.action";
 		
 		return result;
 	}
 	
 	// 관리자 카테고리 delete
-	@RequestMapping(value = "/categoryDelete.action", method = RequestMethod.GET)
+	@RequestMapping(value = "/categorydelete.action", method = RequestMethod.GET)
 	public String categoryDelete(int pd_category_id)
 	{
 		String result = null;
@@ -59,7 +61,7 @@ public class categoryController
 		
 		dao.categoryDelete(pd_category_id);
 		
-		result = "redirect:ad_category_list.action";
+		result = "redirect:admin_category_list.action";
 		
 		return result;
 	}

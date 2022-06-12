@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="<%=cp %>/css/bootstrap.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap.js"></script>
+
 <style type="text/css">
 p
 {
@@ -72,7 +73,7 @@ carousel-item
 <body>
 
 <div class="header">
-	<c:import url="admin/comfit_header_user.jsp"></c:import>
+	<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
 </div>
 
 <div class="container">
@@ -178,7 +179,7 @@ carousel-item
 				<!-- 판매자)입찰자 있을 때 :즉시낙찰/삭제하기 -->
 				<!-- <button type="button" class="btn btn-warning" style="width: 48%;">즉시낙찰</button> -->
 				<div style="width: 100%; float: right;">
-					<input type="text" class="form-control"" placeholder="입찰가격을 적어주세요"/>
+					<input type="text" class="form-control" placeholder="입찰가격을 적어주세요"/>
 				</div>
 				<div class="input-group" style="float: right; width: 100%;">
 				   <input type="text" class="form-control" placeholder="배송지를 검색해주세요." readonly="readonly">
@@ -187,7 +188,7 @@ carousel-item
 				    </button>                          
 				</div>
 				<div style="width: 100%; float: right;">
-					<input type="text" class="form-control"" placeholder="상세주소" readonly="readonly"/>
+					<input type="text" class="form-control" placeholder="상세주소" readonly="readonly"/>
 				</div>
 				<div style="">
 					<button type="button" class="btn btn-primary" style="width: 100%;">입찰하기</button>
@@ -221,7 +222,7 @@ carousel-item
 			</tr>
 		</table>
 		
-		<button class="btn btn-primary" style="margin-left: 3%;">목록으로</button>
+		<button class="btn btn-primary procut_list" style="margin-left: 3%;">목록으로</button>
 		</div>
 		
 		

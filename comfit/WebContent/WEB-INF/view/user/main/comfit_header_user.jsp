@@ -84,7 +84,7 @@
     <!-- nav 상단 고정-->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container">
-            <a href="/" > 
+            <a href="/comfit.action" > 
 	           <img alt="logo" src="<%=cp%>/images/logo.png" style="width: 200px;">
 	        </a>
 	        

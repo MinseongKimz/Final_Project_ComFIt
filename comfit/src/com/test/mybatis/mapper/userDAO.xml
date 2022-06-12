@@ -58,6 +58,11 @@
 		FROM USER_INFORMATION
 	</select>
 	
+	<select id="adminUseroutList" resultType="com.test.mybatis.useroutDTO">
+		SELECT U_EMAIL, U_NAME, U_NICKNAME, U_EXITDATE
+		FROM USER_INFORMATION_BACKUP
+	</select>	
+	
 	<!-- 
 	<insert id="add">
 		INSERT INTO TBL_STUDENT(SID, NAME, TEL)

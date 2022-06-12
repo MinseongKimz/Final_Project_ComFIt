@@ -182,6 +182,8 @@ FROM DIRECT_TRANS_BANNED_VIEW;
 SELECT *
 FROM COMFIT_USER;
 
+--------------------------------------------------------------------------------
+
 SELECT U_EMAIL, U_NAME, U_NICKNAME, U_TEL, U_JOINDATE, 
 (
     SELECT COUNT(*) AS COUNT

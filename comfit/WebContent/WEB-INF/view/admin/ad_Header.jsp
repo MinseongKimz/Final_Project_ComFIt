@@ -184,7 +184,7 @@ tbody {background-color: white;}
       
       <li class="mb-1">
       <div class="d-grid gap-2">
-        <button class="btn-toggle" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false" onclick="location.href='/admin_category_list.action'">
+        <button class="btn-toggle" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false" onclick="location.href='/comfit/admin_category_list.action'">
           카테고리 관리
         </button>
       </div>  

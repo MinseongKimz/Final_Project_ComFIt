@@ -79,12 +79,12 @@
 
 <div>
 	<!--Header  -->
-	<div class="header">
-      <c:import url="comfit_header.jsp"></c:import>
-   	</div>
-   	
+<div class="header">
+         <c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
+</div>
+
    	<div>
-   		<p class="subheader">마이페이지</p>
+   		<a><p class="subheader">마이페이지</p></a>
    	</div>
    	
 	
@@ -104,7 +104,7 @@
 				</th>
 				<td>
 					<button type="button" class="btn btn-primary">찜한상품보기</button>
-					<button type="button" class="btn btn-primary">내 정보 보기/수정</button>
+					<button type="button" class="btn btn-primary" onclick="location.href='user_information.action'">내 정보 보기/수정</button>
 				</td>
 			</tr>
 			</table>
@@ -114,10 +114,9 @@
 	
 	
 	 <div class="content" >
-						 <div>
-							<h3 class="inout_point">입출금 내역 내 포인트 : test p</h3> 
-						 	<button type="button" class="btn btn-link" style="margin-left: 70%;">전체보기</button>
-						 </div>
+		 <div>
+			<h3 class="inout_point">입출금 내역 내 포인트 : test p</h3> 
+		 </div>
 		<table class="table table-bordered" style="width: 1000px;">
 		    <thead>
 		        <tr>
@@ -144,6 +143,8 @@
 		        </tr>  
 		    </tbody>
 		</table>
+		<button type="button" class="btn btn-primary btn-sm"id="sellBtn" style="width: 400px; height: 40px; font-size: 15pt; margin-left:47%;"
+		        onclick="location.href='user_moneylist.action'">입출금 내역 전체보기</button>
 		
 		
 		
@@ -183,7 +184,8 @@
 		        </tr>  
 		    </tbody>
 		</table>
-		<button type="button" class="btn btn-primary btn-sm"id="sellBtn" style="width: 400px; height: 40px; font-size: 15pt; margin-left:47%;">판매내역 자세히보기</button>
+		<button type="button" class="btn btn-primary btn-sm"id="sellBtn" style="width: 400px; height: 40px; font-size: 15pt; margin-left:47%;"
+			    onclick="location.href='user_selllist.action'">판매내역 자세히보기</button>
 		           
 		
 		<div class="content" >
@@ -224,7 +226,8 @@
 		        </tr>  
 		    </tbody>
 		</table>
-		<button type="button" class="btn btn-primary btn-sm"id="buyBtn" style="width: 400px; height: 40px; font-size: 15pt;margin-left:47%;">구매내역 자세히보기</button>
+		<button type="button" class="btn btn-primary btn-sm"id="buyBtn" style="width: 400px; height: 40px; font-size: 15pt;margin-left:47%;"
+		        onclick="location.href='user_buylist.action'" >구매내역 자세히보기</button>
 		
 			</div>
 		</div>

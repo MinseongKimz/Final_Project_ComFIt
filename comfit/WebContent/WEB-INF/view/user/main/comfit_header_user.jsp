@@ -142,8 +142,8 @@
 	              판매하기
 	         </button>
 	         <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-	            <li class="dropdown-item"><a class="dropdown-item" href="#">직거래 판매하기</a></li>
-	            <li class="dropdown-item"><a class="dropdown-item" href="#">택배거래 판매하기</a></li>
+	            <li class="dropdown-item"><a class="dropdown-item" href="direct_sell.action">직거래 판매하기</a></li>
+	            <li class="dropdown-item"><a class="dropdown-item" href="delivery_sell.action">택배거래 판매하기</a></li>
 	         </ul>
 	</div>
 	</div>

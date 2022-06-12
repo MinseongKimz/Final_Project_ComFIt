@@ -25,4 +25,25 @@ public class InfoModifyController
 		return result;
 	}
 	
+	@RequestMapping(value = "/telmodifyform.action", method = RequestMethod.GET)
+	public String telmodify()
+	{
+		String result = null;
+		
+		result = "/WEB-INF/view/user/mypage/user_mypage_tel_modify.jsp";
+		
+		return result;
+	}
+	
+	
+	@RequestMapping(value = "/addressmodifyform.action", method = RequestMethod.GET)
+	public String addressmodify()
+	{
+		String result = null;
+		
+		result = "/WEB-INF/view/user/mypage/user_mypage_address_modify.jsp";
+		
+		return result;
+	}
+	
 }

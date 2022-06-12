@@ -18,10 +18,10 @@ public class Maillog
 	@RequestMapping(value = "/auth.action" ,method = RequestMethod.GET)
 	public String auth()
 	{
-		String from  = "comfit0612@naver.com";
-		String to  = "cseon230@gmail.com";
+		String from  = "minseonkimc@gmail.com";
+		String to  = "hjui6322789@gmail.com";
 		String subject = "[Comfit] 이메일 인증 메일입니다.";
-		String content = "<a href='http://localhost:8090/comfit/comfit.action'>인증하러가기</a>";
+		String content = "<a href='http://localhost:8090/comfit/correct.action?auth='qwdqwdqwdqw''>인증하러가기</a>";
 		
 		try
 		{

@@ -45,14 +45,14 @@
 <div>
 		<!--Header  -->
 		<div class="header">
-	      <c:import url="comfit_header.jsp"></c:import>
+	      <c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
 	   	</div>
 	   	
 	   	<div>
 	   		<p class="subheader">마이페이지</p>
 	   		<p class="subheader_header">회원정보</p>
 	   		<div style="float:left; margin-left:15%;">
-	   		<c:import url="user_sidebar.jsp"></c:import>
+	   		<c:import url="/WEB-INF/view/user/main/user_sidebar.jsp"></c:import>
 	   		</div>
 	   	</div>
 	   	<table class="tablebts">

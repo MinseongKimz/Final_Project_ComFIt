@@ -14,8 +14,19 @@
 <title>배송 판매글 등록</title>
 <link rel="stylesheet" href="<%=cp %>/css/bootstrap.css">
 <link rel="stylesheet" href="<%=cp %>/css/inputstyle.css">
+<link rel="stylesheet" href="css/main.css" type="text/css">
+
+<link rel="stylesheet" type="text/css" href="<%=cp %>/css/jquery-ui.css">
+
+
+
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="jQuery.MultiFile.min.js"></script>
+
 <script type="text/javascript">
 	$(document).ready(function()
 	{
@@ -36,14 +47,159 @@
 		
 	});
 	
+	/* $(function()
+	{
+		$(".search_product").click(function()
+		{
+			//alert("d");
+			$(location).attr("href,"/searchproduct.action");
+		})
+	}) */
+	
+	
 </script>
-
+<style type="text/css">
+.insert {
+    padding: 20px 30px;
+    display: block;
+    width: 75%;
+    height: 15%;
+    border: 1px solid #dbdbdb;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.insert .file-list {
+    height: 15%;
+    overflow: auto;
+    border: 1px solid #989898;
+    padding: 10px;
+}
+.insert .file-list .filebox p {
+    font-size: 14px;
+    margin-top: 10px;
+    display: inline-block;
+}
+.insert .file-list .filebox .delete i
+{
+    size:50%;
+    margin-left: 5px;
+}
+</style>
+<script type="text/javascript">
+					var fileNo = 0;
+					var filesArr = new Array();
+					/* 첨부파일 추가 */
+					function addFile(obj){
+					   var minFileCnt = 6;
+					    var maxFileCnt = 10;   // 첨부파일 최대 개수
+					    var attFileCnt = document.querySelectorAll('.filebox').length;    // 기존 추가된 첨부파일 개수
+					    var remainFileCnt = maxFileCnt - attFileCnt;    // 추가로 첨부가능한 개수
+					    var curFileCnt = obj.files.length;  // 현재 선택된 첨부파일 개수
+					   
+					    
+					    // 첨부파일 개수 확인
+					    if (curFileCnt > remainFileCnt) {
+					        alert("첨부파일은 최대 " + maxFileCnt + "개 까지 첨부 가능합니다.");
+					    }
+					    for (var i = 0; i < Math.min(curFileCnt, remainFileCnt); i++) {
+					      
+					       
+					        const file = obj.files[i];
+					      
+					        
+					        
+					        
+					        // 첨부파일 검증
+					        if (validation(file)) {
+					            // 파일 배열에 담기
+					            var reader = new FileReader();
+					            reader.onload = function () {
+					                filesArr.push(file);
+					            };
+					            reader.readAsDataURL(file)
+					            // 목록 추가
+					            let htmlData = '';
+					            htmlData += '<div id="file' + fileNo + '" class="filebox">';
+					            htmlData += '   <p class="name">' + file.name + '</p>';
+					            htmlData += '   <a class="delete" onclick="deleteFile(' + fileNo + ');"><button class="btn btn-danger">취소</button></a>';
+					            htmlData += '</div>';
+					            $('.file-list').append(htmlData);
+					            fileNo++;
+					        } else {
+					            continue;
+					        }
+					    }
+					    // 초기화
+					    document.querySelector("input[type=file]").value = "";
+					}
+					   /* 첨부파일 검증 */
+					   function validation(obj){
+					    const fileTypes = ['application/pdf', 'image/gif', 'image/jpeg', 'image/png', 'image/bmp', 'image/tif'];
+					    if (obj.name.length > 100) {
+					        alert("파일명이 100자 이상인 파일은 제외되었습니다.");
+					        return false;
+					    } else if (obj.size > (100 * 1024 * 1024)) {
+					        alert("최대 파일 용량인 100MB를 초과한 파일은 제외되었습니다.");
+					        return false;
+					    } else if (obj.name.lastIndexOf('.') == -1) {
+					        alert("확장자가 없는 파일은 제외되었습니다.");
+					        return false;
+					    }else if (!fileTypes.includes(obj.type)) {
+					        alert("첨부가 불가능한 파일은 제외되었습니다.");
+					        return false;
+					    }
+					    else {
+					        return true;
+					    }
+					}
+					
+					
+					
+					
+					/* 첨부파일 삭제 */
+					function deleteFile(num) {
+					    document.querySelector("#file" + num).remove();
+					    filesArr[num].is_delete = true;
+					}
+					/* 폼 전송 */
+					function submitForm() {
+					    // 폼데이터 담기
+					    var form = document.querySelector("form");
+					    var formData = new FormData(form);
+					    for (var i = 0; i < filesArr.length; i++) {
+					        // 삭제되지 않은 파일만 폼데이터에 담기
+					        if (!filesArr[i].is_delete) {
+					            formData.append("attach_file", filesArr[i]);
+					        }
+					    }
+					    $.ajax({
+					        method: 'POST',
+					        url: '/register',
+					        dataType: 'json',
+					        data: formData,
+					        async: true,
+					        timeout: 30000,
+					        cache: false,
+					        headers: {'cache-control': 'no-cache', 'pragma': 'no-cache'},
+					        success: function () {
+					            alert("파일업로드 성공");
+					        },
+					        error: function (xhr, desc, err) {
+					            alert('에러가 발생 하였습니다.');
+					            return;
+					        }
+					    })
+					}
+</script>
 </head>
 <body>
 
 <div class="header">
-	<c:import url="comfit_header_user.jsp"></c:import>
+	<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
 </div>
+
+
 
 <div class="container" style="padding-top: 80px;">
 	<p class="fs-3" style="font-weight: bold;">
@@ -96,8 +252,8 @@
 				<td colspan="2">
 					물품검색
 					<div class="input-group mb-5">
-					  <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
-					  <input type="text" class="form-control" placeholder="물품검색" style="height:40px; width:100px;">
+					  <span class="input-group-text" id="basic-addon1" onclick="location.href='searchproduct.action';"><i class="bi bi-search"></i></span>
+					  <input type="text" class="form-control " placeholder="물품검색" style="height:40px; width:100px;">
 					</div>
 				</td>
 			</tr>
@@ -121,26 +277,20 @@
 			</tr>
 			
 			<tr>
-				<th>물품 사진<span class="star">*</span>
-				 <p style="font-weight: normal; font-size: 7pt;">최소 두장 이상 등록해 주세요.</p>
+            <th>물품 사진<span class="star">*</span>
+             <p style="font-weight: normal; font-size: 7pt;">최소 여섯장 이상 등록해 주세요.</p>
                 </th>
                 <td colspan="3">
-                	<div style="width: 86%; height: 100%; border: 1px solid;">
-                		<p style="text-align: center; font-size: 9px;">
-                		<br>
-                		이미지 업로드(0/5)
-                		<br><br>
-                		최소 2개, 최대 5개까지 업로드 가능<br>
-                		파일 형식 : jpg / png 사이즈 : 가로 ??px, 세로 ??px 이상<br>
-                		※ 이미지를 등록하면 반영됩니다.
-                		</p>
-                	</div>
-                	<div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-right: 14%;">
-                	<button type="button" class="btn btn-primary btn-sm">이미지 업로드</button>
-                	<button type="button" class="btn btn-secondary btn-sm">이미지 삭제</button>
-                	</div>
-				</td>
-			</tr>
+                      <div class="insert">
+                   <form method="POST" onsubmit="return false;" enctype="multipart/form-data">
+                      <p style="font-weight: normal;">[ 최소 6장 ~ 최대 10장 ]</p>
+                       <input type="file" onchange="addFile(this);" multiple />
+                       <div class="file-list"  >
+                       </div>
+                   </form>
+                  </div>
+            	</td>
+         	</tr>
 			
 			<tr>
 				<th>A/S 가능 여부

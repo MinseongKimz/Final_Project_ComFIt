@@ -75,8 +75,9 @@
 </script>
 
 <div>
-	<c:import url="comfit_header.jsp"></c:import>
+   <c:import url="/WEB-INF/view/user/main/comfit_header_nolog.jsp"></c:import>
 </div>
+
 
 <div class="content">
 <br /><br /><br />

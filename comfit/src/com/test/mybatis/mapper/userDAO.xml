@@ -36,7 +36,7 @@
 	<!--    <<자동 매핑>>이 이루어진다. -->
 	<!--    또한 SQL 문 내부에 세미콜론(;) 이 있으면 안된다. -->
 	<select id="adminUserList" resultType="com.test.mybatis.userDTO">
-		SELECT U_EMAIL, U_NAME, U_NICKNAME, U_TEL, U_JOINDATE, 
+		SELECT U_ID, U_EMAIL, U_NAME, U_NICKNAME, U_TEL, U_JOINDATE, 
 		(
 		    SELECT COUNT(*) AS COUNT
 		    FROM
@@ -57,18 +57,21 @@
 		) AS BANCOUNT
 		FROM USER_INFORMATION
 	</select>
-
-
+	
+	<!-- 
+	<insert id="add">
+		INSERT INTO TBL_STUDENT(SID, NAME, TEL)
+		VALUES(#{sid}, #{name}, #{tel})
+	</insert>
+	-->
 	
 	
+	
+	
+	<!-- <select id="search" resultType="com.test.mybatis.StudentDTO">
+		SELECT SID, NAME, TEL
+		FROM TBL_STUDENT
+		WHERE SID = #{sid}
+	</select> -->
 	
 </mapper>
-
-
-
-
-
-
-
-
-

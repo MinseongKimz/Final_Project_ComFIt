@@ -10,8 +10,48 @@
 <meta charset="UTF-8">
 <title>ad_login.jsp</title>
 <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
-<link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
+<link href="<%=cp%>/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<style type="text/css">
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+    
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -32,7 +72,9 @@
     
 <main class="form-signin">
   <form action="ad_main.jsp">
-    <img class="" src="images/logo.png" alt="" width="100%" height="100%" style="align-content: center; margin-left: 5px">
+            <a href="ad_login.jsp" > 
+	           <img alt="logo" src="<%=cp%>/images/logo.png" style="width: 200px;">
+	        </a>
     <h2 class="h3 mb-3"><b>관리자 로그인</b></h2>
 
     <div class="form-floating">

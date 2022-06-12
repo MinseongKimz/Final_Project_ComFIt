@@ -174,8 +174,8 @@ tbody {background-color: white;}
       </div>  
         <div class="collapse" id="dashboard-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="admin_product_list.action" class="link-dark rounded">상품관리</a></li>
-            <li><a href="admin_money_list.action" class="link-dark rounded">입출금관리</a></li>
+            <li><a href="/admin_product_list.action" class="link-dark rounded">상품관리</a></li>
+            <li><a href="/admin_money_list.action" class="link-dark rounded">입출금관리</a></li>
           </ul>
         </div>
       </li>

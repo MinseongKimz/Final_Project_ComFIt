@@ -19,6 +19,7 @@
 		font-weight: bold;
 		margin-left: 15%;
 		margin-top:5%;
+		
 	}
 	.subheader_header
 	{
@@ -49,7 +50,7 @@
 <div>
 		<!--Header  -->
 		<div class="header">
-	      <c:import url="comfit_header.jsp"></c:import>
+	      <c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
 	   	</div>
 	   	
 	   	<!--Content  -->
@@ -57,7 +58,7 @@
 	   		<p class="subheader">마이페이지</p>
 	   		<p class="subheader_header">회원정보</p>
 	   		<div style="float:left; margin-left:15%;">
-	   		<c:import url="user_sidebar.jsp"></c:import>
+	   		<c:import url="/WEB-INF/view/user/main/user_sidebar.jsp"></c:import>
 	   		</div>
 	   	</div>
 	   
@@ -66,10 +67,10 @@
 	   			<td>현재비밀번호</td><td><input type="text" class="hi" placeholder="비밀번호를 입력하세요" /></td>
 	   		</tr>
 	   		<tr>
-	   			<td>새 비밀번호</td><td><input type="text" class="hi" placeholder="새비밀번호를 입력하세요" /></td>
+	   			<td>새 비밀번호</td><td><input type="text" class="hi" placeholder="새 비밀번호를 입력하세요" /></td>
 	   		</tr>
 	   		<tr>
-	   			<td>새 비밀번호 확인</td><td><input type="text" class="hi" placeholder="새비밀번호를 한 번더 입력하세요" /></td>
+	   			<td>새 비밀번호 확인</td><td><input type="text" class="hi" placeholder="새 비밀번호를 한 번 더 입력하세요" /></td>
 	   		</tr>
 	   		<tr>
 	   			<td>

@@ -53,10 +53,10 @@ h5
 <body>
 
 <div>
-	<div>
-		<!-- 헤더 영역 -->
-		<c:import url="comfit_header_user.jsp"></c:import>
+	<div class="header">
+	      <c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
 	</div>
+	   	
 
 	<div class="title">
 		마이페이지 &nbsp;&nbsp;<span style="font-size: 20pt;">포인트 입출금 내역</span>
@@ -65,16 +65,9 @@ h5
 	
 	<div>
 		<div class="row">
-			<div class="col-md-12 col-sm-12 col-lg-1" style="margin-left: 3%;">
-				<div class="list-group ">
-					<a href="#" class="list-group-item list-group-item-action">회원정보</a>
-					<br /> <a href="#" class="list-group-item list-group-item-action">구매내역</a>
-					<br /> <a href="#"
-						class="list-group-item list-group-item-action ">판매내역</a> <br />
-					<a href="#" class="list-group-item list-group-item-action active" >입출금내역</a>
-					<br /> <a href="#" class="list-group-item list-group-item-action">회원탈퇴</a>
-				</div>
-			</div>
+			<div style="float:left; margin-left:15%;">
+								<c:import url="/WEB-INF/view/user/main/user_sidebar.jsp" ></c:import>
+				</div>	
 
 			<div class="col-lg-10 col-sm-12 col-md-12"  style="margin-left: 5%; width: 60%;">
 				<div class="d-flex justify-content-between">
@@ -126,9 +119,9 @@ h5
 					</table>
 					
 					<div class="d-flex justify-content-end" >
-						<button class="btn btn-primary btn-lg">입금</button> 
+						<button class="btn btn-primary btn-lg" onclick="location.href='inputmoneyform.action'">입금</button> 
 						&nbsp;
-						<button class="btn btn-secondary btn-lg">출금</button>
+						<button class="btn btn-secondary btn-lg" onclick="location.href='outputmoneyform.action'">출금</button>
 					
 					</div>
 				</div>

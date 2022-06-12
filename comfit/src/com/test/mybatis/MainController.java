@@ -21,6 +21,7 @@ public class MainController
 	@RequestMapping("/comfit.action")
 	public String hello(Model model)
 	{
+		
 		return "/WEB-INF/view/user/main/non_user_main.jsp";
 	}
 	

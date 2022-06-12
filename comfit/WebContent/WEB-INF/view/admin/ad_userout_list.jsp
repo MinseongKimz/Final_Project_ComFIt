@@ -10,7 +10,7 @@
 <meta charset="UTF-8">
 <!-- 기기별 크기 담당 -->
 <meta name="viewport" content="width=device-width", initial-scale="1">
-<title>ad_userbanned_list.jsp</title>
+<title>ad_userout_list.jsp</title>
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/main.css">
 </head>
 <body>
@@ -32,11 +32,13 @@
 				</tr>
 			</thead>
 			<tbody style="background-color: white;">
+			
+			<c:forEach var="user" items="${useroutList }">
 				<tr>
-					<td>yjooo0816@gmail.com</td>
-					<td>이연주</td>
-					<td>이연주</td>
-					<td>2022.05.05</td>
+					<td>${user.u_email }</td>
+					<td>${user.u_name }</td>
+					<td>${user.u_nickname }</td>
+					<td>${user.u_exitdate }</td>
 					<td>211.100.015....	</td>
 					<td>
 						<select class="form-select" style="width: 70%; text-align: ;">
@@ -46,6 +48,8 @@
 						</select>				
 					</td>
 				</tr>
+				</c:forEach>
+				
 			</tbody>
 		</table>
 

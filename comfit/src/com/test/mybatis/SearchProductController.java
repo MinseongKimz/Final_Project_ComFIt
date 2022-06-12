@@ -8,20 +8,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class ProductController
+public class SearchProductController
 {
-	@Autowired
-	private SqlSession sqlsession;
+	 @Autowired private SqlSession sqlSession;
 	
-	@RequestMapping(value = "/user_mainlist.action", method = RequestMethod.GET)
-	public String mainList(Model model)
+	
+	@RequestMapping(value = "/searchproduct.action", method = RequestMethod.GET)
+	public String search_prodcut(Model model)
 	{
 		String result = null;
-		IProduct dao = sqlsession.getMapper(IProduct.class);
-		model.addAttribute("pdList", dao.pdList());
-		model.addAttribute("cateList", dao.cateList());
 		
-		result = "/WEB-INF/view/user_main.jsp";
+		
+		result = "/WEB-INF/view/user/main/user_search_product.jsp";
+		
+		
 		return result;
 	}
 	

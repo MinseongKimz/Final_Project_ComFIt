@@ -67,10 +67,10 @@
 	   			<td>현재비밀번호</td><td><input type="text" class="hi" placeholder="비밀번호를 입력하세요" /></td>
 	   		</tr>
 	   		<tr>
-	   			<td>새 비밀번호</td><td><input type="text" class="hi" placeholder="새비밀번호를 입력하세요" /></td>
+	   			<td>새 비밀번호</td><td><input type="text" class="hi" placeholder="새 비밀번호를 입력하세요" /></td>
 	   		</tr>
 	   		<tr>
-	   			<td>새 비밀번호 확인</td><td><input type="text" class="hi" placeholder="새비밀번호를 한 번더 입력하세요" /></td>
+	   			<td>새 비밀번호 확인</td><td><input type="text" class="hi" placeholder="새 비밀번호를 한 번 더 입력하세요" /></td>
 	   		</tr>
 	   		<tr>
 	   			<td>

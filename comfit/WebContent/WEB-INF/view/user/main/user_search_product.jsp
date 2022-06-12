@@ -12,6 +12,7 @@
 <title>user_search_product.jsp</title>
 <link rel="stylesheet" type="text/css" href="css/user_search_product.css">
 <style type="text/css">
+
 	
 	.image{
 		width: 100px;
@@ -85,6 +86,7 @@
 
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
+
 	$(function()
 	{
 		var pdname = "";
@@ -218,6 +220,7 @@
 <body>
 
 <div style="text-align: center;">
+
 	<p class="title">물품 검색</p>
 </div>
 
@@ -239,6 +242,7 @@
 		</div>
 		
 	
+
 </div>
 
 </body>

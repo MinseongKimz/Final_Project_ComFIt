@@ -34,6 +34,4 @@ public class userController
 		return result;
 	}
 	
-	
-	
 }

@@ -11,6 +11,20 @@
 <meta charset="UTF-8">
 <title>휴대폰 번호 수정</title>
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/main.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+	$(document).ready(function()
+	{
+		$("#btn-modify-success").click(function()
+		{
+			location.href="user_information.action";
+		})
+	})
+	
+
+</script>
 <style type="text/css">
 
 	.subheader
@@ -45,14 +59,14 @@
 <div>
 		<!--Header  -->
 		<div class="header">
-	      <c:import url="comfit_header.jsp"></c:import>
+	      <c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
 	   	</div>
 	   	
 	   	<div>
 	   		<p class="subheader">마이페이지</p>
 	   		<p class="subheader_header">회원정보</p>
 	   		<div style="float:left; margin-left:15%;">
-	   		<c:import url="user_sidebar.jsp"></c:import>
+	   		<c:import url="/WEB-INF/view/user/main/user_sidebar.jsp"></c:import>
 	   		</div>
 	   	</div>
 	   	<table class="tablebts">
@@ -82,7 +96,7 @@
 		         <span class="ibgum" style="font-size: 15px;">휴대폰 번호 수정이 완료되었습니다.</span><br />
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-primary" aria-label="Close" data-bs-dismiss="modal">확인</button>
+		        <button type="button" class="btn btn-primary" id="btn-modify-success" aria-label="Close" data-bs-dismiss="modal">확인</button>
 		      </div>
 		    </div>
 		  </div>

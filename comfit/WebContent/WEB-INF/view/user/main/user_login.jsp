@@ -123,7 +123,7 @@
 		<!-- reCAPCHA -->
 		<div style="display: none;"></div>
 		
-	<button type="button" class="btn btn-primary" style="width: 100%;" >로그인</button>
+	<button type="button" class="btn btn-primary" style="width: 100%;" onclick="location.href='user_mainlist.action'">로그인</button>
 
 	<br /><br />
 	

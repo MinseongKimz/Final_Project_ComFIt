@@ -74,8 +74,8 @@
 
 </script>
 
-<div class="header">
-         <c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
+<div>
+   <c:import url="/WEB-INF/view/user/main/comfit_header_nolog.jsp"></c:import>
 </div>
 
 

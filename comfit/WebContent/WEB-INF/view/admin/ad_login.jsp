@@ -11,6 +11,8 @@
 <title>ad_login.jsp</title>
 <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
 <link href="<%=cp%>/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+
 <style type="text/css">
 html,
 body {
@@ -65,28 +67,67 @@ body {
           font-size: 3.5rem;
         }
       }
-    </style>
+</style>
+<script type="text/javascript">
+	
+	/* 로그인 jquery */
+	$(document).ready(function()
+	{
+		// alert("창 확인");
+		$("#adLoginBtn").click(function()
+		{
+			//alert("로그인 버튼 클릭");
+			
+			if ($("#floatingId").val() == "")
+			{
+				$(".idErrMsg").html("ID를 입력해 주세요.");
+				$(".idErrMsg").css('display', 'block');
+				$("#floatingId").focus();
+				return;
+			}
+			
+			if ($("#floatingPassword").val() == "")
+			{
+				$(".pwErrMsg").html("PW를 입력해 주세요.");
+				$(".pwErrMsg").css('display', 'block');
+				$("#floatingPassword").focus();
+				return;
+			}
+			
+			$("form").submit();
+			
+			
+		});
+		
+		
+	});
+
+</script>
+
+   
 <link href="css/signin.css" rel="stylesheet">
 </head>
 <body class="text-center">
     
 <main class="form-signin">
-  <form action="ad_main.jsp">
-            <a href="ad_login.jsp" > 
+  <form action="ad_main.action">
+            <a href="ad_login.action" > 
 	           <img alt="logo" src="<%=cp%>/images/logo.png" style="width: 200px;">
 	        </a>
     <h2 class="h3 mb-3"><b>관리자 로그인</b></h2>
 
     <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <input type="text" class="form-control" id="floatingId" placeholder="name">
       <label for="floatingInput">아이디를 입력하세요</label>
+      <span style="color:red; display: none;" class="idErrMsg"></span>
     </div>
     <div class="form-floating">
       <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
       <label for="floatingPassword">비밀번호를 입력하세요</label>
+      <span style="color:red; display: none;" class="pwErrMsg"></span>
     </div>
 
-    <button class="w-100 btn btn-lg btn-primary" type="submit">로그인</button>
+    <button class="w-100 btn btn-lg btn-primary" id="adLoginBtn" type="button">로그인</button>
     <p class="mt-5 mb-3 text-muted">&copy; 2022–2022</p>
   </form>
 </main>

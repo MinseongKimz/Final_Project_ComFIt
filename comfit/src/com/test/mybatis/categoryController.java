@@ -19,7 +19,7 @@ public class categoryController
 	private SqlSession sqlSession;
 	
 	// 관리자 카테고리 리스트
-	@RequestMapping(value = "/ad_category_list.action", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin_category_list.action", method = RequestMethod.GET)
 	public String categoryList(Model model)
 	{
 		String result = null;
@@ -28,7 +28,7 @@ public class categoryController
 		
 		model.addAttribute("categorylist", dao.categoryList());
 		
-		result = "/WEB-INF/view/ad_category_list.jsp";
+		result = "/WEB-INF/view/admin/ad_category_list.jsp";
 		
 		return result;
 		

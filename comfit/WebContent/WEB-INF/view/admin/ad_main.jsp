@@ -69,7 +69,7 @@ h3 {font-family: 'Black Han Sans', sans-serif;}
 
 <div class="container" style="margin-left: 250px">
 <div class="social-box col-sm-11">
-    <div class="container" style="background-color: ;">
+    <div class="container">
      	<div class="row">
      	
 		  <div class="col-sm-6"">

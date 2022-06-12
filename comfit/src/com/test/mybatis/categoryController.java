@@ -18,7 +18,8 @@ public class categoryController
 	@Autowired
 	private SqlSession sqlSession;
 	
-	// 관리자 카테고리 리스트
+	// 관리자 카테고리 리스트 -- AdminController로 이동
+	/*
 	@RequestMapping(value = "/admin_category_list.action", method = RequestMethod.GET)
 	public String categoryList(Model model)
 	{
@@ -33,6 +34,7 @@ public class categoryController
 		return result;
 		
 	}
+	*/
 	
 	// 관리자 카테고리 insert
 	@RequestMapping(value = "/categoryInsert.action", method = RequestMethod.GET)

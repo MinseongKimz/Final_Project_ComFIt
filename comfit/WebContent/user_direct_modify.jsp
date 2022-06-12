@@ -50,8 +50,6 @@
     size:50%;
     margin-left: 5px;
 }
-
-
 </style>
 <script type="text/javascript">
    function readURL(input) {
@@ -68,7 +66,6 @@
    
    var fileNo = 0;
    var filesArr = new Array();
-
    /* 첨부파일 추가 */
    function addFile(obj){
       var minFileCnt = 6;
@@ -76,14 +73,12 @@
        var attFileCnt = document.querySelectorAll('.filebox').length;    // 기존 추가된 첨부파일 개수
        var remainFileCnt = maxFileCnt - attFileCnt;    // 추가로 첨부가능한 개수
        var curFileCnt = obj.files.length;  // 현재 선택된 첨부파일 개수
-
       
        
        // 첨부파일 개수 확인
        if (curFileCnt > remainFileCnt) {
            alert("첨부파일은 최대 " + maxFileCnt + "개 까지 첨부 가능합니다.");
        }
-
        for (var i = 0; i < Math.min(curFileCnt, remainFileCnt); i++) {
          
           
@@ -100,7 +95,6 @@
                    filesArr.push(file);
                };
                reader.readAsDataURL(file)
-
                // 목록 추가
                let htmlData = '';
                htmlData += '<div id="file' + fileNo + '" class="filebox">';
@@ -116,7 +110,6 @@
        // 초기화
        document.querySelector("input[type=file]").value = "";
    }
-
       /* 첨부파일 검증 */
       function validation(obj){
        const fileTypes = ['application/pdf', 'image/gif', 'image/jpeg', 'image/png', 'image/bmp', 'image/tif'];
@@ -146,7 +139,6 @@
        document.querySelector("#file" + num).remove();
        filesArr[num].is_delete = true;
    }
-
    /* 폼 전송 */
    function submitForm() {
        // 폼데이터 담기
@@ -158,7 +150,6 @@
                formData.append("attach_file", filesArr[i]);
            }
        }
-
        $.ajax({
            method: 'POST',
            url: '/register',
@@ -249,7 +240,6 @@
                       
                   });
 			}
-
           });
          //끝나는 시간
          
@@ -268,66 +258,80 @@
       판매글 등록-직거래   
    </p>
    <div class="share">
-      <table style="width: 100%;">
+      <table>
          <tr>
             <th>제목<span class="star">*</span></th>
-            <td colspan="3"><input class="form-control" id="exampleFormControlInput1" type="text" placeholder="제목을 입력해주세요." style="width: 86%;"/>
+            <td colspan="3"><input class="form-control" id="exampleFormControlInput1" type="text" placeholder="제목을 입력해주세요." style="width: 86%; margin-left: 2%;"/>
             <p align="right" style="font-size: 3px; margin-right: 16%;">32/32</p>
             </td>
          </tr>
          <tr>
             <th>거래 가능 장소<span class="star">*</span></th>
             <td>
-               지역 검색
-               <div class="input-group mb-5">
+               <div class="input-group mb-5" style="margin-top: 10%;">
                  <button class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></button>
                  <input type="text" class="form-control" placeholder="검색" style="height:40px;">
                </div>
             </td>
             
             <!-- 지도 출력 -->
-            <td colspan="2">
-               지도
-            </td>
+            
          </tr>
          
          
          <tr>
             <th>거래 가능 일시<span class="star">*</span>
+            <p style="font-weight: normal; font-size: 7pt;">오늘날짜로 선택이 불가능합니다.
+            	 <br>거래 가능일은 5일입니다.
+                 <br>끝나는 시간은 23:00 PM 까지 입니다.</p>
                 </th>
                 <td>
                    <div class="input-group input-daterange" >
                    <input type="text" class="startdate" id="sdate" placeholder="시작 날짜" />
-               </div>
+               	   </div>
             </td>
-            <td style="width:2%;">
-            
+            <td style="width:2%; font-size:80%;">
+            ▶▶▶
             </td>
+           	<td>
+	               <div class="input-group input-daterange">
+	                   <input type="text" class="enddate" id="edate"  placeholder="끝나는 날짜"/>
+	               </div>
+            </td>
+                
             <td>
-               <div class="input-group input-daterange">
-                   <input type="text" class="enddate" id="edate"  placeholder="끝나는 날짜"/>
-               </div>
-                </td>
+             	<div class="input-group input-daterange">
+                 <input type="text" class="time1" id="time1" name="time1"placeholder="시간을 선택해주세요."/>
+             	</div>
+            </td>
+            <td style="width:2%;font-size:80%;">
+            ▶▶▶
+            </td>
                 <td>
-               <div class="input-group input-daterange">
-                   <input type="text" class="time1" id="time1" name="time1"/>
-               </div>
-                </td>
-                <td>
-            <div class="input-group input-daterange">
-                  <input type="text" class="time1" id="time2" name="time2" placeholder="시간을 선택해주세요."/>
-            </div>
+			            <div class="input-group input-daterange">
+			            
+			                  <input type="text" class="time2" id="time2" name="time2" placeholder="시간을 선택해주세요."/>
+			            </div>
                </td>
          </tr>
          
+         <tr>
+         	<th>물품검색<span class="star">*</span></th>
+         	  <td>
+               <div class="input-group mb-5" style="width: 70%; margin-top: 15%;">
+                 <button class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></button>
+                 <input type="text" class="form-control" placeholder="물품 검색" style="height:40px;">
+               </div>
+              </td>
+         </tr>
          
-            <tr>
+        <tr>
             <th>물품 카테고리<span class="star">*</span>
              <p style="font-weight: normal; font-size: 7pt;">상품과 일치하는 카테고리를 선택해주세요.
                  <br>적합하지 않을 경우 운영자에 의해 조정될 수 있습니다.</p>
                 </th>
             <td width="20%;">
-               <select class="form-select" name="category" style="width: 50%; height: 35px;">
+               <select class="form-select" name="category" style="width: 50%; height: 35px; margin-left: 5%;">
                <option selected="selected">카테고리</option>
                      <option value="">CPU</option>
                      <option value="">쿨러/튜닝</option>
@@ -362,26 +366,17 @@
             
             
             
-         <tr>
-            <!-- 공간맞추기용 th -->
-            <th>
-            </th>
-            
-            <td colspan="2">
-               물품검색
-               <div class="input-group mb-5">
-                 <button class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></button>
-                 <input type="text" class="form-control" placeholder="물품검색" style="height:40px; width:100px;">
-               </div>
-            </td>
-         </tr>
+         	<tr>
+            	<!-- 공간맞추기용 th -->
+            	<th>
+            	</th>
+         	</tr>
          
          <tr>
             <th>희망 시작 가격<span class="star">*</span>
              <p style="font-weight: normal; font-size: 7pt;">희망하는 가격을 적어주세요.</p>
                 </th>
                 <td colspan="3"><input class="form-control" id="price1" type="text" placeholder="희망 가격을 입력해주세요." style="width: 86%;"/>
-                <p style="color:blue; font-size: 10px;">추천 가격보다 2배 이상은 입력할 수 없습니다.</p>
                 </td>
          </tr>
                
@@ -465,7 +460,9 @@
    <br />
 </div>
 
+<div class="footer">
 
+</div>
 
 </body>
 </html>

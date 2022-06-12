@@ -1,4 +1,4 @@
-package com.test.mvc;
+package com.test.mybatis;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class SearchContoller
 {
+	
 	
 	@RequestMapping(value = "/search.action", method = RequestMethod.POST)
 	public String search(Model model, @RequestParam("name") String name)

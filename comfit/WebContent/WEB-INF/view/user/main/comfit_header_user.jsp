@@ -84,7 +84,7 @@
     <!-- nav 상단 고정-->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container">
-            <a href="/comfit.action" > 
+            <a href="user_mainlist.action" > 
 	           <img alt="logo" src="<%=cp%>/images/logo.png" style="width: 200px;">
 	        </a>
 	        
@@ -105,7 +105,7 @@
                 </div>	
                 <ul class="navbar-nav">
                     <li class="nav-item ">
-                        <a class="nav-link primary active" aria-current="page" href="#">고객센터</a>
+                        <a class="nav-link primary active" aria-current="page" href="user_svc.action">고객센터</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="#">로그아웃</a>

@@ -78,13 +78,20 @@ public class AdminController
 		return "/WEB-INF/view/admin/ad_money_list.jsp";
 	}
 	
-	/* 카테고리 Controller 있음
+	// 카테고리 리스트
 	@RequestMapping(value = "/admin_category_list.action", method = RequestMethod.GET)
-	public String adCategoryList(Model model)
+	public String categoryList(Model model)
 	{
-		return "/WEB-INF/view/admin/ad_userout_list.jsp";
+		String result = null;
+		
+		IAdmin dao = sqlSession.getMapper(IAdmin.class);
+		
+		model.addAttribute("categorylist", dao.categoryList());
+		
+		result = "/WEB-INF/view/admin/ad_category_list.jsp";
+		
+		return result;
 	}
-	*/
 	
 	// 관리자 카테고리 관리
 	@RequestMapping(value = "/admin_report_list.action", method = RequestMethod.GET)

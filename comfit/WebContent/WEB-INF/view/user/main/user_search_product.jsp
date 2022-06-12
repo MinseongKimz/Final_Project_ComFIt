@@ -227,7 +227,7 @@
          <input type = "text" class="input_text" name="name" id="name" placeholder="물품을 입력하세요"/>
          <button class="btn1" id="loadBtn" style="background-color:#B2D7FC;">검색하기</button>
          <button class="btn1" type="reset" id="clearBtn">지우기</button>
-         <button class="btn">찾는 물건 없음</button>
+         <button class="btn" >찾는 물건 없음</button>
          </form>
          
             <div id="result" style="text-align: center; font-size: 23pt;">

@@ -81,8 +81,6 @@
                btnParentSb = $(this).parent().attr(dataItems);
                itemsSplit = btnParentSb.split(',');
                $(this).parent().attr("id", "MultiCarousel" + id);
-   
-   
                if (bodyWidth >= 1200) {
                    incno = itemsSplit[3];
                    itemWidth = sampwidth / incno;
@@ -159,7 +157,6 @@
       $(".hover").hover(function()                
       {                                         
          //alert("테스트");                       
-                                               
          $(this).removeClass("btn-secondary"); 
          $(this).addClass("btn-primary");      
       }, function()                             

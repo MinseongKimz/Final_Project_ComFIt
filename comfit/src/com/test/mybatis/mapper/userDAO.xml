@@ -35,6 +35,7 @@
 	<!--    자료형 클래스(DTO) 멤버 변수(속성)와 일치하는 경우 -->
 	<!--    <<자동 매핑>>이 이루어진다. -->
 	<!--    또한 SQL 문 내부에 세미콜론(;) 이 있으면 안된다. -->
+	
 	<select id="adminUserList" resultType="com.test.mybatis.userDTO">
 		SELECT U_ID, U_EMAIL, U_NAME, U_NICKNAME, U_TEL, U_JOINDATE, 
 		(
@@ -58,21 +59,11 @@
 		FROM USER_INFORMATION
 	</select>
 	
-	<!-- 
-	<insert id="add">
-		INSERT INTO TBL_STUDENT(SID, NAME, TEL)
-		VALUES(#{sid}, #{name}, #{tel})
-	</insert>
-	-->
-	
-	
-	
-	
-	<!-- <select id="search" resultType="com.test.mybatis.StudentDTO">
-		SELECT SID, NAME, TEL
-		FROM TBL_STUDENT
-		WHERE SID = #{sid}
-	</select> -->
+	<select id="adminBannedList" resultType="com.test.mybatis.userDTO">
+		SELECT U_ID, U_EMAIL, U_NICKNAME, BAN_CATE_NAME
+		, BAN_DATE, BAN_END_DATE, REP_CATE_NAME, BAN_REA_DETAIL
+		FROM BANNED_USER_VIEW
+	</select>
 
 
 </mapper>

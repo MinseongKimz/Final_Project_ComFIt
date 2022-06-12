@@ -7,6 +7,9 @@ public interface IAdmin
 	// 관리자모드 회원 리스트 출력 메소드
 	public ArrayList<userDTO> adminUserList();
 	
+	// 관리자모드 차단 회원 리스트 출력 메소드
+	public ArrayList<userDTO> adminBannedList();
+	
 	// 관리자모드 카테고리 리스트 출력 메소드
 	public ArrayList<CategoryDTO> categoryList();
 	

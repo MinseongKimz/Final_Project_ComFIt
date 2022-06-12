@@ -23,7 +23,6 @@
 		<table class="table table-bordered" style="text-align: center; border: 1px solid #dddddd; box-shadow: 0 1px 3px 0 rgba(0,0,0,0.20);">
 			<thead style="background-color: #f9fafd"><!-- 제목 -->
 				<tr><!-- 1행 -->
-					<th style="text-align: center;">회원코드</th>
 					<th style="text-align: center;">E-mail</th>
 					<th style="text-align: center;">닉네임</th>
 					<th style="text-align: center;">차단기간</th>
@@ -34,7 +33,6 @@
 			</thead>
 			<tbody style="background-color: white;">
 				<tr>
-					<td>test3</td>
 					<td>yjooo0816@gmail.com</td>
 					<td>이연주</td>
 					<td>3일</td>

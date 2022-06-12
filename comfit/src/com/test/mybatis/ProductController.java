@@ -21,9 +21,18 @@ public class ProductController
 		model.addAttribute("pdList", dao.pdList());
 		model.addAttribute("cateList", dao.cateList());
 		
-		result = "/WEB-INF/view/user_main.jsp";
+		result = "/WEB-INF/view/user/main/user_main.jsp";
 		return result;
 	}
 	
+	@RequestMapping(value = "/user_svc.action", method = RequestMethod.GET)
+	public String svcCenter(Model model)
+	{
+		String result = null;
+		
+		result = "/WEB-INF/view/user/main/user_svcenter_main.jsp";
+		
+		return result;
+	}
 	
 }

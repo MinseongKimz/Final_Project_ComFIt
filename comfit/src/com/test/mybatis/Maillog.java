@@ -19,7 +19,7 @@ public class Maillog
 	public String auth()
 	{
 		String from  = "minseonkimc@gmail.com";
-		String to  = "hjui6322789@gmail.com";
+		String to  = "hjui78@naver.com";
 		String subject = "[Comfit] 이메일 인증 메일입니다.";
 		String content = "<a href='http://localhost:8090/comfit/correct.action?auth='qwdqwdqwdqw''>인증하러가기</a>";
 		

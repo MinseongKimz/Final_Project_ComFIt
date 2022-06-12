@@ -2,8 +2,19 @@ package com.test.mybatis;
 
 public class userDTO
 {
-	private String u_email, u_name, u_nickname, u_joindate, u_tel, bancount;
+	private String u_id, u_email, u_name, u_nickname, u_joindate, u_tel, bancount;
 
+	
+	public String getU_id()
+	{
+		return u_id;
+	}
+
+	public void setU_id(String u_id)
+	{
+		this.u_id = u_id;
+	}
+	
 	public String getU_email()
 	{
 		return u_email;

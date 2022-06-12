@@ -39,7 +39,6 @@
   		display:inline;
   		margin-left:25%;
   		width:70%;
-  		margin-top: -10%;
   	}
   	
   	

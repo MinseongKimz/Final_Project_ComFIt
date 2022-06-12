@@ -12,6 +12,45 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>bbs.jsp</title>
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/main.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function()
+	{
+		//alert("테스트");
+		
+		$("#searchBtn").click(function()
+		{
+			
+			// 카테고리 설정 안하고 검색했을때 걸러내기
+			if ($(".listselect").val() == "카테고리")
+			{
+				alert("검색 카테고리를 설정해 주세요.");
+				return;
+			}
+			
+			alert($(".listselect").val());
+			
+			$(location).attr('href', '/admin_usersearch.action');
+			
+		});
+		
+		$(".userblock").change(function()
+		{
+			// alert("차단");
+			
+			alert($(".userblock").val());
+			
+			$(location).attr('href', '/admin_userblock.action');
+			
+		});
+		
+		
+		
+	});
+
+</script>
+
 </head>
 <body>
 
@@ -69,6 +108,7 @@
 		<table class="table table-bordered " style="text-align: center; border: 1px solid #dddddd; box-shadow: 0 1px 3px 0 rgba(0,0,0,0.20);">
 			<thead style="background-color: #f9fafd"><!-- 제목 -->
 				<tr><!-- 1행 -->
+					<th style="background-color: #; text-align: center;">회원코드</th>
 					<th style="background-color: #; text-align: center;">E-mail</th>
 					<th style="background-color: #; text-align: center;">이름</th>
 					<th style="background-color: #; text-align: center;">닉네임</th>
@@ -82,6 +122,7 @@
 			<tbody style="background-color: white;">
 				<c:forEach var="user" items="${userBanList }">
 					<tr>
+						<td>${user.u_id }</td>
 						<td>${user.u_email }</td>
 						<td>${user.u_name }</td>
 						<td>${user.u_nickname }</td>
@@ -92,10 +133,12 @@
 						
 							<!-- 셀렉트박스 -->
 							<div style="text-align: center;">
-							<select class="form-select" style="width: 60%; display: inline-block;">
-							    <option selected>가운데정렬</option>
-							    <option value="">1</option>
-							    <option value="">2</option>
+							<select class="form-select userblock" style="width: 80%; display: inline-block;">
+							    <option selected>정상</option>
+							    <option value="3block">3일차단</option>
+							    <option value="7block">7일차단</option>
+							    <option value="30block">30일차단</option>
+							    <option value="perblock">영구차단</option>
 							</select>
 							</div>											
 						</td>
@@ -106,21 +149,21 @@
 		</table>
 
 		<div style="text-align: right;">
-			<div class="btn-group" style="width: 30%; text-align: right;">
-				<select class="form-select" style="width: 40%; text-align: ;">
+			<div class="btn-group">
+				<select class="form-select listselect" style="width: 40%;">
 				    <option selected>카테고리</option>
-				    <option value="">1</option>
-				    <option value="">2</option>
+				    <option value="u_email">E-mail</option>
+				    <option value="u_name">이름</option>
+				    <option value="u_nickname">닉네임</option>
 				</select> 
 	        <div class="input-group" style="width:100%; text-align: right;">
 	           <input type="text" class="form-control" placeholder="검색어를 입력하세요">
-	            <button id="Btn" type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-	          <i class="bi bi-search"></i>
-	            </button>                          
+	            <button id="searchBtn" type="button" class="btn btn-outline-primary">
+	          		<i class="bi bi-search"></i>
+	            </button>
 			</div>
 			</div>
 		</div>
-
 
 	</div>
 </div>

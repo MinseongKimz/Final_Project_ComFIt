@@ -15,4 +15,6 @@ public interface IAdmin
 	
 	public int categoryDelete(int pd_category_id);
 	
+
 }
+

@@ -37,7 +37,7 @@ public class categoryController
 	*/
 	
 	// 관리자 카테고리 insert
-	@RequestMapping(value = "/categoryInsert.action", method = RequestMethod.GET)
+	@RequestMapping(value = "/categoryinsert.action", method = RequestMethod.GET)
 	public String categoryInsert(String category_name)
 	{
 		String result = null;
@@ -46,13 +46,13 @@ public class categoryController
 		
 		dao.categoryInsert(category_name);
 		
-		result = "redirect:ad_category_list.action";
+		result = "redirect:admin_category_list.action";
 		
 		return result;
 	}
 	
 	// 관리자 카테고리 delete
-	@RequestMapping(value = "/categoryDelete.action", method = RequestMethod.GET)
+	@RequestMapping(value = "/categorydelete.action", method = RequestMethod.GET)
 	public String categoryDelete(int pd_category_id)
 	{
 		String result = null;
@@ -61,7 +61,7 @@ public class categoryController
 		
 		dao.categoryDelete(pd_category_id);
 		
-		result = "redirect:ad_category_list.action";
+		result = "redirect:admin_category_list.action";
 		
 		return result;
 	}

@@ -105,7 +105,7 @@
 	{
 		$("#btnInsert").click(function()
 		{
-			location.href= "categoryInsert.action?category_name=" + $("#category_name").val();
+			location.href= "categoryinsert.action?category_name=" + $("#category_name").val();
 		})
 	})
 	
@@ -115,7 +115,7 @@
 	{
 		$(".delete-btn").click(function()
 		{
-			location.href= "categoryDelete.action?pd_category_id=" + $(this).val();
+			location.href= "categorydelete.action?pd_category_id=" + $(this).val();
 		})
 	})
 	

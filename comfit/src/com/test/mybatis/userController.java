@@ -34,19 +34,4 @@ public class userController
 		return result;
 	}
 	
-	@RequestMapping(value = "/admin_userbanned_list.action", method = RequestMethod.GET)
-	public String adminUserBanList(Model model)
-	{
-		String result = null;
-		
-		IAdmin dao = sqlSession.getMapper(IAdmin.class);
-		
-		model.addAttribute("userBanList", dao.adminUserBanList());
-		
-		result = "/WEB-INF/view/ad_userbanned_list.jsp";
-			
-		return result;
-	}
-		
-	
 }

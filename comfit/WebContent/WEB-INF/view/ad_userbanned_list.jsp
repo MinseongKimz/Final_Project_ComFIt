@@ -32,12 +32,11 @@
 				</tr>
 			</thead>
 			<tbody style="background-color: white;">
-			<c:forEach var="user" items="${userList }"></c:forEach>
 				<tr>
-					<td>${user.u_email }</td>
-					<td>${user.u_name }</td>
+					<td>yjooo0816@gmail.com</td>
+					<td>이연주</td>
 					<td>3일</td>
-					<td>${user.u_joindate }</td>
+					<td>2022.05.05</td>
 					<td>부적절한 게시물</td>
 					<td>-</td>
 				</tr>

@@ -48,18 +48,18 @@
 <div>
 		<!--Header  -->
 		<div class="header">
-	      <c:import url="comfit_header.jsp"></c:import>
-	      
+	      <c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
 	   	</div>
+	   	
 	   	
 	   	<div>
 	   		<p class="subheader">마이페이지</p>
 	   		<p class="subheader_header">구매내역</p>
 	   		<p style="font-size: 18pt; font-weight: bolder;margin-left: 25%;">내 판매</p>
 	   		<!--sidebar  -->
-	   			<div style="float:left; margin-left: 15%; ">
-	   						<c:import url="user_sidebar.jsp"></c:import>
-	   			</div>
+	   			<div style="float:left; margin-left:15%;">
+								<c:import url="/WEB-INF/view/user/main/user_sidebar.jsp" ></c:import>
+				</div>	
 	   		
 	   	</div>
 	    <div>

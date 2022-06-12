@@ -1,4 +1,4 @@
-package com.test.mvc;
+package com.test.mybatis;
 
 
 import java.io.*;

@@ -1,0 +1,65 @@
+DB VIEW 작업, 2022-06-11
+
+[관리자용 VIEW]
+ * 회원관리
+ 1. 일반회원관리 [ AD_USER_LIST_REALVIEW ] 
+    
+    조회 구문
+    SELECT U_EMAIL, U_NAME, U_NICKNAME, U_TEL, U_JOINDATE, BANCOUNT
+    FROM AD_USER_LIST_REALVIEW;
+
+ 2. 차단회원관리 [ ??? ]
+
+    조회 구문
+    ??
+
+ 3. 탈퇴회원관리 [ ??? ]
+
+    조회 구문
+    ??
+
+------------------------------------------------------------------
+
+ * 거래관리
+ 1. 상품관리  [ AD_PD_LIST_REALVIEW ]
+
+   조회 구문
+   SELECT TA_CATE, PD_NAME, CATE_NAME, REGIT_DATE, U_EMAIL, PD_TITLE, TA_STATUS
+   FROM AD_PD_LIST_REALVIEW
+   ORDER BY REGIT_DATE;
+
+
+ 2. 입출금관리 [ AD_IO_MONEY_LIST_REALVIEW ]
+
+    조회 구문
+    SELECT IO_TYPE, U_EMAIL, U_NAME, IO_DATE, BANK_NAME, ACCOUNT, MONEY
+    FROM AD_IO_MONEY_LIST_REALVIEW
+    ORDER BY IO_DATE;
+
+------------------------------------------------------------------
+
+ * 카테고리 관리 [PRODUCT_CATEGORY]  : 테이블 그대로
+    
+   조회 구문
+   SELECT CATEGORY_NAME
+   FORM   PRODUCT_CATEGORY;
+    
+------------------------------------------------------------------   
+
+ * 고객센터 관리 
+ 1. 신고관리  [ ?? ]
+
+   조회 구문
+  
+
+ 2. 공지사항관리 [ ?? ]
+
+    조회 구문
+
+ 3. FAQ 관리 [ ?? ]  
+
+    조회 구문
+
+ 4. 문의관리 [ ?? ]
+
+    조회 구문

@@ -76,8 +76,7 @@
 	   			<td>
 	   			
 	   			<button class="btn btn-primary" style="margin-left: 80%; width: 150px; margin-top:5%;"
-								data-bs-toggle="modal" data-bs-target="#check"
-								>확인</button>
+				data-bs-toggle="modal" data-bs-target="#check">확인</button>
 	   			</td>
 	   		</tr>
 	   	</table>

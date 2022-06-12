@@ -107,10 +107,19 @@
 	<br /><br /><br />
 	<div style="width: 400px; margin: auto;">
 		<form action="" class="form form-group">
-			<input type="text" class="form-control" placeholder="이메일을 입력하세요"/>	 
-			<br />
-			<input type="text" class="form-control" placeholder="비밀번호를 입력하세요"/>
-			<br />
+			<a href="ad_login.jsp" > 
+				<%-- <img alt="logo" src="<%=cp%>/images/logo.png" style="width: 200px;"> --%>
+			</a>
+			<h2 class="h3 mb-3"><b>로그인</b></h2>
+			
+			<div class="form-floating">
+			  <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+			  <label for="floatingInput">아이디를 입력하세요</label>
+			</div>
+			<div class="form-floating">
+			  <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+			  <label for="floatingPassword">비밀번호를 입력하세요</label>
+			</div>
 			<input type="text" class="errMsg" placeholder="아이디 혹은 비밀번호가 틀렸습니다. 다시 로그인해주세요." style="color:red; display: none;"/>
 		</form>
 	

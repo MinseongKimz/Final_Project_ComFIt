@@ -37,7 +37,7 @@
 					<td>CPU</td>
 					<td>2022.05.23</td>
 					<td>asdf123</td>
-					<td><a href="ad_product_list_direct.jsp">CPU 싼가격에 팝니다</a></td>
+					<td><a href="ad_product_list_direct.action">CPU 싼가격에 팝니다</a></td>
 					<td>직거래</td>
 					<td>거래중</td>
 				</tr>

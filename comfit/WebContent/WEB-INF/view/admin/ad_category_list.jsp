@@ -106,8 +106,8 @@
 		$("#btnInsert").click(function()
 		{
 			location.href= "categoryinsert.action?category_name=" + $("#category_name").val();
-		})
-	})
+		});
+	});
 	
 	
 	// 카테고리 제거

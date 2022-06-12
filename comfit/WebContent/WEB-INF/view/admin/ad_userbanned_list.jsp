@@ -23,15 +23,31 @@
 		<table class="table table-bordered" style="text-align: center; border: 1px solid #dddddd; box-shadow: 0 1px 3px 0 rgba(0,0,0,0.20);">
 			<thead style="background-color: #f9fafd"><!-- 제목 -->
 				<tr><!-- 1행 -->
+					<th style="text-align: center;">유저코드</th>
 					<th style="text-align: center;">E-mail</th>
 					<th style="text-align: center;">닉네임</th>
 					<th style="text-align: center;">차단기간</th>
-					<th style="text-align: center;">차단일시</th>
+					<th style="text-align: center;">차단일</th>
+					<th style="text-align: center;">차단해제일</th>
 					<th style="text-align: center;">차단내용</th>
 					<th style="text-align: center;">차단상세</th>
 				</tr>
 			</thead>
 			<tbody style="background-color: white;">
+				<c:forEach var="user" items="${userList }">
+				<tr>
+					<td>${user.u_id }</td>
+					<td>${user.u_email }</td>
+					<td>${user.u_nickname }</td>
+					<td>${user.ban_cate_name }</td>
+					<td>${user.ban_date }</td>
+					<td>${user.ban_end_date }</td>
+					<td>${user.rep_cate_name }</td>
+					<td>${user.ban_rea_detail }</td>
+				</tr>
+				</c:forEach>
+				
+				<!-- 
 				<tr>
 					<td>yjooo0816@gmail.com</td>
 					<td>이연주</td>
@@ -39,7 +55,9 @@
 					<td>2022.05.05</td>
 					<td>부적절한 게시물</td>
 					<td>-</td>
-				</tr>
+				</tr> 
+				-->
+				
 			</tbody>
 		</table>
 

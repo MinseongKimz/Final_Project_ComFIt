@@ -3,7 +3,7 @@ package com.test.mybatis;
 public class deli_productDTO
 {
 	private String dele_pd_id, pd_title, pd_name, pd_photo, pd_as_remain, pd_start_price
-	, pd_hitcount, pd_regit_date, pd_maker_id, pd_as_id, u_id, cf_price;
+	, pd_maker_id, pd_as_id, u_id;
 
 	
 	public String getDele_pd_id()
@@ -66,26 +66,6 @@ public class deli_productDTO
 		this.pd_start_price = pd_start_price;
 	}
 
-	public String getPd_hitcount()
-	{
-		return pd_hitcount;
-	}
-
-	public void setPd_hitcount(String pd_hitcount)
-	{
-		this.pd_hitcount = pd_hitcount;
-	}
-
-	public String getPd_regit_date()
-	{
-		return pd_regit_date;
-	}
-
-	public void setPd_regit_date(String pd_regit_date)
-	{
-		this.pd_regit_date = pd_regit_date;
-	}
-
 	public String getPd_maker_id()
 	{
 		return pd_maker_id;
@@ -114,16 +94,6 @@ public class deli_productDTO
 	public void setU_id(String u_id)
 	{
 		this.u_id = u_id;
-	}
-
-	public String getCf_price()
-	{
-		return cf_price;
-	}
-
-	public void setCf_price(String cf_price)
-	{
-		this.cf_price = cf_price;
 	}
 	
 	

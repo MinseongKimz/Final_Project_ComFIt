@@ -35,28 +35,5 @@ public class ProductController
 		
 		return result;
 	}
-	
-
-	@RequestMapping(value = "/user_delform.action", method = RequestMethod.GET)
-	public String studentInsertForm()
-	{
-	      return "/WEB-INF/view/user/main/user_delivery_seller_edit.jsp";
-	}	
-	
-	
-   // 배달 상품 페이지 물품
-   @RequestMapping(value = "/user_delforminsert.action", method = RequestMethod.POST)
-   public String delforminsert(deli_productDTO dto)
-   {
-		String result = null;
-		
-		IProduct dao = sqlsession.getMapper(IProduct.class);
-		
-		dao.DeleveryAdd(dto);
-
-		result = "redirect:/comfit.action";
-		
-		return result;	   
-   }  
-   
+	   
 }

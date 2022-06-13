@@ -279,4 +279,133 @@ ON INPUT.U_ID = OUTPUT.U_ID;
 SELECT *
 FROM USER_POINT_VIEW;
 
-COMMIT;
+-- 테스트 입금
+INSERT INTO INPUT_MONEY(IN_M_ID, IN_MONEY, IN_ACCOUNT, U_ID, BANK_ID)
+VALUES('inm_2', 650000, '123456-78-999999', 'test3', 2);
+--> 0원에서 650000원 확인 완료
+
+
+-- 테스트 출금
+INSERT INTO OUTPUT_MONEY(OUT_M_ID, OUT_MONEY, OUT_ACCOUNT, U_ID, BANK_ID)
+VALUES('outm_2', 300000, '1234567-78-999999', 'test3', 2);
+--> 650000원에서 350000 확인 완료
+
+
+ROLLBACK;
+--> ROLLBACK으로 다시 0원으로
+
+INSERT INTO BID_LIST(BID_CODE, BID_PRICE, ADDRESS, ADDR_DETAIL, U_ID, DELI_PD_ID)
+VALUES('bid_3', 300000, '인천 어딘가', '깊은 곳', 'test3', 'deli_1');
+
+--==>>
+/*
+test1	795000
+test2	-795000
+test3	0
+*/
+
+SELECT *
+FROM USER_POINT_VIEW;
+-- test3가 같은 제품을 더 높은 가격으로 입찰했을 때
+-- test1의 포인트는 돌아오고, test3의 포인트는 빠져나감
+/*
+test1	950000
+test2	-795000
+test3	-300000
+*/
+
+-- 택배거래 상품등록 과정 POINTTEST
+SELECT *
+FROM DELIVERY_PRODUCT;
+
+SELECT *
+FROM PRODUCT_MAKER;
+
+SELECT *
+FROM PRODUCT_CATEGORY;
+
+select *
+from product_as;
+
+select *
+from comfit_user;
+
+-- 택배거래 상품 등록
+INSERT INTO DELIVERY_PRODUCT(DELI_PD_ID, PD_TITLE, PD_NAME, PD_PHOTO, PD_AS_REMAIN
+, PD_START_PRICE, PD_MAKER_ID, PD_AS_ID, U_ID, COMMENTS, IMD_PRICE)
+VALUES('deli_2', '레이저 마우스 급처', '레이저 바이퍼', 'C:\Downloads', '3개월'
+, 20000, 'maker_122', 3, 'test3', '급처해요', 50000);
+
+-- 포인트 확인
+SELECT *
+FROM USER_POINT_VIEW;
+--==>> 변화 없음
+
+SELECT *
+FROM BID_LIST;
+
+-- 입찰등록
+INSERT INTO BID_LIST(BID_CODE, BID_PRICE, ADDRESS, ADDR_DETAIL, U_ID, DELI_PD_ID)
+VALUES('bid_3', 25000, '강원도 원주시 월송석화로 288', '나동 1층', 'test2', 'deli_2');
+
+-- 포인트 확인
+SELECT *
+FROM USER_POINT_VIEW;
+--==>>
+/*
+test1	795000
+test2	-820000
+test3	0
+*/
+-- test2번 25000원 빠져나간 것 확인 아직 test3번 돈 안들어옴(거래가 확정되지 않음)
+
+SELECT *
+FROM BID_SUCCESS;
+
+INSERT INTO BID_SUCCESS(BS_ID, BID_CODE)
+VALUES('bs_2', 'bid_3');
+
+-- 포인트 확인
+SELECT *
+FROM USER_POINT_VIEW;
+--==>> 변화 없음
+
+SELECT *
+FROM DELI_COMPLETE_SELL;
+
+INSERT INTO DELI_COMPLETE_SELL(DELI_COMP_SELL_ID, PD_DELI_NUM, BS_ID)
+VALUES('dcsell_2', '12345678911', 'bs_2');
+
+-- 포인트
+SELECT *
+FROM USER_POINT_VIEW;
+--==>> 변화 없음
+
+SELECT *
+FROM DELI_COMPLETE_BUY;
+
+INSERT INTO DELI_COMPLETE_BUY(DELI_COMP_BUY_ID, BS_ID)
+VALUES('dsbuy_2', 'bs_2');
+
+-- 포인트 확인
+SELECT *
+FROM USER_POINT_VIEW;
+--==>>  test3번에 25000p 들어온 것 확인완료.
+/*
+test1	795000
+test2	-820000
+test3	25000
+*/
+
+
+ROLLBACK;
+--==>> 롤백 완료.
+
+SELECT *
+FROM USER_POINT_VIEW;
+--==>> 포인트 원상복구
+/*
+test1	795000
+test2	-795000
+test3	0
+*/

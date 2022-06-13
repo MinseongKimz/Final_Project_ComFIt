@@ -279,6 +279,7 @@ d-block
 		<p class="fs-3" style="padding-left: 4%; font-weight: bold;">현재 입찰 정보</p>
 		
 			<!-- 입찰 폼 한개 -->
+			<c:forEach var="bl"  items="${bidList }">
 			<div class="shadow-lg p-3 mb-5 bg-body rounded" style="font-weight: bold;">
 			<table style="width: 100%;">
 			<tr>
@@ -290,45 +291,22 @@ d-block
 				</td>
 				<th style="padding-left: 2%;">
 					<p class="fs-4">
-					김상기
+					${bl.u_nickname }
 					</p>
 				</th>
 				<td>
-					<p style="padding-left:10%;">가격 : 143,000원</p><br>
-					<p style="padding-left:10%;">배송지 : 서울시 왕십리 111번지</p>
+					<p style="padding-left:10%;">가격 : ${bl.price }원</p><br>
+					<p style="padding-left:10%;">배송지 : ${bl.address }</p>
 				</td>
 				<td style="text-align: right; margin-left: 20%;">
-					<p>22-05-26    10:56 AM</p>
+					<p>${bl.bid_date }</p>
 					<button type="button" class="btn btn-primary">채택됨</button>
 				</td>
 			</tr>
 			</table>
 			</div>
+			</c:forEach>
 			
-			<div class="shadow-lg p-3 mb-5 bg-body rounded">
-			<table style="width: 100%;">
-			<tr>
-				<td style="width: 20%;padding-left: 3%;">
-					<div class="user_image">
-						<img alt="" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"
-						style="object-fit:cover; height: 100%; width: 100%;">
-					</div>
-				</td>
-				<th style="padding-left: 2%;">
-					<p class="fs-4">
-					김민성
-					</p>
-				</th>
-				<td>
-					<p style="padding-left:10%;">가격 : 135,000원<br>
-					배송지 : 인천 새벌로 112번길</p>
-				</td>
-				<td style="text-align: right;">
-					<p>22-05-26    10:56 AM</p>
-				</td>
-			</tr>
-			</table>
-			</div>
 			
 		</div>
 	

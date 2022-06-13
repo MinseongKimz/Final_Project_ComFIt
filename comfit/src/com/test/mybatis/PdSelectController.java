@@ -28,7 +28,7 @@ public class PdSelectController
 			}
 			else if(pd_id.contains("deli"))
 			{
-				
+				model.addAttribute("bidList", dao.bidList(pd_id));
 				model.addAttribute("dlPdList", dao.dlPdList(pd_id));
 				result = "/WEB-INF/view/user/main/user_delivery_seller.jsp";
 				

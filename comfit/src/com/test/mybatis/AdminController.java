@@ -83,13 +83,22 @@ public class AdminController
       return result;
    }
    
-   // 관리자 상품관리
+   // 관리자 상품관리 리스트
    @RequestMapping(value = "/admin_product_list.action", method = RequestMethod.GET)
    public String adProductList(Model model)
    {
-      return "/WEB-INF/view/admin/ad_product_list.jsp";
+      String result = null;
+      
+      IAdmin dao = sqlSession.getMapper(IAdmin.class);
+      
+      model.addAttribute("productlist", dao.adminProductList());
+      
+      result = "/WEB-INF/view/admin/ad_product_list.jsp";
+      
+      return result;
    }
    
+  
    // 관리자 입출금관리
    @RequestMapping(value = "/admin_money_list.action", method = RequestMethod.GET)
    public String adMoneyList(Model model)

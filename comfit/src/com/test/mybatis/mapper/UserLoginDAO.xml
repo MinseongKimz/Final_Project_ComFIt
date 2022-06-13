@@ -47,6 +47,12 @@
 		ON CU.U_ID = UI.U_ID
 		WHERE CU.U_ID = #{u_id}
 	</select>
+	
+	<select  id="nickCheck" resultType="java.lang.Integer">
+		SELECT COUNT (*) COUNT
+		FROM USER_INFORMATION
+		WHERE U_NICKNAME = #{nickName}
+	</select>
 
 	
 	

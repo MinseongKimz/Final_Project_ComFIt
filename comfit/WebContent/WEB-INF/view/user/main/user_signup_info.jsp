@@ -133,15 +133,15 @@
 		//alert("sd")
 		$("#nickname").focusout(function() // 닉네임 중복 검사
 		{
-			var nickname = "nickname=" + $.trim($("#nickname").val());
+			var nickName = "nickName=" + $.trim($("#nickname").val());
 			
 			$.ajax({
 				type : "POST"
 			   , url : "nicknamecheck.action"
-			   , data : nickname
+			   , data : nickName
 			   , success : function(result)
 			{
-				if (result =="0")
+				if (result == 1)
 				{
 					$("#checkNick").css("display", "inline");
 					$("#checkNick").html("이미 사용중인 닉네임 입니다.");

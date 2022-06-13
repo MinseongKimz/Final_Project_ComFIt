@@ -106,7 +106,7 @@
                 </div>	
                 <ul class="navbar-nav">
                     <li class="nav-item ">
-                        <a class="nav-link primary active" aria-current="page" href="login.action">로그인</a>
+                        <a class="nav-link primary active" aria-current="page" href="loginform.action">로그인</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="regist.action" style="">회원가입</a>

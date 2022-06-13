@@ -26,7 +26,7 @@ public class MainController
 	}
 	
 	
-	@RequestMapping("/login.action")
+	@RequestMapping("/loginform.action")
 	public String login(Model model)
 	{
 		return "/WEB-INF/view/user/main/user_login.jsp";

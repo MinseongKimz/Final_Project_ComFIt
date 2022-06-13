@@ -215,16 +215,25 @@
 				<p align="right" style="font-size: 3px; margin-right: 16%;">32/32</p>
 				</td>
 			</tr>
+			<tr>
+				<th>물품검색<span class="star">*</span></th>
+				<td colspan="2">
+					<div><!--  class="input-group mb-6" -->
+					  <input type="text" class="<!-- form-control  -->" placeholder="물품검색" style="height:40px; width: 250px; display: inline-block;">
+					  <span class="input-group-text" id="basic-addon1" onclick="location.href='searchproduct.action';" style="width: 50px; display: inline-block;"><i class="bi bi-search"></i></span>
+					</div>
+				</td>
+			</tr>
 			
 			<tr>
 				<th>물품 카테고리<span class="star">*</span>
 				 <p style="font-weight: normal; font-size: 7pt;">상품과 일치하는 카테고리를 선택해주세요.
                  <br>적합하지 않을 경우 운영자에 의해 조정될 수 있습니다.</p>
                 </th>
-				<td width="20%;">카테고리
-					<br>
+				<td width="20%;"><!-- 카테고리
+					<br> -->
 					<select class="form-select" name="category" style="width: 90%; height: 35px;">
-					<option selected="selected">카테고리</option>
+					<option selected="selected">카테고리 선택</option>
 					<!-- 
 					<option>모니터</option>
 					<option>마우스</option>
@@ -235,30 +244,16 @@
 					</c:forEach>
 					</select>
 					</td>
-				<td>물품명
-					<br>
+				<td><!-- 제조사
+					<br> -->
+					<input type="text" class="form-control" id="productMaker" placeholder="제조사를 입력해 주세요." style="width: 90%;"/>
+				</td>	
+					
+				<td><!-- 물품명
+					<br> -->
 					<input type="text" class="form-control" id="productName" placeholder="물품명을 입력해 주세요." style="width: 90%;">
 				</td>	
-				<td>제조사
-					<br>
-					<input type="text" class="form-control" id="productMaker" placeholder="제조사를 입력해 주세요." style="width: 90%;"/>
-				</td>
 			</tr>
-			
-			<tr>
-				<!-- 공간맞추기용 th -->
-				<th>
-				</th>
-				
-				<td colspan="2">
-					물품검색
-					<div class="input-group mb-5">
-					  <span class="input-group-text" id="basic-addon1" onclick="location.href='searchproduct.action';"><i class="bi bi-search"></i></span>
-					  <input type="text" class="form-control " placeholder="물품검색" style="height:40px; width:100px;">
-					</div>
-				</td>
-			</tr>
-			
 			<tr>
 				<th>희망 시작 가격<span class="star">*</span>
 				 <p style="font-weight: normal; font-size: 7pt;">희망하는 가격을 적어주세요.</p>

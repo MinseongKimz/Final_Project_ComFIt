@@ -4,6 +4,7 @@
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,11 +21,20 @@
 
 	$(document).ready(function()
 	{
+		
+		
+		
 		$("#cancel-btn").click(function()
 		{
 			//alert("취소버튼확인");
 			location.href="admin_faq_list.action";
 		})
+		
+		$("#submitBtn").click(function()
+		{
+			$("#modifyForm").submit();
+		});
+		
 	})
 	
 </script>
@@ -35,28 +45,29 @@
 
 <div class="container" style="margin-top: 5%;">
 	<div class="row">
-	<form action="admin_faq_insert.action" method="post" name="insert">
+	<form action="admin_faq_modify.action" method="post" id="modifyForm">
 		<table class="table table-bordered" style="text-align: center; border: 1px solid #dddddd">
 			<thead><!-- 제목 -->
 				<tr><!-- 1행 -->
-					<th colspan="2" style="background-color: #ffffff; text-align: left;" >FAQ 등록</th>
+					<th colspan="2" style="background-color: #ffffff; text-align: left;" >FAQ 수정</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<td>
-					<div class=""  style="display: flex; width: 100%; align-content: right;">
-			   			<input type="text" name="faq_title" id="faq_title" class="form-control" placeholder="제목을 입력하세요">
+					<div class="" style="display: flex; width: 100%; align-content: right;">
+			   			<input type="text" class="form-control" name="faq_title" id="faq_title" value="${modify.faq_title }">
 		   			</div>
 					</td>	
 				</tr>
 				<tr>	
-					<td><textarea class="form-control" placeholder="글 내용" name="faq_contents" id="faq_contents" maxlength="2048" style="height: 350px;"></textarea></td>
+					<td><textarea class="form-control" name="faq_contents" id="faq_contents" maxlength="2048" style="height: 350px;">${modify.faq_contents }</textarea></td>
 				</tr>
 			</tbody>
 		</table>
 		<div>
-			<button type="submit" class="btn btn-primary pull-right" id="insert-btn" value="글쓰기" style="width: 100px;">등록</button>
+			<input type="text" style="display: none;" name="faq_id" value="${modify.faq_id }" />
+			<button type="button" class="btn btn-primary pull-right" id="submitBtn" style="width: 100px;">수정</button>
 			<button type="button" class="btn btn-outline-secondary" id="cancel-btn" value="글쓰기" style="width: 100px;">취소</button>	
 		</div>
 	</form>

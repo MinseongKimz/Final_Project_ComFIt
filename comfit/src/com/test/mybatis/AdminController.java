@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class AdminController
@@ -141,11 +142,76 @@ public class AdminController
       return "/WEB-INF/view/admin/ad_notice_list.jsp";
    }
    
-   // 관리자 FAQ 관리
+   // 관리자 FAQ 리스트 출력
    @RequestMapping(value = "/admin_faq_list.action", method = RequestMethod.GET)
    public String adFAQList(Model model)
    {
-      return "/WEB-INF/view/admin/ad_faq_list.jsp";
+	   String result = null;
+	   
+	   IAdmin dao = sqlSession.getMapper(IAdmin.class);
+	   
+	   model.addAttribute("faqList", dao.faqList());
+	   
+	   result = "/WEB-INF/view/admin/ad_faq_list.jsp";
+	   
+	   return result;
+	   
+   }
+   
+   // 관리자 FAQ 글쓰기 페이지로 이동
+   @RequestMapping(value = "/admin_faq_edit.action", method = RequestMethod.GET)
+   public String adFAQinsertForm()
+   {
+	   return "/WEB-INF/view/admin/ad_faq_edit.jsp";
+   }
+   
+   
+   
+   // 관리자 FAQ 글쓰기
+   @RequestMapping(value = "/admin_faq_insert.action", method = RequestMethod.POST)
+   public String adFAQInsert(FaqDTO faq)
+   {
+	   String result = null;
+	   
+	   IAdmin dao = sqlSession.getMapper(IAdmin.class);
+	   
+	   dao.faqInsert(faq);
+	   
+	   result = "redirect:admin_faq_list.action";
+	   
+	   return result;
+   }
+   
+   // 관리자 FAQ 수정 폼으로 가기
+   @RequestMapping(value = "/admin_faq_modify_form.action", method = RequestMethod.GET)
+   public String adFAQModifyForm(Model model, String faq_id)
+   {
+	   String result = null;
+	   
+	   IAdmin dao = sqlSession.getMapper(IAdmin.class);
+	   
+	   
+	   model.addAttribute("modify", dao.faqModifyForm(faq_id));
+	   
+	   result = "/WEB-INF/view/admin/ad_faq_modify.jsp";
+	   
+	   return result;
+   }
+   
+   
+   // 관리자 FAO 수정하기
+   @RequestMapping(value = "/admin_faq_modify.action", method = RequestMethod.POST)
+   public String adFAQModify(FaqDTO dto)
+   {
+	   String result = null;
+	   
+	   IAdmin dao = sqlSession.getMapper(IAdmin.class);
+	   
+	   dao.faqModify(dto);
+	   
+	   result = "redirect:admin_faq_list.action";
+	   
+	   return result;
    }
    
    /*

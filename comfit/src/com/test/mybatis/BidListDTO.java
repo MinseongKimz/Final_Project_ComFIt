@@ -1,0 +1,48 @@
+package com.test.mybatis;
+
+public class BidListDTO
+{
+	private String u_nickname, price, bid_date, address;
+
+	public String getU_nickname()
+	{
+		return u_nickname;
+	}
+
+	public void setU_nickname(String u_nickname)
+	{
+		this.u_nickname = u_nickname;
+	}
+
+	public String getPrice()
+	{
+		return price;
+	}
+
+	public void setPrice(String price)
+	{
+		this.price = price;
+	}
+
+	public String getBid_date()
+	{
+		return bid_date;
+	}
+
+	public void setBid_date(String bid_date)
+	{
+		this.bid_date = bid_date;
+	}
+
+	public String getAddress()
+	{
+		return address;
+	}
+
+	public void setAddress(String address)
+	{
+		this.address = address;
+	}
+	
+	
+}

@@ -8,5 +8,5 @@ public interface IProduct
 	public ArrayList<CategoryDTO> cateList();
 	public ArrayList<DirectProductDTO> drPdList(String pd_id);
 	public ArrayList<DeliveryProductDTO> dlPdList(String pd_id);
-	
+	public ArrayList<BidListDTO> bidList(String pd_id);
 }

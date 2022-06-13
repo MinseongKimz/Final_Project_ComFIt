@@ -59,7 +59,13 @@
 		     , PD_REGIT_DATE, PD_MAKER_ID, PD_AS_ID, PD_AS_NAME, CATEGORY_NAME, SELLER
 		     , U_NICKNAME, MAKER_NAME, MAKER_NAME2, CF_PRICE, COMMENTS, IMDPRICE
 		FROM DELI_PD_LIST_REALVIEW
-		WHERE PD_ID =  #{pd_id}
+		WHERE PD_ID = #{pd_id}
+	</select>
+	
+	<select  id="bidList" resultType="com.test.mybatis.BidListDTO">
+		SELECT U_NICKNAME, PRICE, BID_DATE, ADDRESS
+		FROM BID_LIST_REALVIEW
+		WHERE DELI_PD_ID = #{pd_id}
 	</select>
 
 	

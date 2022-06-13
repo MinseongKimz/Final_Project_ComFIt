@@ -36,6 +36,9 @@ public interface IAdmin
 	
 	// 관리자모드 FAQ 수정 메소드
 	public int faqModify(FaqDTO dto);
+	
+	// 관리자모드 FAQ 삭제 메소드
+	public int faqDelete(String faq_id);
 
 }
 

@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>user_signup_info.jsp</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
@@ -18,13 +19,10 @@
      {
          min-height: 100vh;
      }
-
     .input-form {
       max-width: 680px;
-
       margin-top: 20px;
       padding: 32px;
-
       background: #fff;
       -webkit-border-radius: 10px;
       -moz-border-radius: 10px;
@@ -49,26 +47,26 @@
                var fullRoadAddr = data.roadAddress;   // 도로명 주소 변수
                var extraRoadAddr = '';
                
-             // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-             // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-               if(data.bname !== '' && /[동|로|가]$/g.test(data.bname))
+             // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+             // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+               if(data.bname !== '' && /[동|로|가]$/g.test(data.bname))
                {
-                     extraRoadAddr += data.bname;
+                     extraRoadAddr += data.bname;
                }
-                 // 건물명이 있고, 공동주택일 경우 추가한다.
-               if(data.buildingName !== '' && data.apartment == 'Y')
+                 // 건물명이 있고, 공동주택일 경우 추가한다.
+               if(data.buildingName !== '' && data.apartment == 'Y')
                {
-                     extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                     extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
                }
-               // 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-               if(extraRoadAddr !== '')
+               // 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+               if(extraRoadAddr !== '')
                {
-                   extraRoadAddr = ' (' + extraRoadAddr + ')';
+                   extraRoadAddr = ' (' + extraRoadAddr + ')';
                }
-               // 도로명, 지번 주소의 유무에 따라 해당 조합형 주소를 추가한다.
-               if(fullRoadAddr !== '')
+               // 도로명, 지번 주소의 유무에 따라 해당 조합형 주소를 추가한다.
+               if(fullRoadAddr !== '')
                {
-                   fullRoadAddr += extraRoadAddr;
+                   fullRoadAddr += extraRoadAddr;
                }
                
                alert(fullRoadAddr);
@@ -79,7 +77,6 @@
           /* popupKey : 'popup1'   // 팝업창 key 설정 */
        });   
    }
-
    function fn_submit()
    {
        var text = document.getElementById('tel').value;
@@ -90,11 +87,10 @@
       // 검증에 사용할 정규식 변수 regExp에 저장
          
       // alert('비밀번호 정규식 규칙 위반!!');
-
       var pwd = document.getElementById('password').value;
       var pwdCheck = document.getElementById('password_check').value;
       //alert(pwdCheck);
-      var passwordRules = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/;
+      var passwordRules = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/;
       
       if (!passwordRules.test(pwd))
       {
@@ -132,19 +128,41 @@
 		//alert("sd")
 		$("#nickname").focusout(function() // 닉네임 중복 검사
 		{
-			alert("sadsad");
-			var nickname = $(this).val();
+			var nickName = "nickName=" + $.trim($("#nickname").val());
 			
-			$.post("nicknamecheck.action" , {nickname:nickname}, function()
+			$.ajax({
+				type : "POST"
+			   , url : "nicknamecheck.action"
+			   , data : nickName
+			   , success : function(result)
 			{
-				alert("SD");
-						
-			});
-					
+				if (result == 1)
+				{
+					$("#checkNick").css("display", "inline");
+					$("#checkNick").html("이미 사용중인 닉네임 입니다.");
+					$("#regitBtn").prop("disabled", true);
+				}
+				else
+				{
+					$("#checkNick").css("display", "inline");
+					$("#checkNick").attr('color', 'green');
+					$("#checkNick").html("사용가능한 닉네임 입니다.");
+				}	
+			}
+			  , error : function(e)
+			{
+				alert(e.responseText);
+			}	
+				
+				
+			})
+			
+			
 		})
 		
-		
-   }) 
+   })
+   
+   
 </script>
 </head>
 
@@ -271,7 +289,6 @@
 <script>
     window.addEventListener('load', () => {
       const forms = document.getElementsByClassName('validation-form');
-
       Array.prototype.filter.call(forms, (form) => {
         form.addEventListener('submit', function (event) {
           if (form.checkValidity() === false) {

@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <title>user_signup_info.jsp</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
@@ -133,41 +132,19 @@
 		//alert("sd")
 		$("#nickname").focusout(function() // 닉네임 중복 검사
 		{
-			var nickname = "nickname=" + $.trim($("#nickname").val());
+			alert("sadsad");
+			var nickname = $(this).val();
 			
-			$.ajax({
-				type : "POST"
-			   , url : "nicknamecheck.action"
-			   , data : nickname
-			   , success : function(result)
+			$.post("nicknamecheck.action" , {nickname:nickname}, function()
 			{
-				if (result =="0")
-				{
-					$("#checkNick").css("display", "inline");
-					$("#checkNick").html("이미 사용중인 닉네임 입니다.");
-					$("#regitBtn").prop("disabled", true);
-				}
-				else
-				{
-					$("#checkNick").css("display", "inline");
-					$("#checkNick").attr('color', 'green');
-					$("#checkNick").html("사용가능한 닉네임 입니다.");
-				}	
-			}
-			  , error : function(e)
-			{
-				alert(e.responseText);
-			}	
-				
-				
-			})
-			
-			
+				alert("SD");
+						
+			});
+					
 		})
 		
-   })
-   
-   
+		
+   }) 
 </script>
 </head>
 

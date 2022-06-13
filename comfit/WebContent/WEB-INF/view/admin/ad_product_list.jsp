@@ -22,7 +22,6 @@
 		<table class="table table-bordered" style="text-align: center; border: 1px solid #dddddd">
 			<thead><!-- 제목 -->
 				<tr><!-- 1행 -->
-					<th style="text-align: center;">상품ID</th>
 					<th style="text-align: center;">카테고리</th>
 					<th style="text-align: center;">등록일자</th>
 					<th style="text-align: center;">판매자ID</th>
@@ -32,15 +31,16 @@
 				</tr>
 			</thead>
 			<tbody>
+				<c:forEach var="product" items="${productlist}">
 				<tr>
-					<td>PO32</td>
-					<td>CPU</td>
-					<td>2022.05.23</td>
-					<td>asdf123</td>
-					<td><a href="ad_product_list_direct.action">CPU 싼가격에 팝니다</a></td>
-					<td>직거래</td>
-					<td>거래중</td>
+					<td>${product.cate_name}</td>
+					<td>${product.regit_date}</td>
+					<td>${product.u_email}</td>
+					<td><a href="ad_product_list_direct.action">${product.pd_title}</a></td>
+					<td>${product.ta_cate}</td>
+					<td>${product.ta_status}</td>
 				</tr>
+				</c:forEach>
 			</tbody>
 		</table>
 

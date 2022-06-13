@@ -44,6 +44,20 @@
 		FROM PRODUCT_CATEGORY
 	</select>
 
+	<insert id="add">
+		INSERT INTO DELIVERY_PRODUCT(DELI_PD_ID, PD_TITLE, PD_NAME, PD_PHOTO, PD_AS_REMAIN
+                         , PD_START_PRICE, PD_HITCOUNT, PD_REGIT_DATE, PD_MAKER_ID, PD_AS_ID, U_ID, CF_PRICE)
+		VALUES(#{dele_pd_id}, #{pd_title}, #{pd_name}, #{pd_photo}, #{pd_as_remain}
+		       , #{pd_start_price}, #{pd_hitcount}, #{pd_regit_date}, #{pd_maker_id}, #{pd_as_id}
+		       , #{u_id}, #{cf_price})			
+		
+		
+		<!-- VALUES('${dele_pd_id}', '${pd_title}', '${pd_name}', '${pd_photo}', '${pd_as_remain}'
+		       , '${pd_start_price}', '${pd_hitcount}', '${pd_regit_date}', '${pd_maker_id}', '${pd_as_id}'
+		       , '${u_id}', '${cf_price}') -->	
+	
+		<!-- '${sid}', '${name}', '${tel}' -->
+	</insert>
 
 	
 	

@@ -207,6 +207,7 @@
 	</p>
 	
 	<div class="input_box" style="padding-left: 5%; padding-top: 10%;">
+	<form action="user_delforminsert.action" method="get">
 		<table style="width: 100%;">
 			<tr>
 				<th>제목<span class="star">*</span></th>
@@ -338,13 +339,14 @@
 			<tr>
 				<td colspan="4">
 					<div class="d-grid gap-2 d-md-flex justify-content-md-end" style="width: 90%;">
-	                <button type="button" class="btn btn-primary">등록하기</button>
+	                <button type="submit" class="btn btn-primary">등록하기</button>
 	                <button type="button" class="btn btn-secondary">취소</button>
 	                </div>
                 </td>
 			</tr>
 			
 		</table>
+		</form>
 	</div>
 	
 	<br />

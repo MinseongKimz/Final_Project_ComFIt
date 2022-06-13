@@ -93,13 +93,14 @@ d-block
 <body>
 
 <div class="header">
-	<c:import url="comfit_header_user.jsp"></c:import>
+	<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
 </div>
 
 <div class="container">
 	<div style="padding-top: 5%;">
+	<c:forEach var="dlPd"  items="${dlPdList }">
 	
-			<p class="fs-2" style="text-align: center; font-weight: bold;">[카테고리]2022 GTX 0000 아주 합리적인 가격에 드립니다.</p>
+			<p class="fs-2" style="text-align: center; font-weight: bold;">[${dlPd.category_name }] ${dlPd.pd_title}</p>
 		
 		<div class="content">
 		<div class="col-md-6" style="float: left; width: 560px; height: 420px; padding-top: 3%; margin-right: 3%;">	
@@ -143,11 +144,11 @@ d-block
 			<tr>
 				<td colspan="2"><p>거래방식</p>
 				<!-- 속성에 따라 직거래/배송 표기 -->
-				<p class="content_text">배송(경매)</p></td>
+				<p class="content_text">택배거래</p></td>
 			</tr>
 			<tr>
 				<td colspan="2"><p>시작가격</p>
-				<p class="content_text">100,000 원</p></td>
+				<p class="content_text">${dlPd.price } 원</p></td>
 			</tr>
 			<tr>
 				<td colspan="2"><p>현재가격</p>
@@ -175,8 +176,8 @@ d-block
 				</td>
 				<th style="padding-top: 10px;">
 
-					<!-- 제조사/물품명 표기 -->
-					<p style="font-weight: bold;">제조사/물품명</p>
+					<!-- 제조사/물품명 표기 --> 
+					<p style="font-weight: bold;">${dlPd.maker_name }(${dlPd.maker_name2 }) / ${dlPd.pd_name }</p>
 				</th>
 			</tr>
 			<tr>
@@ -186,7 +187,7 @@ d-block
 				<th>
 
 					<!-- 즉시구매가 표기 -->
-					<p>143,200원</p>
+					<p>${dlPd.imdprice }</p>
 				</th>
 			</tr>
 			<tr>
@@ -195,7 +196,7 @@ d-block
 				</td>
 				<th>
 					<!-- 상품에 따른 추천가 표기 -->
-					<p style="color: blue;">189,200원</p>
+					<p style="color: blue;">${dlPd.cf_price } 원</p>
 
 				</th>
 			</tr>
@@ -231,8 +232,8 @@ d-block
 				<tr class="table-secondary">
 					<td style="padding:5%;">
 					<p>상품 상세정보<br><br>
-					1. 제조사 A/S 가능여부 : 무상 5개월까지 가능<br><br>
-					2. 특이사항 : 외관상 흠집 및 오염 없음, 작동상태 양호, 사용기간 3개월
+					1. 제조사 A/S 가능여부 : ${dlPd.pd_as_name } / ${dlPd.pd_as_remain } 까지 가능<br><br>
+					2. 특이사항 : ${dlPd.comments }
 					</p>
 					</td>
 				</tr>
@@ -249,7 +250,7 @@ d-block
 						style="object-fit:cover; height: 100%; width: 100%;">
 					</div>
 					<div style="padding-left: 25%;">
-						<p class="fs-2" style="margin-top: 5%; font-weight: bold;">아몰랑 
+						<p class="fs-2" style="margin-top: 5%; font-weight: bold;">${dlPd.u_nickname } 
 						<span class="fs-6" style="color: green;">Level : 5</span>
 						</p>
 					</div>
@@ -270,6 +271,8 @@ d-block
 				</div>
 			</div>
 		</div>
+		
+		</c:forEach>
 		
 		<!-- 입찰정보가 출력될 폼 -->
 		<div class="content_bid" style="margin-top: 5%; margin-left: 5%; margin-right:9%;">

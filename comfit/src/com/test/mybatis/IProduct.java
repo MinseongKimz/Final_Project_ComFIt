@@ -6,4 +6,6 @@ public interface IProduct
 {
 	public ArrayList<ProductDTO> pdList();
 	public ArrayList<CategoryDTO> cateList();
+	public int DeleveryAdd(deli_productDTO dto);
+	
 }

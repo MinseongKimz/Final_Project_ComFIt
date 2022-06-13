@@ -77,6 +77,8 @@ public class categoryController
 		
 		model.addAttribute("categorylist", dao.categoryList());
 		
+		result = "/WEB-INF/view/user/main/user_delivery_seller_edit.jsp";
+		
 		return result;
 	}
 	

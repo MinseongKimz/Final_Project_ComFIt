@@ -43,6 +43,7 @@
 		SELECT PD_CATEGORY_ID, CATEGORY_NAME
 		FROM PRODUCT_CATEGORY
 	</select>
+
 	
 	<select id="drPdList" resultType="com.test.mybatis.DirectProductDTO">
 		SELECT PD_ID, PD_TITLE, PD_NAME, PD_PHOTO, PD_AS_REMAIN, PD_HITCOUNT, PRICE
@@ -62,6 +63,7 @@
 	</select>
 
 	
+
 	
 </mapper>
 

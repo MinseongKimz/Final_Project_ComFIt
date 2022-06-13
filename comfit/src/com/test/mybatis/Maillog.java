@@ -19,21 +19,31 @@ public class Maillog
 	public String auth()
 	{
 		String from  = "minseonkimc@gmail.com";
-		String to  = "hjui6322789@gmail.com";
+		String to  = "hjui78@naver.com";
 		String subject = "[Comfit] 이메일 인증 메일입니다.";
 		String content = "<a href='http://localhost:8090/comfit/correct.action?auth='qwdqwdqwdqw''>인증하러가기</a>";
 		
 		try
 		{
-			MimeMessage mail = mailSender.createMimeMessage();
-            MimeMessageHelper mailHelper = new MimeMessageHelper(mail,true,"UTF-8");
+			/*
+			 * MimeMessage mail = mailSender.createMimeMessage(); MimeMessageHelper
+			 * mailHelper = new MimeMessageHelper(mail,true,"UTF-8");
+			 * 
+			 * mailHelper.setFrom(from); mailHelper.setTo(to);
+			 * mailHelper.setSubject(subject); mailHelper.setText(content, true);
+			 * 
+			 * 
+			 * 
+			 * 
+			 * 
+			 * 
+			 * 
+			 * mailSender.send(mail);
+			 */
 			
-            mailHelper.setFrom(from);
-            mailHelper.setTo(to);
-            mailHelper.setSubject(subject);
-            mailHelper.setText(content, true);
-			mailSender.send(mail);
-			
+			MailAuthKey random = new MailAuthKey();
+			String randomKey = random.random();
+			System.out.println(randomKey);
 			
 		} catch (Exception e)
 		{

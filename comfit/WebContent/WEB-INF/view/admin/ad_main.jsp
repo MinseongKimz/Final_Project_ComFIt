@@ -106,7 +106,7 @@ h3 {font-family: 'Black Han Sans', sans-serif;}
      	<div class="row">  	
 		  <div class="col-sm-6">
 		    <div class="card box">
-		      <div class="card-body">
+		      <div class="card-body" onclick="location.href='admin_category_list.action'">
 			  <div class="" style="text-align: center;">
 		        <h3 class="card-title">카테고리 관리</h3>
 		      </div>

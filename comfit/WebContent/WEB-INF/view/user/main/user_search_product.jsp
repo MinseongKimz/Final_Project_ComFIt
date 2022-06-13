@@ -146,7 +146,7 @@
             for (var i = 0; i < arr.length; i++)
                tprice += Number(arr[i]); // 누적 실행
             
-            var avgPrice = tprice/arr.length;  // 누적합 / 물품갯수
+            var avgPrice = (tprice/arr.length);  // 누적합 / 물품갯수
             
             for (var i = 0; i < arr.length; i++)
             {

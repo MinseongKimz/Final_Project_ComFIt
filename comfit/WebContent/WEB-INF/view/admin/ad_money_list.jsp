@@ -13,6 +13,31 @@
 <!-- 디자인 담당 -->
 <title>ad_money_list.jsp</title>
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/main.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function()
+	{
+		//alert("테스트");
+		
+		$("#searchBtn").click(function()
+		{
+			
+			// 카테고리 설정 안하고 검색했을때 걸러내기
+			if ($(".listselect").val() == "카테고리")
+			{
+				alert("검색 카테고리를 설정해 주세요.");
+				return;
+			}
+			
+			alert($(".listselect").val());
+			
+			$(location).attr('href', '/admin_moneysearch.action');
+			
+		});		
+	});
+
+</script>
 </head>
 <body>
 
@@ -20,8 +45,8 @@
 
 <div class="container">
 	<div class="row">
-		<div style="margin-bottom: 20px"><h1><b>관리자모드_입출금관리</b></h1></div> 
-		<table class="table table-bordered table-hover" style="text-align: center; border: 1px solid #dddddd">
+	<div style="margin-bottom: 20px"><h1><b>관리자모드_입출금관리</b></h1></div> 
+		<table class="table table-bordered" style="text-align: center; border: 1px solid #dddddd">
 			<thead><!-- 제목 -->
 				<tr><!-- 1행 -->
 					<th style="text-align: center;">회원ID</th>
@@ -34,33 +59,38 @@
 				</tr>
 			</thead>
 			<tbody>
+			<c:forEach var="moneylist" items="${moneylist}">
 				<tr>
 					<td>afdj12</td>
-					<td>김민성</td>
-					<td>출금</td>
-					<td>22.05.23  23:01:44	</td>
-					<td>국민</td>
-					<td>656502-750000</td>
-					<td>70,000</td>
+					<td>${moneylist.u_name }</td>
+					<td>${moneylist.io_type }</td>
+					<td>${moneylist.io_date }</td>
+					<td>${moneylist.bank_name }</td>
+					<td>${moneylist.account }</td>
+					<td>${moneylist.money }</td>
 				</tr>
+			</c:forEach>	
 			</tbody>
 		</table>
 
 		<div style="text-align: right;">
 		<div class="btn-group" style="width: 30%;">
-			<select class="form-select" style="width: 40%;">
-			    <option selected>카테고리</option>
-			    <option value="">1</option>
-			    <option value="">2</option>
+			<select class="form-select listselect" style="width: 40%;">
+			    <option selected value="u_name">이름</option>
+			    <option value="io_type">입출금</option>
+			    <option value="bank_name">은행</option>
 			</select> 
         <div class="input-group" style="width:100%;">
            <input type="text" class="form-control" placeholder="검색어를 입력하세요">
-            <button id="Btn" type="button" class="btn btn-outline-primary">
+            <button id="searchBtn" type="button" class="btn btn-outline-primary">
           <i class="bi bi-search"></i>
             </button>                          
 		</div>
 		</div>
 		</div>
+		
+	</div>
+</div>
 
 
 </body>

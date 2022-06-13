@@ -441,9 +441,10 @@ FROM TAB
 WHERE TABTYPE = 'VIEW';
 
 --------------------------------------------------------------------------------
-SELECT *
-FROM AD_PD_LIST_REALVIEW;
 
-
-
+SELECT IO_TYPE, U_EMAIL, U_NAME, IO_DATE, BANK_NAME
+     , ACCOUNT, MONEY
+FROM AD_IO_MONEY_LIST_REALVIEW
+WHERE IO_TYPE = 'ют╠щ'
+ORDER BY IO_DATE;
 

@@ -12,6 +12,24 @@
 <meta name="viewport" content="width=device-width", initial-scale="1">
 <title>ad_userout_list.jsp</title>
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/main.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function()
+	{
+		//alert("테스트");
+		
+		$(".userout").change(function()
+		{
+			//alert("차단");
+			alert($(".userout").val());
+			
+			//데이터가 admin_userlist.action 로 이동되어야 함
+			$(location).attr('href', '/admin_userlist.action');
+		})
+	});		
+
+</script>
 </head>
 <body>
 
@@ -41,10 +59,9 @@
 					<td>${user.u_exitdate }</td>
 					<td>211.100.015....	</td>
 					<td>
-						<select class="form-select" style="width: 70%; text-align: ;">
-						    <option selected>카테고리</option>
-						    <option value="">탈퇴</option>
-						    <option value="">복구</option>
+						<select class="form-select userout" style="width: 70%; text-align: ;">
+						    <option selected value="userout">탈퇴</option>
+						    <option value="userlist">복구</option>
 						</select>				
 					</td>
 				</tr>

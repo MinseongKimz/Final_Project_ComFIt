@@ -36,34 +36,16 @@
 	<!--    <<자동 매핑>>이 이루어진다. -->
 	<!--    또한 SQL 문 내부에 세미콜론(;) 이 있으면 안된다. -->
 	<select id="pdList" resultType="com.test.mybatis.ProductDTO">
-		SELECT PD_ID, PD_NAME, PRICE
-		FROM   PD_LIST_MAIN_VIEW
+		SELECT PD_NAME, PRICE 
+		FROM AD_PD_LIST_REALVIEW
 	</select>
 	<select id="cateList" resultType="com.test.mybatis.CategoryDTO">
 		SELECT PD_CATEGORY_ID, CATEGORY_NAME
 		FROM PRODUCT_CATEGORY
 	</select>
 
-	
-	<select id="drPdList" resultType="com.test.mybatis.DirectProductDTO">
-		SELECT PD_ID, PD_TITLE, PD_NAME, PD_PHOTO, PD_AS_REMAIN, PD_HITCOUNT, PRICE
-	   		 , TO_CHAR(TO_DATE(PD_HOPE_SDATE, 'YYYY-MM-DD')) AS PD_HOPE_SDATE, TO_CHAR(TO_DATE(PD_HOPE_EDATE, 'YYYY-MM-DD')) AS PD_HOPE_EDATE
-	   		 , PD_HOPE_STIME, PD_HOPE_ETIME, PD_HOPE_PLACE
-	   	 	 , PD_REGIT_DATE, PD_MAKER_ID, PD_AS_ID, PD_AS_NAME, CATEGORY_NAME, SELLER
-		     , U_NICKNAME, MAKER_NAME, MAKER_NAME2, CF_PRICE, COMMENTS
-		FROM DIRE_PD_LIST_REALVIEW
-		WHERE PD_ID = #{pd_id}
-	</select>
-	<select id="dlPdList" resultType="com.test.mybatis.DeliveryProductDTO">
-		SELECT PD_ID, PD_TITLE, PD_NAME, PD_PHOTO, PD_AS_REMAIN, PD_HITCOUNT, PRICE
-		     , PD_REGIT_DATE, PD_MAKER_ID, PD_AS_ID, PD_AS_NAME, CATEGORY_NAME, SELLER
-		     , U_NICKNAME, MAKER_NAME, MAKER_NAME2, CF_PRICE, COMMENTS, IMDPRICE
-		FROM DELI_PD_LIST_REALVIEW
-		WHERE PD_ID =  #{pd_id}
-	</select>
 
 	
-
 	
 </mapper>
 

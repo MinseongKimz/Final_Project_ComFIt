@@ -63,3 +63,23 @@ DB VIEW 작업, 2022-06-11
  4. 문의관리 [ ?? ]
 
     조회 구문
+
+------------------------------------------------------------------
+ 사용자 용 VIEW
+  
+ * 상품상세페이지 정보가져오기
+  ㄱ. 상품정보 뷰 에서 뽑아오기
+       SELECT 
+       FROM DELI_PD_LIST_REALVIEW
+
+       SELECT 
+       FROM DIRE_PD_LIST_REALVIEW
+ 
+  ㄴ. 상품정보 뷰에서 뽑아낸 PD_ID와 PD_NAME과 PD_PRICE만 조회하기
+
+ 
+  
+ 
+   
+
+  

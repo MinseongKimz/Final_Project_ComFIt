@@ -32,7 +32,7 @@ public class MainController
 		return "/WEB-INF/view/user/main/user_login.jsp";
 	}
 	
-	@RequestMapping("/regist.action")
+	@RequestMapping("/registform.action")
 	public String regist(Model model)
 	{
 		return "/WEB-INF/view/user/main/user_signup_info.jsp";

@@ -109,7 +109,7 @@
                         <a class="nav-link primary active" aria-current="page" href="loginform.action">로그인</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="regist.action" style="">회원가입</a>
+                        <a class="nav-link active" href="registform.action" style="">회원가입</a>
                     </li>
                     <li class="nav-item">
                       	<a class="nav-link active" href="svc.action">고객센터</a>

@@ -71,13 +71,14 @@ d-block
 <body>
 
 <div class="header">
-	<c:import url="comfit_header_user.jsp"></c:import>
+	<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
 </div>
 
 <div class="container">
 	<div style="padding-top: 5%;">
+	<c:forEach var="drPd"  items="${drPdList }">
 	
-			<p class="fs-2" style="text-align: center; font-weight: bold;">[카테고리]2022 GTX 0000 아주 합리적인 가격에 드립니다.</p>
+			<p class="fs-2" style="text-align: center; font-weight: bold;">[${drPd.category_name}] ${drPd.pd_title }</p>
 		
 		<div class="content">
 		<div class="col-md-6" style="float: left; width: 560px; height: 420px; padding-top: 5%; margin-right: 3%;" >	
@@ -135,19 +136,20 @@ d-block
 			</tr>
 			<tr>
 				<td colspan="2"><p>희망가격</p>
-				<p class="content_text" style="color: blue;">160,000 원</p></td>
+				<p class="content_text" style="color: blue;">${drPd.price} 원</p></td>
 			</tr>
 			<tr>
 				<td><p>희망 날짜</p>
-					<p class="content_text">5월 16일 ~ 5월 21일 </p>
+					<p class="content_text" style="font-size: 12pt;">${drPd.pd_hope_sdate} ~ ${drPd.pd_hope_edate} </p>
+					
 				</td>
 				<td><p>희망 시간대</p>
-					<p class="content_text">17시 ~ 19시</p>
+					<p class="content_text" style="font-size: 12pt;">${drPd.pd_hope_stime } ~ ${drPd.pd_hope_etime}</p>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2"><p>희망 장소</p>
-					<p class="content_text" style="color: blue;">인천광역시 계양구 새벌로 112번길</p>
+					<p class="content_text" style="color: blue;">${drPd.pd_hope_place}</p>
 				</td>
 			</tr>
 			<tr>
@@ -168,7 +170,7 @@ d-block
 				<th style="padding-top: 10px;">
 
 					<!-- 제조사/물품명 표기 -->
-					<p style="font-weight: bold;">제조사/물품명</p>
+					<p style="font-weight: bold;">${drPd.maker_name}(${drPd.maker_name2 }) / ${drPd.pd_name }</p>
 				</th>
 			</tr>
 			<tr>
@@ -177,7 +179,7 @@ d-block
 				</td>
 				<th>
 					<!-- 상품에 따른 추천가 표기 -->
-					<p style="color: blue;">189,200원</p>
+					<p style="color: blue;">${drPd.cf_price}</p>
 
 				</th>
 			</tr>
@@ -210,8 +212,8 @@ d-block
 					<tr class="table-secondary">
 						<td style="padding:5%;">
 						<p>상품 상세정보<br><br>
-						1. 제조사 A/S 가능여부 : 무상 5개월까지 가능<br><br>
-						2. 특이사항 : 외관상 흠집 및 오염 없음, 작동상태 양호, 사용기간 3개월
+						1. 제조사 A/S 가능여부 : ${drPd.pd_as_name } ${drPd.pd_as_remain } 까지 가능<br><br>
+						2. 특이사항 : ${drPd.pd_as_name }
 						</p>
 						</td>
 					</tr>
@@ -227,7 +229,7 @@ d-block
 						style="object-fit:cover; height: 100%; width: 100%;">
 					</div>
 					<div style="padding-left: 25%;">
-						<p class="fs-2" style="margin-top: 5%; font-weight: bold;">아몰랑 
+						<p class="fs-2" style="margin-top: 5%; font-weight: bold;">${drPd.u_nickname } 
 						<span class="fs-6" style="color: green;">Level : 5</span>
 						</p>
 					</div>
@@ -241,6 +243,7 @@ d-block
 				    </div>
 				  </div>
 				</div>
+       				
 				<!-- 판매자 정보 아래 버튼  -->
 				<div style="text-align: center; margin-top: 1%;">
 					<button class="btn btn-primary" style="width: 25%; margin-right: 15%;">목록으로</button>
@@ -249,7 +252,7 @@ d-block
 			</div>
 		</div>
 		
-		
+		</c:forEach>
 		<!-- 제안정보가 출력될 폼 -->
 		<div class="content_bid" style="margin-top: 5%; margin-left: 5%; margin-right:9%;">
 		<p class="fs-3" style="padding-left: 4%; font-weight: bold;">현재 제안 정보</p>

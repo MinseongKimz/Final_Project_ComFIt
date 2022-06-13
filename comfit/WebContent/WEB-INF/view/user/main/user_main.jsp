@@ -267,7 +267,7 @@
               	 <div class="card-body">
                   <h5 class="card-title" style="text-align: center;">${product.pd_name }</h5>
                   <p class="card-text"  style="text-align: center;">${product.price }</p>
-                  <a href="pd_detail.action?" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
+                  <a href="pd_detail.action?pd_id=${product.pd_id }" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
                	</div>
             </div>		
          	</c:forEach>

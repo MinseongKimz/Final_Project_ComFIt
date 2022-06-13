@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.mybatis.IAdmin">
+
+	<select id="adminProductList" resultType="com.test.mybatis.adProductDTO">
+		SELECT CATE_NAME, TO_CHAR(REGIT_DATE) AS REGIT_DATE, U_EMAIL, PD_TITLE, TA_CATE, TA_STATUS
+		FROM AD_PD_LIST_REALVIEW
+	</select>
+	
+</mapper>

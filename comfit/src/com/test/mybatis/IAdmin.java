@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public interface IAdmin
 {
 	// 관리자모드 회원 리스트 출력 메소드
-	public ArrayList<userDTO> adminUserList();
+	public ArrayList<userDTO> adminUserList(); 
 	
 	// 관리자모드 차단 회원 리스트 출력 메소드
 	public ArrayList<userDTO> adminBannedList();
@@ -21,8 +21,8 @@ public interface IAdmin
 	// 관리자모드 탈퇴한 회원 리스트 출력 메소드
 	public ArrayList<useroutDTO> adminUseroutList();
 	
-	// 관리자모드 거래관리 리스트 출력 메소드
-	public ArrayList<userDTO> adminMoneyList(); /* userDTO 바꿔야함 */
+	// 관리자모드 상품관리 리스트 출력 메소드
+	public ArrayList<adProductDTO> adminProductList();
 	
 
 }

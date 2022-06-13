@@ -22,6 +22,8 @@ public interface IAdmin
 	// 관리자모드 탈퇴한 회원 리스트 출력 메소드
 	public ArrayList<useroutDTO> adminUseroutList();
 	
+	// 관리자모드 상품 출력 메소드
+	public ArrayList<adProductDTO> adminProductList();
 
 	// 관리자모드 FAQ 리스트 출력 메소드
 	public ArrayList<FaqDTO> faqList();

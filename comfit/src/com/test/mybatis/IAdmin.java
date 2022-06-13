@@ -24,6 +24,11 @@ public interface IAdmin
 	
 	// 관리자모드 상품 출력 메소드
 	public ArrayList<adProductDTO> adminProductList();
+	
+	// 관리자모드 입출금 출력 메소드
+	public ArrayList<adMoneyDTO> adminMoneyList();
+	
+	// 관리자모드 입출금 검색 메소드 구현하기...
 
 	// 관리자모드 FAQ 리스트 출력 메소드
 	public ArrayList<FaqDTO> faqList();
@@ -36,6 +41,9 @@ public interface IAdmin
 	
 	// 관리자모드 FAQ 수정 메소드
 	public int faqModify(FaqDTO dto);
+	
+	// 관리자모드 FAQ 삭제 메소드
+	public int faqDelete(String faq_id);
 
 }
 

@@ -30,6 +30,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE FAQ_ID = #{faq_id}
 	</update>
 	
+	<!-- faq 삭제 -->
+	<delete id="faqDelete">
+		DELETE FROM FAQ
+		WHERE FAQ_ID = #{faq_id}
+	</delete>
 	
 	
 </mapper>

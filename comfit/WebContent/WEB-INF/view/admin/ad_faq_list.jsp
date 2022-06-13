@@ -37,17 +37,16 @@
 	})
 	
 	
-	
-	/* // FAQ 글 삭제 버튼
+	// FAQ 글 삭제 버튼
 	$(document).ready(function()
 	{
 		$(".btn-delete").click(function()
 		{
 			//alert("글쓰기버튼");
-			location.href="admin_faq_edit.action";
+			location.href="admin_faq_delete.action?faq_id=" + $(this).val();
 		})
 		
-	}) */
+	})
 	
 
 </script>
@@ -120,8 +119,8 @@
 			<div class="anw" style="padding-left: 20px">
 				<span>${faq.faq_contents }</span>
 				<div style="margin-top: 50px; text-align: right;">
-					<button class="btn btn-primary btn-modify" value="${faq.faq_id }" style="width: 100px;">수정하기</button>
-					<button class="btn btn-outline-secondary btn-delete" value="${faq.faq_id }" style="width: 100px;">삭제하기</button>			 
+					<button type="submit" class="btn btn-primary btn-modify" value="${faq.faq_id }" style="width: 100px;">수정하기</button>
+					<button type="button" class="btn btn-outline-secondary btn-delete" value="${faq.faq_id }" style="width: 100px;">삭제하기</button>			 
 				</div>
 		    </div>
 			</c:forEach>

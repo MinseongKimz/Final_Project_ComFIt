@@ -13,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class AdminController
@@ -103,7 +102,15 @@ public class AdminController
    @RequestMapping(value = "/admin_money_list.action", method = RequestMethod.GET)
    public String adMoneyList(Model model)
    {
-      return "/WEB-INF/view/admin/ad_money_list.jsp";
+	  String result = null;
+	  
+	  IAdmin dao = sqlSession.getMapper(IAdmin.class);
+	  
+	  model.addAttribute("moneylist", dao.adminMoneyList());
+	  
+      result =  "/WEB-INF/view/admin/ad_money_list.jsp";
+      
+      return result;
    }
    
    // 카테고리 리스트
@@ -208,6 +215,24 @@ public class AdminController
 	   IAdmin dao = sqlSession.getMapper(IAdmin.class);
 	   
 	   dao.faqModify(dto);
+	   
+	   result = "redirect:admin_faq_list.action";
+	   
+	   return result;
+   }
+   
+   
+   // 관리자 FAQ 삭제하기
+   @RequestMapping(value = "/admin_faq_delete.action", method = RequestMethod.GET)
+   public String adFAQDelete(String faq_id)
+   {
+	   String result = null;
+	   
+	   IAdmin dao = sqlSession.getMapper(IAdmin.class);
+	   
+	   //System.out.println(dto.getFaq_id());
+	   
+	   dao.faqDelete(faq_id);
 	   
 	   result = "redirect:admin_faq_list.action";
 	   

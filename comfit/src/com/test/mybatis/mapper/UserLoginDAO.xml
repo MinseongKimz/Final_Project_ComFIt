@@ -53,6 +53,12 @@
 		FROM USER_INFORMATION
 		WHERE U_NICKNAME = #{nickName}
 	</select>
+	
+	<select  id="emailCheck" resultType="java.lang.Integer">
+		SELECT COUNT (*) COUNT
+		FROM USER_INFORMATION
+		WHERE U_EMAIL = #{email}
+	</select>
 
 	
 	

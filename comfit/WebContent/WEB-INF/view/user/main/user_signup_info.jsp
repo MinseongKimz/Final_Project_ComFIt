@@ -145,7 +145,6 @@
 				else
 				{
 					$("#checkNick").css("display", "inline");
-					$("#checkNick").attr('color', 'green');
 					$("#checkNick").html("사용가능한 닉네임 입니다.");
 				}	
 			}
@@ -153,12 +152,54 @@
 			{
 				alert(e.responseText);
 			}	
-				
-				
 			})
 			
 			
 		})
+		
+		
+		$("#email").focusout(function() // 이메일
+		{
+			var email = "email=" + $.trim($("#email").val());
+			alert(email)
+			$.ajax({
+				type : "POST"
+			   , url : "emailcheck.action"
+			   , data : email
+			   , success : function(result)
+			{
+				if (result == 1)
+				{
+					$("#checkEmail").css("display", "inline");
+					$("#checkEmail").html("이미 사용중인 이메일 입니다.");
+					$("#regitBtn").prop("disabled", true);
+				}
+				else
+				{
+					$("#checkEmail").css("display", "inline");
+					$("#checkEmail").html("사용가능한 이메일 입니다.");
+				}	
+			}
+			  , error : function(e)
+			{
+				alert(e.responseText);
+			}	
+			})
+			
+			
+		})
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
    })
    
@@ -231,6 +272,7 @@
           <div class="mb-3">
             <label for="email">이메일</label>
             <input type="email" class="form-control" id="email" placeholder="you@example.com" required="required">
+            <span style="display: none; color:red;" class="err" id="checkEmail"></span>
             <div class="invalid-feedback">
               이메일을 입력해주세요.
             </div>

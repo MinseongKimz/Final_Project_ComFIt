@@ -20,16 +20,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	<!-- 공지사항 추가 등록  -->
-	<insert id="noticeInsert">
+	<insert id="noticeInesrt">
 		INSERT INTO ANNOUNCE (ANNOUNCE_ID,ANNOUNCE_TITLE,ANNOUNCE_CONTENTS,ANOUN_CATE_ID)
 		VALUES(#{announce_id},#{announce_title},#{announce_contents},#{anoun_cate_id})
 	</insert>
 	
-	
+	<!-- 공지사항 수정 폼 출력 -->
+	<select id="noticeModifyForm" resultType="com.test.mybatis.NoticeDTO">
+		SELECT ANNOUNCE_ID,ANNOUNCE_TITLE,ANNOUNCE_CONTENTS
+		FROM ANNOUNCE
+		WHERE = #{announce_id}
+	</select>
 	
 	
 	<!-- 공지사항 수정  -->
-	<update id="AnnounceModify">
+	<update id="noticeModify">
 		UPDATE ANNOUNCE
 		SET ANNOUNCE_TITLE =#{notice_title}
     	,ANNOUNCE_CONTENTS = #{notice_contents}
@@ -38,7 +43,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<!-- 공지사항 삭제  -->
-	<delete id="AnnounceDelete">
+	<delete id="noticeDelete">
 		DELETE
 		FROM ANNOUNCE
 		WHERE ANNOUNCE_ID=#{notice_id}

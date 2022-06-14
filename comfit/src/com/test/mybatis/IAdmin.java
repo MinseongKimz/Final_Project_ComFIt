@@ -41,6 +41,17 @@ public interface IAdmin
 	// 관리자모드 공지사항 관리자 카테고리 메소드 ok
 	public ArrayList<NoticeDTO> noticecateList();
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	// 관리자모드 상품 출력 메소드
 	public ArrayList<adProductDTO> adminProductList();
 	

@@ -4,7 +4,7 @@ public class userDTO
 {
 	// 회원 리스트 속성
 	private String u_id, u_email, u_name, u_nickname, u_joindate
-	, u_tel, bancount, u_password, u_address, u_profile;
+	, u_tel, bancount, u_password, u_profile;
 	
 	// 이메일
 	private String u_address;
@@ -26,7 +26,7 @@ public class userDTO
 	public void setU_profile(String u_profile)
 	{
 		this.u_profile = u_profile;
-
+	}
 	public String getRandom()
 	{
 		return random;

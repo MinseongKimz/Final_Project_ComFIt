@@ -110,27 +110,27 @@
                                  </th>
                               </tr>
                              <tr>
-                               <td>이메일</td><td>Test@gmail.com</td>
+                               <td>이메일</td><td>${userInfo.u_email }</td>
                              </tr>
                              <tr>
-                               <td>이름</td><td>김민성</td>
+                               <td>이름</td><td>${userInfo.u_name }</td>
                              </tr>
                              <tr>
-                               <td>닉네임</td><td>김인성</td>
+                               <td>닉네임</td><td>${userInfo.u_nickname }</td>
                              </tr>
                              <tr>
                                <td>레벨</td><td>5</td>
                              </tr>
                              <tr>
-                               <td>비밀번호</td><td>T******</td>
+                               <td>비밀번호</td><td>${userInfo.u_password }</td>
                                <td><button type="button" class="btn btn-primary btn-sm"id="btn-pw-modify" style="margin-left:45%;">변경하기</button></td>
                              </tr>
                              <tr>
-                               <td>휴대폰번호</td><td>010-1111-1111</td>
+                               <td>휴대폰번호</td><td>${userInfo.u_tel }</td>
                                <td><button type="button" class="btn btn-primary btn-sm"id="btn-tel-modify" style="margin-left:45%;">변경하기</button></td>
                              </tr>
                              <tr>
-                               <td>주소</td><td>서울시 서초구..</td>
+                               <td>주소</td><td>${userInfo.u_address }</td>
                                <td><button type="button" class="btn btn-primary btn-sm"id="btn-address-modify" style="margin-left:45%;">변경하기</button></td>
                              </tr>
                       </table>

@@ -1,5 +1,7 @@
 package com.test.mybatis;
 
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class SearchContoller
 {
+	@Autowired
+	private SqlSession sqlSeesion;
+	
 	@RequestMapping(value = "/search.action", method = RequestMethod.POST)
 	public String search(Model model, @RequestParam("name") String name)
 	{
@@ -22,20 +27,26 @@ public class SearchContoller
 		return "/WEB-INF/view/user/main/user_search_product.jsp";
 	}
 	
-	@RequestMapping(value = "/retunsell.action", method = RequestMethod.POST)      // 선택하면 거래 등록 게시물로
-	public String returnSeach(Model model, @RequestParam("name") String name
-			                             , @RequestParam("category") String category
-			                             , @RequestParam("maker") String maker
-			                             , @RequestParam("cfPrice") String cfPrice)
+	@RequestMapping(value = "/returnsell.action", method = RequestMethod.GET)      // 선택하면 거래 등록 게시물로
+	public String returnSeach(Model model, String name, String maker, String cfPrice, String category)
 	{
 		
-		System.out.println(name);
-		System.out.println(category);
-		System.out.println(maker);
-		System.out.println(cfPrice);
+		
+		IProduct dao = sqlSeesion.getMapper(IProduct.class);
 		
 		
-		return "s";
+		
+		model.addAttribute("categorylist", dao.categoryList());
+		
+		model.addAttribute("name", name);
+		model.addAttribute("maker", maker);
+		//model.addAttribute("cfPrice", cfPrice);
+		model.addAttribute("category", category);
+		
+		
+		
+		return "/WEB-INF/view/user/main/user_delivery_seller_edit.jsp";
+		
 	}
 	
 	

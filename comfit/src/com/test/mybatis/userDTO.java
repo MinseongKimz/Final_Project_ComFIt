@@ -6,6 +6,7 @@ public class userDTO
 	private String u_id, u_email, u_name, u_nickname, u_joindate
 	, u_tel, bancount, u_password, u_address, u_profile;
 	
+
 	// 차단회원 리스트 속성
 	private String ban_cate_name, ban_date, ban_end_date, rep_cate_name, ban_rea_detail;
 
@@ -24,7 +25,7 @@ public class userDTO
 	{
 		this.u_profile = u_profile;
 	}
-		
+
 	public String getRandom()
 	{
 		return random;

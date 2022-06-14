@@ -4,11 +4,19 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.test.mybatis.IProduct">
 
+	<!-- 배송 판매글 등록폼에 관련한 DAO -->
+
 	<select id="categoryList" resultType="com.test.mybatis.CategoryDTO">
 		SELECT PD_CATEGORY_ID, CATEGORY_NAME
 		FROM PRODUCT_CATEGORY
 	</select>
 	
+	<select id="makerList" resultType="com.test.mybatis.MakerDTO">
+		SELECT PD.PD_CATEGORY_ID AS PD_CATEGORY_ID, MAKER_NAME, MAKER_NAME2
+		FROM PRODUCT_MAKER PD JOIN PRODUCT_CATEGORY CA
+		ON PD.PD_CATEGORY_ID = CA.PD_CATEGORY_ID
+		WHERE CA.CATEGORY_NAME = #{category}
+	</select>
 
 	
 </mapper>

@@ -388,4 +388,4 @@ VALUES('cf_admin', 'comfit006$');
 
 
      
-COMMIT;      
+COMMIT;

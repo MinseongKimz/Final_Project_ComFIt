@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class SearchContoller
 {
-	
-	
 	@RequestMapping(value = "/search.action", method = RequestMethod.POST)
 	public String search(Model model, @RequestParam("name") String name)
 	{
@@ -18,14 +16,13 @@ public class SearchContoller
 		
 		result = NaversearchAPI.search(name);
 		
-		
 		model.addAttribute("pdname", name);
 		model.addAttribute("result", result);
 		
-		return "user_search_product.jsp";
+		return "/WEB-INF/view/user/main/user_search_product.jsp";
 	}
 	
-	@RequestMapping(value = "/retunsell.action", method = RequestMethod.POST)
+	@RequestMapping(value = "/retunsell.action", method = RequestMethod.POST)      // 선택하면 거래 등록 게시물로
 	public String returnSeach(Model model, @RequestParam("name") String name
 			                             , @RequestParam("category") String category
 			                             , @RequestParam("maker") String maker

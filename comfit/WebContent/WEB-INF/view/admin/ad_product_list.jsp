@@ -11,6 +11,31 @@
 <!-- 기기별 크기 담당 -->
 <meta name="viewport" content="width=device-width", initial-scale="1">
 <title>bbs.jsp</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function()
+	{
+		//alert("테스트");
+		
+		$("#searchBtn").click(function()
+		{
+			
+			// 카테고리 설정 안하고 검색했을때 걸러내기
+			if ($(".listselect").val() == "카테고리")
+			{
+				alert("검색 카테고리를 설정해 주세요.");
+				return;
+			}
+			
+			alert($(".listselect").val());
+			
+			$(location).attr('href', '/admin_productsearch.action');
+			
+		});		
+	});
+
+</script>
 </head>
 <body>
 
@@ -22,7 +47,6 @@
 		<table class="table table-bordered" style="text-align: center; border: 1px solid #dddddd">
 			<thead><!-- 제목 -->
 				<tr><!-- 1행 -->
-					<th style="text-align: center;">상품ID</th>
 					<th style="text-align: center;">카테고리</th>
 					<th style="text-align: center;">등록일자</th>
 					<th style="text-align: center;">판매자ID</th>
@@ -32,15 +56,16 @@
 				</tr>
 			</thead>
 			<tbody>
+				<c:forEach var="product" items="${productlist}">
 				<tr>
-					<td>PO32</td>
-					<td>CPU</td>
-					<td>2022.05.23</td>
-					<td>asdf123</td>
-					<td><a href="ad_product_list_direct.action">CPU 싼가격에 팝니다</a></td>
-					<td>직거래</td>
-					<td>거래중</td>
+					<td>${product.cate_name}</td>
+					<td>${product.regit_date}</td>
+					<td>${product.u_email}</td>
+					<td><a href="ad_product_list_direct.action">${product.pd_title}</a></td>
+					<td>${product.ta_cate}</td>
+					<td>${product.ta_status}</td>
 				</tr>
+				</c:forEach>
 			</tbody>
 		</table>
 
@@ -51,14 +76,14 @@
 			<input type="checkbox" name="xxx" value="yyy" checked>블라인드 처리된 게시글만 보기
 		</div>
 		<div class="btn-group" style="width: 30%; text-align: right;">
-			<select class="form-select" style="width: 40%; display: inline-block;">
+			<select class="form-select listselect" style="width: 40%; display: inline-block;">
 			    <option selected>카테고리</option>
-			    <option value="">1</option>
-			    <option value="">2</option>
+			    <option value="1">1</option>
+			    <option value="2">2</option>
 			</select> 
         <div class="input-group" style="width:100%; text-align: right;">
            <input type="text" class="form-control" placeholder="검색어를 입력하세요">
-            <button id="Btn" type="button" class="btn btn-outline-primary">
+            <button id="searchBtn" type="button" class="btn btn-outline-primary">
           <i class="bi bi-search"></i>
             </button>                          
 		</div>

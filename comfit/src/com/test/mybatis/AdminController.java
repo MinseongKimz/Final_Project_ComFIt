@@ -82,18 +82,35 @@ public class AdminController
       return result;
    }
    
-   // 관리자 상품관리
+   // 관리자 상품관리 리스트
    @RequestMapping(value = "/admin_product_list.action", method = RequestMethod.GET)
    public String adProductList(Model model)
    {
-      return "/WEB-INF/view/admin/ad_product_list.jsp";
+      String result = null;
+      
+      IAdmin dao = sqlSession.getMapper(IAdmin.class);
+      
+      model.addAttribute("productlist", dao.adminProductList());
+      
+      result = "/WEB-INF/view/admin/ad_product_list.jsp";
+      
+      return result;
    }
    
+  
    // 관리자 입출금관리
    @RequestMapping(value = "/admin_money_list.action", method = RequestMethod.GET)
    public String adMoneyList(Model model)
    {
-      return "/WEB-INF/view/admin/ad_money_list.jsp";
+	  String result = null;
+	  
+	  IAdmin dao = sqlSession.getMapper(IAdmin.class);
+	  
+	  model.addAttribute("moneylist", dao.adminMoneyList());
+	  
+      result =  "/WEB-INF/view/admin/ad_money_list.jsp";
+      
+      return result;
    }
    
    // 카테고리 리스트
@@ -178,9 +195,7 @@ public class AdminController
 	   
 	   return result;
    }
-   
-   
- 
+
    
    // 관리자 공지사항 수정 폼으로 가기
    @RequestMapping(value = "/admin_notice_modify_form.action" ,method = RequestMethod.GET)
@@ -233,10 +248,96 @@ public class AdminController
    
    
    // 관리자 FAQ 관리
+
+   // 관리자 FAQ 리스트 출력
+
    @RequestMapping(value = "/admin_faq_list.action", method = RequestMethod.GET)
    public String adFAQList(Model model)
    {
-      return "/WEB-INF/view/admin/ad_faq_list.jsp";
+	   String result = null;
+	   
+	   IAdmin dao = sqlSession.getMapper(IAdmin.class);
+	   
+	   model.addAttribute("faqList", dao.faqList());
+	   
+	   result = "/WEB-INF/view/admin/ad_faq_list.jsp";
+	   
+	   return result;
+	   
+   }
+   
+   // 관리자 FAQ 글쓰기 페이지로 이동
+   @RequestMapping(value = "/admin_faq_edit.action", method = RequestMethod.GET)
+   public String adFAQinsertForm()
+   {
+	   return "/WEB-INF/view/admin/ad_faq_edit.jsp";
+   }
+   
+   
+   
+   // 관리자 FAQ 글쓰기
+   @RequestMapping(value = "/admin_faq_insert.action", method = RequestMethod.POST)
+   public String adFAQInsert(FaqDTO faq)
+   {
+	   String result = null;
+	   
+	   IAdmin dao = sqlSession.getMapper(IAdmin.class);
+	   
+	   dao.faqInsert(faq);
+	   
+	   result = "redirect:admin_faq_list.action";
+	   
+	   return result;
+   }
+   
+   // 관리자 FAQ 수정 폼으로 가기
+   @RequestMapping(value = "/admin_faq_modify_form.action", method = RequestMethod.GET)
+   public String adFAQModifyForm(Model model, String faq_id)
+   {
+	   String result = null;
+	   
+	   IAdmin dao = sqlSession.getMapper(IAdmin.class);
+	   
+	   
+	   model.addAttribute("modify", dao.faqModifyForm(faq_id));
+	   
+	   result = "/WEB-INF/view/admin/ad_faq_modify.jsp";
+	   
+	   return result;
+   }
+   
+   
+   // 관리자 FAO 수정하기
+   @RequestMapping(value = "/admin_faq_modify.action", method = RequestMethod.POST)
+   public String adFAQModify(FaqDTO dto)
+   {
+	   String result = null;
+	   
+	   IAdmin dao = sqlSession.getMapper(IAdmin.class);
+	   
+	   dao.faqModify(dto);
+	   
+	   result = "redirect:admin_faq_list.action";
+	   
+	   return result;
+   }
+   
+   
+   // 관리자 FAQ 삭제하기
+   @RequestMapping(value = "/admin_faq_delete.action", method = RequestMethod.GET)
+   public String adFAQDelete(String faq_id)
+   {
+	   String result = null;
+	   
+	   IAdmin dao = sqlSession.getMapper(IAdmin.class);
+	   
+	   //System.out.println(dto.getFaq_id());
+	   
+	   dao.faqDelete(faq_id);
+	   
+	   result = "redirect:admin_faq_list.action";
+	   
+	   return result;
    }
    
    

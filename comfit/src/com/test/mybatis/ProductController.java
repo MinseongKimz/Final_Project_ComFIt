@@ -39,7 +39,7 @@ public class ProductController
 	}
 	
 
-	@RequestMapping(value = "/user_svc.action", method = RequestMethod.GET)
+	@RequestMapping(value = "/user_svc.action", method = RequestMethod.GET) 
 	public String svcCenter(Model model)
 	{
 		String result = null;
@@ -48,6 +48,5 @@ public class ProductController
 		
 		return result;
 	}
-	
-	
+
 }

@@ -79,6 +79,60 @@
 	
 
 </style>
+
+<script type="text/javascript">
+
+		$(function()
+		{
+			<%
+				String err = null;
+				String hello = null;
+				try
+				{
+					err = request.getParameter("err");
+					hello = request.getParameter("hello");
+					
+					if(hello!=null)
+					{	%>
+							alert("환영합니다~!!!");
+						<%
+					}		
+					
+					if(err!=null)
+					{	%>
+							alert("아이디 또는 비밀번호가 올바르지 않습니다.");
+						<%
+					}	
+				}
+				catch (Exception e)
+				{
+					System.out.println(e.toString());
+				}
+			%>
+			
+			
+			
+			$("#submitBtn").click(function()
+			{
+				//alert("gd");
+				
+				if ($("#u_email").val()== "" || $("#u_password").val()== "")
+				{
+					//alert("asfsa");
+					$("#errMsg").html("항목을 모두 입력하셔야 합니다.").css("display", "inline");
+				}
+				else
+				{
+					$("#loginForm").submit();
+					
+				}
+				
+			});
+		});
+
+</script>	
+
+
 </head>
 
 
@@ -93,7 +147,7 @@
    <c:import url="/WEB-INF/view/user/main/comfit_header_nolog.jsp"></c:import>
 </div>
 
-	
+
 <div class="container" style="margin-top: 4%;">
 
 	<!--
@@ -103,27 +157,27 @@
 	-->
 	<br /><br /><br />
 	<div style="width: 400px; margin: auto;">
-		<form action="" class="form form-group">
-			<a href="ad_login.jsp" > 
-				<%-- <img alt="logo" src="<%=cp%>/images/logo.png" style="width: 200px;"> --%>
-			</a>
+		<form action="login.action" class="form form-group" id="loginForm" method="post">
+			
 			<h2 class="h3 mb-3"><b>로그인</b></h2>
 			
 			<div class="form-floating">
-			  <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+			  <input type="email" class="form-control" id="u_email" name="u_email">
 			  <label for="floatingInput">아이디를 입력하세요</label>
 			</div>
 			<div class="form-floating">
-			  <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+			  <input type="password" class="form-control" id="u_password" name="u_password">
 			  <label for="floatingPassword">비밀번호를 입력하세요</label>
 			</div>
-			<input type="text" class="errMsg" placeholder="아이디 혹은 비밀번호가 틀렸습니다. 다시 로그인해주세요." style="color:red; display: none;"/>
+				<button type="button" class="btn btn-primary" id="submitBtn" 
+	  			style="width: 100%;">로그인</button>
+	  		 
 		</form>
-	
+		<span class="errMsg" id="errMsg" style="color:red; display: none;"></span>
 		<!-- reCAPCHA -->
 		<div style="display: none;"></div>
 		
-	<button type="button" class="btn btn-primary" style="width: 100%;" onclick="location.href='user_mainlist.action'">로그인</button>
+
 
 	<br /><br />
 	

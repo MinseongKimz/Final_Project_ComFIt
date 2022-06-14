@@ -36,16 +36,45 @@
 	<!--    <<자동 매핑>>이 이루어진다. -->
 	<!--    또한 SQL 문 내부에 세미콜론(;) 이 있으면 안된다. -->
 	<select id="pdList" resultType="com.test.mybatis.ProductDTO">
-		SELECT PD_NAME, PRICE 
-		FROM AD_PD_LIST_REALVIEW
+		SELECT PD_ID, PD_NAME, PRICE
+		FROM   PD_LIST_MAIN_VIEW
 	</select>
 	<select id="cateList" resultType="com.test.mybatis.CategoryDTO">
 		SELECT PD_CATEGORY_ID, CATEGORY_NAME
 		FROM PRODUCT_CATEGORY
 	</select>
 
-
 	
+	<select id="drPdList" resultType="com.test.mybatis.DirectProductDTO">
+		SELECT PD_ID, PD_TITLE, PD_NAME, PD_PHOTO, PD_AS_REMAIN, PD_HITCOUNT, PRICE
+		     , SUBSTR(TO_CHAR(PD_HOPE_SDATE), 1, 10) AS PD_HOPE_SDATE, SUBSTR(TO_CHAR(PD_HOPE_EDATE), 1, 10) AS PD_HOPE_EDATE
+		     , PD_HOPE_STIME, PD_HOPE_ETIME, PD_HOPE_PLACE
+		     , PD_REGIT_DATE, PD_MAKER_ID, PD_AS_ID, PD_AS_NAME, CATEGORY_NAME, SELLER
+		     , U_NICKNAME, MAKER_NAME, MAKER_NAME2, CF_PRICE, COMMENTS
+		     , PD_HOPE_EDATE + ROUND(TO_NUMBER(SUBSTR(PD_HOPE_ETIME, 1, 2)-4)/24, 10) AS REMAIN_DATE
+		FROM DIRE_PD_LIST_REALVIEW
+		WHERE PD_ID =  #{pd_id}
+	</select>
+	<select id="dlPdList" resultType="com.test.mybatis.DeliveryProductDTO">
+		SELECT PD_ID, PD_TITLE, PD_NAME, PD_PHOTO, PD_AS_REMAIN, PD_HITCOUNT, PRICE
+		     , PD_REGIT_DATE, PD_MAKER_ID, PD_AS_ID, PD_AS_NAME, CATEGORY_NAME, SELLER
+		     , U_NICKNAME, MAKER_NAME, MAKER_NAME2, CF_PRICE, COMMENTS, IMDPRICE, (PD_REGIT_DATE+5) AS REMAIN_DATE 
+		FROM DELI_PD_LIST_REALVIEW
+		WHERE PD_ID = #{pd_id}
+	</select>
+	
+	<select  id="bidList" resultType="com.test.mybatis.BidListDTO">
+		SELECT BID_CODE, U_NICKNAME, PRICE, BID_DATE, ADDRESS
+		FROM BID_LIST_REALVIEW
+		WHERE DELI_PD_ID = #{pd_id}
+	</select>
+
+	<select id="suggestList" resultType="com.test.mybatis.SuggestListDTO">
+		SELECT SUGGEST_CODE, U_NICKNAME, PRICE, SUGGEST_TIME, SUGGEST_PLACE, PLACE_DETAIL, SUGGEST_DATE
+	  	  FROM SUGGEST_LIST_REALVIEW
+		 WHERE DIRE_PD_ID = #{pd_id}
+	</select>	
+
 	
 </mapper>
 

@@ -308,9 +308,23 @@ INSERT INTO SUGGEST_LIST(SUGGEST_CODE, SUGGEST_PRICE, SUGGEST_TIME
 VALUES('suggest_1', 950000, TO_DATE('2022-06-12 15:00:00', 'YYYY-MM-DD HH24:MI:SS'), '서울 도봉구 우이천로 50길 40', '우림슈퍼앞', 'test2', 'dire_1');                      
 --==>> 1 행 이(가) 삽입되었습니다.
 
+SELECT *
+FROM DELIVERY_PRODUCT;
+
+
+INSERT INTO DELIVERY_PRODUCT(DELI_PD_ID, PD_TITLE, PD_NAME, PD_PHOTO, PD_AS_REMAIN
+                         , PD_START_PRICE, PD_HITCOUNT, PD_REGIT_DATE, PD_MAKER_ID, PD_AS_ID, U_ID, CF_PRICE)
+VALUES('deli_1', 'i-7 8700 저렴하게 판매', 'intel I-7 8700', 'C:\Downloads', '1년 3개월'
+                         , 150000, 0, TO_DATE('2022-06-10', 'YYYY-MM-DD'), 
+                         , 'maker_1', 1, 'test2', 0);
+
+
+
 
 SELECT *
 FROM SUGGEST_LIST;
+
+desc DELIVERY_PRODUCT;
 /*
 suggest_1	950000	2022-06-12	2022-06-10	서울 도봉구 우이천로 50길 40	우림슈퍼앞	test2	dire_1	1
 */

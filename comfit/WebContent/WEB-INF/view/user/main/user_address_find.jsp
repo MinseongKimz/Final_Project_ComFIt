@@ -19,8 +19,8 @@
 </head>
 <body>
 
-<div>
-	<c:import url="admin/comfit_header_user.jsp"></c:import>
+<div class="header">
+<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
 </div>
 
 

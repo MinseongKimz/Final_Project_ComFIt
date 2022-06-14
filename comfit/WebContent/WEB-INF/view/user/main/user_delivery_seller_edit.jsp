@@ -87,6 +87,10 @@
 }
 </style>
 <script type="text/javascript">
+
+	
+
+
 					var fileNo = 0;
 					var filesArr = new Array();
 					/* 첨부파일 추가 */
@@ -191,6 +195,7 @@
 					        }
 					    })
 					}
+					
 </script>
 </head>
 <body>
@@ -220,7 +225,7 @@
 			</tr>
 			<tr>
 				<th>제목<span class="star">*</span></th>
-				<td colspan="3"><input class="form-control" id="exampleFormControlInput1" type="text" placeholder="제목을 입력해주세요." style="width: 86%;"/>
+				<td colspan="3"><input class="form-control" id="title" name="title" type="text" placeholder="제목을 입력해주세요." style="width: 86%;"/>
 				<p align="right" style="font-size: 3px; margin-right: 16%;"></p>
 				</td>
 			</tr>
@@ -231,37 +236,37 @@
                 </th>
 				<td width="20%;"><!-- 카테고리
 					<br> -->
-					<select class="form-select" name="category" style="width: 90%; height: 35px;">
-					<option selected="selected">카테고리 선택</option>
-					<!-- 
-					<option>모니터</option>
-					<option>마우스</option>
-					<option>키보드</option>
-					-->
-					<c:forEach var="category" items="${categorylist }">
-
-					<option value="${category.category_name }" >${category.category_name }</option>
-
-						<option>${category.category_name }</option>
-
-					</c:forEach>
+					<select class="form-select" id="category" name="category" style="width: 90%; height: 35px;">
+					<option>카테고리 선택</option>
+					
+						<c:forEach var="category" items="${categorylist }">
+	
+							<option value="${category.category_name }" ${category.category_name eq cate ? 'selected' : ''}>${category.category_name }</option>
+	
+						</c:forEach>
+					
 					</select>
-					</td>
-				<td><!-- 제조사
-					<br> -->
-					<input type="text" class="form-control" id="productMaker" placeholder="제조사를 입력해 주세요." style="width: 90%;" value="${maker }"/>
+				</td>
+				<td width="20%;">
+					<%-- <input type="text" class="form-control" id="maker" name="maker" placeholder="제조사를 입력해 주세요." style="width: 90%;" value="${maker }"/> --%>
+					<select class="form-select" id="maker_name" name="maker_name" style="width: 90%; height: 35px;">
+					<option>카테고리 선택</option>
+						<c:forEach var="maker" items="${makerlist }">
+							<option value="${maker.maker_name }">${maker.maker_name }</option>
+						</c:forEach>
+
+					</select>
 				</td>	
 					
-				<td><!-- 물품명
-					<br> -->
-					<input type="text" class="form-control" id="productName" placeholder="물품명을 입력해 주세요." style="width: 90%;" value="${name }">
+				<td>
+					<input type="text" class="form-control" id=name" name="name" placeholder="물품명을 입력해 주세요." style="width: 90%;" value="${name }">
 				</td>	
 			</tr>
 			<tr>
 				<th>희망 시작 가격<span class="star">*</span>
 				 <p style="font-weight: normal; font-size: 7pt;">희망하는 가격을 적어주세요.</p>
                 </th>
-                <td colspan="3"><input class="form-control" id="price1" type="text" placeholder="희망 가격을 입력해주세요." style="width: 50%;"/>
+                <td colspan="3"><input class="form-control" id="hope-price" name="hope-price" type="text" placeholder="희망 가격을 입력해주세요." style="width: 50%;"/>
                 <p style="color:blue; font-size: 10px;">추천 가격보다 2배 이상은 입력할 수 없습니다.</p>
                 </td>
 			</tr>
@@ -270,7 +275,7 @@
 				<th>즉시 구매 가격<span class="star">*</span>
 				 <p style="font-weight: normal; font-size: 7pt;">즉시 거래 가격을 적어주세요.</p>
                 </th>
-                <td colspan="3"><input class="form-control" id="price2" type="text" placeholder="즉시구매 가격을 입력해주세요." style="width: 50%;"/>
+                <td colspan="3"><input class="form-control" id="instant-price" name="istant-price" type="text" placeholder="즉시구매 가격을 입력해주세요." style="width: 50%;"/>
                 <p style="color:blue; font-size: 10px;">추천 가격보다 2배 이상은 입력할 수 없습니다.</p>
                 </td>
 			</tr>
@@ -296,15 +301,15 @@
                 </th>
                 <td colspan="3">
                 <div class="form-check form-check-inline">
-				  <input class="form-check-input" type="radio" name="asRadio" id="inlineRadio1" value="유상" checked="checked">
+				  <input class="form-check-input" type="radio" name="asRadio" id="inlineRadio1" value="1" checked="checked">
 				  <label class="form-check-label" for="inlineRadio1">유상</label>
 				</div>
 				<div class="form-check form-check-inline">
-				  <input class="form-check-input" type="radio" name="asRadio" id="inlineRadio2" value="무상">
+				  <input class="form-check-input" type="radio" name="asRadio" id="inlineRadio2" value="2">
 				  <label class="form-check-label" for="inlineRadio2">무상</label>
 				</div>
 				<div class="form-check form-check-inline">
-				  <input class="form-check-input" type="radio" name="asRadio" id="inlineRadio3" value="불가능">
+				  <input class="form-check-input" type="radio" name="asRadio" id="inlineRadio3" value="3">
 				  <label class="form-check-label" for="inlineRadio3">불가능</label>
 				</div>
 				
@@ -320,7 +325,7 @@
 				</th>
 				
 				<td colspan="3" rowspan="2">
-				<textarea placeholder="코멘트 특이사항" style="width:86%; height: 150px;"></textarea>
+				<textarea placeholder="특이사항 코멘트" style="width:86%; height: 150px;"></textarea>
 				</td>
 			</tr>
 			
@@ -337,6 +342,7 @@
 			<tr>
 				<td colspan="4">
 					<div class="d-grid gap-2 d-md-flex justify-content-md-end" style="width: 90%;">
+					
 	                <button type="submit" class="btn btn-primary">등록하기</button>
 	                <button type="button" class="btn btn-secondary">취소</button>
 	                </div>

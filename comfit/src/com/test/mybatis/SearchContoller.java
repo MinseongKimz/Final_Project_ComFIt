@@ -14,6 +14,21 @@ public class SearchContoller
 	@Autowired
 	private SqlSession sqlSeesion;
 	
+	
+	
+	@RequestMapping(value = "/searchproduct.action", method = RequestMethod.GET)
+	public String search_prodcut(Model model)
+	{
+		String result = null;
+		
+		
+		result = "/WEB-INF/view/user/main/user_search_product.jsp";
+		
+		
+		return result;
+	}
+	
+	
 	@RequestMapping(value = "/search.action", method = RequestMethod.POST)
 	public String search(Model model, @RequestParam("name") String name)
 	{
@@ -27,6 +42,7 @@ public class SearchContoller
 		return "/WEB-INF/view/user/main/user_search_product.jsp";
 	}
 	
+	
 	@RequestMapping(value = "/returnsell.action", method = RequestMethod.GET)      // 선택하면 거래 등록 게시물로
 	public String returnSeach(Model model, String name, String maker, String cfPrice, String category)
 	{
@@ -37,11 +53,12 @@ public class SearchContoller
 		
 		
 		model.addAttribute("categorylist", dao.categoryList());
+		model.addAttribute("makerlist", dao.makerList(category));
 		
 		model.addAttribute("name", name);
 		model.addAttribute("maker", maker);
 		//model.addAttribute("cfPrice", cfPrice);
-		model.addAttribute("category", category);
+		model.addAttribute("cate", category);
 		
 		
 		
@@ -49,17 +66,8 @@ public class SearchContoller
 		
 	}
 	
-	@RequestMapping(value = "/search.action", method = RequestMethod.GET)
-	public String search_prodcut(Model model)
-	{
-		String result = null;
-		
-		
-		result = "/WEB-INF/view/user/main/user_search_product.jsp";
-		
-		
-		return result;
-	}
+	
+	
 	
 	
 }

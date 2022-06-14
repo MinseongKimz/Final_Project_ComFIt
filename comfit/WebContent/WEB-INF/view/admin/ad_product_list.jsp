@@ -61,7 +61,7 @@
 					<td>${product.cate_name}</td>
 					<td>${product.regit_date}</td>
 					<td>${product.u_email}</td>
-					<td><a href="ad_product_list_direct.action">${product.pd_title}</a></td>
+					<td><a href="admin_product_list_delivery.action">${product.pd_title}</a></td>
 					<td>${product.ta_cate}</td>
 					<td>${product.ta_status}</td>
 				</tr>

@@ -25,6 +25,9 @@ public interface IAdmin
 	// 관리자모드 상품 출력 메소드
 	public ArrayList<adProductDTO> adminProductList();
 	
+	// 관리자모드 상품 세부 출력 메소드
+	public ArrayList<adProductDTO> adminProductDeliveryList();
+	
 	// 관리자모드 입출금 출력 메소드
 	public ArrayList<adMoneyDTO> adminMoneyList();
 	

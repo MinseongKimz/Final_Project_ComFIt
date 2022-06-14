@@ -4,9 +4,22 @@ public class DeliveryProductDTO
 {
 	private String pd_id, pd_title, pd_name, pd_photo, pd_as_remain, pd_hitcount, price
     , pd_regit_date, pd_maker_id, pd_as_id, pd_as_name, category_name, seller
-    , u_nickname, maker_name, maker_name2, cf_price, comments, imdprice;
+    , u_nickname, maker_name, maker_name2, cf_price, comments, imdprice
+    , remain_date;
 	
 	
+	
+	
+
+	public String getRemain_date()
+	{
+		return remain_date;
+	}
+
+	public void setRemain_date(String remain_date)
+	{
+		this.remain_date = remain_date;
+	}
 
 	public String getImdprice()
 	{

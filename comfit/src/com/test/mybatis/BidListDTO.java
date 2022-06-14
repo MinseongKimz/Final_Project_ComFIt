@@ -2,7 +2,18 @@ package com.test.mybatis;
 
 public class BidListDTO
 {
-	private String u_nickname, price, bid_date, address;
+	private String bid_code, u_nickname, price, bid_date, address;
+
+	
+	public String getBid_code()
+	{
+		return bid_code;
+	}
+
+	public void setBid_code(String bid_code)
+	{
+		this.bid_code = bid_code;
+	}
 
 	public String getU_nickname()
 	{

@@ -201,7 +201,7 @@ kkk@naver.com	김민성	민성킴의활약	010-2222-3333	2022-06-11 22:47;57	1
 
 
 
-
+--○ 상품번호
 
 
 
@@ -448,23 +448,58 @@ FROM AD_IO_MONEY_LIST_REALVIEW
 WHERE IO_TYPE = '입금'
 ORDER BY IO_DATE;
 
-SELECT *
+--------------------------------------------------------------------------------
+-- 관리자모드 택배 상품관리 상세보기
+
+--○ 상품번호=게시글번호 뷰를 따로 만드는게 낫나...?    
+SELECT SUBSTR(DELI_PD_ID, 6, 3) AS PROD_ID
 FROM DELIVERY_PRODUCT;
 
 
---------------------------------------------------------------------------------
--- 관리자모드 상품관리 상세보기
-
--- 테스트 
+--○ 거래상태
 SELECT CASE
-       WHEN SUBSTR(DP.DELI_PD_ID, 1, 4) = 'deli'
-       THEN '택배거래'
-       ELSE '직거래'
-       END AS DELI_PD_ID, DP.PD_REGIT_DATE 게시일자, DP.PD_TITLE 제목, DP.U_ID 판매자ID
+       WHEN DCS.SELL_COMP_DATE IS NOT NULL AND DCB.BUY_COMP_DATE IS NOT NULL
+       THEN '거래완료'
+       ELSE '거래중'
+       END AS 거래상태;
+    
+--판매확정일자랑 구매확정일자가 비어있지 않으면 거래완료
+--아니면 거래중
+
+
+--○ 제안 상태
+SELECT CASE
+       WHEN BS.BS_ID IS NOT NULL
+       THEN '낙찰'
+       ELSE '유찰'
+       END AS 제안상태;
+       
+--낙찰 코드가 있으면 낙찰 
+--없으면 유찰
+
+
+-- ○ 테스트2
+SELECT SUBSTR(DP.DELI_PD_ID, 6, 3) AS 상품번호, DP.PD_REGIT_DATE 게시일자, DP.PD_TITLE 제목
+,CASE
+WHEN SUBSTR(DP.DELI_PD_ID, 1, 4) = 'deli'
+THEN '택배거래'
+ELSE '직거래'
+END AS 거래유형
+, DP.U_ID 판매자ID
+, CASE
+WHEN DCS.SELL_COMP_DATE IS NOT NULL AND DCB.BUY_COMP_DATE IS NOT NULL
+THEN '거래완료'
+ELSE '거래중'
+END AS 거래상태
 , PC.CATEGORY_NAME 카테고리이름, DP.PD_NAME 물품명, DP.PD_MAKER_ID 제조사
 , BL.U_ID 구매자ID, BL.BID_PRICE 가격, BL.BID_DATE 구매일시, CONCAT(BL.ADDRESS, BL.ADDR_DETAIL) 배송장소
 , DCB.BUY_COMP_DATE 구매확정일자, DCS.SELL_COMP_DATE 판매확정일시, DCS.PD_DELI_NUM 운송장
 , BL.U_ID 제안자ID, BL.BID_DATE 제안시간, BL.BID_PRICE 제안가격
+, CASE
+WHEN BS.BS_ID IS NOT NULL
+THEN '낙찰'
+ELSE '유찰'
+END AS 제안상태
 FROM DELIVERY_PRODUCT DP JOIN PRODUCT_MAKER PM
 ON DP.PD_MAKER_ID = PM.PD_MAKER_ID
 JOIN PRODUCT_CATEGORY PC
@@ -476,19 +511,54 @@ ON BL.BID_CODE = BS.BID_CODE
 JOIN DELI_COMPLETE_SELL DCS
 ON DCS.BS_ID = BS.BS_ID
 JOIN DELI_COMPLETE_BUY DCB
-ON DCB.BS_ID = BS.BS_ID
-WHERE DP.DELI_PD_ID = 'deli_1';
---게시글 번호로 들어가는게 맞지 않나? 판매자 아이디는 동시에 글 몇개 쓸 수 있으니까... 게시글 번호 DELI_PD_ID??
+ON DCB.BS_ID = BS.BS_ID;
 
+--> 아이디값 주기
 
-select case
-       when substr(dp.deli_pd_id, 1, 4) = 'deli'
-       then '택배거래'
-       else '직거래'
-       end as deli_pd_id, dp.pd_regit_date as pd_regit_date, dp.pd_title as pd_title, dp.u_id as u_id
-, pc.category_name as category_name, dp.pd_name as pd_name, dp.pd_maker_id as pd_maker_id
-, bl.u_id as b_u_id, bl.bid_price as bid_price, bl.bid_date as bid_date, concat(bl.address, bl.addr_detail) as address
-, dcb.buy_comp_date as buy_comp_date, dcs.sell_comp_date as sell_comp_date, dcs.pd_deli_num as pd_deli_num
-
+SELECT SUBSTR(DP.DELI_PD_ID, 6, 3) AS DELI_PD_NUM, DP.PD_REGIT_DATE AS PD_REGIT_DATE, DP.PD_TITLE AS PD_TITLE
+,CASE
+WHEN SUBSTR(DP.DELI_PD_ID, 1, 4) = 'deli'
+THEN '택배거래'
+ELSE '직거래'
+END AS DELI_PD_ID
+, DP.U_ID AS U_ID
+, CASE
+WHEN DCS.SELL_COMP_DATE IS NOT NULL AND DCB.BUY_COMP_DATE IS NOT NULL
+THEN '거래완료'
+ELSE '거래중'
+END AS PD_STATUS
+, PC.CATEGORY_NAME AS CATEGORY_NAME, DP.PD_NAME AS PD_NAME, DP.PD_MAKER_ID AS PD_MAKER_ID
+, BL.U_ID AS B_U_ID, BL.BID_PRICE AS BID_PRICE, BL.BID_DATE AS BID_DATE, CONCAT(BL.ADDRESS, BL.ADDR_DETAIL) AS ADDRESS
+, DCB.BUY_COMP_DATE AS BUY_COMP_DATE, DCS.SELL_COMP_DATE AS SELL_COMP_DATE, DCS.PD_DELI_NUM AS PD_DELI_NUM
+, CASE
+WHEN BS.BS_ID IS NOT NULL
+THEN '낙찰'
+ELSE '유찰'
+END AS BS_ID
+FROM DELIVERY_PRODUCT DP JOIN PRODUCT_MAKER PM
+ON DP.PD_MAKER_ID = PM.PD_MAKER_ID
+JOIN PRODUCT_CATEGORY PC
+ON PM.PD_CATEGORY_ID = PC.PD_CATEGORY_ID
+JOIN BID_LIST BL
+ON DP.DELI_PD_ID = BL.DELI_PD_ID
+JOIN BID_SUCCESS BS
+ON BL.BID_CODE = BS.BID_CODE
+JOIN DELI_COMPLETE_SELL DCS
+ON DCS.BS_ID = BS.BS_ID
+JOIN DELI_COMPLETE_BUY DCB
+ON DCB.BS_ID = BS.BS_ID;
 
 --------------------------------------------------------------------------------
+-- 택배거래랑 직거래랑 통합해서 시퀀스를 생성해줘야 번호 부여 가능할듯
+-- 택배거래, 직거래 통합해서... 출력하도록 만들구 시퀀스 번호 부여하기
+
+SELECT *
+FROM DELIVERY_PRODUCT;
+SELECT *
+FROM DIRECT_PRODUCT;
+
+SELECT *
+FROM AD_PD_LIST_REALVIEW;
+
+-- 이클립스 
+-- <td><a href="admin_product_list_delivery.action?deli_pd_num=${productlist.deli_pd_num }">${product.pd_title}</a></td>

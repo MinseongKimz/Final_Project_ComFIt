@@ -240,7 +240,7 @@
 					<option>키보드</option>
 					-->
 					<c:forEach var="category" items="${categorylist }">
-						<option>${category.category_name }</option>
+					<option>${category.category_name }</option>
 					</c:forEach>
 					</select>
 					</td>
@@ -278,7 +278,7 @@
                 </th>
                 <td colspan="3">
                       <div class="insert">
-                   <form method="POST" onsubmit="return false;" enctype="multipart/form-data">
+                   <form method="post" onsubmit="return false;" enctype="multipart/form-data">
                       <p style="font-weight: normal;">[ 최소 6장 ~ 최대 10장 ]</p>
                        <input type="file" onchange="addFile(this);" multiple />
                        <div class="file-list"  >

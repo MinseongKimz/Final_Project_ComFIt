@@ -142,14 +142,115 @@ public class AdminController
       return "/WEB-INF/view/admin/ad_ask_list.jsp";
    }
    
-   // 관리자 공지사항 관리
+   
+   
+  
+   
+   // 관리자 공지사항 출력
    @RequestMapping(value = "/admin_notice_list.action", method = RequestMethod.GET)
    public String adNoticeList(Model model)
    {
-      return "/WEB-INF/view/admin/ad_notice_list.jsp";
+	   
+	   String result = null;
+	   
+	   IAdmin dao = sqlSession.getMapper(IAdmin.class);
+	   
+	   
+	   model.addAttribute("noticeList", dao.noticeList());
+	  
+	   
+	   result = "/WEB-INF/view/admin/ad_notice_list.jsp";
+	   
+	   return result;
+	   
+       
+   }
+   //관리자 공지사항 입력폼 이동
+   @RequestMapping(value="/admin_notice_edit.action",method=RequestMethod.GET)
+   public String adNoticeinsertForm(Model model)
+   {
+	   
+	   
+	   IAdmin dao = sqlSession.getMapper(IAdmin.class);
+	   
+	   model.addAttribute("noticecateList", dao.noticecateList());
+	   
+	  
+	   
+	   return "/WEB-INF/view/admin/ad_notice_write.jsp";
    }
    
+ 
+   // 관리자 공지사항 입력 
+   @RequestMapping(value="/admin_notice_insert.action",method = RequestMethod.POST)
+   public String adNoticeinsert(NoticeDTO notice)
+   {
+	   String result = null;
+	   
+	   IAdmin dao = sqlSession.getMapper(IAdmin.class);
+	  
+	   dao.noticeInesrt(notice);
+	   
+	   result = "redirect:admin_notice_list.action";
+	   
+	   return result;
+   }
+
+   
+   // 관리자 공지사항 수정 폼으로 가기
+   @RequestMapping(value = "/admin_notice_modify_form.action" ,method = RequestMethod.GET)
+   public String adNoticeModifyForm(Model model, String announce_id)
+   {
+	   String result = null;
+	   
+	   IAdmin dao = sqlSession.getMapper(IAdmin.class);
+	   
+	   model.addAttribute("modify",dao.noticeModifyForm(announce_id));
+	   
+	   result = "/WEB-INF/view/admin/ad_notice_write.jsp";
+	   
+	   
+	   return result;
+   }
+   
+   // 관리자 공지사항  수정하기
+   @RequestMapping(value = "/admin_notice_modify.action" ,method = RequestMethod.POST)
+   public String adNoModify(NoticeDTO dto)
+   {
+	   String result = null;
+	   
+	   IAdmin dao = sqlSession.getMapper(IAdmin.class);
+	   
+	   dao.noticeModify(dto);
+	   
+	   result = "redirect:admin_notice_list.action";
+	   
+	   return result;
+	   
+   }
+
+   // 관리자 공지사항 삭제하기
+   @RequestMapping(value = "/admin_motice_delete.action" ,method = RequestMethod.POST)
+   public String adNoticeDelete(String announce_id)
+   {
+	   String result = null;
+	   
+	   IAdmin dao = sqlSession.getMapper(IAdmin.class);
+	   
+	   dao.noticeDelete(announce_id);
+	   
+	   
+	   result = "redirect:admin_notice_list.action";
+	   
+	   
+	   return result;
+   }
+   
+   
+   // 관리자 FAQ 관리
+
    // 관리자 FAQ 리스트 출력
+
    @RequestMapping(value = "/admin_faq_list.action", method = RequestMethod.GET)
    public String adFAQList(Model model)
    {
@@ -238,6 +339,9 @@ public class AdminController
 	   
 	   return result;
    }
+   
+   
+   
    
    /*
    admin_report_list.action 신고관리 

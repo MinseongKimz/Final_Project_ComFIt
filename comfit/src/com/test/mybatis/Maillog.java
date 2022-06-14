@@ -1,55 +1,43 @@
 package com.test.mybatis;
 
-import javax.mail.internet.MimeMessage;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class Maillog
 {
 	@Autowired
-	private JavaMailSender mailSender;
+	private SqlSession sqlSession;
 	
-	@RequestMapping(value = "/auth.action" ,method = RequestMethod.GET)
-	public String auth()
+	@RequestMapping(value = "/correct.action", method = RequestMethod.GET)
+	public String auth(@RequestParam("auth") String authKey)
 	{
-		String from  = "minseonkimc@gmail.com";
-		String to  = "hjui78@naver.com";
-		String subject = "[Comfit] 이메일 인증 메일입니다.";
-		String content = "<a href='http://localhost:8090/comfit/correct.action?auth='qwdqwdqwdqw''>인증하러가기</a>";
+		IUserLoginDAO dao = sqlSession.getMapper(IUserLoginDAO.class);		
+		
+		// 여기선 인증키를 받아서 먼저 사용 여부를 확인한다.
+		int check = dao.checkUseAuth(authKey);
 		
 		try
 		{
-			/*
-			 * MimeMessage mail = mailSender.createMimeMessage(); MimeMessageHelper
-			 * mailHelper = new MimeMessageHelper(mail,true,"UTF-8");
-			 * 
-			 * mailHelper.setFrom(from); mailHelper.setTo(to);
-			 * mailHelper.setSubject(subject); mailHelper.setText(content, true);
-			 * 
-			 * 
-			 * 
-			 * 
-			 * 
-			 * 
-			 * 
-			 * mailSender.send(mail);
-			 */
-			
-			MailAuthKey random = new MailAuthKey();
-			String randomKey = random.random();
-			System.out.println(randomKey);
-			
+			if (check!=0)
+				return "comfit.action";
 		} catch (Exception e)
 		{
-			System.out.println(e.toString());
+			return "comfit.action";
 		}
-		return "admin_category_list.action";		
+		
+		
+		// 체크를 벗어났다면 인증을 시켜주자
+		dao.authCheck(authKey);
+		
+		// 인증이 완료됬으면 이제 로그인 폼으로 가자.
+		
+		return "loginform.action?hello=1";		
 	}
 
 }

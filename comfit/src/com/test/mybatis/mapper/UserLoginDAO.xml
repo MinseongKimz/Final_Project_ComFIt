@@ -53,7 +53,53 @@
 		FROM USER_INFORMATION
 		WHERE U_NICKNAME = #{nickName}
 	</select>
+	
+	<select  id="emailCheck" resultType="java.lang.Integer">
+		SELECT COUNT (*) COUNT
+		FROM USER_INFORMATION
+		WHERE U_EMAIL = #{email}
+	</select>
 
+
+	<insert id="makeId">
+		INSERT INTO COMFIT_USER(U_ID)
+		VALUES(CONCAT('test', COMFIT_USER_SEQ.NEXTVAL))	
+	</insert>
+
+	<insert id="insertUserInfo">
+		INSERT INTO USER_INFORMATION (U_EMAIL, U_NAME, U_ADDRESS, U_PASSWORD, U_TEL, U_NICKNAME, U_ID)
+		VALUES(#{u_email}, #{u_name}, #{u_address}
+		, CRYPTPACK.ENCRYPT(#{u_password},#{u_password}), #{u_tel}, #{u_nickname}, #{u_id})
+	</insert>
+	
+	<insert id="insertAuth">
+		INSERT INTO USER_EMAIL_AUTH(E_AUTH_ID, AUTH_CODE, U_ID, AU_CATE_ID )
+		VALUES(CONCAT('auth_', USER_EMAIL_AUTH_SEQ.NEXTVAL), #{random} ,#{u_id}, 1)
+	</insert>
+	
+	<select id="searchId" resultType="java.lang.String">
+		SELECT U_ID
+		FROM (
+		    SELECT * 
+		    FROM COMFIT_USER
+		    ORDER BY CDATE DESC
+		)
+		WHERE ROWNUM =1
+	</select>
+	
+	<!-- 이메일 인증 사용 여부 -->
+	<select id="checkUseAuth" resultType="java.lang.Integer">
+		SELECT NVL(TO_CHAR(AUTH_USE_DATE, 'YYYY-MM-DD'), 0)    
+		FROM USER_EMAIL_AUTH
+		WHERE AUTH_CODE = #{authKey}
+	</select>
+	
+	<!-- 이메일 인증 하기 -->
+	<update id="authCheck">
+		UPDATE USER_EMAIL_AUTH
+		SET AUTH_USE_DATE = SYSDATE 
+		WHERE AUTH_CODE = #{authKey}
+	</update>
 	
 	
 </mapper>

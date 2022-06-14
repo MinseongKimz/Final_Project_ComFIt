@@ -21,7 +21,26 @@ public interface IAdmin
 	
 	// 관리자모드 탈퇴한 회원 리스트 출력 메소드
 	public ArrayList<useroutDTO> adminUseroutList();
+
 	
+	// 관리자모드 공지사항 리스트 출력메소드 ok
+	public ArrayList<NoticeDTO> noticeList();
+	
+	// 관리자모드 공지사항 추가 메소드
+	public int noticeInesrt(NoticeDTO a);
+	
+	// 관리자모드 공지사항 수정 이동 메소드
+	public NoticeDTO noticeModifyForm(String announce_id);
+	
+	// 관리자모드 공지사항 수정 메소드
+	public int noticeModify(NoticeDTO dto);
+	
+	// 관리자모드 공지사항 삭제 메소드
+	public int noticeDelete(String announce_id);
+	
+	// 관리자모드 공지사항 관리자 카테고리 메소드 ok
+	public ArrayList<NoticeDTO> noticecateList();
+
 	// 관리자모드 상품 출력 메소드
 	public ArrayList<adProductDTO> adminProductList();
 	

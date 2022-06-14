@@ -36,9 +36,56 @@
 			}
 			        
 		});
-				
-	});
 		
+					
+	});
+	
+	</script>
+
+<script type="text/javascript">
+
+function CountDownTimer(dt, id)
+{
+    var end = new Date(dt);
+    var _second = 1000;
+    var _minute = _second * 60;
+    var _hour = _minute * 60;
+    var _day = _hour * 24;
+    var timer;
+    function showRemaining()
+    {
+        var now = new Date();
+        var distance = end - now;
+        if (distance < 0)
+        {
+            clearInterval(timer);
+            document.getElementById(id).innerHTML = '타임딜 종료됨';
+            return;
+        }
+        var days = Math.floor(distance / _day);
+        var hours = Math.floor((distance % _day) / _hour);
+        var minutes = Math.floor((distance % _hour) / _minute);
+        var seconds = Math.floor((distance % _minute) / _second);
+        document.getElementById(id).innerHTML = days + '일 ';
+        document.getElementById(id).innerHTML += hours + '시간 ';
+        document.getElementById(id).innerHTML += minutes + '분 ';
+        document.getElementById(id).innerHTML += seconds + '초';
+    }
+    timer = setInterval(showRemaining, 1000);
+}
+
+	window.onload = function()
+	{
+		
+		var remain_date = document.getElementById("remain_date").value;
+		alert(remain_date);
+		CountDownTimer(remain_date, 'demo');		
+	};
+
+
+
+
+
 </script>
 <style type="text/css">
 p
@@ -91,6 +138,7 @@ d-block
 
 </head>
 <body>
+	
 
 <div class="header">
 	<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
@@ -161,9 +209,10 @@ d-block
 			</tr>
 			<tr>
 				<td colspan="2" style="border-bottom: 2px solid gray; "><p>경매 종료까지</p>
+				<input type="text" id="remain_date" value="종료일 : ${dlPd.remain_date }" >
 				<!-- 경매 종료시간 적용/경매 종료시 경매종료라고 표기 -->
 				<!-- <td colspan="2" style="border-bottom: 2px solid gray;"><p>경매 종료</p> -->
-				<p class="fs-2" style="font-weight: bold;">[<span class="fs-2" style="color: #ffd700;">08:51:37</span>]</p>
+				<p class="fs-2" style="font-weight: bold;">[<span class="fs-2 countDown" style="color: #ffd700;" id="demo"></span>]</p>
 				
 				<!-- 종료 시 최종가 표기  -->
 				<!-- <p class="content_text" style="color: blue;">최종 가격 : 143,000원</p> -->
@@ -266,7 +315,7 @@ d-block
 				</div>
 				<!-- 판매자 정보 아래 버튼  -->
 				<div style="text-align: center; margin-top: 1%;">
-					<button class="btn btn-primary" style="width: 25%; margin-right: 15%;">목록으로</button>
+					<button class="btn btn-primary" style="width: 25%; margin-right: 15%;" onclick="location.href='user_mainlist.action'">목록으로</button>
 					<button class="btn btn-primary" style="width: 25%;">찜하기</button>
 				</div>
 			</div>
@@ -300,7 +349,7 @@ d-block
 				</td>
 				<td style="text-align: right; margin-left: 20%;">
 					<p>${bl.bid_date }</p>
-					<button type="button" class="btn btn-primary">채택됨</button>
+					<button type="button" class="btn btn-primary">낙찰예정</button>
 				</td>
 			</tr>
 			</table>

@@ -16,24 +16,14 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 <title>ad_notice_write.jsp</title>
-<script type="text/javascript">
-	
-	$(document).ready(function ()
-	{
-		$("#delete_btn").click(function ()
-		{
-			//alert("테스트");
-			location.href="admin_notice_list.action";
-		})
-	})
-</script>
+
 </head>
 <body>
 
 
 <div class="container">
 	<div class="row">
-	<form action="admin_notice_insert.action" method="post" name="insert">
+	<form action="" method="post">
 		<table class="table table-bordered " style="text-align: center; border: 1px solid #dddddd">
 			<thead><!-- 제목 -->
 				<tr><!-- 1행 -->
@@ -45,12 +35,11 @@
 					<td>
 					<div class="" style="display: flex; width: 100%; align-content: right;">
 						<select class="form-select" style="width: 25%; margin-right: 10px">
-							<option value="selected">카테고리</option>
-						<c:forEach var="noticecateList" items="${noticecateList }">
-						   	 <option>${noticecateList.anoun_cate_name }</option>
-						</c:forEach>
+						    <option selected>카테고리</option>
+						    <option value="">1</option>
+						    <option value="">2</option>
+						    <option value="">3</option>
 						</select>
-					
 			   			<input type="text" class="form-control" placeholder="제목을 입력하세요">
 		   			</div>
 					</td>	
@@ -61,8 +50,8 @@
 			</tbody>
 		</table>
 				<div style="margin-top: 20px; width: 1300px; text-align: right;">
-					<button type="submit" id="insert_btn"class="btn btn-primary" value="글쓰기" style="width: 150px" >글쓰기</button>
-					<button type="button" id="delete_btn"class="btn btn-outline-secondary" value="돌아가기" style="width: 150px">돌아가기</button>				
+					<button class="btn btn-primary" value="글쓰기" style="width: 150px">글쓰기</button>
+					<button class="btn btn-outline-secondary" value="돌아가기" style="width: 150px" onclick="ad_notice_list.jsp">돌아가기</button>				
 				</div>	
 	</form>
 	</div>

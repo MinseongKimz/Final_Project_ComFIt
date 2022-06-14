@@ -23,6 +23,7 @@ public class PdSelectController
 		{
 			if (pd_id.contains("dire"))
 			{
+				model.addAttribute("suggestList", dao.suggestList(pd_id));
 				model.addAttribute("drPdList", dao.drPdList(pd_id));
 				result = "/WEB-INF/view/user/main/user_direct_sell.jsp";
 			}
@@ -31,7 +32,6 @@ public class PdSelectController
 				model.addAttribute("bidList", dao.bidList(pd_id));
 				model.addAttribute("dlPdList", dao.dlPdList(pd_id));
 				result = "/WEB-INF/view/user/main/user_delivery_seller.jsp";
-				
 			}
 			
 			

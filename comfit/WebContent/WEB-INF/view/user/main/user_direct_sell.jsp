@@ -66,6 +66,50 @@ d-block
 
 </style>
 
+<script type="text/javascript">
+
+function CountDownTimer(dt, id)
+{
+    var end = new Date(dt);
+    var _second = 1000;
+    var _minute = _second * 60;
+    var _hour = _minute * 60;
+    var _day = _hour * 24;
+    var timer;
+    function showRemaining()
+    {
+        var now = new Date();
+        var distance = end - now;
+        if (distance < 0)
+        {
+            clearInterval(timer);
+            document.getElementById(id).innerHTML = '타임딜 종료됨';
+            return;
+        }
+        var days = Math.floor(distance / _day);
+        var hours = Math.floor((distance % _day) / _hour);
+        var minutes = Math.floor((distance % _hour) / _minute);
+        var seconds = Math.floor((distance % _minute) / _second);
+        document.getElementById(id).innerHTML = days + '일 ';
+        document.getElementById(id).innerHTML += hours + '시간 ';
+        document.getElementById(id).innerHTML += minutes + '분 ';
+        document.getElementById(id).innerHTML += seconds + '초';
+    }
+    timer = setInterval(showRemaining, 1000);
+}
+
+	window.onload = function()
+	{
+		
+		var remain_date = document.getElementById("remain_date").value;
+		alert(remain_date);
+		CountDownTimer(remain_date, 'demo');		
+	};
+
+
+
+</script>
+
 
 </head>
 <body>
@@ -121,15 +165,6 @@ d-block
 		<table class="col-md-5">
 			<tr>
 				<td colspan="2">
-					<div style="text-align: right;">
-						<button style="border: 0; outline: 0; background: none;">
-							<!-- 좋아요 -->
-							<!-- 빈 하트 -->
-							<i class="bi bi-heart fs-2"></i>
-							<!-- 채워진 하트 -->
-							<i class="bi bi-heart-fill fs-2" style="display:none;"></i>
-						</button>
-					</div>
 				<p>거래방식</p>
 				<!-- 속성에 따라 직거래/배송 표기 -->
 				<p class="content_text">직거래</p></td>
@@ -156,7 +191,8 @@ d-block
 				<td colspan="2" style="border-bottom: 2px solid gray;"><p>경매 종료까지</p>
 				<!-- 경매 종료시간 적용/경매 종료시 경매종료라고 표기 -->
 				<!-- <td colspan="2" style="border-bottom: 2px solid gray;"><p>경매 종료</p> -->
-				<p class="fs-2" style="font-weight: bold;">[<span class="fs-2" style="color: #ffd700;">08:51:37</span>]</p>
+				<input type="text" id="remain_date" value="종료일 : ${drPd.remain_date }" >
+				<p class="fs-2" style="font-weight: bold;">[<span class="fs-2" style="color: #ffd700;" id="demo"></span>]</p>
 				
 				<!-- 종료 시 최종가 표기  -->
 				<!-- <p class="content_text" style="color: blue;">최종 가격 : 143,000원</p> -->
@@ -213,7 +249,7 @@ d-block
 						<td style="padding:5%;">
 						<p>상품 상세정보<br><br>
 						1. 제조사 A/S 가능여부 : ${drPd.pd_as_name } ${drPd.pd_as_remain } 까지 가능<br><br>
-						2. 특이사항 : ${drPd.pd_as_name }
+						2. 특이사항 : ${drPd.comments }
 						</p>
 						</td>
 					</tr>
@@ -246,7 +282,7 @@ d-block
        				
 				<!-- 판매자 정보 아래 버튼  -->
 				<div style="text-align: center; margin-top: 1%;">
-					<button class="btn btn-primary" style="width: 25%; margin-right: 15%;">목록으로</button>
+					<button class="btn btn-primary" style="width: 25%; margin-right: 15%;" onclick="location.href='user_mainlist.action'">목록으로</button>
 					<button class="btn btn-primary" style="width: 25%;">찜하기</button>
 				</div>
 			</div>
@@ -257,6 +293,7 @@ d-block
 		<div class="content_bid" style="margin-top: 5%; margin-left: 5%; margin-right:9%;">
 		<p class="fs-3" style="padding-left: 4%; font-weight: bold;">현재 제안 정보</p>
 		
+			<c:forEach var="suggest" items="${suggestList }">
 			<!-- 입찰 폼 한개 -->
 			<div class="shadow p-3 mb-5 bg-body rounded">
 			<table style="width: 100%;">
@@ -269,49 +306,23 @@ d-block
 				</td>
 				<th style="padding-left: 2%;">
 					<p class="fs-4">
-					김상기
+					${suggest.u_nickname }
 					</p>
 				</th>
 				<td>
-					<p style="padding-left:10%;">가격 : 143,000원<br>
-					날짜 : 5월 19일 17시 25분 <br>
-					장소 : 인천광역시 새벌로 112번길 13 403동 경비실 앞 </p>
+					<p style="padding-left:10%;">가격 : ${suggest.price }원<br>
+					날짜 : ${suggest.suggest_time }<br>
+					장소 : ${suggest.suggest_place } ${suggest.place_detail } </p>
 				</td>
 				<td style="text-align: right; margin-left: 20%;">
-					<p>22-05-26    10:56 AM</p>
-					<button type="button" class="btn btn-primary">채택하기</button>
+					<p>${suggest.suggest_date }</p>
+					<button type="button" class="btn btn-primary" value="${suggest_code }">채택하기</button>
 				</td>
 			</tr>
 			</table>
 			</div>
-			
-			<div class="shadow p-3 mb-5 bg-body rounded">
-			<table style="width: 100%;">
-			<tr>
-				<td style="width: 15%;padding-left: 3%;">
-					<div class="user_image">
-						<img alt="" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"
-						style="object-fit:cover; height: 100%; width: 100%;">
-					</div>
-				</td>
-				<th style="padding-left: 2%;">
-					<p class="fs-4">
-					김민성
-					</p>
-				</th>
-				<td>
-					<p style="padding-left:10%;">가격 : 143,000원<br>
-					날짜 : 5월 19일 17시 25분 <br>
-					장소 : 인천광역시 새벌로 112번길 13 403동 경비실 앞 </p>
-				</td>
-				<td style="text-align: right;">
-					<p>22-05-26    10:56 AM</p>
-					<button type="button" class="btn btn-primary">채택하기</button>
-				</td>
-			</tr>
-			</table>
-			</div>
-			
+
+			</c:forEach>
 		</div>
 		
 		

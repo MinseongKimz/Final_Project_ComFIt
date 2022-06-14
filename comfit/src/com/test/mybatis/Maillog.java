@@ -25,21 +25,15 @@ public class Maillog
 		
 		try
 		{
-			/*
-			 * MimeMessage mail = mailSender.createMimeMessage(); MimeMessageHelper
-			 * mailHelper = new MimeMessageHelper(mail,true,"UTF-8");
-			 * 
-			 * mailHelper.setFrom(from); mailHelper.setTo(to);
-			 * mailHelper.setSubject(subject); mailHelper.setText(content, true);
-			 * 
-			 * 
-			 * 
-			 * 
-			 * 
-			 * 
-			 * 
-			 * mailSender.send(mail);
-			 */
+			
+			  MimeMessage mail = mailSender.createMimeMessage(); MimeMessageHelper
+			  mailHelper = new MimeMessageHelper(mail,true,"UTF-8");
+			  
+			  mailHelper.setFrom(from); mailHelper.setTo(to);
+			  mailHelper.setSubject(subject); mailHelper.setText(content, true);
+			  
+			  mailSender.send(mail);
+			 
 			
 			MailAuthKey random = new MailAuthKey();
 			String randomKey = random.random();

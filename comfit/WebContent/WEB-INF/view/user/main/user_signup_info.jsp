@@ -79,11 +79,7 @@
    }
    function fn_submit()
    {
-       var text = document.getElementById('tel').value;
-       var regPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
          
-       var emailVal = document.getElementById('email').value;
-       var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
       // 검증에 사용할 정규식 변수 regExp에 저장
          
       // alert('비밀번호 정규식 규칙 위반!!');
@@ -96,7 +92,6 @@
       {
          alert('유효하지 않은 비밀번호입니다.');
          return;
-         
       }
       
       if(pwd != pwdCheck)
@@ -104,21 +99,24 @@
          alert('입력하신 비밀번호가 비밀번호확인과 일치하지 않습니다.');
          return;
       }
-      
-      
-      
-       if (emailVal.match(regExp) == null)
-       {
-          alert('정상적인 이메일을 입력해주세요');
-          return;
-       }
+       
          
-         
+      var text = document.getElementById('tel').value;
+      var regPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;  
        if (regPhone.test(text) != true)
        {
           alert('정상적인 휴대전화번호를 입력해주세요');
           return;
        }
+       
+   	var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+	var emailVal = document.getElementById('email').value;
+	
+	if (emailVal.match(regExp) == null)
+    {
+          alert('정상적인 이메일을 입력해주세요');
+          return;
+    }
        
        $("#regitform").submit();
    }
@@ -146,6 +144,7 @@
 				{
 					$("#checkNick").css("display", "inline");
 					$("#checkNick").html("사용가능한 닉네임 입니다.");
+					$("#regitBtn").prop("disabled", false);
 				}	
 			}
 			  , error : function(e)
@@ -154,14 +153,13 @@
 			}	
 			})
 			
-			
 		})
 		
 		
 		$("#email").focusout(function() // 이메일
 		{
+			
 			var email = "email=" + $.trim($("#email").val());
-			alert(email)
 			$.ajax({
 				type : "POST"
 			   , url : "emailcheck.action"
@@ -178,6 +176,7 @@
 				{
 					$("#checkEmail").css("display", "inline");
 					$("#checkEmail").html("사용가능한 이메일 입니다.");
+					$("#regitBtn").prop("disabled", false);
 				}	
 			}
 			  , error : function(e)
@@ -186,20 +185,7 @@
 			}	
 			})
 			
-			
 		})
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
    })
    
@@ -254,14 +240,14 @@
           <div class="row">
             <div class="col-md-6 mb-3">
               <label for="name">이름</label>
-              <input type="text" class="form-control" id="name" placeholder="" value="" required="required">
+              <input type="text" class="form-control" id="name" name="name" placeholder="" value="" required="required">
               <div class="invalid-feedback">
                 이름을 입력해주세요.
               </div>
             </div>
             <div class="col-md-6 mb-3">
               <label for="nickname">닉네임</label>
-              <input type="text" class="form-control" id="nickname" placeholder="" value="" required="required">
+              <input type="text" class="form-control" id="nickname" name="nickname" required="required">
               <span style="display: none; color:red;" class="err" id="checkNick"></span>
               <div class="invalid-feedback">
                 닉네임을 입력해주세요.
@@ -271,7 +257,7 @@
 
           <div class="mb-3">
             <label for="email">이메일</label>
-            <input type="email" class="form-control" id="email" placeholder="you@example.com" required="required">
+            <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" required="required">
             <span style="display: none; color:red;" class="err" id="checkEmail"></span>
             <div class="invalid-feedback">
               이메일을 입력해주세요.
@@ -280,7 +266,7 @@
           
           <div class="mb-3">
             <label for="tel">휴대폰번호</label>
-            <input type="tel" class="form-control" id="tel" placeholder="010-1111-2222" required="required">
+            <input type="tel" class="form-control" id="tel" name="tel" placeholder="010-1111-2222" required="required">
             <div class="invalid-feedback">
               휴대폰번호를 입력해주세요.
             </div>
@@ -288,7 +274,7 @@
           
           <div class="mb-3">
             <label for="password">비밀번호</label>
-            <input type="password" class="form-control" id="password" placeholder="비밀번호를 입력해주세요." required>
+            <input type="password" class="form-control" id="password" name="password" placeholder="비밀번호를 입력해주세요." required>
              &nbsp;<span style="font-size: 12pt; color: skyblue;">8자리 이상(영어, 숫자, 특수문자 각 1개 포함) </span>
             <div class="invalid-feedback">
               비밀번호를 확인해주세요.
@@ -305,7 +291,7 @@
 
           <div class="mb-3">
             <label for="address">주소</label><br />
-            <input type="text" class="form-control" id="address" placeholder="클릭해주세요" required="required" readonly="readonly" onclick="searchAddr()">
+            <input type="text" class="form-control" id="address" name="address" placeholder="클릭해주세요" required="required" readonly="readonly" onclick="searchAddr()">
             <div class="invalid-feedback">
               주소를 입력해주세요.
             </div>
@@ -313,7 +299,7 @@
 
           <div class="mb-3">
             <label for="address2">상세주소</label>
-            <input type="text" class="form-control" id="address2" placeholder="상세주소를 입력해주세요."  required="required" >
+            <input type="text" class="form-control" id="address2" name="address2" placeholder="상세주소를 입력해주세요."  required="required" >
           </div>
           
          

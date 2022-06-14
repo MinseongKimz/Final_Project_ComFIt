@@ -82,7 +82,7 @@
 					{
 	           			if (status === kakao.maps.services.Status.OK)
 	           			{
-	           				alert(result[0].y + "/" + result[0].x);
+	           				alert(result[0].y + "/" + result[0].x);  // 위도 / 경도
 	           			}	
 					})
 	    			

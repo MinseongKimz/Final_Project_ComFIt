@@ -22,10 +22,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 공지사항 추가 등록  -->
 	<insert id="noticeInsert">
 		INSERT INTO ANNOUNCE (ANNOUNCE_ID,ANNOUNCE_TITLE,ANNOUNCE_CONTENTS,ANOUN_CATE_ID)
-		VALUES(#{announce_id},#{announce_title},#{announce_contents},#{anoun_cate_id})
+		VALUES(CONCAT('ann_', ANNOUNCE_SEQ.NEXTVAL),#{announce_title},#{announce_contents},#{anoun_cate_id})
 	</insert>
-	
-	
 	
 	
 	<!-- 공지사항 수정  -->

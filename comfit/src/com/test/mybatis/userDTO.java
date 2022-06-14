@@ -7,14 +7,15 @@ public class userDTO
 	, u_tel, bancount, u_password, u_address, u_profile;
 	
 
+	// 이메일
+	
 
 	// 차단회원 리스트 속성
 	private String ban_cate_name, ban_date, ban_end_date, rep_cate_name, ban_rea_detail;
 
 	// 이메일 인증 여부
 	private String auth , random;
-	
-	
+
 	
 
 	public String getU_profile()
@@ -77,7 +78,7 @@ public class userDTO
 	{
 		this.u_id = u_id;
 	}
-	
+
 	public String getU_email()
 	{
 		return u_email;
@@ -138,6 +139,36 @@ public class userDTO
 		this.bancount = bancount;
 	}
 
+	public String getU_password()
+	{
+		return u_password;
+	}
+
+	public void setU_password(String u_password)
+	{
+		this.u_password = u_password;
+	}
+
+	public String getU_address()
+	{
+		return u_address;
+	}
+
+	public void setU_address(String u_address)
+	{
+		this.u_address = u_address;
+	}
+
+	public String getU_profile()
+	{
+		return u_profile;
+	}
+
+	public void setU_profile(String u_profile)
+	{
+		this.u_profile = u_profile;
+	}
+
 	public String getBan_cate_name()
 	{
 		return ban_cate_name;
@@ -187,6 +218,28 @@ public class userDTO
 	{
 		this.ban_rea_detail = ban_rea_detail;
 	}
+
+	public String getAuth()
+	{
+		return auth;
+	}
+
+	public void setAuth(String auth)
+	{
+		this.auth = auth;
+	}
+
+	public String getRandom()
+	{
+		return random;
+	}
+
+	public void setRandom(String random)
+	{
+		this.random = random;
+	}
 	
 	
+	
+
 }

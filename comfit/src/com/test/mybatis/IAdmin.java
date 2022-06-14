@@ -21,7 +21,6 @@ public interface IAdmin
 	
 	// 관리자모드 탈퇴한 회원 리스트 출력 메소드
 	public ArrayList<useroutDTO> adminUseroutList();
-
 	
 	// 관리자모드 공지사항 리스트 출력메소드 ok
 	public ArrayList<NoticeDTO> noticeList();

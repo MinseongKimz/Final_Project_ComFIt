@@ -86,9 +86,18 @@
 		{
 			<%
 				String err = null;
+				String hello = null;
 				try
 				{
 					err = request.getParameter("err");
+					hello = request.getParameter("hello");
+					
+					if(hello!=null)
+					{	%>
+							alert("환영합니다~!!!");
+						<%
+					}		
+					
 					if(err!=null)
 					{	%>
 							alert("아이디 또는 비밀번호가 올바르지 않습니다.");

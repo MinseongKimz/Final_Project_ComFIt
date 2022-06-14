@@ -5,10 +5,21 @@ public class DirectProductDTO
 	private String pd_id, pd_title, pd_name, pd_photo, pd_as_remain, pd_hitcount, price
     , pd_hope_sdate, pd_hope_edate, pd_hope_stime, pd_hope_etime, pd_hope_place
     , pd_regit_date, pd_maker_id, pd_as_id, pd_as_name, category_name, seller
-    , u_nickname, maker_name, maker_name2, cf_price, comments;
+    , u_nickname, maker_name, maker_name2, cf_price, comments
+    , remain_date;
 	
 	
 	
+	public String getRemain_date()
+	{
+		return remain_date;
+	}
+
+	public void setRemain_date(String remain_date)
+	{
+		this.remain_date = remain_date;
+	}
+
 	public String getComments()
 	{
 		return comments;

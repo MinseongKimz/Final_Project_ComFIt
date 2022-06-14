@@ -2,13 +2,40 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.test.mybatis.IAdmin">
-<!-- 
-	<select id="categoryList" resultType="com.test.mybatis.categoryDTO">
-		SELECT PD_CATEGORY_ID, CATEGORY_NAME
-		FROM PRODUCT_CATEGORY
-	</select>
+<mapper namespace="com.test.mybatis.IUserMyPage">
 
+	<select id="myDetailInfo" resultType="com.test.mybatis.userDTO">
+		SELECT U_EMAIL, U_NICKNAME, U_NAME
+		, SUBSTR(CRYPTPACK.DECRYPT(U_PASSWORD,'1234'),1,1) 
+		|| LPAD('*',LENGTH(CRYPTPACK.DECRYPT(U_PASSWORD,'1234'))-1,'*') as U_PASSWORD
+		, U_TEL, U_ADDRESS
+		FROM USER_INFORMATION
+		WHERE U_ID = #{u_id}
+	</select>
+	
+	<select id="myInfo" resultType="com.test.mybatis.userDTO">
+		SELECT U_NICKNAME, U_PROFILE
+		FROM USER_INFORMATION
+		WHERE U_ID = #{u_id}
+	</select>
+	
+	<select id="myMoneyList" resultType="com.test.mybatis.MoneyDTO">
+		SELECT M_DATE, M_MONEY
+		, CASE WHEN SUBSTR(M_ID,1,3) = 'inm' THEN '입금'
+		        WHEN SUBSTR(M_ID,1,4) = 'outm' THEN '출금'
+		    ELSE '에러' END AS INOUT
+		FROM MONEY_INOUT_VIEW
+		WHERE U_ID = #{u_id}
+	</select>
+	
+	<select id="myPoint" resultType="java.lang.Integer">
+		SELECT POINT
+		FROM ALL_USER_POINT_VIEW
+		WHERE U_ID = #{u_id}
+	</select>
+	
+	
+<!-- 
 	<insert id="categoryInsert">
 		INSERT INTO PRODUCT_CATEGORY(PD_CATEGORY_ID, CATEGORY_NAME)
 		VALUES(PRODUCT_CATEGORY_SEQ.NEXTVAL, #{category_name})

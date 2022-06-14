@@ -49,5 +49,17 @@ public class SearchContoller
 		
 	}
 	
+	@RequestMapping(value = "/search.action", method = RequestMethod.GET)
+	public String search_prodcut(Model model)
+	{
+		String result = null;
+		
+		
+		result = "/WEB-INF/view/user/main/user_search_product.jsp";
+		
+		
+		return result;
+	}
+	
 	
 }

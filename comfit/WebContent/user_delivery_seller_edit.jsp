@@ -210,20 +210,21 @@
 	<form action="user_delforminsert.action" method="get">
 		<table style="width: 100%;">
 			<tr>
+				<th>제목<span class="star">*</span></th>
+				<td colspan="3"><input class="form-control" id="exampleFormControlInput1" type="text" placeholder="제목을 입력해주세요." style="width: 86%;"/>
+				<p align="right" style="font-size: 3px; margin-right: 16%;">32/32</p>
+				</td>
+			</tr>
+			<tr>
 				<th>물품검색<span class="star">*</span></th>
 				<td colspan="2">
 					<div><!--  class="input-group mb-6" -->
-					  <input type="text" class="<!-- form-control  -->" placeholder="돋보기를 눌러 물품을 검색해주세요" style="height:40px; width: 260px; display: inline-block;" readonly="readonly">
+					  <input type="text" class="<!-- form-control  -->" placeholder="물품검색" style="height:40px; width: 250px; display: inline-block;">
 					  <span class="input-group-text" id="basic-addon1" onclick="location.href='searchproduct.action';" style="width: 50px; display: inline-block;"><i class="bi bi-search"></i></span>
 					</div>
 				</td>
 			</tr>
-			<tr>
-				<th>제목<span class="star">*</span></th>
-				<td colspan="3"><input class="form-control" id="exampleFormControlInput1" type="text" placeholder="제목을 입력해주세요." style="width: 86%;"/>
-				<p align="right" style="font-size: 3px; margin-right: 16%;"></p>
-				</td>
-			</tr>
+			
 			<tr>
 				<th>물품 카테고리<span class="star">*</span>
 				 <p style="font-weight: normal; font-size: 7pt;">상품과 일치하는 카테고리를 선택해주세요.
@@ -239,29 +240,25 @@
 					<option>키보드</option>
 					-->
 					<c:forEach var="category" items="${categorylist }">
-
-					<option value="${category.category_name }" >${category.category_name }</option>
-
-						<option>${category.category_name }</option>
-
+					<option>${category.category_name }</option>
 					</c:forEach>
 					</select>
 					</td>
 				<td><!-- 제조사
 					<br> -->
-					<input type="text" class="form-control" id="productMaker" placeholder="제조사를 입력해 주세요." style="width: 90%;" value="${maker }"/>
+					<input type="text" class="form-control" id="productMaker" placeholder="제조사를 입력해 주세요." style="width: 90%;"/>
 				</td>	
 					
 				<td><!-- 물품명
 					<br> -->
-					<input type="text" class="form-control" id="productName" placeholder="물품명을 입력해 주세요." style="width: 90%;" value="${name }">
+					<input type="text" class="form-control" id="productName" placeholder="물품명을 입력해 주세요." style="width: 90%;">
 				</td>	
 			</tr>
 			<tr>
 				<th>희망 시작 가격<span class="star">*</span>
 				 <p style="font-weight: normal; font-size: 7pt;">희망하는 가격을 적어주세요.</p>
                 </th>
-                <td colspan="3"><input class="form-control" id="price1" type="text" placeholder="희망 가격을 입력해주세요." style="width: 50%;"/>
+                <td colspan="3"><input class="form-control" id="price1" type="text" placeholder="희망 가격을 입력해주세요." style="width: 86%;"/>
                 <p style="color:blue; font-size: 10px;">추천 가격보다 2배 이상은 입력할 수 없습니다.</p>
                 </td>
 			</tr>
@@ -270,7 +267,7 @@
 				<th>즉시 구매 가격<span class="star">*</span>
 				 <p style="font-weight: normal; font-size: 7pt;">즉시 거래 가격을 적어주세요.</p>
                 </th>
-                <td colspan="3"><input class="form-control" id="price2" type="text" placeholder="즉시구매 가격을 입력해주세요." style="width: 50%;"/>
+                <td colspan="3"><input class="form-control" id="price2" type="text" placeholder="즉시구매 가격을 입력해주세요." style="width: 86%;"/>
                 <p style="color:blue; font-size: 10px;">추천 가격보다 2배 이상은 입력할 수 없습니다.</p>
                 </td>
 			</tr>
@@ -281,7 +278,7 @@
                 </th>
                 <td colspan="3">
                       <div class="insert">
-                   <form method="POST" onsubmit="return false;" enctype="multipart/form-data">
+                   <form method="post" onsubmit="return false;" enctype="multipart/form-data">
                       <p style="font-weight: normal;">[ 최소 6장 ~ 최대 10장 ]</p>
                        <input type="file" onchange="addFile(this);" multiple />
                        <div class="file-list"  >

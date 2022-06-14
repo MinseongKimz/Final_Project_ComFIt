@@ -71,7 +71,7 @@ h5
 
 			<div class="col-lg-10 col-sm-12 col-md-12"  style="margin-left: 5%; width: 60%;">
 				<div class="d-flex justify-content-between">
-					<p style="font-size: 18pt; font-weight: bolder;">보유 금액 : <span class="ibgum" style="font-size: 18pt;">40,000P</span></p>
+					<p style="font-size: 18pt; font-weight: bolder;">보유 금액 : <span class="ibgum" style="font-size: 18pt;">${point }P</span></p>
 					<select class="selectpicker" style="width: 100px; text-align: center; height: 30px;">
 						<option>날짜순</option>
 						<option>입금</option>
@@ -84,18 +84,26 @@ h5
 					<table class="table table-bordered" style="font-size: 10pt; width: 100%;">
 						<thead>
 							<tr>
-								<th>날짜</th>
+								<th>일시</th>
 								<th>금액</th>
 								<th>방식</th>
 							</tr>
 						</thead>
 						<tbody>
+							<c:forEach var="money" items="${myMoneyList }">
 							<tr>
-								<td>2022-05-17</td>
-								<td class="ibgum">+40,000</td>
-								<td>입금</td>
+								<td>${money.m_date }</td>
+								<c:if test="${money.inout eq '입금'}">
+									<td class="ibgum">+${money.m_money }</td>
+									<td class="ibgum">입금</td>
+								</c:if>
+								<c:if test="${money.inout eq '출금'}">
+									<td class="chulgum">-${money.m_money }</td>
+									<td class="chulgum">출금</td>
+								</c:if>
 							</tr>
-							<tr>
+							</c:forEach>
+							<!-- <tr>
 								<td>2022-05-02</td>
 								<td class="chulgum">-40,000</td>
 								<td>출금</td>
@@ -114,7 +122,7 @@ h5
 								<td>2022-04-17</td>
 								<td class="ibgum">+40,000</td>
 								<td>입금</td>
-							</tr>
+							</tr> -->
 						</tbody>
 					</table>
 					

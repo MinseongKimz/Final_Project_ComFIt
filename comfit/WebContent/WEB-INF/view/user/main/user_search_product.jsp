@@ -10,7 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>user_search_product.jsp</title>
-<link rel="stylesheet" type="text/css" href="css/user_search_product.css">
+<!-- <link rel="stylesheet" type="text/css" href="css/user_search_product.css"> -->
 <style type="text/css">
    
    .image{
@@ -95,7 +95,7 @@
          
          if(pdname == "")
          {
-            alert("물건 이름을 써주세요");
+            alert("물품을 입력해주세요.");
             
             return;            
          }
@@ -146,7 +146,7 @@
             for (var i = 0; i < arr.length; i++)
                tprice += Number(arr[i]); // 누적 실행
             
-            var avgPrice = (tprice/arr.length);  // 누적합 / 물품갯수
+            var avgPrice = (tprice/arr.length);    // 누적합 ÷ 물품갯수
             
             for (var i = 0; i < arr.length; i++)
             {
@@ -173,13 +173,13 @@
             
             if (arr.length==0)
             {
-               $("#result").html("<p>검색결과가 없습니다.ㅠ</p>");
+               $("#result").html("<p>검색결과가 없습니다.</p>");
             } 
             
             else
             {
                var txt2 = "<p class='price'>추천중고가격은 : " + realAvgPrice + " 입니다</p>" 
-                + "<p class='caption'>이 가격은 단지 참고용이며 절대적이지 않습니다.<br>제품명을 정확히 적으면 정확도가 올라갑니다.</p>";
+                + "<p class='caption'>이 가격은 단지 참고용이며 절대적이지 않습니다.<br>제품명을 정확히 입력할수록 정확도가 올라갑니다.</p>";
                $("#result").html(txt2 + txt);
             }
             
@@ -200,15 +200,18 @@
          var category = valArr[1];
          var maker = valArr[2];
          
-         $.post("retunsell.action", {
+         location.href="returnsell.action?name=" + name + "&maker=" + maker + "&category=" + category;
+         
+        /*  $.post("retunsell.action", {
             name : name
            , category : category
            , maker : maker
            , cfPrice : realAvgPrice
          }, function(data)
          {
-            console.log(data);
-         })
+            //console.log(data);
+            
+         }) */
       })
    })   
    

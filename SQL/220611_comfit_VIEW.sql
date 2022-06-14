@@ -448,3 +448,47 @@ FROM AD_IO_MONEY_LIST_REALVIEW
 WHERE IO_TYPE = '입금'
 ORDER BY IO_DATE;
 
+SELECT *
+FROM DELIVERY_PRODUCT;
+
+
+--------------------------------------------------------------------------------
+-- 관리자모드 상품관리 상세보기
+
+-- 테스트 
+SELECT CASE
+       WHEN SUBSTR(DP.DELI_PD_ID, 1, 4) = 'deli'
+       THEN '택배거래'
+       ELSE '직거래'
+       END AS DELI_PD_ID, DP.PD_REGIT_DATE 게시일자, DP.PD_TITLE 제목, DP.U_ID 판매자ID
+, PC.CATEGORY_NAME 카테고리이름, DP.PD_NAME 물품명, DP.PD_MAKER_ID 제조사
+, BL.U_ID 구매자ID, BL.BID_PRICE 가격, BL.BID_DATE 구매일시, CONCAT(BL.ADDRESS, BL.ADDR_DETAIL) 배송장소
+, DCB.BUY_COMP_DATE 구매확정일자, DCS.SELL_COMP_DATE 판매확정일시, DCS.PD_DELI_NUM 운송장
+, BL.U_ID 제안자ID, BL.BID_DATE 제안시간, BL.BID_PRICE 제안가격
+FROM DELIVERY_PRODUCT DP JOIN PRODUCT_MAKER PM
+ON DP.PD_MAKER_ID = PM.PD_MAKER_ID
+JOIN PRODUCT_CATEGORY PC
+ON PM.PD_CATEGORY_ID = PC.PD_CATEGORY_ID
+JOIN BID_LIST BL
+ON DP.DELI_PD_ID = BL.DELI_PD_ID
+JOIN BID_SUCCESS BS
+ON BL.BID_CODE = BS.BID_CODE
+JOIN DELI_COMPLETE_SELL DCS
+ON DCS.BS_ID = BS.BS_ID
+JOIN DELI_COMPLETE_BUY DCB
+ON DCB.BS_ID = BS.BS_ID
+WHERE DP.DELI_PD_ID = 'deli_1';
+--게시글 번호로 들어가는게 맞지 않나? 판매자 아이디는 동시에 글 몇개 쓸 수 있으니까... 게시글 번호 DELI_PD_ID??
+
+
+select case
+       when substr(dp.deli_pd_id, 1, 4) = 'deli'
+       then '택배거래'
+       else '직거래'
+       end as deli_pd_id, dp.pd_regit_date as pd_regit_date, dp.pd_title as pd_title, dp.u_id as u_id
+, pc.category_name as category_name, dp.pd_name as pd_name, dp.pd_maker_id as pd_maker_id
+, bl.u_id as b_u_id, bl.bid_price as bid_price, bl.bid_date as bid_date, concat(bl.address, bl.addr_detail) as address
+, dcb.buy_comp_date as buy_comp_date, dcs.sell_comp_date as sell_comp_date, dcs.pd_deli_num as pd_deli_num
+
+
+--------------------------------------------------------------------------------

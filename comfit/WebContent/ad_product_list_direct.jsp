@@ -10,7 +10,6 @@
 <meta charset="UTF-8">
 <!-- 기기별 크기 담당 -->
 <meta name="viewport" content="width=device-width", initial-scale="1">
-<!-- 디자인 담당 -->
 <title>ad_productlist_direct.jsp</title>
 <style type="text/css">
   #set {
@@ -25,36 +24,44 @@
 
 <div class="container">
 	<div class="row">
-	<div style="margin-bottom: 20px;"><h1><b>관리자모드_상품상세_택배</b></h1></div> <!-- 왜 서체가? 배민서체지? 커스텀 css해놔서 그럼 -->
+	<h1><b>관리자모드_상품관리</b></h1> <!-- 왜 서체가? 배민서체지? 커스텀 css해놔서 그럼 -->
 		<table class="table table-bordered" style="text-align: center; border: 1px solid #dddddd; width: 700px">
 			<thead><!-- 제목 -->
-			<c:forEach var="delivery" items="${productlistdelivery}">
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">상품 번호</th>
-				    <td colspan="2" style="color: red;">P03546</td>
+				    <td colspan="2">P03546</td>
 				</tr>
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">게시 일자</th>
-				    <td colspan="2">${delivery.pd_regit_date }</td>
+				    <td colspan="2">2022-05-22</td>
 				</tr>		
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">제목</th>
-				    <td colspan="2"><a href="#">${delivery.pd_title }</a></td>
+				    <td colspan="2"><a href="#">CPU 팔아요</a></td>
 				</tr>			
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">거래 방식</th>
-				    <td colspan="2">${delivery.deli_pd_id }</td>
+				    <td colspan="2">직거래</td>
 				</tr>
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">판매자 ID</th>
-				    <td colspan="2">${delivery.u_id }</td>
+				    <td colspan="2">hjajks78</td>
 				</tr>
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">게시글 상태</th>
-				    <td style="color: red;">판매완료 구매완료 등</td>
+				    <td>거래 중</td>
 				    <td><form action=""><label><input type="checkbox" name="subs" />블라인드</label></form></td>
-				</tr>	
-			</c:forEach>							
+				</tr>		
+				<tr>
+				    <th style="background-color: #eeeeee; text-align: center;">판/구매자 코드</th>
+				    <td>판매자:x67854</td>
+				    <td id="set">구매자:x45452</td> 
+				</tr>			
+				<tr>
+				    <th style="background-color: #eeeeee; text-align: center;">코드 입력 여부</th>
+				    <td>Y</td>
+				    <td id="set">N</td>
+				</tr>					
 			</thead>
 		</table>
 		
@@ -62,24 +69,40 @@
 		<div style="margin-top: 20px"><h2><b>상품정보</b></h2></div>
 		<table class="table table-bordered" style="text-align: center; border: 1px solid #dddddd; width: 700px">
 			<thead><!-- 제목 -->
-			<c:forEach var="delivery" items="${productlistdelivery}">			
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">카테고리</th>
-				    <td>${delivery.category_name }</td>
+				    <td>
+						<select class="form-select" style="width: 50%; display: inline-block;">
+						    <option selected>카테고리</option>
+						    <option value="">1</option>
+						    <option value="">2</option>
+						</select>
+				    </td>
 				</tr>
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">물품명</th>
-				    <td>${delivery.pd_name }</td>
+				    <td>i7 - 12700k</td>
 				</tr>		
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">제조사</th>
-				    <td>${delivery.pd_maker_id }</td>
+				    <td>인텔</td>
 				</tr>			
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">희망 가격</th>
-				    <td style="color: red;">아직없어용</td>
-				</tr>	
-			</c:forEach>								
+				    <td>300,000원</td>
+				</tr>
+				<tr>
+				    <th style="background-color: #eeeeee; text-align: center;">희망 장소</th>
+				    <td>인천 계양구 새벌로 12번길 12</td>
+				</tr>
+				<tr>
+				    <th style="background-color: #eeeeee; text-align: center;">희망 날짜</th>
+				    <td>2022 - 05 - 23  ~ 2022 - 05 -26</td>
+				</tr>		
+				<tr>
+				    <th style="background-color: #eeeeee; text-align: center;">희망 시간</th>
+				    <td>16시 ~ 18시</td>
+				</tr>								
 			</thead>
 		</table>		
 		
@@ -88,24 +111,22 @@
 		<div style="margin-top: 20px"><h2><b>거래 정보</b></h2></div>
 		<table class="table table-bordered" style="text-align: center; border: 1px solid #dddddd; width: 700px">
 			<thead><!-- 제목 -->
-			<c:forEach var="delivery" items="${productlistdelivery}">
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">구매자ID</th>
-				    <td>${delivery.b_u_id }</td>
+				    <td>inseong12</td>
 				</tr>
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">가격</th>
-				    <td>${delivery.bid_price }</td>
+				    <td>280,000원</td>
 				</tr>		
 				<tr>
-				    <th style="background-color: #eeeeee; text-align: center;">구매 일시</th>
-				    <td>${delivery.bid_date }</td>
+				    <th style="background-color: #eeeeee; text-align: center;">직거래 일시</th>
+				    <td>2022 - 05 - 24   17:30</td>
 				</tr>			
 				<tr>
-				    <th style="background-color: #eeeeee; text-align: center;">배송 장소</th>
-				    <td>${delivery.address }</td>
-				</tr>		
-			</c:forEach>						
+				    <th style="background-color: #eeeeee; text-align: center;">직거래 장소</th>
+				    <td>인천 광역시 계양구 새벌로 112번길 13 405동 관리사무소 앞</td>
+				</tr>								
 			</thead>
 		</table>	
 		
@@ -114,21 +135,22 @@
 		<div style="margin-top: 20px"><h2><b>거래 완료 정보</b></h2></div>
 		<table class="table table-bordered" style="text-align: center; border: 1px solid #dddddd; width: 700px">
 			<thead><!-- 제목 -->
-			<c:forEach var="delivery" items="${productlistdelivery}">
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">구매 확정 일시</th>
-				    <td colspan="2">${delivery.buy_comp_date }</td>
+				    <td></td>
 				</tr>
 				<tr>
-				    <th style="background-color: #eeeeee; text-align: center;">판매 확정 일시</th>
-				    <td colspan="2">${delivery.sell_comp_date }</td>
-				</tr>				
+				    <th style="background-color: #eeeeee; text-align: center;">가격</th>
+				    <td>280,000원</td>
+				</tr>		
 				<tr>
-				    <th style="background-color: #eeeeee; text-align: center;">운송장</th>
-				    <td style="color: red;">우체국</td>
-				    <td id="set">${delivery.pd_deli_num }</td> 
-				</tr>	
-			</c:forEach>							
+				    <th style="background-color: #eeeeee; text-align: center;">직거래 일시</th>
+				    <td>2022 - 05 - 24   17:30</td>
+				</tr>			
+				<tr>
+				    <th style="background-color: #eeeeee; text-align: center;">직거래 장소</th>
+				    <td>인천 광역시 계양구 새벌로 112번길 13 405동 관리사무소 앞</td>
+				</tr>								
 			</thead>
 		</table>	
 		
@@ -138,34 +160,35 @@
 		<table class="table table-bordered" style="text-align: center; border: 1px solid #dddddd; width: 700px">
 			<thead><!-- 제목 -->
 				<tr>
-				    <th style="background-color: #eeeeee; text-align: center;">제안자ID</th>
-				    <th style="background-color: #eeeeee; text-align: center;">제안 시간</th>
-				    <th style="background-color: #eeeeee; text-align: center;">제안 가격</th>
-				    <th style="background-color: #eeeeee; text-align: center;">제안 상태</th>
+				    <th style="background-color: #eeeeee; text-align: center;">입찰자ID</th>
+				    <th style="background-color: #eeeeee; text-align: center;">입찰 시간</th>
+				    <th style="background-color: #eeeeee; text-align: center;">입찰가격</th>
+				    <th style="background-color: #eeeeee; text-align: center;">입찰상태</th>
 				</tr>
 			</thead>	    
 			<tbody>
-			<c:forEach var="delivery" items="${productlistdelivery}">			
 				<tr>
-				    <td>${delivery.b_u_id }</td>
-				    <td>${delivery.bid_date }</td>
-				    <td>${delivery.bid_price }</td>
-				    <td style="color: red;">아직 몰라요</td>
+				    <td>agsdag455</td>
+				    <td>022-05-23  11:06:20</td>
+				    <td>+28,000</td>
+				    <td>낙찰(채택)</td>
 				</tr>
-			</c:forEach>
-			</tbody> 	    
+			</tbody> 
+				    
 		</table>					
 	</div>
 </div>
 
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
+
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+
 
 
 </body>

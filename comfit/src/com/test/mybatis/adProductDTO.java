@@ -5,17 +5,18 @@ public class adProductDTO
 	private String cate_name, regit_date, u_email, pd_title, ta_cate, ta_status;
 	
 	//세부 리스트
-	private String deli_pd_id, pd_regit_date, u_id, category_name, pd_name, pd_maker_id
-	, b_u_id, bid_price, bid_date, address, buy_comp_date, sell_comp_date, pd_deli_num;
+	private String deli_pd_num, pd_regit_date, deli_pd_id, u_id, pd_status, category_name
+	, pd_name, pd_maker_id, b_u_id, bid_price, bid_date, address
+	, buy_comp_date, sell_comp_date, pd_deli_num, bs_id;
 	
-	public String getDeli_pd_id()
+	public String getDeli_pd_num()
 	{
-		return deli_pd_id;
+		return deli_pd_num;
 	}
 
-	public void setDeli_pd_id(String deli_pd_id)
+	public void setDeli_pd_num(String deli_pd_num)
 	{
-		this.deli_pd_id = deli_pd_id;
+		this.deli_pd_num = deli_pd_num;
 	}
 
 	public String getPd_regit_date()
@@ -28,6 +29,16 @@ public class adProductDTO
 		this.pd_regit_date = pd_regit_date;
 	}
 
+	public String getDeli_pd_id()
+	{
+		return deli_pd_id;
+	}
+
+	public void setDeli_pd_id(String deli_pd_id)
+	{
+		this.deli_pd_id = deli_pd_id;
+	}
+
 	public String getU_id()
 	{
 		return u_id;
@@ -36,6 +47,16 @@ public class adProductDTO
 	public void setU_id(String u_id)
 	{
 		this.u_id = u_id;
+	}
+
+	public String getPd_status()
+	{
+		return pd_status;
+	}
+
+	public void setPd_status(String pd_status)
+	{
+		this.pd_status = pd_status;
 	}
 
 	public String getCategory_name()
@@ -138,6 +159,17 @@ public class adProductDTO
 		this.pd_deli_num = pd_deli_num;
 	}
 
+	public String getBs_id()
+	{
+		return bs_id;
+	}
+
+	public void setBs_id(String bs_id)
+	{
+		this.bs_id = bs_id;
+	}
+
+	//--------------------------------
 	public String getCate_name()
 	{
 		return cate_name;

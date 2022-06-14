@@ -31,7 +31,7 @@
 			<c:forEach var="delivery" items="${productlistdelivery}">
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">상품 번호</th>
-				    <td colspan="2" style="color: red;">P03546</td>
+				    <td colspan="2">${delivery.deli_pd_num }</td>
 				</tr>
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">게시 일자</th>
@@ -51,7 +51,7 @@
 				</tr>
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">게시글 상태</th>
-				    <td style="color: red;">판매완료 구매완료 등</td>
+				    <td>${delivery.pd_status }</td>
 				    <td><form action=""><label><input type="checkbox" name="subs" />블라인드</label></form></td>
 				</tr>	
 			</c:forEach>							
@@ -150,7 +150,7 @@
 				    <td>${delivery.b_u_id }</td>
 				    <td>${delivery.bid_date }</td>
 				    <td>${delivery.bid_price }</td>
-				    <td style="color: red;">아직 몰라요</td>
+				    <td>${delivery.bs_id }</td>
 				</tr>
 			</c:forEach>
 			</tbody> 	    

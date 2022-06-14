@@ -1,6 +1,10 @@
 package com.test.mybatis;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,29 +13,60 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class UserMyPageInfoController
 {
+	@Autowired
 	private SqlSession sqlSession;
 	
 	@RequestMapping(value = "/user_mypage.action", method = RequestMethod.GET)
-	public String userMypage(Model model)
+	public String userMypage(Model model, HttpServletRequest request)
 	{
 		String result = null;
+
+		try
+		{
+			HttpSession session = request.getSession();
+			String u_id = (String)session.getAttribute("u_id");
+			
+			IUserMyPage mypage = sqlSession.getMapper(IUserMyPage.class);
+			model.addAttribute("myInfo", mypage.myInfo(u_id));
+			model.addAttribute("point", mypage.myPoint(u_id));
+			model.addAttribute("myMoneyList", mypage.myMoneyList(u_id));
+			
+			result = "/WEB-INF/view/user/mypage/user_mypage.jsp";
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
 		
-		result = "/WEB-INF/view/user/mypage/user_mypage.jsp";
 		
 		return result;
 	}
 	
 	
-	
-	
 	@RequestMapping(value = "/user_information.action", method = RequestMethod.GET)
-	public String userInformation(Model model)
+	public String userInformation(Model model, HttpServletRequest request)
 	{
 		String result = null;
 		
-		result = "/WEB-INF/view/user/mypage/user_mypage_info.jsp";
+		try
+		{
+			HttpSession session = request.getSession();
+			String u_id = (String)session.getAttribute("u_id");
+			
+			IUserMyPage mypage = sqlSession.getMapper(IUserMyPage.class);
+			
+			model.addAttribute("userInfo", mypage.myDetailInfo(u_id));
+			
+			result = "/WEB-INF/view/user/mypage/user_mypage_info.jsp";
+			
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
 		
 		return result;
+		
 	}
 	
 	// 구매내역
@@ -55,12 +90,29 @@ public class UserMyPageInfoController
 		return result;
 	}
 	
+	// 입출금내역
 	@RequestMapping(value = "/user_moneylist.action", method = RequestMethod.GET)
-	public String userMoneylist(Model model)
+	public String userMoneylist(Model model, HttpServletRequest request)
 	{
 		String result = null;
 		
-		result = "/WEB-INF/view/user/mypage/user_mypage_pointlist.jsp";
+		try
+		{
+			HttpSession session = request.getSession();
+			String u_id = (String)session.getAttribute("u_id");
+			
+			IUserMyPage mypage = sqlSession.getMapper(IUserMyPage.class);
+			
+			model.addAttribute("myMoneyList", mypage.myMoneyList(u_id));
+			model.addAttribute("point", mypage.myPoint(u_id));
+			
+			result = "/WEB-INF/view/user/mypage/user_mypage_pointlist.jsp";
+			
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
 		
 		return result;
 	}

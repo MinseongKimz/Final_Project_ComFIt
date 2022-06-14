@@ -13,6 +13,19 @@ public class ProductController
 	@Autowired
 	private SqlSession sqlsession;
 	
+	
+	
+	@RequestMapping(value="/direct_sell.action", method = RequestMethod.GET)
+	public String directsell(Model model)
+	{
+		String result = null;
+		
+		result= "/WEB-INF/view/user/main/user_direct_sell.jsp";
+		
+		return result;
+		
+	}
+	
 	@RequestMapping(value = "/user_mainlist.action", method = RequestMethod.GET)
 	public String mainList(Model model)
 	{
@@ -35,5 +48,5 @@ public class ProductController
 		
 		return result;
 	}
-	   
+
 }

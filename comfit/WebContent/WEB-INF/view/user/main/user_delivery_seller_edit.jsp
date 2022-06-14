@@ -240,7 +240,7 @@
 					<option>키보드</option>
 					-->
 					<c:forEach var="category" items="${categorylist }">
-					<option>${category.category_name }</option>
+						<option>${category.category_name }</option>
 					</c:forEach>
 					</select>
 					</td>

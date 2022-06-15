@@ -240,7 +240,7 @@ public class AdminController
 	   dao.noticeModify(dto);
 	   
 	   
-	   dao.noticeInesrt(notice);
+	   dao.noticeInsert(notice);
 	   
 	   result = "redirect:admin_notice_list.action";
 	   

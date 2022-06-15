@@ -28,8 +28,11 @@ public class UserMyPageInfoController
 			
 			IUserMyPage mypage = sqlSession.getMapper(IUserMyPage.class);
 			model.addAttribute("myInfo", mypage.myInfo(u_id));
+			model.addAttribute("level", mypage.myLevel(u_id));
 			model.addAttribute("point", mypage.myPoint(u_id));
 			model.addAttribute("myMoneyList", mypage.myMoneyList(u_id));
+			model.addAttribute("buyList", mypage.buyList(u_id));
+			model.addAttribute("sellList", mypage.sellList(u_id));
 			
 			result = "/WEB-INF/view/user/mypage/user_mypage.jsp";
 			
@@ -56,7 +59,7 @@ public class UserMyPageInfoController
 			IUserMyPage mypage = sqlSession.getMapper(IUserMyPage.class);
 			
 			model.addAttribute("userInfo", mypage.myDetailInfo(u_id));
-			
+			model.addAttribute("level", mypage.myLevel(u_id));
 			result = "/WEB-INF/view/user/mypage/user_mypage_info.jsp";
 			
 			
@@ -71,21 +74,49 @@ public class UserMyPageInfoController
 	
 	// 구매내역
 	@RequestMapping(value = "/user_buylist.action", method = RequestMethod.GET)
-	public String userBuylist(Model model)
+	public String userBuylist(Model model, HttpServletRequest request)
 	{
 		String result = null;
-		
-		result = "/WEB-INF/view/user/mypage/user_mypage_buylist.jsp";
+		try
+		{
+			HttpSession session = request.getSession();
+			String u_id = (String)session.getAttribute("u_id");
+			
+			IUserMyPage mypage = sqlSession.getMapper(IUserMyPage.class);
+			
+			model.addAttribute("buyList", mypage.buyList(u_id));
+			
+			result = "/WEB-INF/view/user/mypage/user_mypage_buylist.jsp";
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
 		
 		return result;
 	}
 	
+	// 판매내역
 	@RequestMapping(value = "/user_selllist.action", method = RequestMethod.GET)
-	public String userSelllist(Model model)
+	public String userSelllist(Model model, HttpServletRequest request)
 	{
 		String result = null;
 		
-		result = "/WEB-INF/view/user/mypage/user_mypage_sell_list.jsp";
+		try
+		{
+			HttpSession session = request.getSession();
+			String u_id = (String)session.getAttribute("u_id");
+			
+			IUserMyPage mypage = sqlSession.getMapper(IUserMyPage.class);
+			
+			model.addAttribute("sellList", mypage.sellList(u_id));
+			
+			result = "/WEB-INF/view/user/mypage/user_mypage_sell_list.jsp";
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
 		
 		return result;
 	}
@@ -123,6 +154,16 @@ public class UserMyPageInfoController
 		String result = null;
 		
 		result = "/WEB-INF/view/user/mypage/user_mypage_drop.jsp";
+		
+		return result;
+	}
+	
+	@RequestMapping(value = "/user_wish.action", method = RequestMethod.GET)
+	public String userWish(Model model)
+	{
+		String result = null;
+		
+		result = "/WEB-INF/view/user/mypage/user_mypage_wish_list.jsp";
 		
 		return result;
 	}

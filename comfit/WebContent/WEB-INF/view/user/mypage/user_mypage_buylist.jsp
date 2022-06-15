@@ -11,8 +11,14 @@
 <meta charset="UTF-8">
 <title>구매내역 리스트</title>
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/main.css">
+<link rel="stylesheet" href="<%=cp %>/css/bootstrap.css">
 <style type="text/css">
 
+	.title 
+	{
+	font-family: 맑은 고딕;
+	font-size: 30pt;
+	}
 	.subheader
 	{
 		font-size: 25pt;
@@ -35,107 +41,83 @@
   	}
   	table
   	{
-  		
-  		display:inline;
-  		margin-left:25%;
-  		width:70%;
+  		display: inline-table;
+  		width:100%;
   	}
   	
   	
 </style>
 </head>
 <body>
-<div>
-		<!--Header  -->
-		<div class="header">
-	      <c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
-	   	</div>
-	   	
-	   	
-	   	<div>
-	   		<p class="subheader">마이페이지</p>
-	   		<p class="subheader_header">구매내역</p>
-	   		<p style="font-size: 18pt; font-weight: bolder;margin-left: 25%;">내 판매</p>
-	   		<!--sidebar  -->
-	   			<div style="float:left; margin-left:15%;">
-								<c:import url="/WEB-INF/view/user/main/user_sidebar.jsp" ></c:import>
-				</div>	
-	   		
-	   	</div>
-	    <div>
-	    	<!--table  -->
-					   		<table class="table table-bordered"  style="float:left;">
-							<thead>
-						        <tr style="background-color: white;">
-						            <th>제안/입찰일</th>
-						            <th>금액</th>
-						            <th>상품정보</th>
-						            <th>방식</th>
-						            <th>직거래 예정 장소/배송 예정 장소</th>
-						            <th>직거래 예정 일시</th>
-						            <th>실제 거리 일시</th>
-						            <th>상태</th>
-						        </tr>
-						     </thead>
-						        <tr>
-						            <td>2022-05-20</td>
-						            <td>40,000</td>
-						            <td>레이저 무선 마우스</td>
-						            <td>(배송)경매</td>
-						            <td style="font-size: 8pt;">인천 계양구 새빛 아파트 104동 203호</td>
-						            <td style="font-size: 8pt;">　</td>
-						            <td style="font-size: 8pt;">2022-05-19 08:12:12</td>
-									<td>낙찰 &nbsp;
-										<button type="button" class="btn btn-primary btn-sm"
-											id="sellBtn"
-											style="width: 60px; height: 30px; font-size: 6pt;"
-											data-bs-toggle="modal" data-bs-target="#directSellCheck">구매확정</button>
-										<button type="button" class="btn btn-danger btn-sm"
-											id="danger"
-											style="width: 60px; height: 30px; font-size: 6pt;">신고하기</button>
-									</td>		        
-												
-								</tr>     
-						        <tr>
-						            <td>2022-04-30</td>
-						            <td>80,000</td>
-						            <td>커세어 무선 헤드셋</td>
-						            <td>직거래(구매제안)</td>
-						            <td style="font-size: 8pt;">경비실 뒤</td>
-						            <td style="font-size: 8pt;">2022-05-18 00:00:00</td>
-						            <td style="font-size: 8pt;">2022-05-19 08:12:58</td>
-									<td>채택 &nbsp;
-										<button type="button" class="btn btn-primary btn-sm"
-											id="sellBtn"
-											style="width: 60px; height: 30px; font-size: 6pt;"
-											data-bs-toggle="modal" data-bs-target="#directSellCheck">구매확정</button>
-										<button type="button" class="btn btn-danger btn-sm"
-											id="danger"
-											style="width: 60px; height: 30px; font-size: 6pt;">신고하기</button>		
-									</td>				         
-						         </tr> 
-						         <tr>
-						            <td>2022-04-25</td>
-						            <td>167,000</td>
-						            <td>대형 모니터</td>
-						            <td>직거래(구매제안)</td>
-						            <td style="font-size: 8pt;">주차장 계단 뒤</td>
-						            <td style="font-size: 8pt;">　</td>
-						            <td style="font-size: 8pt;">　</td>
-						            <td>구매완료</td>
-						         </tr>
-						         <tr>
-						            <td>2022-04-14</td>
-						            <td>70,000</td>
-						            <td>게이밍 키보드</td>
-						            <td>(배송)경매</td>
-						            <td style="font-size: 8pt;">일산 동구 백석동</td>
-						            <td style="font-size: 8pt;">　</td>
-						            <td style="font-size: 8pt;">　</td>
-						            <td>구매완료</td>
-						        </tr>  
-						</table>
-	    </div>
+<!--Header  -->
+<div class="header">
+	<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
+</div>
+
+<!--sidebar  -->
+<div style="float:left; margin-left: 10px; margin-top: 10%; position: fixed;">
+	<c:import url="/WEB-INF/view/user/main/user_sidebar.jsp" ></c:import>
+</div>
+
+<div class="container">
+	<div class="title" style="text-align: center; font-size: 28pt; font-weight: bold;">
+		구매내역
+	<br>
+	</div>
+	
+    <div style="width: 100%;">
+    	<div style="text-align: right;">
+			<select class="selectpicker" style="width: 100px; height: 30px;">
+				<option>날짜순</option>
+				<option>완료</option>
+				<option>미완료</option>
+			</select>
+			<br>
+		</div>
+    	
+    	<!--table  -->
+   		<table class="table">
+			<thead>
+		        <tr>
+		            <th>제안/입찰일</th>
+		            <th>금액</th>
+		            <th>상품정보</th>
+		            <th>방식</th>
+		            <th>예정 장소</th>
+		            <th>직거래 예정 일시</th>
+		            <th>거래완료일</th>
+		            <th>상태</th>
+		        </tr>
+		     </thead>
+		     <tbody>
+		     	<c:forEach var="buy" items="${buyList }">
+					<tr>
+						<td>${buy.pd_regit_date }</td>
+						<td>${buy.pd_price }</td>
+						<td>${buy.pd_title }</td>
+						<td>${buy.system }</td>
+						<td style="font-size: 10pt;">${buy.address }</td>
+						<td style="font-size: 10pt;">${buy.time }</td>
+						<td style="font-size: 10pt;">${buy.comp_date }</td>
+						<td>${buy.status }</td>
+					</tr>
+				</c:forEach>		        
+								
+		        <!-- 
+		        	<tr>
+					<td>채택 &nbsp;
+						<button type="button" class="btn btn-primary btn-sm"
+							id="sellBtn"
+							style="width: 60px; height: 30px; font-size: 6pt;"
+							data-bs-toggle="modal" data-bs-target="#directSellCheck">구매확정</button>
+						<button type="button" class="btn btn-danger btn-sm"
+							id="danger"
+							style="width: 60px; height: 30px; font-size: 6pt;">신고하기</button>		
+					</td>	
+				-->			         
+		    	</tbody>
+		</table>
+    </div>
 	    
 <!-- Modal 운송장 번호 입력 -->
 <div class="modal fade" id="sellCheck" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

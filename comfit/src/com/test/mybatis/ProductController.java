@@ -66,7 +66,17 @@ public class ProductController
 		return result;
 	}
 	   
-
+	
+	//판매글 등록글 insert
+	@RequestMapping(value = "/deliveryInsert.action", method = RequestMethod.POST)
+	public String deliveryInsert(Model model, deliveryInsertDTO dto)
+	{
+		String result = null;
+		
+		
+		
+		return result;
+	}
 
 
 }

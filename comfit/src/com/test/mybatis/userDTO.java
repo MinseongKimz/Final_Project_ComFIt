@@ -13,6 +13,7 @@ public class userDTO
 	private String auth , random;
 
 	public String getU_id()
+
 	{
 		return u_id;
 	}

@@ -18,8 +18,25 @@ FROM PRODUCT_CATEGORY;
 /*
 1	CPU
 2	그래픽카드
-3	메모리
+3	RAM
+4	메인보드
+5	SSD
+6	HDD
+7	외장HDD/SSD
+8	PC케이스
+9	파워서플라이
+10	키보드
+11	마우스
+12	모니터
+13	PC스피커
+14	프린터
+15	공유기
+16	노트북
 */
+
+UPDATE PRODUCT_CATEGORY
+SET CATEGORY_NAME = '복합기'
+WHERE PD_CATEGORY_ID = '14';
 
 
 --------------------------------------------------------------------------------

@@ -28,33 +28,72 @@
 <script src="jQuery.MultiFile.min.js"></script>
 
 <script type="text/javascript">
+
 	$(document).ready(function()
 	{
-		// 테스트
-		//alert("창열림");
 		
-		$("[name=asRadio]").change(function()
+		$("input[name=asRadio]").change(function()
 		{
-			$("#asDate").attr("disabled", false);
+			$("#pd_asDate").attr("disabled", false);
 			//alert($(this).val());
 			
-			if ($(this).val() == "불가능")
+			if ($(this).val() == "3")
 			{
-				 $("#asDate").attr("disabled", true);
+				 $("#pd_asDate").attr("disabled", true);
 			}
 			
 		});
 		
 	});
 	
-	/* $(function()
+	
+	$(document).ready(function()
 	{
-		$(".search_product").click(function()
+		$("#category-select").change(function()
 		{
-			//alert("d");
-			$(location).attr("href,"/searchproduct.action");
+			//alert($(this).val());
+			var param = "optionValue=" + $(this).val();
+			 
+			// select option value 에 카테고리name -> 카테고리id 들어가도록 바꿨음
+			
+			
+			$.ajax(
+			{
+				url: "changeMakerSelect.action"
+				, type: "GET"
+				, data: param
+				, success: function(result)
+				{
+					
+					$("#maker_name").html(result)
+					
+				/* $("#maker_name").html("<c:forEach var='maker' items='${makerlist }'>"
+							+ "<option value='${maker.maker_name }'>" + ${maker.maker_name }+ "</option>"
+							+"</c:forEach>") */
+					
+				}
+				, error: function(e)
+				{
+					alert(e.responseText);
+				}
+			})
+			
 		})
-	}) */
+			
+	})
+	
+	var listVar = $('input[name=asRadio]:checked').val();
+	var comments = $("textarea[name=comments]").val();
+	
+	$(document).ready(function()
+	{
+		$("#delivery_Insert").click(function()
+		{
+			//alert($("textarea[name=comments]").val());
+			//location.href="deliveryInsert.action?title="+$("#pd_title").val()+"&name="+$("#pd_name").val()+"&pd_as_remain="+("#pd_as_remain").val()+"&pd_start_price="+$("#pd_start_price").val()+"&pd_maker_id="+$("#maker_name").val()+"&pd_as_id="+ listVar + "&comments="+$("#comments").val()+"&pd_imd_price="+$("#pd_imd_price").val();
+			location.href="deliveryInsert.action?comments="+comments;
+		})
+	})
 	
 	
 </script>
@@ -89,113 +128,112 @@
 <script type="text/javascript">
 
 	
-
-
-					var fileNo = 0;
-					var filesArr = new Array();
-					/* 첨부파일 추가 */
-					function addFile(obj){
-					   var minFileCnt = 6;
-					    var maxFileCnt = 10;   // 첨부파일 최대 개수
-					    var attFileCnt = document.querySelectorAll('.filebox').length;    // 기존 추가된 첨부파일 개수
-					    var remainFileCnt = maxFileCnt - attFileCnt;    // 추가로 첨부가능한 개수
-					    var curFileCnt = obj.files.length;  // 현재 선택된 첨부파일 개수
-					   
-					    
-					    // 첨부파일 개수 확인
-					    if (curFileCnt > remainFileCnt) {
-					        alert("첨부파일은 최대 " + maxFileCnt + "개 까지 첨부 가능합니다.");
-					    }
-					    for (var i = 0; i < Math.min(curFileCnt, remainFileCnt); i++) {
-					      
-					       
-					        const file = obj.files[i];
-					      
-					        
-					        
-					        
-					        // 첨부파일 검증
-					        if (validation(file)) {
-					            // 파일 배열에 담기
-					            var reader = new FileReader();
-					            reader.onload = function () {
-					                filesArr.push(file);
-					            };
-					            reader.readAsDataURL(file)
-					            // 목록 추가
-					            let htmlData = '';
-					            htmlData += '<div id="file' + fileNo + '" class="filebox">';
-					            htmlData += '   <p class="name">' + file.name + '</p>';
-					            htmlData += '   <a class="delete" onclick="deleteFile(' + fileNo + ');"><button class="btn btn-danger">취소</button></a>';
-					            htmlData += '</div>';
-					            $('.file-list').append(htmlData);
-					            fileNo++;
-					        } else {
-					            continue;
-					        }
-					    }
-					    // 초기화
-					    document.querySelector("input[type=file]").value = "";
-					}
-					   /* 첨부파일 검증 */
-					   function validation(obj){
-					    const fileTypes = ['application/pdf', 'image/gif', 'image/jpeg', 'image/png', 'image/bmp', 'image/tif'];
-					    if (obj.name.length > 100) {
-					        alert("파일명이 100자 이상인 파일은 제외되었습니다.");
-					        return false;
-					    } else if (obj.size > (100 * 1024 * 1024)) {
-					        alert("최대 파일 용량인 100MB를 초과한 파일은 제외되었습니다.");
-					        return false;
-					    } else if (obj.name.lastIndexOf('.') == -1) {
-					        alert("확장자가 없는 파일은 제외되었습니다.");
-					        return false;
-					    }else if (!fileTypes.includes(obj.type)) {
-					        alert("첨부가 불가능한 파일은 제외되었습니다.");
-					        return false;
-					    }
-					    else {
-					        return true;
-					    }
-					}
-					
-					
-					
-					
-					/* 첨부파일 삭제 */
-					function deleteFile(num) {
-					    document.querySelector("#file" + num).remove();
-					    filesArr[num].is_delete = true;
-					}
-					/* 폼 전송 */
-					function submitForm() {
-					    // 폼데이터 담기
-					    var form = document.querySelector("form");
-					    var formData = new FormData(form);
-					    for (var i = 0; i < filesArr.length; i++) {
-					        // 삭제되지 않은 파일만 폼데이터에 담기
-					        if (!filesArr[i].is_delete) {
-					            formData.append("attach_file", filesArr[i]);
-					        }
-					    }
-					    $.ajax({
-					        method: 'POST',
-					        url: '/register',
-					        dataType: 'json',
-					        data: formData,
-					        async: true,
-					        timeout: 30000,
-					        cache: false,
-					        headers: {'cache-control': 'no-cache', 'pragma': 'no-cache'},
-					        success: function () {
-					            alert("파일업로드 성공");
-					        },
-					        error: function (xhr, desc, err) {
-					            alert('에러가 발생 하였습니다.');
-					            return;
-					        }
-					    })
-					}
-					
+//=======================================================================================================================================
+	var fileNo = 0;
+	var filesArr = new Array();
+	/* 첨부파일 추가 */
+	function addFile(obj){
+	   var minFileCnt = 6;
+	    var maxFileCnt = 10;   // 첨부파일 최대 개수
+	    var attFileCnt = document.querySelectorAll('.filebox').length;    // 기존 추가된 첨부파일 개수
+	    var remainFileCnt = maxFileCnt - attFileCnt;    // 추가로 첨부가능한 개수
+	    var curFileCnt = obj.files.length;  // 현재 선택된 첨부파일 개수
+	   
+	    
+	    // 첨부파일 개수 확인
+	    if (curFileCnt > remainFileCnt) {
+	        alert("첨부파일은 최대 " + maxFileCnt + "개 까지 첨부 가능합니다.");
+	    }
+	    for (var i = 0; i < Math.min(curFileCnt, remainFileCnt); i++) {
+	      
+	       
+	        var file = obj.files[i];
+	      
+	        
+	        
+	        
+	        // 첨부파일 검증
+	        if (validation(file)) {
+	            // 파일 배열에 담기
+	            var reader = new FileReader();
+	            reader.onload = function () {
+	                filesArr.push(file);
+	            };
+	            reader.readAsDataURL(file)
+	            // 목록 추가
+	            var htmlData = '';
+	            htmlData += '<div id="file' + fileNo + '" class="filebox">';
+	            htmlData += '   <p class="name">' + file.name + '</p>';
+	            htmlData += '   <a class="delete" onclick="deleteFile(' + fileNo + ');"><button class="btn btn-danger">취소</button></a>';
+	            htmlData += '</div>';
+	            $('.file-list').append(htmlData);
+	            fileNo++;
+	        } else {
+	            continue;
+	        }
+	    }
+	    // 초기화
+	    document.querySelector("input[type=file]").value = "";
+	}
+	   /* 첨부파일 검증 */
+	   function validation(obj){
+	    var fileTypes = ['application/pdf', 'image/gif', 'image/jpeg', 'image/png', 'image/bmp', 'image/tif'];
+	    if (obj.name.length > 100) {
+	        alert("파일명이 100자 이상인 파일은 제외되었습니다.");
+	        return false;
+	    } else if (obj.size > (100 * 1024 * 1024)) {
+	        alert("최대 파일 용량인 100MB를 초과한 파일은 제외되었습니다.");
+	        return false;
+	    } else if (obj.name.lastIndexOf('.') == -1) {
+	        alert("확장자가 없는 파일은 제외되었습니다.");
+	        return false;
+	    }else if (!fileTypes.includes(obj.type)) {
+	        alert("첨부가 불가능한 파일은 제외되었습니다.");
+	        return false;
+	    }
+	    else {
+	        return true;
+	    }
+	}
+	
+	
+	
+	
+	/* 첨부파일 삭제 */
+	function deleteFile(num) {
+	    document.querySelector("#file" + num).remove();
+	    filesArr[num].is_delete = true;
+	}
+	/* 폼 전송 */
+	function submitForm() {
+	    // 폼데이터 담기
+	    var form = document.querySelector("form");
+	    var formData = new FormData(form);
+	    for (var i = 0; i < filesArr.length; i++) {
+	        // 삭제되지 않은 파일만 폼데이터에 담기
+	        if (!filesArr[i].is_delete) {
+	            formData.append("attach_file", filesArr[i]);
+	        }
+	    }
+	    $.ajax({
+	        method: 'POST',
+	        url: '/register',
+	        dataType: 'json',
+	        data: formData,
+	        async: true,
+	        timeout: 30000,
+	        cache: false,
+	        headers: {'cache-control': 'no-cache', 'pragma': 'no-cache'},
+	        success: function () {
+	            alert("파일업로드 성공");
+	        },
+	        error: function (xhr, desc, err) {
+	            alert('에러가 발생 하였습니다.');
+	            return;
+	        }
+	    })
+	}
+//====================================================================================================================================
 </script>
 </head>
 <body>
@@ -225,7 +263,7 @@
 			</tr>
 			<tr>
 				<th>제목<span class="star">*</span></th>
-				<td colspan="3"><input class="form-control" id="title" name="title" type="text" placeholder="제목을 입력해주세요." style="width: 86%;"/>
+				<td colspan="3"><input class="form-control" id="pd_title" name="title" type="text" placeholder="제목을 입력해주세요." style="width: 86%;"/>
 				<p align="right" style="font-size: 3px; margin-right: 16%;"></p>
 				</td>
 			</tr>
@@ -236,37 +274,37 @@
                 </th>
 				<td width="20%;"><!-- 카테고리
 					<br> -->
-					<select class="form-select" id="category" name="category" style="width: 90%; height: 35px;">
+					<select class="form-select" id="category-select" name="category-select" style="width: 90%; height: 35px;">
 					<option>카테고리 선택</option>
 					
 						<c:forEach var="category" items="${categorylist }">
 	
-							<option value="${category.category_name }" ${category.category_name eq cate ? 'selected' : ''}>${category.category_name }</option>
+							<option class="option_select" value="${category.pd_category_id }" ${category.category_name eq cate ? 'selected' : ''}>${category.category_name }</option>
 	
 						</c:forEach>
 					
 					</select>
 				</td>
-				<td width="20%;">
+				<td width="20%;" id="maker_c">
 					<%-- <input type="text" class="form-control" id="maker" name="maker" placeholder="제조사를 입력해 주세요." style="width: 90%;" value="${maker }"/> --%>
 					<select class="form-select" id="maker_name" name="maker_name" style="width: 90%; height: 35px;">
-					<option>카테고리 선택</option>
+					<option id="pd_maker">제조사 카테고리 선택</option>
 						<c:forEach var="maker" items="${makerlist }">
-							<option value="${maker.maker_name }">${maker.maker_name }</option>
+							<option value="${maker.pd_maker_id }" ${maker.maker_name eq mk ? 'selected' : ''}>${maker.maker_name }</option>
 						</c:forEach>
 
 					</select>
 				</td>	
 					
 				<td>
-					<input type="text" class="form-control" id=name" name="name" placeholder="물품명을 입력해 주세요." style="width: 90%;" value="${name }">
+					<input type="text" class="form-control" id="pd_name" name="pd_name" placeholder="물품명을 입력해 주세요." style="width: 90%;" value="${name }">
 				</td>	
 			</tr>
 			<tr>
 				<th>희망 시작 가격<span class="star">*</span>
 				 <p style="font-weight: normal; font-size: 7pt;">희망하는 가격을 적어주세요.</p>
                 </th>
-                <td colspan="3"><input class="form-control" id="hope-price" name="hope-price" type="text" placeholder="희망 가격을 입력해주세요." style="width: 50%;"/>
+                <td colspan="3"><input class="form-control" id="pd_start_price" name="pd_start_price" type="text" placeholder="희망 가격을 입력해주세요." style="width: 50%;"/>
                 <p style="color:blue; font-size: 10px;">추천 가격보다 2배 이상은 입력할 수 없습니다.</p>
                 </td>
 			</tr>
@@ -275,7 +313,7 @@
 				<th>즉시 구매 가격<span class="star">*</span>
 				 <p style="font-weight: normal; font-size: 7pt;">즉시 거래 가격을 적어주세요.</p>
                 </th>
-                <td colspan="3"><input class="form-control" id="instant-price" name="istant-price" type="text" placeholder="즉시구매 가격을 입력해주세요." style="width: 50%;"/>
+                <td colspan="3"><input class="form-control" id="pd_imd_price" name="pd_imd_price" type="text" placeholder="즉시구매 가격을 입력해주세요." style="width: 50%;"/>
                 <p style="color:blue; font-size: 10px;">추천 가격보다 2배 이상은 입력할 수 없습니다.</p>
                 </td>
 			</tr>
@@ -313,7 +351,7 @@
 				  <label class="form-check-label" for="inlineRadio3">불가능</label>
 				</div>
 				
-				<input class="form-control" id="asDate" type="text" placeholder="유효날짜 (연/월/일)" style="width: 86%;"/>
+				<input class="form-control" id="pd_as_remain" type="text" placeholder="유효날짜 (연/월)" style="width: 86%;"/>
 			</tr>
 			
 			<tr>
@@ -325,7 +363,7 @@
 				</th>
 				
 				<td colspan="3" rowspan="2">
-				<textarea placeholder="특이사항 코멘트" style="width:86%; height: 150px;"></textarea>
+				<textarea placeholder="특이사항 코멘트" name="comments" style="width:86%; height: 150px;"></textarea>
 				</td>
 			</tr>
 			
@@ -343,7 +381,7 @@
 				<td colspan="4">
 					<div class="d-grid gap-2 d-md-flex justify-content-md-end" style="width: 90%;">
 					
-	                <button type="submit" class="btn btn-primary">등록하기</button>
+	                <button type="submit" class="btn btn-primary" id="delivery_Insert">등록하기</button>
 	                <button type="button" class="btn btn-secondary">취소</button>
 	                </div>
                 </td>

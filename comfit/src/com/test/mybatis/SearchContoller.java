@@ -56,7 +56,7 @@ public class SearchContoller
 		model.addAttribute("makerlist", dao.makerList(category));
 		
 		model.addAttribute("name", name);
-		model.addAttribute("maker", maker);
+		model.addAttribute("mk", maker);
 		//model.addAttribute("cfPrice", cfPrice);
 		model.addAttribute("cate", category);
 		
@@ -64,6 +64,20 @@ public class SearchContoller
 		
 		return "/WEB-INF/view/user/main/user_delivery_seller_edit.jsp";
 		
+	}
+	
+	
+	@RequestMapping(value = "/changeMakerSelect.action", method = RequestMethod.GET)
+	public String changeMaker(Model model, String optionValue)
+	{
+		
+		IProduct dao = sqlSeesion.getMapper(IProduct.class);
+		
+		model.addAttribute("makerlist", dao.makerList2(optionValue));
+
+		String result = "/WEB-INF/view/user/main/MakerChange.jsp";
+
+		return result;
 	}
 	
 	

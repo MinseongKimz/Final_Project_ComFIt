@@ -1,5 +1,8 @@
 package com.test.mybatis;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,11 +30,22 @@ public class ProductController
 	}
 	
 	@RequestMapping(value = "/user_mainlist.action", method = RequestMethod.GET)
-	public String mainList(Model model)
+	public String mainList(Model model, ProductDTO dto, HttpServletRequest request )
 	{
 		String result = null;
+		
 		IProduct dao = sqlsession.getMapper(IProduct.class);
-		model.addAttribute("pdList", dao.pdList());
+		
+		HttpSession session = request.getSession();
+				
+		String lat = (String)session.getAttribute("lat");
+		String lon = (String)session.getAttribute("lon");
+		
+		dto.setLat(lat);
+		dto.setLon(lon);
+		
+		
+		model.addAttribute("pdList", dao.pdList(dto));
 		model.addAttribute("cateList", dao.cateList());
 		
 		result = "/WEB-INF/view/user/main/user_main.jsp";
@@ -66,7 +80,17 @@ public class ProductController
 		return result;
 	}
 	   
-
+	
+	//판매글 등록글 insert
+	@RequestMapping(value = "/deliveryInsert.action", method = RequestMethod.POST)
+	public String deliveryInsert(Model model, deliveryInsertDTO dto)
+	{
+		String result = null;
+		
+		
+		
+		return result;
+	}
 
 
 }

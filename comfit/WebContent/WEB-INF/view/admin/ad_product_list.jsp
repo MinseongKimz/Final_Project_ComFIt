@@ -58,12 +58,17 @@
 			<tbody>
 				<c:forEach var="product" items="${productlist}">
 				<tr>
-					<td>${product.cate_name}</td>
-					<td>${product.regit_date}</td>
-					<td>${product.u_email}</td>
+					<td>${product.category_name}</td>
+					<td>${product.pd_regit_date}</td>
+					<td>${product.u_id}</td>
+					<c:choose>
+						<c:when test="${product.pd_id}">
+						<!-- deli 랑 dire 분기를 줘야하는... -->
+						</c:when>
+					</c:choose>
 					<td><a href="admin_product_list_delivery.action">${product.pd_title}</a></td>
-					<td>${product.ta_cate}</td>
-					<td>${product.ta_status}</td>
+					<td>${product.deal_type}</td>
+					<td>${product.deal_status}</td>
 				</tr>
 				</c:forEach>
 			</tbody>

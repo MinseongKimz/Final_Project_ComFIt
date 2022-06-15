@@ -5,31 +5,38 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.test.mybatis.IAdmin">
 
 	<select id="adminProductList" resultType="com.test.mybatis.adProductDTO">
-		SELECT CATE_NAME, TO_CHAR(REGIT_DATE) AS REGIT_DATE, U_EMAIL, PD_TITLE, TA_CATE, TA_STATUS
-		FROM AD_PD_LIST_REALVIEW
+		SELECT ROWNUM as num, deli_pd_id, CATEGORY_NAME, PD_REGIT_DATE, U_ID, PD_TITLE, deal_type, deal_status
+		FROM TOTAL_DEAL_VIEW
 	</select>
 	
-	<select id="adminProductDeliveryList" resultType="com.test.mybatis.adProductDTO">
-		SELECT CASE
-		       WHEN SUBSTR(DP.DELI_PD_ID, 1, 4) = 'deli'
-		       THEN '택배거래'
-		       ELSE '직거래'
-		       END AS DELI_PD_ID, DP.PD_REGIT_DATE AS PD_REGIT_DATE, DP.PD_TITLE AS PD_TITLE, DP.U_ID AS U_ID
-		, PC.CATEGORY_NAME AS CATEGORY_NAME, DP.PD_NAME AS PD_NAME, DP.PD_MAKER_ID AS PD_MAKER_ID
-		, BL.U_ID AS B_U_ID, BL.BID_PRICE AS BID_PRICE, BL.BID_DATE AS BID_DATE, CONCAT(BL.ADDRESS, BL.ADDR_DETAIL) AS ADDRESS
-		, DCB.BUY_COMP_DATE AS BUY_COMP_DATE, DCS.SELL_COMP_DATE AS SELL_COMP_DATE, DCS.PD_DELI_NUM AS PD_DELI_NUM
-		FROM DELIVERY_PRODUCT DP JOIN PRODUCT_MAKER PM
-		ON DP.PD_MAKER_ID = PM.PD_MAKER_ID
-		JOIN PRODUCT_CATEGORY PC
-		ON PM.PD_CATEGORY_ID = PC.PD_CATEGORY_ID
-		JOIN BID_LIST BL
-		ON DP.DELI_PD_ID = BL.DELI_PD_ID
-		JOIN BID_SUCCESS BS
-		ON BL.BID_CODE = BS.BID_CODE
-		JOIN DELI_COMPLETE_SELL DCS
-		ON DCS.BS_ID = BS.BS_ID
-		JOIN DELI_COMPLETE_BUY DCB
-		ON DCB.BS_ID = BS.BS_ID
+	<select id="adminProductDeliveryList_1" resultType="com.test.mybatis.adProductDTO">
+		SELECT DELI_PD_ID, PD_REGIT_DATE, PD_TITLE, DEAL_TYPE, U_ID, DEAL_STATUS
+		FROM DIRECT_BOX1_VIEW
+		WHERE DEAL_STATUS = '거래완료' AND DELI_PD_ID = '1'
 	</select>
 	
+	<select id="adminProductDeliveryList_2" resultType="com.test.mybatis.adProductDTO">
+		SELECT DELI_PD_ID, CATEGORY_NAME, PD_NAME, MAKER_NAME
+		FROM DIRECT_BOX2_VIEW
+		WHERE DELI_PD_ID = '1'
+	</select>	
+	
+	<select id="adminProductDeliveryList_3" resultType="com.test.mybatis.adProductDTO">
+		SELECT DELI_PD_ID, B_U_ID, BID_PRICE, BID_DATE, ADDRESS, BS_ID
+		FROM DIRECT_BOX3_VIEW
+		WHERE DELI_PD_ID = '1' AND BS_ID IS NOT NULL
+	</select>		
+	
+	<select id="adminProductDeliveryList_4" resultType="com.test.mybatis.adProductDTO">
+		SELECT DELI_PD_NUM, BUY_COMP_DATE, SELL_COMP_DATE, PD_DELI_NUM
+		FROM DIRECT_BOX4_VIEW
+		WHERE DELI_PD_NUM = '1'
+	</select>	
+	
+	<select id="adminProductDeliveryList_5" resultType="com.test.mybatis.adProductDTO">
+		SELECT DELI_PD_ID, B_U_ID, BID_DATE, BID_PRICE, DEAL_STATUS
+		FROM DIRECT_BOX5_VIEW
+		WHERE DELI_PD_ID = '1'
+	</select>		
+		
 </mapper>

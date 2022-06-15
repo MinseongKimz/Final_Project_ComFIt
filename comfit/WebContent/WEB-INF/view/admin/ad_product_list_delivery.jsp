@@ -28,10 +28,10 @@
 	<div style="margin-bottom: 20px;"><h1><b>관리자모드_상품상세_택배</b></h1></div> <!-- 왜 서체가? 배민서체지? 커스텀 css해놔서 그럼 -->
 		<table class="table table-bordered" style="text-align: center; border: 1px solid #dddddd; width: 700px">
 			<thead><!-- 제목 -->
-			<c:forEach var="delivery" items="${productlistdelivery}">
+			<c:forEach var="delivery" items="${productlistdelivery1}">
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">상품 번호</th>
-				    <td colspan="2" style="color: red;">P03546</td>
+				    <td colspan="2">${delivery.deli_pd_id }</td>
 				</tr>
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">게시 일자</th>
@@ -43,7 +43,7 @@
 				</tr>			
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">거래 방식</th>
-				    <td colspan="2">${delivery.deli_pd_id }</td>
+				    <td colspan="2">${delivery.deal_type }</td>
 				</tr>
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">판매자 ID</th>
@@ -51,7 +51,7 @@
 				</tr>
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">게시글 상태</th>
-				    <td style="color: red;">판매완료 구매완료 등</td>
+				    <td>${delivery.deal_status }</td>
 				    <td><form action=""><label><input type="checkbox" name="subs" />블라인드</label></form></td>
 				</tr>	
 			</c:forEach>							
@@ -62,7 +62,7 @@
 		<div style="margin-top: 20px"><h2><b>상품정보</b></h2></div>
 		<table class="table table-bordered" style="text-align: center; border: 1px solid #dddddd; width: 700px">
 			<thead><!-- 제목 -->
-			<c:forEach var="delivery" items="${productlistdelivery}">			
+			<c:forEach var="delivery" items="${productlistdelivery2}">			
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">카테고리</th>
 				    <td>${delivery.category_name }</td>
@@ -73,7 +73,7 @@
 				</tr>		
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">제조사</th>
-				    <td>${delivery.pd_maker_id }</td>
+				    <td>${delivery.maker_name }</td>
 				</tr>			
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">희망 가격</th>
@@ -88,7 +88,7 @@
 		<div style="margin-top: 20px"><h2><b>거래 정보</b></h2></div>
 		<table class="table table-bordered" style="text-align: center; border: 1px solid #dddddd; width: 700px">
 			<thead><!-- 제목 -->
-			<c:forEach var="delivery" items="${productlistdelivery}">
+			<c:forEach var="delivery" items="${productlistdelivery3}">
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">구매자ID</th>
 				    <td>${delivery.b_u_id }</td>
@@ -114,7 +114,7 @@
 		<div style="margin-top: 20px"><h2><b>거래 완료 정보</b></h2></div>
 		<table class="table table-bordered" style="text-align: center; border: 1px solid #dddddd; width: 700px">
 			<thead><!-- 제목 -->
-			<c:forEach var="delivery" items="${productlistdelivery}">
+			<c:forEach var="delivery" items="${productlistdelivery4}">
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">구매 확정 일시</th>
 				    <td colspan="2">${delivery.buy_comp_date }</td>
@@ -145,12 +145,12 @@
 				</tr>
 			</thead>	    
 			<tbody>
-			<c:forEach var="delivery" items="${productlistdelivery}">			
+			<c:forEach var="delivery" items="${productlistdelivery5}">			
 				<tr>
 				    <td>${delivery.b_u_id }</td>
 				    <td>${delivery.bid_date }</td>
 				    <td>${delivery.bid_price }</td>
-				    <td style="color: red;">아직 몰라요</td>
+				    <td>${delivery.deal_status }</td>
 				</tr>
 			</c:forEach>
 			</tbody> 	    

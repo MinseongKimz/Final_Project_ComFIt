@@ -2,12 +2,43 @@ package com.test.mybatis;
 
 public class adProductDTO
 {
-	private String cate_name, regit_date, u_email, pd_title, ta_cate, ta_status;
+	private int num;
+	private String rownum, pd_title;
+	private String deli_pd_id;
+	private String pd_regit_date, deal_type, u_id, deal_status
+	,category_name, pd_name, maker_name, b_u_id, bid_price, bid_date, address, bs_id
+	,deli_pd_num, buy_comp_date, sell_comp_date, pd_deli_num;
 	
-	//세부 리스트
-	private String deli_pd_id, pd_regit_date, u_id, category_name, pd_name, pd_maker_id
-	, b_u_id, bid_price, bid_date, address, buy_comp_date, sell_comp_date, pd_deli_num;
+	public int getNum()
+	{
+		return num;
+	}
+
+	public void setNum(int num)
+	{
+		this.num = num;
+	}
 	
+	public String getRownum()
+	{
+		return rownum;
+	}
+
+	public void setRownum(String rownum)
+	{
+		this.rownum = rownum;
+	}
+
+	public String getPd_title()
+	{
+		return pd_title;
+	}
+
+	public void setPd_title(String pd_title)
+	{
+		this.pd_title = pd_title;
+	}
+
 	public String getDeli_pd_id()
 	{
 		return deli_pd_id;
@@ -28,6 +59,16 @@ public class adProductDTO
 		this.pd_regit_date = pd_regit_date;
 	}
 
+	public String getDeal_type()
+	{
+		return deal_type;
+	}
+
+	public void setDeal_type(String deal_type)
+	{
+		this.deal_type = deal_type;
+	}
+
 	public String getU_id()
 	{
 		return u_id;
@@ -36,6 +77,16 @@ public class adProductDTO
 	public void setU_id(String u_id)
 	{
 		this.u_id = u_id;
+	}
+
+	public String getDeal_status()
+	{
+		return deal_status;
+	}
+
+	public void setDeal_status(String deal_status)
+	{
+		this.deal_status = deal_status;
 	}
 
 	public String getCategory_name()
@@ -58,14 +109,14 @@ public class adProductDTO
 		this.pd_name = pd_name;
 	}
 
-	public String getPd_maker_id()
+	public String getMaker_name()
 	{
-		return pd_maker_id;
+		return maker_name;
 	}
 
-	public void setPd_maker_id(String pd_maker_id)
+	public void setMaker_name(String maker_name)
 	{
-		this.pd_maker_id = pd_maker_id;
+		this.maker_name = maker_name;
 	}
 
 	public String getB_u_id()
@@ -108,6 +159,26 @@ public class adProductDTO
 		this.address = address;
 	}
 
+	public String getBs_id()
+	{
+		return bs_id;
+	}
+
+	public void setBs_id(String bs_id)
+	{
+		this.bs_id = bs_id;
+	}
+
+	public String getDeli_pd_num()
+	{
+		return deli_pd_num;
+	}
+
+	public void setDeli_pd_num(String deli_pd_num)
+	{
+		this.deli_pd_num = deli_pd_num;
+	}
+
 	public String getBuy_comp_date()
 	{
 		return buy_comp_date;
@@ -138,65 +209,6 @@ public class adProductDTO
 		this.pd_deli_num = pd_deli_num;
 	}
 
-	public String getCate_name()
-	{
-		return cate_name;
-	}
-
-	public void setCate_name(String cate_name)
-	{
-		this.cate_name = cate_name;
-	}
-
-	public String getRegit_date()
-	{
-		return regit_date;
-	}
-
-	public void setRegit_date(String regit_date)
-	{
-		this.regit_date = regit_date;
-	}
-
-	public String getU_email()
-	{
-		return u_email;
-	}
-
-	public void setU_email(String u_email)
-	{
-		this.u_email = u_email;
-	}
-
-	public String getPd_title()
-	{
-		return pd_title;
-	}
-
-	public void setPd_title(String pd_title)
-	{
-		this.pd_title = pd_title;
-	}
-
-	public String getTa_cate()
-	{
-		return ta_cate;
-	}
-
-	public void setTa_cate(String ta_cate)
-	{
-		this.ta_cate = ta_cate;
-	}
-
-	public String getTa_status()
-	{
-		return ta_status;
-	}
-
-	public void setTa_status(String ta_status)
-	{
-		this.ta_status = ta_status;
-	}
 	
 	
 }

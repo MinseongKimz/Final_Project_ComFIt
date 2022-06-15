@@ -52,8 +52,8 @@
    
    .tablebts
    {
-      width:30%;
-      margin-left:40%;
+      width:50%;
+      margin-left: 25%;
       border-radius:5px;
       table-layout:fixed;
        font-weight: bold;
@@ -69,7 +69,6 @@
      
      .title
    {
-      margin-left: 11%;
       font-family: 맑은 고딕;
       font-size: 30pt;
    }
@@ -86,55 +85,69 @@
 </style>
 </head>
 <body>
-<div>
-      <!--Header  -->
-      <div class="header">
-         <c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
-         </div>
-         
-          <div>
-            <p class="subheader">마이페이지</p>
-            <p class="subheader_header">회원정보</p>
-         </div>
-            <div style="float:left; margin-left:15%;">
-                        <c:import url="/WEB-INF/view/user/main/user_sidebar.jsp" ></c:import>
-            </div>        
-            <div>
-               
-            </div>          
-                  <table class="tablebts"  style="colspan:2;">
-                              <tr>
-                                 <th>
-                                    <img alt="" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"
-                  style="object-fit:cover; height: 70%; width: 70%; margin-left:120%;">
-                                 </th>
-                              </tr>
-                             <tr>
-                               <td>이메일</td><td>${userInfo.u_email }</td>
-                             </tr>
-                             <tr>
-                               <td>이름</td><td>${userInfo.u_name }</td>
-                             </tr>
-                             <tr>
-                               <td>닉네임</td><td>${userInfo.u_nickname }</td>
-                             </tr>
-                             <tr>
-                               <td>레벨</td><td>5</td>
-                             </tr>
-                             <tr>
-                               <td>비밀번호</td><td>${userInfo.u_password }</td>
-                               <td><button type="button" class="btn btn-primary btn-sm"id="btn-pw-modify" style="margin-left:45%;">변경하기</button></td>
-                             </tr>
-                             <tr>
-                               <td>휴대폰번호</td><td>${userInfo.u_tel }</td>
-                               <td><button type="button" class="btn btn-primary btn-sm"id="btn-tel-modify" style="margin-left:45%;">변경하기</button></td>
-                             </tr>
-                             <tr>
-                               <td>주소</td><td>${userInfo.u_address }</td>
-                               <td><button type="button" class="btn btn-primary btn-sm"id="btn-address-modify" style="margin-left:45%;">변경하기</button></td>
-                             </tr>
-                      </table>
-              </div>
+
+<!--Header-->
+<div class="header">
+	<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
+</div>
+
+<!--Sidebar-->
+<div style="float:left; margin-left: 10px; margin-top: 10%; position: fixed;">
+	<c:import url="/WEB-INF/view/user/main/user_sidebar.jsp" ></c:import>
+</div>
+
+<div class="container">
+    <div class="title" style="text-align: center; font-size: 28pt; font-weight: bold;">
+		내 정보 확인/수정
+	<br>
+	</div>
+      
+	<table class="tablebts"  style="colspan:2;">
+		<tr>
+			<th>
+				<img alt="" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"
+				style="object-fit:cover; height: 70%; width: 70%; margin-left:120%;">
+			</th>
+		</tr>
+		<tr>
+  			<td>이메일</td>
+  			<td>${userInfo.u_email }</td>
+		</tr>
+		<tr>
+  			<td>이름</td>
+  			<td>${userInfo.u_name }</td>
+		</tr>
+		<tr>
+			<td>닉네임</td>
+			<td>${userInfo.u_nickname }</td>
+		</tr>
+		<tr>
+  			<td>레벨</td>
+  			<td>${level }</td>
+		</tr>
+		<tr>
+  			<td>비밀번호</td>
+  			<td>${userInfo.u_password }</td>
+			<td>
+				<button type="button" class="btn btn-primary btn-sm"id="btn-pw-modify" style="margin-left:45%;">변경하기</button>
+			</td>
+		</tr>
+		<tr>
+  			<td>휴대폰번호</td>
+  			<td>${userInfo.u_tel }</td>
+			<td>
+				<button type="button" class="btn btn-primary btn-sm"id="btn-tel-modify" style="margin-left:45%;">변경하기</button>
+			</td>
+		</tr>
+		<tr>
+  			<td>주소</td>
+  			<td>${userInfo.u_address }</td>
+			<td>
+				<button type="button" class="btn btn-primary btn-sm"id="btn-address-modify" style="margin-left:45%;">변경하기</button>
+			</td>
+       </tr>
+	</table>
+</div>
      
 
 </body>

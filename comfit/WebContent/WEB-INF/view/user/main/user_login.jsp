@@ -176,21 +176,13 @@
 		<!-- reCAPCHA -->
 		<div style="display: none;"></div>
 		
-
-
 	<br /><br />
-	
 	
 	<button type="button" class="btn btn-secondary" style="width: 150px;" >회원가입</button>
 	<button type="button" class="btn btn-secondary" style="width: 150px; float: right;">ID/PW 찾기</button>
 	</div>
 	
 </div>
-
-
-		
-
-	
 
 
 

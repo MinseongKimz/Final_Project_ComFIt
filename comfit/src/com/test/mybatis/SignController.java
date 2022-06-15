@@ -13,105 +13,95 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.test.util.SignDAO;
+
 @Controller
 public class SignController
 {
 
-	@Autowired
-	private SqlSession sqlSession;
-	@Autowired
-	private JavaMailSender mailSender;
+   @Autowired
+   private SqlSession sqlSession;
+   @Autowired
+   private JavaMailSender mailSender;
 
-	@RequestMapping(value = "/nicknamecheck.action", method = RequestMethod.POST)
-	public String nickNameCheck(Model model, String nickName)
-	{
-		String result = null;
+   @RequestMapping(value = "/nicknamecheck.action", method = RequestMethod.POST)
+   public String nickNameCheck(Model model, String nickName)
+   {
+      String result = null;
 
-		IUserLoginDAO dao = sqlSession.getMapper(IUserLoginDAO.class);
+      IUserLoginDAO dao = sqlSession.getMapper(IUserLoginDAO.class);
 
-		int nickCheck = dao.nickCheck(nickName);
-		System.out.println(nickCheck);
-		model.addAttribute("nickCheck", nickCheck);
+      int nickCheck = dao.nickCheck(nickName);
+      System.out.println(nickCheck);
+      model.addAttribute("nickCheck", nickCheck);
 
-		result = "/WEB-INF/view/user/main/user_nickCheck_ok.jsp";
+      result = "/WEB-INF/view/user/main/user_nickCheck_ok.jsp";
 
-		return result;
-	}
+      return result;
+   }
 
-	@RequestMapping(value = "/emailcheck.action", method = RequestMethod.POST)
-	public String checkEmail(Model model, String email)
-	{
-		String result = null;
+   @RequestMapping(value = "/emailcheck.action", method = RequestMethod.POST)
+   public String checkEmail(Model model, String email)
+   {
+      String result = null;
 
-		IUserLoginDAO dao = sqlSession.getMapper(IUserLoginDAO.class);
+      IUserLoginDAO dao = sqlSession.getMapper(IUserLoginDAO.class);
 
-		int emailCheck = dao.emailCheck(email);
-		model.addAttribute("nickCheck", emailCheck); // 닉체크쓰던곳 걍 똫깥이 쓰겟음
+      int emailCheck = dao.emailCheck(email);
+      model.addAttribute("nickCheck", emailCheck); // 닉체크쓰던곳 걍 똫깥이 쓰겟음
 
-		result = "/WEB-INF/view/user/main/user_nickCheck_ok.jsp";
+      result = "/WEB-INF/view/user/main/user_nickCheck_ok.jsp";
 
-		return result;
-	}
+      return result;
+   }
 
-	@RequestMapping(value = "/regit.action", method = RequestMethod.POST)
-	public String addUser(Model model, userDTO dto, @RequestParam("address2") String address2,
-			@RequestParam("address") String address, @RequestParam("email") String email,
-			@RequestParam("name") String name, @RequestParam("nickname") String nickname,
-			@RequestParam("tel") String tel, @RequestParam("password") String password)
-	{
+   @RequestMapping(value = "/regit.action", method = RequestMethod.POST)
+   public String addUser(Model model, userDTO dto, @RequestParam("address2") String address2,
+         @RequestParam("address") String address, @RequestParam("email") String email,
+         @RequestParam("name") String name, @RequestParam("nickname") String nickname,
+         @RequestParam("tel") String tel, @RequestParam("password") String password)
+   {
 
-		IUserLoginDAO dao = sqlSession.getMapper(IUserLoginDAO.class);
 
-		String add = address + " " + address2;
+      String add = address + " " + address2;
 
-		dto.setU_address(add);
-		dto.setU_name(name);
-		dto.setU_email(email);
-		dto.setU_nickname(nickname);
-		dto.setU_password(password);
-		dto.setU_tel(tel);
+      dto.setU_address(add);
+      dto.setU_name(name);
+      dto.setU_email(email);
+      dto.setU_nickname(nickname);
+      dto.setU_password(password);
+      dto.setU_tel(tel);
+      
+      MailAuthKey mak = new MailAuthKey();
+      String random = mak.random();
+      
+      dto.setRandom(random);
+      
+      try
+      {
+    	  SignDAO dao = new SignDAO();
+    	  dao.singUser(dto);
+    	  
+    	  // 이메일 발송하기
+          String from  = "minseonkimc@gmail.com";
+          String to  = email;
+          String subject = "[Comfit] 이메일 인증 메일입니다.";
+          String content = "<a href='http://localhost:8090/comfit/correct.action?auth=" +random +"'>COMFIT인증하러가기</a>";
+          
+           MimeMessage mail = mailSender.createMimeMessage(); MimeMessageHelper
+           mailHelper = new MimeMessageHelper(mail,true,"UTF-8");
+           
+           mailHelper.setFrom(from); mailHelper.setTo(to);
+           mailHelper.setSubject(subject); mailHelper.setText(content, true);
+           
+           mailSender.send(mail);
+         
+      } catch (Exception e)
+      {
+         System.out.println(e.toString());
+      }
+      return "redirect:comfit.action?hello=1";     
 
-		
-		// U_ID 만들기 
-		dao.makeId(); 
-		
-		String u_id = dao.searchId();
-
-		dto.setU_id(u_id);
-		
-		// USER_INFORMATION INSERT 
-		dao.insertUserInfo(dto);
-		  
-		MailAuthKey mak = new MailAuthKey();
-		String random = mak.random();
-		
-		dto.setRandom(random);
-		
-		// MAIL_AUTH 만들기; 
-		dao.insertAuth(dto);
-		
-		// 이메일 발송하기
-		String from  = "minseonkimc@gmail.com";
-		String to  = email;
-		String subject = "[Comfit] 이메일 인증 메일입니다.";
-		String content = "<a href='http://localhost:8090/comfit/correct.action?auth=" +random +"'>COMFIT인증하러가기</a>";
-		
-		try
-		{
-			  MimeMessage mail = mailSender.createMimeMessage(); MimeMessageHelper
-			  mailHelper = new MimeMessageHelper(mail,true,"UTF-8");
-			  
-			  mailHelper.setFrom(from); mailHelper.setTo(to);
-			  mailHelper.setSubject(subject); mailHelper.setText(content, true);
-			  
-			  mailSender.send(mail);
-			
-		} catch (Exception e)
-		{
-			System.out.println(e.toString());
-		}
-		return "loginform.action?hello=1";		
-
-	}
+   }
 
 }

@@ -4,11 +4,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.test.mybatis.IAdmin">
 
-<select id="adminMoneyList" resultType="com.test.mybatis.adMoneyDTO">
+<!-- <select id="adminMoneyList" resultType="com.test.mybatis.adMoneyDTO">
 	SELECT IO_TYPE, U_EMAIL, U_NAME, IO_DATE, BANK_NAME
 	     , ACCOUNT, MONEY
 	FROM AD_IO_MONEY_LIST_REALVIEW
 	ORDER BY IO_DATE
-</select>
+</select> -->
 
 </mapper>

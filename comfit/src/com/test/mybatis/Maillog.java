@@ -25,10 +25,10 @@ public class Maillog
 		try
 		{
 			if (check!=0)
-				return "comfit.action";
+				return "redirect:comfit.action";
 		} catch (Exception e)
 		{
-			return "comfit.action";
+			return "redirect:comfit.action";
 		}
 		
 		
@@ -37,7 +37,7 @@ public class Maillog
 		
 		// 인증이 완료됬으면 이제 로그인 폼으로 가자.
 		
-		return "loginform.action?hello=1";		
+		return "redirect:comfit.action?hello=1";		
 	}
 
 }

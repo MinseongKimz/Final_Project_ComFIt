@@ -20,10 +20,19 @@ public interface IProduct
 	// 판매등록 글쓰기에서 제조사 리스트 select option list 출력 메소드 
 	public ArrayList<MakerDTO> makerList(String optionValue);
 	
+	// 레벨 뽑기
+	public int userLevel(String userId);
+	
+	// 특정 상품의 id 뽑기
+	public String deliuserId(String pd_id);
+	public String direuserId(String pd_id);
 	
 	public ArrayList<MakerDTO> makerList2(String optionValue);
 	
 	public int deliveryInsert(deliveryInsertDTO dto);
+	
+	// 판매횟수 뽑기
+	public int sellCount(String userId);
 	
 
 }

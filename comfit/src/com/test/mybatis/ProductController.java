@@ -29,7 +29,7 @@ public class ProductController
 		
 	}
 	
-	@RequestMapping(value = "/user_mainlist.action", method = RequestMethod.GET)
+	@RequestMapping(value = "/user_mainlist.action", method = RequestMethod.POST)
 	public String mainList(Model model, ProductDTO dto, HttpServletRequest request )
 	{
 		String result = null;

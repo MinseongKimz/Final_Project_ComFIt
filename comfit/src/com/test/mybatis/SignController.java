@@ -110,7 +110,7 @@ public class SignController
 		{
 			System.out.println(e.toString());
 		}
-		return "loginform.action?hello=1";		
+		return "comfit.action?hello=1";		
 
 	}
 

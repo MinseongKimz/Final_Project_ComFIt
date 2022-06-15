@@ -381,6 +381,10 @@ SELECT CASE TRUNC(SQRT((SUM(USER_EXP))/2))
 FROM USER_LEVEL_VIEW
 WHERE U_ID = 'test1';
 
+SELECT U_ID
+FROM DELIVERY_PRODUCT
+WHERE DELI_PD_ID = 'deli_1';
+
 
 -- ○ 특정 회원의 누적거래수 조회 쿼리문
 SELECT COUNT(*) AS TA_COUNT
@@ -438,15 +442,11 @@ FROM DELI_COMPLETE_BUY DCB JOIN BID_SUCCESS BS
 SELECT COUNT(*) AS BUY_COUNT
 FROM USER_BUY_COUNT_VIEW
 WHERE U_ID = 'test1';
-
-
-
-
+                          
                               
-                              
-                              
-                                                                                
-COMMIT;                                                                                  
+                                                                        
+COMMIT;    
+
                                                                                         
 
 

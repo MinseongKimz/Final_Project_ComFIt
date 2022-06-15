@@ -38,7 +38,6 @@ public class UserMyPageInfoController
 			System.out.println(e.toString());
 		}
 		
-		
 		return result;
 	}
 	

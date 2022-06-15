@@ -7,7 +7,6 @@ public class userDTO
 	, u_tel, bancount, u_password, u_address, u_profile;
 
 
-
 	// 차단회원 리스트 속성
 	private String ban_cate_name, ban_date, ban_end_date, rep_cate_name, ban_rea_detail;
 
@@ -15,6 +14,7 @@ public class userDTO
 	private String auth , random;
 
 	public String getU_id()
+
 	{
 		return u_id;
 	}
@@ -185,8 +185,6 @@ public class userDTO
 	}
 
 
-	
-	
 	
 	
 	

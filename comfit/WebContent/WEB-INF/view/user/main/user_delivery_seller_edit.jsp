@@ -84,8 +84,12 @@
 	
 	var pd_as_id = $('input[name=pd_as_id]:checked').val();
 	var comments = $("textarea[name=comments]").val();
+
 	var cf_price = $("input[name=cf_price]").val();
 	var pd_as_remain = $("input[name=pd_as_remain]").val();
+
+	var pd_as_remain = $("#pd_as_remain").val();
+
 	
 	$(document).ready(function()
 	{
@@ -93,7 +97,12 @@
 		{
 			//alert($("input[name=cf_price]").val());
 			//location.href="deliveryInsert.action?title="+$("#pd_title").val()+"&name="+$("#pd_name").val()+"&pd_as_remain="+("#pd_as_remain").val()+"&pd_start_price="+$("#pd_start_price").val()+"&pd_maker_id="+$("#maker_name").val()+"&pd_as_id="+ listVar + "&comments="+$("#comments").val()+"&pd_imd_price="+$("#pd_imd_price").val();
+
 			location.href="deliveryInsert.action?comments="+comments+"&cf_price=" + cf_price + "&pd_as_remain=" + pd_as_remain;
+
+			location.href="deliveryInsert.action?comments="+comments+"&pd_as_remain="+$("#pd_as_remain").val();
+			
+
 		})
 	})
 	

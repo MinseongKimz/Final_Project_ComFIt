@@ -7,8 +7,7 @@ public class userDTO
 	private String u_id, u_email, u_name, u_nickname, u_joindate, u_address
 	, u_tel, bancount, u_password, u_profile;
 
-	private String u_id, u_email, u_name, u_nickname, u_joindate
-	,u_address, u_tel, bancount, u_password, u_profile;
+
 
 	
 	// 차단회원 리스트 속성
@@ -17,22 +16,11 @@ public class userDTO
 	// 이메일 인증 여부
 	private String auth , random;
 
-<<<<<<< HEAD
-=======
 
 	
-	public String getU_address()
-	{
-		return u_address;
-	}
-
-	public void setU_address(String u_address)
-	{
-		this.u_address = u_address;
-	}
 
 
->>>>>>> b17d4aa6e0490bd1bb911ad793a2fe42cb16f0ad
+
 	public String getU_id()
 	{
 		return u_id;
@@ -202,15 +190,7 @@ public class userDTO
 	{
 		this.random = random;
 	}
-
-	
-
 	
 	
 	
-	
-<<<<<<< HEAD
-
-=======
->>>>>>> b17d4aa6e0490bd1bb911ad793a2fe42cb16f0ad
 }

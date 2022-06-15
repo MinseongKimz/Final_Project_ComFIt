@@ -166,8 +166,22 @@
          $(this).removeClass("btn-primary");   
          $(this).addClass("btn-secondary");    
       });
+      
+      
+      
+    
    })
-
+	
+   function needSignUp()
+   {
+		var result = confirm("회원가입이 필요한 서비스입니다. 회원가입하시겠습니까???");
+		if (result)
+		{
+			location.href = "registform.action";
+		}
+		
+		return;
+   }
       
 
 
@@ -199,57 +213,13 @@
    <div class="row">
       <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"  data-interval="1000">
             <div class="MultiCarousel-inner">
-                <div class="item">
-                    <div class="pad15 shadow" style="align-items: center;">
-                        <p class="lead" style="font-size: large; margin-top: 8px; margin-bottom: 8px;">그래픽카드</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="pad15 shadow">
-                        <p class="lead">CPU</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="pad15 shadow">
-                        <p class="lead">HDD</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="pad15 shadow">
-                        <p class="lead">모니터</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="pad15 shadow">
-                        <p class="lead">오디오</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="pad15 shadow">
-                        <p class="lead">주변기기</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="pad15 shadow">
-                        <p class="lead">메모리</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="pad15 shadow">
-                        <p class="lead">키보드</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="pad15 shadow">
-                        <p class="lead">메인보드</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="pad15 shadow">
-                        <p class="lead">케이스</p>
-                    </div>
-                </div>
-                
+            	<c:forEach var="category" items="${cateList }">
+            		<div class="item">
+                    	<div class="pad15 shadow" style="align-items: center;">
+                       	 <p class="lead" style="font-size: large; margin-top: 8px; margin-bottom: 8px;">${category.category_name }</p>
+                   	    </div>
+                	</div>
+            	</c:forEach>
             </div>
             <button class="btn btn-primary leftLst"> <i class="bi bi-arrow-left"></i> </button>
             <button class="btn btn-primary rightLst"> <i class="bi bi-arrow-right"></i> </button>
@@ -278,92 +248,21 @@
        <div class="col-md-12 text-center">
    
          <div class="newList">
-            <div class="card">
-               <img src="images/ssd.jpg" class="card-img-top">
-               <div class="card-body">
-                  <h5 class="card-title" style="text-align: center;">SSD</h5>
-                  <p class="card-text"  style="text-align: center;">120,000</p>
-                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
-               </div>
-            </div>
-            <div class="card">
-               <img src="images/ssd.jpg" class="card-img-top">
-               <div class="card-body">
-                  <h5 class="card-title" style="text-align: center;">SSD</h5>
-                  <p class="card-text"  style="text-align: center;">120,000</p>
-                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
-               </div>
-            </div>
-            <div class="card">
-               <img src="images/ssd.jpg" class="card-img-top">
-               <div class="card-body">
-                  <h5 class="card-title" style="text-align: center;">SSD</h5>
-                  <p class="card-text"  style="text-align: center;">120,000</p>
-                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
-               </div>
-            </div>
-            <div class="card">
-               <img src="images/ssd.jpg" class="card-img-top">
-               <div class="card-body">
-                  <h5 class="card-title" style="text-align: center;">SSD</h5>
-                  <p class="card-text"  style="text-align: center;">120,000</p>
-                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
-               </div>
-            </div>
-            <div class="card">
-               <img src="images/ssd.jpg" class="card-img-top">
-               <div class="card-body">
-                  <h5 class="card-title" style="text-align: center;">SSD</h5>
-                  <p class="card-text"  style="text-align: center;">120,000</p>
-                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
-               </div>
-            </div>
-            <div class="card">
-               <img src="images/ssd.jpg" class="card-img-top">
-               <div class="card-body">
-                  <h5 class="card-title" style="text-align: center;">SSD</h5>
-                  <p class="card-text"  style="text-align: center;">120,000</p>
-                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
-               </div>
-            </div>
-            <div class="card">
-               <img src="images/ssd.jpg" class="card-img-top">
-               <div class="card-body">
-                  <h5 class="card-title" style="text-align: center;">SSD</h5>
-                  <p class="card-text"  style="text-align: center;">120,000</p>
-                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
-               </div>
-            </div>
-            <div class="card">
-               <img src="images/ssd.jpg" class="card-img-top">
-               <div class="card-body">
-                  <h5 class="card-title" style="text-align: center;">SSD</h5>
-                  <p class="card-text"  style="text-align: center;">120,000</p>
-                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
-               </div>
-            </div>
-            <div class="card">
-               <img src="images/ssd.jpg" class="card-img-top">
-               <div class="card-body">
-                  <h5 class="card-title" style="text-align: center;">SSD</h5>
-                  <p class="card-text"  style="text-align: center;">120,000</p>
-                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
-               </div>
-            </div>
-            <div class="card">
-               <img src="images/ssd.jpg" class="card-img-top">
-               <div class="card-body">
-                  <h5 class="card-title" style="text-align: center;">SSD</h5>
-                  <p class="card-text"  style="text-align: center;">120,000</p>
-                  <a href="#" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
-               </div>
-            </div>
-            
-            
-            
-         </div>
+            <c:forEach var="product" items="${pdList }">
+         	   <div class="card">
+            	   <img src="images/ssd.jpg" class="card-img-top">
+              	 <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;">${product.pd_name }</h5>
+                  <p class="card-text"  style="text-align: center;">${product.price }</p>
+                  <%-- <a href="pd_detail.action?pd_id=${product.pd_id }" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a> --%>
+                  <button type="button" class="btn btn-secondary hover"
+                   style="margin: auto; display: block;" onclick="needSignUp()">상세페이지</button>
+               	</div>
+            </div>		
+         	</c:forEach>
+         </div>	<!-- close.newList -->
          <br />   
-      </div>
+      </div><!-- close.col-md-12 text-center -->
       <hr />
       <br />   
       <!-- 인기 상품 -->

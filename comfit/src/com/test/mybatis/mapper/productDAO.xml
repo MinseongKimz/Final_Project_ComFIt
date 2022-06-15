@@ -35,7 +35,7 @@
 	<!--    자료형 클래스(DTO) 멤버 변수(속성)와 일치하는 경우 -->
 	<!--    <<자동 매핑>>이 이루어진다. -->
 	<!--    또한 SQL 문 내부에 세미콜론(;) 이 있으면 안된다. -->
-	<select id="pdList" resultType="com.test.mybatis.ProductDTO">
+	<select id="user_pdList" resultType="com.test.mybatis.ProductDTO">
 		  SELECT V.PD_ID AS PD_ID, V.PD_NAME AS PD_NAME, V.PRICE AS PRICE, V.DISTANCE AS DISTANCE
 			FROM
 			(
@@ -108,6 +108,11 @@
 	  WHERE U_ID = #{userId}
 	</select>
 	
+	<select id="non_user_pdList" resultType="com.test.mybatis.ProductDTO">
+		SELECT PD_ID, PD_NAME, PRICE
+	 	 FROM PD_LIST_MAIN_VIEW
+	    ORDER BY PD_REGIT_DATE
+	</select>
 </mapper>
 
 

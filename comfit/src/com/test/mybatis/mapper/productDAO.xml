@@ -36,8 +36,14 @@
 	<!--    <<자동 매핑>>이 이루어진다. -->
 	<!--    또한 SQL 문 내부에 세미콜론(;) 이 있으면 안된다. -->
 	<select id="pdList" resultType="com.test.mybatis.ProductDTO">
-		SELECT PD_ID, PD_NAME, PRICE
-		FROM   PD_LIST_MAIN_VIEW
+		  SELECT V.PD_ID AS PD_ID, V.PD_NAME AS PD_NAME, V.PRICE AS PRICE, V.DISTANCE AS DISTANCE
+			FROM
+			(
+			SELECT PD_ID, PD_NAME, PRICE
+			     , ROUND(DISTANCE_WGS84(LAT, LON, #{lat}, #{lon}), 2) AS DISTANCE
+			FROM DIRE_PD_NEAR_VIEW
+			) V
+			ORDER BY V.DISTANCE
 	</select>
 	<select id="cateList" resultType="com.test.mybatis.CategoryDTO">
 		SELECT PD_CATEGORY_ID, CATEGORY_NAME

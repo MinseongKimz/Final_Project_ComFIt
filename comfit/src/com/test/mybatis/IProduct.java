@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public interface IProduct
 {
-	public ArrayList<ProductDTO> pdList();
+	public ArrayList<ProductDTO> pdList(ProductDTO dto);
 	public ArrayList<CategoryDTO> cateList();
 	public ArrayList<DirectProductDTO> drPdList(String pd_id);
 	public ArrayList<DeliveryProductDTO> dlPdList(String pd_id);

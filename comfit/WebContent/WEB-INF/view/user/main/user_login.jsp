@@ -126,7 +126,6 @@
 					$("#loginForm").submit();
 					
 				}
-				
 			});
 		});
 
@@ -157,7 +156,7 @@
 	-->
 	<br /><br /><br />
 	<div style="width: 400px; margin: auto;">
-		<form action="login.action" class="form form-group" id="loginForm" method="post">
+		<form action="login.action" class="form form-group" id="loginForm" method="get">
 			
 			<h2 class="h3 mb-3"><b>로그인</b></h2>
 			

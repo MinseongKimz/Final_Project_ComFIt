@@ -10,8 +10,6 @@
 <head>
 <meta charset="UTF-8">
 <title>구매내역 리스트</title>
-<link rel="stylesheet" type="text/css" href="<%=cp%>/css/main.css">
-<link rel="stylesheet" href="<%=cp %>/css/bootstrap.css">
 <style type="text/css">
 
 	.title 
@@ -43,21 +41,24 @@
   	{
   		display: inline-table;
   		width:100%;
+  		font-weight: bold;
   	}
   	
   	
 </style>
 </head>
 <body>
+
+<!--sidebar  -->
+<div style="float:left; margin-left: 10px; margin-top: 20%; position: fixed;">
+	<c:import url="/WEB-INF/view/user/main/user_sidebar.jsp" ></c:import>
+</div>
+
 <!--Header  -->
 <div class="header">
 	<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
 </div>
 
-<!--sidebar  -->
-<div style="float:left; margin-left: 10px; margin-top: 10%; position: fixed;">
-	<c:import url="/WEB-INF/view/user/main/user_sidebar.jsp" ></c:import>
-</div>
 
 <div class="container">
 	<div class="title" style="text-align: center; font-size: 28pt; font-weight: bold;">
@@ -76,9 +77,9 @@
 		</div>
     	
     	<!--table  -->
-   		<table class="table">
+   		<table class="table table-borderd table-hover" style="margin-top: 2%;">
 			<thead>
-		        <tr>
+		        <tr class="table-primary">
 		            <th>제안/입찰일</th>
 		            <th>금액</th>
 		            <th>상품정보</th>
@@ -91,7 +92,7 @@
 		     </thead>
 		     <tbody>
 		     	<c:forEach var="buy" items="${buyList }">
-					<tr>
+					<tr onclick="alert('해당 상품 페이지로');">
 						<td>${buy.pd_regit_date }</td>
 						<td>${buy.pd_price }</td>
 						<td>${buy.pd_title }</td>

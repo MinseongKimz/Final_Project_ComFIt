@@ -3,18 +3,32 @@ package com.test.mybatis;
 public class userDTO
 {
 	// 회원 리스트 속성
+
 	private String u_id, u_email, u_name, u_nickname, u_joindate, u_address
 	, u_tel, bancount, u_password, u_profile;
-	
 
-	// 이메일
-	
+	private String u_id, u_email, u_name, u_nickname, u_joindate
+	,u_address, u_tel, bancount, u_password, u_profile;
 
+	
 	// 차단회원 리스트 속성
 	private String ban_cate_name, ban_date, ban_end_date, rep_cate_name, ban_rea_detail;
 
 	// 이메일 인증 여부
 	private String auth , random;
+
+
+	
+	public String getU_address()
+	{
+		return u_address;
+	}
+
+	public void setU_address(String u_address)
+	{
+		this.u_address = u_address;
+	}
+
 
 	public String getU_id()
 	{
@@ -185,8 +199,6 @@ public class userDTO
 	{
 		this.random = random;
 	}
-
-	
 	
 	
 	

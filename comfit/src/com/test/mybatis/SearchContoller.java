@@ -44,7 +44,7 @@ public class SearchContoller
 	
 	
 	@RequestMapping(value = "/returnsell.action", method = RequestMethod.GET)      // 선택하면 거래 등록 게시물로
-	public String returnSeach(Model model, String name, String maker, String cfPrice, String category)
+	public String returnSeach(Model model, String name, String maker, String realAvgPrice, String category)
 	{
 		
 		
@@ -55,10 +55,10 @@ public class SearchContoller
 		model.addAttribute("categorylist", dao.categoryList());
 		model.addAttribute("makerlist", dao.makerList(category));
 		
-		model.addAttribute("name", name);
-		model.addAttribute("mk", maker);
-		//model.addAttribute("cfPrice", cfPrice);
-		model.addAttribute("cate", category);
+		model.addAttribute("name", name);					// 물품명
+		model.addAttribute("mk", maker);					// 제조사
+		model.addAttribute("realAvgPrice", realAvgPrice);	// 평균가격
+		model.addAttribute("cate", category);				// 카테고리
 		
 		
 		
@@ -80,6 +80,21 @@ public class SearchContoller
 		return result;
 	}
 	
+	
+	@RequestMapping(value = "/deliveryinsert.action", method = RequestMethod.POST)
+	public String deliveryInsert(deliveryInsertDTO dto)
+	{
+		String result = null;
+		
+		IProduct dao = sqlSeesion.getMapper(IProduct.class);
+		
+		dao.deliveryInsert(dto);
+		
+		result = "redirect:comfit.action";
+		
+		return result;
+		
+	}
 	
 	
 	

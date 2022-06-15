@@ -123,6 +123,9 @@
             var price = $(this).find('lprice').text();   // lprice : 각 항목의 최저가 → 최고가는 안나오는듯..?
             var image = $(this).find('image').text();   // image : 각 항목의 사진 
             var category3 = $(this).find('category3').text();
+            if(category3=="")
+            	var category3 = $(this).find('category2').text();
+            
             var maker = $(this).find('maker').text();
             
             if(index!=0&&index%3==0)

@@ -26,7 +26,7 @@ public interface IAdmin
 	public ArrayList<NoticeDTO> noticeList();
 	
 	// 관리자모드 공지사항 추가 메소드
-	public int noticeInesrt(NoticeDTO a);
+	public int noticeInsert(NoticeDTO a);
 	
 	// 관리자모드 공지사항 수정 이동 메소드
 	public NoticeDTO noticeModifyForm(String announce_id);
@@ -40,11 +40,27 @@ public interface IAdmin
 	// 관리자모드 공지사항 관리자 카테고리 메소드 ok
 	public ArrayList<NoticeDTO> noticecateList();
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	// 관리자모드 상품 출력 메소드
 	public ArrayList<adProductDTO> adminProductList();
 	
-	// 관리자모드 상품 세부 출력 메소드
-	public ArrayList<adProductDTO> adminProductDeliveryList();
+	// 관리자모드 택배상품 세부 출력 메소드
+	public ArrayList<adProductDTO> adminProductDeliveryList_1();
+	public ArrayList<adProductDTO> adminProductDeliveryList_2();
+	public ArrayList<adProductDTO> adminProductDeliveryList_3();
+	public ArrayList<adProductDTO> adminProductDeliveryList_4();
+	public ArrayList<adProductDTO> adminProductDeliveryList_5();
+		
 	
 	// 관리자모드 입출금 출력 메소드
 	public ArrayList<adMoneyDTO> adminMoneyList();
@@ -65,6 +81,7 @@ public interface IAdmin
 	
 	// 관리자모드 FAQ 삭제 메소드
 	public int faqDelete(String faq_id);
+
 
 }
 

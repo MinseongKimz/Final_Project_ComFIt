@@ -12,7 +12,7 @@
 <meta name="viewport" content="width=device-width", initial-scale="1">
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
-	// FAQ 글쓰기 버튼
+	// 공지사항 글쓰기 버튼
 	$(document).ready(function()
 	{
 		$("#btn-write").click(function()
@@ -20,11 +20,29 @@
 			//alert("글쓰기버튼");
 			location.href="admin_notice_edit.action";
 			
+			
 		})
 		
 	})
 	
+	//공지사항 수정 버튼
+	$(document).ready( function()
+	{
+		$("#btn_edit").click(function()
+		{
+			//alert("수정버튼");
+			location.href="admin_notice_modify_form.action?announce_id="+$(this).val();
+		})
+	})
 	
+	//공지사항 삭제 버튼
+	$(document).ready( function()
+	{
+		$("#btn_delete").click(function()
+		{
+			//alert("삭제버튼");
+		})
+	})
 	
 </script>
 
@@ -160,8 +178,8 @@
 			 </span> -->
 			 <span>${notice.announce_contents }</span>
 			 <div style="margin-top: 50px; text-align: right;">
-					<button class="btn btn-primary" value="${notice.announce_id }" style="width: 100px;">수정하기</button>
-					<button class="btn btn-outline-secondary" value="${notice.announce_id }" style="width: 100px;">삭제하기</button>			 
+					<button class="btn btn-primary" value="${notice.announce_id }" id="btn_edit"style="width: 100px;">수정하기</button>
+					<button class="btn btn-outline-secondary" value="${notice.announce_id }" id="btn_delete" style="width: 100px;">삭제하기</button>			 
 		     </div>		 
 		     </div>
 		     </c:forEach>
@@ -170,8 +188,8 @@
  </div>
 
 
-<div class="container" style="margin-top: 10px; text-align: right;">
-	<button class="btn btn-primary pull-right " id="btn-write" value="글쓰기" style="width: 100px;">글쓰기</button>
+<div class="container" style="margin-top: 10px;text-align: right;">
+	<button class="btn btn-primary pull-right " id="btn-write"  style="width: 100px;" value="${announce_id }">글쓰기</button>
 </div>
 
 <script type="text/javascript">

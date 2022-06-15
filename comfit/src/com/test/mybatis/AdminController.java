@@ -169,9 +169,7 @@ public class AdminController
 	   
 	   IAdmin dao = sqlSession.getMapper(IAdmin.class);
 	   
-	   
 	   model.addAttribute("noticeList", dao.noticeList());
-	  
 	   
 	   result = "/WEB-INF/view/admin/ad_notice_list.jsp";
 	   
@@ -197,13 +195,17 @@ public class AdminController
  
    // 관리자 공지사항 입력 
    @RequestMapping(value="/admin_notice_insert.action",method = RequestMethod.POST)
-   public String adNoticeinsert(NoticeDTO notice)
+   public String adNoticeinsert(NoticeDTO notice , NoticeDTO dto)
    {
+	   
+	   
 	   String result = null;
 	   
 	   IAdmin dao = sqlSession.getMapper(IAdmin.class);
+
 	  
-	   dao.noticeInesrt(notice);
+	   dao.noticeInsert(dto);
+
 	   
 	   result = "redirect:admin_notice_list.action";
 	   
@@ -221,7 +223,7 @@ public class AdminController
 	   
 	   model.addAttribute("modify",dao.noticeModifyForm(announce_id));
 	   
-	   result = "/WEB-INF/view/admin/ad_notice_write.jsp";
+	   result = "/WEB-INF/view/admin/ad_notice_modify.jsp";
 	   
 	   
 	   return result;
@@ -229,13 +231,16 @@ public class AdminController
    
    // 관리자 공지사항  수정하기
    @RequestMapping(value = "/admin_notice_modify.action" ,method = RequestMethod.POST)
-   public String adNoModify(NoticeDTO dto)
+   public String adNoModify(NoticeDTO dto,NoticeDTO notice)
    {
 	   String result = null;
 	   
 	   IAdmin dao = sqlSession.getMapper(IAdmin.class);
 	   
 	   dao.noticeModify(dto);
+	   
+	   
+	   dao.noticeInsert(notice);
 	   
 	   result = "redirect:admin_notice_list.action";
 	   

@@ -2,13 +2,13 @@ SELECT USER
 FROM DUAL;
 --==>>COMFIT
 
-DESC ANNOUNCE;
+DESC FAQ;
 
 --○ 공지사항 출력 
 SELECT ANNOUNCE_ID,ANNOUNCE_TITLE,ANNOUNCE_CONTENTS,ANOUN_CATE_ID
-FROM ANNOUNCE;
+FROM ANNOUNCE
+WHERE ANNOUNCE_ID='ann_1';
 
-DESC ANNOUNCE_CATEGORY;
 
 
 --○ 공지사항 리스트 출력
@@ -19,9 +19,16 @@ FROM ANNOUNCE_CATEGORY;
 2	이벤트
 3	공지
 */
+
+CREATE SEQUENCE ANNOUNCE_SEQ
+NOCACHE;
+--==>Sequence ANNOUNCE_SEQ이(가) 생성되었습니다.
+
+--==>>Sequence ANOUN_SEQ이(가) 생성되었습니다.
+
 --○공지사항 입력 쿼리문
 INSERT INTO ANNOUNCE (ANNOUNCE_ID,ANNOUNCE_TITLE,ANNOUNCE_CONTENTS,ANOUN_CATE_ID)
-VALUES('ann 1','공지사항','잠시 사용을 멈추겠습니다.',3);
+VALUES(ANNOUNCE_SEQ,'공지사항','잠시 사용을 멈추겠습니다.',3);
 --==>>1 행 이(가) 삽입되었습니다.
 
 --○공지사항 수정 쿼리문

@@ -34,6 +34,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE U_ID = #{u_id}
 	</select>
 	
+	<select id="sellList" resultType="com.test.mybatis.MypageProductDTO">
+		SELECT PD_ID, PD_TITLE, PD_PRICE, SYSTEM, PD_REGIT_DATE, TIME, COMP_DATE, SELLER_ID, BUYER_ID, ADDRESS, STATUS
+		FROM MY_PRODUCT_LIST
+		WHERE SELLER_ID = #{u_id}
+		ORDER BY PD_REGIT_DATE DESC
+	</select>
+	
+	<select id="buyList" resultType="com.test.mybatis.MypageProductDTO">
+		SELECT PD_ID, PD_TITLE, PD_PRICE, SYSTEM, PD_REGIT_DATE, TIME, COMP_DATE, SELLER_ID, BUYER_ID, ADDRESS, STATUS
+		FROM MY_PRODUCT_LIST
+		WHERE BUYER_ID = #{u_id}
+		ORDER BY PD_REGIT_DATE DESC
+	</select>
+	
+	<select id="myLevel" resultType="java.lang.Integer">
+		SELECT CASE TRUNC(SQRT((SUM(USER_EXP))/2))
+	    WHEN 0
+	    THEN 1
+	    ELSE TRUNC(SQRT((SUM(USER_EXP))/2)) 
+	    END AS USER_LEVEL
+		FROM USER_LEVEL_VIEW
+		WHERE U_ID = #{u_id}
+	</select>
+	
+	
+	
 	
 <!-- 
 	<insert id="categoryInsert">

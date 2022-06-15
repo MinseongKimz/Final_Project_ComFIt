@@ -11,15 +11,10 @@
 <meta charset="UTF-8">
 <title>사이드바</title>
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/main.css">
-<style type="text/css">
-
 	
 </style>
 </head>
 <body>
-
-
-		
 		<div class="btn-group-vertical" role="group" aria-label="Basic outlined example">
   			<button type="button" class="btn btn-outline-primary" onclick="location.href='user_information.action'">회원정보</button>
   			<button type="button" class="btn btn-outline-primary" onclick="location.href='user_buylist.action'">구매내역</button>
@@ -27,8 +22,6 @@
   			<button type="button" class="btn btn-outline-primary" onclick="location.href='user_moneylist.action'">입출금내역</button>
   			<button type="button" class="btn btn-outline-primary" onclick="location.href='user_drop.action'">회원탈퇴</button>
 		</div>
-		
-		
 	
 </body>
 </html>

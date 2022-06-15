@@ -87,8 +87,8 @@
 
 <div>
 	<!-- Header 영역 -->
-	<div>
-		<c:import url="comfit_header_user.jsp"></c:import>
+	<div class="header">
+         <c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
 	</div>
 	
 	

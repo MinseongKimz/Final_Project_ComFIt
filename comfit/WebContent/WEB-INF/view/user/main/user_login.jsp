@@ -156,7 +156,7 @@
 	-->
 	<br /><br /><br />
 	<div style="width: 400px; margin: auto;">
-		<form action="login.action" class="form form-group" id="loginForm" method="get">
+		<form action="login.action" class="form form-group" id="loginForm" method="post">
 			
 			<h2 class="h3 mb-3"><b>로그인</b></h2>
 			
@@ -176,21 +176,13 @@
 		<!-- reCAPCHA -->
 		<div style="display: none;"></div>
 		
-
-
 	<br /><br />
-	
 	
 	<button type="button" class="btn btn-secondary" style="width: 150px;" >회원가입</button>
 	<button type="button" class="btn btn-secondary" style="width: 150px; float: right;">ID/PW 찾기</button>
 	</div>
 	
 </div>
-
-
-		
-
-	
 
 
 

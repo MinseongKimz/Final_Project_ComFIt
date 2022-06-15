@@ -13,6 +13,8 @@ package com.test.mybatis;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,12 +23,27 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class MainController
 {
+	@Autowired
+	private SqlSession sqlSession;
 	
 	@RequestMapping("/comfit.action")
 	public String hello(Model model)
 	{
+		String result = null;
+		IProduct dao = sqlSession.getMapper(IProduct.class);
+		try
+		{
+			model.addAttribute("pdList", dao.non_user_pdList());
+			model.addAttribute("cateList", dao.cateList());
+			result = "/WEB-INF/view/user/main/non_user_main.jsp";
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
 		
-		return "/WEB-INF/view/user/main/non_user_main.jsp";
+		
+		
+		return result;
 	}
 	
 	

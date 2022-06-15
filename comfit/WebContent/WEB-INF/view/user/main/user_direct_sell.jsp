@@ -266,7 +266,7 @@ function CountDownTimer(dt, id)
 					</div>
 					<div style="padding-left: 25%;">
 						<p class="fs-2" style="margin-top: 5%; font-weight: bold;">${drPd.u_nickname } 
-						<span class="fs-6" style="color: green;">Level : 5</span>
+						<span class="fs-6" style="color: green;">Level : ${userLevel }</span>
 						</p>
 					</div>
 				</div>
@@ -274,7 +274,7 @@ function CountDownTimer(dt, id)
 				  <div class="card-body" style="height: 85px;">
 				    <h5 class="card-title"></h5>
 				    <div style="text-align: right;">
-				    	<p class="card-text" style="font-weight: bold;">누적 판매 수 : 25회</p>
+				    	<p class="card-text" style="font-weight: bold;">누적 판매 수 : ${sellCount }회</p>
 				    	<a href="user_detail_sell.jsp" style="text-decoration: none;">상세보기</a>
 				    </div>
 				  </div>

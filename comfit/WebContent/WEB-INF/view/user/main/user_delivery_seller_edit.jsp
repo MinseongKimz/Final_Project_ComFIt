@@ -32,7 +32,7 @@
 	$(document).ready(function()
 	{
 		
-		$("input[name=asRadio]").change(function()
+		$("input[name=pd_as_id]").change(function()
 		{
 			$("#pd_asDate").attr("disabled", false);
 			//alert($(this).val());
@@ -54,7 +54,7 @@
 			//alert($(this).val());
 			var param = "optionValue=" + $(this).val();
 			 
-			// select option value 에 카테고리name -> 카테고리id 들어가도록 바꿨음
+			// select option value 에  카테고리id가 들어가도록 변경
 			
 			
 			$.ajax(
@@ -65,7 +65,7 @@
 				, success: function(result)
 				{
 					
-					$("#maker_name").html(result)
+					$("#maker_id").html(result)
 					
 				/* $("#maker_name").html("<c:forEach var='maker' items='${makerlist }'>"
 							+ "<option value='${maker.maker_name }'>" + ${maker.maker_name }+ "</option>"
@@ -82,18 +82,27 @@
 			
 	})
 	
-	var listVar = $('input[name=asRadio]:checked').val();
+	var pd_as_id = $('input[name=pd_as_id]:checked').val();
 	var comments = $("textarea[name=comments]").val();
+
+
+	var cf_price = $("input[name=cf_price]").val();
+	var pd_as_remain = $("input[name=pd_as_remain]").val();
+
+
+
 	var pd_as_remain = $("#pd_as_remain").val();
+
 	
 	$(document).ready(function()
 	{
 		$("#delivery_Insert").click(function()
 		{
-			//alert($("textarea[name=comments]").val());
-			//location.href="deliveryInsert.action?title="+$("#pd_title").val()+"&name="+$("#pd_name").val()+"&pd_as_remain="+("#pd_as_remain").val()+"&pd_start_price="+$("#pd_start_price").val()+"&pd_maker_id="+$("#maker_name").val()+"&pd_as_id="+ listVar + "&comments="+$("#comments").val()+"&pd_imd_price="+$("#pd_imd_price").val();
-			location.href="deliveryInsert.action?comments="+comments+"&pd_as_remain="+$("#pd_as_remain").val();
+			//alert($("input[name=cf_price]").val());
 			
+			location.href="deliveryInsert.action?comments="+comments+"&cf_price=" + cf_price + "&pd_as_remain=" + pd_as_remain;
+
+
 		})
 	})
 	
@@ -252,20 +261,20 @@
 	</p>
 	
 	<div class="input_box" style="padding-left: 5%; padding-top: 10%;">
-	<form action="user_delforminsert.action" method="get">
+	<form action="deliveryinsert.action" method="POST">
 		<table style="width: 100%;">
 			<tr>
 				<th>물품검색<span class="star">*</span></th>
 				<td colspan="2">
 					<div><!--  class="input-group mb-6" -->
-					  <input type="text" class="<!-- form-control  -->" placeholder="돋보기를 눌러 물품을 검색해주세요" style="height:40px; width: 260px; display: inline-block;" readonly="readonly">
+					  <input type="text" class="<!-- form-control  -->" placeholder="돋보기를 눌러 물품을 검색해주세요" style="height:40px; width: 260px; display: inline-block; font-style: italic;" readonly="readonly">
 					  <span class="input-group-text" id="basic-addon1" onclick="location.href='searchproduct.action';" style="width: 50px; display: inline-block;"><i class="bi bi-search"></i></span>
 					</div>
 				</td>
 			</tr>
 			<tr>
 				<th>제목<span class="star">*</span></th>
-				<td colspan="3"><input class="form-control" id="pd_title" name="title" type="text" placeholder="제목을 입력해주세요." style="width: 86%;"/>
+				<td colspan="3"><input class="form-control" id="pd_title" name="pd_title" type="text" placeholder="제목을 입력해주세요." style="width: 86%; font-style: italic;"/>
 				<p align="right" style="font-size: 3px; margin-right: 16%;"></p>
 				</td>
 			</tr>
@@ -276,7 +285,7 @@
                 </th>
 				<td width="20%;"><!-- 카테고리
 					<br> -->
-					<select class="form-select" id="category-select" name="category-select" style="width: 90%; height: 35px;">
+					<select class="form-select" id="category-select" name="category_select" style="width: 90%; height: 35px;">
 					<option>카테고리 선택</option>
 					
 						<c:forEach var="category" items="${categorylist }">
@@ -289,7 +298,7 @@
 				</td>
 				<td width="20%;" id="maker_c">
 					<%-- <input type="text" class="form-control" id="maker" name="maker" placeholder="제조사를 입력해 주세요." style="width: 90%;" value="${maker }"/> --%>
-					<select class="form-select" id="maker_name" name="maker_name" style="width: 90%; height: 35px;">
+					<select class="form-select" id="maker_id" name="pd_maker_id" style="width: 90%; height: 35px;">
 					<option id="pd_maker">제조사 카테고리 선택</option>
 						<c:forEach var="maker" items="${makerlist }">
 							<option value="${maker.pd_maker_id }" ${maker.maker_name eq mk ? 'selected' : ''}>${maker.maker_name }</option>
@@ -306,7 +315,8 @@
 				<th>희망 시작 가격<span class="star">*</span>
 				 <p style="font-weight: normal; font-size: 7pt;">희망하는 가격을 적어주세요.</p>
                 </th>
-                <td colspan="3"><input class="form-control" id="pd_start_price" name="pd_start_price" type="text" placeholder="희망 가격을 입력해주세요." style="width: 50%;"/>
+                <td colspan="3"><input class="form-control" id="pd_start_price" name="pd_start_price" type="text" placeholder="희망 가격을 입력해주세요." style="width: 50%; display: inline-block; font-style: italic;"/>
+                <div style="display: inline-block; font-style: italic; color:red; font-size: small; margin-left: 15px;"> ※comfit 추천 가격 : ${realAvgPrice }원</div>
                 <p style="color:blue; font-size: 10px;">추천 가격보다 2배 이상은 입력할 수 없습니다.</p>
                 </td>
 			</tr>
@@ -315,7 +325,7 @@
 				<th>즉시 구매 가격<span class="star">*</span>
 				 <p style="font-weight: normal; font-size: 7pt;">즉시 거래 가격을 적어주세요.</p>
                 </th>
-                <td colspan="3"><input class="form-control" id="pd_imd_price" name="pd_imd_price" type="text" placeholder="즉시구매 가격을 입력해주세요." style="width: 50%;"/>
+                <td colspan="3"><input class="form-control" id="pd_imd_price" name="imd_price" type="text" placeholder="즉시구매 가격을 입력해주세요." style="width: 50%; font-style: italic;"/>
                 <p style="color:blue; font-size: 10px;">추천 가격보다 2배 이상은 입력할 수 없습니다.</p>
                 </td>
 			</tr>
@@ -341,19 +351,19 @@
                 </th>
                 <td colspan="3">
                 <div class="form-check form-check-inline">
-				  <input class="form-check-input" type="radio" name="asRadio" id="inlineRadio1" value="1" checked="checked">
+				  <input class="form-check-input" type="radio" name="pd_as_id" id="inlineRadio1" value="1" checked="checked">
 				  <label class="form-check-label" for="inlineRadio1">유상</label>
 				</div>
 				<div class="form-check form-check-inline">
-				  <input class="form-check-input" type="radio" name="asRadio" id="inlineRadio2" value="2">
+				  <input class="form-check-input" type="radio" name="pd_as_id" id="inlineRadio2" value="2">
 				  <label class="form-check-label" for="inlineRadio2">무상</label>
 				</div>
 				<div class="form-check form-check-inline">
-				  <input class="form-check-input" type="radio" name="asRadio" id="inlineRadio3" value="3">
+				  <input class="form-check-input" type="radio" name="pd_as_id" id="inlineRadio3" value="3">
 				  <label class="form-check-label" for="inlineRadio3">불가능</label>
 				</div>
 				
-				<input class="form-control" id="pd_as_remain" type="text" placeholder="유효날짜 (연/월)" style="width: 86%;"/>
+				<input class="form-control" id="pd_asDate" name="pd_as_remain" type="text" placeholder="예) 2024-09" style="width: 86%; font-style: italic;"/>
 			</tr>
 			
 			<tr>
@@ -365,7 +375,7 @@
 				</th>
 				
 				<td colspan="3" rowspan="2">
-				<textarea placeholder="특이사항 코멘트" name="comments" style="width:86%; height: 150px;"></textarea>
+				<textarea placeholder=" 판매자 코멘트 작성" name="comments" style="width:86%; height: 150px;"></textarea>
 				</td>
 			</tr>
 			
@@ -382,7 +392,7 @@
 			<tr>
 				<td colspan="4">
 					<div class="d-grid gap-2 d-md-flex justify-content-md-end" style="width: 90%;">
-					
+					<input type="text" name="cf_price" value="${realAvgPrice }" style="display: none;" />
 	                <button type="submit" class="btn btn-primary" id="delivery_Insert">등록하기</button>
 	                <button type="button" class="btn btn-secondary">취소</button>
 	                </div>

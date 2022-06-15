@@ -169,7 +169,9 @@
                
             
             //console.log(tprice2);
-            var realAvgPrice = (tprice2/arr.length) * 0.65;
+            var AvgPrice = parseInt((tprice2/arr.length) * 0.65);
+            
+            realAvgPrice = Math.floor(AvgPrice/1000) * 1000;
             
             //alert(avgPrice);
             //alert(realAvgPrice);
@@ -203,7 +205,7 @@
          var category = valArr[1];
          var maker = valArr[2];
          
-         location.href="returnsell.action?name=" + name + "&maker=" + maker + "&category=" + category;
+         location.href="returnsell.action?name=" + name + "&maker=" + maker + "&category=" + category + "&realAvgPrice=" + realAvgPrice;
          
         /*  $.post("retunsell.action", {
             name : name

@@ -88,7 +88,6 @@
 	var cf_price = $("input[name=cf_price]").val();
 	var pd_as_remain = $("input[name=pd_as_remain]").val();
 
-	var pd_as_remain = $("#pd_as_remain").val();
 
 	
 	$(document).ready(function()
@@ -100,7 +99,7 @@
 
 			location.href="deliveryInsert.action?comments="+comments+"&cf_price=" + cf_price + "&pd_as_remain=" + pd_as_remain;
 
-			location.href="deliveryInsert.action?comments="+comments+"&pd_as_remain="+$("#pd_as_remain").val();
+			
 			
 
 		})

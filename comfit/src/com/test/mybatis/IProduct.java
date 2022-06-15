@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public interface IProduct
 {
-	public ArrayList<ProductDTO> pdList(ProductDTO dto);
+	public ArrayList<ProductDTO> user_pdList(ProductDTO dto);
 	public ArrayList<CategoryDTO> cateList();
 	public ArrayList<DirectProductDTO> drPdList(String pd_id);
 	public ArrayList<DeliveryProductDTO> dlPdList(String pd_id);
@@ -33,6 +33,8 @@ public interface IProduct
 	
 	// 판매횟수 뽑기
 	public int sellCount(String userId);
+	
+	public ArrayList<ProductDTO> non_user_pdList();
 	
 
 }

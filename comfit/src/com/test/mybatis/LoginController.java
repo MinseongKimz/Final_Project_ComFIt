@@ -2,8 +2,6 @@ package com.test.mybatis;
 
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,18 +15,15 @@ public class LoginController
 	@Autowired
 	private SqlSession sqlSession;
 	
-	@RequestMapping(value = "/login.action" ,method = RequestMethod.GET)
+	@RequestMapping(value = "/login.action" ,method = RequestMethod.POST)
 	public String login(userDTO dto,  Model model, HttpServletRequest request)
 	{
 		IUserLoginDAO dao = sqlSession.getMapper(IUserLoginDAO.class); 
-		
 		userDTO user = new userDTO(); 
-		
 		//System.out.println(email + password);
 		try
 		{
 			user = dao.userLogin(dto);
-			
 			//System.out.println(user.getAuth());	
 			
 			if(user.getAuth().equals("0")) // 이메일 인증이 안됬다면...
@@ -43,6 +38,7 @@ public class LoginController
 			}	
 			else 
 			{
+				/*
 				HttpSession session = request.getSession();
 				session.setAttribute("u_id", user.getU_id());
 				session.setAttribute("lat", session.getAttribute("lat"));

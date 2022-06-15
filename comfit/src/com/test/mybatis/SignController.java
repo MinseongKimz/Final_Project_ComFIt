@@ -19,6 +19,7 @@ import com.test.util.SignDAO;
 public class SignController
 {
 
+
    @Autowired
    private SqlSession sqlSession;
    @Autowired
@@ -103,5 +104,6 @@ public class SignController
       return "redirect:comfit.action?hello=1";     
 
    }
+
 
 }

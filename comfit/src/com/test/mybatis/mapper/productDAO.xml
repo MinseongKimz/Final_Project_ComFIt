@@ -80,7 +80,33 @@
 	  	  FROM SUGGEST_LIST_REALVIEW
 		 WHERE DIRE_PD_ID = #{pd_id}
 	</select>	
-
+	
+	<select id="deliuserId" resultType="java.lang.String">
+		SELECT U_ID
+		  FROM DELIVERY_PRODUCT
+		 WHERE DELI_PD_ID = #{pd_id}
+	</select>
+	<select id="direuserId" resultType="java.lang.String">
+		SELECT U_ID
+		  FROM DIRECT_PRODUCT
+		 WHERE DIRE_PD_ID = #{pd_id}
+	</select>
+	
+	<select  id="userLevel" resultType="java.lang.Integer">
+		SELECT CASE TRUNC(SQRT((SUM(USER_EXP))/2))
+       			WHEN 0
+       			THEN 1
+       			ELSE TRUNC(SQRT((SUM(USER_EXP))/2)) 
+       			END AS USER_LEVEL
+		FROM USER_LEVEL_VIEW
+		WHERE U_ID = #{userId}
+	</select>
+	
+	<select id="sellCount" resultType="java.lang.Integer">
+	SELECT COUNT(*) AS SELL_COUNT
+ 	  FROM USER_SELL_COUNT_VIEW
+	  WHERE U_ID = #{userId}
+	</select>
 	
 </mapper>
 

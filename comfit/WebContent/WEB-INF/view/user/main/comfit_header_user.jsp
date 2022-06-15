@@ -84,9 +84,9 @@
     <!-- nav 상단 고정-->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container">
-            <a href="user_mainlist.action" > 
-	           <img alt="logo" src="<%=cp%>/images/logo.png" style="width: 200px;">
-	        </a>
+        	<form action="user_mainlist.action" method="post">
+	         <button type="submit" style="border: 1px solid white; background-color: white;"><img alt="logo" src="<%=cp%>/images/logo.png" style="width: 200px;"></button>  
+	        </form>
 	        
               	<button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			      <span class="navbar-toggler-icon"></span>

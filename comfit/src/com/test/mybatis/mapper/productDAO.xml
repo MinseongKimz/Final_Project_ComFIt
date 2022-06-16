@@ -35,6 +35,18 @@
 	<!--    자료형 클래스(DTO) 멤버 변수(속성)와 일치하는 경우 -->
 	<!--    <<자동 매핑>>이 이루어진다. -->
 	<!--    또한 SQL 문 내부에 세미콜론(;) 이 있으면 안된다. -->
+	<select id="deli_check_id" resultType="java.lang.Integer">
+	  SELECT COUNT(*) AS CHECK_ID
+		FROM DELIVERY_PRODUCT
+		WHERE U_ID = #{u_id} AND DELI_PD_ID = #{pd_id} 
+	</select>
+	
+	<select id="dire_check_id" resultType="java.lang.Integer">
+	  SELECT COUNT(*) AS CHECK_ID
+		FROM DIRECT_PRODUCT
+	   WHERE U_ID = #{u_id} AND DIRE_PD_ID = #{pd_id} 
+	</select>
+	
 	<select id="user_pdList" resultType="com.test.mybatis.ProductDTO">
 		  SELECT V.PD_ID AS PD_ID, V.PD_NAME AS PD_NAME, V.PRICE AS PRICE, V.DISTANCE AS DISTANCE
 			FROM
@@ -118,7 +130,11 @@
 	    ORDER BY PD_REGIT_DATE
 	</select>
 	
-	
+	<select id="mgrs" resultType="com.test.mybatis.DirectProductDTO">
+	SELECT LAT, LON, PD_ID
+	 FROM MGRS_VIEW
+	WHERE PD_ID = #{pd_id}
+	</select>
 </mapper>
 
 

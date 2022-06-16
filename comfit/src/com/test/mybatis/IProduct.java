@@ -38,5 +38,9 @@ public interface IProduct
 	
 	public ArrayList<ProductDTO> deli_user_pdList();
 	
+	public int deli_check_id(String u_id, String pd_id);
+	public int dire_check_id(String u_id, String pd_id);
+	
+	public ArrayList<DirectProductDTO> mgrs(String pd_id);
 
 }

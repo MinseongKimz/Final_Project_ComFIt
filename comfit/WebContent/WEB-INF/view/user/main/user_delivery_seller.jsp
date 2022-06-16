@@ -259,8 +259,23 @@ d-block
 				<!-- <button type="button" class="btn btn-warning" style="width: 48%;">즉시낙찰</button> -->
 				<!-- <button type="button" class="btn btn-primary" style="width: 48%;">제안하기</button> -->
 				<!-- <button type="button" class="btn btn-secondary" style="width: 48%;">신고</button> -->
+				<%
+					int check_id = (int)session.getAttribute("check_id");
+					if(check_id == 1)
+					{
+				%>
 				<button type="button" class="btn btn-primary" style="width: 48%;">수정하기</button>
 				<button type="button" class="btn btn-secondary" id="productDelBtn" style="width: 48%;">삭제하기</button>
+				<%
+					}
+					else
+					{
+				%>
+				<button type="button" class="btn btn-primary" style="width: 48%;">입찰하기</button>
+				<button type="button" class="btn btn-secondary" id="productDelBtn" style="width: 48%;">즉시구매하기</button>
+				<%
+					}
+				%>
 				</td>
 			</tr>
 		</table>

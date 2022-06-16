@@ -247,7 +247,7 @@
        
       <!-- 최근 등록 상품 -->
       <div style="font-size: 20pt; font-weight:bold; display: inline-block; width: 1100px;">
-         내 주변 상품
+         내 주변 상품 직거래
       </div>
          
       <div style="display: inline-block; width: 200px; float: right;">   

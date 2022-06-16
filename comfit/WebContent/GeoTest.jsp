@@ -26,7 +26,7 @@
 		    
 		    $("#geoBtn").click(function()
 			{
-				location.href="georesult.action?lat="+lat+"&lon="+lon;
+				location.href="georesult.action?address="+$("#address").val()+"&lat="+lat+"&lon="+lon;
 			})
 		});
 		

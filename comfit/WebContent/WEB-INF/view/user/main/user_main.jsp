@@ -247,7 +247,7 @@
        
       <!-- 최근 등록 상품 -->
       <div style="font-size: 20pt; font-weight:bold; display: inline-block; width: 1100px;">
-         내 주변 상품
+         내 주변 상품 직거래
       </div>
          
       <div style="display: inline-block; width: 200px; float: right;">   
@@ -278,7 +278,7 @@
       <br />   
       <!-- 인기 상품 -->
       <div style="font-size: 20pt; font-weight:bold; display: inline-block; width: 1100px;">
-         인기 상품
+         택배거래 상품
       </div>
          
       <div style="display: inline-block; width: 200px; float: right;">   
@@ -290,7 +290,7 @@
       <div class="col-md-12 text-center">
    
          <div class="newList">
-           <c:forEach var="product" items="${pdList }">
+           <c:forEach var="product" items="${deli_pdList }">
          	   <div class="card">
             	   <img src="images/ssd.jpg" class="card-img-top">
               	 <div class="card-body">

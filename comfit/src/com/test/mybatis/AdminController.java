@@ -24,6 +24,8 @@ public class AdminController
    private SqlSession sqlSession;
    
 
+      
+
 	/*
 	 * // 관리자 로그인
 	 * 
@@ -289,10 +291,10 @@ public class AdminController
 
 	   dao.noticeModify(dto);
 
+	   //dao.noticeInsert(notice);
 	   
 
 	   
-
 	   result = "redirect:admin_notice_list.action";
 	   
 	   return result;

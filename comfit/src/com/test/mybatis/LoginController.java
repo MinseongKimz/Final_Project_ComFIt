@@ -40,9 +40,11 @@ public class LoginController
 			}	
 			else 
 			{
-
+				
 				HttpSession session = request.getSession();
 				session.setAttribute("u_id", user.getU_id());
+				
+
 				
 				System.out.println(session.getAttribute("u_id"));
 				

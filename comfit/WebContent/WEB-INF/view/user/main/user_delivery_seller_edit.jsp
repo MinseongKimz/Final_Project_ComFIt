@@ -33,7 +33,7 @@
 		
 		$("input[name=pd_as_id]").change(function()
 		{
-			$("#pd_asDate").attr("disabled", false);
+			$("#pd_asDate").attr("readonly", false);
 			//alert($(this).val());
 			
 			if ($(this).val() == "3")
@@ -81,19 +81,18 @@
 			
 	})
 	
-	var pd_as_id = $('input[name=pd_as_id]:checked').val();
+/* 	var pd_as_id = $('input[name=pd_as_id]:checked').val();
 	var comments = $("textarea[name=comments]").val();
 	var cf_price = $("input[name=cf_price]").val();
 	var pd_as_remain = $("input[name=pd_as_remain]").val();
-	
+	 */
 	 $(document).ready(function()
 	{
 		$("#delivery_Insert").click(function()
 		{
 			//alert($("input[name=cf_price]").val());
 			
-			location.href="deliveryInsert.action?comments="+comments+"&cf_price=" + cf_price + "&pd_as_remain=" + pd_as_remain;
-			
+			$("#deliform").submit();
 		})
 	})
 	
@@ -142,7 +141,10 @@
 	
 	<div class="input_box" style="padding-left: 5%; padding-top: 10%;">
 	<!-- <form action="deliveryinsert.action" method="POST" enctype="multipart/form-data"> -->
-	<form action="delivery_seller_ok.jsp" method="POST" enctype="multipart/form-data">
+	<form id="deliform" action="delivery_seller_ok.jsp" method="POST" enctype="multipart/form-data">
+		<input type="hidden" name=comments/>	
+		<input type="hidden" name=cf_price/>	
+		<input type="hidden" name=pd_as_remain/>	
 		<table style="width: 100%;">
 			<tr>
 				<th>물품검색<span class="star">*</span></th>
@@ -243,7 +245,7 @@
 				</div>
 				
 
-				<input class="form-control" id="pd_asDate" name="pd_as_remain" type="text" placeholder="AS 만료 기간 입력. 예) 2024-09" style="width: 86%; font-style: italic;"/>
+				<input class="form-control" id="pd_asDate" name="pd_as_remain" type="text" placeholder="AS 만료 기간 입력. 예) 2024-09" style="width: 86%; font-style: italic;" value="none"/>
 
 				
 

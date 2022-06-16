@@ -59,7 +59,7 @@ public class LoginController
 		{
 			System.out.println(e.toString());
 			
-			return "redirect:loginform.action?err=1";
+			return "redirect:loginform.action";
 		}
 	}
 	

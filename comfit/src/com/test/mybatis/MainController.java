@@ -47,7 +47,7 @@ public class MainController
 	}
 	
 	
-	@RequestMapping(value = "/loginform.action", method = RequestMethod.GET)
+	@RequestMapping(value = "/loginform.action", method = RequestMethod.POST)
 	public String login(Model model, HttpServletRequest request)
 	{
 		String lat = request.getParameter("lat"); 	// 위도

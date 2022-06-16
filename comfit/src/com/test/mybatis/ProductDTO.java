@@ -2,8 +2,40 @@ package com.test.mybatis;
 
 public class ProductDTO
 {
-	private String pd_id, pd_name, price;
+	private String pd_id, pd_name, price, distatnce;
 	
+	private String lat, lon;
+	
+	
+	public String getLat()
+	{
+		return lat;
+	}
+
+	public void setLat(String lat)
+	{
+		this.lat = lat;
+	}
+
+	public String getLon()
+	{
+		return lon;
+	}
+
+	public void setLon(String lon)
+	{
+		this.lon = lon;
+	}
+
+	public String getDistatnce()
+	{
+		return distatnce;
+	}
+
+	public void setDistatnce(String distatnce)
+	{
+		this.distatnce = distatnce;
+	}
 
 	public String getPd_id()
 	{

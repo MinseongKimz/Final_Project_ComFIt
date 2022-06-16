@@ -2,8 +2,6 @@ package com.test.mybatis;
 
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,15 +19,11 @@ public class LoginController
 	public String login(userDTO dto,  Model model, HttpServletRequest request)
 	{
 		IUserLoginDAO dao = sqlSession.getMapper(IUserLoginDAO.class); 
-		IProduct dao1 = sqlSession.getMapper(IProduct.class);
-		
 		userDTO user = new userDTO(); 
-		
 		//System.out.println(email + password);
 		try
 		{
 			user = dao.userLogin(dto);
-			
 			//System.out.println(user.getAuth());	
 			
 			if(user.getAuth().equals("0")) // 이메일 인증이 안됬다면...
@@ -40,24 +34,22 @@ public class LoginController
 				 model.addAttribute("nickname", user.getU_nickname());
 				 
 				 return "/WEB-INF/view/user/main/user_email_auth.jsp";
-				 
-				
 				
 			}	
 			else 
 			{
+				/*
 				HttpSession session = request.getSession();
 				session.setAttribute("u_id", user.getU_id());
-
-				String result = null;
-				model.addAttribute("pdList", dao1.pdList());
-				model.addAttribute("cateList", dao1.cateList());
+				session.setAttribute("lat", session.getAttribute("lat"));
+				session.setAttribute("lon", session.getAttribute("lon"));
+				*/
 				
-				result = "/WEB-INF/view/user/main/user_main.jsp"; // 링크를 통한 매핑 처리 필요, 거기서는 세션 확인해야함.
+				String result = null;
+				result = "/user_mainlist.action"; // 링크를 통한 매핑 처리 필요, 거기서는 세션 확인해야함.
 				return result;
+				
 			}	
-			
-			
 			
 			
 		} catch (Exception e)

@@ -18,19 +18,25 @@ public class PdSelectController
 	{
 		String result = null;
 		IProduct dao = sqlSession.getMapper(IProduct.class);
-		
+		String userId = null;
 		try
 		{
 			if (pd_id.contains("dire"))
 			{
+				userId = dao.direuserId(pd_id);
 				model.addAttribute("suggestList", dao.suggestList(pd_id));
 				model.addAttribute("drPdList", dao.drPdList(pd_id));
+				model.addAttribute("userLevel", dao.userLevel(userId));
+				model.addAttribute("sellCount", dao.sellCount(userId));
 				result = "/WEB-INF/view/user/main/user_direct_sell.jsp";
 			}
 			else if(pd_id.contains("deli"))
 			{
+				userId = dao.deliuserId(pd_id);
 				model.addAttribute("bidList", dao.bidList(pd_id));
 				model.addAttribute("dlPdList", dao.dlPdList(pd_id));
+				model.addAttribute("userLevel", dao.userLevel(userId));
+				model.addAttribute("sellCount", dao.sellCount(userId));
 				result = "/WEB-INF/view/user/main/user_delivery_seller.jsp";
 			}
 			

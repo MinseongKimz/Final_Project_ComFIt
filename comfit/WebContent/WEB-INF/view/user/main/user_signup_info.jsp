@@ -77,6 +77,7 @@
           /* popupKey : 'popup1'   // 팝업창 key 설정 */
        });   
    }
+   
    function fn_submit()
    {
          
@@ -236,11 +237,11 @@
       <div class="input-form col-md-12 mx-auto">
         
         <h4 class="mb-3"><img src="images/logo.png" alt="" style="width: 250px; height: auto;"/></h4>
-        <form class="validation-form" id="regitform" novalidate action="regit.action" method="post">
+        <form action="regit.action" method="post" class="validation-form" id="regitform" novalidate>
           <div class="row">
             <div class="col-md-6 mb-3">
               <label for="name">이름</label>
-              <input type="text" class="form-control" id="name" name="name" placeholder="" value="" required="required">
+              <input type="text" class="form-control" id="name" name="name" required="required">
               <div class="invalid-feedback">
                 이름을 입력해주세요.
               </div>
@@ -301,16 +302,16 @@
             <label for="address2">상세주소</label>
             <input type="text" class="form-control" id="address2" name="address2" placeholder="상세주소를 입력해주세요."  required="required" >
           </div>
-          
          
           <hr class="mb-4">
           <div class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" id="aggrement" required="required">
             <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
           </div>
+          
           <div class="mb-4"></div>
-          <button class="btn btn-primary btn-lg btn-block" type="submit" id="regitBtn" onclick="fn_submit()">가입 완료</button>
         </form>
+        <button class="btn btn-primary btn-lg btn-block" type="button" onclick="fn_submit()">가입 완료</button>
       </div>
     </div>
   </div>

@@ -107,20 +107,27 @@ public class AdminController
       return result;
    }
    
-   // 관리자 상품관리 상세리스트
+   // 관리자 상품관리 상세리스트1
    @RequestMapping(value = "/admin_product_list_delivery.action", method = RequestMethod.GET)
    public String adProductListDelivery(Model model)
    {
       String result = null;
       
-      IAdmin dao = sqlSession.getMapper(IAdmin.class);
+      IAdmin dao = null;
       
-      model.addAttribute("productlistdelivery", dao.adminProductDeliveryList());
+      dao = sqlSession.getMapper(IAdmin.class);
+      
+      model.addAttribute("productlistdelivery1", dao.adminProductDeliveryList_1());
+      model.addAttribute("productlistdelivery2", dao.adminProductDeliveryList_2());
+      model.addAttribute("productlistdelivery3", dao.adminProductDeliveryList_3());
+      model.addAttribute("productlistdelivery4", dao.adminProductDeliveryList_4());
+      model.addAttribute("productlistdelivery5", dao.adminProductDeliveryList_5());
       
       result = "/WEB-INF/view/admin/ad_product_list_delivery.jsp";
       
       return result;
    }   
+   
   
    // 관리자 입출금관리
    @RequestMapping(value = "/admin_money_list.action", method = RequestMethod.GET)
@@ -250,8 +257,13 @@ public class AdminController
 	   
 	   dto.setAnoun_cate_id(announce_cate_id);
 	   
+
 	   dao.noticeModify(dto);
+
+	   dao.noticeInsert(notice);
+
 	   
+
 	   result = "redirect:admin_notice_list.action";
 	   
 	   return result;

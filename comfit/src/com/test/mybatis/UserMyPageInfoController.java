@@ -27,6 +27,12 @@ public class UserMyPageInfoController
 			HttpSession session = request.getSession();
 			String u_id = (String)session.getAttribute("u_id");
 			
+			if (u_id==null)
+			{
+				return "logout.action";
+			}
+			
+			
 			IUserMyPage mypage = sqlSession.getMapper(IUserMyPage.class);
 			model.addAttribute("myInfo", mypage.myInfo(u_id));
 			model.addAttribute("level", mypage.myLevel(u_id));
@@ -40,6 +46,7 @@ public class UserMyPageInfoController
 		} catch (Exception e)
 		{
 			System.out.println(e.toString());
+			return "logout.action";
 		}
 		
 		return result;

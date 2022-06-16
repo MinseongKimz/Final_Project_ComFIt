@@ -71,14 +71,10 @@
    
   </style>
 
-<link href="headers.css" rel="stylesheet">
-
 
 </head>
 <body>
 <div>
-
-  
 
   <header>
     <!-- nav 상단 고정-->
@@ -108,7 +104,7 @@
                         <a class="nav-link primary active" aria-current="page" href="user_svc.action">고객센터</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="comfit.action">로그아웃</a>
+                        <a class="nav-link active" href="logout.action">로그아웃</a>
                     </li>
                     <li class="nav-item">
                       	<a class="nav-link active" href="user_mypage.action">마이페이지</a>
@@ -143,7 +139,7 @@
 	         </button>
 	         <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
 	            <li class="dropdown-item"><a class="dropdown-item" href="direct_sell.action">직거래 판매하기</a></li>
-	            <li class="dropdown-item"><a class="dropdown-item" href="delivery_sell.action">택배거래 판매하기</a></li>
+	            <li class="dropdown-item"><a class="dropdown-item" href="user_delivery_seller_edit.action">택배거래 판매하기</a></li>
 	         </ul>
 	</div>
 	</div>

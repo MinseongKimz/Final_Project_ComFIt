@@ -26,8 +26,8 @@
 	</select>
 	
 	<insert id="deliveryInsert">
-	INSERT INTO DELIVERY_PRODUCT(DELI_PD_ID, PD_TITLE, PD_NAME, PD_PHOTO, PD_AS_REMAIN, PD_START_PRICE, PD_HITCOUNT, PD_REGIT_DATE, PD_MAKER_ID, PD_AS_ID, U_ID, CF_PRICE, COMMENTS, IMD_PRICE)
-	VALUES(DELI_PD_SEQ.NEXTVAL, #{pd_title}, #{pd_name}, 'C:\Downloads', #{pd_as_remain}, #{pd_start_price}, 0, TO_DATE(SYSDATE, 'YYYY-MM-DD'), #{pd_maker_id}, #{pd_as_id}, 'test2', #{cf_price}, #{comments}, #{imd_price})
+	INSERT INTO DELIVERY_PRODUCT(DELI_PD_ID, PD_TITLE, PD_NAME, PD_PHOTO, PD_AS_REMAIN, PD_START_PRICE, PD_HITCOUNT, PD_MAKER_ID, PD_AS_ID, U_ID, CF_PRICE, COMMENTS, IMD_PRICE)
+	VALUES(CONCAT('deli_', DELI_PD_SEQ.NEXTVAL), #{pd_title}, #{pd_name}, 'C:\Downloads', #{pd_as_remain}, #{pd_start_price}, 0 , #{pd_maker_id}, #{pd_as_id}, 'test2', #{cf_price}, #{comments}, #{imd_price})
 	</insert>
 	
 </mapper>

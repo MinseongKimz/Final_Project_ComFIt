@@ -95,10 +95,11 @@ function searchAddr()
 {
   
     var pd_id = document.getElementById("pd_id").value;
+    var hope_sdate = document.getElementById("hope_sdate").value;
+    var hope_edate = document.getElementById("hope_edate").value;
+    var url = "direct_place.action?pd_id=" + pd_id + "&hope_sdate=" + hope_sdate + "&hope_edate=" + hope_edate;
     
-    var url = "direct_place.action?pd_id=" + pd_id;
-    
-    window.open(url, "구매제안", "top=100px, left=100px, height=1000px, width=519px");
+    window.open(url, "구매제안", "top=100px, left=100px, height=900px, width=519px");
     
 }
 function CountDownTimer(dt, id)
@@ -293,6 +294,8 @@ function CountDownTimer(dt, id)
 			</tr>
 		</table>
 		</div>
+		<input type="hidden" id="hope_sdate" value="${drPd.pd_hope_sdate }"/>
+		<input type="hidden" id="hope_edate" value="${drPd.pd_hope_edate }"/>
 		<div>
 			<div class="col-md-6" style="width:100%; display: inline-block; float:left;">
 				<table style="margin-left:5%; width:90%;">
@@ -343,7 +346,7 @@ function CountDownTimer(dt, id)
        				
 				<!-- 판매자 정보 아래 버튼  -->
 				<div style="text-align: center; margin-top: 1%;">
-					<button class="btn btn-primary" style="width: 25%; margin-right: 15%;" onclick="">목록으로</button>
+					<button class="btn btn-primary" style="width: 25%; margin-right: 15%;" onclick="location.href='user_mainlist.action'">목록으로</button>
 					<button class="btn btn-primary" style="width: 25%;">찜하기</button>
 				</div>
 			</div>

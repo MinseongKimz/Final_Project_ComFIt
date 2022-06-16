@@ -137,7 +137,10 @@
 	  	  FROM SUGGEST_LIST_REALVIEW
 		 WHERE DIRE_PD_ID = #{pd_id}
 	</select>	
+<<<<<<< HEAD
+=======
 
+>>>>>>> 7664140a0bc40ea8768ca8f0af849da9d0f92624
 	
 	<select id="deliuserId" resultType="java.lang.String">
 		SELECT U_ID

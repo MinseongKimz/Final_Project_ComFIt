@@ -131,6 +131,26 @@ public class AdminController
       return result;
    }   
    
+   // 관리자 상품관리 상세리스트2
+   @RequestMapping(value = "/admin_product_list_direct.action", method = RequestMethod.GET)
+   public String adProductListDirect(Model model, String pd_num)
+   {
+      String result = null;
+      
+      IAdmin dao = null;
+      
+      dao = sqlSession.getMapper(IAdmin.class);
+      
+      model.addAttribute("productlistdirect1", dao.adminProductDirectList_1(pd_num));
+      model.addAttribute("productlistdirect2", dao.adminProductDirectList_2(pd_num));
+      model.addAttribute("productlistdirect3", dao.adminProductDirectList_3(pd_num));
+      model.addAttribute("productlistdirect4", dao.adminProductDirectList_4(pd_num));
+      model.addAttribute("productlistdirect5", dao.adminProductDirectList_5(pd_num));
+      
+      result = "/WEB-INF/view/admin/ad_product_list_direct.jsp";
+      
+      return result;
+   }      
   
    // 관리자 입출금관리
    @RequestMapping(value = "/admin_money_list.action", method = RequestMethod.GET)
@@ -258,11 +278,7 @@ public class AdminController
 	   return result;
    }
 
-   
-   
-   
-   
-   
+ 
    // 관리자 공지사항 수정 폼으로 가기
    @RequestMapping(value = "/admin_notice_modify_form.action" ,method = RequestMethod.GET)
    public String adNoticeModifyForm(Model model, String announce_id)

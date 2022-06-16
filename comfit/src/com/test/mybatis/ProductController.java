@@ -28,7 +28,7 @@ public class ProductController
 
 	}
 
-	
+
 	@RequestMapping(value = "/user_mainlist.action", method = RequestMethod.POST)
 	public String mainList(Model model, ProductDTO dto, HttpServletRequest request )
 
@@ -183,7 +183,6 @@ public class ProductController
 	   return result;
 	   
    }
-	
 
 
 }

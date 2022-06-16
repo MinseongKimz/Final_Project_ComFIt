@@ -21,7 +21,24 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<style>
+   .map_wrap {position:relative;width:100%;height:500px;}
+    .title {font-weight:bold;display:block; font-size: 10px;}
+    .hAddr {position:absolute;left:10px;top:10px; font-size: 10px; border-radius: 2px;background:#fff;background:rgba(255,255,255,0.8);z-index:1;padding:5px;}
+    #centerAddr {display:block;margin-top:2px;font-weight: normal;}
+    .bAddr {padding:5px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap; font-size: 3px;}
+    
+    #map img
+     {
 
+    	max-width: none;
+
+    	height: auto;
+
+    	border: 0
+
+	}
+</style> 
 <style type="text/css">
 p
 {
@@ -78,22 +95,11 @@ function searchAddr()
 {
   
     var pd_id = document.getElementById("pd_id").value;
+    var hope_sdate = document.getElementById("hope_sdate").value;
+    var hope_edate = document.getElementById("hope_edate").value;
+    var url = "direct_place.action?pd_id=" + pd_id + "&hope_sdate=" + hope_sdate + "&hope_edate=" + hope_edate;
     
-    var url = "direct_place.action?pd_id=" + pd_id;
-    
-    
-    
-	 window.open(url, "장소선택", "top=100px, left=100px, height=800px, width=600px");	
-	
-    
-    
-    
-    
-    
-    //window.open(url, "장소선택", "top=100px, left=100px, height=800px, width=600px");
-    
-    
-    
+    window.open(url, "구매제안", "top=100px, left=100px, height=900px, width=519px");
     
 }
 function CountDownTimer(dt, id)
@@ -144,6 +150,12 @@ function CountDownTimer(dt, id)
 
 <div class="header">
 	<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
+</div>
+<div>
+	<c:forEach var="mgrs" items="${mgrs }">
+	<input type="hidden" id="lat" value="${mgrs.lat }" />
+	<input type="hidden" id="lon" value="${mgrs.lon }" />
+	</c:forEach>
 </div>
 
 <div class="container">
@@ -272,7 +284,8 @@ function CountDownTimer(dt, id)
 					else
 					{		
 				%>
-				<button type="button" class="btn btn-primary" style="width: 48%;" data-toggle="modal" data-target="#myModal">구매제안</button>
+				<button type="button" class="btn btn-primary" style="width: 48%;" id="suggest"
+				                onclick="searchAddr()">구매제안</button>
 				<button type="button" class="btn btn-secondary" style="width: 48%;">신고하기</button>
 				<%
 					}
@@ -281,6 +294,8 @@ function CountDownTimer(dt, id)
 			</tr>
 		</table>
 		</div>
+		<input type="hidden" id="hope_sdate" value="${drPd.pd_hope_sdate }"/>
+		<input type="hidden" id="hope_edate" value="${drPd.pd_hope_edate }"/>
 		<div>
 			<div class="col-md-6" style="width:100%; display: inline-block; float:left;">
 				<table style="margin-left:5%; width:90%;">
@@ -385,61 +400,6 @@ function CountDownTimer(dt, id)
 	
 	</div>
 </div>
-
-
-
-
-<!-- Modal -->
-
-<div class="modal fade" id="myModal" data-backdrop="static" data-keyboard="false">
-    <div class="modal-dialog modal-xs modal-dialog-centered">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">구매제안하기</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-        		
-           <div class="mb-3">
-          	<label for="address">희망장소</label><br />
-            	 <input type="text" class="form-control" id="address" name="address" placeholder="클릭해주세요"
-            	   required="required" readonly="readonly" onclick="searchAddr()" >
-          			 <div class="invalid-feedback">
-              				희망 장소를 입력해주세요.
-            		 </div>
-       	   </div>
- 		 
- 		 
- 		 
- 		 
-          <div class="mb-3">
-           	<label for="address2">상세장소</label>
-          		 <input type="text" class="form-control" id="address2" name="address2" placeholder="상세장소를 입력해주세요."  required="required" >
-          </div>
-         
-        
-        		
-        
-        
-        </div><!-- close.modal-body -->
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기(취소)</button>
-        </div>
-        
-      </div>
-    </div>
-</div>
-
-
-
-
-
 
 
 

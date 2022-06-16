@@ -77,14 +77,21 @@ public class PdSelectController
 	
 	// 구매제안 폼에서 장소선택하면
 	@RequestMapping(value = "/direct_place.action", method = RequestMethod.GET)
-	public String selectPlace(Model model, String pd_id)
+	public String selectPlace(Model model, String pd_id, HttpServletRequest request)
 	{
 		String result = "";
 		
 		IProduct dao = sqlSession.getMapper(IProduct.class);
+		String hope_sdate = request.getParameter("hope_sdate");
+		String hope_edate = request.getParameter("hope_edate");
+		System.out.println(hope_sdate);
+		System.out.println(hope_edate);
 		try
 		{
+			
 			model.addAttribute("mgrs", dao.mgrs(pd_id));
+			model.addAttribute("hope_sdate", hope_sdate);
+			model.addAttribute("hope_edate", hope_edate);
 			result = "WEB-INF/view/user/main/direct_place.jsp";	
 			
 		} catch (Exception e)

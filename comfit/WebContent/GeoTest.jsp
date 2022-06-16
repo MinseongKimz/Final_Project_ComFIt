@@ -21,8 +21,13 @@
 		    console.log(pos);
 		    var lat = pos.coords.latitude;	// 위도
 		    var lon = pos.coords.longitude; // 경도
-		    alert("현재 위치는 : " + lat + ", "+ lon);
-		    $("#location").html('<h1>위도 : ' + lat + '경도 : ' + lon + '</h1>'); 
+		    //alert("현재 위치는 : " + lat + ", "+ lon);
+		    $("#location").html('<h1>위도 : ' + lat + '경도 : ' + lon + '</h1>');
+		    
+		    $("#geoBtn").click(function()
+			{
+				location.href="georesult.action?address="+$("#address").val()+"&lat="+lat+"&lon="+lon;
+			})
 		});
 		
 	
@@ -101,18 +106,21 @@
 </head>
 <body>
 <div class="mb-3">
-      <label for="address">주소</label><br />
-      <input type="text" class="form-control" id="address" placeholder="클릭해주세요" required="required" readonly="readonly" onclick="searchAddr()">
-      <div class="invalid-feedback">
-           주소를 입력해주세요.
-      </div>
+	<form action="georesult.action" method="get">
+		<label for="address">주소</label><br />
+		<input type="text" class="form-control" name="addr" id="address" placeholder="클릭해주세요" required="required" readonly="readonly" onclick="searchAddr()">
+		<div class="invalid-feedback">
+	           주소를 입력해주세요.
+		</div>
+		<div>
+		     <label for="address2">상세주소</label>
+		     <input type="text" class="form-control" id="address2" placeholder="상세주소를 입력해주세요." required="required">
+		     <button type="button" id="geoBtn">주소선택완료</button>
+		</div>
+	</form>
 </div>
 
-<div class="mb-3">
-     <label for="address2">상세주소</label>
-     <input type="text" class="form-control" id="address2" placeholder="상세주소를 입력해주세요."  required="required" >
-</div>
-	
+
 	
 	
 </body>

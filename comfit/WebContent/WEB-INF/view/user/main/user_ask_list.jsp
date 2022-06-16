@@ -96,7 +96,7 @@
 		      <td class="col-md-7" onclick="location.href='user_ask_my_list.action'">${asklist.ask_contents }</td>
 		      <td class="col-md-2">${asklist.ask_date }</td>
 		      <!-- <td class="col-md-1.5">처리완료</td> -->
-		      <td class="col-md-1.5">${asklist.ask_cate_id }</td>
+		      <td class="col-md-1.5">${asklist.ask_cate_name }</td>
 		    </tr>
 		   
 		   

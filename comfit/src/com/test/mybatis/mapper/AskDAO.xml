@@ -6,12 +6,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 문의 카테고리 출력  -->
 	<select id="askcatelist" resultType="com.test.mybatis.AskDTO">
-	SELECT ASK_CATE_ID,ASK_CATE_NAME
+	SELECT ASK_CATE_NAME, ASK_CATE_ID
 	FROM ASK_CATEGORY
 	WHERE ASK_CATE_ID=#{ask_cate_id}
 	</select>
 	
-	<!-- 문의 내역 출력  -->
+	<!-- 문의 내역 출력 수정필요  -->
 	<select id="asklist" resultType="com.test.mybatis.AskDTO">
 	SELECT ASK_ID,ASK_TITLE,ASK_DATE,ASK_CATE_ID,ASK_CONTENTS
 	FROM ASK

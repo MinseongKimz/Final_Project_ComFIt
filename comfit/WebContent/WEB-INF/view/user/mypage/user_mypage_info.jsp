@@ -86,15 +86,18 @@
 </head>
 <body>
 
+
+<!--Sidebar-->
+<div style="float:left; margin-left: 10px; margin-top: 20%; position: fixed;">
+	<c:import url="/WEB-INF/view/user/main/user_sidebar.jsp" ></c:import>
+</div>
+
+
 <!--Header-->
 <div class="header">
 	<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
 </div>
 
-<!--Sidebar-->
-<div style="float:left; margin-left: 10px; margin-top: 10%; position: fixed;">
-	<c:import url="/WEB-INF/view/user/main/user_sidebar.jsp" ></c:import>
-</div>
 
 <div class="container">
     <div class="title" style="text-align: center; font-size: 28pt; font-weight: bold;">
@@ -102,7 +105,9 @@
 	<br>
 	</div>
       
-	<table class="tablebts"  style="colspan:2;">
+
+	<table class="tablebts"  style="colspan:2; margin-top:2%;">
+
 		<tr>
 			<th>
 				<img alt="" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"

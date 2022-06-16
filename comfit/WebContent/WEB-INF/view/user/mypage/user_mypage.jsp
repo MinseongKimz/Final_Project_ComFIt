@@ -11,7 +11,6 @@
 <meta charset="UTF-8">
 <title>마이페이지</title>
 <link rel="stylesheet" type="text/css" href="/css/main.css">
-<link rel="stylesheet" href="<%=cp %>/css/bootstrap.css">
 <style type="text/css">
 
 	.subheader
@@ -67,13 +66,28 @@
 	$(document).ready(function()
 	{
 		// alert("페이지 열림");
+		$("#infoBtn").click(function()
+		{
+			// alert("내정보보기,수정");
+			var inputpw = prompt("비밀번호를 입력해주세요.");
+			
+			alert("입력한 비밀번호 : " + inputpw);
+			
+			location.href= "user_information.action";
+		});
 		
 	});
 	
 </script>
 </head>
 <body>
-	<!--Header  -->
+
+<!--Sidebar-->
+<div style="float:left; margin-left: 10px; margin-top: 20%; position: fixed;">
+	<c:import url="/WEB-INF/view/user/main/user_sidebar.jsp" ></c:import>
+</div>
+
+<!--Header  -->
 <div class="header">
 	<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
 </div>
@@ -100,7 +114,8 @@
 					</th>
 					<td>
 						<button type="button" class="btn btn-primary" onclick="location.href='user_wish.action'">찜한상품보기</button>
-						<button type="button" class="btn btn-primary" onclick="location.href='user_information.action'">내 정보 보기/수정</button>
+
+						<button id="infoBtn" type="button" class="btn btn-primary">내 정보 보기/수정</button>
 					</td>
 				</tr>
 			</table>
@@ -169,7 +184,9 @@
 		
 		<!-- button -->
 		<div style="text-align: right;">
-		<button type="button" class="btn btn-primary btn-sm"id="sellBtn" style="width: 20%; height: 40px; font-size: 15pt;"
+
+		<button type="button" class="btn btn-primary btn-sm" id="sellBtn" style="width: 20%; height: 40px; font-size: 15pt;"
+
 			    onclick="location.href='user_selllist.action'">판매내역 자세히보기</button>
 		</div>      
 		

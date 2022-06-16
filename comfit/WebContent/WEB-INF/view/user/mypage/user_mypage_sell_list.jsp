@@ -9,9 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>내 판매 목록</title>
-<link rel="stylesheet" href="css/main.css" type="text/css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-<link rel="stylesheet" href="<%=cp %>/css/bootstrap.css">
 
 <style type="text/css">
 	.list-group 
@@ -33,23 +31,29 @@
   	{
   		display: inline-table;
   		width:100%;
+  		font-weight: bold;
   	}
 
 </style>
 
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+</script>
 
 
 </head>
 <body>
 
-<div class="header">
-	<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
-</div>
 
-<div style="float:left; margin-left: 10px; margin-top: 10%; position: fixed;">
+<!-- sidebar -->
+<div style="float:left; margin-left: 10px; margin-top: 20%; position: fixed;">
 	<c:import url="/WEB-INF/view/user/main/user_sidebar.jsp" ></c:import>
 </div>
 
+<!-- header -->
+<div class="header">
+	<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
+</div>
 
 
 <div class="container">
@@ -68,7 +72,8 @@
 		</div>
 		
 		<!-- 테이블  -->
-		<table class="table" style="font-size: 10pt;">
+
+		<table class="table table-bordered table-hover" style="font-size: 10pt; margin-top: 2%;">
 			<thead>
 				<tr class="table-primary">
 					<th>판매 시작일</th>
@@ -83,7 +88,7 @@
 			</thead>
 			<tbody>
 				<c:forEach var="sell" items="${sellList }">
-				<tr>
+				<tr onclick="alert('해당 상품 페이지로');">
 					<td>${sell.pd_regit_date }</td>
 					<td>${sell.pd_price }</td>
 					<td>${sell.pd_title }</td>

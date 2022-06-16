@@ -28,6 +28,12 @@
 		color: red;
 		font-weight: bold;
 	}
+
+	table
+	{
+		font-weight: bold;
+	}
+
 	
 </style>
 
@@ -35,7 +41,9 @@
 </head>
 <body>
 
-<div style="float:left; margin-left: 10px; margin-top: 10%; position: fixed;">
+
+<div style="float:left; margin-left: 10px; margin-top: 20%; position: fixed;">
+
 	<c:import url="/WEB-INF/view/user/main/user_sidebar.jsp" ></c:import>
 </div>
 
@@ -58,8 +66,9 @@
     	<div style="text-align: right;">
 			<select class="selectpicker" style="width: 100px; height: 30px; float: right;" >
 				<option>날짜순</option>
-				<option>완료</option>
-				<option>미완료</option>
+				<option>입금만</option>
+				<option>출금만</option>
+
 			</select>
 		</div>
 
@@ -70,9 +79,10 @@
 		</div>
 		
 		<!-- 테이블  -->
-		<table class="table" style="font-size: 10pt; width: 100%;">
+		<table class="table table-bordered" style="font-size: 10pt; width: 100%;">
 			<thead>
-				<tr>
+				<tr class="table-primary">
+
 					<th style="width: 40%;">일시</th>
 					<th>금액</th>
 					<th>방식</th>

@@ -256,6 +256,8 @@ d-block
 				<!-- 판매자)입찰자 없을 때 :수정하기/삭제하기-->
 				<!-- 판매자)입찰자 있을 때 :즉시낙찰/삭제하기 -->
 				<!-- 구매자) 제안하기/신고 -->
+					
+				
 				<!-- <button type="button" class="btn btn-warning" style="width: 48%;">즉시낙찰</button> -->
 				<!-- <button type="button" class="btn btn-primary" style="width: 48%;">제안하기</button> -->
 				<!-- <button type="button" class="btn btn-secondary" style="width: 48%;">신고</button> -->
@@ -300,7 +302,7 @@ d-block
 					</div>
 					<div style="padding-left: 25%;">
 						<p class="fs-2" style="margin-top: 5%; font-weight: bold;">${dlPd.u_nickname } 
-						<span class="fs-6" style="color: green;">Level : 5</span>
+						<span class="fs-6" style="color: green;">Level : ${userLevel }</span>
 						</p>
 					</div>
 				</div>
@@ -308,7 +310,7 @@ d-block
 				  <div class="card-body" style="height: 85px;">
 				    <h5 class="card-title"></h5>
 				    <div style="text-align: right;">
-				    	<p class="card-text" style="font-weight: bold;">누적 판매 수 : 25회</p>
+				    	<p class="card-text" style="font-weight: bold;">누적 판매 수 : ${sellCount }회</p>
 				    	<a href="user_detail_sell.jsp" style="text-decoration: none;">상세보기</a>
 				    </div>
 				  </div>
@@ -355,8 +357,6 @@ d-block
 			</table>
 			</div>
 			</c:forEach>
-			
-			
 		</div>
 	
 <!-- bootstrap card 사용해서 구성 가능 -->	

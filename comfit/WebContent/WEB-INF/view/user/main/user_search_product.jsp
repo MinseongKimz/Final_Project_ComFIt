@@ -123,6 +123,9 @@
             var price = $(this).find('lprice').text();   // lprice : 각 항목의 최저가 → 최고가는 안나오는듯..?
             var image = $(this).find('image').text();   // image : 각 항목의 사진 
             var category3 = $(this).find('category3').text();
+            if(category3=="")
+            	var category3 = $(this).find('category2').text();
+            
             var maker = $(this).find('maker').text();
             
             if(index!=0&&index%3==0)
@@ -166,7 +169,9 @@
                
             
             //console.log(tprice2);
-            var realAvgPrice = (tprice2/arr.length) * 0.65;
+            var AvgPrice = parseInt((tprice2/arr.length) * 0.65);
+            
+            realAvgPrice = Math.floor(AvgPrice/1000) * 1000;
             
             //alert(avgPrice);
             //alert(realAvgPrice);
@@ -200,7 +205,7 @@
          var category = valArr[1];
          var maker = valArr[2];
          
-         location.href="returnsell.action?name=" + name + "&maker=" + maker + "&category=" + category;
+         location.href="returnsell.action?name=" + name + "&maker=" + maker + "&category=" + category + "&realAvgPrice=" + realAvgPrice;
          
         /*  $.post("retunsell.action", {
             name : name

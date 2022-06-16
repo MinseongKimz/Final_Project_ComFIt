@@ -1,5 +1,8 @@
 package com.test.mybatis;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,13 +27,30 @@ public class ProductController
 		return result;
 
 	}
+<<<<<<< HEAD
 
 	@RequestMapping(value = "/user_mainlist.action", method = RequestMethod.GET)
 	public String mainList(Model model)
+=======
+	
+	@RequestMapping(value = "/user_mainlist.action", method = RequestMethod.POST)
+	public String mainList(Model model, ProductDTO dto, HttpServletRequest request )
+>>>>>>> 2d9f0dd0856300ecf6d60ba51ea035feb7733640
 	{
 		String result = null;
+		
 		IProduct dao = sqlsession.getMapper(IProduct.class);
-		model.addAttribute("pdList", dao.pdList());
+		
+		HttpSession session = request.getSession();
+				
+		String lat = (String)session.getAttribute("lat");
+		String lon = (String)session.getAttribute("lon");
+		
+		dto.setLat(lat);
+		dto.setLon(lon);
+		
+		
+		model.addAttribute("pdList", dao.user_pdList(dto));
 		model.addAttribute("cateList", dao.cateList());
 
 		result = "/WEB-INF/view/user/main/user_main.jsp";
@@ -172,6 +192,7 @@ public class ProductController
 	
 	
 	
+<<<<<<< HEAD
 	// 판매글 등록 페이지 select option 에 categoryList 연결
 	@RequestMapping(value = "user_delivery_seller_edit.action", method = RequestMethod.GET)
 	public String categoryOption(Model model)
@@ -186,5 +207,10 @@ public class ProductController
 
 		return result;
 	}
+=======
+	
+	   
+	
+>>>>>>> 2d9f0dd0856300ecf6d60ba51ea035feb7733640
 
 }

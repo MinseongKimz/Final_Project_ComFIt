@@ -71,22 +71,38 @@
    
   </style>
 
+
 <link href="headers.css" rel="stylesheet">
+<script type="text/javascript">
+
+	$(document).ready(function()
+	{
+		$("#searchBtn").click(function()
+		{
+			//alert($("#searchProduct").val());
+			
+			$(location).attr("href", "searchlist.action?searchKey="+$("#searchProduct").val()
+									+"&sort=1");
+			
+		});
+		
+	});
+	
+</script>
+
 
 
 </head>
 <body>
 <div>
 
-  
-
   <header>
     <!-- nav 상단 고정-->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container">
-            <a href="user_mainlist.action" > 
-	           <img alt="logo" src="<%=cp%>/images/logo.png" style="width: 200px;">
-	        </a>
+        	<form action="user_mainlist.action" method="post">
+	         <button type="submit" style="border: 1px solid white; background-color: white;"><img alt="logo" src="<%=cp%>/images/logo.png" style="width: 200px;"></button>  
+	        </form>
 	        
               	<button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			      <span class="navbar-toggler-icon"></span>
@@ -96,9 +112,9 @@
               		<br />
                  	<form class="form-inline" style="width: 100%;">
 				     	<div class="input-group" style="width:75%; padding-left: 20%">
-						     <input type="text" class="form-control" placeholder="원하시는 상품을 검색하세요.">
-					         <button id="Btn" type="button" class="btn btn-outline-primary">
-							 <i class="bi bi-search"></i>
+						     <input id="searchProduct" type="text" class="form-control" placeholder="원하시는 상품을 검색하세요.">
+					         <button id="searchBtn" type="button" class="btn btn-outline-primary">
+							 	<i class="bi bi-search"></i>
 					         </button>							     
 	  					</div>
                 	</form>
@@ -108,7 +124,7 @@
                         <a class="nav-link primary active" aria-current="page" href="user_svc.action">고객센터</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="comfit.action">로그아웃</a>
+                        <a class="nav-link active" href="logout.action">로그아웃</a>
                     </li>
                     <li class="nav-item">
                       	<a class="nav-link active" href="user_mypage.action">마이페이지</a>
@@ -143,7 +159,7 @@
 	         </button>
 	         <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
 	            <li class="dropdown-item"><a class="dropdown-item" href="direct_sell.action">직거래 판매하기</a></li>
-	            <li class="dropdown-item"><a class="dropdown-item" href="delivery_sell.action">택배거래 판매하기</a></li>
+	            <li class="dropdown-item"><a class="dropdown-item" href="user_delivery_seller_edit.action">택배거래 판매하기</a></li>
 	         </ul>
 	</div>
 	</div>

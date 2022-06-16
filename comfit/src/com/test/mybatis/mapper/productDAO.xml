@@ -35,9 +35,15 @@
 	<!--    자료형 클래스(DTO) 멤버 변수(속성)와 일치하는 경우 -->
 	<!--    <<자동 매핑>>이 이루어진다. -->
 	<!--    또한 SQL 문 내부에 세미콜론(;) 이 있으면 안된다. -->
-	<select id="pdList" resultType="com.test.mybatis.ProductDTO">
-		SELECT PD_ID, PD_NAME, PRICE
-		FROM   PD_LIST_MAIN_VIEW
+	<select id="user_pdList" resultType="com.test.mybatis.ProductDTO">
+		  SELECT V.PD_ID AS PD_ID, V.PD_NAME AS PD_NAME, V.PRICE AS PRICE, V.DISTANCE AS DISTANCE
+			FROM
+			(
+			SELECT PD_ID, PD_NAME, PRICE
+			     , ROUND(DISTANCE_WGS84(LAT, LON, #{lat}, #{lon}), 2) AS DISTANCE
+			FROM DIRE_PD_NEAR_VIEW
+			) V
+			ORDER BY V.DISTANCE
 	</select>
 	<select id="cateList" resultType="com.test.mybatis.CategoryDTO">
 		SELECT PD_CATEGORY_ID, CATEGORY_NAME
@@ -63,6 +69,47 @@
 		WHERE PD_ID = #{pd_id}
 	</select>
 	
+	<select id="search_pdListDefault" resultType="com.test.mybatis.ProductDTO">
+	SELECT PD_ID, CATEGORY_NAME, PD_REGIT_DATE, U_ID, PD_TITLE, DEAL_TYPE
+	, PD_PRICE, SYSTEM, COMP_DATE, SELLER_ID, BUYER_ID, STATUS, PD_PHOTO
+	FROM PD_LIST_VIEW
+	WHERE PD_TITLE LIKE #{searchKey}
+	</select>
+	
+	<select id="search_pdListPriceH" resultType="com.test.mybatis.ProductDTO">
+	SELECT PD_ID, CATEGORY_NAME, PD_REGIT_DATE, U_ID, PD_TITLE, DEAL_TYPE
+	, PD_PRICE, SYSTEM, COMP_DATE, SELLER_ID, BUYER_ID, STATUS, PD_PHOTO
+	FROM PD_LIST_VIEW
+	WHERE PD_TITLE LIKE #{searchKey}
+	ORDER BY PD_PRICE DESC
+	</select>
+	
+	<select id="search_pdListPriceL" resultType="com.test.mybatis.ProductDTO">
+	SELECT PD_ID, CATEGORY_NAME, PD_REGIT_DATE, U_ID, PD_TITLE, DEAL_TYPE
+	, PD_PRICE, SYSTEM, COMP_DATE, SELLER_ID, BUYER_ID, STATUS, PD_PHOTO
+	FROM PD_LIST_VIEW
+	WHERE PD_TITLE LIKE #{searchKey}
+	ORDER BY PD_PRICE ASC
+	</select>
+	
+	<select id="search_pdListDirect" resultType="com.test.mybatis.ProductDTO">
+	SELECT PD_ID, CATEGORY_NAME, PD_REGIT_DATE, U_ID, PD_TITLE, DEAL_TYPE
+	, PD_PRICE, SYSTEM, COMP_DATE, SELLER_ID, BUYER_ID, STATUS, PD_PHOTO
+	FROM PD_LIST_VIEW
+	WHERE PD_TITLE LIKE #{searchKey}
+	AND SYSTEM = '직거래(제안거래)'
+	</select>
+	
+	<select id="search_pdListDelivery" resultType="com.test.mybatis.ProductDTO">
+	SELECT PD_ID, CATEGORY_NAME, PD_REGIT_DATE, U_ID, PD_TITLE, DEAL_TYPE
+	, PD_PRICE, SYSTEM, COMP_DATE, SELLER_ID, BUYER_ID, STATUS, PD_PHOTO
+	FROM PD_LIST_VIEW
+	WHERE PD_TITLE LIKE #{searchKey}
+	AND SYSTEM = '택배(경매)'
+	</select>
+	
+	
+	
 	<select  id="bidList" resultType="com.test.mybatis.BidListDTO">
 		SELECT BID_CODE, U_NICKNAME, PRICE, BID_DATE, ADDRESS
 		FROM BID_LIST_REALVIEW
@@ -74,6 +121,7 @@
 	  	  FROM SUGGEST_LIST_REALVIEW
 		 WHERE DIRE_PD_ID = #{pd_id}
 	</select>	
+<<<<<<< HEAD
 
 
 
@@ -84,7 +132,41 @@
 
 
 	
+=======
+>>>>>>> 2d9f0dd0856300ecf6d60ba51ea035feb7733640
 	
+	<select id="deliuserId" resultType="java.lang.String">
+		SELECT U_ID
+		  FROM DELIVERY_PRODUCT
+		 WHERE DELI_PD_ID = #{pd_id}
+	</select>
+	<select id="direuserId" resultType="java.lang.String">
+		SELECT U_ID
+		  FROM DIRECT_PRODUCT
+		 WHERE DIRE_PD_ID = #{pd_id}
+	</select>
+	
+	<select  id="userLevel" resultType="java.lang.Integer">
+		SELECT CASE TRUNC(SQRT((SUM(USER_EXP))/2))
+       			WHEN 0
+       			THEN 1
+       			ELSE TRUNC(SQRT((SUM(USER_EXP))/2)) 
+       			END AS USER_LEVEL
+		FROM USER_LEVEL_VIEW
+		WHERE U_ID = #{userId}
+	</select>
+	
+	<select id="sellCount" resultType="java.lang.Integer">
+	SELECT COUNT(*) AS SELL_COUNT
+ 	  FROM USER_SELL_COUNT_VIEW
+	  WHERE U_ID = #{userId}
+	</select>
+	
+	<select id="non_user_pdList" resultType="com.test.mybatis.ProductDTO">
+		SELECT PD_ID, PD_NAME, PRICE
+	 	 FROM PD_LIST_MAIN_VIEW
+	    ORDER BY PD_REGIT_DATE
+	</select>
 </mapper>
 
 

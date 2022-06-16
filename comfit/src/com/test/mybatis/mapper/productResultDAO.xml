@@ -12,12 +12,23 @@
 	</select>
 	
 	<select id="makerList" resultType="com.test.mybatis.MakerDTO">
-		SELECT PD.PD_CATEGORY_ID AS PD_CATEGORY_ID, MAKER_NAME, MAKER_NAME2
+		SELECT PD.PD_CATEGORY_ID AS PD_CATEGORY_ID, MAKER_NAME, MAKER_NAME2, PD_MAKER_ID 
 		FROM PRODUCT_MAKER PD JOIN PRODUCT_CATEGORY CA
 		ON PD.PD_CATEGORY_ID = CA.PD_CATEGORY_ID
 		WHERE CA.CATEGORY_NAME = #{category}
 	</select>
 
+	<select id="makerList2" resultType="com.test.mybatis.MakerDTO">
+		SELECT PD.PD_MAKER_ID, PD.MAKER_NAME
+		FROM PRODUCT_MAKER PD JOIN PRODUCT_CATEGORY CA
+		ON PD.PD_CATEGORY_ID = CA.PD_CATEGORY_ID
+		WHERE PD.PD_CATEGORY_ID = #{optionValue}
+	</select>
+	
+	<insert id="deliveryInsert">
+	INSERT INTO DELIVERY_PRODUCT(DELI_PD_ID, PD_TITLE, PD_NAME, PD_PHOTO, PD_AS_REMAIN, PD_START_PRICE, PD_HITCOUNT, PD_MAKER_ID, PD_AS_ID, U_ID, CF_PRICE, COMMENTS, IMD_PRICE)
+	VALUES(CONCAT('deli_', DELI_PD_SEQ.NEXTVAL), #{pd_title}, #{pd_name}, #{pd_photo}, #{pd_as_remain}, #{pd_start_price}, 0 , #{pd_maker_id}, #{pd_as_id}, #{u_id}, #{cf_price}, #{comments}, #{imd_price})
+	</insert>
 	
 </mapper>
 

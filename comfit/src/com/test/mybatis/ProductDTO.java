@@ -2,8 +2,96 @@ package com.test.mybatis;
 
 public class ProductDTO
 {
-	private String pd_id, pd_name, price;
+	// SELECT PD_TITLE, PD_PRICE, SYSTEM, STATUS, PD_PHOTO
+
+	private String pd_id, pd_name, price, distatnce;
 	
+	private String pd_title, system, status, pd_photo;
+	
+	private int pd_price;
+	
+	private String lat, lon;
+	
+	
+	public String getPd_title()
+	{
+		return pd_title;
+	}
+
+	public void setPd_title(String pd_title)
+	{
+		this.pd_title = pd_title;
+	}
+
+	public String getSystem()
+	{
+		return system;
+	}
+
+	public void setSystem(String system)
+	{
+		this.system = system;
+	}
+
+	public String getStatus()
+	{
+		return status;
+	}
+
+	public void setStatus(String status)
+	{
+		this.status = status;
+	}
+
+	public String getPd_photo()
+	{
+		return pd_photo;
+	}
+
+	public void setPd_photo(String pd_photo)
+	{
+		this.pd_photo = pd_photo;
+	}
+
+	public int getPd_price()
+	{
+		return pd_price;
+	}
+
+	public void setPd_price(int pd_price)
+	{
+		this.pd_price = pd_price;
+	}
+
+	public String getLat()
+	{
+		return lat;
+	}
+
+	public void setLat(String lat)
+	{
+		this.lat = lat;
+	}
+
+	public String getLon()
+	{
+		return lon;
+	}
+
+	public void setLon(String lon)
+	{
+		this.lon = lon;
+	}
+
+	public String getDistatnce()
+	{
+		return distatnce;
+	}
+
+	public void setDistatnce(String distatnce)
+	{
+		this.distatnce = distatnce;
+	}
 
 	public String getPd_id()
 	{

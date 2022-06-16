@@ -8,237 +8,488 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
 <title>직거래 판매글 등록</title>
 <link rel="stylesheet" href="<%=cp %>/css/bootstrap.css">
 <link rel="stylesheet" href="<%=cp %>/css/inputstyle.css">
-<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-<script type="text/javascript" src="/js/bootstrap.js"></script>
+<link rel="stylesheet" href="css/main.css" type="text/css"> 
+<link rel="stylesheet" href="<%=cp %>/css/inputstyle.css">
+<link rel="stylesheet" type="text/css" href="<%=cp %>/css/jquery-ui.css">
+<link rel="stylesheet" href="<%=cp %>/css/timepicker.css">
+<link rel="stylesheet" href="<%=cp %>/css/timepicker.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="jQuery.MultiFile.min.js"></script>
+<style type="text/css">
+.insert {
+    padding: 20px 30px;
+    display: block;
+    width: 75%;
+    height: 15%;
+    border: 1px solid #dbdbdb;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.insert .file-list {
+    height: 15%;
+    overflow: auto;
+    border: 1px solid #989898;
+    padding: 10px;
+}
+.insert .file-list .filebox p {
+    font-size: 14px;
+    margin-top: 10px;
+    display: inline-block;
+}
+.insert .file-list .filebox .delete i
+{
+    size:50%;
+    margin-left: 5px;
+}
+</style>
 <script type="text/javascript">
 
 	$(document).ready(function()
-	{
-		// 테스트
-		//alert("창열림");
-		
-		$("[name=asRadio]").change(function()
 		{
-			$("#asDate").attr("disabled", false);
-			//alert($(this).val());
-			
-			if ($(this).val() == "불가능")
+			$("#category-select").change(function()
 			{
-				 $("#asDate").attr("disabled", true);
-			}
-			
-		});
-		
-	});
-
+				//alert($(this).val());
+				var param = "optionValue=" + $(this).val();
+				 
+				// select option value 에  카테고리id가 들어가도록 변경
+				
+				
+				$.ajax(
+				{
+					url: "changeMakerSelect.action"
+					, type: "GET"
+					, data: param
+					, success: function(result)
+					{
+						
+						$("#maker_id").html(result)
+						
+					/* $("#maker_name").html("<c:forEach var='maker' items='${makerlist }'>"
+								+ "<option value='${maker.maker_name }'>" + ${maker.maker_name }+ "</option>"
+								+"</c:forEach>") */
+						
+					}
+					, error: function(e)
+					{
+						alert(e.responseText);
+					}
+				})
+				
+			})
+				
+		})
 
 </script>
 
+<script type="text/javascript">
+   function readURL(input) {
+     if (input.files && input.files[0]) {
+       var reader = new FileReader();
+       reader.onload = function(e) {
+         document.getElementById('preview').src = e.target.result;
+       };
+       reader.readAsDataURL(input.files[0]);
+     } else {
+       document.getElementById('preview').src = "";
+     }
+   }
+   
+   var fileNo = 0;
+   var filesArr = new Array();
+   /* 첨부파일 추가 */
+   function addFile(obj){
+      var minFileCnt = 6;
+       var maxFileCnt = 10;   // 첨부파일 최대 개수
+       var attFileCnt = document.querySelectorAll('.filebox').length;    // 기존 추가된 첨부파일 개수
+       var remainFileCnt = maxFileCnt - attFileCnt;    // 추가로 첨부가능한 개수
+       var curFileCnt = obj.files.length;  // 현재 선택된 첨부파일 개수
+      
+       
+       // 첨부파일 개수 확인
+       if (curFileCnt > remainFileCnt) {
+           alert("첨부파일은 최대 " + maxFileCnt + "개 까지 첨부 가능합니다.");
+       }
+       for (var i = 0; i < Math.min(curFileCnt, remainFileCnt); i++) {
+         
+          
+           const file = obj.files[i];
+         
+           
+           
+           
+           // 첨부파일 검증
+           if (validation(file)) {
+               // 파일 배열에 담기
+               var reader = new FileReader();
+               reader.onload = function () {
+                   filesArr.push(file);
+               };
+               reader.readAsDataURL(file)
+               // 목록 추가
+               let htmlData = '';
+               htmlData += '<div id="file' + fileNo + '" class="filebox">';
+               htmlData += '   <p class="name">' + file.name + '</p>';
+               htmlData += '   <a class="delete" onclick="deleteFile(' + fileNo + ');"><button class="btn btn-danger">취소</button></a>';
+               htmlData += '</div>';
+               $('.file-list').append(htmlData);
+               fileNo++;
+           } else {
+               continue;
+           }
+       }
+       // 초기화
+       document.querySelector("input[type=file]").value = "";
+   }
+      /* 첨부파일 검증 */
+      function validation(obj){
+       const fileTypes = ['application/pdf', 'image/gif', 'image/jpeg', 'image/png', 'image/bmp', 'image/tif'];
+       if (obj.name.length > 100) {
+           alert("파일명이 100자 이상인 파일은 제외되었습니다.");
+           return false;
+       } else if (obj.size > (100 * 1024 * 1024)) {
+           alert("최대 파일 용량인 100MB를 초과한 파일은 제외되었습니다.");
+           return false;
+       } else if (obj.name.lastIndexOf('.') == -1) {
+           alert("확장자가 없는 파일은 제외되었습니다.");
+           return false;
+       }else if (!fileTypes.includes(obj.type)) {
+           alert("첨부가 불가능한 파일은 제외되었습니다.");
+           return false;
+       }
+       else {
+           return true;
+       }
+   }
+   
+   
+   
+   
+   /* 첨부파일 삭제 */
+   function deleteFile(num) {
+       document.querySelector("#file" + num).remove();
+       filesArr[num].is_delete = true;
+   }
+   /* 폼 전송 */
+   function submitForm() {
+       // 폼데이터 담기
+       var form = document.querySelector("form");
+       var formData = new FormData(form);
+       for (var i = 0; i < filesArr.length; i++) {
+           // 삭제되지 않은 파일만 폼데이터에 담기
+           if (!filesArr[i].is_delete) {
+               formData.append("attach_file", filesArr[i]);
+           }
+       }
+       $.ajax({
+           method: 'POST',
+           url: '/register',
+           dataType: 'json',
+           data: formData,
+           async: true,
+           timeout: 30000,
+           cache: false,
+           headers: {'cache-control': 'no-cache', 'pragma': 'no-cache'},
+           success: function () {
+               alert("파일업로드 성공");
+           },
+           error: function (xhr, desc, err) {
+               alert('에러가 발생 하였습니다.');
+               return;
+           }
+       })
+   }
+      
+   
+</script>
 </head>
 <body>
+   <!--Header  -->
+    <div class="header">
+	<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
+	</div>
+<!--날짜 처리  -->
+<script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
+<script type="text/javascript" src="<%=cp%>/js/jquery.timepicker.js."></script>
+<script type="text/javascript" src="<%=cp%>/js/jquery.timepicker.min.js"></script>
+      
+      <script type="text/javascript">
+   //$();
+   //jquery();
+   $(document).ready(function()
+   {
+      
+      //시작하는 날
+      $("#sdate").datepicker(
+      {
+         
+         dateFormat: "yy-mm-dd" 
+         ,minDate:0
+         ,maxDate:+3
+         ,onSelect: function(selectedDate) 
+         {    
+        	 	var sdate = new Date(selectedDate)
+        	 	sdate.setDate(sdate.getDate() + 1);
+        	 	
+        	 	var edate = new Date(sdate);
+        	 	edate.setDate(edate.getDate() + 4);
+        	 	
+        	    $("#edate").datepicker({ 
+        	          dateFormat: "yy-mm-dd" 
+        	          , minDate: sdate
+        	          , maxDate: edate
+        	     });
+         } 
+      });
+      
+      
+   
+      //시간 설정
+      $(function() 
+      {
+    	  var today =  new Date();
+         //시작시간
+          $("#time1").timepicker( {
+              timeFormat: 'H:mm p'
+              ,interval:60
+              ,dynamic: false
+              ,startTime: today.getHours() + ':00'
+              ,maxTime: '11:00pm'
+              ,dropdown: true
+              ,scrollbar: true  
+              ,change: function(time)
+			{	
+            	  var stime = new Date(time);
+            	  $("#time2").timepicker({
+                      timeFormat: 'H:mm p'
+                      ,interval: 60
+                      ,dynamic: false
+                      ,minTime: (stime.getHours()+1)+ ':00'
+                      ,maxTime : '23:00'
+                      ,dropdown: true
+                      ,scrollbar: true  
+                      
+                  });
+			}
+          });
+         //끝나는 시간
+         
+      });
+   })
+   
+   
+   
+</script>
 
-<div class="header">
-	<c:import url="comfit_header_user.jsp"></c:import>
-</div>
 
+
+   
 <div class="container" style="padding-top: 80px;">
-	<p class="fs-3" style="font-weight: bold;">
-		판매글 등록-직거래	
-	</p>
-	
-	<div class="input_box" style="padding-left: 5%; padding-top: 10%;">
-		<table style="width: 100%;">
-			<tr>
-				<th>제목<span class="star">*</span></th>
-				<td colspan="3"><input class="form-control" id="exampleFormControlInput1" type="text" placeholder="제목을 입력해주세요." style="width: 86%;"/>
-				<p align="right" style="font-size: 3px; margin-right: 16%;">32/32</p>
-				</td>
-			</tr>
-			
-			<tr>
-				<th>거래 가능 장소<span class="star">*</span></th>
-				<td>
-					지역 검색
-					<div class="input-group mb-5">
-					  <button class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></button>
-					  <input type="text" class="form-control" placeholder="검색" style="height:40px;">
-					</div>
-				</td>
+   <p class="fs-3" style="font-weight: bold;">
+      직거래 판매글 등록   
+   </p>
+   
+   <div class="input_box" style="padding-left: 5%; padding-top: 10%;">
+   <form action="" method="post">
+      <table style="width: 100%;">
+		 <tr>
+			<th>물품검색<span class="star">*</span></th>
+			<td colspan="2">
+				<div><!--  class="input-group mb-6" -->
+				  <input type="text" class="<!-- form-control  -->" placeholder="판매할 물품을 검색해주세요" style="height:40px; width: 260px; display: inline-block; font-style: italic;" readonly="readonly">
+				  <span class="input-group-text" id="basic-addon1" onclick="location.href='searchproduct2.action';" style="width: 50px; display: inline-block;"><i class="bi bi-search"></i></span>
+				</div>
+			</td>
+		 </tr>
+		<tr>
+			<th>제목<span class="star">*</span></th>
+			<td colspan="3"><input class="form-control" id="pd_title" name="pd_title" type="text" placeholder="제목을 입력해주세요." style="width: 86%; font-style: italic;"/>
+			<p align="right" style="font-size: 3px; margin-right: 16%;"></p>
+			</td>
+		</tr>
+		<tr>
+			<th>물품 카테고리<span class="star">*</span>
+			 <p style="font-weight: normal; font-size: 7pt;">상품과 일치하는 카테고리를 선택해주세요.
+                <br>적합하지 않을 경우 운영자에 의해 조정될 수 있습니다.</p>
+               </th>
+			<td><!-- 카테고리 -->
+				<select class="form-select" id="category-select" name="category_select" style="width: 90%; height: 35px;">
+				<option>카테고리 선택</option>
 				
-				<!-- 지도 출력 -->
-				<td colspan="2">
-					지도
-				</td>
-			</tr>
-			
-			<tr>
-				<th>거래 가능 일시<span class="star">*</span></th>
-				<td style="padding-top: 5%;">
-					날짜 입력
-					<div class="input-group mb-5">
-					  <button class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></button>
-					  <input type="text" class="form-control" placeholder="검색" style="height:40px;">
-					</div>
-				</td>
-				<td colspan="2">
-					시간 선택
-					<br>
-					<select class="form-select" aria-label="Default select example" style="width: 30%; display: inline-block;">
-					  <option selected>00:00</option>
-					  <option value="1">01:00</option>
-					  <option value="2">02:00</option>
-					  <option value="3">03:00</option>
-					</select>
-					~
-					<select class="form-select" aria-label="Default select example" style="width: 30%; display: inline-block;">
-					  <option selected>00:00</option>
-					  <option value="1">01:00</option>
-					  <option value="2">02:00</option>
-					  <option value="3">03:00</option>
-					</select>
-				</td>
-			</tr>
-			
-			<tr>
-				<th>물품 카테고리<span class="star">*</span>
-				 <p style="font-weight: normal; font-size: 7pt;">상품과 일치하는 카테고리를 선택해주세요.
-                 <br>적합하지 않을 경우 운영자에 의해 조정될 수 있습니다.</p>
-                </th>
-				<td width="20%;">카테고리
-					<br>
-					<select class="form-select" name="category" style="width: 90%; height: 35px;">
-					<option selected="selected">카테고리</option>
-					<option>모니터</option>
-					<option>마우스</option>
-					<option>키보드</option>
-					</select>
-					</td>
-				<td>물품명
-					<br>
-					<input type="text" class="form-control" id="productName" placeholder="물품명을 입력해 주세요." style="width: 90%;">
-				</td>	
-				<td>제조사
-					<br>
-					<input type="text" class="form-control" id="productMaker" placeholder="제조사를 입력해 주세요." style="width: 90%;"/>
-				</td>
-			</tr>
-			
-			<tr>
-				<!-- 공간맞추기용 th -->
-				<th>
-				</th>
+					<c:forEach var="category" items="${categorylist }">
+
+						<option class="option_select" value="${category.pd_category_id }" ${category.category_name eq cate ? 'selected' : ''}>${category.category_name }</option>
+
+					</c:forEach>
 				
-				<td colspan="2">
-					물품검색
-					<div class="input-group mb-5">
-					  <button class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></button>
-					  <input type="text" class="form-control" placeholder="물품검색" style="height:40px; width:100px;">
+				</select>
+			</td>
+			<td id="maker_c">
+				<%-- <input type="text" class="form-control" id="maker" name="maker" placeholder="제조사를 입력해 주세요." style="width: 90%;" value="${maker }"/> --%>
+				<select class="form-select" id="maker_id" name="pd_maker_id" style="width: 90%; height: 35px;">
+				<option id="pd_maker">제조사 카테고리 선택</option>
+					<c:forEach var="maker" items="${makerlist }">
+						<option value="${maker.pd_maker_id }" ${maker.maker_name eq mk ? 'selected' : ''}>${maker.maker_name }</option>
+					</c:forEach>
+
+				</select>
+			</td>	
+				
+			<td>
+				<input type="text" class="form-control" id="pd_name" name="pd_name" placeholder="물품명을 입력해 주세요." style="width: 90%;" value="${name }">
+			</td>	
+		</tr>
+		
+         <tr>
+            <th>희망 가능 장소<span class="star">*</span></th>
+			<td colspan="2">
+				<div><!--  class="input-group mb-6" -->
+				  <input type="text" class="<!-- form-control  -->" placeholder="거래 희망장소를 선택해주세요" style="height:40px; width: 260px; display: inline-block; font-style: italic;" readonly="readonly">
+				  <span class="input-group-text" id="basic-addon1" onclick="location.href='geotest.action';" style="width: 50px; display: inline-block;"><i class="bi bi-search"></i></span>
+				</div>
+			</td>
+            <!-- 지도 출력 -->
+         </tr>
+         
+         
+         <tr>
+         <div>
+            <th>희망 거래 일시<span class="star">*</span>
+            	<p style="font-weight: normal; font-size: 7pt;">오늘날짜로 선택이 불가능합니다.
+            	<br>거래 가능일은 5일입니다.
+            	<br>끝나는 시간은 23:00 PM 까지 입니다.</p>
+            
+	            <td>
+					<!-- <div class="input-group input-daterange" > -->
+						<input type="text" class="form-control" id="sdate" name="pd_hope_sdate" placeholder="1. 거래를 시작할 날짜" style="width: 90%;"/>
 					</div>
-				</td>
-			</tr>
-			
-			<tr>
-				<th>희망 시작 가격<span class="star">*</span>
-				 <p style="font-weight: normal; font-size: 7pt;">희망하는 가격을 적어주세요.</p>
+	            </td>
+			</th>
+		</div>
+	           	<td>
+	               <!-- <div class="input-group input-daterange"> -->
+	                   <input type="text" class="form-control" id="edate" name="pd_hope_edate" placeholder="2. 거래를 끝낼 날짜" style="width: 90%;"/>
+	               </div>
+	            </td>
+            <tr>
+            <th></th>
+	            <td>
+	             	<!-- <div class="input-group input-daterange"> -->
+	                	<input type="text" class="form-control" id="time1" name="pd_hope_stime"placeholder="3. 거래 시작 시간 선택" style="width: 90%;"/>
+	             	</div>
+	            </td>
+                <td>
+		            <!-- <div class="input-group input-daterange"> -->
+		                  <input type="text" class="form-control" id="time2" name="pd_hope_etime" placeholder="4. 거래 종료 시간 선택" style="width: 90%;"/>
+		            </div>
+               </td>
+            </tr>   
+         </tr>
+         
+         
+         
+        
+         
+         <tr>
+            <th>희망 시작 가격<span class="star">*</span>
+             <p style="font-weight: normal; font-size: 7pt;">희망하는 가격을 적어주세요.</p>
                 </th>
-                <td colspan="3"><input class="form-control" id="price1" type="text" placeholder="희망 가격을 입력해주세요." style="width: 86%;"/>
-                <p style="color:blue; font-size: 10px;">추천 가격보다 2배 이상은 입력할 수 없습니다.</p>
+                <td colspan="5"><input class="form-control" id="price1" type="text" placeholder="희망 가격을 입력해주세요." style="width: 40%;"/>
                 </td>
-			</tr>
-					
-			<tr>
-				<th>물품 사진<span class="star">*</span>
-				 <p style="font-weight: normal; font-size: 7pt;">최소 두장 이상 등록해 주세요.</p>
+         </tr>
+               
+         <tr>
+            <th>물품 사진<span class="star">*</span>
+             <p style="font-weight: normal; font-size: 7pt;">최소 여섯장 이상 등록해 주세요.</p>
                 </th>
                 <td colspan="3">
-                	<div style="width: 86%; height: 100%; border: 1px solid;">
-                		<p style="text-align: center; font-size: 9px;">
-                		<br>
-                		이미지 업로드(0/5)
-                		<br><br>
-                		최소 2개, 최대 5개까지 업로드 가능<br>
-                		파일 형식 : jpg / png 사이즈 : 가로 ??px, 세로 ??px 이상<br>
-                		※ 이미지를 등록하면 반영됩니다.
-                		</p>
-                	</div>
-                	<div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-right: 14%;">
-                	<button type="button" class="btn btn-primary btn-sm">이미지 업로드</button>
-                	<button type="button" class="btn btn-secondary btn-sm">이미지 삭제</button>
-                	</div>
-				</td>
-			</tr>
-			
-			<tr>
-				<th>A/S 가능 여부
+                      <div class="insert">
+                   <form method="POST" onsubmit="return false;" enctype="multipart/form-data">
+                      <p style="font-weight: normal;">[ 최소 6장 ~ 최대 10장 ]</p>
+                       <input type="file" onchange="addFile(this);" multiple />
+                       <div class="file-list"  >
+                       </div>
+                   </form>
+                  </div>
+            </td>
+         </tr>
+         
+         <tr>
+            <th>A/S 가능 여부
                 </th>
                 <td colspan="3">
                 <div class="form-check form-check-inline">
-				  <input class="form-check-input" type="radio" name="asRadio" id="inlineRadio1" value="유상" checked="checked">
-				  <label class="form-check-label" for="inlineRadio1">유상</label>
-				</div>
-				<div class="form-check form-check-inline">
-				  <input class="form-check-input" type="radio" name="asRadio" id="inlineRadio2" value="무상">
-				  <label class="form-check-label" for="inlineRadio2">무상</label>
-				</div>
-				<div class="form-check form-check-inline">
-				  <input class="form-check-input" type="radio" name="asRadio" id="inlineRadio3" value="불가능">
-				  <label class="form-check-label" for="inlineRadio3">불가능</label>
-				</div>
-				
-				<input class="form-control" id="asDate" type="text" placeholder="유효날짜 (연/월/일)" style="width: 86%;"/>
-			</tr>
-			
-			<tr>
-				<th>
-					<div style="background-color: #C9E0F5; height: 70px; padding: 10px; width: 85%;">
-						<p style="font-size: 9pt;"> ※ 게시글 유지 기간</p>
-						<p style="font-size: 7pt; font-weight: normal;">게시글 등록 시간부터 00일까지 유지됩니다.</p>
-					</div>
-				</th>
-				
-				<td colspan="3" rowspan="2">
-				<textarea placeholder="코멘트 특이사항" style="width:86%; height: 150px;"></textarea>
-				</td>
-			</tr>
-			
-			<tr>
-				<th style="margin-right: 10%;">
-					<div style="background-color: #C9E0F5; height: 100px; padding: 10px; width: 85%;">
-						<p style="font-size: 9pt;"> ※ 코멘트 작성 시 주의사항</p>
-						<p style="font-size: 7pt; font-weight: normal;">불필요한 개인 정보 노출 및 판매와 관련없는 문구
-						<br>등록 시 약관에 위배되어 제재될 수 있습니다.</p>
-					</div>
-				</th>
-			</tr>
-			
-			<tr>
-				<td colspan="4">
-					<div class="d-grid gap-2 d-md-flex justify-content-md-end" style="width: 90%;">
-	                <button type="button" class="btn btn-primary">등록하기</button>
-	                <button type="button" class="btn btn-secondary">취소</button>
-	                </div>
+              <input class="form-check-input" type="radio" name="asRadio" id="inlineRadio1" value="유상" checked="checked">
+              <label class="form-check-label" for="inlineRadio1">유상</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="asRadio" id="inlineRadio2" value="무상">
+              <label class="form-check-label" for="inlineRadio2">무상</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="asRadio" id="inlineRadio3" value="불가능">
+              <label class="form-check-label" for="inlineRadio3">불가능</label>
+            </div>
+            
+            <input class="form-control" id="asDate" type="text" placeholder="AS 만료 기간 입력. 예) 2024-09" style="width: 86%;"/>
+         </tr>
+         
+         <tr>
+            <th>
+               <div style="background-color: #C9E0F5; height: 70px; padding: 10px; width: 85%;">
+                  <p style="font-size: 9pt;"> ※ 게시글 유지 기간</p>
+                  <p style="font-size: 7pt; font-weight: normal;">게시글 등록 시간부터 00일까지 유지됩니다.</p>
+               </div>
+            </th>
+            
+            <td colspan="3" rowspan="2">
+            <textarea placeholder=" 판매자 코멘트 작성" style="width:86%; height: 150px;"></textarea>
+            </td>
+         </tr>
+         
+         <tr>
+            <th style="margin-right: 10%;">
+               <div style="background-color: #C9E0F5; height: 100px; padding: 10px; width: 85%;">
+                  <p style="font-size: 9pt;"> ※ 코멘트 작성 시 주의사항</p>
+                  <p style="font-size: 7pt; font-weight: normal;">불필요한 개인 정보 노출 및 판매와 관련없는 문구
+                  <br>등록 시 약관에 위배되어 제재될 수 있습니다.</p>
+               </div>
+            </th>
+         </tr>
+         
+         <tr>
+            <td colspan="4">
+               <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="width: 90%;">
+                   <button type="button" class="btn btn-primary">등록하기</button>
+                   <button type="button" class="btn btn-secondary">취소</button>
+                   </div>
                 </td>
-			</tr>
-			
-		</table>
-	</div>
-	
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
+         </tr>
+         
+      </table>
+      </form>
+   </div>
+   
+   <br />
+   <br />
+   <br />
+   <br />
+   <br />
+   <br />
+   <br />
 </div>
 
+<div class="footer">
 
+</div>
 
 </body>
 </html>

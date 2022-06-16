@@ -7,16 +7,17 @@ public class userDTO
 	, u_tel, bancount, u_password, u_profile ,u_address;
 	
 
-	// 이메일
-	
 
 	// 차단회원 리스트 속성
 	private String ban_cate_name, ban_date, ban_end_date, rep_cate_name, ban_rea_detail;
 
 	// 이메일 인증 여부
 	private String auth , random;
+
 	
-	public String getU_id()
+
+
+  public String getU_id()
 	{
 		return u_id;
 	}

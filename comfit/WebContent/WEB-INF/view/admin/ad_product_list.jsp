@@ -56,14 +56,23 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="product" items="${productlist}">
+				<c:forEach var="product" items="${productlist}">					
 				<tr>
-					<td>${product.cate_name}</td>
-					<td>${product.regit_date}</td>
-					<td>${product.u_email}</td>
-					<td><a href="admin_product_list_delivery.action">${product.pd_title}</a></td>
-					<td>${product.ta_cate}</td>
-					<td>${product.ta_status}</td>
+					<td>${product.category_name}</td>
+					<td>${product.pd_regit_date}</td>
+					<td>${product.u_id}</td>
+					
+					<c:set var="pd_id" value="deli" />
+						<c:choose>
+						<c:when test="${pd_id eq 'deli'}">
+						<td><a href="admin_product_list_delivery.action?pd_id=deli&pd_num=#">${product.pd_title}</a></td>
+						</c:when>
+						<c:when test="${pd_id eq 'dire'}">  
+						<td><a href="admin_product_list_delivery.action?pd_id=dire&pd_num=#">${product.pd_title}</a></td>
+						</c:when>
+						</c:choose>
+					<td>${product.deal_type}</td>
+					<td>${product.deal_status}</td>
 				</tr>
 				</c:forEach>
 			</tbody>

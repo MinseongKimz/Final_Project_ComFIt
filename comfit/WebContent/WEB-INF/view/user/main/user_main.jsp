@@ -176,6 +176,7 @@
          <c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
 </div>
 
+
 <!-- 220610 추가한 부분 지워도 됩니다! 큼직하게 이미지 넣는게 밀도있을 것 같아보여서 추가했어요 -->
 <!-- <section>
   <div class="position-relative overflow-hidden p-2 p-md-4 m-md-3 text-center ">
@@ -246,7 +247,7 @@
        
       <!-- 최근 등록 상품 -->
       <div style="font-size: 20pt; font-weight:bold; display: inline-block; width: 1100px;">
-         최근 등록 상품
+         내 주변 상품
       </div>
          
       <div style="display: inline-block; width: 200px; float: right;">   

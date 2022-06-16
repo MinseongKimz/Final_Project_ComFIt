@@ -45,11 +45,11 @@
 <body>
 
 
+
 <!-- sidebar -->
 <div style="float:left; margin-left: 10px; margin-top: 20%; position: fixed;">
 	<c:import url="/WEB-INF/view/user/main/user_sidebar.jsp" ></c:import>
 </div>
-
 <!-- header -->
 <div class="header">
 	<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>

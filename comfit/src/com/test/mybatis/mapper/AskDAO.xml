@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.mybatis.IAdmin">
+	
+	<!-- 문의 카테고리 출력  -->
+	<select id="askcatelist" resultType="com.test.mybatis.AskDTO">
+	SELECT ASK_CATE_ID,ASK_CATE_NAME
+	FROM ASK_CATEGORY
+	WHERE ASK_CATE_ID=#{ask_cate_id}
+	</select>
+	
+	<!-- 문의 내역 출력  -->
+	<select id="asklist" resultType="com.test.mybatis.AskDTO">
+	SELECT ASK_ID,ASK_TITLE,ASK_DATE,ASK_CATE_ID,ASK_CONTENTS
+	FROM ASK
+	</select>
+	
+	<!-- 문의 수정  -->
+	<update id="AskModify">
+	UPDATE ASK 
+	SET ASK_TITLE = #{ask_title}
+	,ASK_CONTENTS = #{ask_contents}
+	,ASK_CATE_ID = #{ask_cate_id}
+	WHERE ASK_ID = #{ask_id}
+	</update>
+	
+	
+</mapper>

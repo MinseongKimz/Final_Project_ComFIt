@@ -43,4 +43,13 @@ public interface IProduct
 	
 	public ArrayList<DirectProductDTO> mgrs(String pd_id);
 
+	// 검색한 리스트 출력하기
+	public ArrayList<ProductDTO> search_pdListDefault(String searchKey);
+	public ArrayList<ProductDTO> search_pdListPriceH(String searchKey);
+	public ArrayList<ProductDTO> search_pdListPriceL(String searchKey);
+	public ArrayList<ProductDTO> search_pdListDirect(String searchKey);
+	public ArrayList<ProductDTO> search_pdListDelivery(String searchKey);
+	
+	
+
 }

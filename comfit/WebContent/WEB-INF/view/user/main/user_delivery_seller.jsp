@@ -256,6 +256,8 @@ d-block
 				<!-- 판매자)입찰자 없을 때 :수정하기/삭제하기-->
 				<!-- 판매자)입찰자 있을 때 :즉시낙찰/삭제하기 -->
 				<!-- 구매자) 제안하기/신고 -->
+					
+				
 				<!-- <button type="button" class="btn btn-warning" style="width: 48%;">즉시낙찰</button> -->
 				<!-- <button type="button" class="btn btn-primary" style="width: 48%;">제안하기</button> -->
 				<!-- <button type="button" class="btn btn-secondary" style="width: 48%;">신고</button> -->
@@ -370,8 +372,6 @@ d-block
 			</table>
 			</div>
 			</c:forEach>
-			
-			
 		</div>
 	
 <!-- bootstrap card 사용해서 구성 가능 -->	

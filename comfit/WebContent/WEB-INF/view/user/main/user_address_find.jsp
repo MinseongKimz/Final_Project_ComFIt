@@ -13,6 +13,20 @@
     #centerAddr {display:block;margin-top:2px;font-weight: normal;}
     .bAddr {padding:5px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap; font-size: 3px;}
 </style>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function()
+	{
+		$("#insert_btn").click(function()
+		{
+			alert($("#addr").val());
+			alert($("#subAddr").val());
+		})
+	})
+
+
+</script>
 
 
 
@@ -43,7 +57,7 @@
 		      <input type="text"  id="addr" readonly="readonly" style="width: 280px; height: 25px; " />
 		      <br /><input type="text"  id="subAddr"  style="width: 350px; height: 25px; margin-top: 5px;" required="required" placeholder="상세 주소를 입력하세요"> 
 		      <br>
-		      <button type="submit" class="btn btn-primary" style="width: 70px; height: 35px; margin-top: 8px;">확인</button>
+		      <button type="button" class="btn btn-primary" id="insert_btn" style="width: 70px; height: 35px; margin-top: 8px;">확인</button>
 		   </form>
 		</div>
 	    

@@ -242,7 +242,11 @@
 				  <label class="form-check-label" for="inlineRadio3">불가능</label>
 				</div>
 				
-				<input class="form-control" id="pd_asDate" name="pd_as_remain" type="text" placeholder="예) 2024-09" style="width: 86%; font-style: italic;" value="none"/>
+
+				<input class="form-control" id="pd_asDate" name="pd_as_remain" type="text" placeholder="AS 만료 기간 입력. 예) 2024-09" style="width: 86%; font-style: italic;"/>
+
+				
+
 			</tr>
 			
 			<tr>

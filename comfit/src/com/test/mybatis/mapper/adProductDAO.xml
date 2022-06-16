@@ -39,6 +39,39 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT PD_NUM, PD_ID, B_U_ID, BID_DATE, BID_PRICE, DEAL_STATUS
 		FROM DIRECT_BOX5_VIEW
 		WHERE PD_NUM = #{pd_num}
-	</select>		
+	</select>	
+	
+	
+	
+	<select id="adminProductDirectList_1" resultType="com.test.mybatis.adProductDTO">
+		SELECT PD_NUM, PD_REGIT_DATE, PD_TITLE, DEAL_TYPE, U_ID, DEAL_STATUS, BUYER_CODE, SELLER_CODE, SELL_OK, BUY_OK
+		FROM TOTAL_DIRECT_VIEW
+		WHERE PD_NUM = #{pd_num}
+	</select>	
 		
+	<select id="adminProductDirectList_2" resultType="com.test.mybatis.adProductDTO">
+		SELECT PD_NUM, CATEGORY_NAME, PD_NAME, MAKER_NAME, PD_HOPEPRICE, PD_HOPE_PLACE, HOPE_SATE, HOPE_TIME
+		FROM TOTAL_DIRECT_VIEW2
+		WHERE PD_NUM = #{pd_num}
+	</select>	
+	
+	<select id="adminProductDirectList_3" resultType="com.test.mybatis.adProductDTO">
+		SELECT PD_NUM, U_ID, SUGGEST_PRICE, SUGGEST_TIME, HOPE_SATE
+		FROM TOTAL_DIRECT_VIEW3
+		WHERE PD_NUM = #{pd_num}
+	</select>
+	
+	<select id="adminProductDirectList_4" resultType="com.test.mybatis.adProductDTO">
+		SELECT PD_NUM, BUY_COMP_DATE, SUGGEST_PRICE, SUGGEST_TIME, HOPE_SATE
+		FROM TOTAL_DIRECT_VIEW4
+		WHERE PD_NUM = #{pd_num}
+	</select>			
+	
+	<select id="adminProductDirectList_5" resultType="com.test.mybatis.adProductDTO">
+		SELECT PD_NUM, B_U_ID, SUGGEST_DATE, SUGGEST_PRICE, DEAL_STATUS
+		FROM TOTAL_DIRECT_VIEW5
+		WHERE PD_NUM = #{pd_num}
+	</select>		
+	
+			
 </mapper>

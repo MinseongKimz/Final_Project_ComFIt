@@ -27,15 +27,12 @@ public class ProductController
 		return result;
 
 	}
-<<<<<<< HEAD
 
-	@RequestMapping(value = "/user_mainlist.action", method = RequestMethod.GET)
-	public String mainList(Model model)
-=======
-	
+
+
 	@RequestMapping(value = "/user_mainlist.action", method = RequestMethod.POST)
 	public String mainList(Model model, ProductDTO dto, HttpServletRequest request )
->>>>>>> 2d9f0dd0856300ecf6d60ba51ea035feb7733640
+
 	{
 		String result = null;
 		
@@ -187,30 +184,5 @@ public class ProductController
 	   return result;
 	   
    }
-	
-	
-	
-	
-	
-<<<<<<< HEAD
-	// 판매글 등록 페이지 select option 에 categoryList 연결
-	@RequestMapping(value = "user_delivery_seller_edit.action", method = RequestMethod.GET)
-	public String categoryOption(Model model)
-	{
-		String result = null;
-
-		IAdmin dao = sqlsession.getMapper(IAdmin.class);
-
-		model.addAttribute("categorylist", dao.categoryList());
-
-		result = "/WEB-INF/view/user/main/user_delivery_seller_edit.jsp";
-
-		return result;
-	}
-=======
-	
-	   
-	
->>>>>>> 2d9f0dd0856300ecf6d60ba51ea035feb7733640
 
 }

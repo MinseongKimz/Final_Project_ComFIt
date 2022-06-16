@@ -35,19 +35,25 @@
 		});		
 	});
 	
-	// 상세주소
+	// 상세주소 분기... 성공했다
 	$(document).ready(function()
 	{
 		$(".Btntitle").click(function()
 		{
+			// 아이디값 가져오기
+			var id_check = $(this).attr("id");
 			
-			alert("확인");
+			// 아이디값 체크
+			alert(id_check);
 			
-			location.href="admin_product_list_delivery.action?pd_num=" + $(this).val();
-			
-
-			
-
+			// 분기 			
+			if (id_check=='deli')
+			{
+				location.href="admin_product_list_delivery.action?pd_num=" + $(this).val();
+			}
+			else {
+				location.href="admin_product_list_direct.action?pd_num=" + $(this).val();
+			}
 		})
 	})		
 
@@ -79,9 +85,9 @@
 					<td>${product.category_name}</td>
 					<td>${product.pd_regit_date}</td>
 					<td>${product.u_id}</td>					
-					<td class="${product.pd_id}">${product.pd_id}</td>					
+					<td class="${product.pd_id}" id="${product.pd_num }" >${product.pd_id}</td>					
 					<td>${product.pd_num}</td>					
-					<td><button type="submit" value="${product.pd_num }" class="btn btn-outline-secondary Btntitle">
+					<td><button type="submit" value="${product.pd_num }" id="${product.pd_id}" class="btn btn-outline-secondary Btntitle">
 					${product.pd_title}</button></td>
 					<td>${product.deal_type}</td>
 					<td>${product.deal_status}</td>

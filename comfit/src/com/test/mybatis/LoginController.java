@@ -40,6 +40,7 @@ public class LoginController
 			}	
 			else 
 			{
+
 				HttpSession session = request.getSession();
 				session.setAttribute("u_id", user.getU_id());
 				
@@ -47,7 +48,7 @@ public class LoginController
 				
 				//session.setAttribute("lat");
 				//session.setAttribute("lon");
-				
+
 				String result = null;
 				result = "user_mainlist.action"; // 링크를 통한 매핑 처리 필요, 거기서는 세션 확인해야함.
 				return result;

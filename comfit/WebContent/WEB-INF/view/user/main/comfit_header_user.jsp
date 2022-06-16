@@ -72,6 +72,26 @@
   </style>
 
 
+<link href="headers.css" rel="stylesheet">
+<script type="text/javascript">
+
+	$(document).ready(function()
+	{
+		$("#searchBtn").click(function()
+		{
+			//alert($("#searchProduct").val());
+			
+			$(location).attr("href", "searchlist.action?searchKey="+$("#searchProduct").val()
+									+"&sort=1");
+			
+		});
+		
+	});
+	
+</script>
+
+
+
 </head>
 <body>
 <div>
@@ -92,9 +112,9 @@
               		<br />
                  	<form class="form-inline" style="width: 100%;">
 				     	<div class="input-group" style="width:75%; padding-left: 20%">
-						     <input type="text" class="form-control" placeholder="원하시는 상품을 검색하세요.">
-					         <button id="Btn" type="button" class="btn btn-outline-primary">
-							 <i class="bi bi-search"></i>
+						     <input id="searchProduct" type="text" class="form-control" placeholder="원하시는 상품을 검색하세요.">
+					         <button id="searchBtn" type="button" class="btn btn-outline-primary">
+							 	<i class="bi bi-search"></i>
 					         </button>							     
 	  					</div>
                 	</form>

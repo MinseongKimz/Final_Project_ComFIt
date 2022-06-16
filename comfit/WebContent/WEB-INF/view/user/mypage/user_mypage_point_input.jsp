@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
@@ -11,20 +12,17 @@
 <title>입금페이지</title>
 <link rel="stylesheet" href="css/main.css" type="text/css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-
 <style type="text/css">
 	.list-group 
 	{
 		width: 120px;
 		text-align: center;
 	}
-
 	.title 
 	{
 		font-family: 맑은 고딕;
 		font-size: 30pt;
 	}
-
 	.list-group-item 
 	{
 		text-align: center;
@@ -52,6 +50,11 @@
 		font-size: 10pt;
 		display: none;
 	}
+	#virtualAccount2
+	{
+		font-size: 10pt;
+		display: none;
+	}
 
 </style>
 
@@ -63,7 +66,8 @@
 		$("#payBtn").click(function()
 		{
 			$("#virtualAccount").css("display", "inline");
-		})
+			$("#virtualAccount2").css("display", "inline");
+		});
 		
 	})
  
@@ -114,10 +118,10 @@
 			</tr>
 			<tr>
 				<td colspan="3" style="text-align: center;">
-					<p id="virtualAccount">김상기님의 가상 계좌입니다<br>
-					국민은행 : 000002-01-450731
-					(은행4자리)+()<br />
-					30분내 입금 부탁드립니다.</p>
+					<p id="virtualAccount">김상기님의 가상 계좌 : 
+					941602-00-228699</p>
+					<br>
+					<p id="virtualAccount2">30분내 입금 부탁드립니다.</p>
 				</td>						
 			</tr>
 			<tr>

@@ -87,7 +87,11 @@ public class ProductController
 	{
 		String result = null;
 		
+		IProduct dao = sqlsession.getMapper(IProduct.class);
 		
+		dao.deliveryInsert(dto);
+		
+		result = "redirect:comfit.action";
 		
 		return result;
 	}

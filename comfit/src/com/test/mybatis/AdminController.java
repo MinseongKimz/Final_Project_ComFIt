@@ -24,15 +24,16 @@ public class AdminController
    @Autowired
    private SqlSession sqlSession;
    
-   // 관리자 로그인
-   @RequestMapping(value = "/ad_login.action", method = RequestMethod.GET)
-   public String adLogin(AdminLoginDTO dto,HttpServletRequest request)
-   {
-	  
-	   
-	   
-   }
-   
+	/*
+	 * // 관리자 로그인
+	 * 
+	 * @RequestMapping(value = "/ad_login.action", method = RequestMethod.GET)
+	 * public String adLogin(AdminLoginDTO dto,HttpServletRequest request) {
+	 * 
+	 * 
+	 * 
+	 * }
+	 */
    
    
    
@@ -260,7 +261,7 @@ public class AdminController
 
 	   dao.noticeModify(dto);
 
-	   dao.noticeInsert(notice);
+	   
 
 	   
 

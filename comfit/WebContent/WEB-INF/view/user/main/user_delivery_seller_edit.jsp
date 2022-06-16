@@ -28,7 +28,6 @@
 <script src="jQuery.MultiFile.min.js"></script>
 
 <script type="text/javascript">
-
 	$(document).ready(function()
 	{
 		
@@ -84,13 +83,8 @@
 	
 	var pd_as_id = $('input[name=pd_as_id]:checked').val();
 	var comments = $("textarea[name=comments]").val();
-
-
 	var cf_price = $("input[name=cf_price]").val();
 	var pd_as_remain = $("input[name=pd_as_remain]").val();
-
-
-
 	
 	$(document).ready(function()
 	{
@@ -99,8 +93,6 @@
 			//alert($("input[name=cf_price]").val());
 			
 			location.href="deliveryInsert.action?comments="+comments+"&cf_price=" + cf_price + "&pd_as_remain=" + pd_as_remain;
-
-
 		})
 	})
 	
@@ -135,7 +127,6 @@
 }
 </style>
 <script type="text/javascript">
-
 	
 //=======================================================================================================================================
 	var fileNo = 0;

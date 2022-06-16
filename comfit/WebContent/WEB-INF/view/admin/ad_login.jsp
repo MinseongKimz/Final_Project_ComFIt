@@ -78,21 +78,24 @@ body {
 		{
 			//alert("로그인 버튼 클릭");
 			
-			if ($("#floatingId").val() == "")
+			if ($("#ad_id").val() == "")
 			{
 				$(".idErrMsg").html("ID를 입력해 주세요.");
 				$(".idErrMsg").css('display', 'block');
-				$("#floatingId").focus();
+				$("#ad_id").focus();
 				return;
 			}
 			
-			if ($("#floatingPassword").val() == "")
+			if ($("#ad_pw").val() == "")
 			{
 				$(".pwErrMsg").html("PW를 입력해 주세요.");
 				$(".pwErrMsg").css('display', 'block');
-				$("#floatingPassword").focus();
+				$("#ad_pw").focus();
 				return;
 			}
+			
+			$("#ad_id").attr("action","")
+			
 			
 			$("form").submit();
 			
@@ -110,20 +113,20 @@ body {
 <body class="text-center">
     
 <main class="form-signin">
-  <form action="ad_main.action">
+  <form action="ad_main.action" method="post">
             <a href="ad_login.action" > 
 	           <img alt="logo" src="<%=cp%>/images/logo.png" style="width: 200px;">
 	        </a>
     <h2 class="h3 mb-3"><b>관리자 로그인</b></h2>
 
     <div class="form-floating">
-      <input type="text" class="form-control" id="floatingId" placeholder="name">
-      <label for="floatingInput">아이디를 입력하세요</label>
+      <input type="text" class="form-control" id="ad_id" placeholder="name">
+      <label for="floatingInput" id="ad_id">아이디를 입력하세요</label>
       <span style="color:red; display: none;" class="idErrMsg"></span>
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-      <label for="floatingPassword">비밀번호를 입력하세요</label>
+      <input type="password" class="form-control" id="ad_pw" placeholder="Password">
+      <label for="floatingPassword" id="ad_pw">비밀번호를 입력하세요</label>
       <span style="color:red; display: none;" class="pwErrMsg"></span>
     </div>
 

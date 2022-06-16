@@ -4,7 +4,7 @@ public class userDTO
 {
 	// 회원 리스트 속성
 	private String u_id, u_email, u_name, u_nickname, u_joindate
-	, u_tel, bancount, u_password, u_profile;
+	, u_tel, bancount, u_password, u_profile ,u_address;
 	
 
 	// 이메일
@@ -15,61 +15,7 @@ public class userDTO
 
 	// 이메일 인증 여부
 	private String auth , random;
-
 	
-	
-
-	public String getU_profile()
-	{
-		return u_profile;
-	}
-
-	public void setU_profile(String u_profile)
-	{
-		this.u_profile = u_profile;
-	}
-	public String getRandom()
-	{
-		return random;
-	}
-
-	public void setRandom(String random)
-	{
-		this.random = random;
-
-	}
-
-	public String getU_address()
-	{
-		return u_address;
-	}
-
-	public void setU_address(String u_address)
-	{
-		this.u_address = u_address;
-	}
-
-	public String getU_password()
-	{
-		return u_password;
-	}
-
-	public void setU_password(String u_password)
-	{
-		this.u_password = u_password;
-	}
-
-	public String getAuth()
-	{
-		return auth;
-	}
-
-	public void setAuth(String auth)
-	{
-		this.auth = auth;
-	}
-
-
 	public String getU_id()
 	{
 		return u_id;
@@ -150,16 +96,6 @@ public class userDTO
 		this.u_password = u_password;
 	}
 
-	public String getU_address()
-	{
-		return u_address;
-	}
-
-	public void setU_address(String u_address)
-	{
-		this.u_address = u_address;
-	}
-
 	public String getU_profile()
 	{
 		return u_profile;
@@ -238,6 +174,16 @@ public class userDTO
 	public void setRandom(String random)
 	{
 		this.random = random;
+	}
+
+	public String getU_address()
+	{
+		return u_address;
+	}
+
+	public void setU_address(String u_address)
+	{
+		this.u_address = u_address;
 	}
 
 	

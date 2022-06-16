@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 public interface IAdmin
 {
+	//관리자 로그인 메소드;
+	public AdminLoginDTO adminLogin(AdminLoginDTO admin);
+	
+	
 	// 관리자모드 회원 리스트 출력 메소드
 	public ArrayList<userDTO> adminUserList(); 
 	
@@ -26,7 +30,7 @@ public interface IAdmin
 	public ArrayList<NoticeDTO> noticeList();
 	
 	// 관리자모드 공지사항 추가 메소드
-	public int noticeInsert(NoticeDTO a);
+	public int noticeInsert(NoticeDTO notice);
 	
 	// 관리자모드 공지사항 수정 이동 메소드
 	public NoticeDTO noticeModifyForm(String announce_id);
@@ -40,15 +44,6 @@ public interface IAdmin
 	// 관리자모드 공지사항 관리자 카테고리 메소드 ok
 	public ArrayList<NoticeDTO> noticecateList();
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	// 관리자모드 상품 출력 메소드
@@ -76,6 +71,7 @@ public interface IAdmin
 	
 	// 관리자모드 FAQ 삭제 메소드
 	public int faqDelete(String faq_id);
+
 
 }
 

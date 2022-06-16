@@ -17,12 +17,37 @@ public class NoticeDTO
 	
 	
 	//주요 속성 구성
-	private String announce_id,announce_title,announce_contents,anoun_cate_name;
-	private int anoun_cate_id;
+	private String announce_title, announce_contents, anoun_cate_name, announce_id;
+	private String anoun_cate_id;
 	
 
 
 	//getter/setter
+	
+
+	
+
+	public String getAnnounce_title()
+	{
+		return announce_title;
+	}
+
+	
+
+	public String getAnoun_cate_id()
+	{
+		return anoun_cate_id;
+	}
+
+
+
+	public void setAnoun_cate_id(String anoun_cate_id)
+	{
+		this.anoun_cate_id = anoun_cate_id;
+	}
+
+
+
 	public String getAnnounce_id()
 	{
 		return announce_id;
@@ -31,11 +56,6 @@ public class NoticeDTO
 	public void setAnnounce_id(String announce_id)
 	{
 		this.announce_id = announce_id;
-	}
-
-	public String getAnnounce_title()
-	{
-		return announce_title;
 	}
 
 	public void setAnnounce_title(String announce_title)
@@ -62,15 +82,9 @@ public class NoticeDTO
 		this.anoun_cate_name = anoun_cate_name;
 	}
 
-	public int getAnoun_cate_id()
-	{
-		return anoun_cate_id;
-	}
 
-	public void setAnoun_cate_id(int anoun_cate_id)
-	{
-		this.anoun_cate_id = anoun_cate_id;
-	}
+
+	
 	
 	
 	

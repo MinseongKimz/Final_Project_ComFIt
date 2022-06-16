@@ -10,6 +10,7 @@
 <meta charset="UTF-8">
 <title>내 판매 목록</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+
 <style type="text/css">
 	.list-group 
 	{
@@ -43,6 +44,7 @@
 </head>
 <body>
 
+
 <!-- sidebar -->
 <div style="float:left; margin-left: 10px; margin-top: 20%; position: fixed;">
 	<c:import url="/WEB-INF/view/user/main/user_sidebar.jsp" ></c:import>
@@ -52,6 +54,7 @@
 <div class="header">
 	<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
 </div>
+
 
 <div class="container">
 	<div class="title" style="text-align: center; font-size: 28pt; font-weight: bold;">
@@ -69,6 +72,7 @@
 		</div>
 		
 		<!-- 테이블  -->
+
 		<table class="table table-bordered table-hover" style="font-size: 10pt; margin-top: 2%;">
 			<thead>
 				<tr class="table-primary">

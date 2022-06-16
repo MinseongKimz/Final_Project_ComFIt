@@ -42,7 +42,6 @@ public class UserMyPageInfoController
 			System.out.println(e.toString());
 		}
 		
-		
 		return result;
 	}
 	
@@ -97,6 +96,7 @@ public class UserMyPageInfoController
 		return result;
 	}
 	
+
 	// 마이페이지 판매내역 액션
 	@RequestMapping(value = "/user_selllist.action", method = RequestMethod.GET)
 	public String userSelllist(Model model, HttpServletRequest request)
@@ -160,6 +160,7 @@ public class UserMyPageInfoController
 		return result;
 	}
 	
+
 	// 마이페이지 찜한상품 액션
 	@RequestMapping(value = "/user_wish.action", method = RequestMethod.GET)
 	public String userWish(Model model)
@@ -171,6 +172,7 @@ public class UserMyPageInfoController
 		return result;
 	}
 	
+
 	// 마이페이지 입금 폼 액션
 	@RequestMapping(value = "/inputmoneyform.action", method = RequestMethod.GET)
 	public String inputMoney(Model model, HttpServletRequest request)
@@ -194,6 +196,7 @@ public class UserMyPageInfoController
 		
 		return result;
 	}
+
 	
 	// 마이페이지 출금 폼 액션
 	@RequestMapping(value = "/outputmoneyform.action", method = RequestMethod.GET)

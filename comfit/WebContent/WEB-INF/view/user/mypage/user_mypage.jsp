@@ -114,6 +114,7 @@
 					</th>
 					<td>
 						<button type="button" class="btn btn-primary" onclick="location.href='user_wish.action'">찜한상품보기</button>
+
 						<button id="infoBtn" type="button" class="btn btn-primary">내 정보 보기/수정</button>
 					</td>
 				</tr>
@@ -183,7 +184,9 @@
 		
 		<!-- button -->
 		<div style="text-align: right;">
+
 		<button type="button" class="btn btn-primary btn-sm" id="sellBtn" style="width: 20%; height: 40px; font-size: 15pt;"
+
 			    onclick="location.href='user_selllist.action'">판매내역 자세히보기</button>
 		</div>      
 		

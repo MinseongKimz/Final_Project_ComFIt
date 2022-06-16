@@ -28,10 +28,12 @@
 		color: red;
 		font-weight: bold;
 	}
+
 	table
 	{
 		font-weight: bold;
 	}
+
 	
 </style>
 
@@ -39,7 +41,9 @@
 </head>
 <body>
 
+
 <div style="float:left; margin-left: 10px; margin-top: 20%; position: fixed;">
+
 	<c:import url="/WEB-INF/view/user/main/user_sidebar.jsp" ></c:import>
 </div>
 
@@ -64,6 +68,7 @@
 				<option>날짜순</option>
 				<option>입금만</option>
 				<option>출금만</option>
+
 			</select>
 		</div>
 
@@ -77,6 +82,7 @@
 		<table class="table table-bordered" style="font-size: 10pt; width: 100%;">
 			<thead>
 				<tr class="table-primary">
+
 					<th style="width: 40%;">일시</th>
 					<th>금액</th>
 					<th>방식</th>

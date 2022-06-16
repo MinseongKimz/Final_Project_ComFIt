@@ -49,6 +49,7 @@
 </head>
 <body>
 
+
 <!--sidebar  -->
 <div style="float:left; margin-left: 10px; margin-top: 20%; position: fixed;">
 	<c:import url="/WEB-INF/view/user/main/user_sidebar.jsp" ></c:import>
@@ -58,7 +59,6 @@
 <div class="header">
 	<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
 </div>
-
 
 <div class="container">
 	<div class="title" style="text-align: center; font-size: 28pt; font-weight: bold;">
@@ -77,6 +77,7 @@
 		</div>
     	
     	<!--table  -->
+
    		<table class="table table-borderd table-hover" style="margin-top: 2%;">
 			<thead>
 		        <tr class="table-primary">
@@ -92,6 +93,7 @@
 		     </thead>
 		     <tbody>
 		     	<c:forEach var="buy" items="${buyList }">
+
 					<tr onclick="alert('해당 상품 페이지로');">
 						<td>${buy.pd_regit_date }</td>
 						<td>${buy.pd_price }</td>

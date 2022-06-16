@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class sellerEditController
@@ -93,14 +94,6 @@ public class sellerEditController
 			result = "/WEB-INF/view/user/main/user_direct_seller_edit.jsp";
 			
 			return result;
-		}
-		
-		
-		// 직거래 판매글 희망 거래 장소 검색
-		@RequestMapping(value = "/geotest.action", method = RequestMethod.GET)
-		public String geotest()
-		{
-			return "/comfit/WebContent/GeoTest.jsp";
 		}
 		
 		

@@ -16,21 +16,28 @@
 
 	$(function()
 	{
+		/*
 		navigator.geolocation.getCurrentPosition(function(pos) //  좌표값 가져오는 함수 (회원 로그인시 메인에 보여줄)
 	    {													   //  상품들을 이 좌표를 통해 판단함. 
 		    console.log(pos);
 		    var lat = pos.coords.latitude;	// 위도
 		    var lon = pos.coords.longitude; // 경도
-		    //alert("현재 위치는 : " + lat + ", "+ lon);
+		    var latlon = lat + "/" + lon;
+		    alert("현재 위치는 : " + latlon);
 		    $("#location").html('<h1>위도 : ' + lat + '경도 : ' + lon + '</h1>');
 		    
-		    $("#geoBtn").click(function()
-			{
-				location.href="georesult.action?address="+$("#address").val()+"&lat="+lat+"&lon="+lon;
-			})
+		    
 		});
-		
-	
+		*/
+		$("#geoBtn").click(function()
+				{
+					//location.href="georesult.action?address="+$("#address").val()+"&latlon="+latlon;
+					
+					var latlon = $("#lat").val() + "/" + $("lon").val();
+					
+			    	$("#hope_place", opener.document).val($("#address").val(($("#latlon").val())));
+			    	window.close();
+				})
 			
 		
 	})
@@ -88,7 +95,12 @@
 					{
 	           			if (status === kakao.maps.services.Status.OK)
 	           			{
-	           				alert(result[0].y + "/" + result[0].x);  // 위도 / 경도
+	           				
+	           				
+	           				$("#lat").val(result[0].y+"/"+result[0].x);
+	           				//$("#lon").val(result[0].x);
+	           				
+	           				//alert(result[0].y + "/" + result[0].x);  // 위도 / 경도
 	           			}	
 					})
 	    			
@@ -112,11 +124,9 @@
 		<div class="invalid-feedback">
 	           주소를 입력해주세요.
 		</div>
-		<div>
-		     <label for="address2">상세주소</label>
-		     <input type="text" class="form-control" id="address2" placeholder="상세주소를 입력해주세요." required="required">
-		     <button type="button" id="geoBtn">주소선택완료</button>
-		</div>
+		<input type="text" id="latlon"/>
+		<button type="button" id="geoBtn">주소선택완료</button>
+		<input type="hidden" />
 	</form>
 </div>
 

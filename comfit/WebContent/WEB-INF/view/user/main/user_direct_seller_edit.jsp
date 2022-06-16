@@ -209,6 +209,7 @@
    }
       
    
+   
 </script>
 </head>
 <body>
@@ -221,7 +222,7 @@
 <script type="text/javascript" src="<%=cp%>/js/jquery.timepicker.js."></script>
 <script type="text/javascript" src="<%=cp%>/js/jquery.timepicker.min.js"></script>
       
-      <script type="text/javascript">
+<script type="text/javascript">
    //$();
    //jquery();
    $(document).ready(function()
@@ -285,6 +286,42 @@
       });
    })
    
+  /* 
+$(document).ready(function()
+	{
+		$("#placeBtn").click(function()
+		{
+			var params = "pd_title=" + $("#pd_title").val() + "&category_name=" + $("#category_select").val() + "&maker_id=" + $("#maker_id").val();
+			
+			$.ajax(
+			{
+				url: "geotest.action"
+				,type: "GET"
+				, data: { "pd_title": $("#pd_title").val(),  }
+				, success: function(data)
+				{
+					location.href="geotest.action";
+				}
+				, error: function(e)
+				{
+					alert(e.responseText);
+				}
+			})
+		})
+	})
+   */
+   
+   $(document).ready(function()
+			{
+				$("#placeBtn").click(function()
+				{
+					var child;
+					   child = window.open("GeoTest.jsp", "_blank", "height:100, width:100");	
+				
+			})
+			
+	})
+	
    
    
 </script>
@@ -300,12 +337,13 @@
    <div class="input_box" style="padding-left: 5%; padding-top: 10%;">
    <form action="" method="post">
       <table style="width: 100%;">
+		
 		 <tr>
 			<th>물품검색<span class="star">*</span></th>
 			<td colspan="2">
 				<div><!--  class="input-group mb-6" -->
-				  <input type="text" class="<!-- form-control  -->" placeholder="판매할 물품을 검색해주세요" style="height:40px; width: 260px; display: inline-block; font-style: italic;" readonly="readonly">
-				  <span class="input-group-text" id="basic-addon1" onclick="location.href='searchproduct2.action';" style="width: 50px; display: inline-block;"><i class="bi bi-search"></i></span>
+				<span class="input-group-text" id="basic-addon1" onclick="location.href='searchproduct2.action';" style="width: 50px; display: inline-block;"><i class="bi bi-search"></i></span>
+				<input type="text" class="<!-- form-control  -->" placeholder="판매할 물품을 검색해주세요" style="height:40px; width: 260px; display: inline-block; font-style: italic;" readonly="readonly">
 				</div>
 			</td>
 		 </tr>
@@ -347,22 +385,23 @@
 				<input type="text" class="form-control" id="pd_name" name="pd_name" placeholder="물품명을 입력해 주세요." style="width: 90%;" value="${name }">
 			</td>	
 		</tr>
-		
-         <tr>
-            <th>희망 가능 장소<span class="star">*</span></th>
-			<td colspan="2">
-				<div><!--  class="input-group mb-6" -->
-				  <input type="text" class="<!-- form-control  -->" placeholder="거래 희망장소를 선택해주세요" style="height:40px; width: 260px; display: inline-block; font-style: italic;" readonly="readonly">
-				  <span class="input-group-text" id="basic-addon1" onclick="location.href='geotest.action';" style="width: 50px; display: inline-block;"><i class="bi bi-search"></i></span>
+		<tr>
+            <th>거래 희망 장소<span class="star">*</span></th>
+			<td colspan="3">
+				<div style="width: 100%;"><!--  class="input-group mb-6" -->
+					<span class="input-group-text" id="placeBtn" style="width: 50px; display: inline-block;"><i class="bi bi-search"></i></span>
+					<input type="text" class="<!-- form-control  -->" id="hope_place" placeholder="거래 희망장소 선택"
+					style="height:40px; width: 675px; display: inline-block; font-style: italic;" readonly="readonly" value="${address }">
 				</div>
 			</td>
             <!-- 지도 출력 -->
          </tr>
          
          
+         
          <tr>
          <div>
-            <th>희망 거래 일시<span class="star">*</span>
+            <th>거래 희망 일시<span class="star">*</span>
             	<p style="font-weight: normal; font-size: 7pt;">오늘날짜로 선택이 불가능합니다.
             	<br>거래 가능일은 5일입니다.
             	<br>끝나는 시간은 23:00 PM 까지 입니다.</p>
@@ -399,11 +438,12 @@
         
          
          <tr>
-            <th>희망 시작 가격<span class="star">*</span>
+            <th colspan="1">거래 시작 가격<span class="star">*</span>
              <p style="font-weight: normal; font-size: 7pt;">희망하는 가격을 적어주세요.</p>
                 </th>
-                <td colspan="5"><input class="form-control" id="price1" type="text" placeholder="희망 가격을 입력해주세요." style="width: 40%;"/>
-                </td>
+                <td colspan="1"><input class="form-control" id="price1" type="text" placeholder="희망 가격을 입력해주세요." style="width: 90%;"/></td>
+                <td style="display: inline-block; font-style: italic; color:red; font-size: small; margin-left: 15px;"> ※comfit 추천 가격 : ${realAvgPrice }원</td>
+                
          </tr>
                
          <tr>
@@ -451,7 +491,7 @@
             </th>
             
             <td colspan="3" rowspan="2">
-            <textarea placeholder=" 판매자 코멘트 작성" style="width:86%; height: 150px;"></textarea>
+            <textarea placeholder=" 판매자 코멘트 작성" style="width:86%; height: 150px;" id="${latlon }"></textarea>
             </td>
          </tr>
          

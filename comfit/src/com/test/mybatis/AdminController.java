@@ -7,7 +7,6 @@
 
 package com.test.mybatis;
 
-import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,15 +23,7 @@ public class AdminController
    @Autowired
    private SqlSession sqlSession;
    
-   // 관리자 로그인
-   @RequestMapping(value = "/ad_login.action", method = RequestMethod.GET)
-   public String adLogin(AdminLoginDTO dto,HttpServletRequest request)
-   {
-	  
-	   
-	   
-   }
-   
+ 
    
    
    
@@ -168,7 +159,7 @@ public class AdminController
    
    
    
-  
+ 
    
    // 관리자 공지사항 출력
    @RequestMapping(value = "/admin_notice_list.action", method = RequestMethod.GET)
@@ -185,7 +176,6 @@ public class AdminController
 	   
 	   return result;
 	   
-       
    }
    //관리자 공지사항 입력폼 이동
    @RequestMapping(value="/admin_notice_edit.action",method=RequestMethod.GET)
@@ -281,10 +271,6 @@ public class AdminController
 	   
 	   return result;
    }
-   
-   
-   
-   
    
    
    

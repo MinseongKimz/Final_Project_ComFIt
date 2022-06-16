@@ -53,7 +53,8 @@ public class MainController
 	@RequestMapping("/svc.action")
 	public String svc(Model model)
 	{
-		return "/WEB-INF/view/user/main/user_notice_list.jsp";
+		
+		return "/WEB-INF/view/user/main/user_svcenter_main.jsp";
 	}
 	
 	

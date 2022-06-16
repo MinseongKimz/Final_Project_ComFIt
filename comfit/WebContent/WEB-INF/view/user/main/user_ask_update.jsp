@@ -66,8 +66,8 @@
 	
 </script>
 
-<div>
-	<c:import url="comfit_header_user.jsp"></c:import>
+<div class = "header">
+	<c:import url = "/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
 </div>
 
 <div class="content">
@@ -89,17 +89,13 @@
 		<br />
 		
 		
-		
+		<c:forEach var="askcatelist"items="${askcatelist }">
 		<div style="display: inline-block;">
 			<select class="form-select" id="" style="padding-bottom: 6px;">
-				<option value="1">배송</option>
-				<option value="2">직거래</option>
-				<option value="3">포인트</option>
-				<option value="4">입출금</option>
-				<option value="5">회원 서비스</option>
+				<option>${askcatelist.ask_cate_name }</option>
 			</select>
 		</div>
-		
+		</c:forEach>
 		
 		<!-- 문의 제목 입력 창 -->
 		<div style="display: inline-block;">
@@ -115,7 +111,7 @@
 				
 		<div style="float: right; margin-right: 11%">
 		<button type="button" class="btn btn-primary" id="account" style="margin: 7px; float: right;" data-bs-toggle="modal" data-bs-target="#Modal">등록</button>
-		<button type="button" class="btn btn-primary" id="reset" style="margin: 7px; float: right;" onclick="location.href='user_ask_list.jsp'">취소</button>
+		<button type="button" class="btn btn-primary" id="reset" style="margin: 7px; float: right;" onclick="location.href='user_ask_list.action'">취소</button>
 		</div>
 
 
@@ -131,7 +127,7 @@
 		      	수정이 완료되었습니다
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" style="width: 100%;" onclick="location.href='user_ask_list.jsp'">확인</button>
+		        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" style="width: 100%;" onclick="location.href='user_ask_list.action'">확인</button>
 		        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">삭제하기</button> -->
 		      </div>
 		    </div>

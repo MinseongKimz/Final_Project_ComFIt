@@ -29,6 +29,7 @@ public interface IAdmin
 	// 관리자모드 공지사항 리스트 출력메소드 ok
 	public ArrayList<NoticeDTO> noticeList();
 	
+	
 	// 관리자모드 공지사항 추가 메소드
 	public int noticeInsert(NoticeDTO notice);
 	
@@ -72,6 +73,24 @@ public interface IAdmin
 	// 관리자모드 FAQ 삭제 메소드
 	public int faqDelete(String faq_id);
 
-
+	
+	
+	
+	
+	
+	
+	
+	// 메인페이지 공지사항 출력
+	public ArrayList<NoticeDTO> usernoticeList();
+	// 메인페이지 FAQ 출력
+	public ArrayList<FaqDTO> userfaqList();
+	// 메인페이지 문의내역 출력
+	public ArrayList<AskDTO> asklist();
+	// 메인페이지 문의카테고리 출력
+	public ArrayList<AskDTO> askcatelist();
+	// 문의 수정 폼 페이지 이동
+	public AskDTO AskModifyForm(String ask_id);
+	// 문의 수정 메소드
+	public int AskModify(AskDTO dto);
 }
 

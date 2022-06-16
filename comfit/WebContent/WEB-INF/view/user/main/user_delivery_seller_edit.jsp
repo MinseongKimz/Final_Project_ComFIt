@@ -91,8 +91,6 @@
 
 
 
-	var pd_as_remain = $("#pd_as_remain").val();
-
 	
 	$(document).ready(function()
 	{

@@ -258,7 +258,7 @@
 				<td colspan="2">
 					<div><!--  class="input-group mb-6" -->
 					  <input type="text" class="<!-- form-control  -->" placeholder="돋보기를 눌러 물품을 검색해주세요" style="height:40px; width: 260px; display: inline-block; font-style: italic;" readonly="readonly">
-					  <span class="input-group-text" id="basic-addon1" onclick="location.href='searchproduct.action';" style="width: 50px; display: inline-block;"><i class="bi bi-search"></i></span>
+					  <span class="input-group-text" id="basic-addon1" onclick="location.href='geotest.action';" style="width: 50px; display: inline-block;"><i class="bi bi-search"></i></span>
 					</div>
 				</td>
 			</tr>
@@ -353,7 +353,7 @@
 				  <label class="form-check-label" for="inlineRadio3">불가능</label>
 				</div>
 				
-				<input class="form-control" id="pd_asDate" name="pd_as_remain" type="text" placeholder="예) 2024-09" style="width: 86%; font-style: italic;"/>
+				<input class="form-control" id="pd_asDate" name="pd_as_remain" type="text" placeholder="AS 만료 기간 입력. 예) 2024-09" style="width: 86%; font-style: italic;"/>
 			</tr>
 			
 			<tr>

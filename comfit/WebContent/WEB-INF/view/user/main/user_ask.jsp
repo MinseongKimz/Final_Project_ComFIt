@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>문의내역</title>
+<title>내 문의내역</title>
 <link rel="stylesheet" href="css/main.css" type="text/css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -15,7 +15,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
 
-
+<!-- 내가 올린 게시물 보는 사이트  -->
 <style type="text/css">
 
 	/* div {border: 1px solid black;} */
@@ -75,8 +75,8 @@
 	
 </script>
 
-<div>
-	<c:import url="comfit_header_user.jsp"></c:import>
+<div class = "header">
+	<c:import url = "/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
 </div>
 
 <div class="content">
@@ -84,39 +84,39 @@
 	
 	<br />
 	<div class="btns" style="text-align: center;">
-		<button type="button" id="notice" class="btn btn-secondary" style="margin: 7px;" onclick="location.href='user_notice_list.jsp'">공지사항</button>
-		<button type="button" id="faq" class="btn btn-secondary" style="margin: 7px;" onclick="location.href='user_faq_list.jsp'">자주묻는질문</button>
-		<button type="button" id="ask" class="btn btn-secondary" style="margin: 7px;" onclick="location.href='user_ask_list.jsp'">내 문의내역</button>
+		<button type="button" id="notice" class="btn btn-secondary" style="margin: 7px;" onclick="location.href='user_notice_list.action'">공지사항</button>
+		<button type="button" id="faq" class="btn btn-secondary" style="margin: 7px;" onclick="location.href='user_faq_list.action'">자주묻는질문</button>
+		<button type="button" id="ask" class="btn btn-primary" style="margin: 7px;" onclick="location.href='user_ask_list.action'">내 문의내역</button>
 	</div>
 	<br /><br />
 	
 	<div style="margin-left: 20%; margin-right: 20%;">
 		<div class="container"> 
-			<div style="font-weight: bold; font-size: 22pt;">문의 게시글</div>
+			<div style="font-weight: bold; font-size: 22pt;">내 문의 게시글</div>
 			<br />
-		
-			<table class="table table-bordered" >
-				<tr >
-					<th>카테고리</th>
-					<td>문의 카테고리</td>
-				</tr>
-				<tr>
-					<th>제목</th>
-					<td>사기당했습니다...</td>
-				</tr>
-				<tr>
-					<th>작성날짜</th>
-					<td>2022-05-29 18:54:32</td>
-				</tr>
-				<tr>
-					<th style="height: 300px; vertical-align: middle;">내용</th>
-					<td>사기를 당했습니다.. 책임져 주십시오</td>
-				</tr>
-			</table>
-		
+			<c:forEach var="asklist" items ="${asklist }">
+				<table class="table table-bordered" >
+					<tr>
+						<th>제목</th>
+						<td>${asklist.ask_title }</td>
+					</tr>
+					<tr>
+						<th>작성날짜</th>
+						<td>${asklist.ask_date }</td>
+					</tr>
+					<tr >
+						<th>카테고리</th>
+						<td>${askcatelist.ask_cate_name }</td>
+					</tr>
+					<tr>
+						<th style="height: 300px; vertical-align: middle;">내용</th>
+						<td>${asklist.ask_contents }</td>
+					</tr>
+				</table>
+			</c:forEach>	
 		<div >
 			<button type="button" class="btn btn-primary" style="margin: 7px; float: right;" data-bs-toggle="modal" data-bs-target="#deleteModal">삭제하기</button>
-			<button type="button" class="btn btn-primary" style="margin: 7px; float: right;" onclick="location.href='user_ask_update.jsp'">수정하기</button>
+			<button type="button" class="btn btn-primary" style="margin: 7px; float: right;" value="${AskModifyForm.ask_id}"onclick="location.href='user_ask_modify_form.action'">수정하기</button>
 		</div>
 		
 		</div> 
@@ -134,7 +134,7 @@
 		      </div>
 		      <div class="modal-footer">
 		      	<div style="margin:auto; display:block;">
-		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="width: 100px;" onclick="location.href='user_ask.jsp'">아니오</button>
+		        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal" style="width: 100px;" onclick="location.href='user_ask.jsp'">아니오</button>
 		        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#complete" style="width: 100px;">네</button>
 		        </div>
 		      </div>

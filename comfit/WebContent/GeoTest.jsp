@@ -11,7 +11,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/main.css" type="text/css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 <script type="text/javascript">
 
 	$(function()
@@ -37,6 +37,7 @@
 
 	
 </script>	
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=86ec7935feee50bc358cd41148ffd4e2&libraries=services"></script>
 <script>
 

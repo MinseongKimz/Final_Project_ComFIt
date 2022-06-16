@@ -31,7 +31,7 @@
 			<c:forEach var="delivery" items="${productlistdelivery1}">
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">상품 번호</th>
-				    <td colspan="2">${delivery.deli_pd_id }</td>
+				    <td colspan="2">${delivery.pd_num }</td>
 				</tr>
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">게시 일자</th>

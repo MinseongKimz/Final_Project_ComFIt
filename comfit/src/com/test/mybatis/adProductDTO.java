@@ -4,6 +4,7 @@ public class adProductDTO
 {
 	private int num;
 	private String rownum, pd_title;
+	private String pd_num, pd_id;
 	private String deli_pd_id;
 	private String pd_regit_date, deal_type, u_id, deal_status
 	,category_name, pd_name, maker_name, b_u_id, bid_price, bid_date, address, bs_id
@@ -12,6 +13,26 @@ public class adProductDTO
 	public int getNum()
 	{
 		return num;
+	}
+
+	public String getPd_num()
+	{
+		return pd_num;
+	}
+
+	public void setPd_num(String pd_num)
+	{
+		this.pd_num = pd_num;
+	}
+
+	public String getPd_id()
+	{
+		return pd_id;
+	}
+
+	public void setPd_id(String pd_id)
+	{
+		this.pd_id = pd_id;
 	}
 
 	public void setNum(int num)

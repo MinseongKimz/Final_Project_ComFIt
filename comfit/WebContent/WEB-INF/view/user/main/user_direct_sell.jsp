@@ -13,10 +13,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>직거래 상품 페이지.jsp</title>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
 <link rel="stylesheet" href="<%=cp %>/css/bootstrap.css">
+
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 <style type="text/css">
 p
 {
@@ -66,8 +71,31 @@ d-block
 
 </style>
 
-<script type="text/javascript">
 
+
+<script type="text/javascript">
+function searchAddr()
+{
+  
+    var pd_id = document.getElementById("pd_id").value;
+    
+    var url = "direct_place.action?pd_id=" + pd_id;
+    
+    
+    
+	 window.open(url, "장소선택", "top=100px, left=100px, height=800px, width=600px");	
+	
+    
+    
+    
+    
+    
+    //window.open(url, "장소선택", "top=100px, left=100px, height=800px, width=600px");
+    
+    
+    
+    
+}
 function CountDownTimer(dt, id)
 {
     var end = new Date(dt);
@@ -102,7 +130,7 @@ function CountDownTimer(dt, id)
 	{
 		
 		var remain_date = document.getElementById("remain_date").value;
-		alert(remain_date);
+		//alert(remain_date);
 		CountDownTimer(remain_date, 'demo');		
 	};
 
@@ -162,12 +190,14 @@ function CountDownTimer(dt, id)
 			</div>
 		</div>
 		
+		<input type="text" id="pd_id" value="${drPd.pd_id }" hidden="hidden"/>
 		<table class="col-md-5">
 			<tr>
 				<td colspan="2">
 				<p>거래방식</p>
 				<!-- 속성에 따라 직거래/배송 표기 -->
-				<p class="content_text">직거래</p></td>
+				<p class="content_text" >직거래</p></td>
+				
 			</tr>
 			<tr>
 				<td colspan="2"><p>희망가격</p>
@@ -204,7 +234,10 @@ function CountDownTimer(dt, id)
 					<p>제조사/물품명</p>
 				</td>
 				<th style="padding-top: 10px;">
-
+				<%
+					int check_id = (int)session.getAttribute("check_id");
+				%>
+				
 					<!-- 제조사/물품명 표기 -->
 					<p style="font-weight: bold;">${drPd.maker_name}(${drPd.maker_name2 }) / ${drPd.pd_name }</p>
 				</th>
@@ -222,12 +255,28 @@ function CountDownTimer(dt, id)
 			
 			<tr>
 				<td colspan="2">
+				<%
+					// 판매자인 경우
+					if(check_id == 1)
+					{
+				%>
+				
 				<!-- 상태에 따라 버튼 변경 -->
 				<!-- 판매자)입찰자 없을 때 :수정하기/삭제하기-->
 				<!-- 판매자)입찰자 있을 때 :즉시낙찰/삭제하기 -->
 				<!-- <button type="button" class="btn btn-warning" style="width: 48%;">즉시낙찰</button> -->
 				<button type="button" class="btn btn-primary" style="width: 48%;">수정하기</button>
 				<button type="button" class="btn btn-secondary" style="width: 48%;">삭제하기</button>
+				<%
+					}
+					else
+					{		
+				%>
+				<button type="button" class="btn btn-primary" style="width: 48%;" data-toggle="modal" data-target="#myModal">구매제안</button>
+				<button type="button" class="btn btn-secondary" style="width: 48%;">신고하기</button>
+				<%
+					}
+				%>
 				</td>
 			</tr>
 		</table>
@@ -336,6 +385,66 @@ function CountDownTimer(dt, id)
 	
 	</div>
 </div>
+
+
+
+
+<!-- Modal -->
+
+<div class="modal fade" id="myModal" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-xs modal-dialog-centered">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">구매제안하기</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+        		
+           <div class="mb-3">
+          	<label for="address">희망장소</label><br />
+            	 <input type="text" class="form-control" id="address" name="address" placeholder="클릭해주세요"
+            	   required="required" readonly="readonly" onclick="searchAddr()" >
+          			 <div class="invalid-feedback">
+              				희망 장소를 입력해주세요.
+            		 </div>
+       	   </div>
+ 		 
+ 		 
+ 		 
+ 		 
+          <div class="mb-3">
+           	<label for="address2">상세장소</label>
+          		 <input type="text" class="form-control" id="address2" name="address2" placeholder="상세장소를 입력해주세요."  required="required" >
+          </div>
+         
+        
+        		
+        
+        
+        </div><!-- close.modal-body -->
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기(취소)</button>
+        </div>
+        
+      </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
 
 
 

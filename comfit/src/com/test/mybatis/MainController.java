@@ -47,7 +47,7 @@ public class MainController
 	}
 	
 	
-	@RequestMapping(value = "/loginform.action", method = RequestMethod.GET)
+	@RequestMapping(value = "/loginform.action", method = RequestMethod.POST)
 	public String login(Model model, HttpServletRequest request)
 	{
 		String lat = request.getParameter("lat"); 	// 위도
@@ -70,7 +70,8 @@ public class MainController
 	@RequestMapping("/svc.action")
 	public String svc(Model model)
 	{
-		return "/WEB-INF/view/user/main/user_notice_list.jsp";
+		
+		return "/WEB-INF/view/user/main/user_svcenter_main.jsp";
 	}
 	
 	

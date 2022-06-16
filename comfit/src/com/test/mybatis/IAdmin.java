@@ -29,6 +29,7 @@ public interface IAdmin
 	// 관리자모드 공지사항 리스트 출력메소드 ok
 	public ArrayList<NoticeDTO> noticeList();
 	
+	
 	// 관리자모드 공지사항 추가 메소드
 	public int noticeInsert(NoticeDTO notice);
 	
@@ -43,6 +44,18 @@ public interface IAdmin
 	
 	// 관리자모드 공지사항 관리자 카테고리 메소드 ok
 	public ArrayList<NoticeDTO> noticecateList();
+	
+	// 관리자모드 신고 리스트 출력 메소드
+	public ArrayList<adReportDTO> adminReportList();
+	
+	// 관리자모드 문의 리스트 출력 메소드
+	public ArrayList<adAskDTO> adminAskList();
+	
+	// 관리자모드 문의 리스트 처리 출력 메소드
+	public ArrayList<adAskDTO> adAskListReply();	
+	
+	// 관리자모드 문의 처리 입력 메소드
+	public ArrayList<adAskDTO> adminAskInsert();
 
 	
 	
@@ -50,11 +63,11 @@ public interface IAdmin
 	public ArrayList<adProductDTO> adminProductList();
 	
 	// 관리자모드 택배상품 세부 출력 메소드
-	public ArrayList<adProductDTO> adminProductDeliveryList_1();
-	public ArrayList<adProductDTO> adminProductDeliveryList_2();
-	public ArrayList<adProductDTO> adminProductDeliveryList_3();
-	public ArrayList<adProductDTO> adminProductDeliveryList_4();
-	public ArrayList<adProductDTO> adminProductDeliveryList_5();
+	public ArrayList<adProductDTO> adminProductDeliveryList_1(String pd_num);
+	public ArrayList<adProductDTO> adminProductDeliveryList_2(String pd_num);
+	public ArrayList<adProductDTO> adminProductDeliveryList_3(String pd_num);
+	public ArrayList<adProductDTO> adminProductDeliveryList_4(String pd_num);
+	public ArrayList<adProductDTO> adminProductDeliveryList_5(String pd_num);
 		
 	
 	// 관리자모드 입출금 출력 메소드
@@ -77,6 +90,24 @@ public interface IAdmin
 	// 관리자모드 FAQ 삭제 메소드
 	public int faqDelete(String faq_id);
 
-
+	
+	
+	
+	
+	
+	
+	
+	// 메인페이지 공지사항 출력
+	public ArrayList<NoticeDTO> usernoticeList();
+	// 메인페이지 FAQ 출력
+	public ArrayList<FaqDTO> userfaqList();
+	// 메인페이지 문의내역 출력
+	public ArrayList<AskDTO> asklist();
+	// 메인페이지 문의카테고리 출력
+	public ArrayList<AskDTO> askcatelist();
+	// 문의 수정 폼 페이지 이동
+	public AskDTO AskModifyForm(String ask_id);
+	// 문의 수정 메소드
+	public int AskModify(AskDTO dto);
 }
 

@@ -1,5 +1,8 @@
 package com.test.mybatis;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,12 +11,49 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 @Controller
 public class SearchContoller
 {
 	@Autowired
 	private SqlSession sqlSeesion;
 	
+	@RequestMapping(value="/searchlist.action", method = RequestMethod.GET)
+	public String search_list(Model model, @RequestParam("searchKey") String searchKey
+										 , @RequestParam("sort") int sort)
+	{
+		String result = null;
+		
+		
+		IProduct dao = sqlSeesion.getMapper(IProduct.class);
+		model.addAttribute("searchKey", searchKey);
+		model.addAttribute("sort", sort);
+		
+		searchKey = "%" +searchKey+ "%";
+		
+		switch (sort)
+		{
+			case 1: model.addAttribute("searchList", dao.search_pdListDefault(searchKey));
+					break;
+			case 2: model.addAttribute("searchList", dao.search_pdListPriceH(searchKey));
+					break;
+			case 3: model.addAttribute("searchList", dao.search_pdListPriceL(searchKey));
+					break;
+			case 4: model.addAttribute("searchList", dao.search_pdListDirect(searchKey));
+					break;
+			case 5: model.addAttribute("searchList", dao.search_pdListDelivery(searchKey));
+					break;
+			
+			default: break;
+		}
+		
+		
+		
+		result = "/WEB-INF/view/user/main/user_search_list.jsp";
+		
+		return result;
+		
+	}
 	
 	// 배송거래에서 - 물품검색 첫화면 접속
 	@RequestMapping(value = "/searchproduct.action", method = RequestMethod.GET)
@@ -70,6 +110,7 @@ public class SearchContoller
 	}
 	
 	
+
 	// 직거래에서 - 물품검색 첫화면 접속
 	@RequestMapping(value = "/searchproduct2.action", method = RequestMethod.GET)
 	public String search_prodcut2(Model model)
@@ -114,6 +155,7 @@ public class SearchContoller
 		
 		return "/WEB-INF/view/user/main/user_direct_seller_edit.jsp";
 	}
+
 	
 	
 	

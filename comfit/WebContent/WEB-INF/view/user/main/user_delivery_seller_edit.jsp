@@ -89,12 +89,7 @@
 	var cf_price = $("input[name=cf_price]").val();
 	var pd_as_remain = $("input[name=pd_as_remain]").val();
 
-<<<<<<< HEAD
-=======
 
-
-	var pd_as_remain = $("#pd_as_remain").val();
->>>>>>> 42737854ddbdf036f4359219462873e133992e96
 
 	
 	$(document).ready(function()
@@ -105,11 +100,6 @@
 			
 			location.href="deliveryInsert.action?comments="+comments+"&cf_price=" + cf_price + "&pd_as_remain=" + pd_as_remain;
 
-<<<<<<< HEAD
-			
-			
-=======
->>>>>>> 42737854ddbdf036f4359219462873e133992e96
 
 		})
 	})

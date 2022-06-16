@@ -81,20 +81,5 @@ public class ProductController
 	}
 	   
 	
-	//판매글 등록글 insert
-	@RequestMapping(value = "/deliveryInsert.action", method = RequestMethod.POST)
-	public String deliveryInsert(Model model, deliveryInsertDTO dto)
-	{
-		String result = null;
-		
-		IProduct dao = sqlsession.getMapper(IProduct.class);
-		
-		dao.deliveryInsert(dto);
-		
-		result = "redirect:comfit.action";
-		
-		return result;
-	}
-
 
 }

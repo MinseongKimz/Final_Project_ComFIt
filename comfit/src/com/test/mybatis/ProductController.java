@@ -44,7 +44,7 @@ public class ProductController
 		dto.setLat(lat);
 		dto.setLon(lon);
 		
-		
+		model.addAttribute("deli_pdList", dao.deli_user_pdList());
 		model.addAttribute("pdList", dao.user_pdList(dto));
 		model.addAttribute("cateList", dao.cateList());
 		

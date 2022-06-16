@@ -36,5 +36,7 @@ public interface IProduct
 	
 	public ArrayList<ProductDTO> non_user_pdList();
 	
+	public ArrayList<ProductDTO> deli_user_pdList();
+	
 
 }

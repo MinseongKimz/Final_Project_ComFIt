@@ -45,6 +45,10 @@
 			) V
 			ORDER BY V.DISTANCE
 	</select>
+	<select id="deli_user_pdList" resultType="com.test.mybatis.ProductDTO">
+		  SELECT PD_ID, PD_NAME, PRICE, PD_REGIT_DATE
+		    FROM DELI_PD_LIST_REALVIEW
+	</select>
 	<select id="cateList" resultType="com.test.mybatis.CategoryDTO">
 		SELECT PD_CATEGORY_ID, CATEGORY_NAME
 		FROM PRODUCT_CATEGORY
@@ -113,6 +117,8 @@
 	 	 FROM PD_LIST_MAIN_VIEW
 	    ORDER BY PD_REGIT_DATE
 	</select>
+	
+	
 </mapper>
 
 

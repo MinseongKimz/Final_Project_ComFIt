@@ -29,6 +29,7 @@ public class ProductController
 	}
 
 
+
 	@RequestMapping(value = "/user_mainlist.action", method = RequestMethod.POST)
 	public String mainList(Model model, ProductDTO dto, HttpServletRequest request )
 
@@ -100,7 +101,7 @@ public class ProductController
 
 	}
 
-	// 내 문의 내역 출력  [ 고객센터 ]
+	// 내 문의 내역 출력  [ 고객센터 ] 카테고리 안나옴
 	@RequestMapping(value = "/user_ask_list.action", method = RequestMethod.GET)
 	public String svcAsk(Model model)
 	{
@@ -110,6 +111,8 @@ public class ProductController
 
 		model.addAttribute("asklist", dao.asklist());
 
+		//model.addAttribute("askcatelist", dao.askcatelist());
+		
 		result = "/WEB-INF/view/user/main/user_ask_list.jsp";
 
 		return result;
@@ -118,7 +121,7 @@ public class ProductController
 
 	// 내 문의 내역 상세 출력  [ 고객센터 ]
 	@RequestMapping(value = "/user_ask_my_update.action", method = RequestMethod.GET)
-	public String myAsk(Model model)
+	public String myAsk(Model model, String ask_cate_id)
 	{
 		String result = null;
 
@@ -131,9 +134,9 @@ public class ProductController
 		return result;
 
 	}
-	// 상세내역 [ 고객센터 ]
+	// 상세내역 [ 고객센터 ] 카테고리 안나옴
 	@RequestMapping(value = "/user_ask_my_list.action", method = RequestMethod.GET)
-	public String Askcate(Model model)
+	public String Askcate(Model model )
 	{
 		String result = null;
 
@@ -141,7 +144,8 @@ public class ProductController
 
 		model.addAttribute("asklist", dao.asklist());
 		//model.addAttribute("askcatelist", dao.askcatelist());
-
+		
+		
 		result = "/WEB-INF/view/user/main/user_ask.jsp";
 
 		return result;
@@ -156,11 +160,11 @@ public class ProductController
 	   
 	   IAdmin dao = sqlsession.getMapper(IAdmin.class);
 	   
-	   model.addAttribute("askcatelist", dao.askcatelist());
+	   //model.addAttribute("askcatelist", dao.askcatelist());
 
 	   model.addAttribute("AskModifyForm", dao.AskModifyForm(ask_id));
 	   
-	   return "/WEB-INF/view/admin/user_ask_update.jsp";
+	   return "/WEB-INF/view/user/main/user_ask_update.jsp";
    }
 	
 	
@@ -169,10 +173,9 @@ public class ProductController
 	public String AskModify(AskDTO dto , @RequestParam("ask_id") String ask_id)
    {
 	   
-		String result = null;
+	   String result = null;
 		
 	   IAdmin dao = sqlsession.getMapper(IAdmin.class);
-	   
 	   
 	   dto.setAsk_id(ask_id);
 	   
@@ -183,6 +186,7 @@ public class ProductController
 	   return result;
 	   
    }
+
 
 
 }

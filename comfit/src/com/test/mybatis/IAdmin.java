@@ -115,5 +115,7 @@ public interface IAdmin
 	public AskDTO AskModifyForm(String ask_id);
 	// 문의 수정 메소드
 	public int AskModify(AskDTO dto);
+	
+	
 }
 

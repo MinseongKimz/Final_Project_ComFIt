@@ -34,13 +34,15 @@
 				</tr>
 			</thead>
 			<tbody style="background: white;">
-				<tr onClick="location.href='ad_ask_list_reply.jsp'" style="">
-					<td>asfdjklaf</td>
-					<td>안녕하세요</td>
-					<td>22.05.21 22:05:27</td>
-					<td>처리 진행중</td>
-					<td>22.05.21 22:05:30</td>
+			<c:forEach var="ask" items="${adminAskList }">
+				<tr onClick="location.href='ad_ask_list_reply.action'" style="">
+					<td>${ask.u_id }</td>
+					<td>${ask.ask_title }</td>
+					<td>${ask.ask_date }</td>
+					<td>${ask.ask_status }</td>
+					<td>${ask.answer_date }</td>
 				</tr>
+			</c:forEach>
 			</tbody>
 		</table>
 	</div>

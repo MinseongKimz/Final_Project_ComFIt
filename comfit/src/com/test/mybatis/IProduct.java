@@ -36,6 +36,13 @@ public interface IProduct
 	
 	public ArrayList<ProductDTO> non_user_pdList();
 	
+	public ArrayList<ProductDTO> deli_user_pdList();
+	
+	public int deli_check_id(String u_id, String pd_id);
+	public int dire_check_id(String u_id, String pd_id);
+	
+	public ArrayList<DirectProductDTO> mgrs(String pd_id);
+
 	// 검색한 리스트 출력하기
 	public ArrayList<ProductDTO> search_pdListDefault(String searchKey);
 	public ArrayList<ProductDTO> search_pdListPriceH(String searchKey);

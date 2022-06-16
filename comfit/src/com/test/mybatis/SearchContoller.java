@@ -29,7 +29,7 @@ public class SearchContoller
 		model.addAttribute("searchKey", searchKey);
 		model.addAttribute("sort", sort);
 		
-		searchKey = "%" +searchKey+ "%";
+		searchKey = "%"+searchKey+"%";
 		
 		switch (sort)
 		{
@@ -46,8 +46,6 @@ public class SearchContoller
 			
 			default: break;
 		}
-		
-		
 		
 		result = "/WEB-INF/view/user/main/user_search_list.jsp";
 		

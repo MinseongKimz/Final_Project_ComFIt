@@ -27,41 +27,43 @@
 	<h1><b>관리자모드_상품관리</b></h1> <!-- 왜 서체가? 배민서체지? 커스텀 css해놔서 그럼 -->
 		<table class="table table-bordered" style="text-align: center; border: 1px solid #dddddd; width: 700px">
 			<thead><!-- 제목 -->
+			<c:forEach var="direct" items="${productlistdirect1}">
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">상품 번호</th>
-				    <td colspan="2">P03546</td>
+				    <td colspan="2">${direct.pd_num }</td>
 				</tr>
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">게시 일자</th>
-				    <td colspan="2">2022-05-22</td>
+				    <td colspan="2">${direct.pd_regit_date }</td>
 				</tr>		
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">제목</th>
-				    <td colspan="2"><a href="#">CPU 팔아요</a></td>
+				    <td colspan="2"><a href="#">${direct.pd_title }</a></td>
 				</tr>			
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">거래 방식</th>
-				    <td colspan="2">직거래</td>
+				    <td colspan="2">${direct.deal_type }</td>
 				</tr>
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">판매자 ID</th>
-				    <td colspan="2">hjajks78</td>
+				    <td colspan="2">${direct.u_id }</td>
 				</tr>
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">게시글 상태</th>
-				    <td>거래 중</td>
+				    <td>${direct.deal_status }</td>
 				    <td><form action=""><label><input type="checkbox" name="subs" />블라인드</label></form></td>
 				</tr>		
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">판/구매자 코드</th>
-				    <td>판매자:x67854</td>
-				    <td id="set">구매자:x45452</td> 
+				    <td>${direct.seller_code }</td>
+				    <td id="set">${direct.buyer_code }</td> 
 				</tr>			
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">코드 입력 여부</th>
-				    <td>Y</td>
-				    <td id="set">N</td>
-				</tr>					
+				    <td>${direct.sell_ok }</td>
+				    <td id="set">${direct.buy_ok }</td>
+				</tr>	
+			</c:forEach>				
 			</thead>
 		</table>
 		
@@ -69,40 +71,36 @@
 		<div style="margin-top: 20px"><h2><b>상품정보</b></h2></div>
 		<table class="table table-bordered" style="text-align: center; border: 1px solid #dddddd; width: 700px">
 			<thead><!-- 제목 -->
+			<c:forEach var="direct" items="${productlistdirect2}">
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">카테고리</th>
-				    <td>
-						<select class="form-select" style="width: 50%; display: inline-block;">
-						    <option selected>카테고리</option>
-						    <option value="">1</option>
-						    <option value="">2</option>
-						</select>
-				    </td>
-				</tr>
+				    <td>${direct.category_name }</td>
+				</tr>	
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">물품명</th>
-				    <td>i7 - 12700k</td>
+				    <td>${direct.pd_name }</td>
 				</tr>		
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">제조사</th>
-				    <td>인텔</td>
+				    <td>${direct.maker_name }</td>
 				</tr>			
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">희망 가격</th>
-				    <td>300,000원</td>
+				    <td>${direct.pd_hopeprice }</td>
 				</tr>
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">희망 장소</th>
-				    <td>인천 계양구 새벌로 12번길 12</td>
+				    <td>${direct.pd_hope_place }</td>
 				</tr>
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">희망 날짜</th>
-				    <td>2022 - 05 - 23  ~ 2022 - 05 -26</td>
+				    <td>${direct.hope_sate }</td>
 				</tr>		
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">희망 시간</th>
-				    <td>16시 ~ 18시</td>
-				</tr>								
+				    <td>${direct.hope_time }</td>
+				</tr>			
+			</c:forEach>					
 			</thead>
 		</table>		
 		
@@ -111,22 +109,24 @@
 		<div style="margin-top: 20px"><h2><b>거래 정보</b></h2></div>
 		<table class="table table-bordered" style="text-align: center; border: 1px solid #dddddd; width: 700px">
 			<thead><!-- 제목 -->
+			<c:forEach var="direct" items="${productlistdirect3}">
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">구매자ID</th>
-				    <td>inseong12</td>
+				    <td>${direct.u_id }</td>
 				</tr>
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">가격</th>
-				    <td>280,000원</td>
+				    <td>${direct.suggest_price }</td>
 				</tr>		
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">직거래 일시</th>
-				    <td>2022 - 05 - 24   17:30</td>
+				    <td>${direct.suggest_time }</td>
 				</tr>			
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">직거래 장소</th>
-				    <td>인천 광역시 계양구 새벌로 112번길 13 405동 관리사무소 앞</td>
-				</tr>								
+				    <td>${direct.hope_sate }</td>
+				</tr>	
+			</c:forEach>							
 			</thead>
 		</table>	
 		
@@ -135,22 +135,24 @@
 		<div style="margin-top: 20px"><h2><b>거래 완료 정보</b></h2></div>
 		<table class="table table-bordered" style="text-align: center; border: 1px solid #dddddd; width: 700px">
 			<thead><!-- 제목 -->
+			<c:forEach var="direct" items="${productlistdirect4}">
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">구매 확정 일시</th>
-				    <td></td>
+				    <td>${direct.buy_comp_date }</td>
 				</tr>
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">가격</th>
-				    <td>280,000원</td>
+				    <td>${direct.suggest_price }</td>
 				</tr>		
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">직거래 일시</th>
-				    <td>2022 - 05 - 24   17:30</td>
+				    <td>${direct.suggest_time }</td>
 				</tr>			
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">직거래 장소</th>
-				    <td>인천 광역시 계양구 새벌로 112번길 13 405동 관리사무소 앞</td>
-				</tr>								
+				    <td>${direct.hope_sate }</td>
+				</tr>
+			</c:forEach>								
 			</thead>
 		</table>	
 		
@@ -167,14 +169,15 @@
 				</tr>
 			</thead>	    
 			<tbody>
+			<c:forEach var="direct" items="${productlistdirect5}">
 				<tr>
-				    <td>agsdag455</td>
-				    <td>022-05-23  11:06:20</td>
-				    <td>+28,000</td>
-				    <td>낙찰(채택)</td>
+				    <td>${direct.b_u_id }</td>
+				    <td>${direct.suggest_date }</td>
+				    <td>${direct.suggest_price }</td>
+				    <td>${direct.deal_status }</td>
 				</tr>
-			</tbody> 
-				    
+			</c:forEach>
+			</tbody> 	    
 		</table>					
 	</div>
 </div>

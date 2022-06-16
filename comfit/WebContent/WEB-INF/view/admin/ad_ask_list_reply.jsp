@@ -33,28 +33,30 @@
 				</tr>
 			</thead>
 			<tbody>
+			<c:forEach var="ask" items="${adminAskreplyList }">
 				<tr>
 					<td style="width: 20%;">글 제목</td>
-					<td colspan="2">안녕하세요...</td>
+					<td colspan="2">${ask.ask_title }</td>
 				</tr>
 				<tr>
 					<td style="width: 20%;">작성일자</td>
-					<td colspan="2">2022-06-05</td>
+					<td colspan="2">${ask.ask_date }</td>
 				</tr>
 				<tr>
 					<td style="width: 20%;">처리 상황</td>
-					<td colspan="2">처리 진행 중</td>
+					<td colspan="2">${ask.ask_status }</td>
 				</tr>		
 				<tr>
 					<td style="width: 20%;">카테고리</td>
-					<td colspan="2">상품문의</td>
+					<td colspan="2">${ask.ask_cate_name }</td>
 				</tr>											
 				<tr>
 					<td>내용</td>
 					<td colspan="2" style="min-height:200px; text-align: left;">
-					안녕하세요 제가 얼마전에 물건을 샀는데 하자가 있었습니다.
+					${ask.ask_contents }
 					</td>
-				</tr>				
+				</tr>		
+			</c:forEach>			
 			</tbody>			
 		</table>
 		

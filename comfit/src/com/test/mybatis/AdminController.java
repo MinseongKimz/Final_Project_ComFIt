@@ -8,6 +8,8 @@
 package com.test.mybatis;
 
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,16 +26,20 @@ public class AdminController
    private SqlSession sqlSession;
    
 
-	/*
-	 * // 관리자 로그인
-	 * 
-	 * @RequestMapping(value = "/ad_login.action", method = RequestMethod.GET)
-	 * public String adLogin(AdminLoginDTO dto,HttpServletRequest request) {
-	 * 
-	 * 
-	 * 
-	 * }
-	 */
+
+      
+
+	
+	  // 관리자 로그인
+	  
+	  @RequestMapping(value = "/ad_login.action", method = RequestMethod.GET)
+	  public String adLogin(AdminLoginDTO dto,HttpServletRequest request) {
+	  
+	  
+		  return "s";
+	  }
+	 
+
 
    
    
@@ -110,7 +116,7 @@ public class AdminController
    
    // 관리자 상품관리 상세리스트1
    @RequestMapping(value = "/admin_product_list_delivery.action", method = RequestMethod.GET)
-   public String adProductListDelivery(Model model)
+   public String adProductListDelivery(Model model, String pd_num)
    {
       String result = null;
       
@@ -118,17 +124,37 @@ public class AdminController
       
       dao = sqlSession.getMapper(IAdmin.class);
       
-      model.addAttribute("productlistdelivery1", dao.adminProductDeliveryList_1());
-      model.addAttribute("productlistdelivery2", dao.adminProductDeliveryList_2());
-      model.addAttribute("productlistdelivery3", dao.adminProductDeliveryList_3());
-      model.addAttribute("productlistdelivery4", dao.adminProductDeliveryList_4());
-      model.addAttribute("productlistdelivery5", dao.adminProductDeliveryList_5());
+      model.addAttribute("productlistdelivery1", dao.adminProductDeliveryList_1(pd_num));
+      model.addAttribute("productlistdelivery2", dao.adminProductDeliveryList_2(pd_num));
+      model.addAttribute("productlistdelivery3", dao.adminProductDeliveryList_3(pd_num));
+      model.addAttribute("productlistdelivery4", dao.adminProductDeliveryList_4(pd_num));
+      model.addAttribute("productlistdelivery5", dao.adminProductDeliveryList_5(pd_num));
       
       result = "/WEB-INF/view/admin/ad_product_list_delivery.jsp";
       
       return result;
    }   
    
+   // 관리자 상품관리 상세리스트2
+   @RequestMapping(value = "/admin_product_list_direct.action", method = RequestMethod.GET)
+   public String adProductListDirect(Model model, String pd_num)
+   {
+      String result = null;
+      
+      IAdmin dao = null;
+      
+      dao = sqlSession.getMapper(IAdmin.class);
+      
+      model.addAttribute("productlistdirect1", dao.adminProductDirectList_1(pd_num));
+      model.addAttribute("productlistdirect2", dao.adminProductDirectList_2(pd_num));
+      model.addAttribute("productlistdirect3", dao.adminProductDirectList_3(pd_num));
+      model.addAttribute("productlistdirect4", dao.adminProductDirectList_4(pd_num));
+      model.addAttribute("productlistdirect5", dao.adminProductDirectList_5(pd_num));
+      
+      result = "/WEB-INF/view/admin/ad_product_list_direct.jsp";
+      
+      return result;
+   }      
   
    // 관리자 입출금관리
    @RequestMapping(value = "/admin_money_list.action", method = RequestMethod.GET)
@@ -160,24 +186,53 @@ public class AdminController
       return result;
    }
    
-   // 관리자 카테고리 관리
+   // 관리자 신고 관리
    @RequestMapping(value = "/admin_report_list.action", method = RequestMethod.GET)
    public String adReportList(Model model)
    {
-      return "/WEB-INF/view/admin/ad_report_list.jsp";
+	      String result = null;
+	      
+	      IAdmin dao = sqlSession.getMapper(IAdmin.class);
+	      
+	      model.addAttribute("userReportlist", dao.adminReportList());
+	      
+	      result = "/WEB-INF/view/admin/ad_report_list.jsp";
+	         
+	      return result;      	   
+	   
    }   
    
-   // 관리자 신고 관리
+   // 관리자 문의
    @RequestMapping(value = "/admin_ask_list.action", method = RequestMethod.GET)
    public String adAskList(Model model)
    {
-      return "/WEB-INF/view/admin/ad_ask_list.jsp";
+      String result = null;
+      
+      IAdmin dao = sqlSession.getMapper(IAdmin.class);
+      
+      model.addAttribute("adminAskList", dao.adminAskList());	   
+      
+      result =  "/WEB-INF/view/admin/ad_ask_list.jsp";
+      
+      return result;
    }
    
-   
-   
- 
-   
+
+   @RequestMapping(value = "/ad_ask_list_reply.action", method = RequestMethod.GET)
+   public String adAskListReply(Model model)
+   {
+	   String result = null;
+	      
+	   IAdmin dao = sqlSession.getMapper(IAdmin.class);
+	      
+	   model.addAttribute("adminAskreplyList", dao.adAskListReply());		   
+	   
+	   result = "/WEB-INF/view/admin/ad_ask_list_reply.jsp";
+	   
+	   return result;
+   }
+      
+
    // 관리자 공지사항 출력
    @RequestMapping(value = "/admin_notice_list.action", method = RequestMethod.GET)
    public String adNoticeList(Model model)
@@ -227,11 +282,7 @@ public class AdminController
 	   return result;
    }
 
-   
-   
-   
-   
-   
+ 
    // 관리자 공지사항 수정 폼으로 가기
    @RequestMapping(value = "/admin_notice_modify_form.action" ,method = RequestMethod.GET)
    public String adNoticeModifyForm(Model model, String announce_id)
@@ -260,10 +311,10 @@ public class AdminController
 
 	   dao.noticeModify(dto);
 
+	   //dao.noticeInsert(notice);
 	   
 
 	   
-
 	   result = "redirect:admin_notice_list.action";
 	   
 	   return result;

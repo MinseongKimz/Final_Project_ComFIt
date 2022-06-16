@@ -29,10 +29,7 @@ public class ProductController
 	}
 
 
-	//@RequestMapping(value = "/user_mainlist.action", method = RequestMethod.GET)
-	//public String mainList(Model model)
 
-	
 	@RequestMapping(value = "/user_mainlist.action", method = RequestMethod.POST)
 	public String mainList(Model model, ProductDTO dto, HttpServletRequest request )
 
@@ -49,7 +46,7 @@ public class ProductController
 		dto.setLat(lat);
 		dto.setLon(lon);
 		
-		
+		model.addAttribute("deli_pdList", dao.deli_user_pdList());
 		model.addAttribute("pdList", dao.user_pdList(dto));
 		model.addAttribute("cateList", dao.cateList());
 
@@ -189,16 +186,7 @@ public class ProductController
 	   return result;
 	   
    }
-	
-	
-	
-	
-	
 
-
-	
-	   
-	
 
 
 }

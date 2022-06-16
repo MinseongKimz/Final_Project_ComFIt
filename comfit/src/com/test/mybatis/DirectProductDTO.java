@@ -6,10 +6,40 @@ public class DirectProductDTO
     , pd_hope_sdate, pd_hope_edate, pd_hope_stime, pd_hope_etime, pd_hope_place
     , pd_regit_date, pd_maker_id, pd_as_id, pd_as_name, category_name, seller
     , u_nickname, maker_name, maker_name2, cf_price, comments
-    , remain_date, distance;
+    , remain_date, distance, lat, lon;
 	
 	
 	
+	public String getLat()
+	{
+		return lat;
+	}
+
+	public void setLat(String lat)
+	{
+		this.lat = lat;
+	}
+
+	public String getLon()
+	{
+		return lon;
+	}
+
+	public void setLon(String lon)
+	{
+		this.lon = lon;
+	}
+
+	public String getDistance()
+	{
+		return distance;
+	}
+
+	public void setDistance(String distance)
+	{
+		this.distance = distance;
+	}
+
 	public String getRemain_date()
 	{
 		return remain_date;

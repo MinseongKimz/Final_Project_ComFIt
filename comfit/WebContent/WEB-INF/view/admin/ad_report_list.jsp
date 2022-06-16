@@ -70,15 +70,17 @@
 				</tr>
 			</thead>
 			<tbody>
+			<c:forEach var="report" items="${userReportlist }">
 				<tr>
-					<td>asfdjklaf</td>
-					<td ><a href="" data-bs-toggle="modal" data-bs-target="#exampleModal">P0310</a></td>
-					<td>kim06</td>
-					<td>부적절한 내용</td>
-					<td>처리</td>
-					<td>22:05:27</td>
-					<td>22:05:30</td>
+					<td>${report.u_id }</td>
+					<td ><a href="" data-bs-toggle="modal" data-bs-target="#exampleModal">${report.pd_id }</a></td>
+					<td>${report.r_u_id }</td>
+					<td>${report.rep_contents }</td>
+					<td>${report.han_cate_name }</td>
+					<td>${report.rep_date }</td>
+					<td>${report.rep_han_date }</td>
 				</tr>
+			</c:forEach>
 			</tbody>
 		</table>
 	</div>

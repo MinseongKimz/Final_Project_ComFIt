@@ -13,10 +13,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>직거래 상품 페이지.jsp</title>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
 <link rel="stylesheet" href="<%=cp %>/css/bootstrap.css">
+
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<style>
+   .map_wrap {position:relative;width:100%;height:500px;}
+    .title {font-weight:bold;display:block; font-size: 10px;}
+    .hAddr {position:absolute;left:10px;top:10px; font-size: 10px; border-radius: 2px;background:#fff;background:rgba(255,255,255,0.8);z-index:1;padding:5px;}
+    #centerAddr {display:block;margin-top:2px;font-weight: normal;}
+    .bAddr {padding:5px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap; font-size: 3px;}
+    
+    #map img
+     {
+
+    	max-width: none;
+
+    	height: auto;
+
+    	border: 0
+
+	}
+</style> 
 <style type="text/css">
 p
 {
@@ -66,8 +88,20 @@ d-block
 
 </style>
 
-<script type="text/javascript">
 
+
+<script type="text/javascript">
+function searchAddr()
+{
+  
+    var pd_id = document.getElementById("pd_id").value;
+    var hope_sdate = document.getElementById("hope_sdate").value;
+    var hope_edate = document.getElementById("hope_edate").value;
+    var url = "direct_place.action?pd_id=" + pd_id + "&hope_sdate=" + hope_sdate + "&hope_edate=" + hope_edate;
+    
+    window.open(url, "구매제안", "top=100px, left=100px, height=900px, width=519px");
+    
+}
 function CountDownTimer(dt, id)
 {
     var end = new Date(dt);
@@ -102,7 +136,7 @@ function CountDownTimer(dt, id)
 	{
 		
 		var remain_date = document.getElementById("remain_date").value;
-		alert(remain_date);
+		//alert(remain_date);
 		CountDownTimer(remain_date, 'demo');		
 	};
 
@@ -116,6 +150,12 @@ function CountDownTimer(dt, id)
 
 <div class="header">
 	<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
+</div>
+<div>
+	<c:forEach var="mgrs" items="${mgrs }">
+	<input type="hidden" id="lat" value="${mgrs.lat }" />
+	<input type="hidden" id="lon" value="${mgrs.lon }" />
+	</c:forEach>
 </div>
 
 <div class="container">
@@ -162,12 +202,14 @@ function CountDownTimer(dt, id)
 			</div>
 		</div>
 		
+		<input type="text" id="pd_id" value="${drPd.pd_id }" hidden="hidden"/>
 		<table class="col-md-5">
 			<tr>
 				<td colspan="2">
 				<p>거래방식</p>
 				<!-- 속성에 따라 직거래/배송 표기 -->
-				<p class="content_text">직거래</p></td>
+				<p class="content_text" >직거래</p></td>
+				
 			</tr>
 			<tr>
 				<td colspan="2"><p>희망가격</p>
@@ -204,7 +246,10 @@ function CountDownTimer(dt, id)
 					<p>제조사/물품명</p>
 				</td>
 				<th style="padding-top: 10px;">
-
+				<%
+					int check_id = (int)session.getAttribute("check_id");
+				%>
+				
 					<!-- 제조사/물품명 표기 -->
 					<p style="font-weight: bold;">${drPd.maker_name}(${drPd.maker_name2 }) / ${drPd.pd_name }</p>
 				</th>
@@ -222,16 +267,35 @@ function CountDownTimer(dt, id)
 			
 			<tr>
 				<td colspan="2">
+				<%
+					// 판매자인 경우
+					if(check_id == 1)
+					{
+				%>
+				
 				<!-- 상태에 따라 버튼 변경 -->
 				<!-- 판매자)입찰자 없을 때 :수정하기/삭제하기-->
 				<!-- 판매자)입찰자 있을 때 :즉시낙찰/삭제하기 -->
 				<!-- <button type="button" class="btn btn-warning" style="width: 48%;">즉시낙찰</button> -->
 				<button type="button" class="btn btn-primary" style="width: 48%;">수정하기</button>
 				<button type="button" class="btn btn-secondary" style="width: 48%;">삭제하기</button>
+				<%
+					}
+					else
+					{		
+				%>
+				<button type="button" class="btn btn-primary" style="width: 48%;" id="suggest"
+				                onclick="searchAddr()">구매제안</button>
+				<button type="button" class="btn btn-secondary" style="width: 48%;">신고하기</button>
+				<%
+					}
+				%>
 				</td>
 			</tr>
 		</table>
 		</div>
+		<input type="hidden" id="hope_sdate" value="${drPd.pd_hope_sdate }"/>
+		<input type="hidden" id="hope_edate" value="${drPd.pd_hope_edate }"/>
 		<div>
 			<div class="col-md-6" style="width:100%; display: inline-block; float:left;">
 				<table style="margin-left:5%; width:90%;">
@@ -336,6 +400,11 @@ function CountDownTimer(dt, id)
 	
 	</div>
 </div>
+
+
+
+
+
 
 
 

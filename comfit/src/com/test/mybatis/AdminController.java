@@ -8,6 +8,8 @@
 package com.test.mybatis;
 
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,16 +28,16 @@ public class AdminController
 
       
 
-	/*
-	 * // 관리자 로그인
-	 * 
-	 * @RequestMapping(value = "/ad_login.action", method = RequestMethod.GET)
-	 * public String adLogin(AdminLoginDTO dto,HttpServletRequest request) {
-	 * 
-	 * 
-	 * 
-	 * }
-	 */
+	
+	  // 관리자 로그인
+	  
+	  @RequestMapping(value = "/ad_login.action", method = RequestMethod.GET)
+	  public String adLogin(AdminLoginDTO dto,HttpServletRequest request) {
+	  
+	  
+		  return "s";
+	  }
+	 
 
    
    

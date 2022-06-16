@@ -65,20 +65,7 @@ public class ProductController
 
 	
 	
-	// 판매글 등록 페이지 select option 에 categoryList 연결
-	@RequestMapping(value = "user_delivery_seller_edit.action", method = RequestMethod.GET)
-	public String categoryOption(Model model)
-	{
-		String result = null;
-		
-		IAdmin dao = sqlsession.getMapper(IAdmin.class);
-		
-		model.addAttribute("categorylist", dao.categoryList());
-		
-		result = "/WEB-INF/view/user/main/user_delivery_seller_edit.jsp";
-		
-		return result;
-	}
+	
 	   
 	
 

@@ -3,7 +3,31 @@ package com.test.mybatis;
 public class deliveryInsertDTO
 {
 
+
 	private String pd_title, category_select, pd_maker_id, pd_name, pd_start_price, imd_price, pd_as_id, pd_as_remain, comments, cf_price;
+
+	private String u_id, pd_photo;
+	
+	
+	public String getPd_photo()
+	{
+		return pd_photo;
+	}
+
+	public void setPd_photo(String pd_photo)
+	{
+		this.pd_photo = pd_photo;
+	}
+
+	public String getU_id()
+	{
+		return u_id;
+	}
+
+	public void setU_id(String u_id)
+	{
+		this.u_id = u_id;
+	}
 
 	public String getPd_title()
 	{
@@ -111,3 +135,4 @@ public class deliveryInsertDTO
 	
 	
 }
+

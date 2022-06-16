@@ -66,8 +66,8 @@
 	
 </script>
 
-<div>
-	<c:import url="admin/comfit_header_user.jsp"></c:import>
+<div class = "header">
+	<c:import url = "/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
 </div>
 
 <div class="container" style="width: 940px;">
@@ -75,9 +75,9 @@
 
 	<!-- 버튼 3개 -->
 	<div class="btns" style="text-align: center;">
-		<button type="button" id="notice" class="btn btn-secondary" style="margin: 7px;" onclick="location.href='user_notice_list.jsp'">공지사항</button>
-		<button type="button" id="faq" class="btn btn-secondary" style="margin: 7px;" onclick="location.href='user_faq_list.jsp'">자주묻는질문</button>
-		<button type="button" id="ask" class="btn btn-secondary" style="margin: 7px;" onclick="location.href='user_ask_list.jsp'">내 문의내역</button>
+		<button type="button" id="notice" class="btn btn-secondary" style="margin: 7px;" onclick="location.href='user_notice_list.action'">공지사항</button>
+		<button type="button" id="faq" class="btn btn-secondary" style="margin: 7px;" onclick="location.href='user_faq_list.action'">자주묻는질문</button>
+		<button type="button" id="ask" class="btn btn-primary" style="margin: 7px;" onclick="location.href='user_ask_list.action'">내 문의내역</button>
 	</div>
 	<br /><br /><br />
 	
@@ -114,7 +114,7 @@
 	<br />
 		<div style="display: inline-block; float: right;">
 			<button type="button" class="btn btn-primary" id="account" style="margin: 7px; width: 100px;" data-bs-toggle="modal" data-bs-target="#Modal">등록</button>
-			<button type="button" class="btn btn-primary" id="reset" style="margin: 7px; width: 100px;" onclick="location.href='user_ask_list.jsp'">취소</button>
+			<button type="button" class="btn btn-primary" id="reset" style="margin: 7px; width: 100px;" onclick="location.href='user_ask_my_update.action'">취소</button>
 		</div>	
 	</div>	
 </div>

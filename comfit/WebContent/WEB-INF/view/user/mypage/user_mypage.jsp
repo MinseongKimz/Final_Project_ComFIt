@@ -225,12 +225,13 @@
 		        </tr> -->     
 		    </tbody>
 		</table>
-		<div style="text-align: right;">
-		<button type="button" class="btn btn-primary btn-sm"id="buyBtn" style="width: 20%; height: 40px; font-size: 15pt;"
+			<div style="text-align: right;">
+				<button type="button" class="btn btn-primary btn-sm"id="buyBtn" style="width: 20%; height: 40px; font-size: 15pt;"
 		        onclick="location.href='user_buylist.action'" >구매내역 자세히보기</button>
-		</div>
 			</div>
+			<br /><br /><br />
 		</div>
+	</div>
 </div>
 </body>
 </html>

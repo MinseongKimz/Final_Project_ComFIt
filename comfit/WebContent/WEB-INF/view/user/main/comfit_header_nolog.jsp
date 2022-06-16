@@ -86,7 +86,10 @@
 				    var lat = pos.coords.latitude;	// 위도
 				    var lon = pos.coords.longitude; // 경도
 				    
-				    location.href =  "loginform.action?lat=" + lat + "&lon=" + lon;
+				   	$("#lat").val(lat);
+				   	$("#lon").val(lon);
+				   	//alert(	$("#lon").val());
+				   	$("#form").submit();
 				});
 			}
 			
@@ -100,7 +103,10 @@
 </head>
 <body>
 <div>
-
+<form style="display: none" action="loginform.action" method="POST" id="form">
+  <input type="hidden" id="lat" name="lat">
+  <input type="hidden" id="lon" name="lon" >
+</form>
   
 
   <header>
@@ -143,15 +149,7 @@
     
     <br />
     <div class="text-end " style="">
-    <div class="container">
-	         <button id="sellBtn" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-	              판매 하기
-	         </button>
-	         <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-	            <li class="dropdown-item"><a class="dropdown-item" href="#">직거래 판매하기</a></li>
-	            <li class="dropdown-item"><a class="dropdown-item" href="#">택배거래 판매하기</a></li>
-	         </ul>
-	</div>
+
 	</div>
   </header>
 </div>  

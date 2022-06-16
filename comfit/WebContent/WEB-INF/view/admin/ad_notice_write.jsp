@@ -23,17 +23,22 @@
 		$("#delete_btn").click(function ()
 		{
 			//alert("테스트");
-			location.href="admin_notice_list.action?announce_id="+$(this).val();
+			location.href="admin_notice_list.action";
 		})
+		
+		$("#insert_btn").click(function()
+		{
+			$("#insertForm").submit();
+		})
+		
 	})
 </script>
 </head>
 <body>
-
-
 <div class="container">
-	<div class="row">
-	<form action="admin_notice_insert.action" method="post" name="insert">
+
+	<div class="row"> 
+	<form action="noticeinsert.action" method="post" name="insert" id="insertForm">	
 		<table class="table table-bordered " style="text-align: center; border: 1px solid #dddddd">
 			<thead><!-- 제목 -->
 				<tr><!-- 1행 -->
@@ -43,33 +48,31 @@
 			<tbody>
 				<tr>
 					<td>
-					<div class="" style="display: flex; width: 100%; align-content: right;">
-						<select class="form-select" style="width: 25%; margin-right: 10px">
-							<option value="selected">카테고리</option>
-						<c:forEach var="noticecateList" items="${noticecateList }"> 
-						   	 <option>${noticecateList.anoun_cate_name }</option>
-						   	 <option hidden="${noticecateList.anoun_cate_id }"></option>
+					<div style="display: flex; width: 100%; align-content: right;">
+						<select class="form-select" style="width: 25%; margin-right: 10px" name="announce_cate_id" id="announce_cate_id">
+						<c:forEach var="noticecateList" items="${noticecateList }" > 
+						   	 <option value="${noticecateList.anoun_cate_id}" >${noticecateList.anoun_cate_name }</option>
 						</c:forEach>
 						</select>
-					
-			   			<input type="text" class="form-control" id="announce_title"name="announce_title"placeholder="제목을 입력하세요">
+						<input type="text" class="form-control " id="announce_title "name="announce_title" placeholder="제목을 입력하세요">
 		   			</div>
 					</td>	
 				</tr>
 				<tr>	
-					<td><textarea class="form-control" placeholder="글 내용" name="announce_contents" id="announce_contents"maxlength="2048" style="height: 350px;"></textarea></td>
+					<td><textarea class="form-control" placeholder="글 내용" name="announce_contents" id="announce_contents" maxlength="2048" style="height: 350px;"></textarea></td>
 				</tr>
+			
 			</tbody>
 		</table>
+		</form>			
 				<div style="margin-top: 20px; width: 1300px; text-align: right;">
-					<input type="text" value="${announce_id }">
-					<button type="submit" id="insert_btn"class="btn btn-primary" style="width: 150px"  >글쓰기</button>
-					<button type="button" id="delete_btn"class="btn btn-outline-secondary" value="돌아가기" style="width: 150px">돌아가기</button>				
+					<button type="button" id="insert_btn"class="btn btn-primary" style="width: 150px;" >글쓰기</button>
+					<button type="button" id="delete_btn"class="btn btn-outline-secondary" style="width: 150px">돌아가기</button>				
 				</div>	
-	</form>
+				
+			
 	</div>
+
 </div>
-
-
 </body>
 </html>

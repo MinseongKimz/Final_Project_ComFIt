@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>직거래 희망장소 선택</title>
+<title>구매제안</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <style>
     .map_wrap {position:relative;width:100%;height:350px;}
@@ -33,9 +33,24 @@
     
 <div>
    <form action="maptest01.jsp" method="get">
-      <input type="text"  id="addr" readonly="readonly" style="width: 250px; height: 25px;" />
+       <label for="addr2">희망장소</label>
+      <input type="text"  id="addr" placeholder="지도에서 클릭해주세요" readonly="readonly" style="width: 250px; height: 25px;" />
       
       <br>
+      <label for="addr2">장소상세</label>
+      <input type="text"  id="addr2" style="width: 250px; height: 25px;" />
+      
+      <br>
+      <label for="addr2">거래희망날짜</label>
+      <input type="text"  id="hope_date" readonly="readonly" style="width: 250px; height: 25px;" />
+      
+      <br>
+      <label for="addr2">거래희망시간</label>
+      <input type="text"  id="hope_time" readonly="readonly" style="width: 250px; height: 25px;" />
+      
+      <br>
+      <label for="addr2">제안금액</label>
+      <input type="text"  id="hope_date" readonly="readonly" style="width: 250px; height: 25px;" />
       <button type="submit" style="width: 70px; height: 40px;">확인</button>
       
    </form>
@@ -60,7 +75,8 @@
        };  
    
    // 지도를 생성합니다    
-   var map = new kakao.maps.Map(mapContainer, mapOption); 
+   var map = new kakao.maps.Map(mapContainer, mapOption);
+   
    
    // 주소-좌표 변환 객체를 생성합니다
    var geocoder = new kakao.maps.services.Geocoder();

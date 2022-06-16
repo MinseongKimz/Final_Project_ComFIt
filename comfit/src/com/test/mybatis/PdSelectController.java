@@ -85,6 +85,7 @@ public class PdSelectController
 		try
 		{
 			model.addAttribute("mgrs", dao.mgrs(pd_id));
+			
 			result = "WEB-INF/view/user/main/direct_place.jsp";	
 			
 		} catch (Exception e)

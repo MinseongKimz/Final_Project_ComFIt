@@ -30,6 +30,11 @@ public class ProductController
 
 
 
+
+	@RequestMapping(value = "/user_mainlist.action", method = RequestMethod.POST)
+	public String mainList(Model model, ProductDTO dto, HttpServletRequest request )
+
+
 	@RequestMapping(value = "/user_mainlist.action", method = RequestMethod.POST)
 	public String mainList(Model model, ProductDTO dto, HttpServletRequest request )
 

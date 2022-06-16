@@ -38,35 +38,29 @@
 		// sort에 따라 버튼 색 분기
 		if ($("#sortData").val() == 2)
 		{
-			$("#sort2Btn").attr("class", "btn btn-primary");
-		    $("#sort1Btn").attr("class", "btn btn-secondary");
-		    $("#sort3Btn").attr("class", "btn btn-secondary");
-		    $("#sort4Btn").attr("class", "btn btn-secondary");
-		    $("#sort5Btn").attr("class", "btn btn-secondary");
+			//$("#sort2Btn").attr("class", "btn btn-primary");
+			$("#sort2Btn").removeClass("btn-secondary");
+			$("#sort2Btn").addClass("btn-primary");
 		}
 		else if ($("#sortData").val() == 3)
 		{
-			$("#sort3Btn").attr("class", "btn btn-primary");
-		    $("#sort1Btn").attr("class", "btn btn-secondary");
-		    $("#sort2Btn").attr("class", "btn btn-secondary");
-		    $("#sort4Btn").attr("class", "btn btn-secondary");
-		    $("#sort5Btn").attr("class", "btn btn-secondary");
+			$("#sort3Btn").removeClass("btn-secondary");
+			$("#sort3Btn").addClass("btn-primary");
 		}
 		else if ($("#sortData").val() == 4)
 		{
-			$("#sort4Btn").attr("class", "btn btn-primary");
-		    $("#sort1Btn").attr("class", "btn btn-secondary");
-		    $("#sort2Btn").attr("class", "btn btn-secondary");
-		    $("#sort3Btn").attr("class", "btn btn-secondary");
-		    $("#sort5Btn").attr("class", "btn btn-secondary");
+			$("#sort4Btn").removeClass("btn-secondary");
+			$("#sort4Btn").addClass("btn-primary");
 		}
 		else if ($("#sortData").val() == 5)
 		{
-			$("#sort5Btn").attr("class", "btn btn-primary");
-		    $("#sort1Btn").attr("class", "btn btn-secondary");
-		    $("#sort2Btn").attr("class", "btn btn-secondary");
-		    $("#sort3Btn").attr("class", "btn btn-secondary");
-		    $("#sort4Btn").attr("class", "btn btn-secondary");
+			$("#sort5Btn").removeClass("btn-secondary");
+			$("#sort5Btn").addClass("btn-primary");
+		}
+		else
+		{
+			$("#sort1Btn").removeClass("btn-secondary");
+			$("#sort1Btn").addClass("btn-primary");
 		}
 		
 		$("#sort1Btn").click(function()
@@ -121,7 +115,7 @@
 			style="display: none;" />
 		</div>
 		<div style="margin-left: 60%; margint-bottom:3%">
-			<button id="sort1Btn" type="button" class="btn btn-primary">최신순</button>
+			<button id="sort1Btn" type="button" class="btn btn-secondary">최신순</button>
 			<button id="sort2Btn" type="button" class="btn btn-secondary">고가순</button>
 			<button id="sort3Btn" type="button" class="btn btn-secondary">저가순</button>
 			<button id="sort4Btn" type="button" class="btn btn-secondary">직거래만</button>

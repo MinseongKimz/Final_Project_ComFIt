@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class UserMyPageInfoController
@@ -67,6 +68,7 @@ public class UserMyPageInfoController
 			
 			model.addAttribute("userInfo", mypage.myDetailInfo(u_id));
 			model.addAttribute("level", mypage.myLevel(u_id));
+			
 			result = "/WEB-INF/view/user/mypage/user_mypage_info.jsp";
 			
 			
@@ -193,7 +195,6 @@ public class UserMyPageInfoController
 			
 			IUserMyPage mypage = sqlSession.getMapper(IUserMyPage.class);
 			model.addAttribute("point", mypage.myPoint(u_id));
-			model.addAttribute("userInfo", mypage.myDetailInfo(u_id));
 			
 			result = "/WEB-INF/view/user/mypage/user_mypage_point_input.jsp";
 		}

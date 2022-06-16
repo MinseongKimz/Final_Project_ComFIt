@@ -81,8 +81,25 @@ public class SearchContoller
 	}
 	
 	
+	// 판매글 등록 페이지 select option 에 categoryList 연결
+	@RequestMapping(value = "user_delivery_seller_edit.action", method = RequestMethod.GET)
+	public String categoryOption(Model model)
+	{
+		String result = null;
+		
+		IAdmin dao = sqlSeesion.getMapper(IAdmin.class);
+		
+		model.addAttribute("categorylist", dao.categoryList());
+		
+		result = "/WEB-INF/view/user/main/user_delivery_seller_edit.jsp";
+		
+		return result;
+	}
+	
+	
+	//판매글 등록글 insert
 	@RequestMapping(value = "/deliveryinsert.action", method = RequestMethod.POST)
-	public String deliveryInsert(deliveryInsertDTO dto)
+	public String deliveryinsert(deliveryInsertDTO dto)
 	{
 		String result = null;
 		
@@ -93,9 +110,8 @@ public class SearchContoller
 		result = "redirect:comfit.action";
 		
 		return result;
-		
 	}
-	
+
 	
 	
 	

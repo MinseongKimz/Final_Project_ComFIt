@@ -138,7 +138,6 @@
 		 WHERE DIRE_PD_ID = #{pd_id}
 	</select>	
 
-	
 	<select id="deliuserId" resultType="java.lang.String">
 		SELECT U_ID
 		  FROM DELIVERY_PRODUCT

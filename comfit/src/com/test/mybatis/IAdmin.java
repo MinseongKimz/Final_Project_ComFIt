@@ -69,7 +69,13 @@ public interface IAdmin
 	public ArrayList<adProductDTO> adminProductDeliveryList_4(String pd_num);
 	public ArrayList<adProductDTO> adminProductDeliveryList_5(String pd_num);
 		
-	
+	// 관리자모드 직거래상품 세부 출력 메소드
+	public ArrayList<adProductDTO> adminProductDirectList_1(String pd_num);
+	public ArrayList<adProductDTO> adminProductDirectList_2(String pd_num);
+	public ArrayList<adProductDTO> adminProductDirectList_3(String pd_num);
+	public ArrayList<adProductDTO> adminProductDirectList_4(String pd_num);
+	public ArrayList<adProductDTO> adminProductDirectList_5(String pd_num);
+
 	// 관리자모드 입출금 출력 메소드
 	public ArrayList<adMoneyDTO> adminMoneyList();
 	

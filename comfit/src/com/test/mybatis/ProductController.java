@@ -28,7 +28,11 @@ public class ProductController
 
 	}
 
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> 7664140a0bc40ea8768ca8f0af849da9d0f92624
 	@RequestMapping(value = "/user_mainlist.action", method = RequestMethod.POST)
 	public String mainList(Model model, ProductDTO dto, HttpServletRequest request )
 	{
@@ -182,8 +186,11 @@ public class ProductController
 	   return result;
 	   
    }
+<<<<<<< HEAD
 	
 	
 
 
+=======
+>>>>>>> 7664140a0bc40ea8768ca8f0af849da9d0f92624
 }

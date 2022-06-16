@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>직거래 판매글 등록</title>
+<title>판매글 수정-직거래</title>
 <link rel="stylesheet" href="<%=cp %>/css/bootstrap.css">
 <link rel="stylesheet" href="<%=cp %>/css/inputstyle.css">
 <link rel="stylesheet" href="css/main.css" type="text/css"> 
@@ -51,45 +51,6 @@
     margin-left: 5px;
 }
 </style>
-<script type="text/javascript">
-
-	$(document).ready(function()
-		{
-			$("#category-select").change(function()
-			{
-				//alert($(this).val());
-				var param = "optionValue=" + $(this).val();
-				 
-				// select option value 에  카테고리id가 들어가도록 변경
-				
-				
-				$.ajax(
-				{
-					url: "changeMakerSelect.action"
-					, type: "GET"
-					, data: param
-					, success: function(result)
-					{
-						
-						$("#maker_id").html(result)
-						
-					/* $("#maker_name").html("<c:forEach var='maker' items='${makerlist }'>"
-								+ "<option value='${maker.maker_name }'>" + ${maker.maker_name }+ "</option>"
-								+"</c:forEach>") */
-						
-					}
-					, error: function(e)
-					{
-						alert(e.responseText);
-					}
-				})
-				
-			})
-				
-		})
-
-</script>
-
 <script type="text/javascript">
    function readURL(input) {
      if (input.files && input.files[0]) {
@@ -294,115 +255,128 @@
    
 <div class="container" style="padding-top: 80px;">
    <p class="fs-3" style="font-weight: bold;">
-      직거래 판매글 등록   
+      판매글 등록-직거래   
    </p>
-   
-   <div class="input_box" style="padding-left: 5%; padding-top: 10%;">
-   <form action="" method="post">
-      <table style="width: 100%;">
-		 <tr>
-			<th>물품검색<span class="star">*</span></th>
-			<td colspan="2">
-				<div><!--  class="input-group mb-6" -->
-				  <input type="text" class="<!-- form-control  -->" placeholder="판매할 물품을 검색해주세요" style="height:40px; width: 260px; display: inline-block; font-style: italic;" readonly="readonly">
-				  <span class="input-group-text" id="basic-addon1" onclick="location.href='searchproduct2.action';" style="width: 50px; display: inline-block;"><i class="bi bi-search"></i></span>
-				</div>
-			</td>
-		 </tr>
-		<tr>
-			<th>제목<span class="star">*</span></th>
-			<td colspan="3"><input class="form-control" id="pd_title" name="pd_title" type="text" placeholder="제목을 입력해주세요." style="width: 86%; font-style: italic;"/>
-			<p align="right" style="font-size: 3px; margin-right: 16%;"></p>
-			</td>
-		</tr>
-		<tr>
-			<th>물품 카테고리<span class="star">*</span>
-			 <p style="font-weight: normal; font-size: 7pt;">상품과 일치하는 카테고리를 선택해주세요.
-                <br>적합하지 않을 경우 운영자에 의해 조정될 수 있습니다.</p>
-               </th>
-			<td><!-- 카테고리 -->
-				<select class="form-select" id="category-select" name="category_select" style="width: 90%; height: 35px;">
-				<option>카테고리 선택</option>
-				
-					<c:forEach var="category" items="${categorylist }">
-
-						<option class="option_select" value="${category.pd_category_id }" ${category.category_name eq cate ? 'selected' : ''}>${category.category_name }</option>
-
-					</c:forEach>
-				
-				</select>
-			</td>
-			<td id="maker_c">
-				<%-- <input type="text" class="form-control" id="maker" name="maker" placeholder="제조사를 입력해 주세요." style="width: 90%;" value="${maker }"/> --%>
-				<select class="form-select" id="maker_id" name="pd_maker_id" style="width: 90%; height: 35px;">
-				<option id="pd_maker">제조사 카테고리 선택</option>
-					<c:forEach var="maker" items="${makerlist }">
-						<option value="${maker.pd_maker_id }" ${maker.maker_name eq mk ? 'selected' : ''}>${maker.maker_name }</option>
-					</c:forEach>
-
-				</select>
-			</td>	
-				
-			<td>
-				<input type="text" class="form-control" id="pd_name" name="pd_name" placeholder="물품명을 입력해 주세요." style="width: 90%;" value="${name }">
-			</td>	
-		</tr>
-		
+   <div class="share">
+      <table>
          <tr>
-            <th>희망 가능 장소<span class="star">*</span></th>
-			<td colspan="2">
-				<div><!--  class="input-group mb-6" -->
-				  <input type="text" class="<!-- form-control  -->" placeholder="거래 희망장소를 선택해주세요" style="height:40px; width: 260px; display: inline-block; font-style: italic;" readonly="readonly">
-				  <span class="input-group-text" id="basic-addon1" onclick="location.href='geotest.action';" style="width: 50px; display: inline-block;"><i class="bi bi-search"></i></span>
-				</div>
-			</td>
-            <!-- 지도 출력 -->
+            <th>제목<span class="star">*</span></th>
+            <td colspan="3"><input class="form-control" id="exampleFormControlInput1" type="text" placeholder="제목을 입력해주세요." style="width: 86%; margin-left: 2%;"/>
+            <p align="right" style="font-size: 3px; margin-right: 16%;">32/32</p>
+            </td>
          </tr>
-         
-         
          <tr>
-         <div>
-            <th>희망 거래 일시<span class="star">*</span>
-            	<p style="font-weight: normal; font-size: 7pt;">오늘날짜로 선택이 불가능합니다.
-            	<br>거래 가능일은 5일입니다.
-            	<br>끝나는 시간은 23:00 PM 까지 입니다.</p>
+            <th>거래 가능 장소<span class="star">*</span></th>
+            <td>
+               <div class="input-group mb-5" style="margin-top: 10%;">
+                 <button class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></button>
+                 <input type="text" class="form-control" placeholder="검색" style="height:40px;">
+               </div>
+            </td>
             
-	            <td>
-					<!-- <div class="input-group input-daterange" > -->
-						<input type="text" class="form-control" id="sdate" name="pd_hope_sdate" placeholder="1. 거래를 시작할 날짜" style="width: 90%;"/>
-					</div>
-	            </td>
-			</th>
-		</div>
-	           	<td>
-	               <!-- <div class="input-group input-daterange"> -->
-	                   <input type="text" class="form-control" id="edate" name="pd_hope_edate" placeholder="2. 거래를 끝낼 날짜" style="width: 90%;"/>
-	               </div>
-	            </td>
-            <tr>
-            <th></th>
-	            <td>
-	             	<!-- <div class="input-group input-daterange"> -->
-	                	<input type="text" class="form-control" id="time1" name="pd_hope_stime"placeholder="3. 거래 시작 시간 선택" style="width: 90%;"/>
-	             	</div>
-	            </td>
-                <td>
-		            <!-- <div class="input-group input-daterange"> -->
-		                  <input type="text" class="form-control" id="time2" name="pd_hope_etime" placeholder="4. 거래 종료 시간 선택" style="width: 90%;"/>
-		            </div>
-               </td>
-            </tr>   
+            <!-- 지도 출력 -->
+            
          </tr>
          
          
+         <tr>
+            <th>거래 가능 일시<span class="star">*</span>
+            <p style="font-weight: normal; font-size: 7pt;">오늘날짜로 선택이 불가능합니다.
+            	 <br>거래 가능일은 5일입니다.
+                 <br>끝나는 시간은 23:00 PM 까지 입니다.</p>
+                </th>
+                <td>
+                   <div class="input-group input-daterange" >
+                   <input type="text" class="startdate" id="sdate" placeholder="시작 날짜" />
+               	   </div>
+            </td>
+            <td style="width:2%; font-size:80%;">
+            ▶▶▶
+            </td>
+           	<td>
+	               <div class="input-group input-daterange">
+	                   <input type="text" class="enddate" id="edate"  placeholder="끝나는 날짜"/>
+	               </div>
+            </td>
+                
+            <td>
+             	<div class="input-group input-daterange">
+                 <input type="text" class="time1" id="time1" name="time1"placeholder="시간을 선택해주세요."/>
+             	</div>
+            </td>
+            <td style="width:2%;font-size:80%;">
+            ▶▶▶
+            </td>
+                <td>
+			            <div class="input-group input-daterange">
+			            
+			                  <input type="text" class="time2" id="time2" name="time2" placeholder="시간을 선택해주세요."/>
+			            </div>
+               </td>
+         </tr>
          
-        
+         <tr>
+         	<th>물품검색<span class="star">*</span></th>
+         	  <td>
+               <div class="input-group mb-5" style="width: 70%; margin-top: 15%;">
+                 <button class="input-group-text" id="basic-addon1"><i class="bi bi-search" onclick="location.href='searchproduct.action';"></i></button>
+                 <input type="text" class="form-control" placeholder="물품 검색" style="height:40px;">
+               </div>
+              </td>
+         </tr>
+         
+        <tr>
+            <th>물품 카테고리<span class="star">*</span>
+             <p style="font-weight: normal; font-size: 7pt;">상품과 일치하는 카테고리를 선택해주세요.
+                 <br>적합하지 않을 경우 운영자에 의해 조정될 수 있습니다.</p>
+                </th>
+            <td width="20%;">
+               <select class="form-select" name="category" style="width: 50%; height: 35px; margin-left: 5%;">
+               <option selected="selected">카테고리</option>
+                     <option value="">CPU</option>
+                     <option value="">쿨러/튜닝</option>
+                     <option value="">메인 보드</option>
+                     <option value="">메모리</option>
+                     <option value="">그래픽 카드</option>
+                     <option value="">HDD/SSD</option>
+                     <option value="">외장 HDD</option>
+                     <option value="">케이스</option>
+                     <option value="">파워</option>
+                     <option value="">키보드/마우스</option>
+                     <option value="">모니터</option>
+                     <option value="">오디오</option>
+               </select>
+               
+               </td>
+            <!-- 공간 맞추기  -->   
+            <td></td>
+            <td>
+               <input type="text" class="form-control" id="productName" placeholder="물품명을 입력해 주세요." style="width: 90%; margin-left: -25%;"/>
+            </td>
+            <td>   
+               <input type="text" class="form-control" id="productMaker" placeholder="제조사를 입력해 주세요." style="width: 90%;"/>
+            </td>
+         </tr>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+         	<tr>
+            	<!-- 공간맞추기용 th -->
+            	<th>
+            	</th>
+         	</tr>
          
          <tr>
             <th>희망 시작 가격<span class="star">*</span>
              <p style="font-weight: normal; font-size: 7pt;">희망하는 가격을 적어주세요.</p>
                 </th>
-                <td colspan="5"><input class="form-control" id="price1" type="text" placeholder="희망 가격을 입력해주세요." style="width: 40%;"/>
+                <td colspan="3"><input class="form-control" id="price1" type="text" placeholder="희망 가격을 입력해주세요." style="width: 86%;"/>
                 </td>
          </tr>
                
@@ -439,7 +413,7 @@
               <label class="form-check-label" for="inlineRadio3">불가능</label>
             </div>
             
-            <input class="form-control" id="asDate" type="text" placeholder="AS 만료 기간 입력. 예) 2024-09" style="width: 86%;"/>
+            <input class="form-control" id="asDate" type="text" placeholder="유효날짜 (연/월/일)" style="width: 86%;"/>
          </tr>
          
          <tr>
@@ -451,7 +425,7 @@
             </th>
             
             <td colspan="3" rowspan="2">
-            <textarea placeholder=" 판매자 코멘트 작성" style="width:86%; height: 150px;"></textarea>
+            <textarea placeholder="코멘트 특이사항" style="width:86%; height: 150px;"></textarea>
             </td>
          </tr>
          
@@ -475,7 +449,6 @@
          </tr>
          
       </table>
-      </form>
    </div>
    
    <br />

@@ -60,7 +60,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    THEN 1
 	    ELSE TRUNC(SQRT((SUM(USER_EXP))/2)) 
 	    END AS USER_LEVEL
-		FROM USER_LEVEL_VIEW
+		FROM USER_LEVEL_VIEW2
 		WHERE U_ID = #{u_id}
 	</select>
 	

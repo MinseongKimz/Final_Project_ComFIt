@@ -93,6 +93,7 @@
 			//alert($("input[name=cf_price]").val());
 			
 			location.href="deliveryInsert.action?comments="+comments+"&cf_price=" + cf_price + "&pd_as_remain=" + pd_as_remain;
+			
 		})
 	})
 	
@@ -321,7 +322,7 @@
 			
 			<tr>
             <th>물품 사진<span class="star">*</span>
-             <p style="font-weight: normal; font-size: 7pt;">최소 여섯장 이상 등록해 주세요.</p>
+             <p style="font-weight: normal; font-size: 7pt;">최소 3장 이상 등록해 주세요.</p>
                 </th>
                 <td colspan="3">
                       <div class="insert">
@@ -382,7 +383,7 @@
 				<td colspan="4">
 					<div class="d-grid gap-2 d-md-flex justify-content-md-end" style="width: 90%;">
 					<input type="text" name="cf_price" value="${realAvgPrice }" style="display: none;" />
-	                <button type="submit" class="btn btn-primary" id="delivery_Insert">등록하기</button>
+	                <button type="button" class="btn btn-primary" id="delivery_Insert">등록하기</button>
 	                <button type="button" class="btn btn-secondary">취소</button>
 	                </div>
                 </td>

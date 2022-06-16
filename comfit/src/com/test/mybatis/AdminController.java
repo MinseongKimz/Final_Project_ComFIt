@@ -23,9 +23,7 @@ public class AdminController
    @Autowired
    private SqlSession sqlSession;
    
-<<<<<<< HEAD
- 
-=======
+
 	/*
 	 * // 관리자 로그인
 	 * 
@@ -36,8 +34,7 @@ public class AdminController
 	 * 
 	 * }
 	 */
->>>>>>> 2d9f0dd0856300ecf6d60ba51ea035feb7733640
-   
+
    
    
    

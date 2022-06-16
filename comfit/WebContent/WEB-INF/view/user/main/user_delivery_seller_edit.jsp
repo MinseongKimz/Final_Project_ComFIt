@@ -91,8 +91,6 @@
 
 
 
-	var pd_as_remain = $("#pd_as_remain").val();
-
 	
 	$(document).ready(function()
 	{
@@ -144,8 +142,8 @@
 	var filesArr = new Array();
 	/* 첨부파일 추가 */
 	function addFile(obj){
-	   var minFileCnt = 6;
-	    var maxFileCnt = 10;   // 첨부파일 최대 개수
+	   var minFileCnt = 3;
+	    var maxFileCnt = 5;   // 첨부파일 최대 개수
 	    var attFileCnt = document.querySelectorAll('.filebox').length;    // 기존 추가된 첨부파일 개수
 	    var remainFileCnt = maxFileCnt - attFileCnt;    // 추가로 첨부가능한 개수
 	    var curFileCnt = obj.files.length;  // 현재 선택된 첨부파일 개수
@@ -218,7 +216,7 @@
 	/* 폼 전송 */
 	function submitForm() {
 	    // 폼데이터 담기
-	    var form = document.querySelector("form");
+	    var form = document.querySelector("#upload_file");
 	    var formData = new FormData(form);
 	    for (var i = 0; i < filesArr.length; i++) {
 	        // 삭제되지 않은 파일만 폼데이터에 담기
@@ -336,8 +334,8 @@
                 </th>
                 <td colspan="3">
                       <div class="insert">
-                   <form method="POST" onsubmit="return false;" enctype="multipart/form-data">
-                      <p style="font-weight: normal;">[ 최소 6장 ~ 최대 10장 ]</p>
+                   <form id="upload_file" method="POST" onsubmit="return false;" enctype="multipart/form-data">
+                      <p style="font-weight: normal;">[ 최소 3장 ~ 최대 5장 ]</p>
                        <input type="file" onchange="addFile(this);" multiple />
                        <div class="file-list"  >
                        </div>

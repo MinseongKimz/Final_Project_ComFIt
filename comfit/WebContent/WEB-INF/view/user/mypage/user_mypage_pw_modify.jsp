@@ -10,7 +10,6 @@
 <head>
 <meta charset="UTF-8">
 <title>비밀번호 수정</title>
-<link rel="stylesheet" type="text/css" href="<%=cp%>/css/main.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
 
@@ -32,91 +31,86 @@
 	{
 		font-size: 25pt;
 		font-weight: bold;
-		margin-left: 15%;
-		margin-top:5%;
-		
-	}
-	.subheader_header
-	{
-		font-size: 20pt;
-		font-weight: bold;
-		margin-left: 25%;
 	}
 	.tablebts
 	{
 		border-radius:5px;
 		margin-top:5%;
-		margin-left: 15%;
-    	width: 40%;
     	font-weight: bold;
+    	display: inline-block;
   	}
-  	.hi
+  	.btn
   	{
-  		border-radius:5px;
-  		margin-left:-20%;
-  		width:80%;
+  		width: 10%;
   	}
-  	
   	
 </style>
 
 </head>
 <body>
-<div>
-		<!--Header  -->
-		<div class="header">
-	      <c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
-	   	</div>
-	   	
-	   	<!--Content  -->
-	   	<div>
-	   		<p class="subheader">마이페이지</p>
-	   		<p class="subheader_header">회원정보</p>
-	   		<div style="float:left; margin-left:15%;">
-	   		<c:import url="/WEB-INF/view/user/main/user_sidebar.jsp"></c:import>
-	   		</div>
-	   	</div>
-	   
-	   	<table class="tablebts" style="float: left;">
-	   		<tr>
-	   			<td>현재비밀번호</td><td><input type="text" class="hi" placeholder="비밀번호를 입력하세요" /></td>
-	   		</tr>
-	   		<tr>
-	   			<td>새 비밀번호</td><td><input type="text" class="hi" placeholder="새 비밀번호를 입력하세요" /></td>
-	   		</tr>
-	   		<tr>
-	   			<td>새 비밀번호 확인</td><td><input type="text" class="hi" placeholder="새 비밀번호를 한 번 더 입력하세요" /></td>
-	   		</tr>
-	   		<tr>
-	   			<td>
-	   			
-	   			<button class="btn btn-primary" style="margin-left: 80%; width: 150px; margin-top:5%;"
-				data-bs-toggle="modal" data-bs-target="#check">확인</button>
-	   			</td>
-	   		</tr>
-	   	</table>
-	   	
-	   	
-		<!-- Modal 입금 확인 -->
-		<div class="modal fade" id="check" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-		  <div class="modal-dialog">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-		      </div>
-		      <div class="modal-body">
-		         <h3 style="color: #0000ff; font-weight: bold;">Comfit</h3><br />
-		         
-		         <span class="ibgum" style="font-size: 15px;">비밀번호 수정이 완료되었습니다.</span><br />
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-primary" id="btn-modify-success" aria-label="Close" data-bs-dismiss="modal">확인</button>
-		      </div>
-		    </div>
-		  </div>
-		</div>
 
-	   	
+
+
+<!--Sidebar-->
+<div style="float:left; margin-left: 10px; margin-top: 20%; position: fixed;">
+	<c:import url="/WEB-INF/view/user/main/user_sidebar.jsp" ></c:import>
+</div>
+
+<!--Header  -->
+<div class="header">
+     <c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
+</div>
+
+<div class="container" style="text-align: center;">
+  	<!--Content  -->
+  	<div>
+  		<p class="subheader">비밀번호 수정</p>
+  	</div>
+  
+  	<table class="tablebts" style="text-align: left;">
+  		<tr>
+  			<td>현재 비밀번호</td>
+  			<td>
+  				<input class="form-control" type="text" placeholder="비밀번호를 입력하세요" />
+  			</td>
+  		</tr>
+  		<tr>
+  			<td>새 비밀번호</td>
+  			<td>
+  				<input class="form-control" type="text" placeholder="새 비밀번호를 입력하세요" />
+  			</td>
+  		</tr>
+  		<tr>
+  			<td>새 비밀번호 확인</td>
+  			<td>
+  				<input class="form-control" type="text" placeholder="새 비밀번호를 재입력해주세요" />
+  			</td>
+  		</tr>
+  	</table>
+  	
+  	<div style="margin-top: 2%;">
+		<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#check">확인</button>
+		<button class="btn btn-secondary" >취소</button>
+  	</div>
+  	
+<!-- Modal 입금 확인 -->
+	<div class="modal fade" id="check" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body">
+	         <h3 style="color: #0000ff; font-weight: bold;">Comfit</h3><br />
+	         
+	         <span class="ibgum" style="font-size: 15px;">비밀번호 수정이 완료되었습니다.</span><br />
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-primary" id="btn-modify-success" aria-label="Close" data-bs-dismiss="modal">확인</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 </div>
 
 </body>

@@ -30,10 +30,9 @@
 </head>
 <body>
 
-
+<form action="admin_notice_modify.action" method="POST" name="insert">
 <div class="container">
 	<div class="row">
-	<form action="admin_notice_insert.action" method="post" name="insert">
 		<table class="table table-bordered " style="text-align: center; border: 1px solid #dddddd">
 			<thead><!-- 제목 -->
 				<tr><!-- 1행 -->
@@ -43,31 +42,31 @@
 			<tbody>
 				<tr>
 					<td>
+				
 					<div class="" style="display: flex; width: 100%; align-content: right;">
-						<select class="form-select" style="width: 25%; margin-right: 10px">
-							<option value="selected">카테고리</option>
-						<c:forEach var="noticecateList" items="${noticecateList }">
-						   	 <option>${noticecateList.anoun_cate_name }</option>
+						<select class="form-select" style="width: 25%; margin-right: 10px" name="announce_cate_id" id="announce_cate_id">
+						<c:forEach var="noticecateList" items="${noticecateList }" > 
+						   	 <option value="${noticecateList.anoun_cate_id}" >${noticecateList.anoun_cate_name }</option>
 						</c:forEach>
 						</select>
 					
-			   			<input type="text" class="form-control" value=${notice.announce_title }>
+			   			<input type="text" class="form-control" id="announce_title"name="announce_title"value=${noticeModifyForm.announce_title }>
 		   			</div>
 					</td>	
 				</tr>
 				<tr>	
-					<td><textarea class="form-control"  name="bbsContent" maxlength="2048" style="height: 350px;">${notice.announce_contents }</textarea></td>
+					<td><textarea class="form-control"  name="announce_contents" id="announce_contents" maxlength="2048" style="height: 350px;" >${noticeModifyForm.announce_contents }</textarea></td>
 				</tr>
 			</tbody>
 		</table>
 				<div style="margin-top: 20px; width: 1300px; text-align: right;">
-					<%-- <input type="text" name="announce_id" value="${announce_id }" /> --%>
+					<input type="text" style="display: none;" name="announce_id" value="${noticeModifyForm.announce_id }" />
 					<button type="submit" id="insert_btn"class="btn btn-primary" value="글쓰기" style="width: 150px" >수정</button>
 					<button type="button" id="delete_btn"class="btn btn-outline-secondary" value="돌아가기" style="width: 150px">취소</button>				
 				</div>	
-	</form>
+		</div>
 	</div>
-</div>
+</form>
 
 
 </body>

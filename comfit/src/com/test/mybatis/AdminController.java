@@ -7,12 +7,15 @@
 
 package com.test.mybatis;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class AdminController
@@ -23,10 +26,17 @@ public class AdminController
    
    // 관리자 로그인
    @RequestMapping(value = "/ad_login.action", method = RequestMethod.GET)
-   public String adLogin(Model model)
+   public String adLogin(AdminLoginDTO dto,HttpServletRequest request)
    {
-      return "/WEB-INF/view/admin/ad_login.jsp";
+	  
+	   
+	   
    }
+   
+   
+   
+   
+   
    
    // 관리자 메인
    @RequestMapping(value = "/ad_main.action", method = RequestMethod.GET)
@@ -201,53 +211,57 @@ public class AdminController
    
  
    // 관리자 공지사항 입력 
-   @RequestMapping(value="/admin_notice_insert.action",method = RequestMethod.POST)
-   public String adNoticeinsert(NoticeDTO notice , NoticeDTO dto)
+   @RequestMapping(value = "/noticeinsert.action", method = RequestMethod.POST)
+   public String adNoticeinsert(NoticeDTO dto, @RequestParam("announce_cate_id") String announce_cate_id)
    {
-	   
-	   
 	   String result = null;
-	   
 	   IAdmin dao = sqlSession.getMapper(IAdmin.class);
-
-	  
-	   dao.noticeInsert(dto);
-
 	   
+	   dto.setAnoun_cate_id(announce_cate_id);
+	   
+	   dao.noticeInsert(dto);
+	   
+	   //System.out.println(announce_cate_id);
 	   result = "redirect:admin_notice_list.action";
 	   
 	   return result;
    }
 
+   
+   
+   
+   
    
    // 관리자 공지사항 수정 폼으로 가기
    @RequestMapping(value = "/admin_notice_modify_form.action" ,method = RequestMethod.GET)
    public String adNoticeModifyForm(Model model, String announce_id)
    {
-	   String result = null;
 	   
 	   IAdmin dao = sqlSession.getMapper(IAdmin.class);
 	   
-	   model.addAttribute("modify",dao.noticeModifyForm(announce_id));
+	   model.addAttribute("noticeModifyForm",dao.noticeModifyForm(announce_id));
 	   
-	   result = "/WEB-INF/view/admin/ad_notice_modify.jsp";
+	   model.addAttribute("noticecateList", dao.noticecateList());
 	   
 	   
-	   return result;
+	   return "/WEB-INF/view/admin/ad_notice_modify.jsp";
    }
    
    // 관리자 공지사항 수정하기
    @RequestMapping(value = "/admin_notice_modify.action" ,method = RequestMethod.POST)
-   public String adNoModify(NoticeDTO dto,NoticeDTO notice)
+   public String adNoModify(NoticeDTO dto, @RequestParam("announce_cate_id") String announce_cate_id)
    {
 	   String result = null;
 	   
 	   IAdmin dao = sqlSession.getMapper(IAdmin.class);
 	   
+	   dto.setAnoun_cate_id(announce_cate_id);
+	   
+
 	   dao.noticeModify(dto);
-	   
-	   
+
 	   dao.noticeInsert(notice);
+
 	   
 
 	   result = "redirect:admin_notice_list.action";
@@ -256,8 +270,14 @@ public class AdminController
 	   
    }
 
+   
+   
+   
+   
+   
+   
    // 관리자 공지사항 삭제하기
-   @RequestMapping(value = "/admin_motice_delete.action" ,method = RequestMethod.POST)
+   @RequestMapping(value = "/admin_motice_delete.action" ,method = RequestMethod.GET)
    public String adNoticeDelete(String announce_id)
    {
 	   String result = null;
@@ -266,6 +286,7 @@ public class AdminController
 	   
 	   dao.noticeDelete(announce_id);
 	   
+	   //System.out.println(dao.announce_id());
 	   
 	   result = "redirect:admin_notice_list.action";
 	   
@@ -274,10 +295,14 @@ public class AdminController
    }
    
    
+   
+   
+   
+   
+   
    // 관리자 FAQ 관리
 
    // 관리자 FAQ 리스트 출력
-
    @RequestMapping(value = "/admin_faq_list.action", method = RequestMethod.GET)
    public String adFAQList(Model model)
    {
@@ -373,7 +398,7 @@ public class AdminController
    /*
    admin_report_list.action 신고관리 
    admin_ask_list.action 문의관리
-   admin_notice_list.action 공지사항
+   
    admin_faq_list.action FAQ
    */
    

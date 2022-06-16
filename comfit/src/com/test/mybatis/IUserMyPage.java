@@ -9,5 +9,8 @@ public interface IUserMyPage
 	public userDTO myInfo(String u_id);
 	public ArrayList<MoneyDTO> myMoneyList(String u_id);
 	public int myPoint(String u_id);
+	public int myLevel(String u_id);
+	public ArrayList<MypageProductDTO> sellList(String u_id); 
+	public ArrayList<MypageProductDTO> buyList(String u_id); 
 	
 }

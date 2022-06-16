@@ -2,6 +2,8 @@ package com.test.mybatis;
 
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,9 +40,11 @@ public class LoginController
 			}	
 			else 
 			{
-				/*
+				// 마이페이지 확인--> 세션 U_ID 걸어놓았음!!
 				HttpSession session = request.getSession();
 				session.setAttribute("u_id", user.getU_id());
+				
+				/*
 				session.setAttribute("lat", session.getAttribute("lat"));
 				session.setAttribute("lon", session.getAttribute("lon"));
 				*/

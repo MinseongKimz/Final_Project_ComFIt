@@ -36,9 +36,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="sellList" resultType="com.test.mybatis.MypageProductDTO">
 		SELECT PD_ID, PD_TITLE, PD_PRICE, SYSTEM, PD_REGIT_DATE, TIME, COMP_DATE, SELLER_ID, BUYER_ID, ADDRESS, STATUS
-		FROM MY_PRODUCT_LIST
+		FROM
+		(
+		SELECT PD_ID, PD_TITLE, PD_PRICE, SYSTEM, PD_REGIT_DATE, TIME, COMP_DATE, SELLER_ID, BUYER_ID, ADDRESS, STATUS
+		, ROW_NUMBER() OVER(PARTITION BY PD_ID ORDER BY COMP_DATE ASC) AS RN
+        FROM MY_PRODUCT_LIST
 		WHERE SELLER_ID = #{u_id}
 		ORDER BY PD_REGIT_DATE DESC
+		)
+		WHERE RN=1
 	</select>
 	
 	<select id="buyList" resultType="com.test.mybatis.MypageProductDTO">

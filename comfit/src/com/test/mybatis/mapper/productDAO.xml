@@ -69,6 +69,47 @@
 		WHERE PD_ID = #{pd_id}
 	</select>
 	
+	<select id="search_pdListDefault" resultType="com.test.mybatis.ProductDTO">
+	SELECT PD_ID, CATEGORY_NAME, PD_REGIT_DATE, U_ID, PD_TITLE, DEAL_TYPE
+	, PD_PRICE, SYSTEM, COMP_DATE, SELLER_ID, BUYER_ID, STATUS, PD_PHOTO
+	FROM PD_LIST_VIEW
+	WHERE PD_TITLE LIKE #{searchKey}
+	</select>
+	
+	<select id="search_pdListPriceH" resultType="com.test.mybatis.ProductDTO">
+	SELECT PD_ID, CATEGORY_NAME, PD_REGIT_DATE, U_ID, PD_TITLE, DEAL_TYPE
+	, PD_PRICE, SYSTEM, COMP_DATE, SELLER_ID, BUYER_ID, STATUS, PD_PHOTO
+	FROM PD_LIST_VIEW
+	WHERE PD_TITLE LIKE #{searchKey}
+	ORDER BY PD_PRICE DESC
+	</select>
+	
+	<select id="search_pdListPriceL" resultType="com.test.mybatis.ProductDTO">
+	SELECT PD_ID, CATEGORY_NAME, PD_REGIT_DATE, U_ID, PD_TITLE, DEAL_TYPE
+	, PD_PRICE, SYSTEM, COMP_DATE, SELLER_ID, BUYER_ID, STATUS, PD_PHOTO
+	FROM PD_LIST_VIEW
+	WHERE PD_TITLE LIKE #{searchKey}
+	ORDER BY PD_PRICE ASC
+	</select>
+	
+	<select id="search_pdListDirect" resultType="com.test.mybatis.ProductDTO">
+	SELECT PD_ID, CATEGORY_NAME, PD_REGIT_DATE, U_ID, PD_TITLE, DEAL_TYPE
+	, PD_PRICE, SYSTEM, COMP_DATE, SELLER_ID, BUYER_ID, STATUS, PD_PHOTO
+	FROM PD_LIST_VIEW
+	WHERE PD_TITLE LIKE #{searchKey}
+	AND SYSTEM = '직거래(제안거래)'
+	</select>
+	
+	<select id="search_pdListDelivery" resultType="com.test.mybatis.ProductDTO">
+	SELECT PD_ID, CATEGORY_NAME, PD_REGIT_DATE, U_ID, PD_TITLE, DEAL_TYPE
+	, PD_PRICE, SYSTEM, COMP_DATE, SELLER_ID, BUYER_ID, STATUS, PD_PHOTO
+	FROM PD_LIST_VIEW
+	WHERE PD_TITLE LIKE #{searchKey}
+	AND SYSTEM = '택배(경매)'
+	</select>
+	
+	
+	
 	<select  id="bidList" resultType="com.test.mybatis.BidListDTO">
 		SELECT BID_CODE, U_NICKNAME, PRICE, BID_DATE, ADDRESS
 		FROM BID_LIST_REALVIEW

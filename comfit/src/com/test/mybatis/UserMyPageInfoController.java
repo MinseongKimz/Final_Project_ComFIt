@@ -186,6 +186,7 @@ public class UserMyPageInfoController
 			
 			IUserMyPage mypage = sqlSession.getMapper(IUserMyPage.class);
 			model.addAttribute("point", mypage.myPoint(u_id));
+			model.addAttribute("userInfo", mypage.myDetailInfo(u_id));
 			
 			result = "/WEB-INF/view/user/mypage/user_mypage_point_input.jsp";
 		}

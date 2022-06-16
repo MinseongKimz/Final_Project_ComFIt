@@ -68,7 +68,42 @@
 		, BAN_DATE, BAN_END_DATE, REP_CATE_NAME, BAN_REA_DETAIL
 		FROM BANNED_USER_VIEW
 	</select>
-   
+		
+   <select id="adminReportList" resultType="com.test.mybatis.adReportDTO">
+		SELECT U_ID, PD_ID, R_U_ID, REP_CONTENTS, HAN_CATE_NAME, REP_DATE, REP_HAN_DATE
+		FROM TOTAL_REPORT_VIEW
+	</select>   
+
+   <select id="adminAskList" resultType="com.test.mybatis.adAskDTO">
+		SELECT A.U_ID U_ID, A.ASK_TITLE ASK_TITLE, A.ASK_DATE ASK_DATE
+		, CASE
+		WHEN AA.ANSWER_CONTENTS IS NOT NULL
+		THEN '처리완료'
+		ELSE '미처리'
+		END AS ASK_STATUS
+		, AA.ANSWER_DATE ANSWER_DATE
+		FROM ASK A LEFT JOIN ASK_ANSWER AA
+		ON A.ASK_ID = AA.ASK_ID
+	</select>  
+	
+   <select id="adAskListReply" resultType="com.test.mybatis.adAskDTO">
+		SELECT A.U_ID U_ID, A.ASK_TITLE ASK_TITLE, A.ASK_DATE ASK_DATE, AC.ASK_CATE_NAME ASK_CATE_NAME, A.ASK_CONTENTS ASK_CONTENTS
+		, CASE
+		WHEN AA.ANSWER_CONTENTS IS NOT NULL
+		THEN '처리완료'
+		ELSE '미처리'
+		END AS ASK_STATUS
+		, AA.ANSWER_DATE ANSWER_DATE
+		FROM ASK A LEFT JOIN ASK_ANSWER AA
+		ON A.ASK_ID = AA.ASK_ID
+		JOIN ASK_CATEGORY AC 
+		ON A.ASK_CATE_ID = AC.ASK_CATE_ID
+	</select>  	
+	
+	<insert id="AskInsert">
+	
+	</insert>
+
    <!-- 
    <insert id="add">
       INSERT INTO TBL_STUDENT(SID, NAME, TEL)

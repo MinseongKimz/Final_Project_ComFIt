@@ -34,22 +34,6 @@
 			
 		});		
 	});
-	
-	// 상세주소
-	$(document).ready(function()
-	{
-		$(".Btntitle").click(function()
-		{
-			
-			alert("확인");
-			
-			location.href="admin_product_list_delivery.action?pd_num=" + $(this).val();
-			
-
-			
-
-		})
-	})		
 
 </script>
 </head>
@@ -66,8 +50,6 @@
 					<th style="text-align: center;">카테고리</th>
 					<th style="text-align: center;">등록일자</th>
 					<th style="text-align: center;">판매자ID</th>
-					<th style="text-align: center;">거래 아이디</th>					
-					<th style="text-align: center;">pd_num</th>					
 					<th style="text-align: center;">제목</th>
 					<th style="text-align: center;">거래방식</th>
 					<th style="text-align: center;">상태</th>
@@ -79,10 +61,7 @@
 					<td>${product.category_name}</td>
 					<td>${product.pd_regit_date}</td>
 					<td>${product.u_id}</td>					
-					<td class="${product.pd_id}">${product.pd_id}</td>					
-					<td>${product.pd_num}</td>					
-					<td><button type="submit" value="${product.pd_num }" class="btn btn-outline-secondary Btntitle">
-					${product.pd_title}</button></td>
+					<td><a href="admin_product_list_delivery.action">${product.pd_title}</a></td>
 					<td>${product.deal_type}</td>
 					<td>${product.deal_status}</td>
 				</tr>

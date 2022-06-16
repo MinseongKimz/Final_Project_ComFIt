@@ -99,7 +99,7 @@ public class AdminController
    
    // 관리자 상품관리 상세리스트1
    @RequestMapping(value = "/admin_product_list_delivery.action", method = RequestMethod.GET)
-   public String adProductListDelivery(Model model)
+   public String adProductListDelivery(Model model, String pd_num)
    {
       String result = null;
       
@@ -107,11 +107,11 @@ public class AdminController
       
       dao = sqlSession.getMapper(IAdmin.class);
       
-      model.addAttribute("productlistdelivery1", dao.adminProductDeliveryList_1());
-      model.addAttribute("productlistdelivery2", dao.adminProductDeliveryList_2());
-      model.addAttribute("productlistdelivery3", dao.adminProductDeliveryList_3());
-      model.addAttribute("productlistdelivery4", dao.adminProductDeliveryList_4());
-      model.addAttribute("productlistdelivery5", dao.adminProductDeliveryList_5());
+      model.addAttribute("productlistdelivery1", dao.adminProductDeliveryList_1(pd_num));
+      model.addAttribute("productlistdelivery2", dao.adminProductDeliveryList_2(pd_num));
+      model.addAttribute("productlistdelivery3", dao.adminProductDeliveryList_3(pd_num));
+      model.addAttribute("productlistdelivery4", dao.adminProductDeliveryList_4(pd_num));
+      model.addAttribute("productlistdelivery5", dao.adminProductDeliveryList_5(pd_num));
       
       result = "/WEB-INF/view/admin/ad_product_list_delivery.jsp";
       
@@ -149,22 +149,52 @@ public class AdminController
       return result;
    }
    
-   // 관리자 카테고리 관리
+   // 관리자 신고 관리
    @RequestMapping(value = "/admin_report_list.action", method = RequestMethod.GET)
    public String adReportList(Model model)
    {
-      return "/WEB-INF/view/admin/ad_report_list.jsp";
+	      String result = null;
+	      
+	      IAdmin dao = sqlSession.getMapper(IAdmin.class);
+	      
+	      model.addAttribute("userReportlist", dao.adminReportList());
+	      
+	      result = "/WEB-INF/view/admin/ad_report_list.jsp";
+	         
+	      return result;      	   
+	   
    }   
    
-   // 관리자 신고 관리
+   // 관리자 문의
    @RequestMapping(value = "/admin_ask_list.action", method = RequestMethod.GET)
    public String adAskList(Model model)
    {
-      return "/WEB-INF/view/admin/ad_ask_list.jsp";
+      String result = null;
+      
+      IAdmin dao = sqlSession.getMapper(IAdmin.class);
+      
+      model.addAttribute("adminAskList", dao.adminAskList());	   
+      
+      result =  "/WEB-INF/view/admin/ad_ask_list.jsp";
+      
+      return result;
    }
    
-   
-   
+   @RequestMapping(value = "/ad_ask_list_reply.action", method = RequestMethod.GET)
+   public String adAskListReply(Model model)
+   {
+	   String result = null;
+	      
+	   IAdmin dao = sqlSession.getMapper(IAdmin.class);
+	      
+	   model.addAttribute("adminAskreplyList", dao.adAskListReply());		   
+	   
+	   result = "/WEB-INF/view/admin/ad_ask_list_reply.jsp";
+	   
+	   return result;
+   }
+      
+
   
    
    // 관리자 공지사항 출력

@@ -56,17 +56,21 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="product" items="${productlist}">
+				<c:forEach var="product" items="${productlist}">					
 				<tr>
 					<td>${product.category_name}</td>
 					<td>${product.pd_regit_date}</td>
 					<td>${product.u_id}</td>
-					<c:choose>
-						<c:when test="${product.pd_id}">
-						<!-- deli 랑 dire 분기를 줘야하는... -->
+					
+					<c:set var="pd_id" value="deli" />
+						<c:choose>
+						<c:when test="${pd_id eq 'deli'}">
+						<td><a href="admin_product_list_delivery.action?pd_id=deli&pd_num=#">${product.pd_title}</a></td>
 						</c:when>
-					</c:choose>
-					<td><a href="admin_product_list_delivery.action">${product.pd_title}</a></td>
+						<c:when test="${pd_id eq 'dire'}">  
+						<td><a href="admin_product_list_delivery.action?pd_id=dire&pd_num=#">${product.pd_title}</a></td>
+						</c:when>
+						</c:choose>
 					<td>${product.deal_type}</td>
 					<td>${product.deal_status}</td>
 				</tr>

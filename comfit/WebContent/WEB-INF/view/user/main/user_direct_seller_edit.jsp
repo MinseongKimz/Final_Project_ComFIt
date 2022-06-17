@@ -90,126 +90,7 @@
 
 </script>
 
-<script type="text/javascript">
-   function readURL(input) {
-     if (input.files && input.files[0]) {
-       var reader = new FileReader();
-       reader.onload = function(e) {
-         document.getElementById('preview').src = e.target.result;
-       };
-       reader.readAsDataURL(input.files[0]);
-     } else {
-       document.getElementById('preview').src = "";
-     }
-   }
-   
-   var fileNo = 0;
-   var filesArr = new Array();
-   /* 첨부파일 추가 */
-   function addFile(obj){
-      var minFileCnt = 6;
-       var maxFileCnt = 10;   // 첨부파일 최대 개수
-       var attFileCnt = document.querySelectorAll('.filebox').length;    // 기존 추가된 첨부파일 개수
-       var remainFileCnt = maxFileCnt - attFileCnt;    // 추가로 첨부가능한 개수
-       var curFileCnt = obj.files.length;  // 현재 선택된 첨부파일 개수
-      
-       
-       // 첨부파일 개수 확인
-       if (curFileCnt > remainFileCnt) {
-           alert("첨부파일은 최대 " + maxFileCnt + "개 까지 첨부 가능합니다.");
-       }
-       for (var i = 0; i < Math.min(curFileCnt, remainFileCnt); i++) {
-         
-          
-           const file = obj.files[i];
-         
-           
-           
-           
-           // 첨부파일 검증
-           if (validation(file)) {
-               // 파일 배열에 담기
-               var reader = new FileReader();
-               reader.onload = function () {
-                   filesArr.push(file);
-               };
-               reader.readAsDataURL(file)
-               // 목록 추가
-               let htmlData = '';
-               htmlData += '<div id="file' + fileNo + '" class="filebox">';
-               htmlData += '   <p class="name">' + file.name + '</p>';
-               htmlData += '   <a class="delete" onclick="deleteFile(' + fileNo + ');"><button class="btn btn-danger">취소</button></a>';
-               htmlData += '</div>';
-               $('.file-list').append(htmlData);
-               fileNo++;
-           } else {
-               continue;
-           }
-       }
-       // 초기화
-       document.querySelector("input[type=file]").value = "";
-   }
-      /* 첨부파일 검증 */
-      function validation(obj){
-       const fileTypes = ['application/pdf', 'image/gif', 'image/jpeg', 'image/png', 'image/bmp', 'image/tif'];
-       if (obj.name.length > 100) {
-           alert("파일명이 100자 이상인 파일은 제외되었습니다.");
-           return false;
-       } else if (obj.size > (100 * 1024 * 1024)) {
-           alert("최대 파일 용량인 100MB를 초과한 파일은 제외되었습니다.");
-           return false;
-       } else if (obj.name.lastIndexOf('.') == -1) {
-           alert("확장자가 없는 파일은 제외되었습니다.");
-           return false;
-       }else if (!fileTypes.includes(obj.type)) {
-           alert("첨부가 불가능한 파일은 제외되었습니다.");
-           return false;
-       }
-       else {
-           return true;
-       }
-   }
-   
-   
-   
-   
-   /* 첨부파일 삭제 */
-   function deleteFile(num) {
-       document.querySelector("#file" + num).remove();
-       filesArr[num].is_delete = true;
-   }
-   /* 폼 전송 */
-   function submitForm() {
-       // 폼데이터 담기
-       var form = document.querySelector("form");
-       var formData = new FormData(form);
-       for (var i = 0; i < filesArr.length; i++) {
-           // 삭제되지 않은 파일만 폼데이터에 담기
-           if (!filesArr[i].is_delete) {
-               formData.append("attach_file", filesArr[i]);
-           }
-       }
-       $.ajax({
-           method: 'POST',
-           url: '/register',
-           dataType: 'json',
-           data: formData,
-           async: true,
-           timeout: 30000,
-           cache: false,
-           headers: {'cache-control': 'no-cache', 'pragma': 'no-cache'},
-           success: function () {
-               alert("파일업로드 성공");
-           },
-           error: function (xhr, desc, err) {
-               alert('에러가 발생 하였습니다.');
-               return;
-           }
-       })
-   }
-      
-   
-</script>
+
 </head>
 <body>
 
@@ -357,7 +238,7 @@
    </p>
    
    <div class="input_box" style="padding-left: 5%; padding-top: 10%;">
-   <form action="directinsert.action" method="post" id="direform">
+   <form action="direct_seller_ok.jsp" method="post" id="direform" enctype="multipart/form-data">
       <table style="width: 100%;">
 		 <tr>
 			<th>물품검색<span class="star">*</span></th>
@@ -468,21 +349,19 @@
                 </td>
          </tr>
                
-         <tr>
-            <th>물품 사진<span class="star">*</span>
-             <p style="font-weight: normal; font-size: 7pt;">최소 여섯장 이상 등록해 주세요.</p>
-                </th>
-                <td colspan="3">
-                      <div class="insert">
-                   <form method="POST" onsubmit="return false;" enctype="multipart/form-data">
-                      <p style="font-weight: normal;">[ 최소 6장 ~ 최대 10장 ]</p>
-                       <input type="file" onchange="addFile(this);" multiple />
-                       <div class="file-list"  >
-                       </div>
-                   </form>
-                  </div>
-            </td>
-         </tr>
+		<tr>
+          <th>물품 사진<span class="star">*</span>
+           <p style="font-weight: normal; font-size: 7pt;">최소 3장 이상 등록해 주세요.</p>
+              </th>
+              <td colspan="3">
+                    <div class="insert">
+                    <p style="font-weight: normal;">[ 최소 3장 ~ 최대 5장 ]</p>
+                     <input type="file" name="uploadFile"  />
+                     <div class="file-list"  >
+                     </div>
+                </div>
+          	</td>
+       	</tr>
          
          <tr>
             <th>A/S 가능 여부

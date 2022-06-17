@@ -58,9 +58,20 @@
 		margin: 10px;
 	} */
 </style>
+
+<script type="text/javascript">
+
+	$(function()
+	{
+		$("#login").click(function()
+		{
+			location.href="comfit.action"
+		})
+	})
+	
+</script>
+
 </head>
-
-
 <body>
 
 <%
@@ -90,9 +101,17 @@
 		</div>
 		<hr />
 		<div style="text-align: center;">
-			회원님은 <span style="color: #0174DF">Test001@gmail.com</span>(으)로 등록하셨습니다.
+			
+		<c:if test="${dto.u_email==null }">
+			<script type="text/javascript">
+				alert("일치하는 정보가 없습니다.")
+				location.href = "comfit.action";			
+			</script>
+		</c:if>
+
+			회원님은 <span style="color: #0174DF">${dto.u_email }</span>(으)로 등록하셨습니다.
 			<br />
-			가입일자는 <span style="color: #0174DF">2022.05.21</span>입니다.
+			가입일자는 <span style="color: #0174DF">${dto.u_joindate }</span>입니다.
 		</div>
 		<hr />
 		
@@ -100,7 +119,7 @@
 		
 		<div style="text-align: center;">
 			<div style="display: block;">
-				<button type="button" class="btn btn-primary">로그인</button>
+				<button type="button" class="btn btn-primary" id="login">메인으로</button>
 				<button type="button" class="btn btn-secondary">비밀번호 찾기</button>
 			</div>
 		</div>

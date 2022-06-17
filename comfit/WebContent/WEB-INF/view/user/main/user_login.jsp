@@ -82,6 +82,9 @@
 
 <script type="text/javascript">
 
+
+
+
 		$(function()
 		{
 			<%
@@ -100,7 +103,7 @@
 					
 					if(err!=null)
 					{	%>
-							alert("아이디 또는 비밀번호가 올바르지 않습니다.");
+							alert("조회결과가 없습니다!");
 						<%
 					}	
 				}
@@ -110,6 +113,16 @@
 				}
 			%>
 			
+			$("#searchEmail").click(function()
+			{
+				location.href = "find_email_form.action";
+			})
+			
+			$("#searchPw").click(function()
+			{
+				location.href = "find_pw_form.action";
+			})
+
 			
 			
 			$("#submitBtn").click(function()
@@ -186,8 +199,8 @@
 		
 	<br /><br />
 	
-	<button type="button" class="btn btn-secondary" style="width: 150px;" >회원가입</button>
-	<button type="button" class="btn btn-secondary" style="width: 150px; float: right;">ID/PW 찾기</button>
+	<button type="button" id="searchEmail" class="btn btn-secondary" style="width: 150px;" >이메일찾기</button>
+	<button type="button" id="searchPw" class="btn btn-secondary" style="width: 150px; float: right;">PW찾기</button>
 	</div>
 	
 </div>

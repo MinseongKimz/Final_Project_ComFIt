@@ -29,6 +29,7 @@ public interface IProduct
 	
 	public ArrayList<MakerDTO> makerList2(String optionValue);
 	
+	// 배송거래 글쓰기 insert
 	public int deliveryInsert(deliveryInsertDTO dto);
 	
 	// 판매횟수 뽑기
@@ -50,6 +51,9 @@ public interface IProduct
 	public ArrayList<ProductDTO> search_pdListDirect(String searchKey);
 	public ArrayList<ProductDTO> search_pdListDelivery(String searchKey);
 	
+	
+	// 직거래 글쓰기 insert
+	public int directInsert(directinsertDTO dto);
 	
 
 }

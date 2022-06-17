@@ -193,6 +193,24 @@
 	 FROM MGRS_VIEW
 	WHERE PD_ID = #{pd_id}
 	</select>
+	
+	<insert id="selectSuggest">
+		INSERT INTO SELECTED(SELECTED_ID, BUYER_CODE, SELLER_CODE, SUGGEST_CODE)
+			   VALUES(CONCAT('sel_',TO_CHAR(SELECTED_SEQ.NEXTVAL+1))
+            , CONCAT(DBMS_RANDOM.STRING('X', 8), DBMS_RANDOM.STRING('U', 8))
+            , CONCAT(DBMS_RANDOM.STRING('X', 8), DBMS_RANDOM.STRING('L', 8))
+            , #{suggest_code})
+	</insert>
+	<select  id="selCheck" resultType="java.lang.Integer">
+		SELECT COUNT(*) SELCHECK
+		  FROM SELECT_CHECK_VIEW
+		 WHERE PD_ID = #{pd_id}
+	</select>
+	<select  id="sugCheck" resultType="java.lang.String">
+		SELECT DISTINCT(SUGGEST_CODE)
+	     FROM SELECT_CHECK_VIEW
+	    WHERE PD_ID = #{pd_id}
+	</select>
 </mapper>
 
 

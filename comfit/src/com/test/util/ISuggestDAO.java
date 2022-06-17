@@ -6,5 +6,6 @@ import com.test.mybatis.SuggestListDTO;
 
 public interface ISuggestDAO
 {
-	public int add_suggest(SuggestListDTO dto) throws SQLException; 
+	public int add_suggest(SuggestListDTO dto) throws SQLException;
+	
 }

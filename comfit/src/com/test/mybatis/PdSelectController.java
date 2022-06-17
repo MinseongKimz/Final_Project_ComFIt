@@ -84,14 +84,21 @@ public class PdSelectController
 		IProduct dao = sqlSession.getMapper(IProduct.class);
 		String hope_sdate = request.getParameter("hope_sdate");
 		String hope_edate = request.getParameter("hope_edate");
-		System.out.println(hope_sdate);
-		System.out.println(hope_edate);
+		//System.out.println(hope_sdate);
+		//System.out.println(hope_edate);
+		String hope_stime = request.getParameter("hope_stime");
+		String hope_etime = request.getParameter("hope_etime");
+		
 		try
 		{
-			
+			int stime = Integer.parseInt(hope_stime.substring(0, 2));
+			int etime = Integer.parseInt(hope_etime.substring(0, 2));
+			System.out.println(stime);
 			model.addAttribute("mgrs", dao.mgrs(pd_id));
 			model.addAttribute("hope_sdate", hope_sdate);
 			model.addAttribute("hope_edate", hope_edate);
+			model.addAttribute("stime", stime);
+			model.addAttribute("etime", etime);
 			result = "WEB-INF/view/user/main/direct_place.jsp";	
 			
 		} catch (Exception e)

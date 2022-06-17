@@ -242,6 +242,7 @@
             	<c:forEach var="category" items="${cateList }">
             		<div class="item">
                     	<div class="pad15 shadow" style="align-items: center;">
+                    		<input type="hidden">
                        	 <p class="lead" style="font-size: large; margin-top: 8px; margin-bottom: 8px;">${category.category_name }</p>
                    	    </div>
                 	</div>

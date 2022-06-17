@@ -94,6 +94,7 @@
 </head>
 <body>
 
+
 <%
 	String u_id = (String)session.getAttribute("u_id");
 	
@@ -112,12 +113,13 @@
 	</div>
 <%	} %>	
 	
+	
 <!--날짜 처리  -->
 <script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
 <script type="text/javascript" src="<%=cp%>/js/jquery.timepicker.js."></script>
 <script type="text/javascript" src="<%=cp%>/js/jquery.timepicker.min.js"></script>
       
-      <script type="text/javascript">
+<script type="text/javascript">
    //$();
    //jquery();
    $(document).ready(function()
@@ -181,6 +183,42 @@
       });
    })
    
+  /* 
+$(document).ready(function()
+	{
+		$("#placeBtn").click(function()
+		{
+			var params = "pd_title=" + $("#pd_title").val() + "&category_name=" + $("#category_select").val() + "&maker_id=" + $("#maker_id").val();
+			
+			$.ajax(
+			{
+				url: "geotest.action"
+				,type: "GET"
+				, data: { "pd_title": $("#pd_title").val(),  }
+				, success: function(data)
+				{
+					location.href="geotest.action";
+				}
+				, error: function(e)
+				{
+					alert(e.responseText);
+				}
+			})
+		})
+	})
+   */
+   
+   $(document).ready(function()
+			{
+				$("#placeBtn").click(function()
+				{
+					var child;
+					   child = window.open("GeoTest.jsp", "_blank", "height:100, width:100");	
+				
+			})
+			
+	})
+	
    
 	$(document).ready(function()
 	{
@@ -240,12 +278,13 @@
    <div class="input_box" style="padding-left: 5%; padding-top: 10%;">
    <form action="direct_seller_ok.jsp" method="post" id="direform" enctype="multipart/form-data">
       <table style="width: 100%;">
+		
 		 <tr>
 			<th>물품검색<span class="star">*</span></th>
 			<td colspan="2">
 				<div><!--  class="input-group mb-6" -->
-				  <input type="text" class="<!-- form-control  -->" placeholder="판매할 물품을 검색해주세요" style="height:40px; width: 260px; display: inline-block; font-style: italic;" readonly="readonly">
-				  <span class="input-group-text" id="basic-addon1" onclick="location.href='searchproduct2.action';" style="width: 50px; display: inline-block;"><i class="bi bi-search"></i></span>
+				<span class="input-group-text" id="basic-addon1" onclick="location.href='searchproduct2.action';" style="width: 50px; display: inline-block;"><i class="bi bi-search"></i></span>
+				<input type="text" class="<!-- form-control  -->" placeholder="판매할 물품을 검색해주세요" style="height:40px; width: 260px; display: inline-block; font-style: italic;" readonly="readonly">
 				</div>
 			</td>
 		 </tr>
@@ -288,6 +327,7 @@
 			</td>	
 		</tr>
 		
+		
          <tr>
             <th>거래 희망 장소<span class="star">*</span></th>
 			<td colspan="2">
@@ -298,6 +338,7 @@
 			</td>
             <!-- 지도 출력 -->
          </tr>
+         
          
          
          <tr>
@@ -338,15 +379,16 @@
          
         
          
-         <tr>
+		<tr>
             <th>희망 시작 가격<span class="star">*</span>
-             <p style="font-weight: normal; font-size: 7pt;">희망하는 가격을 적어주세요.</p>
-                </th>
-                <td colspan="1"><input class="form-control" id="price1" name="pd_hopeprice" type="text" placeholder="희망 가격을 입력해주세요." style="width: 90%;"/>
-                </td>
-                <td>
-                <div style="display: inline-block; font-style: italic; color:red; font-size: small;"> ※comfit 추천 가격 : ${realAvgPrice }원</div>
-                </td>
+             	<p style="font-weight: normal; font-size: 7pt;">희망하는 가격을 적어주세요.</p>
+            </th>
+            <td colspan="1">
+              	<input class="form-control" id="price1" name="pd_hopeprice" type="text" placeholder="희망 가격을 입력해주세요." style="width: 90%;"/>
+            </td>
+            <td>
+               	<div style="display: inline-block; font-style: italic; color:red; font-size: small;"> ※comfit 추천 가격 : ${realAvgPrice }원</div>
+            </td>
          </tr>
                
 		<tr>

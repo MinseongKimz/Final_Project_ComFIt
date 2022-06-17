@@ -26,7 +26,7 @@
 	
 	
 	
-	out.println(savePath + "<br>");
+	//out.println(savePath + "<br>");
 	String encType = "UTF-8";
 	int maxFileSize = 5*1024*1024;
 	

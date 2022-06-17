@@ -109,10 +109,9 @@
 		<div>
 			<span style="font-size: 30pt;">
 			"<%=searchKey %>"에 대한 검색 결과</span>
-			<input type="text" value=<%=searchKey %> id="searchData"
-			style="display: none;" />
-			<input type="text" value=<%=sort %> id="sortData"
-			style="display: none;" />
+			<input type="hidden" value=<%=searchKey %> id="searchData"/>
+			<input type="hidden" value=<%=sort %> id="sortData"/>
+			
 		</div>
 		<div style="margin-left: 60%; margint-bottom:3%">
 			<button id="sort1Btn" type="button" class="btn btn-secondary">최신순</button>
@@ -120,10 +119,9 @@
 			<button id="sort3Btn" type="button" class="btn btn-secondary">저가순</button>
 			<button id="sort4Btn" type="button" class="btn btn-secondary">직거래만</button>
 			<button id="sort5Btn" type="button" class="btn btn-secondary">택배거래만</button>
-			
 		</div>
 		
-		<br />
+	   <br />
 	   <hr />
 	   <br />
 	   
@@ -137,6 +135,9 @@
 		                 <h5 class="card-title" style="text-align: center;">${product.pd_title }</h5>
 		                 <p class="card-text"  style="text-align: center;">${product.pd_price }</p>
 		                 <p class="card-text"  style="text-align: center;">${product.system }</p>
+		                 <c:if test="${product.status }!= '입찰중' || '입찰받는중'">
+		                 	<p class="card-text"  style="text-align: center;">거래완료상품</p>
+		                 </c:if>
 		                 <a href="pd_detail.action?pd_id=${product.pd_id }" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
 		              	</div>
 		           </div>

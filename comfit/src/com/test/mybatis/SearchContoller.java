@@ -18,6 +18,7 @@ public class SearchContoller
 	@Autowired
 	private SqlSession sqlSeesion;
 	
+	// 검색 기능
 	@RequestMapping(value="/searchlist.action", method = RequestMethod.GET)
 	public String search_list(Model model, @RequestParam("searchKey") String searchKey
 										 , @RequestParam("sort") int sort)
@@ -29,8 +30,9 @@ public class SearchContoller
 		model.addAttribute("searchKey", searchKey);
 		model.addAttribute("sort", sort);
 		
-		searchKey = "%"+searchKey+"%";
+		searchKey = "%" + searchKey + "%";
 		
+
 		switch (sort)
 		{
 			case 1: model.addAttribute("searchList", dao.search_pdListDefault(searchKey));
@@ -50,7 +52,6 @@ public class SearchContoller
 		result = "/WEB-INF/view/user/main/user_search_list.jsp";
 		
 		return result;
-		
 	}
 	
 	// 배송거래에서 - 물품검색 첫화면 접속

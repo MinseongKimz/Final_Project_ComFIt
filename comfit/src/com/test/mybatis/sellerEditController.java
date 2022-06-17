@@ -105,6 +105,22 @@ public class sellerEditController
 		
 		
 		
+		// 직거래 판매글 등록 insert
+		@RequestMapping(value = "/directinsert.action", method = RequestMethod.POST)
+		public String directInsert(directinsertDTO dto)
+		{
+			String result = null;
+			
+			IProduct dao = sqlSession.getMapper(IProduct.class);
+			
+			dao.directInsert(dto);
+			
+			result = "user_mainlist.action";
+			
+			return result;
+		}
+	
+		
 		
 		
 		

@@ -295,7 +295,7 @@
 		{
 			//alert("123");
 			var child;
-			child = window.open("GeoTest.jsp", "_blank", "width=500, height=400", resizeable='no');	
+			child = window.open("GeoTest.jsp", "_blank", "width=500, height=400, resizeable=no");	
 		})
 		
 	})
@@ -322,6 +322,17 @@
 		
 	});
    
+   
+	 $(document).ready(function()
+	{
+		$("#direct_insert").click(function()
+		{
+			//alert($("input[name=cf_price]").val());
+			
+			$("#direform").submit();
+		})
+	})
+   
 </script>
 
 
@@ -333,7 +344,7 @@
    </p>
    
    <div class="input_box" style="padding-left: 5%; padding-top: 10%;">
-   <form action="abc.action" method="get">
+   <form action="directinsert.action" method="post" id="direform">
       <table style="width: 100%;">
 		 <tr>
 			<th>물품검색<span class="star">*</span></th>
@@ -387,7 +398,7 @@
             <th>거래 희망 장소<span class="star">*</span></th>
 			<td colspan="2">
 				<div><!--  class="input-group mb-6" -->
-				  <input type="text" class="<!-- form-control  -->" id="pd_hope_place"  placeholder="거래 희망장소를 선택해주세요" style="height:40px; width: 500px; display: inline-block; font-style: italic;" readonly="readonly">
+				  <input type="text" class="<!-- form-control  -->" id="pd_hope_place" name="pd_hope_place"  placeholder="거래 희망장소를 선택해주세요" style="height:40px; width: 500px; display: inline-block; font-style: italic;" readonly="readonly">
 				  <span class="input-group-text" id="basic-addon2" style="width: 50px; display: inline-block;"><i class="bi bi-search"></i></span>
 				</div>
 			</td>
@@ -437,7 +448,7 @@
             <th>희망 시작 가격<span class="star">*</span>
              <p style="font-weight: normal; font-size: 7pt;">희망하는 가격을 적어주세요.</p>
                 </th>
-                <td colspan="1"><input class="form-control" id="price1" name="pd_hopePrice" type="text" placeholder="희망 가격을 입력해주세요." style="width: 90%;"/>
+                <td colspan="1"><input class="form-control" id="price1" name="pd_hopeprice" type="text" placeholder="희망 가격을 입력해주세요." style="width: 90%;"/>
                 </td>
                 <td>
                 <div style="display: inline-block; font-style: italic; color:red; font-size: small;"> ※comfit 추천 가격 : ${realAvgPrice }원</div>
@@ -506,8 +517,9 @@
 		<tr>
             <td colspan="4">
 				<div class="d-grid gap-2 d-md-flex justify-content-md-end" style="width: 90%;">
-					<input type="text" id="latlon" hidden="hidden" name="pd_hope_mgrs"/>
-					<button type="button" class="btn btn-primary">등록하기</button>
+					<input type="text" id="address" style="display: none;" name="pd_hope_mgrs"/>
+					<input type="text" name="cf_price" value="${realAvgPrice }" style="display: none;" />
+					<button type="button" class="btn btn-primary" id="direct_insert">등록하기</button>
 					<button type="button" class="btn btn-secondary">취소</button>
 				</div>
 			</td>

@@ -1,5 +1,10 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String cp = request.getContextPath();
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,17 +30,17 @@
 	{
 	   var hope_sdate = $("#hope_sdate").val();
 	   var hope_edate =	$("#hope_edate").val();
-	   var today =  new Date();
-	   today = today.getFullYear() + "/"+ today.getMonth() + "/" + today.getDate();
-	   alert(hope_sdate);
-	   alert(today);
-	   
+			   
+	   /* var hope_stime = $("#hope_stime").val();
+	   var hope_etime = $("#hope_etime").val();
+	   alert(stime);
+	   alert(etime); */
 	   
 	   $("#datePicker").datepicker({
 		   
-		   dateFormat: "yyyy-mm-dd" //데이터 포맷 형식(yyyy : 년 mm : 월 dd : 일 )
-	     , minDate: "-10"
-	     , maxDate: "+10"
+		   dateFormat: "yy-mm-dd" //데이터 포맷 형식(yyyy : 년 mm : 월 dd : 일 )
+	     , minDate: hope_sdate
+	     , maxDate: hope_edate
 	     , dayNamesMin: ['일', '월', '화', '수', '목', '금', '토']
 	     , monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
 	     , autoclose: true
@@ -71,6 +76,8 @@
 	</c:forEach>
 	<input type="hidden" id="hope_sdate" value="${hope_sdate }" />
 	<input type="hidden" id="hope_edate" value="${hope_edate }" />
+	<%-- <input type="hidden" id="hope_stime" value="${hope_stime }" />
+	<input type="hidden" id="hope_etime" value="${hope_etime }" /> --%>
 </div>
 
 <div class="map_wrap" style="margin-left: 1.5%; margin-top: 1.5%">
@@ -85,29 +92,30 @@
     
 <div>
    <form action="suggest_insert.action" method="get">
-	   <table class="table table-borderless">
+	   <table class="table table-borderless" style="width: 500px;">
   			<tr>
   				<th>
   					<label for="addr1">희망장소</label>		
   				</th>
-  				<td>
-  					<input type="text"  class="form-control" id="addr" placeholder="지도에서 클릭해주세요" readonly="readonly" style="width: 250px; height: 25px; text-align: center;" />		
+  				<td colspan="2">
+  					<input type="text"  class="form-control" id="addr" placeholder="지도에서 클릭해주세요" readonly="readonly"
+  					 style="width: 300px; height: 35px; text-align: center;" />		
   				</td>
   			</tr>
   			<tr>
   				<th>
   				     <label for="addr2">장소상세</label>
   				</th>
-  				<td>
-  				     <input type="text" class="form-control" id="addr2" style="width: 250px; height: 25px;" required="required"/>
+  				<td colspan="2">
+  				     <input type="text" class="form-control" id="addr2" style="width: 300px; height: 35px;" required="required"/>
   				</td>
   			</tr>
   			<tr>
   				<th>
   					<label for="hope_date">거래희망날짜</label>
   				</th>
-  				<td>
-  					<input  id="datePicker" class="form-control" placeholder="날짜를선택해주세요" style="width: 250px; height: 25px; text-align: center;"/>
+  				<td colspan="2">
+  					<input  id="datePicker" class="form-control" placeholder="날짜를선택해주세요" style="width: 300px; height: 35px; text-align: center;"/>
   				</td>
   			</tr>
   			<tr>
@@ -115,20 +123,32 @@
 				      <label for="hope_time">거래희망시간</label>
   				</th>
   				<td>
-  				      <input type="text" class="form-control" id="hope_time" required="required" style="width: 250px; height: 25px;" />
+  				     <select class="form-select  form-select-sm" aria-label="Default select example" style="width: 150px; height: 35px; text-align: center;">
+  						<c:forEach var="time" begin="${stime }" end="${etime }" step="1">
+  							<option value="${time }" style="font-size: 12pt;">${time}시</option>
+  						</c:forEach>
+  					</select>	
+					
+  				</td>
+  				<td>
+  				      <select class="form-select  form-select-sm" aria-label="Default select example" style="width: 150px; height: 35px; text-align: center;">
+  				      <c:forEach var="minute" begin="0" end="59" step="10">
+  						<option value="${minute }" style="font-size: 12pt;">${minute }분</option>
+					</c:forEach>  						
+					</select>
   				</td>
   			</tr>
   			<tr>
   				<th>
   					 <label for="hope_price">제안금액</label>
   				</th>
-  				<td>
- 				      <input type="text" class="form-control" id="hope_price" required="required" style="width: 250px; height: 25px;" />
+  				<td colspan="2">
+ 				      <input type="text" class="form-control" id="hope_price" required="required" style="width: 300px; height: 35px;" />
   				</td>
   			</tr>
 		</table>
-       <button type="submit" class="btn btn-primary" style="width: 150px; height: 40px; margin-left: 20%;" >제안하기</button>
-       <button type="reset" class="btn btn-secondary" style="width: 150px; height: 40px;">취소</button>
+       <button type="submit" class="btn btn-primary" style="width: 150px; height: 35px; margin-left: 20%;" >제안하기</button>
+       <button type="reset" class="btn btn-secondary" style="width: 150px; height: 35px;">취소</button>
    </form>
 </div>
     

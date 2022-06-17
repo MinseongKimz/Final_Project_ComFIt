@@ -65,10 +65,25 @@
 	});
 	
 </script>
-
-<div class = "header">
-	<c:import url = "/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
-</div>
+</head>
+<body>
+<%
+	String u_id = (String)session.getAttribute("u_id");
+	
+	if(u_id != null)
+	{	
+%>
+		<div class="header">
+			<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
+		</div>
+<%	}
+	else
+	{
+%>
+	<div>
+   		<c:import url="/WEB-INF/view/user/main/comfit_header_nolog.jsp"></c:import>
+	</div>
+<%	} %>	
 
 <div class="container" style="width: 940px;">
 <br /><br /><br /><br />
@@ -142,12 +157,7 @@
 		  </div>
 		</div>
 		
-		
-			
-		
-</div>
-
-</head>
+</body>
 </html>
 
 

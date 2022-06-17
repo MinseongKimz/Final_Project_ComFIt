@@ -67,15 +67,23 @@
 
 <body>
 
-	<!-- Header 영역 -->
-	<%-- <div style="display: none;">
-		<c:import url="comfit_header_user.jsp"></c:import>
-	</div> --%>
+<%
+	String u_id = (String)session.getAttribute("u_id");
 	
-	<!-- title -->
-<div>
-	<c:import url="admin/comfit_header_nolog.jsp"></c:import>
-</div>
+	if(u_id != null)
+	{	
+%>
+		<div class="header">
+			<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
+		</div>
+<%	}
+	else
+	{
+%>
+	<div>
+   		<c:import url="/WEB-INF/view/user/main/comfit_header_nolog.jsp"></c:import>
+	</div>
+<%	} %>	
 	
 <div style="margin-top: 5%;">
 	<div style="width: 800px; margin: auto; text-align: center;">

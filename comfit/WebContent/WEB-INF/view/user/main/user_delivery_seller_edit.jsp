@@ -28,22 +28,26 @@
 <script src="jQuery.MultiFile.min.js"></script>
 
 <script type="text/javascript">
-	$(document).ready(function()
-	{
-		
-		$("input[name=pd_as_id]").change(function()
+$(document).ready(function()
 		{
-			$("#pd_asDate").attr("readonly", false);
-			//alert($(this).val());
-			
-			if ($(this).val() == "3")
+			$("input[name=pd_as_id]").change(function()
 			{
-				 $("#pd_asDate").attr("readonly", true);
-			}
+				//alert($(this).val());
+				
+				if ($(this).val() == "3")
+				{
+					 $("#pd_asDate").val('none');
+					 $("#pd_asDate").attr("readonly", true);
+				}
+				else
+				{
+					$("#pd_asDate").attr("readonly", false);
+					$("#pd_asDate").val("");	
+				}
+				
+			});
 			
 		});
-		
-	});
 	
 	
 	$(document).ready(function()
@@ -130,9 +134,23 @@
 </head>
 <body>
 
-<div class="header">
-	<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
-</div>
+<%
+	String u_id = (String)session.getAttribute("u_id");
+	
+	if(u_id != null)
+	{	
+%>
+		<div class="header">
+			<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
+		</div>
+<%	}
+	else
+	{
+%>
+	<div>
+   		<c:import url="/WEB-INF/view/user/main/comfit_header_nolog.jsp"></c:import>
+	</div>
+<%	} %>	
 
 <div class="container" style="padding-top: 80px;">
 	<p class="fs-3" style="font-weight: bold;">
@@ -245,7 +263,7 @@
 				</div>
 				
 
-				<input class="form-control" id="pd_asDate" name="pd_as_remain" type="text" placeholder="AS 만료 기간 입력. 예) 2024-09" style="width: 86%; font-style: italic;" value="none"/>
+				<input class="form-control" id="pd_asDate" name="pd_as_remain" type="text" placeholder="AS 만료 기간 입력. 예) 2024-09" style="width: 86%; font-style: italic;">
 
 				
 

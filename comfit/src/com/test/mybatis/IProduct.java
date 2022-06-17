@@ -51,6 +51,9 @@ public interface IProduct
 	public ArrayList<ProductDTO> search_pdListDirect(String searchKey);
 	public ArrayList<ProductDTO> search_pdListDelivery(String searchKey);
 	
+	// 카테고리선택
+	public ArrayList<ProductDTO> categorySelect(String categoryName);
+	
 	
 	// 직거래 글쓰기 insert
 	public int directInsert(directinsertDTO dto);

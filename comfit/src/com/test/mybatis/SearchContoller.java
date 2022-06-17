@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class SearchContoller
 {
 	@Autowired
-	private SqlSession sqlSeesion;
+	private SqlSession sqlSession;
 	
 	// 검색 기능
 	@RequestMapping(value="/searchlist.action", method = RequestMethod.GET)
@@ -25,8 +25,7 @@ public class SearchContoller
 	{
 		String result = null;
 		
-		
-		IProduct dao = sqlSeesion.getMapper(IProduct.class);
+		IProduct dao = sqlSession.getMapper(IProduct.class);
 		model.addAttribute("searchKey", searchKey);
 		model.addAttribute("sort", sort);
 		
@@ -53,6 +52,30 @@ public class SearchContoller
 		
 		return result;
 	}
+	
+	// 회원 카테고리 선택
+	@RequestMapping(value = "categorySelect.action", method = RequestMethod.GET)
+	public String categorySelect(Model model, @RequestParam("categoryName") String categoryName)
+	{
+		String result = null;
+		IProduct dao = sqlSession.getMapper(IProduct.class);
+		
+		try
+		{
+			model.addAttribute("searchList", dao.categorySelect(categoryName));
+			model.addAttribute("sort", 1);
+			
+			result = "/WEB-INF/view/user/main/user_search_list.jsp";
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		
+		
+		return result;
+	}
+	
 	
 	// 배송거래에서 - 물품검색 첫화면 접속
 	@RequestMapping(value = "/searchproduct.action", method = RequestMethod.GET)
@@ -82,7 +105,7 @@ public class SearchContoller
 	@RequestMapping(value = "/returnsell.action", method = RequestMethod.GET)      // 선택하면 거래 등록 게시물로
 	public String returnSeach(Model model, String name, String maker, String realAvgPrice, String category)
 	{
-		IProduct dao = sqlSeesion.getMapper(IProduct.class);
+		IProduct dao = sqlSession.getMapper(IProduct.class);
 		
 		model.addAttribute("categorylist", dao.categoryList());
 		model.addAttribute("makerlist", dao.makerList(category));
@@ -99,7 +122,7 @@ public class SearchContoller
 	public String changeMaker(Model model, String optionValue)
 	{
 		
-		IProduct dao = sqlSeesion.getMapper(IProduct.class);
+		IProduct dao = sqlSession.getMapper(IProduct.class);
 		
 		model.addAttribute("makerlist", dao.makerList2(optionValue));
 
@@ -141,7 +164,7 @@ public class SearchContoller
 	@RequestMapping(value = "/returnsell2.action", method = RequestMethod.GET)      // 선택하면 거래 등록 게시물로
 	public String returnSeach2(Model model, String name, String maker, String realAvgPrice, String category)
 	{
-		IProduct dao = sqlSeesion.getMapper(IProduct.class);
+		IProduct dao = sqlSession.getMapper(IProduct.class);
 		
 		model.addAttribute("categorylist", dao.categoryList());
 		model.addAttribute("makerlist", dao.makerList(category));

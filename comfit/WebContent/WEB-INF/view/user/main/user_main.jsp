@@ -13,7 +13,7 @@
    /* div {border: 1px solid black;} */
    .MultiCarousel { float: left; overflow: hidden; padding: 15px; width: 100%; position:relative; }
     .MultiCarousel .MultiCarousel-inner { transition: 1s ease all; float: left; }
-    .MultiCarousel .MultiCarousel-inner .item { float: left;}
+    .MultiCarousel .MultiCarousel-inner .item { float: left; }
     .MultiCarousel .MultiCarousel-inner .item > div { text-align: center; padding:10px; margin:10px; background:#f1f1f1; color:#666;}
     .MultiCarousel .leftLst, .MultiCarousel .rightLst { position:absolute; border-radius:50%;top:calc(50% - 20px); }
     .MultiCarousel .leftLst { left:0; }
@@ -37,7 +37,17 @@
    {
 		width: 14rem;
    }
-   
+   .MultiCarousel .MultiCarousel-inner .item .pad15:hover
+   {
+   		background-color: #A9D0F5;
+   		cursor:pointer;
+   }
+   .MultiCarousel .MultiCarousel-inner .item .pad15:active
+   {
+   		background-color: #CEECF5;
+   		cursor:pointer;
+   }
+
 </style>
 <script type="text/javascript">
 
@@ -162,6 +172,16 @@
          $(this).removeClass("btn-primary");   
          $(this).addClass("btn-secondary");    
       });
+      
+      
+      $(".item").click(function()
+	  {
+			//alert("카테고리선택");
+			//alert($(this).children(".cateItem").val());
+			
+			location.href = "categorySelect.action?categoryName=" + $(this).children(".cateItem").val();
+	  });
+	
    })
 
       
@@ -240,9 +260,9 @@
       <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"  data-interval="1000">
             <div class="MultiCarousel-inner">
             	<c:forEach var="category" items="${cateList }">
-            		<div class="item">
-                    	<div class="pad15 shadow" style="align-items: center;">
-                    		<input type="hidden">
+            		<div class="item" >
+            			<input class="cateItem" type="hidden" value="${category.category_name }"/>
+                    	<div class="pad15 shadow rounded" style="align-items: center;">
                        	 <p class="lead" style="font-size: large; margin-top: 8px; margin-bottom: 8px;">${category.category_name }</p>
                    	    </div>
                 	</div>

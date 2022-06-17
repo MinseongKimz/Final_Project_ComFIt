@@ -134,6 +134,15 @@
 	, STATUS DESC
 	</select>
 	
+	<select id="categorySelect" resultType="com.test.mybatis.ProductDTO">
+	SELECT PD_ID, CATEGORY_NAME, PD_REGIT_DATE, U_ID, PD_TITLE, DEAL_TYPE, PD_PRICE, SYSTEM, COMP_DATE, SELLER_ID, BUYER_ID, STATUS, PD_PHOTO
+	FROM PRODUCT_LIST_VIEW2
+	WHERE BLIND = 'NOT'
+	AND CATEGORY_NAME = #{categoryName}
+	ORDER BY COMP_DATE DESC
+	, STATUS DESC
+	</select>
+	
 	<select  id="bidList" resultType="com.test.mybatis.BidListDTO">
 		SELECT BID_CODE, U_NICKNAME, PRICE, BID_DATE, ADDRESS
 		FROM BID_LIST_REALVIEW

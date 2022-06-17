@@ -4,7 +4,7 @@ public class ProductDTO
 {
 	// SELECT PD_TITLE, PD_PRICE, SYSTEM, STATUS, PD_PHOTO
 
-	private String pd_id, pd_name, price, distatnce;
+	private String pd_id, pd_name, price, distatnce, category_name;
 	
 	private String pd_title, system, status, pd_photo;
 	
@@ -13,6 +13,16 @@ public class ProductDTO
 	private String lat, lon;
 	
 	
+	public String getCategory_name()
+	{
+		return category_name;
+	}
+
+	public void setCategory_name(String category_name)
+	{
+		this.category_name = category_name;
+	}
+
 	public String getPd_title()
 	{
 		return pd_title;

@@ -101,6 +101,9 @@
 		WHERE AUTH_CODE = #{authKey}
 	</update>
 	
+
+	
+	
 	
 </mapper>
 

@@ -91,6 +91,8 @@
 				   	//alert(	$("#lon").val());
 				   	$("#form").submit();
 				});
+				
+				
 			}
 			
 		});

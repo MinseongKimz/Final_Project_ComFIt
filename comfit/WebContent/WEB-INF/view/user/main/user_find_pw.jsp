@@ -82,10 +82,11 @@
 	
 <div style="margin: auto;">
 	<div style="text-align: center; margin-top: 6% ">
-		<button type="button" class="btn btn-secondary" style="margin-right: 20px; width: 120px;" >ID 찾기</button>
+		<button type="button" onclick="location.href='find_email_form.action'"  class="btn btn-secondary" style="margin-right: 20px; width: 120px;" >이메일 찾기</button>
 		<button type="button" class="btn btn-primary" style="margin-left: 20px; width: 120px;">PW 찾기</button>
 	</div>
 	<br />
+	<form action="" method="post">
 	<div style="width: 300px; margin: auto;">
 	<input type="text" class="form-control" placeholder="이메일을 입력하세요"/>
 	<br />
@@ -93,11 +94,10 @@
 	<br />
 	<input type="text" class="form-control" placeholder="전화번호를 입력하세요"/>
 	<br />
-	<input type="text" class="errMsg" placeholder="등록된 이름과 전화번호와 이메일이 일치하지 않습니다. 다시 입력해주세요." style="color:red; display: none;"/>
 	<br />
 	<button type="button" class="btn btn-primary" style="width: 300px;" >확인</button>
 	</div>
-	
+	</form>
 	<br /><br />
 	
 </div>	

@@ -12,7 +12,7 @@
 	<!-- ① 기존코드 -->
 	<!-- ※ Annotation 표기법으로 Controller 객체를 등록할 수 있도록 한다. -->
 	<context:component-scan base-package="com.test.mybatis" />
-	
+	<context:component-scan base-package="com.test.util" />
 	<!-- ③ mybatis 등록 과정에서 생겨나는 추가 코드 『2』 -->
 	<!-- ※ mybatis 를 사용하기 위해 환경 설정을 추가하는 과정에서 -->
 	<!--    필요한 dataSource 를 사용하기 위한 환경 설정 추가 -->

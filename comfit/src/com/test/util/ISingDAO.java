@@ -8,7 +8,9 @@ import java.sql.SQLException;
 
 import com.test.mybatis.userDTO;
 
-public interface ISignDAO
+public interface ISingDAO
 {
 	public int singUser(userDTO dto) throws SQLException;
+	public userDTO findEmail(userDTO dto) throws SQLException;
+	
 }

@@ -2,94 +2,17 @@ package com.test.mybatis;
 
 public class DirectProductDTO
 {
-	private String pd_id, pd_title, pd_name, pd_photo, pd_as_remain, pd_hitcount, price
+	private String pd_id, pd_title, pd_name, pd_photo, pd_as_remain, pd_hitcount, pd_hopeprice
     , pd_hope_sdate, pd_hope_edate, pd_hope_stime, pd_hope_etime, pd_hope_place
     , pd_regit_date, pd_maker_id, pd_as_id, pd_as_name, category_name, seller
     , u_nickname, maker_name, maker_name2, cf_price, comments
     , remain_date, distance, lat, lon;
 	
+	private String u_id, pd_hope_mgrs;
+
 	
 	
-	public String getLat()
-	{
-		return lat;
-	}
-
-	public void setLat(String lat)
-	{
-		this.lat = lat;
-	}
-
-	public String getLon()
-	{
-		return lon;
-	}
-
-	public void setLon(String lon)
-	{
-		this.lon = lon;
-	}
-
-	public String getDistance()
-	{
-		return distance;
-	}
-
-	public void setDistance(String distance)
-	{
-		this.distance = distance;
-	}
-
-	public String getRemain_date()
-	{
-		return remain_date;
-	}
-
-	public void setRemain_date(String remain_date)
-	{
-		this.remain_date = remain_date;
-	}
-
-	public String getComments()
-	{
-		return comments;
-	}
-
-	public void setComments(String comments)
-	{
-		this.comments = comments;
-	}
-
-	public String getCf_price()
-	{
-		return cf_price;
-	}
-
-	public void setCf_price(String cf_price)
-	{
-		this.cf_price = cf_price;
-	}
-
-	public String getMaker_name()
-	{
-		return maker_name;
-	}
-
-	public void setMaker_name(String maker_name)
-	{
-		this.maker_name = maker_name;
-	}
-
-	public String getMaker_name2()
-	{
-		return maker_name2;
-	}
-
-	public void setMaker_name2(String maker_name2)
-	{
-		this.maker_name2 = maker_name2;
-	}
-
+	
 	public String getPd_id()
 	{
 		return pd_id;
@@ -150,14 +73,14 @@ public class DirectProductDTO
 		this.pd_hitcount = pd_hitcount;
 	}
 
-	public String getPrice()
+	public String getPd_hopeprice()
 	{
-		return price;
+		return pd_hopeprice;
 	}
 
-	public void setPrice(String price)
+	public void setPd_hopeprice(String pd_hopeprice)
 	{
-		this.price = price;
+		this.pd_hopeprice = pd_hopeprice;
 	}
 
 	public String getPd_hope_sdate()
@@ -279,6 +202,113 @@ public class DirectProductDTO
 	{
 		this.u_nickname = u_nickname;
 	}
+
+	public String getMaker_name()
+	{
+		return maker_name;
+	}
+
+	public void setMaker_name(String maker_name)
+	{
+		this.maker_name = maker_name;
+	}
+
+	public String getMaker_name2()
+	{
+		return maker_name2;
+	}
+
+	public void setMaker_name2(String maker_name2)
+	{
+		this.maker_name2 = maker_name2;
+	}
+
+	public String getCf_price()
+	{
+		return cf_price;
+	}
+
+	public void setCf_price(String cf_price)
+	{
+		this.cf_price = cf_price;
+	}
+
+	public String getComments()
+	{
+		return comments;
+	}
+
+	public void setComments(String comments)
+	{
+		this.comments = comments;
+	}
+
+	public String getRemain_date()
+	{
+		return remain_date;
+	}
+
+	public void setRemain_date(String remain_date)
+	{
+		this.remain_date = remain_date;
+	}
+
+	public String getDistance()
+	{
+		return distance;
+	}
+
+	public void setDistance(String distance)
+	{
+		this.distance = distance;
+	}
+
+	public String getLat()
+	{
+		return lat;
+	}
+
+	public void setLat(String lat)
+	{
+		this.lat = lat;
+	}
+
+	public String getLon()
+	{
+		return lon;
+	}
+
+	public void setLon(String lon)
+	{
+		this.lon = lon;
+	}
+
+	public String getU_id()
+	{
+		return u_id;
+	}
+
+	public void setU_id(String u_id)
+	{
+		this.u_id = u_id;
+	}
+
+	public String getPd_hope_mgrs()
+	{
+		return pd_hope_mgrs;
+	}
+
+	public void setPd_hope_mgrs(String pd_hope_mgrs)
+	{
+		this.pd_hope_mgrs = pd_hope_mgrs;
+	}
+
+	
+	
+	
+	
+	
+	
 	
 	
 }

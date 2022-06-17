@@ -73,10 +73,11 @@
 	           			if (status === kakao.maps.services.Status.OK)
 	           			{
 	           				//alert(result[0].y + "/" + result[0].x);  // 위도 / 경도
-         						
-     						$("#hope_place", opener.document).val($("#address").val());
-     						$("#latlon", opener.document).val(result[0].y+"/"+result[0].x);
-     					    window.close();
+         					
+	           				
+							$("#pd_hope_place", opener.document).val($("#address").val());
+		     				$("#address", opener.document).val(result[0].y+"/"+result[0].x);
+		     				window.close();
      						
 	           			}	
 					})
@@ -96,12 +97,10 @@
 <body>
 <div class="mb-3" style="margin-left: 3%; margin-top: 2%">
 	<form action="georesult.action" method="get">
-	
 		<label for="address">주소검색</label><br />
 		<input type="text" class="form-control" name="addr" id="address" placeholder="클릭해주세요" required="required" readonly="readonly" style="width: 400px;" onclick="searchAddr()">
 		<br />
 		<button type="button" class="btn btn-secondary" id="geoBtn" style="margin-left: 60%;">주소선택완료</button>
-	
 	</form>
 </div>
 

@@ -28,22 +28,26 @@
 <script src="jQuery.MultiFile.min.js"></script>
 
 <script type="text/javascript">
-	$(document).ready(function()
-	{
-		
-		$("input[name=pd_as_id]").change(function()
+$(document).ready(function()
 		{
-			$("#pd_asDate").attr("readonly", false);
-			//alert($(this).val());
-			
-			if ($(this).val() == "3")
+			$("input[name=pd_as_id]").change(function()
 			{
-				 $("#pd_asDate").attr("readonly", true);
-			}
+				//alert($(this).val());
+				
+				if ($(this).val() == "3")
+				{
+					 $("#pd_asDate").val('none');
+					 $("#pd_asDate").attr("readonly", true);
+				}
+				else
+				{
+					$("#pd_asDate").attr("readonly", false);
+					$("#pd_asDate").val("");	
+				}
+				
+			});
 			
 		});
-		
-	});
 	
 	
 	$(document).ready(function()
@@ -245,7 +249,7 @@
 				</div>
 				
 
-				<input class="form-control" id="pd_asDate" name="pd_as_remain" type="text" placeholder="AS 만료 기간 입력. 예) 2024-09" style="width: 86%; font-style: italic;" value="none"/>
+				<input class="form-control" id="pd_asDate" name="pd_as_remain" type="text" placeholder="AS 만료 기간 입력. 예) 2024-09" style="width: 86%; font-style: italic;">
 
 				
 

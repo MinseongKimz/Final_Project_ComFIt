@@ -6,10 +6,12 @@ public interface IAdmin
 {
 	//관리자 로그인 메소드;
 	public AdminLoginDTO adminLogin(AdminLoginDTO admin);
-	
-	
+
 	// 관리자모드 회원 리스트 출력 메소드
 	public ArrayList<userDTO> adminUserList(); 
+	
+	// 관리자모드 회원 검색 리스트 출력 메소드
+	public ArrayList<userDTO> adminSearchUserList(String searchvalue);
 	
 	// 관리자모드 차단 회원 리스트 출력 메소드
 	public ArrayList<userDTO> adminBannedList();
@@ -69,7 +71,13 @@ public interface IAdmin
 	public ArrayList<adProductDTO> adminProductDeliveryList_4(String pd_num);
 	public ArrayList<adProductDTO> adminProductDeliveryList_5(String pd_num);
 		
-	
+	// 관리자모드 직거래상품 세부 출력 메소드
+	public ArrayList<adProductDTO> adminProductDirectList_1(String pd_num);
+	public ArrayList<adProductDTO> adminProductDirectList_2(String pd_num);
+	public ArrayList<adProductDTO> adminProductDirectList_3(String pd_num);
+	public ArrayList<adProductDTO> adminProductDirectList_4(String pd_num);
+	public ArrayList<adProductDTO> adminProductDirectList_5(String pd_num);
+
 	// 관리자모드 입출금 출력 메소드
 	public ArrayList<adMoneyDTO> adminMoneyList();
 	
@@ -109,5 +117,7 @@ public interface IAdmin
 	public AskDTO AskModifyForm(String ask_id);
 	// 문의 수정 메소드
 	public int AskModify(AskDTO dto);
+	
+	
 }
 

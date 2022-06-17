@@ -7,35 +7,19 @@ package com.test.mybatis;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.support.DaoSupport;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class categoryController
 {
 	@Autowired
 	private SqlSession sqlSession;
-	
-	// 관리자 카테고리 리스트 -- AdminController로 이동
-	/*
-	@RequestMapping(value = "/admin_category_list.action", method = RequestMethod.GET)
-	public String categoryList(Model model)
-	{
-		String result = null;
-		
-		IAdmin dao = sqlSession.getMapper(IAdmin.class);
-		
-		model.addAttribute("categorylist", dao.categoryList());
-		
-		result = "/WEB-INF/view/admin/ad_category_list.jsp";
-		
-		return result;
-		
-	}
-	*/
-	
+
 	// 관리자 카테고리 insert
 	@RequestMapping(value = "/categoryinsert.action", method = RequestMethod.GET)
 	public String categoryInsert(String category_name)
@@ -67,47 +51,9 @@ public class categoryController
 	}
 	
 	
-
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

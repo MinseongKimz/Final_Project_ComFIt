@@ -71,9 +71,11 @@
 			// alert("내정보보기,수정");
 			var inputpw = prompt("비밀번호를 입력해주세요.");
 			
-			alert("입력한 비밀번호 : " + inputpw);
+			alert("입력한 비밀번호 : " + inputpw); 
 			
+			// 비밀번호기 때문에 방식 바꿔야함!! 일단 확인용으로 이렇게 만듬
 			location.href= "user_information.action";
+			
 		});
 		
 	});

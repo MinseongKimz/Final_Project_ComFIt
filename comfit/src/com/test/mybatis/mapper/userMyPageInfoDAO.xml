@@ -4,15 +4,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.test.mybatis.IUserMyPage">
 
+
+	<!-- 내 정보 자세히보기 비밀번호 받아서 하는 걸로 변경 예정 
 	<select id="myDetailInfo" resultType="com.test.mybatis.userDTO">
 		SELECT U_EMAIL, U_NICKNAME, U_NAME
-		, SUBSTR(CRYPTPACK.DECRYPT(U_PASSWORD,'1234'),1,1) 
-		|| LPAD('*',LENGTH(CRYPTPACK.DECRYPT(U_PASSWORD,'1234'))-1,'*') as U_PASSWORD
+        , LPAD('*',LENGTH(CRYPTPACK.DECRYPT(U_PASSWORD,#{u_password})),'*') as U_PASSWORD
 		, U_TEL, U_ADDRESS
 		FROM USER_INFORMATION
 		WHERE U_ID = #{u_id}
+        AND U_PASSWORD = CRYPTPACK.ENCRYPT(#{u_password},#{u_password})
 	</select>
-	
+	 -->
+	 <select id="myDetailInfo" resultType="com.test.mybatis.userDTO">
+	 SELECT U_EMAIL, U_NICKNAME, U_NAME
+        , LPAD('*',LENGTH(CRYPTPACK.DECRYPT(U_PASSWORD,'1234')),'*') as U_PASSWORD
+		, U_TEL, U_ADDRESS
+		FROM USER_INFORMATION
+		WHERE U_ID = #{u_id}
+	 </select>
+	 
 	<select id="myInfo" resultType="com.test.mybatis.userDTO">
 		SELECT U_NICKNAME, U_PROFILE
 		FROM USER_INFORMATION

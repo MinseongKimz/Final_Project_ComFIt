@@ -74,10 +74,25 @@
 	})
 	
 </script>
-
-<div class = "header">
-	<c:import url = "/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
-</div>
+</head>
+<body>
+<%
+	String u_id = (String)session.getAttribute("u_id");
+	
+	if(u_id != null)
+	{	
+%>
+		<div class="header">
+			<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
+		</div>
+<%	}
+	else
+	{
+%>
+	<div>
+   		<c:import url="/WEB-INF/view/user/main/comfit_header_nolog.jsp"></c:import>
+	</div>
+<%	} %>	
 
 <div class="content">
 <br /><br /><br />
@@ -116,7 +131,7 @@
 			</c:forEach>	
 		<div >
 			<button type="button" class="btn btn-primary" style="margin: 7px; float: right;" data-bs-toggle="modal" data-bs-target="#deleteModal">삭제하기</button>
-			<button type="button" class="btn btn-primary" style="margin: 7px; float: right;" value="${AskModifyForm.ask_id}"onclick="location.href='user_ask_modify_form.action'">수정하기</button>
+			<button type="button" class="btn btn-primary" style="margin: 7px; float: right;" value="${ask_id}"onclick="location.href='user_ask_modify_form.action'">수정하기</button>
 		</div>
 		
 		</div> 
@@ -134,7 +149,7 @@
 		      </div>
 		      <div class="modal-footer">
 		      	<div style="margin:auto; display:block;">
-		        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal" style="width: 100px;" onclick="location.href='user_ask.jsp'">아니오</button>
+		        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal" style="width: 100px;" onclick="location.href='user_ask_my_list.action'">아니오</button>
 		        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#complete" style="width: 100px;">네</button>
 		        </div>
 		      </div>
@@ -167,7 +182,8 @@
 		
 	</div>
 </div>
-
+</body>
+</html>
 
 
 

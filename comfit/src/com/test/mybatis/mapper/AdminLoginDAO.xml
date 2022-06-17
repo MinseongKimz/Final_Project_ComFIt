@@ -6,10 +6,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!--로그인 -->
    <select id="adminLogin" resultType="com.test.mybatis.AdminLoginDTO">
-      SELECT AD_ID,AD_PW
-      FROM ADMIN
-      WHERE AD_ID= #{ad_id}
-      AND AD_PW= #{ad_pw}
+		SELECT AD_ID, AD_PW
+		FROM ADMIN
+		WHERE AD_ID= #{ad_id} AND AD_PW= #{ad_pw}
    </select>
 
 </mapper>

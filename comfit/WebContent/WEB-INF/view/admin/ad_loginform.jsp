@@ -95,14 +95,10 @@ body {
 			}
 			
 			$("#ad_id").attr("action","")
-			
-			
-			$("form").submit();
-			
-			
+		
+			$("loginform").submit();
+
 		});
-		
-		
 	});
 
 </script>
@@ -113,24 +109,24 @@ body {
 <body class="text-center">
     
 <main class="form-signin">
-  <form action="ad_main.action" method="post">
-            <a href="ad_login.action" > 
+  <form action="ad_login.action" method="post" id="loginform">
+            <a href="ad_loginform.action" > 
 	           <img alt="logo" src="<%=cp%>/images/logo.png" style="width: 200px;">
 	        </a>
     <h2 class="h3 mb-3"><b>관리자 로그인</b></h2>
 
     <div class="form-floating">
-      <input type="text" class="form-control" id="ad_id" placeholder="name">
+      <input type="text" class="form-control" id="ad_id" name="ad_id" placeholder="name">
       <label for="floatingInput" id="ad_id">아이디를 입력하세요</label>
       <span style="color:red; display: none;" class="idErrMsg"></span>
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="ad_pw" placeholder="Password">
+      <input type="password" class="form-control" id="ad_pw" name="ad_pw" placeholder="Password">
       <label for="floatingPassword" id="ad_pw">비밀번호를 입력하세요</label>
       <span style="color:red; display: none;" class="pwErrMsg"></span>
     </div>
 
-    <button class="w-100 btn btn-lg btn-primary" id="adLoginBtn" type="button">로그인</button>
+    <button class="w-100 btn btn-lg btn-primary" id="adLoginBtn" type="submit">로그인</button>
     <p class="mt-5 mb-3 text-muted">&copy; 2022–2022</p>
   </form>
 </main>

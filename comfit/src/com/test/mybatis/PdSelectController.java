@@ -17,11 +17,11 @@ public class PdSelectController
 	private SqlSession sqlSession;
 	
 	@RequestMapping(value = "/pd_detail.action", method = RequestMethod.GET)
-	public String pdSelect(Model model, String pd_id, HttpServletRequest request)
+	public String pdSelect(Model model, HttpServletRequest request)
 	{
 		String result = null;
 		IProduct dao = sqlSession.getMapper(IProduct.class);
-		
+		String pd_id = request.getParameter("pd_id");
 		
 		String userId = null;
 		HttpSession session = request.getSession();
@@ -43,6 +43,8 @@ public class PdSelectController
 				session.setAttribute("check_id", check_id);
 				model.addAttribute("suggestList", dao.suggestList(pd_id));
 				model.addAttribute("drPdList", dao.drPdList(pd_id));
+				//System.out.println(pd_id);
+				model.addAttribute("pd_id", pd_id);
 				model.addAttribute("userLevel", dao.userLevel(userId));
 				model.addAttribute("sellCount", dao.sellCount(userId));
 				result = "/WEB-INF/view/user/main/user_direct_sell.jsp";
@@ -93,10 +95,12 @@ public class PdSelectController
 		{
 			int stime = Integer.parseInt(hope_stime.substring(0, 2));
 			int etime = Integer.parseInt(hope_etime.substring(0, 2));
-			System.out.println(stime);
+			//System.out.println(stime);
 			model.addAttribute("mgrs", dao.mgrs(pd_id));
 			model.addAttribute("hope_sdate", hope_sdate);
 			model.addAttribute("hope_edate", hope_edate);
+			model.addAttribute("pd_id", pd_id);
+			System.out.println(pd_id);
 			model.addAttribute("stime", stime);
 			model.addAttribute("etime", etime);
 			result = "WEB-INF/view/user/main/direct_place.jsp";	

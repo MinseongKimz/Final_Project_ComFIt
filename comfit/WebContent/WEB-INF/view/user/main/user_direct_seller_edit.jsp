@@ -212,10 +212,12 @@
 </script>
 </head>
 <body>
+
    <!--Header  -->
     <div class="header">
-	<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
+		<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
 	</div>
+	
 <!--날짜 처리  -->
 <script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
 <script type="text/javascript" src="<%=cp%>/js/jquery.timepicker.js."></script>
@@ -286,6 +288,39 @@
    })
    
    
+	$(document).ready(function()
+	{
+		// 주소 검색 open 
+		$("#basic-addon2").click(function()
+		{
+			//alert("123");
+			var child;
+			child = window.open("GeoTest.jsp", "_blank", "width=500, height=400", resizeable='no');	
+		})
+		
+	})
+	
+	// as 불가능 버튼 누르면 value none 설정
+	$(document).ready(function()
+	{
+		$("input[name=pd_as_id]").change(function()
+		{
+			//alert($(this).val());
+			
+			if ($(this).val() == "3")
+			{
+				 $("#pd_asDate").val('none');
+				 $("#pd_asDate").attr("readonly", true);
+			}
+			else
+			{
+				$("#pd_asDate").attr("readonly", false);
+				$("#pd_asDate").val("");	
+			}
+			
+		});
+		
+	});
    
 </script>
 
@@ -298,7 +333,7 @@
    </p>
    
    <div class="input_box" style="padding-left: 5%; padding-top: 10%;">
-   <form action="" method="post">
+   <form action="abc.action" method="get">
       <table style="width: 100%;">
 		 <tr>
 			<th>물품검색<span class="star">*</span></th>
@@ -349,11 +384,11 @@
 		</tr>
 		
          <tr>
-            <th>희망 가능 장소<span class="star">*</span></th>
+            <th>거래 희망 장소<span class="star">*</span></th>
 			<td colspan="2">
 				<div><!--  class="input-group mb-6" -->
-				  <input type="text" class="<!-- form-control  -->" placeholder="거래 희망장소를 선택해주세요" style="height:40px; width: 260px; display: inline-block; font-style: italic;" readonly="readonly">
-				  <span class="input-group-text" id="basic-addon1" onclick="location.href='geotest.action';" style="width: 50px; display: inline-block;"><i class="bi bi-search"></i></span>
+				  <input type="text" class="<!-- form-control  -->" id="pd_hope_place"  placeholder="거래 희망장소를 선택해주세요" style="height:40px; width: 500px; display: inline-block; font-style: italic;" readonly="readonly">
+				  <span class="input-group-text" id="basic-addon2" style="width: 50px; display: inline-block;"><i class="bi bi-search"></i></span>
 				</div>
 			</td>
             <!-- 지도 출력 -->
@@ -362,7 +397,7 @@
          
          <tr>
          <div>
-            <th>희망 거래 일시<span class="star">*</span>
+            <th>거래 희망 일시<span class="star">*</span>
             	<p style="font-weight: normal; font-size: 7pt;">오늘날짜로 선택이 불가능합니다.
             	<br>거래 가능일은 5일입니다.
             	<br>끝나는 시간은 23:00 PM 까지 입니다.</p>
@@ -402,7 +437,10 @@
             <th>희망 시작 가격<span class="star">*</span>
              <p style="font-weight: normal; font-size: 7pt;">희망하는 가격을 적어주세요.</p>
                 </th>
-                <td colspan="5"><input class="form-control" id="price1" type="text" placeholder="희망 가격을 입력해주세요." style="width: 40%;"/>
+                <td colspan="1"><input class="form-control" id="price1" name="pd_hopePrice" type="text" placeholder="희망 가격을 입력해주세요." style="width: 90%;"/>
+                </td>
+                <td>
+                <div style="display: inline-block; font-style: italic; color:red; font-size: small;"> ※comfit 추천 가격 : ${realAvgPrice }원</div>
                 </td>
          </tr>
                
@@ -427,19 +465,19 @@
                 </th>
                 <td colspan="3">
                 <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="asRadio" id="inlineRadio1" value="유상" checked="checked">
+              <input class="form-check-input" type="radio" name="pd_as_id" id="inlineRadio1" value="1" checked="checked">
               <label class="form-check-label" for="inlineRadio1">유상</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="asRadio" id="inlineRadio2" value="무상">
+              <input class="form-check-input" type="radio" name="pd_as_id" id="inlineRadio2" value="2">
               <label class="form-check-label" for="inlineRadio2">무상</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="asRadio" id="inlineRadio3" value="불가능">
+              <input class="form-check-input" type="radio" name="pd_as_id" id="inlineRadio3" value="3">
               <label class="form-check-label" for="inlineRadio3">불가능</label>
             </div>
             
-            <input class="form-control" id="asDate" type="text" placeholder="AS 만료 기간 입력. 예) 2024-09" style="width: 86%;"/>
+            <input class="form-control" id="pd_asDate" name="pd_as_remain" type="text" placeholder="AS 만료 기간 입력. 예) 2024-09" style="width: 86%;"/>
          </tr>
          
          <tr>
@@ -451,28 +489,29 @@
             </th>
             
             <td colspan="3" rowspan="2">
-            <textarea placeholder=" 판매자 코멘트 작성" style="width:86%; height: 150px;"></textarea>
+            <textarea placeholder=" 판매자 코멘트 작성" id="comments" name="comments" style="width:86%; height: 150px;"></textarea>
             </td>
          </tr>
          
-         <tr>
+		<tr>
             <th style="margin-right: 10%;">
-               <div style="background-color: #C9E0F5; height: 100px; padding: 10px; width: 85%;">
-                  <p style="font-size: 9pt;"> ※ 코멘트 작성 시 주의사항</p>
-                  <p style="font-size: 7pt; font-weight: normal;">불필요한 개인 정보 노출 및 판매와 관련없는 문구
-                  <br>등록 시 약관에 위배되어 제재될 수 있습니다.</p>
-               </div>
-            </th>
-         </tr>
+               	<div style="background-color: #C9E0F5; height: 100px; padding: 10px; width: 85%;">
+					<p style="font-size: 9pt;"> ※ 코멘트 작성 시 주의사항</p>
+                  	<p style="font-size: 7pt; font-weight: normal;">불필요한 개인 정보 노출 및 판매와 관련없는 문구
+                  	<br>등록 시 약관에 위배되어 제재될 수 있습니다.</p>
+				</div>
+			</th>
+		</tr>
          
-         <tr>
+		<tr>
             <td colspan="4">
-               <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="width: 90%;">
-                   <button type="button" class="btn btn-primary">등록하기</button>
-                   <button type="button" class="btn btn-secondary">취소</button>
-                   </div>
-                </td>
-         </tr>
+				<div class="d-grid gap-2 d-md-flex justify-content-md-end" style="width: 90%;">
+					<input type="text" id="latlon" hidden="hidden" name="pd_hope_mgrs"/>
+					<button type="button" class="btn btn-primary">등록하기</button>
+					<button type="button" class="btn btn-secondary">취소</button>
+				</div>
+			</td>
+		</tr>
          
       </table>
       </form>

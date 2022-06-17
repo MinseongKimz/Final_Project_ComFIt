@@ -96,10 +96,23 @@
 <body>
 
 <!-- Header 영역 -->
-<div>
-	<c:import url="comfit_header_user.jsp"></c:import>
-</div>
+<%
+	String u_id = (String)session.getAttribute("u_id");
 	
+	if(u_id != null)
+	{	
+%>
+		<div class="header">
+			<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
+		</div>
+<%	}
+	else
+	{
+%>
+	<div>
+   		<c:import url="/WEB-INF/view/user/main/comfit_header_nolog.jsp"></c:import>
+	</div>
+<%	} %>	
 	
 <!-- contanier 영역 -->
 <div class="container">

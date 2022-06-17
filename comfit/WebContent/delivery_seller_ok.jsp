@@ -19,10 +19,10 @@
 	String root = "/";
 	root = pageContext.getServletContext().getRealPath(root);
 	
-	String savePath = root + "pds" + File.separator + "saveFile";
+	String savePath = "C:\\Final_Project_ComFIt\\comfit\\WebContent\\images";
 	// 			                           "\\"
 	
-	out.println(savePath + "<br>");
+	//out.println(savePath + "<br>");
 	String encType = "UTF-8";
 	int maxFileSize = 5*1024*1024;
 	
@@ -54,11 +54,6 @@
 		String imd_price = req.getParameter("imd_price");
 		String pd_photo = req.getFilesystemName("uploadFile");
 
-
-		
-		
-		
-		
 		
 		request.setAttribute("pd_title", pd_title);
 		request.setAttribute("pd_name", pd_name);

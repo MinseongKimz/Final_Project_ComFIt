@@ -71,7 +71,10 @@ public class sellerEditController
 		      
 		      dao.deliveryInsert(dto);
 		      
-		      result = "user_mainlist.action";
+		      
+		      
+		      
+		      result = "redirect:redirect.action";	// PRG패턴이라나 뭐라나..
 		      
 		      return result;
 		      
@@ -151,15 +154,18 @@ public class sellerEditController
 			
 			dao.directInsert(dto);
 			
-			result = "redirect:user_mainlist.action";
+			result = "redirect:redirect.action";	// PRG패턴
 			
 			return result;
 		}
 	
 		
-		
-		
-		
+		//판매 등록 후 다시 메인 보내기;
+		@RequestMapping("/redirect.action") // PRG패턴
+		public String redirect()
+		{
+			return "NewFile.jsp";
+		}
 		
 		
 		

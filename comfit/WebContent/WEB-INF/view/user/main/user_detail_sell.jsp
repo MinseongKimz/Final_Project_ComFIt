@@ -31,7 +31,7 @@
 <body>
 
 <div class="header">
-	<c:import url="comfit_header_user.jsp"></c:import>
+	<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
 </div>
 
 <div class="container">

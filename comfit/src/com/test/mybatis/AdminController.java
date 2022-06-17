@@ -9,6 +9,7 @@ package com.test.mybatis;
 
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,26 +26,47 @@ public class AdminController
    @Autowired
    private SqlSession sqlSession;
    
-
-
-      
-
-	
-	  // 관리자 로그인
-	  
-	  @RequestMapping(value = "/ad_login.action", method = RequestMethod.GET)
-	  public String adLogin(AdminLoginDTO dto,HttpServletRequest request) {
-	  
-	  
-		  return "s";
-	  }
+    // 관리자 로그인		
+  
+    @RequestMapping("/ad_loginform.action")
+    public String adLogin() 
+    {   
+    	return "/WEB-INF/view/admin/ad_loginform.jsp";
+    }
 	 
+    
+    // 관리자 로그인 확인
+    /*
+    @RequestMapping(value = "/ad_login.action", method = RequestMethod.POST)
+    public String adminLogin(AdminLoginDTO dto, HttpServletRequest request, Model model) 
+    {  
+    	IAdmin dao = sqlSession.getMapper(IAdmin.class); 
+    	AdminLoginDTO admin = new AdminLoginDTO();
+    	
+    	try
+		{			
+        	String result = null;
+    		admin = dao.adminLogin(admin);
+    		HttpSession session = request.getSession();
+    		
+			session.setAttribute("ad_id", admin.getAd_id());
+			session.setAttribute("ad_pw", admin.getAd_pw());
+			
+			System.out.println(session.getAttribute("ad_id"));
+   
+			result = "/ad_main.action";
+			return result;
+
+    		
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+ 
+    }
+    */
 
 
-   
-   
-   
-   
    // 관리자 메인
    @RequestMapping(value = "/ad_main.action", method = RequestMethod.GET)
    public String adMain(Model model)
@@ -60,6 +82,8 @@ public class AdminController
       
       IAdmin dao = sqlSession.getMapper(IAdmin.class);
       
+      // searchvalue 값이 없으면 전체 리스트 출력, 있으면... 그부분만 출력하게 만들고 싶음
+      
       model.addAttribute("userList", dao.adminUserList());
       
       result = "/WEB-INF/view/admin/ad_userlist.jsp";
@@ -67,6 +91,23 @@ public class AdminController
       return result;
    }
    
+   // 관리자 검색
+   @RequestMapping(value = "/admin_usersearchlist.action", method = RequestMethod.GET)
+   public String adSearchUserList(Model model, String searchvalue)
+   {
+      String result = null;
+      
+      IAdmin dao = sqlSession.getMapper(IAdmin.class);
+      
+      model.addAttribute("usersearchList", dao.adminSearchUserList(searchvalue));
+      //model.addAttribute("productlistdelivery1", dao.adminProductDeliveryList_1(pd_num));
+      
+      result = "/WEB-INF/view/admin/ad_userlist_search.jsp";
+         
+      return result;
+   }   
+   
+  
    // 관리자 차단회원 관리
    @RequestMapping(value = "/admin_bannedlist.action", method = RequestMethod.GET)
 	public String adBannedList(Model model)

@@ -6,10 +6,12 @@ public interface IAdmin
 {
 	//관리자 로그인 메소드;
 	public AdminLoginDTO adminLogin(AdminLoginDTO admin);
-	
-	
+
 	// 관리자모드 회원 리스트 출력 메소드
 	public ArrayList<userDTO> adminUserList(); 
+	
+	// 관리자모드 회원 검색 리스트 출력 메소드
+	public ArrayList<userDTO> adminSearchUserList(String searchvalue);
 	
 	// 관리자모드 차단 회원 리스트 출력 메소드
 	public ArrayList<userDTO> adminBannedList();

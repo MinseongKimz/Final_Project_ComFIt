@@ -3,7 +3,7 @@ package com.test.mybatis;
 public class AdminLoginDTO
 {
 	//주요 속성 구성
-	private String ad_id,ad_pw;
+	private String ad_id, ad_pw;
 
 	
 	//getter/setter 구성

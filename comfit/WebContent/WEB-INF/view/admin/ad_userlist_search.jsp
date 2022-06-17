@@ -32,25 +32,21 @@
 			}
 			
 			alert($(".listselect").val()); //u_email, 
-			alert($("#searchvalue").val()); //서치값
+			alert($("#searchuser").val()); //서치값
 			
 			// 분기완료
-			/*
 			if ($(".listselect").val()=='u_nickname')
 			{
-				$(location).attr("href", "admin_usersearch.action?u_nickname="+$("#searchvalue").val());
+				$(location).attr("href", "admin_usersearch.action?u_nickname="+$("#searchuser").val());
 			}
 			else if ($(".listselect").val()=='u_mail') 
 			{
-				$(location).attr("href", "admin_usersearch.action?e_mail="+$("#searchvalue").val());				
+				$(location).attr("href", "admin_usersearch.action?e_mail="+$("#searchuser").val());				
 			}
 			else
 			{
-				$(location).attr("href", "admin_usersearch.action?u_name="+$("#searchvalue").val());	
+				$(location).attr("href", "admin_usersearch.action?u_name="+$("#searchuser").val());	
 			}
-			*/
-			
-			$(location).attr("href", "/comfit/admin_usersearchlist.action?searchvalue="+$("#searchvalue").val());
 			
 		})
 		
@@ -136,7 +132,14 @@
 				</tr>
 			</thead>
 			<tbody style="background-color: white;">
-				<c:forEach var="user" items="${userList }">
+			
+			<c:if test="${empty usersearchList}">
+				<tr>
+					<td colspan="9"><h3 style="text-align: center;">작성된 게시글이 없습니다.</h3></td>
+				</tr>
+			</c:if>
+			<c:if test="${not empty usersearchList}">
+				<c:forEach var="user" items="${usersearchList}">
 					<tr>
 						<td>${user.u_id }</td>
 						<td>${user.u_email }</td>
@@ -146,8 +149,6 @@
 						<td>1LV</td>
 						<td>${user.u_joindate }</td>
 						<td style="margin-left: 20px">
-						
-							
 							<div style="text-align: center;">
 							<select class="form-select userblock" style="width: 80%; display: inline-block;">
 							    <option selected>정상</option>
@@ -158,9 +159,11 @@
 							</select>
 							</div>											
 						</td>
-						<td>${user.bancount }</td>
+						<td>${user.bancount }</td>					
 					</tr>
 				</c:forEach>
+			</c:if>		
+				
 			</tbody>
 		</table>
 
@@ -173,7 +176,7 @@
 				    <option value="u_nickname">닉네임</option>
 				</select> 
 	        <div class="input-group" style="width:100%; text-align: right;">
-	           <input type="text" id="searchvalue" class="form-control" placeholder="검색어를 입력하세요">
+	           <input type="text" id="searchuser" class="form-control" placeholder="검색어를 입력하세요">
 	            <button id="searchBtn" type="button" class="btn btn-outline-primary">
 	          		<i class="bi bi-search"></i>
 	            </button>

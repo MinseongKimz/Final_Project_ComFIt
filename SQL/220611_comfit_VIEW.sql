@@ -1065,3 +1065,47 @@ SELECT PD_NUM, B_U_ID, SUGGEST_DATE, SUGGEST_PRICE, DEAL_STATUS
 FROM TOTAL_DIRECT_VIEW5
 WHERE PD_NUM = '1';
 
+
+
+--------------------------------------------------------------------------------
+
+SELECT *
+FROM ADMIN;
+
+
+SELECT AD_ID, AD_PW
+FROM ADMIN
+WHERE AD_ID= 'cf_admin' AND AD_PW= 'comfit006$';
+-- 맞지 않냐...?
+
+--------------------------------------------------------------------------------
+-- ○ 카테고리 검색 쿼리
+SELECT U_ID, U_EMAIL, U_NAME, U_NICKNAME, U_TEL, U_JOINDATE, 
+(
+  SELECT COUNT(*) AS COUNT
+  FROM
+  (
+  SELECT BAN_ID, BAN_DATE, REPORTED, REPORTER
+  FROM DIRECT_TRANS_BANNED_VIEW
+  UNION
+  SELECT BAN_ID, BAN_DATE, REPORTED, REPORTER
+  FROM DELIVERY_TRANS_BANNED_VIEW
+  UNION
+  SELECT BAN_ID, BAN_DATE, REPORTED, REPORTER
+  FROM DIRECT_PD_BANNED_VIEW
+  UNION
+  SELECT BAN_ID, BAN_DATE, REPORTED, REPORTER
+  FROM DELIVERY_PD_BANNED_VIEW
+  )
+  WHERE U_ID = REPORTED
+) AS BANCOUNT
+FROM USER_INFORMATION
+WHERE U_NAME = U_NAME and u_name like '%%'
+OR U_ID = U_ID and U_ID like '%%'
+OR U_EMAIL = U_EMAIL and U_EMAIL like '%%';
+--
+SELECT 컬럼
+FROM 테이블
+WHERE 카테고리=#{카테고리} AND 컬럼 LIKE '%' || #{검색내용} || '%'
+
+--------------------------------------------------------------------------------

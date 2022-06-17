@@ -1,5 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String cp = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -174,7 +178,6 @@
 <body>
 <%
 	String u_id = (String)session.getAttribute("u_id");
-	
 	if(u_id != null)
 	{	
 %>
@@ -188,6 +191,7 @@
 	<div>
    		<c:import url="/WEB-INF/view/user/main/comfit_header_nolog.jsp"></c:import>
 	</div>
+	
 <%	} %>	
 
 
@@ -277,7 +281,21 @@
          <div class="newList">
          	<c:forEach var="product" items="${pdList }">
          	   <div class="card">
-            	   <img src="images/ssd.jpg" class="card-img-top">
+         	   	
+ 				<c:choose>
+ 					<c:when test="${product.pd_photo eq 'download' }">
+ 						<img src="images/ssd.jpg" class="card-img-top">
+ 					</c:when>
+ 					<c:otherwise>
+ 						<img src="images/${product.pd_photo}" class="card-img-top">
+ 					</c:otherwise>
+ 				</c:choose>        	   	
+         	   			
+         	   		
+         	   
+         	   
+         	   
+            	   
               	 <div class="card-body">
                   <h5 class="card-title" style="text-align: center;">${product.pd_name }</h5>
                   <p class="card-text"  style="text-align: center;">${product.price }</p>

@@ -97,9 +97,17 @@ function searchAddr()
     var pd_id = document.getElementById("pd_id").value;
     var hope_sdate = document.getElementById("hope_sdate").value;
     var hope_edate = document.getElementById("hope_edate").value;
-    var url = "direct_place.action?pd_id=" + pd_id + "&hope_sdate=" + hope_sdate + "&hope_edate=" + hope_edate;
+    var hope_stime = document.getElementById("hope_stime").value;
+    var hope_etime = document.getElementById("hope_etime").value;
+    //alert(hope_stime);
+    //alert(hope_etime);
+    var url = "direct_place.action?pd_id=" + pd_id + "&hope_sdate=" + hope_sdate
+    		+ "&hope_edate=" + hope_edate
+    		+ "&hope_stime=" + hope_stime
+    		+ "&hope_etime=" + hope_etime;
     
-    window.open(url, "구매제안", "top=100px, left=100px, height=900px, width=519px");
+    window.open(url, "구매제안", "top=100px, left=100px, height=900px, width=519px, resizable=no");
+  
     
 }
 function CountDownTimer(dt, id)
@@ -148,9 +156,23 @@ function CountDownTimer(dt, id)
 </head>
 <body>
 
-<div class="header">
-	<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
-</div>
+<%
+	String u_id = (String)session.getAttribute("u_id");
+	
+	if(u_id != null)
+	{	
+%>
+		<div class="header">
+			<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
+		</div>
+<%	}
+	else
+	{
+%>
+	<div>
+   		<c:import url="/WEB-INF/view/user/main/comfit_header_nolog.jsp"></c:import>
+	</div>
+<%	} %>	
 <div>
 	<c:forEach var="mgrs" items="${mgrs }">
 	<input type="hidden" id="lat" value="${mgrs.lat }" />
@@ -296,6 +318,9 @@ function CountDownTimer(dt, id)
 		</div>
 		<input type="hidden" id="hope_sdate" value="${drPd.pd_hope_sdate }"/>
 		<input type="hidden" id="hope_edate" value="${drPd.pd_hope_edate }"/>
+		<input type="hidden" id="hope_stime" value="${drPd.pd_hope_stime}"/>
+		<input type="hidden" id="hope_etime" value="${drPd.pd_hope_etime }"/>
+		
 		<div>
 			<div class="col-md-6" style="width:100%; display: inline-block; float:left;">
 				<table style="margin-left:5%; width:90%;">

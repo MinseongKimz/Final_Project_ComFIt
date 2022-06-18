@@ -50,7 +50,7 @@ public class SignDAO implements ISingDAO
 		{
 			try
 			{
-				conn.close();
+				DBConn.close();
 			} catch (Exception e)
 			{
 				System.out.println(e.toString());

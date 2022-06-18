@@ -39,6 +39,7 @@
 		ON UI.U_ID = UE.U_ID
 		WHERE U_EMAIL = #{u_email}
 		AND U_PASSWORD = CRYPTPACK.ENCRYPT(#{u_password}, #{u_password})
+		AND UE.AU_CATE_ID=1
 	</select>
 
 	<select id="userEmail" resultType="com.test.mybatis.userDTO">

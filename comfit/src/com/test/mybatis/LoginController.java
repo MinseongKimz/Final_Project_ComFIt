@@ -62,7 +62,7 @@ public class LoginController
 		{
 			System.out.println(e.toString());
 			
-			return "redirect:loginform.action";
+			return "loginform.action";
 		}
 	}
 	

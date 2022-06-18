@@ -67,6 +67,8 @@
 	</select>
 
 	
+	
+	
 	<select id="drPdList" resultType="com.test.mybatis.DirectProductDTO">
 		SELECT PD_ID, PD_TITLE, PD_NAME, PD_PHOTO, PD_AS_REMAIN, PD_HITCOUNT, PRICE
 		     , SUBSTR(TO_CHAR(PD_HOPE_SDATE, 'YYYY-MM-DD'), 1, 10) AS PD_HOPE_SDATE, SUBSTR(TO_CHAR(PD_HOPE_EDATE, 'YYYY-MM-DD'), 1, 10) AS PD_HOPE_EDATE
@@ -84,6 +86,11 @@
 		FROM DELI_PD_LIST_REALVIEW
 		WHERE PD_ID = #{pd_id}
 	</select>
+	
+	
+	
+	
+	
 	
 	<select id="search_pdListDefault" resultType="com.test.mybatis.ProductDTO">
 	SELECT PD_ID, CATEGORY_NAME, PD_REGIT_DATE, U_ID, PD_TITLE, DEAL_TYPE, PD_PRICE, SYSTEM, COMP_DATE, SELLER_ID, BUYER_ID, STATUS, PD_PHOTO
@@ -166,14 +173,14 @@
 		 WHERE DIRE_PD_ID = #{pd_id}
 	</select>
 	
-	<select  id="userLevel" resultType="java.lang.Integer">
+	<select id="userLevel" resultType="java.lang.Integer">
 		SELECT CASE TRUNC(SQRT((SUM(USER_EXP))/2))
-       			WHEN 0
-       			THEN 1
-       			ELSE TRUNC(SQRT((SUM(USER_EXP))/2)) 
-       			END AS USER_LEVEL
-		FROM USER_LEVEL_VIEW
-		WHERE U_ID = #{userId}
+	    WHEN 0
+	    THEN 1
+	    ELSE TRUNC(SQRT((SUM(USER_EXP))/2)) 
+	    END AS USER_LEVEL
+		FROM USER_LEVEL_VIEW2
+		WHERE U_ID = #{u_id}
 	</select>
 	
 	<select id="sellCount" resultType="java.lang.Integer">

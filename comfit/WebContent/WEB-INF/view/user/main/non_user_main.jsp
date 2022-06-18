@@ -193,11 +193,7 @@
 	
    function needSignUp()
    {
-		var result = confirm("회원가입이 필요한 서비스입니다. 회원가입하시겠습니까???");
-		if (result)
-		{
-			location.href = "registform.action";
-		}
+		alert("로그인이 필요한 서비스입니다. 로그인후 이용해 주세요");
 		
 		return;
    }
@@ -230,14 +226,11 @@
 
 <!-- 220610 추가한 부분 지워도 됩니다! 큼직하게 이미지 넣는게 밀도있을 것 같아보여서 추가했어요 -->
 <section>
-  <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-    <div class="col-md-5 p-lg-5 mx-auto my-5">
-      <h1 class="display-4 fw-normal">이미지 추가</h1>
-      <p class="lead fw-normal">And an even wittier subheading to boot. Jumpstart your marketing efforts with this example based on Apple’s marketing pages.</p>
-      <a class="btn btn-outline-secondary" href="#">Coming soon</a>
-    </div>
-    <div class="product-device shadow-sm d-none d-md-block"></div>
-    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+  <div style="">
+  	<img src="images/comfit_main.jpg" alt=""  style="background-size: cover; width: 100%; height: 500px;" />
+      <!-- <h1 class="display-4 fw-normal">COMFIT 나에게 딱맞는 컴퓨터</h1>
+      <p class="lead fw-normal">The best choice, fast deal, trustless trust, no stress. <br />this is comfit</p>
+      <a class="btn btn-outline-secondary" href="#">Coming soon</a> -->
   </div>
 </section>  
 <!-- 220610 추가한 부분 -->  
@@ -273,9 +266,6 @@
          최근 등록 상품
       </div>
          
-      <div style="display: inline-block; width: 200px; float: right;">   
-         <button type="button" class="btn btn-primary" style="float:right; width: 150px; float: right;">전체보기</button>
-      </div>
       
       <br /><br />
    
@@ -283,11 +273,14 @@
        <div class="col-md-12 text-center">
    
          <div class="newList">
-            <c:forEach var="product" items="${pdList }">
+            <c:forEach var="product" items="${pdList }" begin="1" end="15">
          	   <div class="card">
-            	   <img src="images/ssd.jpg" class="card-img-top">
+            	   <!-- <img src="images/ssd.jpg" class="card-img-top"> -->
+            	   <img alt="" src="images/${product.pd_photo }"
+						class="card-img-top" style="width: 220px; height: 140px;">
+            	   
               	 <div class="card-body">
-                  <h5 class="card-title" style="text-align: center;">${product.pd_name }</h5>
+                  <h5 class="card-title" style="text-align: center;">${product.pd_title }</h5>
                   <p class="card-text"  style="text-align: center;">${product.price }</p>
                   <%-- <a href="pd_detail.action?pd_id=${product.pd_id }" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a> --%>
                   <button type="button" class="btn btn-secondary hover"
@@ -305,9 +298,6 @@
          인기 상품
       </div>
          
-      <div style="display: inline-block; width: 200px; float: right;">   
-         <button type="button" class="btn btn-primary" style="float:right; width: 150px; float: right;">전체보기</button>
-      </div>         
       <br /><br />
       
       

@@ -48,17 +48,17 @@
 	</select>
 	
 	<select id="user_pdList" resultType="com.test.mybatis.ProductDTO">
-		  SELECT V.PD_ID AS PD_ID, V.PD_NAME AS PD_NAME, V.PRICE AS PRICE, V.DISTANCE AS DISTANCE, V.PD_PHOTO AS PD_PHOTO
+		  SELECT V.PD_ID AS PD_ID, V.PD_TITLE AS PD_TITLE, V.PRICE AS PRICE, V.DISTANCE AS DISTANCE, V.PD_PHOTO AS PD_PHOTO
 			FROM
 			(
-			SELECT PD_ID, PD_NAME, PRICE, PD_PHOTO
+			SELECT PD_ID, PD_NAME, PRICE, PD_PHOTO, PD_TITLE
 			     , ROUND(DISTANCE_WGS84(LAT, LON, #{lat}, #{lon}), 2) AS DISTANCE
 			FROM DIRE_PD_NEAR_VIEW
 			) V
 			ORDER BY V.DISTANCE
 	</select>
 	<select id="deli_user_pdList" resultType="com.test.mybatis.ProductDTO">
-		  SELECT PD_ID, PD_NAME, PRICE, PD_REGIT_DATE
+		  SELECT PD_ID, PD_TITLE, PRICE, PD_REGIT_DATE, PD_PHOTO
 		    FROM DELI_PD_LIST_REALVIEW
 	</select>
 	<select id="cateList" resultType="com.test.mybatis.CategoryDTO">
@@ -206,9 +206,9 @@
 	</select>
 	
 	<select id="non_user_pdList" resultType="com.test.mybatis.ProductDTO">
-		SELECT PD_ID, PD_NAME, PRICE
-	 	 FROM PD_LIST_MAIN_VIEW
-	    ORDER BY PD_REGIT_DATE
+		SELECT PD_ID, PD_TITLE, PRICE, PD_PHOTO
+	 	FROM PD_LIST_MAIN_VIEW
+	    ORDER BY PD_REGIT_DATE 
 	</select>
 	
 	<select id="mgrs" resultType="com.test.mybatis.DirectProductDTO">

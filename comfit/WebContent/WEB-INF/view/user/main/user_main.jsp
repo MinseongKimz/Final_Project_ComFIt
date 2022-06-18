@@ -317,23 +317,10 @@
          <div class="newList">
          	<c:forEach var="product" items="${pdList }">
          	   <div class="card">
-         	   	
- 				<c:choose>
- 					<c:when test="${product.pd_photo eq 'download' }">
- 						<img src="images/ssd.jpg" class="card-img-top">
- 					</c:when>
- 					<c:otherwise>
- 						<img src="images/${product.pd_photo}" class="card-img-top">
- 					</c:otherwise>
- 				</c:choose>        	   	
-         	   			
-         	   		
-         	   
-         	   
-         	   
-            	   
+ 				<img alt="" src="images/${product.pd_photo }"
+						class="card-img-top" style="width: 220px; height: 140px;"> 	   	
               	 <div class="card-body">
-                  <h5 class="card-title" style="text-align: center;">${product.pd_name }</h5>
+                  <h5 class="card-title" style="text-align: center;">${product.pd_title }</h5>
                   <p class="card-text"  style="text-align: center;">${product.price }</p>
                   <a href="pd_detail.action?pd_id=${product.pd_id }" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
                	</div>
@@ -362,9 +349,10 @@
          <div class="newList">
            <c:forEach var="product" items="${deli_pdList }">
          	   <div class="card">
-            	   <img src="images/ssd.jpg" class="card-img-top">
+            	   <img alt="" src="images/${product.pd_photo }"
+						class="card-img-top" style="width: 220px; height: 140px;">
               	 <div class="card-body">
-                  <h5 class="card-title" style="text-align: center;">${product.pd_name }</h5>
+                  <h5 class="card-title" style="text-align: center;">${product.pd_title }</h5>
                   <p class="card-text"  style="text-align: center;">${product.price }</p>
                   <a href="pd_detail.action?pd_id=${product.pd_id }" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
                	</div>

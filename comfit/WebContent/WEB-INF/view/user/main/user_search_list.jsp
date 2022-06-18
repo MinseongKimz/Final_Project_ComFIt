@@ -153,7 +153,8 @@
 		        
 		        	<c:forEach var="product" items="${searchList }">
 		        	   <div class="card">
-		           	   <img src="images/ssd.jpg" class="card-img-top">
+		           	     <img alt="" src="images/${product.pd_photo }"
+						class="card-img-top" style="width: 220px; height: 140px;">
 		             	 <div class="card-body">
 		                 <h5 class="card-title" style="text-align: center;">${product.pd_title }</h5>
 		                 <p class="card-text"  style="text-align: center;">${product.pd_price }</p>

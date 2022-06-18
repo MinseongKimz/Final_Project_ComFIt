@@ -4,6 +4,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import com.test.mybatis.BidListDTO;
 import com.test.mybatis.DBConn;
 import com.test.mybatis.SuggestListDTO;
 
@@ -53,6 +54,49 @@ public class SuggestDAO implements ISuggestDAO
 			}
 		}
 		
+		return result;
+	}
+	
+	@Override
+	public int add_bid(BidListDTO dto)
+	{
+		int result = 0;
+		
+		try
+		{
+			
+			conn = DBConn.getConnection();
+			
+			String sql = "{call ADD_BID(?, ?, ?, ?, ?)}";
+			
+			
+			CallableStatement cstmt = conn.prepareCall(sql);
+			
+			
+			cstmt.setInt(1, Integer.parseInt(dto.getPrice()));
+			cstmt.setString(2, dto.getAddress());
+			cstmt.setString(3, dto.getAddr_detail());
+			cstmt.setString(4, dto.getU_id());
+			cstmt.setString(5, dto.getPd_id());
+			
+			result = cstmt.executeUpdate();
+			
+			cstmt.close();
+		}
+		catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		finally
+		{
+			try
+			{
+				DBConn.close();
+			} catch (Exception e)
+			{
+				System.out.println(e.toString());
+			}
+		}
 		return result;
 	}
 

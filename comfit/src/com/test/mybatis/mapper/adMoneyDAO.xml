@@ -11,4 +11,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	ORDER BY IO_DATE
 </select> 
 
+
+<select id="adminMoneySearchList" resultType="com.test.mybatis.adMoneyDTO">
+	SELECT IO_TYPE, U_EMAIL, U_NAME, IO_DATE, BANK_NAME
+	     , ACCOUNT, MONEY
+	FROM AD_IO_MONEY_LIST_REALVIEW
+	WHERE U_EMAIL = U_EMAIL and U_EMAIL LIKE '%' || #{searchvalue} || '%'
+	OR U_NAME = U_NAME and U_NAME LIKE '%' || #{searchvalue} || '%'
+	OR ACCOUNT = ACCOUNT and ACCOUNT LIKE '%' || #{searchvalue} || '%'
+	ORDER BY IO_DATE
+</select>
+
+
 </mapper>

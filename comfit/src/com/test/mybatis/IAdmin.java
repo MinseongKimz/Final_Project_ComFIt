@@ -2,13 +2,16 @@ package com.test.mybatis;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
 public interface IAdmin
 {
 	//관리자 로그인 메소드;
+	
 	public AdminLoginDTO adminLogin(AdminLoginDTO admin);
 
 	// 관리자모드 회원 리스트 출력 메소드
-	public ArrayList<userDTO> adminUserList(); 
+	public ArrayList<userDTO> adminUserList(HttpServletRequest request); 
 	
 	// 관리자모드 회원 검색 리스트 출력 메소드
 	public ArrayList<userDTO> adminSearchUserList(String searchvalue);
@@ -30,8 +33,7 @@ public interface IAdmin
 	
 	// 관리자모드 공지사항 리스트 출력메소드 ok
 	public ArrayList<NoticeDTO> noticeList();
-	
-	
+
 	// 관리자모드 공지사항 추가 메소드
 	public int noticeInsert(NoticeDTO notice);
 	
@@ -64,6 +66,9 @@ public interface IAdmin
 	// 관리자모드 상품 출력 메소드
 	public ArrayList<adProductDTO> adminProductList();
 	
+	// 관리자모드 상품 검색 출력 메소드
+	public ArrayList<adProductDTO> adminProductSearchList(String searchvalue);
+	
 	// 관리자모드 택배상품 세부 출력 메소드
 	public ArrayList<adProductDTO> adminProductDeliveryList_1(String pd_num);
 	public ArrayList<adProductDTO> adminProductDeliveryList_2(String pd_num);
@@ -82,6 +87,7 @@ public interface IAdmin
 	public ArrayList<adMoneyDTO> adminMoneyList();
 	
 	// 관리자모드 입출금 검색 메소드 구현하기...
+	public ArrayList<adMoneyDTO> adminMoneySearchList(String searchvalue);
 
 	// 관리자모드 FAQ 리스트 출력 메소드
 	public ArrayList<FaqDTO> faqList();

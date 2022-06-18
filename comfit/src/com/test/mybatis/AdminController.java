@@ -25,6 +25,46 @@ public class AdminController
    
    @Autowired
    private SqlSession sqlSession;
+	
+	// 관리자 로그인
+	@RequestMapping(value = "/ad_loginform.action")
+	public String adLogin(AdminLoginDTO dto, HttpServletRequest request) 
+	{
+		return "/WEB-INF/view/admin/ad_loginform.jsp";
+	}
+
+	// 관리자 로그인 확인
+    @RequestMapping(value = "/ad_login.action", method = RequestMethod.POST)
+    public String adminLogin(AdminLoginDTO dto, HttpServletRequest request, Model model) 
+    {  
+    	IAdmin dao = sqlSession.getMapper(IAdmin.class); 
+    	AdminLoginDTO admin = new AdminLoginDTO();
+    	String result = null;
+    	
+    	try
+		{	
+    		
+			//dto.setAd_id(ad_id);
+    		//dto.setAd_pw(ad_pw);
+    		admin = dao.adminLogin(dto);
+    		
+    		if (admin.getCount().equals("1"))
+			{
+    			result = "ad_main.action";
+			}
+    		else {
+    			result = "ad_loginform.action";
+			}
+
+			return result;
+    		
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+			return "redirect:ad_loginform.action";
+		} 
+    } 
+	
    
     // 관리자 로그인		
   
@@ -68,7 +108,7 @@ public class AdminController
 
 
    // 관리자 메인
-   @RequestMapping(value = "/ad_main.action", method = RequestMethod.GET)
+   @RequestMapping(value = "/ad_main.action", method = RequestMethod.POST)
    public String adMain(Model model)
    {
       return "/WEB-INF/view/admin/ad_main.jsp";
@@ -76,38 +116,46 @@ public class AdminController
    
    // 관리자 유저리스트
    @RequestMapping(value = "/admin_userlist.action", method = RequestMethod.GET)
-   public String adUserList(Model model)
+   public String adUserList(Model model, HttpServletRequest request)
    {
       String result = null;
       
       IAdmin dao = sqlSession.getMapper(IAdmin.class);
       
+
+      model.addAttribute("userList", dao.adminUserList(request));
+
       // searchvalue 값이 없으면 전체 리스트 출력, 있으면... 그부분만 출력하게 만들고 싶음
-      
-      model.addAttribute("userList", dao.adminUserList());
       
       result = "/WEB-INF/view/admin/ad_userlist.jsp";
          
       return result;
    }
    
+
+   // 관리자 유저검색
+
    // 관리자 검색
+
    @RequestMapping(value = "/admin_usersearchlist.action", method = RequestMethod.GET)
    public String adSearchUserList(Model model, String searchvalue)
    {
       String result = null;
-      
+
+
       IAdmin dao = sqlSession.getMapper(IAdmin.class);
-      
+
       model.addAttribute("usersearchList", dao.adminSearchUserList(searchvalue));
       //model.addAttribute("productlistdelivery1", dao.adminProductDeliveryList_1(pd_num));
-      
+
       result = "/WEB-INF/view/admin/ad_userlist_search.jsp";
-         
+
       return result;
-   }   
+   }      
+    
    
   
+
    // 관리자 차단회원 관리
    @RequestMapping(value = "/admin_bannedlist.action", method = RequestMethod.GET)
 	public String adBannedList(Model model)
@@ -154,6 +202,21 @@ public class AdminController
       
       return result;
    }
+   
+   // 관리자 상품관리 검색 리스트
+   @RequestMapping(value = "/admin_product_searchlist.action", method = RequestMethod.GET)
+   public String adProductSearchList(Model model, String searchvalue)
+   {
+      String result = null;
+      
+      IAdmin dao = sqlSession.getMapper(IAdmin.class);
+      
+      model.addAttribute("productlist", dao.adminProductSearchList(searchvalue));
+      
+      result = "/WEB-INF/view/admin/ad_product_searchlist.jsp";
+      
+      return result;
+   }   
    
    // 관리자 상품관리 상세리스트1
    @RequestMapping(value = "/admin_product_list_delivery.action", method = RequestMethod.GET)
@@ -211,6 +274,21 @@ public class AdminController
       
       return result;
    }
+   
+   // 관리자 입출금관리 검색
+   @RequestMapping(value = "/admin_money_searchlist.action", method = RequestMethod.GET)
+   public String adMoneySearchList(Model model, String searchvalue)
+   {
+	  String result = null;
+	  
+	  IAdmin dao = sqlSession.getMapper(IAdmin.class);
+	  
+	  model.addAttribute("moneylist", dao.adminMoneySearchList(searchvalue));
+	  
+      result =  "/WEB-INF/view/admin/ad_money_list.jsp";
+      
+      return result;
+   }   
    
    // 카테고리 리스트
    @RequestMapping(value = "/admin_category_list.action", method = RequestMethod.GET)
@@ -283,7 +361,7 @@ public class AdminController
 	   
 	   IAdmin dao = sqlSession.getMapper(IAdmin.class);
 	   
-	   model.addAttribute("noticeList", dao.noticeList());
+	   model.addAttribute("noticeList", dao.usernoticeList());
 	   
 	   result = "/WEB-INF/view/admin/ad_notice_list.jsp";
 	   
@@ -299,8 +377,6 @@ public class AdminController
 	   IAdmin dao = sqlSession.getMapper(IAdmin.class);
 	   
 	   model.addAttribute("noticecateList", dao.noticecateList());
-	   
-	  
 	   
 	   return "/WEB-INF/view/admin/ad_notice_write.jsp";
    }

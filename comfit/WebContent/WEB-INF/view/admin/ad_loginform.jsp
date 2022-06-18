@@ -95,9 +95,14 @@ body {
 			}
 			
 			$("#ad_id").attr("action","")
+<<<<<<< HEAD
+			$("form").submit();
+			
+=======
 		
 			$("loginform").submit();
 
+>>>>>>> b9d4d7ba9198d1cd6121fc4b7be13254b05c3aa9
 		});
 	});
 

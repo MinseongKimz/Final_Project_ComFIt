@@ -14,7 +14,10 @@
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/main.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
+<<<<<<< HEAD
+=======
 
+>>>>>>> b9d4d7ba9198d1cd6121fc4b7be13254b05c3aa9
 	$(document).ready(function()
 	{
 		//alert("테스트");
@@ -32,6 +35,11 @@
 			}
 			
 			alert($(".listselect").val()); //u_email, 
+<<<<<<< HEAD
+			alert($("#searchvalue").val()); //서치값
+			
+			$(location).attr("href", "/comfit/admin_usersearchlist.action?listselect="+$("#listselect").val()+"&searchvalue="+$("#searchvalue").val());
+=======
 			alert($("#searchuser").val()); //서치값
 			
 			// 분기완료
@@ -47,6 +55,7 @@
 			{
 				$(location).attr("href", "admin_usersearch.action?u_name="+$("#searchuser").val());	
 			}
+>>>>>>> b9d4d7ba9198d1cd6121fc4b7be13254b05c3aa9
 			
 		})
 		
@@ -60,7 +69,10 @@
 			
 		});		
 	});
+<<<<<<< HEAD
+=======
 
+>>>>>>> b9d4d7ba9198d1cd6121fc4b7be13254b05c3aa9
 </script>
 
 </head>
@@ -132,7 +144,11 @@
 				</tr>
 			</thead>
 			<tbody style="background-color: white;">
+<<<<<<< HEAD
+
+=======
 			
+>>>>>>> b9d4d7ba9198d1cd6121fc4b7be13254b05c3aa9
 			<c:if test="${empty usersearchList}">
 				<tr>
 					<td colspan="9"><h3 style="text-align: center;">작성된 게시글이 없습니다.</h3></td>
@@ -163,20 +179,32 @@
 					</tr>
 				</c:forEach>
 			</c:if>		
+<<<<<<< HEAD
+
+=======
 				
+>>>>>>> b9d4d7ba9198d1cd6121fc4b7be13254b05c3aa9
 			</tbody>
 		</table>
 
 		<div style="text-align: right;">
 			<div class="btn-group">
+<<<<<<< HEAD
+				<select class="form-select listselect" id="listselect" style="width: 40%;">
+=======
 				<select class="form-select listselect" style="width: 40%;">
+>>>>>>> b9d4d7ba9198d1cd6121fc4b7be13254b05c3aa9
 				    <option selected>카테고리</option>
 				    <option value="u_email">E-mail</option>
 				    <option value="u_name">이름</option>
 				    <option value="u_nickname">닉네임</option>
 				</select> 
 	        <div class="input-group" style="width:100%; text-align: right;">
+<<<<<<< HEAD
+	           <input type="text" class="form-control" id="searchvalue"  placeholder="검색어를 입력하세요">
+=======
 	           <input type="text" id="searchuser" class="form-control" placeholder="검색어를 입력하세요">
+>>>>>>> b9d4d7ba9198d1cd6121fc4b7be13254b05c3aa9
 	            <button id="searchBtn" type="button" class="btn btn-outline-primary">
 	          		<i class="bi bi-search"></i>
 	            </button>
@@ -232,4 +260,8 @@
 </div>
 
 </body>
+<<<<<<< HEAD
+</html> 
+=======
 </html>
+>>>>>>> b9d4d7ba9198d1cd6121fc4b7be13254b05c3aa9

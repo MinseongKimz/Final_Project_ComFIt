@@ -143,8 +143,8 @@ tbody {background-color: white;}
 
   <!-- 사이드바 -->
   <div id="sidebar-wrapper">
-    <a href="ad_main.action" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
-      <svg class="bi me-2" width="30" height="24"><use xlink:href="admin_main.jsp"/></svg>
+    <a href="" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+      <svg class="bi me-2" width="30" height="24"><!-- <use xlink:href="admin_main.jsp"/> --></svg>
       <img alt="" src="images/logo-admin.png" style="width: 100%; margin-top: 10px">
     </a>  
   

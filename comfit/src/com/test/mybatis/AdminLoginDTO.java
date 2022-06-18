@@ -3,9 +3,10 @@ package com.test.mybatis;
 public class AdminLoginDTO
 {
 	//주요 속성 구성
-	private String ad_id, ad_pw;
 
-	
+	private String ad_id, ad_pw, count;
+
+
 	//getter/setter 구성
 	public String getAd_id()
 	{
@@ -26,6 +27,15 @@ public class AdminLoginDTO
 	{
 		this.ad_pw = ad_pw;
 	}
-	
+
+	public String getCount()
+	{
+		return count;
+	}
+
+	public void setCount(String count)
+	{
+		this.count = count;
+	}
 	
 }

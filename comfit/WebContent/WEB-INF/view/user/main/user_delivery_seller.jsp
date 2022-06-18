@@ -309,7 +309,7 @@ d-block
 			<div class="card" style="width: 100%; padding:3%;">
 				<div>
 					<div class="user_image" style="float: left;">
-						<img alt="" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"
+						<img alt="" src="images/${dlPd.profile }"
 						style="object-fit:cover; height: 100%; width: 100%;">
 					</div>
 					<div style="padding-left: 25%;">
@@ -344,7 +344,7 @@ d-block
 			<tr>
 				<td style="width: 20%; padding-left: 3%;">
 					<div class="user_image">
-						<img alt="" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"
+						<img alt="" src="images/${bl.profile }"
 						style="object-fit:cover; height: 100%; width: 100%;">
 					</div>
 				</td>
@@ -581,7 +581,7 @@ d-block
 			<div class="card" style="width: 100%; padding:3%;">
 				<div>
 					<div class="user_image" style="float: left;">
-						<img alt="" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"
+						<img alt="" src="images/${dlPd.profile }"
 						style="object-fit:cover; height: 100%; width: 100%;">
 					</div>
 					<div style="padding-left: 25%;">
@@ -620,7 +620,7 @@ d-block
 			<tr>
 				<td style="width: 20%; padding-left: 3%;">
 					<div class="user_image">
-						<img alt="" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"
+						<img alt="" src="images/${bl.profile }"
 						style="object-fit:cover; height: 100%; width: 100%;">
 					</div>
 				</td>

@@ -164,29 +164,44 @@
 <script type="text/javascript">
 
 
-   $(document).ready(function()
-   {
-      $(".hover").hover(function()                
-      {                                         
-         //alert("테스트");                       
-         $(this).removeClass("btn-secondary"); 
-         $(this).addClass("btn-primary");      
-      }, function()                             
-      {                                         
-         $(this).removeClass("btn-primary");   
-         $(this).addClass("btn-secondary");    
-      });
+	$(document).ready(function()
+	{
+		$(".hover").hover(function()                
+		{                                         
+		   //alert("테스트");                       
+		   $(this).removeClass("btn-secondary"); 
+		   $(this).addClass("btn-primary");      
+		}, function()                             
+		{                                         
+		   $(this).removeClass("btn-primary");   
+		   $(this).addClass("btn-secondary");    
+		});
+
       
-      
-      $(".item").click(function()
-	  {
+		$(".item").click(function()
+		{
 			//alert("카테고리선택");
 			//alert($(this).children(".cateItem").val());
-			
+		
 			location.href = "categorySelect.action?categoryName=" + $(this).children(".cateItem").val();
-	  });
+		});
+      
+		$("#direAllBtn").click(function()
+		{
+			// alert("직거래전체보기 클릭");
+			location.href = "sortlist.action?sort=4";
+			
+		});
+		
+		$("#deliAllBtn").click(function()
+		{
+			// alert("택배전체보기 클릭");
+			location.href = "sortlist.action?sort=5";
+		});
 	
-   })
+		
+      
+	})
 
       
 
@@ -290,7 +305,8 @@
       </div>
          
       <div style="display: inline-block; width: 200px; float: right;">   
-         <button type="button" class="btn btn-primary" style="float:right; width: 150px; float: right;">전체보기</button>
+         <button type="button" class="btn btn-primary" style="float:right; width: 150px; float: right;"
+         id="direAllBtn">전체보기</button>
       </div>
       
       <br /><br />
@@ -335,7 +351,8 @@
       </div>
          
       <div style="display: inline-block; width: 200px; float: right;">   
-         <button type="button" class="btn btn-primary" style="float:right; width: 150px; float: right;">전체보기</button>
+         <button type="button" class="btn btn-primary" style="float:right; width: 150px; float: right;"
+         		id="deliAllBtn">전체보기</button>
       </div>         
       <br /><br />
       

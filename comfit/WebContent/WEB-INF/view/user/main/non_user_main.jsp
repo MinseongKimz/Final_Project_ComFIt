@@ -37,6 +37,18 @@
 		width: 14rem;
    }
    
+   .MultiCarousel .MultiCarousel-inner .item .pad15:hover
+   {
+   		background-color: #A9D0F5;
+   		cursor:pointer;
+   }
+   .MultiCarousel .MultiCarousel-inner .item .pad15:active
+   {
+   		background-color: #CEECF5;
+   		cursor:pointer;
+   }
+
+   
 </style>
 <script type="text/javascript">
 
@@ -168,6 +180,14 @@
       });
       
       
+      $(".item").click(function()
+	  {
+			//alert("카테고리선택");
+			//alert($(this).children(".cateItem").val());
+								
+			location.href = "categorySelect.action?categoryName=" + $(this).children(".cateItem").val();
+	  });
+    		      
       
     
    })
@@ -182,7 +202,8 @@
 		
 		return;
    }
-      
+   
+
 
 
 </script>
@@ -228,11 +249,12 @@
       <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"  data-interval="1000">
             <div class="MultiCarousel-inner">
             	<c:forEach var="category" items="${cateList }">
-            		<div class="item">
-                    	<div class="pad15 shadow" style="align-items: center;">
+            		<div class="item" >
+            			<input class="cateItem" type="hidden" value="${category.category_name }"/>
+                    	<div class="pad15 shadow rounded" style="align-items: center;">
                        	 <p class="lead" style="font-size: large; margin-top: 8px; margin-bottom: 8px;">${category.category_name }</p>
-                   	    </div>
-                	</div>
+                   		</div>
+                   	</div>
             	</c:forEach>
             </div>
             <button class="btn btn-primary leftLst"> <i class="bi bi-arrow-left"></i> </button>

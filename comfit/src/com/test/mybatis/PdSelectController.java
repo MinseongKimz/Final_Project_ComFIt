@@ -95,6 +95,8 @@ public class PdSelectController
 				SuggestUserDTO dto = new SuggestUserDTO();
 				dto.setPd_id(pd_id);
 				dto.setU_id(u_id);
+				
+				// 나의 입찰이 있다면..
 				int ub_Check = dao.ub_Check(dto);
 				
 				userId = dao.deliuserId(pd_id);
@@ -158,6 +160,25 @@ public class PdSelectController
 			System.out.println(e.toString());
 		}
 		
+		return result;
+	}
+	
+	// 구매제안 폼에서 구매제안하면
+	@RequestMapping(value = "/bid_place.action", method = RequestMethod.GET)
+	public String bidPlace(Model model, String pd_id, HttpServletRequest request)
+	{
+		String result = "";
+		try
+		{
+			model.addAttribute("pd_id", pd_id);
+			System.out.println(pd_id);
+			result = "WEB-INF/view/user/main/bid_place.jsp";	
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+			
 		return result;
 	}
 	

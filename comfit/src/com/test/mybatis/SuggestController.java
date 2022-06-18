@@ -45,7 +45,7 @@ public class SuggestController
 				return null;
 			}
 			model.addAttribute("pd_id", pd_id);
-			result = "redirect:pd_detail.action";
+			result = "redirect:pd_detail.action?pd_id="+pd_id;
 			return result;
 			
 			
@@ -92,7 +92,43 @@ public class SuggestController
 	}
 	
 	
-	
+	@RequestMapping(value = "bid.action", method = RequestMethod.GET)
+	public String bid(Model model, HttpServletRequest request)
+	{
+		String result = "";
+		BidListDTO dto = new BidListDTO();
+		SuggestDAO dao = new SuggestDAO();
+		int bid_count = 0;
+		
+		dto.setPrice(request.getParameter("suggest_price"));
+		dto.setAddress(request.getParameter("address"));
+		dto.setAddr_detail(request.getParameter("address_detail"));
+		dto.setU_id(request.getParameter("u_id"));
+		dto.setPd_id(request.getParameter("pd_id"));
+		
+		String pd_id = request.getParameter("pd_id");
+		
+		try
+		{
+			bid_count = dao.add_bid(dto);
+			System.out.println(bid_count);
+			if (bid_count != 1)
+			{
+				return null;
+			}
+			model.addAttribute("pd_id", pd_id);
+			result = "redirect:pd_detail.action?pd_id=" + pd_id;
+			return result;
+			
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+			
+		}
+				
+		return result;		
+	}
 	
 	
 	

@@ -83,6 +83,22 @@ function CountDownTimer(dt, id)
 	};
 
 
+	function searchAddr()
+	{
+	    var pd_id = document.getElementById("pd_id").value;
+
+	    /* var hope_sdate = document.getElementById("hope_sdate").value;
+	    var hope_edate = document.getElementById("hope_edate").value;
+	    var hope_stime = document.getElementById("hope_stime").value;
+	    var hope_etime = document.getElementById("hope_etime").value; */
+	    //alert(hope_stime);
+	    //alert(hope_etime);
+	    var url = "bid_place.action?pd_id=" + pd_id
+	    
+	    window.open(url, "입찰", "top=100px, left=100px, height=250px, width=450px, resizable=no");
+	  
+	    
+	}
 
 
 
@@ -407,9 +423,10 @@ d-block
 <!-- 일반 경매페이지 출력 -->
 
 <div class="container">
+	
 	<div style="padding-top: 5%;">
 	<c:forEach var="dlPd"  items="${dlPdList }">
-	
+		<input type="hidden" id="pd_id" value="${dlPd.pd_id }"/>
 			<p class="fs-2" style="text-align: center; font-weight: bold;">[${dlPd.category_name }] ${dlPd.pd_title}</p>
 		
 		<div class="content">
@@ -537,7 +554,7 @@ d-block
 				%>
 					<c:choose>
 						<c:when test="${ub_Check == 0 }">
-						<button type="button" class="btn btn-primary" style="width: 48%;">입찰하기</button>
+						<button type="button" class="btn btn-primary" style="width: 48%;" onclick="searchAddr()">입찰하기</button>
 						<button type="button" class="btn btn-secondary" id="productDelBtn" style="width: 48%;">즉시구매하기</button>
 						</c:when>
 						<c:otherwise>

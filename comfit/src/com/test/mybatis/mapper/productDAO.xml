@@ -105,9 +105,6 @@
 	 	 WHERE DELI_PD_ID = #{pd_id} AND U_ID = #{u_id}
 	</select>
 	
-	
-	
-	
 	<select id="search_pdListDefault" resultType="com.test.mybatis.ProductDTO">
 	SELECT PD_ID, CATEGORY_NAME, PD_REGIT_DATE, U_ID, PD_TITLE, DEAL_TYPE, PD_PRICE, SYSTEM, COMP_DATE, SELLER_ID, BUYER_ID, STATUS, PD_PHOTO
 	FROM PRODUCT_LIST_VIEW2
@@ -234,32 +231,12 @@
 	     FROM SELECT_CHECK_VIEW
 	    WHERE PD_ID = #{pd_id}
 	</select>
-<<<<<<< HEAD
+
 	
 	<insert id="confirmDeliveryBuy">
 		INSERT INTO DELI_COMPLETE_BUY(DELI_COMP_SELL_ID, PD_DELI_NUM, REVIEW, BS_ID)
 		VALUES(CONCAT('dcbuy_', DELI_COMPLETE_SEQ.NEXTVAL), #{deli_num}, #{review}, #{bs_id})
 	</insert>
-	
-	<!-- 프로시저 호출 : input [I_NO , I_NAME] / output [msg] -->
-    <!-- output [msg] 형태 : Y : SUCCESS -->
-    <!-- 프로시저 호출작업 -->
-    <!-- 
-    <resultMap id="confirmDirect" type="hashmap" />
-    <insert id="PRO_INS_DATA_PROCEDURE" parameterType="hashmap" statementType="CALLABLE">
-        <![CDATA[
-        { call PRO_INS_DATA (
-                #{I_NO},
-                #{I_NAME},
-                #{msg, mode=OUT, jdbcType=VARCHAR, javaType=string, resultMap=PRO_INS_MOWEB}
-            )}
-        ]]>
-    </insert>
-	 -->
-	
-	
-	
-=======
 
 	<select id="slCheck" resultType="java.lang.Integer">
 		SELECT COUNT(*) AS SL_CHECK
@@ -271,7 +248,6 @@
 	  FROM SUGGEST_LIST
 	 WHERE DIRE_PD_ID = #{pd_id} AND U_ID = #{pd_id}
 	</select>
->>>>>>> 51d22971210b11b139a2615655b59c4ce570f0d1
 </mapper>
 
 

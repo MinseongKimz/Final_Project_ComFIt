@@ -104,12 +104,6 @@ public interface IAdmin
 	public int faqDelete(String faq_id);
 
 	
-	
-	
-	
-	
-	
-	
 	// 메인페이지 공지사항 출력
 	public ArrayList<NoticeDTO> usernoticeList();
 	// 메인페이지 FAQ 출력

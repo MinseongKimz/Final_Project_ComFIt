@@ -61,6 +61,9 @@ select count(*)
 from user_email_auth
 where u_id = 'test36';
 
-
-
+UPDATE USER_INFORMATION
+SET U_PROFILE = 'defaultprofil.jpg'
+WHERE U_ID = 'test36'
+;
+commit;
 

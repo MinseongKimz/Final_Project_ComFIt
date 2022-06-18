@@ -93,11 +93,23 @@
 </div>
 
 
-<!--Header-->
-<div class="header">
-	<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
-</div>
-
+<%
+	String u_id = (String)session.getAttribute("u_id");
+	
+	if(u_id != null)
+	{	
+%>
+		<div class="header">
+			<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
+		</div>
+<%	}
+	else
+	{
+%>
+	<div>
+   		<c:import url="/WEB-INF/view/user/main/comfit_header_nolog.jsp"></c:import>
+	</div>
+<%	} %>	
 
 <div class="container">
     <div class="title" style="text-align: center; font-size: 28pt; font-weight: bold;">
@@ -110,8 +122,9 @@
 
 		<tr>
 			<th>
-				<img alt="" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"
-				style="object-fit:cover; height: 70%; width: 70%; margin-left:120%;">
+				<a href="changeprofileform.action?u_id=<%=u_id%>">
+				<img alt="" src="images/${userInfo.u_profile }"
+				style="object-fit:cover; height: 70%; width: 70%; margin-left:120%;"></a>
 			</th>
 		</tr>
 		<tr>

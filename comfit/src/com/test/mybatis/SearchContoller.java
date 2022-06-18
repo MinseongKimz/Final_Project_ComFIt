@@ -30,7 +30,40 @@ public class SearchContoller
 		model.addAttribute("sort", sort);
 		
 		searchKey = "%" + searchKey + "%";
+
+
+		switch (sort)
+		{
+			case 1: model.addAttribute("searchList", dao.search_pdListDefault(searchKey));
+					break;
+			case 2: model.addAttribute("searchList", dao.search_pdListPriceH(searchKey));
+					break;
+			case 3: model.addAttribute("searchList", dao.search_pdListPriceL(searchKey));
+					break;
+			case 4: model.addAttribute("searchList", dao.search_pdListDirect(searchKey));
+					break;
+			case 5: model.addAttribute("searchList", dao.search_pdListDelivery(searchKey));
+					break;
+			
+			default: break;
+		}
 		
+		result = "/WEB-INF/view/user/main/user_search_list.jsp";
+		
+		return result;
+	}
+	
+	// 검색기능 int만 넘겨줬을때
+	@RequestMapping(value="/sortlist.action", method = RequestMethod.GET)
+	public String search_list(Model model, @RequestParam("sort") int sort)
+	{
+		String result = null;
+		
+		IProduct dao = sqlSession.getMapper(IProduct.class);
+		model.addAttribute("sort", sort);
+		
+		String searchKey = "%%";
+
 
 		switch (sort)
 		{

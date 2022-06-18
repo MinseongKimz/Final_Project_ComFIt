@@ -187,9 +187,8 @@
 								
 			location.href = "categorySelect.action?categoryName=" + $(this).children(".cateItem").val();
 	  });
-    		      
-      
-    
+    		    
+  
    })
 	
    function needSignUp()

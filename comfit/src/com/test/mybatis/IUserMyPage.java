@@ -12,5 +12,5 @@ public interface IUserMyPage
 	public int myLevel(String u_id);
 	public ArrayList<MypageProductDTO> sellList(String u_id); 
 	public ArrayList<MypageProductDTO> buyList(String u_id); 
-	
+	public int changeProfile(userDTO dto);
 }

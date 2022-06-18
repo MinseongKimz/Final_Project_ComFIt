@@ -219,4 +219,53 @@ public class UserMyPageInfoController
 	}
 	
 	
+	//마이페이지 프로필 사진 변경 액션
+	@RequestMapping(value = "/changeprofileform.action", method = RequestMethod.GET)
+	public String changeProfileForm(Model model, @RequestParam("u_id") String u_id)
+	{
+		String result = null;		
+		
+		System.out.println(u_id);
+		
+		result = "/WEB-INF/view/user/mypage/user_mypage_changProfile.jsp";
+		
+		
+		return result;
+	}
+	
+	// 마이페이지 프로필 변경 
+	@RequestMapping(value = "/changeprofile.action", method = RequestMethod.POST)
+	public String changeProfile(HttpServletRequest request, userDTO dto, Model model)
+	{
+		try
+		{
+			String u_id = (String)request.getAttribute("u_id");
+			String u_profile = (String)request.getAttribute("u_profile");
+			
+			dto.setU_id(u_id);
+			dto.setU_profile(u_profile);
+			
+			IUserMyPage dao = sqlSession.getMapper(IUserMyPage.class);
+			
+			int result = dao.changeProfile(dto);
+			
+			if(result!=1)
+			{
+				model.addAttribute("msg", "DB 오류 발생");
+				model.addAttribute("url", "user_mypage.action");
+				return "alert.jsp";
+			}
+			
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		
+		model.addAttribute("msg", "프로필 변경 성공!!");
+		model.addAttribute("url", "user_mypage.action");
+		return "alert.jsp";
+		
+	}
+	
 }

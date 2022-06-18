@@ -16,7 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	 -->
 	 <select id="myDetailInfo" resultType="com.test.mybatis.userDTO">
-	 SELECT U_EMAIL, U_NICKNAME, U_NAME
+	 SELECT U_EMAIL, U_NICKNAME, U_NAME, U_PROFILE
         , LPAD('*',LENGTH(CRYPTPACK.DECRYPT(U_PASSWORD,'1234')),'*') as U_PASSWORD
 		, U_TEL, U_ADDRESS
 		FROM USER_INFORMATION
@@ -76,7 +76,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE U_ID = #{u_id}
 	</select>
 	
-	
+	<!-- 프로필 변경 -->
+	<update id="changeProfile">
+		UPDATE USER_INFORMATION
+		SET U_PROFILE = #{u_profile}
+		WHERE U_ID = #{u_id}
+	</update>
 	
 	
 <!-- 

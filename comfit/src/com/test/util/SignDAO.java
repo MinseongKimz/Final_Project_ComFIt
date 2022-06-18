@@ -105,6 +105,9 @@ public class SignDAO implements ISingDAO
 		return user;
 	}
 	
+	
+	
+	// 비밀번호 찾기 메소드
 	public int findPassword(userDTO dto) throws SQLException
 	{
 		int result = 0;
@@ -154,13 +157,166 @@ public class SignDAO implements ISingDAO
 		return result;
 	}
 	
+	// 인증 키 생성
+	public int makepwAuth(String u_email, String random) throws SQLException
+	{
+		int result = 0;
+		
+		try
+		{
+			conn = DBConn.getConnection();
+			
+			String sql = "INSERT INTO USER_EMAIL_AUTH(E_AUTH_ID, AUTH_CODE, U_ID, AU_CATE_ID )"
+					+ " VALUES(CONCAT('auth_', USER_EMAIL_AUTH_SEQ.NEXTVAL)"
+					+ ", ? ,(SELECT C.U_ID FROM COMFIT_USER C"
+					+ " JOIN USER_INFORMATION U ON C.U_ID = U.U_ID WHERE U.U_EMAIL = ?), 2)";
+			
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, random);
+			pstmt.setString(2, u_email);
+			
+			result = pstmt.executeUpdate();
+			
+			pstmt.close();
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		finally {
+			try
+			{
+				DBConn.close();
+				
+			} catch (Exception e2)
+			{
+				System.out.println(e2.toString());
+			}
+		}
+		
+		return result;
+	}
 	
+	// PW 인증키 사용 여부 체크 메소드
+	public int checkUsePwAuth(String random) throws SQLException
+	{
+		int result = 0;
+		
+		try
+		{
+			conn = DBConn.getConnection();
+			
+			String sql = "SELECT COUNT(*) AS COUNT FROM USER_EMAIL_AUTH"
+					+ " WHERE AUTH_CODE = ? AND auth_use_date IS NULL";
+			
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, random);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			while (rs.next())
+				result = rs.getInt("COUNT");
+			
+			
+			rs.close();
+			pstmt.close();
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		finally {
+			try
+			{
+				DBConn.close();
+				
+			} catch (Exception e2)
+			{
+				System.out.println(e2.toString());
+			}
+		}
+		
+		return result;
+		
+	}
 	
+	// 어쓰키 (비밀번호 인증 메일 사용 찍기)
+	public int updatePwAuth(String random) throws SQLException
+	{
+		int result = 0;
+		
+		try
+		{
+			conn = DBConn.getConnection();
+			
+			String sql = "UPDATE USER_EMAIL_AUTH SET AUTH_USE_DATE = SYSDATE WHERE AUTH_CODE = ?";
+			
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, random);
+			
+			result = pstmt.executeUpdate();
+			
+			pstmt.close();
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		finally {
+			try
+			{
+				DBConn.close();
+				
+			} catch (Exception e2)
+			{
+				System.out.println(e2.toString());
+			}
+		}
+		
+		return result;
+	}
 	
-	
-	
-	
-	
-	
+	public int changePassword(String auth, String password) throws SQLException
+	{
+		int result = 0;
+
+		
+		try
+		{
+			conn = DBConn.getConnection();
+			
+			String sql = "UPDATE USER_INFORMATION SET U_PASSWORD = CRYPTPACK.ENCRYPT(?,?)"
+					+ " WHERE U_ID = (SELECT U_ID FROM USER_EMAIL_AUTH WHERE AUTH_CODE=?)";
+			
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, password);
+			pstmt.setString(2, password);
+			pstmt.setString(3, auth);
+			
+			result = pstmt.executeUpdate();
+			
+			pstmt.close();
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		finally {
+			try
+			{
+				DBConn.close();
+				
+			} catch (Exception e2)
+			{
+				System.out.println(e2.toString());
+			}
+		}
+		
+		return result;
+	}
 	
 }

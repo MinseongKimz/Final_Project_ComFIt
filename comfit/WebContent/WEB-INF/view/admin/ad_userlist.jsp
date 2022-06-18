@@ -22,6 +22,8 @@
 		$("#searchBtn").click(function()
 		{
 			
+			//alert("확인");
+			
 			// 카테고리 설정 안하고 검색했을때 걸러내기
 			if ($(".listselect").val() == "카테고리")
 			{
@@ -29,11 +31,28 @@
 				return;
 			}
 			
-			alert($(".listselect").val());
+			alert($(".listselect").val()); //u_email, 
+			alert($("#searchvalue").val()); //서치값
 			
-			$(location).attr('href', '/admin_usersearch.action');
+			// 분기완료
+			/*
+			if ($(".listselect").val()=='u_nickname')
+			{
+				$(location).attr("href", "admin_usersearch.action?u_nickname="+$("#searchvalue").val());
+			}
+			else if ($(".listselect").val()=='u_mail') 
+			{
+				$(location).attr("href", "admin_usersearch.action?e_mail="+$("#searchvalue").val());				
+			}
+			else
+			{
+				$(location).attr("href", "admin_usersearch.action?u_name="+$("#searchvalue").val());	
+			}
+			*/
 			
-		});
+			$(location).attr("href", "/comfit/admin_usersearchlist.action?searchvalue="+$("#searchvalue").val());
+			
+		})
 		
 		$(".userblock").change(function()
 		{
@@ -43,10 +62,7 @@
 			
 			$(location).attr('href', '/admin_userblock.action');
 			
-		});
-		
-		
-		
+		});		
 	});
 
 </script>
@@ -131,7 +147,7 @@
 						<td>${user.u_joindate }</td>
 						<td style="margin-left: 20px">
 						
-							<!-- 셀렉트박스 -->
+							
 							<div style="text-align: center;">
 							<select class="form-select userblock" style="width: 80%; display: inline-block;">
 							    <option selected>정상</option>
@@ -157,7 +173,7 @@
 				    <option value="u_nickname">닉네임</option>
 				</select> 
 	        <div class="input-group" style="width:100%; text-align: right;">
-	           <input type="text" class="form-control" placeholder="검색어를 입력하세요">
+	           <input type="text" id="searchvalue" class="form-control" placeholder="검색어를 입력하세요">
 	            <button id="searchBtn" type="button" class="btn btn-outline-primary">
 	          		<i class="bi bi-search"></i>
 	            </button>

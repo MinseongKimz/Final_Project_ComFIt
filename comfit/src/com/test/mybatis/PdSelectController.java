@@ -17,19 +17,21 @@ public class PdSelectController
 	private SqlSession sqlSession;
 	
 	@RequestMapping(value = "/pd_detail.action", method = RequestMethod.GET)
-	public String pdSelect(Model model, String pd_id, HttpServletRequest request)
+	public String pdSelect(Model model, HttpServletRequest request)
 	{
 		String result = null;
 		IProduct dao = sqlSession.getMapper(IProduct.class);
-		
+		String pd_id = request.getParameter("pd_id");
 		
 		String userId = null;
 		HttpSession session = request.getSession();
 		String u_id = (String)session.getAttribute("u_id");
 		
 		//체크
-	
 		int check_id = 0;
+		int sel_Check = dao.selCheck(pd_id);
+		String suggest_code = dao.sugCheck(pd_id);
+		
 		try
 		{
 			if (pd_id.contains("dire"))
@@ -38,11 +40,17 @@ public class PdSelectController
 				
 				if (userId.equals(u_id))
 					check_id = 1;
-				
+				/*
+				  System.out.println(check_id); System.out.println(suggest_code);
+				  System.out.println(sel_Check);
+				*/
 				
 				session.setAttribute("check_id", check_id);
 				model.addAttribute("suggestList", dao.suggestList(pd_id));
 				model.addAttribute("drPdList", dao.drPdList(pd_id));
+				model.addAttribute("sel_Check", sel_Check);
+				model.addAttribute("suggest_code", suggest_code);
+				model.addAttribute("pd_id", pd_id);
 				model.addAttribute("userLevel", dao.userLevel(userId));
 				model.addAttribute("sellCount", dao.sellCount(userId));
 				result = "/WEB-INF/view/user/main/user_direct_sell.jsp";
@@ -84,14 +92,23 @@ public class PdSelectController
 		IProduct dao = sqlSession.getMapper(IProduct.class);
 		String hope_sdate = request.getParameter("hope_sdate");
 		String hope_edate = request.getParameter("hope_edate");
-		System.out.println(hope_sdate);
-		System.out.println(hope_edate);
+		//System.out.println(hope_sdate);
+		//System.out.println(hope_edate);
+		String hope_stime = request.getParameter("hope_stime");
+		String hope_etime = request.getParameter("hope_etime");
+		
 		try
 		{
-			
+			int stime = Integer.parseInt(hope_stime.substring(0, 2));
+			int etime = Integer.parseInt(hope_etime.substring(0, 2));
+			//System.out.println(stime);
 			model.addAttribute("mgrs", dao.mgrs(pd_id));
 			model.addAttribute("hope_sdate", hope_sdate);
 			model.addAttribute("hope_edate", hope_edate);
+			model.addAttribute("pd_id", pd_id);
+			System.out.println(pd_id);
+			model.addAttribute("stime", stime);
+			model.addAttribute("etime", etime);
 			result = "WEB-INF/view/user/main/direct_place.jsp";	
 			
 		} catch (Exception e)

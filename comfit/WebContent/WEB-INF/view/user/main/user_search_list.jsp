@@ -1,9 +1,13 @@
+<%@page import="com.test.mybatis.ProductDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	String searchKey = (String)request.getAttribute("searchKey");
 	int sort = (int)request.getAttribute("sort");
+	String categoryName = (String)request.getAttribute("categoryName");
+	
 %>
 
 <!DOCTYPE html>
@@ -96,40 +100,57 @@
 <body>
 
 <!-- Header 영역 -->
-<div>
-	<c:import url="comfit_header_user.jsp"></c:import>
-</div>
+<%
+	String u_id = (String)session.getAttribute("u_id");
 	
+	if(u_id != null)
+	{	
+%>
+		<div class="header">
+			<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
+		</div>
+<%	}
+	else
+	{
+%>
+	<div>
+   		<c:import url="/WEB-INF/view/user/main/comfit_header_nolog.jsp"></c:import>
+	</div>
+<%	} %>	
 	
 <!-- contanier 영역 -->
 <div class="container">
 
 	<!-- 상품 검색 결과 -->
 	<div>
-		<div>
-			<span style="font-size: 30pt;">
-			"<%=searchKey %>"에 대한 검색 결과</span>
-			<input type="text" value=<%=searchKey %> id="searchData"
-			style="display: none;" />
-			<input type="text" value=<%=sort %> id="sortData"
-			style="display: none;" />
+		<div>	
+		    <!-- 카테고리선택으로 오는 경우의 수도 있기때문에 일단 주석처리. -->
+			<%-- <span style="font-size: 30pt;">
+			"<%=searchKey %>"에 대한 검색 결과</span> --%>
+			<input type="hidden" value=<%=searchKey %> id="searchData"/>
+			<input type="hidden" value=<%=sort %> id="sortData"/>
+			
 		</div>
-		<div style="margin-left: 60%; margint-bottom:3%">
+		<%if(searchKey != null)
+		{
+		%>
+		<div style="text-align: right; margin-top: 2%;">
 			<button id="sort1Btn" type="button" class="btn btn-secondary">최신순</button>
 			<button id="sort2Btn" type="button" class="btn btn-secondary">고가순</button>
 			<button id="sort3Btn" type="button" class="btn btn-secondary">저가순</button>
 			<button id="sort4Btn" type="button" class="btn btn-secondary">직거래만</button>
 			<button id="sort5Btn" type="button" class="btn btn-secondary">택배거래만</button>
-			
 		</div>
-		
-		<br />
-	   <hr />
+		<%
+		}
+		%>
+	   <br />
 	   <br />
 	   
 	   <div class="row">
 			<div class="col-md-12 text-center">
 		        <div class="newList">
+		        
 		        	<c:forEach var="product" items="${searchList }">
 		        	   <div class="card">
 		           	   <img src="images/ssd.jpg" class="card-img-top">
@@ -137,6 +158,9 @@
 		                 <h5 class="card-title" style="text-align: center;">${product.pd_title }</h5>
 		                 <p class="card-text"  style="text-align: center;">${product.pd_price }</p>
 		                 <p class="card-text"  style="text-align: center;">${product.system }</p>
+		                 <c:if test="${product.status }!= '입찰중' || '입찰받는중' || '제안받는중'">
+		                 	<p class="card-text"  style="text-align: center;">거래완료상품</p>
+		                 </c:if>
 		                 <a href="pd_detail.action?pd_id=${product.pd_id }" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
 		              	</div>
 		           </div>

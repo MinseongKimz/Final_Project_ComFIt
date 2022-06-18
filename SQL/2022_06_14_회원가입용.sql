@@ -65,9 +65,9 @@ WHERE AUTH_CODE = '2inR6denlG'
 ;
 
 -- 이메일 인증 사용 여부 확인
-SELECT NVL(TO_CHAR(AUTH_USE_DATE, 'YYYY-MM-DD'), 0)    
+SELECT nvl(to_char(AUTH_USE_DATE, 'yyyy-mm-dd'), 'x') as use     
 FROM USER_EMAIL_AUTH
-WHERE AUTH_CODE = '2inR6denlG'
+WHERE AUTH_CODE = 'RK3MNcjQ7A'
 ;
 
 

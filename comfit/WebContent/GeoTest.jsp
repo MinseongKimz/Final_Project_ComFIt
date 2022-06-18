@@ -11,32 +11,13 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/main.css" type="text/css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 
-<script type="text/javascript">
 
-	$(function()
-	{
-		navigator.geolocation.getCurrentPosition(function(pos) //  좌표값 가져오는 함수 (회원 로그인시 메인에 보여줄)
-	    {													   //  상품들을 이 좌표를 통해 판단함. 
-		    console.log(pos);
-		    var lat = pos.coords.latitude;	// 위도
-		    var lon = pos.coords.longitude; // 경도
-		    //alert("현재 위치는 : " + lat + ", "+ lon);
-		    $("#location").html('<h1>위도 : ' + lat + '경도 : ' + lon + '</h1>');
-		    
-		    $("#geoBtn").click(function()
-			{
-				location.href="georesult.action?address="+$("#address").val()+"&lat="+lat+"&lon="+lon;
-			})
-		});
-		
-	
-			
-		
-	})
 
 	
-</script>	
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=86ec7935feee50bc358cd41148ffd4e2&libraries=services"></script>
 <script>
@@ -88,7 +69,12 @@
 					{
 	           			if (status === kakao.maps.services.Status.OK)
 	           			{
-	           				alert(result[0].y + "/" + result[0].x);  // 위도 / 경도
+	           				//alert(result[0].y + "/" + result[0].x);  // 위도 / 경도
+	           				
+							$("#pd_hope_place", opener.document).val($("#address").val());
+		     				$("#address", opener.document).val(result[0].y+"/"+result[0].x);
+		     				window.close();
+     						
 	           			}	
 					})
 	    			
@@ -105,18 +91,12 @@
 
 </head>
 <body>
-<div class="mb-3">
+<div class="mb-3" style="margin-left: 3%; margin-top: 2%">
 	<form action="georesult.action" method="get">
-		<label for="address">주소</label><br />
-		<input type="text" class="form-control" name="addr" id="address" placeholder="클릭해주세요" required="required" readonly="readonly" onclick="searchAddr()">
-		<div class="invalid-feedback">
-	           주소를 입력해주세요.
-		</div>
-		<div>
-		     <label for="address2">상세주소</label>
-		     <input type="text" class="form-control" id="address2" placeholder="상세주소를 입력해주세요." required="required">
-		     <button type="button" id="geoBtn">주소선택완료</button>
-		</div>
+		<label for="address">주소검색</label><br />
+		<input type="text" class="form-control" name="addr" id="address" placeholder="클릭해주세요" required="required" readonly="readonly" style="width: 400px;" onclick="searchAddr()">
+		<br />
+		<button type="button" class="btn btn-secondary" id="geoBtn" style="margin-left: 60%;">주소선택완료</button>
 	</form>
 </div>
 

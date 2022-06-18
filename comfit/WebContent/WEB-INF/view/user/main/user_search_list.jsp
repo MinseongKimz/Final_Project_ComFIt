@@ -7,6 +7,7 @@
 	String searchKey = (String)request.getAttribute("searchKey");
 	int sort = (int)request.getAttribute("sort");
 	String categoryName = (String)request.getAttribute("categoryName");
+	
 %>
 
 <!DOCTYPE html>
@@ -131,7 +132,7 @@
 			
 		</div>
 		<%if(searchKey != null)
-		{ 
+		{
 		%>
 		<div style="text-align: right; margin-top: 2%;">
 			<button id="sort1Btn" type="button" class="btn btn-secondary">최신순</button>

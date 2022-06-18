@@ -7,18 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 public interface IAdmin
 {
 	//관리자 로그인 메소드;
-<<<<<<< HEAD
-	public AdminLoginDTO adminLogin(AdminLoginDTO dto);
 	
-=======
 	public AdminLoginDTO adminLogin(AdminLoginDTO admin);
 
->>>>>>> b9d4d7ba9198d1cd6121fc4b7be13254b05c3aa9
 	// 관리자모드 회원 리스트 출력 메소드
 	public ArrayList<userDTO> adminUserList(HttpServletRequest request); 
-	
-	// 관리자모드 회원 검색 리스트 출력 메소드
-	public ArrayList<userDTO> adminSearchUserList(String searchvalue);	
 	
 	// 관리자모드 회원 검색 리스트 출력 메소드
 	public ArrayList<userDTO> adminSearchUserList(String searchvalue);

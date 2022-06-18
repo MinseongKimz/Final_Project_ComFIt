@@ -78,7 +78,6 @@
 	     , onSelect: function() { 
 	            var date = $.datepicker.formatDate("yymmdd",$("#datePicker").datepicker("getDate")); 
 	            date = $("#datePicker").val();
-	            //alert(date);
 	     }
 	   })
 	   
@@ -88,19 +87,10 @@
    function suggest()
    {
 		var suggest_price = document.getElementById("price").value;
-		alert(suggest_price);
-		
 		var suggest_place = document.getElementById("suggest_place").value;
-		alert(suggest_place);
-		
 		var place_detail = document.getElementById("place_detail").value;
-		alert(place_detail);
-		
 		var suggest_date = document.getElementById("datePicker").value;
-		alert(suggest_date);
-		
 		var suggest_time = ""
-		
 		var hour = document.getElementById("suggest_hour").value;
 		var minute = document.getElementById("suggest_minute").value;
 		if (minute<10)
@@ -109,42 +99,14 @@
 		}
 		
 		suggest_time = hour+":"+minute+":00";
-		alert(suggest_time);
-		
 		var u_id = document.getElementById("suggestion").value;
-		alert(u_id);
-		
 		var pd_id = document.getElementById("pd_id").value;
-		alert(pd_id);
-		 
 		var url = "suggest_price=" + suggest_price + "&suggest_place=" + suggest_place
 				+ "&place_detail=" + place_detail + "&suggest_date=" + suggest_date + "&suggest_time=" + suggest_time
 				+ "&u_id="+u_id + "&pd_id=" +pd_id;
-		
 		location.href = "suggest.action?"+url;
-		
- 				
-		
-		
-		
-		
-		
-		
 	}
-      
-/*    
-      .on('changeDate', function (e) {
-         //show : datePicker가 보이는 순간 호출
-         //hide : datePicker가 숨겨지는 순간 호출
-         //clearDate: clear 버튼 누르면 호출
-         //changeDate : 사용자가 클릭해서 날짜가 변경되면 호출 (개인적으로 가장 많이 사용함)
-         //changeMonth : 월이 변경되면 호출
-         //changeYear : 년이 변경되는 호출
-         //changeCentury : 한 세기가 변경되면 호출 ex) 20세기에서 21세기가 되는 순간
  
-         console.log(e);
-         // e.date를 찍어보면 Thu Jun 27 2019 00:00:00 GMT+0900 (한국 표준시) 위와 같은 형태로 보인다.
-      }); */
 </script>
 </head>
 <body>

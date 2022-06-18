@@ -264,9 +264,9 @@ function select_suggest(idx)
 				<p class="content_text" style="color: blue;">${drPd.price} 원</p></td>
 			</tr>
 			<tr>
-				<td><p>희망 날짜</p>
-					<p class="content_text" style="font-size: 12pt;">${drPd.pd_hope_sdate} ~ ${drPd.pd_hope_edate} </p>
-					
+				<td>
+				<p>희망 날짜</p>
+				<p class="content_text" style="font-size: 12pt;">${drPd.pd_hope_sdate} ~ ${drPd.pd_hope_edate} </p>
 				</td>
 				<td><p>희망 시간대</p>
 					<p class="content_text" style="font-size: 12pt;">${drPd.pd_hope_stime } ~ ${drPd.pd_hope_etime}</p>
@@ -278,13 +278,20 @@ function select_suggest(idx)
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" style="border-bottom: 2px solid gray;"><p>경매 종료까지</p>
+			<c:choose>
+					<c:when test="${sel_Check !=0 }">
+				<td colspan="2" style="border-bottom: 2px solid gray; color: red;"><p>거래 유효 시간</p>
+					</c:when>
+					<c:otherwise>
+					<td colspan="2" style="border-bottom: 2px solid gray;"><p>거래 유효 시간</p>
+				</c:otherwise>
+				</c:choose>
 				<!-- 경매 종료시간 적용/경매 종료시 경매종료라고 표기 -->
 				<!-- <td colspan="2" style="border-bottom: 2px solid gray;"><p>경매 종료</p> -->
 				<input type="hidden" id="remain_date" value="종료일 : ${drPd.remain_date }" >
 				<c:choose>
 					<c:when test="${sel_Check !=0 }">
-						<p class="fs-2" style="font-weight: bold;">[<span class="fs-2" style="color: #ffd700;" id="dems">거래종료</span>]</p>	
+						<p class="fs-2" style="font-weight: bold;">[<span class="fs-2" style="color: #ffd700;" id="dems">거래가 종료되었습니다.</span>]</p>	
 					</c:when>
 					<c:otherwise>
 						<p class="fs-2" style="font-weight: bold;">[<span class="fs-2" style="color: #ffd700;" id="demo"></span>]</p>
@@ -327,24 +334,30 @@ function select_suggest(idx)
 				<!-- 판매자)입찰자 있을 때 :즉시낙찰/삭제하기 -->
 				<!-- <button type="button" class="btn btn-warning" style="width: 48%;">즉시낙찰</button> -->
 				<c:choose>
-					<c:when test="${sel_Check != 0 }">
-						<button type="button" class="btn btn-success" style="width: 96%;" disabled="disabled">채택완료</button>
+					<c:when test="${end_day < 0 }">
+						<button type="button" class="btn btn-danger" style="width: 96%;" disabled="disabled">채택된 제안 없이 종료된 거래입니다.</button>
 					</c:when>
 					<c:otherwise>
 						<c:choose>
-							<c:when test="${sl_check == 0 }">
-								<button type="button" class="btn btn-primary" style="width: 48%;">수정하기</button>
-								<button type="button" class="btn btn-secondary" style="width: 48%;">삭제하기</button>
+							<c:when test="${sel_Check != 0 }">
+								<button type="button" class="btn btn-danger" style="width: 96%;" disabled="disabled">거래가 종료되었습니다.</button>
 							</c:when>
-							<c:otherwise>
-								<button type="button" class="btn btn-secondary" style="width: 48%;" disabled="disabled">수정하기</button>
-								<button type="button" class="btn btn-secondary" style="width: 48%;" disabled="disabled">삭제하기</button>								
-							</c:otherwise>
-						</c:choose>
-					</c:otherwise>
+								<c:otherwise>
+								<c:choose>
+									<c:when test="${sl_check == 0 }">
+										<button type="button" class="btn btn-primary" style="width: 48%;">수정하기</button>
+										<button type="button" class="btn btn-secondary" style="width: 48%;">삭제하기</button>
+									</c:when>
+									<c:otherwise>
+										<button type="button" class="btn btn-secondary" style="width: 48%;" disabled="disabled">수정하기</button>
+										<button type="button" class="btn btn-secondary" style="width: 48%;" disabled="disabled">삭제하기</button>								
+									</c:otherwise>
+								</c:choose>
+								</c:otherwise>
+							</c:choose>
+						</c:otherwise>
 				</c:choose>
-				
-</td>
+			</td>
 			</tr>
 		</table>
 		</div>
@@ -369,8 +382,17 @@ function select_suggest(idx)
 					<tr class="table-secondary">
 						<td style="padding:5%;">
 						<p>상품 상세정보<br><br>
-						1. 제조사 A/S 가능여부 : ${drPd.pd_as_name } ${drPd.pd_as_remain } 까지 가능<br><br>
-						2. 특이사항 : ${drPd.comments }
+						1. 제조사 A/S 가능여부 : ${drPd.pd_as_name } / AS 기간 :
+						<c:choose>
+							<c:when test="${drPd.pd_as_remain eq null}">
+								※ 제조사 A/S 문의는 해당 제조사에 직접 문의하시기 바랍니다.
+							</c:when>
+							<c:otherwise>
+								${drPd.pd_as_remain } 까지 가능<br><br>	
+							</c:otherwise>
+						</c:choose>
+							2. 특이사항 : ${drPd.comments }
+						
 						</p>
 						</td>
 					</tr>
@@ -396,16 +418,18 @@ function select_suggest(idx)
 				    <h5 class="card-title"></h5>
 				    <div style="text-align: right;">
 				    	<p class="card-text" style="font-weight: bold;">누적 판매 수 : ${sellCount }회</p>
-				    	<a href="user_detail_sell.jsp" style="text-decoration: none;">상세보기</a>
+				    	<!-- <a href="user_detail_sell.jsp" style="text-decoration: none;">상세보기</a> -->
 				    </div>
 				  </div>
 				</div>
        				
 				<!-- 판매자 정보 아래 버튼  -->
+				<!-- 
 				<div style="text-align: center; margin-top: 1%;">
-					<button class="btn btn-primary" style="width: 25%; margin-right: 15%;" onclick="location.href='user_mainlist.action'">목록으로</button>
+					<button class="btn btn-primary" style="width: 25%; margin-right: 15%;" onclick="location.href='/WEB-INF/view/user/main/POSTobject.jsp'">목록으로</button>
 					<button class="btn btn-primary" style="width: 25%;">찜하기</button>
 				</div>
+				 -->
 			</div>
 		</div>
 		
@@ -538,9 +562,9 @@ function select_suggest(idx)
 				<p class="content_text" style="color: blue;">${drPd.price} 원</p></td>
 			</tr>
 			<tr>
-				<td><p>희망 날짜</p>
-					<p class="content_text" style="font-size: 12pt;">${drPd.pd_hope_sdate} ~ ${drPd.pd_hope_edate} </p>
-					
+				<td>
+				<p>희망 날짜</p>
+				<p class="content_text" style="font-size: 12pt;">${drPd.pd_hope_sdate} ~ ${drPd.pd_hope_edate} </p>
 				</td>
 				<td><p>희망 시간대</p>
 					<p class="content_text" style="font-size: 12pt;">${drPd.pd_hope_stime } ~ ${drPd.pd_hope_etime}</p>
@@ -552,16 +576,24 @@ function select_suggest(idx)
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" style="border-bottom: 2px solid gray;"><p>경매 종료까지</p>
+				<c:choose>
+					<c:when test="${sel_Check2 != 0 }">
+						<td colspan="2" style="border-bottom: 2px solid gray; color: red;"><p>거래 유효 시간</p>
+					</c:when>
+					<c:otherwise>
+						<td colspan="2" style="border-bottom: 2px solid gray;"><p>거래 유효 시간</p>
+					</c:otherwise>
+				</c:choose>				
 				<!-- 경매 종료시간 적용/경매 종료시 경매종료라고 표기 -->
 				<!-- <td colspan="2" style="border-bottom: 2px solid gray;"><p>경매 종료</p> -->
 				<%-- <input type="text" id="remain_date" value="종료일 : ${drPd.remain_date }" > --%>
+					
 					<c:choose>
-						<c:when test="${sel_Check2 == 0 }">
-						<p class="fs-2" style="font-weight: bold;">[<span class="fs-2" style="color: #ffd700;" id="demo"></span>]</p>
+						<c:when test="${sel_Check2 != 0 }">
+						<p class="fs-2" style="font-weight: bold;">[<span class="fs-2" style="color: #ffd700;" id="dems">거래종료</span>]</p>
 						</c:when>
 						<c:otherwise>
-						<p class="fs-2" style="font-weight: bold;">[<span class="fs-2" style="color: #ffd700;" id="dems">거래종료</span>]</p>							
+						<p class="fs-2" style="font-weight: bold;">[<span class="fs-2" style="color: #ffd700;" id="demo"></span>]</p>
 						</c:otherwise>
 					</c:choose>
 						
@@ -576,7 +608,7 @@ function select_suggest(idx)
 				</td>
 				<th style="padding-top: 10px;">
 				
-				
+					<input type="hidden" id="remain_date" value="${drPd.remain_date }" >
 					<!-- 제조사/물품명 표기 -->
 					<p style="font-weight: bold;">${drPd.maker_name}(${drPd.maker_name2 }) / ${drPd.pd_name }</p>
 				</th>
@@ -594,24 +626,47 @@ function select_suggest(idx)
 			
 			<tr>
 				<td colspan="2">
-				<c:choose>
+			
+				<%
+					int end_day = (Integer)request.getAttribute("end_day");
+					if(end_day<0)
+					{
+				%>
+						<button type="button" class="btn btn-danger" style="width: 96%;" disabled="disabled">채택된 제안 없이 종료된 거래입니다.</button>
+				<%
+					}
+					else
+					{
+				%>
+					<c:choose>
 					<c:when test="${sel_Check != 0 }">
-						<button type="button" class="btn btn-success" style="width: 96%;" disabled="disabled">채택완료</button>
+						<button type="button" class="btn btn-danger" style="width: 96%;" disabled="disabled">거래가 종료되었습니다.</button>
 					</c:when>
 					<c:otherwise>
 						<c:choose>
 							<c:when test="${us_Check != 0 }">
-								<button type="button" class="btn btn-primary" style="width: 48%;" id="suggest"
-				                onclick="searchAddr()">구매제안</button>
-							<button type="button" class="btn btn-secondary" style="width: 48%;">신고하기</button>
+							<c:choose>
+								<c:when test="${sl_check == 0 }">
+										<button type="button" class="btn btn-primary" style="width: 48%;" id="suggest"
+				                		onclick="searchAddr()">구매제안</button>
+											<button type="button" class="btn btn-secondary" style="width: 48%;">신고하기</button>
+							    </c:when>
+							    <c:otherwise>
+							    		<button type="button" class="btn btn-primary" style="width: 48%;" id="suggest"
+				                			onclick="searchAddr()">구매제안</button>
+											<button type="button" class="btn btn-secondary" style="width: 48%;" disabled="disabled">신고하기</button>
+							    </c:otherwise>											
+							</c:choose>
 							</c:when>
 							<c:otherwise>
 							<button type="button" class="btn btn-success" style="width: 96%;">구매제안완료</button>
 							</c:otherwise>
 						</c:choose>
 					</c:otherwise>
-				</c:choose>
-		
+					</c:choose>
+				<%
+					}
+				%>
   			    
 
 				</td>
@@ -666,16 +721,19 @@ function select_suggest(idx)
 				    <h5 class="card-title"></h5>
 				    <div style="text-align: right;">
 				    	<p class="card-text" style="font-weight: bold;">누적 판매 수 : ${sellCount }회</p>
-				    	<a href="user_detail_sell.jsp" style="text-decoration: none;">상세보기</a>
+				    	<!-- <a href="user_detail_sell.jsp" style="text-decoration: none;">상세보기</a> -->
 				    </div>
 				  </div>
 				</div>
        				
 				<!-- 판매자 정보 아래 버튼  -->
-				<div style="text-align: center; margin-top: 1%;">
-					<button class="btn btn-primary" style="width: 25%; margin-right: 15%;" onclick="location.href='user_mainlist.action'">목록으로</button>
+				
+				<!-- 	
+					<div style="text-align: center; margin-top: 1%;">
+					<button class="btn btn-primary" style="width: 25%; margin-right: 15%;" onclick="location.href='/WEB-INF/view/user/main/POSTobject.jsp'">목록으로</button>
 					<button class="btn btn-primary" style="width: 25%;">찜하기</button>
 				</div>
+				 -->
 			</div>
 		</div>
 		
@@ -730,9 +788,8 @@ function select_suggest(idx)
 	</div>
 </div>
 </body>
-</html>				
 <%
 	}
 %>
-
+</html>
 				

@@ -50,6 +50,8 @@ public interface IProduct
 	// 내 입찰여부
 	public int ub_Check(SuggestUserDTO dto);
 	
+	// 낙찰된상품인지의 여부
+	public int buy_count(String pd_id);
 	
 	public int deli_check_id(String u_id, String pd_id);
 	public int dire_check_id(String u_id, String pd_id);
@@ -85,6 +87,12 @@ public interface IProduct
 	public int selCheck(String pd_id);
 	public int slCheck(String pd_id);
 	public int usCheck(SuggestUserDTO su);
+	public int add_buy(String bid_code);
+	public int bsCheck(SuggestUserDTO su);
+	public int final_price(String pd_id);
+	
+	public int end_day(String pd_id);
+
 
 }
 	

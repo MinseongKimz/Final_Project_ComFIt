@@ -195,6 +195,7 @@ public class UserMyPageInfoController
 			
 			IUserMyPage mypage = sqlSession.getMapper(IUserMyPage.class);
 			model.addAttribute("point", mypage.myPoint(u_id));
+			model.addAttribute("u_name", mypage.nameSearch(u_id));
 			
 			result = "/WEB-INF/view/user/mypage/user_mypage_point_input.jsp";
 		}
@@ -205,6 +206,23 @@ public class UserMyPageInfoController
 		
 		return result;
 	}
+	
+	
+	// 마이페이지 입금 실제 insert 액션
+	@RequestMapping(value = "/insertmoney.action", method = RequestMethod.POST)
+	public String insertMoney(insertMoneyDTO dto, HttpServletRequest request)
+	{
+		String result = null;
+		
+		IUserMyPage dao = sqlSession.getMapper(IUserMyPage.class);
+		
+		dao.insertMoney(dto);
+		
+		result = "redirect:user_mypage.action";
+		
+		return result;
+	}
+	
 
 	
 	// 마이페이지 출금 폼 액션
@@ -212,6 +230,10 @@ public class UserMyPageInfoController
 	public String outputMoney(Model model)
 	{
 		String result = null;
+		
+		IUserMyPage dao = sqlSession.getMapper(IUserMyPage.class);
+		
+		model.addAttribute("bankList", dao.bankList());
 		
 		result = "/WEB-INF/view/user/mypage/user_mypage_point_output.jsp";
 		

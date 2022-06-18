@@ -155,7 +155,7 @@
 					         <form action="completedirectbuy.action" method="post">
 					         	<input type="hidden" id="selected_id" name="selected_id" value="${buy.selected_id }"/>
 					         	<h5>상대방 코드를 입력해 주세요.</h5>
-					         	<input type="text" id="buyer_code" name="buyer_code" placeholder="구매자 코드" style="width: 90%; margin-top: 2px;">
+					         	<input type="text" id="seller_code" name="seller_code" placeholder="판매자 코드" style="width: 90%; margin-top: 2px;">
 					         	<br /><br />
 					         	<h5>한줄 후기를 입력해 주세요</h5>
 					         	<input type="text" id="review" name="review" placeholder="한줄 후기 입력" style="width: 90%; margin-top: 2px;">

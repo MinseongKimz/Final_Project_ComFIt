@@ -87,7 +87,21 @@
 		WHERE PD_ID = #{pd_id}
 	</select>
 	
-	
+	<select  id="end_date" resultType="java.lang.Integer">
+		SELECT  ROUND(REMAIN_DATE-SYSDATE) AS END_DATE
+		 FROM
+			(
+			SELECT (PD_REGIT_DATE+5) AS REMAIN_DATE
+			  FROM DELI_PD_LIST_REALVIEW
+			 WHERE PD_ID = #{pd_id}
+			)
+		
+	</select>
+	<select id="ub_Check" resultType="java.lang.Integer">
+		SELECT COUNT(*) AS UB_CHECK
+		 FROM BID_LIST 
+	 	 WHERE DELI_PD_ID = #{pd_id} AND U_ID = #{u_id}
+	</select>
 	
 	
 	
@@ -217,6 +231,16 @@
 		SELECT DISTINCT(SUGGEST_CODE)
 	     FROM SELECT_CHECK_VIEW
 	    WHERE PD_ID = #{pd_id}
+	</select>
+	<select id="slCheck" resultType="java.lang.Integer">
+		SELECT COUNT(*) AS SL_CHECK
+		 FROM SUGGEST_LIST
+		WHERE DIRE_PD_ID = #{pd_id}
+	</select>
+	<select  id="usCheck" resultType="java.lang.Integer">
+	SELECT COUNT(*) AS US_CHECK
+	  FROM SUGGEST_LIST
+	 WHERE DIRE_PD_ID = #{pd_id} AND U_ID = #{pd_id}
 	</select>
 </mapper>
 

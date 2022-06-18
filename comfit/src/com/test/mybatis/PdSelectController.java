@@ -19,33 +19,66 @@ public class PdSelectController
 	@RequestMapping(value = "/pd_detail.action", method = RequestMethod.GET)
 	public String pdSelect(Model model, HttpServletRequest request)
 	{
+		// 반환할 URL
 		String result = null;
+		// 주입
 		IProduct dao = sqlSession.getMapper(IProduct.class);
+		
+		// 선택된 상품ID
 		String pd_id = request.getParameter("pd_id");
 		
+		// 해당 상품의 판매자
 		String userId = null;
+		
+		// 로그인해서 진입한 회원
 		HttpSession session = request.getSession();
 		String u_id = (String)session.getAttribute("u_id");
 		
-		//체크
+		
+		// 구매자인지 판매자인지 체크값
 		int check_id = 0;
-		int sel_Check = dao.selCheck(pd_id);
-		String suggest_code = dao.sugCheck(pd_id);
+		
+		
+		
+		// 로그인해서 진입한 회원이 구매제안을 했다면 -- 특정값 반환, 구매자이면서 -> 구매제안했으면, 더이상 구매제안 불가
+		int us_check = 0;
+		
+		// 선택한 상품에 구매제안 있는지?
+		int sl_check = 0;
 		
 		try
 		{
 			if (pd_id.contains("dire"))
 			{
+				// SELECT (채택) 되었는지?
+				int sel_Check = dao.selCheck(pd_id);
+				int sel_Check2 = sel_Check;
+				// 제안코드따오기(채택된 상품을 보여주기 위함)
+				String suggest_code = dao.sugCheck(pd_id);
+				
+				SuggestUserDTO su = new SuggestUserDTO();
+				su.setPd_id(pd_id);
+				su.setU_id(u_id);
+				
+				
+				// 판매자라면 1반환
 				userId = dao.direuserId(pd_id);
 				
+				// 제안이 존재한다면 제안 갯수 반환 
+				sl_check = dao.slCheck(pd_id);
+				
+				// 내 제안이 있다면 갯수 반환
+				us_check = dao.usCheck(su);
+				
+				// 판매자라면 1반환
 				if (userId.equals(u_id))
 					check_id = 1;
-				/*
-				  System.out.println(check_id); System.out.println(suggest_code);
-				  System.out.println(sel_Check);
-				*/
+
 				
 				session.setAttribute("check_id", check_id);
+				model.addAttribute("sel_Check2", sel_Check2);
+				model.addAttribute("sl_check", sl_check);
+				model.addAttribute("us_check", us_check);
 				model.addAttribute("suggestList", dao.suggestList(pd_id));
 				model.addAttribute("drPdList", dao.drPdList(pd_id));
 				model.addAttribute("sel_Check", sel_Check);
@@ -57,13 +90,22 @@ public class PdSelectController
 			}
 			else if(pd_id.contains("deli"))
 			{
+				int end_date = dao.end_date(pd_id);
+				// 판매자라면 1반환
+				SuggestUserDTO dto = new SuggestUserDTO();
+				dto.setPd_id(pd_id);
+				dto.setU_id(u_id);
+				int ub_Check = dao.ub_Check(dto);
 				
 				userId = dao.deliuserId(pd_id);
+				
+				
 				if (userId.equals(u_id))
 					check_id = 1;
 				
 				session.setAttribute("check_id", check_id);
-				
+				model.addAttribute("ub_Check", ub_Check);
+				model.addAttribute("end_date", end_date);
 				model.addAttribute("bidList", dao.bidList(pd_id));
 				model.addAttribute("dlPdList", dao.dlPdList(pd_id));
 				model.addAttribute("userLevel", dao.userLevel(userId));
@@ -83,7 +125,7 @@ public class PdSelectController
 	
 	
 	
-	// 구매제안 폼에서 장소선택하면
+	// 구매제안 폼에서 구매제안하면
 	@RequestMapping(value = "/direct_place.action", method = RequestMethod.GET)
 	public String selectPlace(Model model, String pd_id, HttpServletRequest request)
 	{

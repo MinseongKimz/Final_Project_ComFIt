@@ -6,7 +6,6 @@ public class AdminLoginDTO
 
 	private String ad_id, ad_pw, count;
 
-
 	//getter/setter 구성
 	public String getAd_id()
 	{

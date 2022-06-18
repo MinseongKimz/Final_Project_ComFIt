@@ -94,7 +94,7 @@
 		     <tbody>
 		     	<c:forEach var="buy" items="${buyList }">
 
-					<tr onclick="alert('해당 상품 페이지로');">
+					<tr onclick="location.href='pd_detail.action?pd_id=${buy.pd_id }';">
 						<td>${buy.pd_regit_date }</td>
 						<td>${buy.pd_price }</td>
 						<td>${buy.pd_title }</td>

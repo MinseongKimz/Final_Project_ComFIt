@@ -211,6 +211,25 @@
 	     FROM SELECT_CHECK_VIEW
 	    WHERE PD_ID = #{pd_id}
 	</select>
+	
+	<!-- 프로시저 호출 : input [I_NO , I_NAME] / output [msg] -->
+    <!-- output [msg] 형태 : Y : SUCCESS -->
+    <!-- 프로시저 호출작업 -->
+    <!-- 
+    <resultMap id="confirmDirect" type="hashmap" />
+    <insert id="PRO_INS_DATA_PROCEDURE" parameterType="hashmap" statementType="CALLABLE">
+        <![CDATA[
+        { call PRO_INS_DATA (
+                #{I_NO},
+                #{I_NAME},
+                #{msg, mode=OUT, jdbcType=VARCHAR, javaType=string, resultMap=PRO_INS_MOWEB}
+            )}
+        ]]>
+    </insert>
+	 -->
+	
+	
+	
 </mapper>
 
 

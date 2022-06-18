@@ -63,4 +63,5 @@ public interface IProduct
 	public int selectSuggest(String suggest_code);
 	public int selCheck(String pd_id);
 	public String sugCheck(String pd_id);
+	
 }

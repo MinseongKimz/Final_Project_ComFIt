@@ -2,10 +2,7 @@ package com.test.mybatis;
 
 public class ProductDTO
 {
-	// SELECT PD_TITLE, PD_PRICE, SYSTEM, STATUS, PD_PHOTO
-
 	private String pd_id, pd_name, price, distatnce, category_name;
-	
 	private String pd_title, system, status, pd_photo;
 	
 	private int pd_price;

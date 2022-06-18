@@ -1065,3 +1065,106 @@ SELECT PD_NUM, B_U_ID, SUGGEST_DATE, SUGGEST_PRICE, DEAL_STATUS
 FROM TOTAL_DIRECT_VIEW5
 WHERE PD_NUM = '1';
 
+--------------------------------------------------------------------------------
+-- 문의 리스트 수정
+
+SELECT SUBSTR(A.ASK_ID,5,1) ASK_ID, A.U_ID U_ID, A.ASK_TITLE ASK_TITLE, A.ASK_DATE ASK_DATE
+, CASE
+WHEN AA.ANSWER_CONTENTS IS NOT NULL
+THEN '처리완료'
+ELSE '미처리'
+END AS ASK_STATUS
+, AA.ANSWER_DATE ANSWER_DATE
+FROM ASK A LEFT JOIN ASK_ANSWER AA
+ON A.ASK_ID = AA.ASK_ID;
+
+--------------------------------------------------------------------------------
+--○ 로그인
+
+SELECT COUNT(*)
+FROM ADMIN
+WHERE AD_ID = 'a' --#{id}
+AND AD_PW = 'comfit0a06$'; --#{password};
+
+SELECT COUNT(*)
+FROM ADMIN
+WHERE AD_ID = #{ad_id}
+AND AD_PW = '#{ad_pw};
+
+--------------------------------------------------------------------------------
+
+SELECT *
+FROM ADMIN;
+
+
+SELECT AD_ID, AD_PW
+FROM ADMIN
+WHERE AD_ID= 'cf_admin' AND AD_PW= 'comfit006$';
+-- 맞지 않냐...?
+
+--------------------------------------------------------------------------------
+-- ○ 카테고리 검색 쿼리
+SELECT U_ID, U_EMAIL, U_NAME, U_NICKNAME, U_TEL, U_JOINDATE, 
+(
+  SELECT COUNT(*) AS COUNT
+  FROM
+  (
+  SELECT BAN_ID, BAN_DATE, REPORTED, REPORTER
+  FROM DIRECT_TRANS_BANNED_VIEW
+  UNION
+  SELECT BAN_ID, BAN_DATE, REPORTED, REPORTER
+  FROM DELIVERY_TRANS_BANNED_VIEW
+  UNION
+  SELECT BAN_ID, BAN_DATE, REPORTED, REPORTER
+  FROM DIRECT_PD_BANNED_VIEW
+  UNION
+  SELECT BAN_ID, BAN_DATE, REPORTED, REPORTER
+  FROM DELIVERY_PD_BANNED_VIEW
+  )
+  WHERE U_ID = REPORTED
+) AS BANCOUNT
+FROM USER_INFORMATION
+WHERE u_name = u_name and u_name LIKE '%연주%';
+OR U_nickname = U_nickname and U_nickname like '%%'
+OR U_EMAIL = U_EMAIL and U_EMAIL like '%%';
+--------------------------------------------------------------------------------
+
+SELECT ROWNUM, PD_NUM, PD_ID, CATEGORY_NAME, PD_REGIT_DATE, U_ID, PD_TITLE, DEAL_TYPE, DEAL_STATUS
+FROM TOTAL_PRODUCT_VIEW
+WHERE PD_NUM IS NOT NULL
+AND CATEGORY_NAME = CATEGORY_NAME and CATEGORY_NAME LIKE '%연주%'
+OR U_ID = U_ID and U_ID LIKE '%연주%'
+OR PD_TITLE = PD_TITLE and PD_TITLE LIKE '%연주%'
+
+SELECT IO_TYPE, U_EMAIL, U_NAME, IO_DATE, BANK_NAME
+     , ACCOUNT, MONEY
+FROM AD_IO_MONEY_LIST_REALVIEW
+WHERE U_EMAIL = U_EMAIL and U_EMAIL LIKE '%연주%'
+OR U_NAME = U_NAME and U_NAME LIKE '%연주%'
+OR ACCOUNT = ACCOUNT and ACCOUNT LIKE '%연주%'
+ORDER BY IO_DATE
+
+select *
+from DELIVERY_PRODUCT dp left join DELIVERY_PD_REPORT dpr
+on dp.DELI_PD_ID = dpr.DELI_PD_ID
+left join DELI_PD_REP_HANDLE drh
+on ;
+
+select *
+from DELI_TA_BANNED;
+
+-- 회원id, 이름, 입출금, 입출금시간, 입출금은행, 계좌, 금액
+select ui.U_EMAIL, ui.U_NAME, om.OUT_MONEY, im.IN_MONEY
+from COMFIT_USER u left join USER_INFORMATION ui
+on u.U_ID = ui.U_ID
+left join OUTPUT_MONEY om
+on u.U_ID = om.U_ID
+left join INPUT_MONEY im
+on u.U_ID = im.U_ID
+where om.OUT_MONEY is not null or im.IN_MONEY is not null;
+
+--------------------------------------------------------------------------------
+
+SELECT COUNT(*) AS COUNT
+FROM ADMIN
+WHERE AD_ID = 'cf_admin' AND AD_PW = 'comfit006$';

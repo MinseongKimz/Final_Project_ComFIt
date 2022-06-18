@@ -589,7 +589,7 @@ function select_suggest(idx)
 				<!-- 판매자)입찰자 없을 때 :수정하기/삭제하기-->
 				<!-- 판매자)입찰자 있을 때 :즉시낙찰/삭제하기 -->
 				<!-- <button type="button" class="btn btn-warning" style="width: 48%;">즉시낙찰</button> -->
-<button type="button" class="btn btn-primary" style="width: 48%;" id="suggest"
+			<button type="button" class="btn btn-primary" style="width: 48%;" id="suggest"
 				                onclick="searchAddr()">구매제안</button>
 				<button type="button" class="btn btn-secondary" style="width: 48%;">신고하기</button>
 

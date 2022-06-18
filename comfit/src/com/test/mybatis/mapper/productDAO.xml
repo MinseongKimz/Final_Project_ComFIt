@@ -232,6 +232,12 @@
 	    WHERE PD_ID = #{pd_id}
 	</select>
 
+	
+	<insert id="confirmDeliveryBuy">
+		INSERT INTO DELI_COMPLETE_BUY(DELI_COMP_SELL_ID, PD_DELI_NUM, REVIEW, BS_ID)
+		VALUES(CONCAT('dcbuy_', DELI_COMPLETE_SEQ.NEXTVAL), #{deli_num}, #{review}, #{bs_id})
+	</insert>
+
 	<select id="slCheck" resultType="java.lang.Integer">
 		SELECT COUNT(*) AS SL_CHECK
 		 FROM SUGGEST_LIST
@@ -242,8 +248,6 @@
 	  FROM SUGGEST_LIST
 	 WHERE DIRE_PD_ID = #{pd_id} AND U_ID = #{pd_id}
 	</select>
-	
-	
 </mapper>
 
 

@@ -11,7 +11,7 @@ public class ConfirmDAO implements IConfirmDAO
 	private Connection conn;
 
 	@Override
-	public int confirmDirect(ConfirmDirectDTO dto) throws SQLException
+	public int confirmDirectBuy(ConfirmDirectDTO dto) throws SQLException
 	{
 		int result = 0;
 		
@@ -19,7 +19,7 @@ public class ConfirmDAO implements IConfirmDAO
 		{
 			conn = DBConn.getConnection();
 			
-			String sql = "{call BUY_COMPLETE_PRC(?, ?, ?)}";
+			String sql = "{call DIREBUY_COMPLETE_PRC(?, ?, ?)}";
 			
 			CallableStatement cstmt = conn.prepareCall(sql);
 			

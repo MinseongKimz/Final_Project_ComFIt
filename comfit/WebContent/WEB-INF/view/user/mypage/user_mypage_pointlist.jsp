@@ -106,9 +106,9 @@
 		</table>
 		
 		<div class="d-flex justify-content-end" >
-			<button class="btn btn-primary btn-lg" onclick="location.href='inputmoneyform.action'">입금</button> 
+			<button class="btn btn-primary btn-lg" onclick="location.href='inputmoneyform.action'">입금하기</button> 
 			&nbsp;
-			<button class="btn btn-secondary btn-lg" onclick="location.href='outputmoneyform.action'">출금</button>
+			<button class="btn btn-secondary btn-lg" onclick="location.href='outputmoneyform.action'">출금하기</button>
 		</div>
 	</div>
 </div>

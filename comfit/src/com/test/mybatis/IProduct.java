@@ -3,6 +3,9 @@ package com.test.mybatis;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.test.util.ConfirmDeliveryDTO;
+import com.test.util.ConfirmDirectDTO;
+
 public interface IProduct
 {
 	public ArrayList<ProductDTO> user_pdList(ProductDTO dto);
@@ -70,6 +73,11 @@ public interface IProduct
 	// 직거래 채택
 	public int selectSuggest(String suggest_code);
 	
+<<<<<<< HEAD
+	// 택배거래 구매확정
+	public int confirmDeliveryBuy(ConfirmDeliveryDTO dto);
+	
+=======
 	
 	
 	// 직거래 조건확인
@@ -79,5 +87,6 @@ public interface IProduct
 	public int slCheck(String pd_id);
 	public int usCheck(SuggestUserDTO su);
 
+>>>>>>> 51d22971210b11b139a2615655b59c4ce570f0d1
 }
 	

@@ -51,4 +51,3 @@ END;
 EXEC DIREBUY_COMPLETE_PRC('sel_9', 'C0BKQGRZvhuyhpme', '감사합니다');
 --==>> PL/SQL 프로시저가 성공적으로 완료되었습니다.
 
-

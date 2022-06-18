@@ -31,6 +31,42 @@
 	   var hope_sdate = $("#hope_sdate").val();
 	   var hope_edate =	$("#hope_edate").val();
 			   
+	   var today = new Date();
+	   var sday = new Date(hope_sdate);
+	   
+	   var nowYear = today.getFullYear();
+	   var sYear = sday.getFullYear();
+	   
+	   var nowMonth = today.getFullMonth()+1;
+	   var sMonth = sday.getFullMonth()+1;
+	   
+	   var nowDay = today.getDate();
+	   var sDay = today.getDate();
+	   
+	   // 연도비교
+	   if (nowYear == sYear)
+	   {
+			alert("연도같음, 월비교");
+			if (nowMonth == sMonth)
+			{
+				alert("월 같음, 일비교");
+				if (nowDay > sDay) // 오늘이 미래라면
+				{
+					hope_sdate = today;
+				}
+			}
+			else if(nowMonth > sMonth) // 지금월 이 미래라면
+			{
+				hope_sdate = today;
+			}
+	   }
+	   else
+	   {
+		   alert("연도다름, 연도비교");
+		   hope_sdate = today;
+	   }
+	 
+	  
 	   $("#datePicker").datepicker({
 		   
 		   dateFormat: "yy-mm-dd" //데이터 포맷 형식(yyyy : 년 mm : 월 dd : 일 )

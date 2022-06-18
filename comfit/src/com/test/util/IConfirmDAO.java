@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 public interface IConfirmDAO
 {
-	// 직거래 구매확정
-	public int confirmDirect(ConfirmDirectDTO dto) throws SQLException;
+	// 직거래 구매확정 (프로시저)
+	public int confirmDirectBuy(ConfirmDirectDTO dto) throws SQLException;
+	
 }

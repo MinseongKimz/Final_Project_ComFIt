@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.test.util.ConfirmDAO;
+import com.test.util.ConfirmDeliveryDTO;
 import com.test.util.ConfirmDirectDTO;
 import com.test.util.IConfirmDAO;
 
@@ -17,9 +18,9 @@ public class ConfirmController
 	@Autowired
 	private SqlSession sqlSession;
 	
-	// 관리자 카테고리 insert
-	@RequestMapping(value = "/completebuy.action", method = RequestMethod.POST)
-	public String categoryInsert(ConfirmDirectDTO dto ,Model model)
+	// 직거래 구매확정 액션
+	@RequestMapping(value = "/completedirectbuy.action", method = RequestMethod.POST)
+	public String completeDirect(ConfirmDirectDTO dto ,Model model)
 	{
 		String result = null;
 		
@@ -29,12 +30,33 @@ public class ConfirmController
 		
 		try
 		{
-			count = dao.confirmDirect(dto);
+			count = dao.confirmDirectBuy(dto);
 			
 			if (count == 0)
 			{
 				System.out.println("입력실패");
 			}
+			
+			result = "redirect:user_buylist.action";
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+			
+		return result;
+	}
+	
+	// 택배거래 구매확정 액션
+	@RequestMapping(value = "/completedeliverybuy.action", method = RequestMethod.POST)
+	public String completeDelivery(ConfirmDeliveryDTO dto ,Model model)
+	{
+		String result = null;
+		
+		IProduct dao = sqlSession.getMapper(IProduct.class);
+		try
+		{
+			dao.confirmDeliveryBuy(dto);
 			
 			result = "redirect:user_buylist.action";
 			

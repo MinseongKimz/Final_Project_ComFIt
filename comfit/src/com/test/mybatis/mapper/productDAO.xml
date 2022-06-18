@@ -212,6 +212,11 @@
 	    WHERE PD_ID = #{pd_id}
 	</select>
 	
+	<insert id="confirmDeliveryBuy">
+		INSERT INTO DELI_COMPLETE_BUY(DELI_COMP_SELL_ID, PD_DELI_NUM, REVIEW, BS_ID)
+		VALUES(CONCAT('dcbuy_', DELI_COMPLETE_SEQ.NEXTVAL), #{deli_num}, #{review}, #{bs_id})
+	</insert>
+	
 	<!-- 프로시저 호출 : input [I_NO , I_NAME] / output [msg] -->
     <!-- output [msg] 형태 : Y : SUCCESS -->
     <!-- 프로시저 호출작업 -->

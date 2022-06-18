@@ -184,7 +184,7 @@
 		            </c:if>
 		            <td>${sell.pd_title }</td>
 		            <td>${sell.system }</td>
-		            <td>${sell.status }</td>
+		            <td style="font-size: 12pt;">${sell.status }</td>
 		            <td>${sell.comp_date }</td>
 		        </tr>
 		        </c:forEach>
@@ -193,11 +193,9 @@
 		
 		<!-- button -->
 		<div style="text-align: right;">
-
 		<button type="button" class="btn btn-primary btn-sm" id="sellBtn" style="width: 20%; height: 40px; font-size: 15pt;"
-
 			    onclick="location.href='user_selllist.action'">판매내역 자세히보기</button>
-		</div>      
+		</div>
 		
 		<div>
 		<p class="fs-3">내 구매</p> 
@@ -221,19 +219,10 @@
 		            <td>${buy.pd_price }</td>
 		            <td>${buy.pd_title }</td>
 		            <td>${buy.system }</td>
-		            <td>${buy.status }</td>
+		            <td style="font-size: 12pt;">${buy.status }</td>
 		            <td>${buy.comp_date }</td>
 		        </tr>
-		        </c:forEach>
-		        <!-- <tr>
-		            <td>2022-05-20</td>
-		            <td>40,000</td>
-		            <td>레이저 무선마우스</td>
-		            <td>배송(경매)</td>
-		            <td>낙찰
-		            	<button type="button" class="btn btn-primary btn-sm" id="buyBtn" style="width: 60px; height: 30px; font-size: 6pt;">구매확정</button>
-		            </td>
-		        </tr> -->     
+		        </c:forEach>   
 		    </tbody>
 		</table>
 			<div style="text-align: right;">

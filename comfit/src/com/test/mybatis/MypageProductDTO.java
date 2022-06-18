@@ -4,13 +4,32 @@ public class MypageProductDTO
 {
 	private String pd_id, pd_title, pd_price, system, pd_regit_date
 	, time, comp_date, seller_id, buyer_id, address, status
-	, selected_id, selected_date, buyer_code, seller_code;
+	, selected_id, selected_date, buyer_code, seller_code
+	, bs_id, bs_date;
 
-	
-	// SELECTED_ID, SELECTED_DATE, BUYER_CODE, SELLER_CODE
 	public String getPd_id()
 	{
 		return pd_id;
+	}
+
+	public String getBs_id()
+	{
+		return bs_id;
+	}
+
+	public void setBs_id(String bs_id)
+	{
+		this.bs_id = bs_id;
+	}
+
+	public String getBs_date()
+	{
+		return bs_date;
+	}
+
+	public void setBs_date(String bs_date)
+	{
+		this.bs_date = bs_date;
 	}
 
 	public String getSelected_id()

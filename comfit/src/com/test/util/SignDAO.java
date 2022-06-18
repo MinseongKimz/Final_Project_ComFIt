@@ -105,7 +105,54 @@ public class SignDAO implements ISingDAO
 		return user;
 	}
 	
-	
+	public int findPassword(userDTO dto) throws SQLException
+	{
+		int result = 0;
+		try
+		{
+			conn = DBConn.getConnection();
+			
+			String sql = "SELECT COUNT(*) AS COUNT FROM USER_INFORMATION"
+						+ " WHERE U_EMAIL = ?"
+						+ " AND U_TEL = ?"
+						+ " AND U_NAME = ?";
+				
+		
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getU_email() );
+			pstmt.setString(2, dto.getU_tel());
+			pstmt.setString(3, dto.getU_name());
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			
+			while (rs.next())
+				result = Integer.parseInt(rs.getString("COUNT"));
+			
+			rs.close();
+			pstmt.close();
+			
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		finally
+		{
+			try
+			{
+				DBConn.close();;
+				
+			} catch (Exception e2)
+			{
+				System.out.println(e2.toString());
+			}	
+		}
+		
+		
+		return result;
+	}
 	
 	
 	

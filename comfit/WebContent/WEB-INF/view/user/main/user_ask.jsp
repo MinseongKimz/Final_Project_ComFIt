@@ -70,7 +70,15 @@
 			$(this).removeClass("btn-primary");   
 			$(this).addClass("btn-secondary");    
 		});		      
-
+		
+		
+		
+		 
+	 	 $("#ask_id").click(function()
+		{
+			//alert("수정");
+			location.href="user_ask_modify_form.action?ask_id="+$(this).val();
+		}) 
 	})
 	
 </script>
@@ -81,7 +89,7 @@
 
 <div class="content">
 <br /><br /><br />
-	
+
 	<br />
 	<div class="btns" style="text-align: center;">
 		<button type="button" id="notice" class="btn btn-secondary" style="margin: 7px;" onclick="location.href='user_notice_list.action'">공지사항</button>
@@ -89,13 +97,12 @@
 		<button type="button" id="ask" class="btn btn-primary" style="margin: 7px;" onclick="location.href='user_ask_list.action'">내 문의내역</button>
 	</div>
 	<br /><br />
-	
 	<div style="margin-left: 20%; margin-right: 20%;">
 		<div class="container"> 
 			<div style="font-weight: bold; font-size: 22pt;">내 문의 게시글</div>
 			<br />
-			<c:forEach var="asklist" items ="${asklist }">
 				<table class="table table-bordered" >
+				<c:forEach var="asklist" items ="${asklist }">
 					<tr>
 						<th>제목</th>
 						<td>${asklist.ask_title }</td>
@@ -106,19 +113,19 @@
 					</tr>
 					<tr >
 						<th>카테고리</th>
-						<td>${askcatelist.ask_cate_name }</td>
+						<td>${asklist.ask_cate_name }</td>
 					</tr>
 					<tr>
 						<th style="height: 300px; vertical-align: middle;">내용</th>
 						<td>${asklist.ask_contents }</td>
 					</tr>
+				</c:forEach>
 				</table>
-			</c:forEach>	
 		<div >
 			<button type="button" class="btn btn-primary" style="margin: 7px; float: right;" data-bs-toggle="modal" data-bs-target="#deleteModal">삭제하기</button>
-			<button type="button" class="btn btn-primary" style="margin: 7px; float: right;" value="${ask_id}"onclick="location.href='user_ask_modify_form.action'">수정하기</button>
+			<button type="submit" class="btn btn-primary" id="ask_id" name="aks_id" value="${askModifyForm.ask_id }"  style="margin: 7px; float: right;" >수정하기</button>
 		</div>
-		
+
 		</div> 
 		
 		<!-- deleteModal -->
@@ -167,7 +174,6 @@
 		
 	</div>
 </div>
-
 
 
 

@@ -15,12 +15,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 
-<script type="text/javascript">
+
 
 	
-
-	
-</script>	
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=86ec7935feee50bc358cd41148ffd4e2&libraries=services"></script>
 <script>
@@ -73,7 +70,6 @@
 	           			if (status === kakao.maps.services.Status.OK)
 	           			{
 	           				//alert(result[0].y + "/" + result[0].x);  // 위도 / 경도
-         					
 	           				
 							$("#pd_hope_place", opener.document).val($("#address").val());
 		     				$("#address", opener.document).val(result[0].y+"/"+result[0].x);

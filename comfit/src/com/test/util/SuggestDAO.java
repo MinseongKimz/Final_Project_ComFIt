@@ -2,6 +2,7 @@ package com.test.util;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.SQLException;
 
 import com.test.mybatis.DBConn;
 import com.test.mybatis.SuggestListDTO;
@@ -54,5 +55,5 @@ public class SuggestDAO implements ISuggestDAO
 		
 		return result;
 	}
-	
+
 }

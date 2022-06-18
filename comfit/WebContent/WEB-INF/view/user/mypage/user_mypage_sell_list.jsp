@@ -76,7 +76,7 @@
 		<table class="table table-bordered table-hover" style="font-size: 10pt; margin-top: 2%;">
 			<thead>
 				<tr class="table-primary">
-					<th>판매 시작일</th>
+					<th>상품등록일</th>
 					<th>최종 금액</th>
 					<th>상품정보</th>
 					<th>방식</th>
@@ -88,9 +88,14 @@
 			</thead>
 			<tbody>
 				<c:forEach var="sell" items="${sellList }">
-				<tr onclick="alert('해당 상품 페이지로');">
+				<tr onclick="location.href='pd_detail.action?pd_id=${sell.pd_id }';">
 					<td>${sell.pd_regit_date }</td>
-					<td>${sell.pd_price }</td>
+					<c:if test="${sell.pd_price == -1}">
+		            	<td>제안받는중</td>
+		            </c:if>
+		            <c:if test="${sell.pd_price != -1}">
+		            	<td>${sell.pd_price }</td>
+		            </c:if>
 					<td>${sell.pd_title }</td>
 					<td>${sell.system }</td>
 					<td style="font-size: 10pt;">${sell.address }</td>

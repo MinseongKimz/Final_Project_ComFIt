@@ -28,8 +28,10 @@ public class PdSelectController
 		String u_id = (String)session.getAttribute("u_id");
 		
 		//체크
-	
 		int check_id = 0;
+		int sel_Check = dao.selCheck(pd_id);
+		String suggest_code = dao.sugCheck(pd_id);
+		
 		try
 		{
 			if (pd_id.contains("dire"))
@@ -38,12 +40,16 @@ public class PdSelectController
 				
 				if (userId.equals(u_id))
 					check_id = 1;
-				
+				/*
+				  System.out.println(check_id); System.out.println(suggest_code);
+				  System.out.println(sel_Check);
+				*/
 				
 				session.setAttribute("check_id", check_id);
 				model.addAttribute("suggestList", dao.suggestList(pd_id));
 				model.addAttribute("drPdList", dao.drPdList(pd_id));
-				//System.out.println(pd_id);
+				model.addAttribute("sel_Check", sel_Check);
+				model.addAttribute("suggest_code", suggest_code);
 				model.addAttribute("pd_id", pd_id);
 				model.addAttribute("userLevel", dao.userLevel(userId));
 				model.addAttribute("sellCount", dao.sellCount(userId));

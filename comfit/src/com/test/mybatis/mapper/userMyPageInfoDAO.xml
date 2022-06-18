@@ -16,7 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	 -->
 	 <select id="myDetailInfo" resultType="com.test.mybatis.userDTO">
-	 SELECT U_EMAIL, U_NICKNAME, U_NAME
+	 SELECT U_EMAIL, U_NICKNAME, U_NAME, U_PROFILE
         , LPAD('*',LENGTH(CRYPTPACK.DECRYPT(U_PASSWORD,'1234')),'*') as U_PASSWORD
 		, U_TEL, U_ADDRESS
 		FROM USER_INFORMATION
@@ -36,12 +36,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    ELSE '에러' END AS INOUT
 		FROM MONEY_INOUT_VIEW
 		WHERE U_ID = #{u_id}
+		ORDER BY M_DATE DESC
+		
 	</select>
 	
 	<select id="myPoint" resultType="java.lang.Integer">
 		SELECT POINT
 		FROM ALL_USER_POINT_VIEW
 		WHERE U_ID = #{u_id}
+	</select>
+	
+	<select id="nameSearch" resultType="java.lang.String">
+		select u_name
+		FROM USER_INFORMATION
+		where u_id = #{u_id}
+	</select>
+	
+	<insert id="insertMoney">
+		INSERT INTO INPUT_MONEY(IN_M_ID, IN_MONEY, IN_DATE, IN_ACCOUNT, U_ID, BANK_ID)
+		VALUES(CONCAT('inm_', INPUT_MONEY_SEQ.NEXTVAL), #{in_money}, SYSDATE, '941602-00-228699', #{u_id}, 4)
+	</insert>
+	
+	<!-- 은행 리스크 select option 출력 -->
+	<select id="bankList" resultType="com.test.mybatis.BankDTO">
+		SELECT BANK_ID, BANK_NAME
+		FROM BANK
 	</select>
 	
 	<select id="sellList" resultType="com.test.mybatis.MypageProductDTO">
@@ -59,9 +78,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="buyList" resultType="com.test.mybatis.MypageProductDTO">
-		SELECT PD_ID, PD_TITLE, PD_PRICE, SYSTEM, TO_CHAR(PD_REGIT_DATE, 'YYYY-MM-DD') AS PD_REGIT_DATE
-		, TIME, TO_CHAR(COMP_DATE, 'YYYY-MM-DD') AS COMP_DATE, SELLER_ID, BUYER_ID, ADDRESS, STATUS
-		FROM MY_PRODUCT_LIST
+		SELECT PD_ID, PD_TITLE, PD_PRICE, SYSTEM, PD_REGIT_DATE
+		, TIME, COMP_DATE, SELLER_ID, BUYER_ID, ADDRESS, STATUS
+        , SELECTED_ID, SELECTED_DATE, BUYER_CODE, SELLER_CODE
+		FROM DETAIL_BUYLIST_VIEW
 		WHERE BUYER_ID = #{u_id}
 		ORDER BY PD_REGIT_DATE DESC
 	</select>
@@ -76,7 +96,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE U_ID = #{u_id}
 	</select>
 	
-	
+	<!-- 프로필 변경 -->
+	<update id="changeProfile">
+		UPDATE USER_INFORMATION
+		SET U_PROFILE = #{u_profile}
+		WHERE U_ID = #{u_id}
+	</update>
 	
 	
 <!-- 

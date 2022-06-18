@@ -18,6 +18,35 @@ public class ConfirmController
 	@Autowired
 	private SqlSession sqlSession;
 	
+	// 직거래 판매확정 액션
+	@RequestMapping(value = "/completedirectsell.action", method = RequestMethod.POST)
+	public String completeDirectSell(ConfirmDirectDTO dto ,Model model)
+	{
+		String result = null;
+		
+		ConfirmDAO dao = new ConfirmDAO();
+		
+		int count = 0;
+		
+		try
+		{
+			count = dao.confirmDirectSell(dto);
+			
+			if (count == 0)
+			{
+				System.out.println("입력실패");
+			}
+			
+			result = "redirect:user_selllist.action";
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+			
+		return result;
+	}
+	
 	// 직거래 구매확정 액션
 	@RequestMapping(value = "/completedirectbuy.action", method = RequestMethod.POST)
 	public String completeDirect(ConfirmDirectDTO dto ,Model model)
@@ -46,7 +75,7 @@ public class ConfirmController
 			
 		return result;
 	}
-	
+
 	// 택배거래 구매확정 액션
 	@RequestMapping(value = "/completedeliverybuy.action", method = RequestMethod.POST)
 	public String completeDelivery(ConfirmDeliveryDTO dto ,Model model)
@@ -59,6 +88,26 @@ public class ConfirmController
 			dao.confirmDeliveryBuy(dto);
 			
 			result = "redirect:user_buylist.action";
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+			
+		return result;
+	}
+	// 택배거래 판매확정 액션
+	@RequestMapping(value = "/completedeliverysell.action", method = RequestMethod.POST)
+	public String completeDeliverySell(ConfirmDeliveryDTO dto ,Model model)
+	{
+		String result = null;
+		
+		IProduct dao = sqlSession.getMapper(IProduct.class);
+		try
+		{
+			dao.confirmDeliveryBuy(dto);
+			
+			result = "redirect:user_selllist.action";
 			
 		} catch (Exception e)
 		{

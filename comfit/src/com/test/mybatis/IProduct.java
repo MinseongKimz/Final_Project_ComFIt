@@ -76,6 +76,8 @@ public interface IProduct
 	// 택배거래 구매확정
 	public int confirmDeliveryBuy(ConfirmDeliveryDTO dto);
 	
+	// 택배거래 판매확정
+	public int confirmDeliverySell(ConfirmDeliveryDTO dto);
 	
 	// 직거래 조건확인
 	public String sugCheck(String pd_id);

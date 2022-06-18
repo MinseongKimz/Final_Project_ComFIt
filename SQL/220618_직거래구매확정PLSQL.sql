@@ -38,13 +38,12 @@ BEGIN
             THEN RAISE_APPLICATION_ERROR(-20004, '에러 발생');
             ROLLBACK;
         WHEN DISCODE_ERROR
-            THEN RAISE_APPLICATION_ERROR(-20005, '구매코드가 다릅니다.');
+            THEN RAISE_APPLICATION_ERROR(-20005, '코드가 다릅니다.');
         WHEN COUNTOVER_ERROR
             THEN RAISE_APPLICATION_ERROR(-20006, '이미 구매확정된 글입니다.');
         WHEN OTHERS
             THEN ROLLBACK;
 END;
-
 --==>> Procedure BUY_COMPLETE_PRC이(가) 컴파일되었습니다.
 
 --==>> 805RLDYGTUWXABZF

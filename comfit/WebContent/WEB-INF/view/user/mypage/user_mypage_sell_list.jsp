@@ -185,7 +185,7 @@
 					         	<br /><br />
 					         	<h5>한줄 후기를 입력해 주세요</h5>
 					         	<input type="text" id="review" name="review" placeholder="한줄 후기 입력" style="width: 90%; margin-top: 2px;">
-					         	<h5>운송장번호</h5>
+					         	<h5>운송장번호를 입력해 주세요</h5>
 					         	<input type="text" id="review" name="deli_num" placeholder="운송장번호" style="width: 90%; margin-top: 2px;">
 					       		<button type="submit" class="btn btn-primary"
 					        	data-bs-toggle="modal" data-bs-target="#deliverySellCheckOk">확인</button>

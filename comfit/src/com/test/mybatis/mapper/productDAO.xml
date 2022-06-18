@@ -234,8 +234,13 @@
 
 	
 	<insert id="confirmDeliveryBuy">
-		INSERT INTO DELI_COMPLETE_BUY(DELI_COMP_SELL_ID, PD_DELI_NUM, REVIEW, BS_ID)
-		VALUES(CONCAT('dcbuy_', DELI_COMPLETE_SEQ.NEXTVAL), #{deli_num}, #{review}, #{bs_id})
+		INSERT INTO DELI_COMPLETE_BUY(DELI_COMP_SELL_ID, REVIEW, BS_ID)
+		VALUES(CONCAT('dcbuy_', DELI_COMPLETE_SEQ.NEXTVAL), #{review}, #{bs_id})
+	</insert>
+	
+	<insert id="confirmDeliverySell">
+		INSERT INTO DELI_COMPLETE_SELL(DELI_COMP_SELL_ID, PD_DELI_NUM, REVIEW, BS_ID)
+		VALUES(CONCAT('dcsell_', DELI_COMPLETE_SELL_SEQ.NEXTVAL), #{deli_num}, #{review}, #{bs_id})
 	</insert>
 
 	<select id="slCheck" resultType="java.lang.Integer">

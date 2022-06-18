@@ -4,7 +4,6 @@ public class BidListDTO
 {
 	private String bid_code, u_nickname, price, bid_date, address, addr_detail
 	, u_id, pd_id, profile;
-
 	
 	public String getPd_id()
 	{
@@ -33,6 +32,7 @@ public class BidListDTO
 
 	public void setU_id(String u_id)
 	{
+		
 		this.u_id = u_id;
 	}
 

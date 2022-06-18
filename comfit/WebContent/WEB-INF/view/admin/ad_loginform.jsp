@@ -95,14 +95,9 @@ body {
 			}
 			
 			$("#ad_id").attr("action","")
-			
-			
 			$("form").submit();
 			
-			
 		});
-		
-		
 	});
 
 </script>

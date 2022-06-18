@@ -56,6 +56,33 @@
           WHERE U_ID = REPORTED
       ) AS BANCOUNT
       FROM USER_INFORMATION
+      ORDER BY U_JOINDATE DESC
+   </select>
+   
+   <select id="adminSearchUserList" resultType="com.test.mybatis.userDTO">
+		SELECT U_ID, U_EMAIL, U_NAME, U_NICKNAME, U_TEL, U_JOINDATE, 
+		(
+		  SELECT COUNT(*) AS COUNT
+		  FROM
+		  (
+		  SELECT BAN_ID, BAN_DATE, REPORTED, REPORTER
+		  FROM DIRECT_TRANS_BANNED_VIEW
+		  UNION
+		  SELECT BAN_ID, BAN_DATE, REPORTED, REPORTER
+		  FROM DELIVERY_TRANS_BANNED_VIEW
+		  UNION
+		  SELECT BAN_ID, BAN_DATE, REPORTED, REPORTER
+		  FROM DIRECT_PD_BANNED_VIEW
+		  UNION
+		  SELECT BAN_ID, BAN_DATE, REPORTED, REPORTER
+		  FROM DELIVERY_PD_BANNED_VIEW
+		  )
+		  WHERE U_ID = REPORTED
+		) AS BANCOUNT
+		FROM USER_INFORMATION
+		WHERE u_name = u_name and u_name LIKE '%' || #{searchvalue} || '%'
+		OR U_EMAIL = U_EMAIL and U_EMAIL LIKE '%' || #{searchvalue} || '%'
+		OR U_NICKNAME = U_NICKNAME and U_NICKNAME LIKE '%' || #{searchvalue} || '%'
    </select>
    
    <select id="adminUseroutList" resultType="com.test.mybatis.useroutDTO">

@@ -40,7 +40,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM DIRECT_BOX5_VIEW
 		WHERE PD_NUM = #{pd_num}
 	</select>	
-	
+		
 	
 	
 	<select id="adminProductDirectList_1" resultType="com.test.mybatis.adProductDTO">
@@ -72,6 +72,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM TOTAL_DIRECT_VIEW5
 		WHERE PD_NUM = #{pd_num}
 	</select>		
+	
+	<select id="adminProductSearchList" resultType="com.test.mybatis.adProductDTO">
+		SELECT ROWNUM, PD_NUM, PD_ID, CATEGORY_NAME, PD_REGIT_DATE, U_ID, PD_TITLE, DEAL_TYPE, DEAL_STATUS
+		FROM TOTAL_PRODUCT_VIEW
+		WHERE PD_NUM IS NOT NULL
+		AND CATEGORY_NAME = CATEGORY_NAME and CATEGORY_NAME LIKE '%' || #{searchvalue} || '%'
+		OR U_ID = U_ID and U_ID LIKE '%' || #{searchvalue} || '%'
+		OR PD_TITLE = PD_TITLE and PD_TITLE LIKE '%' || #{searchvalue} || '%'
+	</select>	
+	
+
 	
 			
 </mapper>

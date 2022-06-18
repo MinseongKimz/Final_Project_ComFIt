@@ -14,13 +14,14 @@
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/main.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
-
 	$(document).ready(function()
 	{
 		//alert("테스트");
 		
 		$("#searchBtn").click(function()
 		{
+			
+			//alert("확인");
 			
 			// 카테고리 설정 안하고 검색했을때 걸러내기
 			if ($(".listselect").val() == "카테고리")
@@ -29,28 +30,12 @@
 				return;
 			}
 			
-			alert($("#listselect").val()); //u_email, 
+			alert($(".listselect").val()); //u_email, 
 			alert($("#searchvalue").val()); //서치값
-			
-			// 분기
-			/*
-			if ($(".listselect").val()=='u_nickname')
-			{
-				$(location).attr("href", "admin_usersearch.action?u_nickname="+$("#searchvalue").val());
-			}
-			else if ($(".listselect").val()=='u_mail') 
-			{
-				$(location).attr("href", "admin_usersearch.action?e_mail="+$("#searchvalue").val());				
-			}
-			else
-			{
-				$(location).attr("href", "admin_usersearch.action?u_name="+$("#searchvalue").val());	
-			}
-			*/
 			
 			$(location).attr("href", "/comfit/admin_usersearchlist.action?listselect="+$("#listselect").val()+"&searchvalue="+$("#searchvalue").val());
 			
-		});
+		})
 		
 		$(".userblock").change(function()
 		{
@@ -60,12 +45,8 @@
 			
 			$(location).attr('href', '/admin_userblock.action');
 			
-		});
-		
-		
-		
+		});		
 	});
-
 </script>
 
 </head>
@@ -137,7 +118,14 @@
 				</tr>
 			</thead>
 			<tbody style="background-color: white;">
-				<c:forEach var="user" items="${userList }">
+
+			<c:if test="${empty usersearchList}">
+				<tr>
+					<td colspan="9"><h3 style="text-align: center;">작성된 게시글이 없습니다.</h3></td>
+				</tr>
+			</c:if>
+			<c:if test="${not empty usersearchList}">
+				<c:forEach var="user" items="${usersearchList}">
 					<tr>
 						<td>${user.u_id }</td>
 						<td>${user.u_email }</td>
@@ -147,8 +135,6 @@
 						<td>1LV</td>
 						<td>${user.u_joindate }</td>
 						<td style="margin-left: 20px">
-						
-							<!-- 셀렉트박스 -->
 							<div style="text-align: center;">
 							<select class="form-select userblock" style="width: 80%; display: inline-block;">
 							    <option selected>정상</option>
@@ -159,9 +145,11 @@
 							</select>
 							</div>											
 						</td>
-						<td>${user.bancount }</td>
+						<td>${user.bancount }</td>					
 					</tr>
 				</c:forEach>
+			</c:if>		
+
 			</tbody>
 		</table>
 
@@ -230,4 +218,4 @@
 </div>
 
 </body>
-</html>
+</html> 

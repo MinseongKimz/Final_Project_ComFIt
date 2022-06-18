@@ -61,7 +61,7 @@
 			<tbody>
 			<c:forEach var="moneylist" items="${moneylist}">
 				<tr>
-					<td>${moneylist.u_email }</td>
+					<td>afdj12</td>
 					<td>${moneylist.u_name }</td>
 					<td>${moneylist.io_type }</td>
 					<td>${moneylist.io_date }</td>

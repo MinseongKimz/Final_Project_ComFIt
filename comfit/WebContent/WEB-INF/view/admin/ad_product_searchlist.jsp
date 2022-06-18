@@ -28,24 +28,8 @@
 				return;
 			}
 			
-			alert($("#listselect").val()); //u_email, 
-			alert($("#searchvalue").val()); //서치값
-			
-			// 분기
-			/*
-			if ($(".listselect").val()=='u_nickname')
-			{
-				$(location).attr("href", "admin_usersearch.action?u_nickname="+$("#searchvalue").val());
-			}
-			else if ($(".listselect").val()=='u_mail') 
-			{
-				$(location).attr("href", "admin_usersearch.action?e_mail="+$("#searchvalue").val());				
-			}
-			else
-			{
-				$(location).attr("href", "admin_usersearch.action?u_name="+$("#searchvalue").val());	
-			}
-			*/
+			alert($(".listselect").val());
+			alert($("#searchvalue").val());
 			
 			$(location).attr("href", "/comfit/admin_product_searchlist.action?listselect="+$("#listselect").val()+"&searchvalue="+$("#searchvalue").val());
 			

@@ -64,7 +64,7 @@ h5
 		$("#Ok_btn").click(function()
 		{
 			
-			if (parseInt($("#resultPoint").val()) < parseInt($("#output_Money").val())
+			if (parseInt($("#resultPoint").val()) < parseInt($("#output_Money").val()))
 			{
 				alert("잔액이 부족합니다.");
 				return;
@@ -75,13 +75,14 @@ h5
 			$("#outcheck").text(outpoint);
 			$("#result_point").text(minus);	
 			
+			$("#outMoney_btn").click(function()
+			{
+				$("#outMoneyForm").submit();
+			})
 		})
 		
 		
-		$("#outMoney_btn").click(function()
-		{
-			$("#outMoneyForm").submit();
-		})
+		
 		
 	})
 	

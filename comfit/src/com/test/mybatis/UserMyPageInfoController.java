@@ -225,15 +225,20 @@ public class UserMyPageInfoController
 	
 
 	
-	// 마이페이지 출금 폼 액션
+	// 마이페이지 출금페이지로 이동 & 은행리스트 폼 액션
 	@RequestMapping(value = "/outputmoneyform.action", method = RequestMethod.GET)
-	public String outputMoney(Model model)
+	public String outputMoney(Model model, HttpServletRequest request)
 	{
 		String result = null;
 		
-		IUserMyPage dao = sqlSession.getMapper(IUserMyPage.class);
+		HttpSession session = request.getSession();
+		String u_id = (String)session.getAttribute("u_id");
 		
-		model.addAttribute("bankList", dao.bankList());
+		IUserMyPage mypage = sqlSession.getMapper(IUserMyPage.class);
+		
+		model.addAttribute("bankList", mypage.bankList());
+		model.addAttribute("point", mypage.myPoint(u_id));
+		model.addAttribute("u_id", u_id);
 		
 		result = "/WEB-INF/view/user/mypage/user_mypage_point_output.jsp";
 		
@@ -241,6 +246,29 @@ public class UserMyPageInfoController
 	}
 	
 	
+
+	
+	// 마이페이지 출금 액션 처리
+	@RequestMapping(value = "/outMoney.action", method = RequestMethod.POST)
+	public String outMoney(Model model, OutMoneyDTO dto)
+	{
+		String result = null;
+		
+		IUserMyPage dao = sqlSession.getMapper(IUserMyPage.class);
+		
+		dao.outMoney(dto);
+		
+		result = "redirect:user_mypage.action";
+		
+		return result;
+				
+				
+	}
+	
+	
+	
+	
+
 	//마이페이지 프로필 사진 변경 액션
 	@RequestMapping(value = "/changeprofileform.action", method = RequestMethod.GET)
 	public String changeProfileForm(Model model, @RequestParam("u_id") String u_id)
@@ -289,5 +317,6 @@ public class UserMyPageInfoController
 		return "alert.jsp";
 		
 	}
+
 	
 }

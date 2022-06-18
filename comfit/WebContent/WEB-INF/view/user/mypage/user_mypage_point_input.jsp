@@ -59,17 +59,39 @@
 </style>
 
 <script type="text/javascript">
+
 	
 	$(function()
 	{
-		//alert("gfd");
 		$("#payBtn").click(function()
 		{
 			$("#virtualAccount").css("display", "inline");
 			$("#virtualAccount2").css("display", "inline");
 		});
+	})
+	
+	
+	$(function()
+	{
+		
+		$("#checkMoney_btn").click(function()
+		{
+			var input_money = $("#in_money").val();
+			var point = $("#user_point").val();
+			var result = input_money + point;
+			
+			$("#money_span").text(input_money);
+			$("#result_point").text(result);
+		})
+		
+		$("#insertMoney_btn").click(function()
+		{
+			$("#insertMoney_Form").submit();
+		})
 		
 	})
+	
+	
  
 </script>
 
@@ -94,45 +116,55 @@
 	<div style="width: 30%; display: inline-block;">
 		<p class="ibgum" style="font-size: 18pt; font-weight: bolder;">입금하기</p>
 		
-		<!-- 테이블  -->
-		<table class="table table-bordered" style="width: 100%; display: inline-table;">
-			<tr>
-				<th colspan="2">보유금액</th><th class="ibgum">${point }P</th>
-			</tr>
-			<tr>
-				<td colspan="3">
-					<input type="text" class="form-control" placeholder="입금 금액을 입력하세요"
-										id="needMoney" style="float: left; width: 95%;">원
-				</td>
-			</tr>
-			<tr>
-				<th colspan="3">충전 수단</th> 
-			</tr>
-			<tr>
-			<td colspan="3" style="text-align: center;">
-			<button class="btn btn-secondary" style="margin-right: 5%"
-			disabled="disabled">카카오페이</button>
-			<button class="btn btn-secondary" style="margin-right: 5%"
-			disabled="disabled">네이버페이</button>
-			<button class="btn btn-primary" id="payBtn">무통장입금</button></td>
-			</tr>
-			<tr>
+		<form action="insertmoney.action" method="post" id="insertMoney_Form">
+		
+		<!-- u_id 받아놓는 보이지않는 input -->
+		<input type="text" name="u_id" style="display: none;" value="${u_id }"/>
+		
+			<!-- 테이블시작 -->
+			<table class="table table-bordered" style="width: 100%; display: inline-table;">
+				<tr>
+					<th colspan="2">보유금액</th><th class="ibgum" id="user_point">${point }P</th>
+				</tr>
+				<tr>
+					<td colspan="3">
+						<input type="text" class="form-control" placeholder="입금 금액을 입력하세요"
+						id="in_money" name="in_money" style="float: left; width: 95%;">원
+					</td>
+				</tr>
+				<tr>
+					<th colspan="3">충전 수단</th> 
+				</tr>
+				<tr>
 				<td colspan="3" style="text-align: center;">
-					<p id="virtualAccount">김상기님의 가상 계좌 : 
-					941602-00-228699</p>
-					<br>
-					<p id="virtualAccount2">30분내 입금 부탁드립니다.</p>
-				</td>						
-			</tr>
-			<tr>
-				<td colspan="3" style="text-align: center;">
-					<button class="btn btn-primary" style="margin-right: 5%; width: 100px;"
-					data-bs-toggle="modal" data-bs-target="#depositOk"
-					>확인</button>
-					<button class="btn btn-secondary"  style="width: 100px;">취소</button>
-				</td>
-			</tr>
-		</table>
+				
+				<!-- 카카오페이,네이버페이 버튼 없애는게 나을거같음 -->
+				<!-- 
+				<button class="btn btn-secondary" style="margin-right: 5%"
+				disabled="disabled">카카오페이</button>
+				<button class="btn btn-secondary" style="margin-right: 5%"
+				disabled="disabled">네이버페이</button>
+				-->
+				<button type="button" class="btn btn-primary" id="payBtn" style="width: 70%;">입금 가상계좌 보기</button></td>
+				</tr>
+				<tr>
+					<td colspan="3" style="text-align: center;">
+						<p id="virtualAccount"><${u_name }>님의 가상 계좌 : 
+						941602-00-228699</p>
+						<br>
+						<p id="virtualAccount2">30분내 입금 부탁드립니다.</p>
+					</td>						
+				</tr>
+				<tr>
+					<td colspan="3" style="text-align: center;">
+						<button type="button" class="btn btn-primary" id="checkMoney_btn" style="margin-right: 5%; width: 100px;"
+						data-bs-toggle="modal" data-bs-target="#depositOk"
+						>확인</button>
+						<button type="button" class="btn btn-secondary" onclick="location.href='user_moneylist.action'" style="width: 100px;">취소</button>
+					</td>
+				</tr>
+			</table>
+		</form>
 	</div>
 </div>
 
@@ -144,12 +176,12 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-         <h3><span class="ibgum">40,000</span> P 가 입금되었습니다.</h3><br />
+         <h3><span class="ibgum" id="money_span"></span> P 가 입금되었습니다.</h3><br />
          
-         잔여 포인트 : <span class="ibgum">80,000</span> p<br />
+         잔여 포인트 : <span class="ibgum" id="result_point" ></span> p<br />
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" aria-label="Close" data-bs-dismiss="modal">확인</button>
+        <button type="button" class="btn btn-primary" id="insertMoney_btn" aria-label="Close" data-bs-dismiss="modal">확인</button>
       </div>
     </div>
   </div>

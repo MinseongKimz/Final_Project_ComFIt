@@ -36,12 +36,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    ELSE '에러' END AS INOUT
 		FROM MONEY_INOUT_VIEW
 		WHERE U_ID = #{u_id}
+		ORDER BY M_DATE DESC
+		
 	</select>
 	
 	<select id="myPoint" resultType="java.lang.Integer">
 		SELECT POINT
 		FROM ALL_USER_POINT_VIEW
 		WHERE U_ID = #{u_id}
+	</select>
+	
+	<select id="nameSearch" resultType="java.lang.String">
+		select u_name
+		FROM USER_INFORMATION
+		where u_id = #{u_id}
+	</select>
+	
+	<insert id="insertMoney">
+		INSERT INTO INPUT_MONEY(IN_M_ID, IN_MONEY, IN_DATE, IN_ACCOUNT, U_ID, BANK_ID)
+		VALUES(CONCAT('inm_', INPUT_MONEY_SEQ.NEXTVAL), #{in_money}, SYSDATE, '941602-00-228699', #{u_id}, 4)
+	</insert>
+	
+	<!-- 은행 리스크 select option 출력 -->
+	<select id="bankList" resultType="com.test.mybatis.BankDTO">
+		SELECT BANK_ID, BANK_NAME
+		FROM BANK
 	</select>
 	
 	<select id="sellList" resultType="com.test.mybatis.MypageProductDTO">

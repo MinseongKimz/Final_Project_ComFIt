@@ -74,8 +74,10 @@ public interface IProduct
 	
 	// 직거래 조건확인
 	public String sugCheck(String pd_id);
+
 	public int selCheck(String pd_id);
 	public int slCheck(String pd_id);
 	public int usCheck(SuggestUserDTO su);
+
 }
 	

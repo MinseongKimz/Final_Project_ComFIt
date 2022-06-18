@@ -232,6 +232,7 @@
 	     FROM SELECT_CHECK_VIEW
 	    WHERE PD_ID = #{pd_id}
 	</select>
+
 	<select id="slCheck" resultType="java.lang.Integer">
 		SELECT COUNT(*) AS SL_CHECK
 		 FROM SUGGEST_LIST

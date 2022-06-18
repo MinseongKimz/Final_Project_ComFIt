@@ -13,4 +13,7 @@ public interface IUserMyPage
 	public ArrayList<MypageProductDTO> sellList(String u_id); 
 	public ArrayList<MypageProductDTO> buyList(String u_id); 
 	public int changeProfile(userDTO dto);
+	public String nameSearch(String u_id);
+	public int insertMoney(insertMoneyDTO dto);
+	public ArrayList<BankDTO> bankList();
 }

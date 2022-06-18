@@ -38,8 +38,6 @@ public class PdSelectController
 		// 구매자인지 판매자인지 체크값
 		int check_id = 0;
 		
-		
-		
 		// 로그인해서 진입한 회원이 구매제안을 했다면 -- 특정값 반환, 구매자이면서 -> 구매제안했으면, 더이상 구매제안 불가
 		int us_check = 0;
 		
@@ -53,6 +51,7 @@ public class PdSelectController
 				// SELECT (채택) 되었는지?
 				int sel_Check = dao.selCheck(pd_id);
 				int sel_Check2 = sel_Check;
+				System.out.println(sel_Check2);
 				// 제안코드따오기(채택된 상품을 보여주기 위함)
 				String suggest_code = dao.sugCheck(pd_id);
 				
@@ -60,6 +59,7 @@ public class PdSelectController
 				su.setPd_id(pd_id);
 				su.setU_id(u_id);
 				
+				int end_day = dao.end_day(pd_id);
 				
 				// 판매자라면 1반환
 				userId = dao.direuserId(pd_id);
@@ -76,6 +76,7 @@ public class PdSelectController
 
 				
 				session.setAttribute("check_id", check_id);
+				model.addAttribute("end_day", end_day);
 				model.addAttribute("sel_Check2", sel_Check2);
 				model.addAttribute("sl_check", sl_check);
 				model.addAttribute("us_check", us_check);
@@ -99,6 +100,16 @@ public class PdSelectController
 				// 나의 입찰이 있다면..
 				int ub_Check = dao.ub_Check(dto);
 				
+				// 입찰 목록이 존재한다면
+				int buy_count = dao.buy_count(pd_id);
+				int final_price = 0;
+				if (buy_count != 0)
+					final_price = dao.final_price(pd_id);
+				
+				int bs_check = dao.bsCheck(dto);
+				
+				
+				System.out.println(buy_count);
 				userId = dao.deliuserId(pd_id);
 				
 				
@@ -106,7 +117,10 @@ public class PdSelectController
 					check_id = 1;
 				
 				session.setAttribute("check_id", check_id);
+				model.addAttribute("buy_count", buy_count);
+				model.addAttribute("final_price", final_price);
 				model.addAttribute("ub_Check", ub_Check);
+				model.addAttribute("bs_check", bs_check);
 				model.addAttribute("end_date", end_date);
 				model.addAttribute("bidList", dao.bidList(pd_id));
 				model.addAttribute("dlPdList", dao.dlPdList(pd_id));
@@ -163,7 +177,7 @@ public class PdSelectController
 		return result;
 	}
 	
-	// 구매제안 폼에서 구매제안하면
+	// 입찰폼 에서 입찰하면
 	@RequestMapping(value = "/bid_place.action", method = RequestMethod.GET)
 	public String bidPlace(Model model, String pd_id, HttpServletRequest request)
 	{
@@ -183,7 +197,26 @@ public class PdSelectController
 	}
 	
 	
-	
+	// 경매 에서 즉시구매하면
+	@RequestMapping(value = "/buy_place.action", method = RequestMethod.GET)
+	public String buyPlace(Model model, String pd_id, String imdPrice, HttpServletRequest request)
+	{
+		String result = "";
+		try
+		{
+			
+			model.addAttribute("pd_id", pd_id);
+			model.addAttribute("imdPrice", imdPrice);
+			System.out.println(pd_id);
+			result = "WEB-INF/view/user/main/buyNow_place.jsp";	
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+			
+		return result;
+	}
 	
 	
 	

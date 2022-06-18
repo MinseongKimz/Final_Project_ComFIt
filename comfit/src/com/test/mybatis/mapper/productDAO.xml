@@ -167,8 +167,15 @@
 		SELECT BID_CODE, U_NICKNAME, PRICE, BID_DATE, ADDRESS, PROFILE
 		FROM BID_LIST_REALVIEW
 		WHERE DELI_PD_ID = #{pd_id}
+		ORDER BY PRICE DESC
 	</select>
-
+	
+	<select  id="buy_count" resultType="java.lang.Integer">
+		SELECT COUNT(*) AS BUY_COUNT
+	     FROM BID_SUCCESS BS JOIN BID_LIST BL
+              ON BS.BID_CODE = BL.BID_CODE
+	          WHERE BL.DELI_PD_ID = #{pd_id}
+	</select>
 	<select id="suggestList" resultType="com.test.mybatis.SuggestListDTO">
 		SELECT SUGGEST_CODE, U_NICKNAME, PRICE, SUGGEST_TIME, SUGGEST_PLACE, PLACE_DETAIL, SUGGEST_DATE, PROFILE
 	  	  FROM SUGGEST_LIST_REALVIEW
@@ -252,6 +259,27 @@
 	SELECT COUNT(*) AS US_CHECK
 	  FROM SUGGEST_LIST
 	 WHERE DIRE_PD_ID = #{pd_id} AND U_ID = #{pd_id}
+	</select>
+	<insert id="add_buy">
+		INSERT INTO BID_SUCCESS(BS_ID, BID_CODE)
+	    VALUES(CONCAT('bs_', BS_SEQ.NEXTVAL), #{bid_code})
+	</insert>
+	<select id="bsCheck" resultType="java.lang.Integer">
+		SELECT COUNT(*) AS BS_COUNT
+		 FROM BID_SUCCESS BS JOIN BID_LIST BL
+     		  ON BS.BID_CODE = BL.BID_CODE
+		WHERE BL.DELI_PD_ID = #{pd_id} AND BL.U_ID = #{u_id}
+	</select>
+	<select id="final_price" resultType="java.lang.Integer">
+	SELECT BL.BID_PRICE AS FINAL_PRICE
+	 FROM BID_SUCCESS BS JOIN BID_LIST BL
+       ON BS.BID_CODE = BL.BID_CODE
+	WHERE BL.DELI_PD_ID = #{pd_id}
+	</select>
+	<select id="end_day" resultType="java.lang.Integer">
+		SELECT ROUND(PD_HOPE_EDATE - SYSDATE) AS END_DATE
+		  FROM DIRECT_PRODUCT
+		 WHERE DIRE_PD_ID = #{pd_id}
 	</select>
 </mapper>
 

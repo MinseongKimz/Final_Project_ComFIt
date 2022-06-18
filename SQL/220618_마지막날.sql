@@ -54,6 +54,8 @@ IS
     V_POINT             NUMBER := 0;
     V_HIGHPRICE         NUMBER := 0;
     V_BID_CHECK         NUMBER := 0; 
+    V_ST_PRICE          NUMBER := 0;
+    V_IMD_PRICE         NUMBER := 0;
     USER_DEFINE_ERROR   EXCEPTION;
 BEGIN
     
@@ -61,7 +63,8 @@ BEGIN
     SELECT U_POINT INTO V_POINT
     FROM ALL_USER_POINT_VIEW2
     WHERE U_ID = V_U_ID;
-  
+    
+    -- 포인트가 입력한 가격보다 적다면 미입력
     IF V_POINT < V_PRICE
         THEN RAISE USER_DEFINE_ERROR;
     END IF;
@@ -72,31 +75,51 @@ BEGIN
      FROM BID_LIST
     WHERE DELI_PD_ID = V_DELI_PD_ID;
     
-     -- 있다면 가격확인 V_HIGHPRICE
-    SELECT B.BID_PRICE INTO V_HIGHPRICE
-     FROM
-        (
-        SELECT BID_PRICE, RANK() OVER(ORDER BY BID_PRICE DESC) AS RANK
-        FROM BID_LIST
-        WHERE DELI_PD_ID = V_DELI_PD_ID
-        )B
-    WHERE B.RANK = 1;
+    -- 시작가격확인
+    SELECT PD_START_PRICE INTO V_ST_PRICE
+     FROM DELIVERY_PRODUCT
+    WHERE DELI_PD_ID = V_DELI_PD_ID;
     
-    -- 없다면 바로 인서트
-    IF V_BID_CHECK = 0
-        THEN    -- 입력
-            INSERT INTO BID_LIST(BID_CODE, BID_PRICE, ADDRESS, ADDR_DETAIL, U_ID, DELI_PD_ID)
-            VALUES (CONCAT('deli_', TO_CHAR(BID_SEQ.NEXTVAL) ), V_PRICE, V_ADDRESS, V_ADDR_DETAIL, V_U_ID, V_DELI_PD_ID);
-    ELSIF  V_PRICE > V_HIGHPRICE
-        THEN INSERT INTO BID_LIST(BID_CODE, BID_PRICE, ADDRESS, ADDR_DETAIL, U_ID, DELI_PD_ID)
-             VALUES (CONCAT('bid_', TO_CHAR(BID_SEQ.NEXTVAL)), V_PRICE, V_ADDRESS, V_ADDR_DETAIL, V_U_ID, V_DELI_PD_ID);
-    ELSE  RAISE USER_DEFINE_ERROR;        
+    -- 즉시구매가 확인
+    SELECT IMD_PRICE INTO V_IMD_PRICE
+     FROM DELIVERY_PRODUCT
+    WHERE DELI_PD_ID = V_DELI_PD_ID;
+    
+    IF V_IMD_PRICE < V_PRICE
+        THEN RAISE USER_DEFINE_ERROR;
     END IF;
     
+     -- 있다면 가격확인 V_HIGHPRICE
+    IF V_BID_CHECK != 0
+        THEN
+         SELECT B.BID_PRICE INTO V_HIGHPRICE
+          FROM
+            (
+             SELECT BID_PRICE, RANK() OVER(ORDER BY BID_PRICE DESC) AS RANK
+             FROM BID_LIST
+             WHERE DELI_PD_ID = V_DELI_PD_ID
+            )B
+          WHERE B.RANK = 1;
+    END IF;
+
+    
+    -- 입찰리스트 존재하면서, 제안한 가격이 기존에 입찰한 최고가보다 높다면 바로 인서트
+    IF V_BID_CHECK != 0 AND V_PRICE > V_HIGHPRICE AND V_PRICE > V_ST_PRICE        
+        THEN    -- 입력
+            INSERT INTO BID_LIST(BID_CODE, BID_PRICE, ADDRESS, ADDR_DETAIL, U_ID, DELI_PD_ID)
+            VALUES (CONCAT('bid_', TO_CHAR(BID_SEQ.NEXTVAL) ), V_PRICE, V_ADDRESS, V_ADDR_DETAIL, V_U_ID, V_DELI_PD_ID);
+    -- 입찰리스트에 존재하지 않으면서(첫번째입찰이면서) 제안한 가격이 시작가보다 높다면 바로 인서트            
+    ELSIF V_BID_CHECK = 0 AND V_PRICE > V_ST_PRICE        
+        THEN
+            INSERT INTO BID_LIST(BID_CODE, BID_PRICE, ADDRESS, ADDR_DETAIL, U_ID, DELI_PD_ID)
+            VALUES (CONCAT('bid_', TO_CHAR(BID_SEQ.NEXTVAL) ), V_PRICE, V_ADDRESS, V_ADDR_DETAIL, V_U_ID, V_DELI_PD_ID);
+    ELSE   
+        RAISE USER_DEFINE_ERROR;
+    END IF;
+    
+       
     COMMIT;    
-     
-    
-    
+
     EXCEPTION
         WHEN USER_DEFINE_ERROR
             THEN RAISE_APPLICATION_ERROR(-20003, '인서트오류 발생');
@@ -106,17 +129,48 @@ BEGIN
 END ADD_BID;
 --==>> Procedure ADD_BID이(가) 컴파일되었습니다.
 
--- ○ 입찰 프로시저 호출
-EXEC ADD_BID( 156000, '인천광역시 중구 신포2동', '아파트앞삼거리', 'test2', 'deli_1');     
+-- ○ 입찰 프로시저 호출(1) 입찰 가격이 시작가보다 낮은경우
+EXEC ADD_BID( 1, '인천광역시 중구 신포2동', '아파트앞삼거리', 'test36', 'deli_20');     
+--==>> ORA-20003: 인서트오류 발생
+-- ○ 입찰 프로시저 호출(2) 내 포인트보다 많이 입찰시도하는 경우
+EXEC ADD_BID( 333333333, '인천광역시 중구 신포2동', '아파트앞삼거리', 'test36', 'deli_20');    
+--==>> ORA-20003: 인서트오류 발생
+-- ○ 입찰 프로시저 호출(3) 정상적으로 입찰하는 경우
+EXEC ADD_BID( 200003, '인천광역시 중구 신포2동', '아파트앞삼거리', 'test36', 'deli_20');    
+--==>> PL/SQL 프로시저가 성공적으로 완료되었습니다.
+SELECT *
+ FROM BID_LIST;
+WHERE DELI_PD_ID = 'deli_20';
+--==>> deli_9	2022-06-19	200003	인천광역시 중구 신포2동	아파트앞삼거리	test36	deli_20	1    
+-- ○ 입찰 프로시저 호출(4) 기존 가격보다 적게하는 경우
+EXEC ADD_BID( 200001, '인천광역시 중구 신포2동', '아파트앞삼거리', 'test36', 'deli_20');        
+--==>> ORA-20003: 인서트오류 발생
+COMMIT;
+
+--==>> 입찰최고가 추출 
+SELECT B.BID_PRICE
+     FROM
+        (
+         SELECT BID_PRICE, RANK() OVER(ORDER BY BID_PRICE DESC) AS RANK
+         FROM BID_LIST
+         WHERE DELI_PD_ID = 'deli_20'
+        )B
+     WHERE B.RANK = 1; 
+    
+SELECT IMD_PRICE
+FROM DELIVERY_PRODUCT
+WHERE DELI_PD_ID = 'deli_20';
 
 -- ○ 포인트조회
 SELECT *
 FROM ALL_USER_POINT_VIEW2;
 
 -- ○ 해당 상품에 입찰이 있는지 반환
-SELECT COUNT(*)
+SELECT *
  FROM BID_LIST
 WHERE DELI_PD_ID = 'deli_1';
+
+ROLLBACK;
 
 SELECT *
 FROM BID_LIST;
@@ -155,8 +209,45 @@ SELECT (PD_REGIT_DATE+5) AS REMAIN_DATE
 ) ;
 
 
+-- ○ 구매제안 프로시저 생성
+-- 입찰 점검 완료 -> 즉시구매가로 입찰
+-- 입찰완료되면
+-- 입찰성공 테이블에 인서트(BS_ID, BID_CODE)
+INSERT INTO BID_SUCCESS(BS_ID, BID_CODE)
+VALUES(CONCAT('bs_', BS_SEQ.NEXTVAL), (SELECT BID_CODE
+                                         FROM BID_LIST
+                                        WHERE BID_CODE = 'deli_9'));
+ROLLBACK;
+SELECT *
+FROM SEQ;
+COMMIT;
+SELECT BID_CODE
+FROM BID_LIST
+WHERE BID_CODE = 'deli_9';
+
+CREATE SEQUENCE BS_SEQ
+NOCACHE;
+--==>> Sequence BS_SEQ이(가) 생성되었습니다.
+
+SELECT *
+FROM BID_SUCCESS;
 
 
+INSERT INTO BID_SUCCESS(BS_ID, BID_CODE)
+VALUES(CONCAT('bs_', BS_SEQ.NEXTVAL), BID_CODE);
+
+SELECT * FROM BID_LIST WHERE BID_CODE = 'bid_9'
+;
+                                        
+DELETE
+FROM BID_LIST
+WHERE BID_CODE = 'deli_15';                                        
+
+COMMIT;
+
+FROM BID_SUCCESS
+WHERE BS_ID = 'bis_3';
+COMMIT;
 -- ○ 해당 상품에 해당 회원이 구매제안을 했다면 :
 SELECT COUNT(*) AS US_CHECK
 FROM SUGGEST_LIST
@@ -186,8 +277,58 @@ FROM DELI_COMPLETE_SELL DCS JOIN BID_SUCCESS BS
 ) US;
 --==>> View USER_SELL_COUNT_VIEW이(가) 생성되었습니다.
 
+SELECT BID_CODE, U_NICKNAME, PRICE, BID_DATE, ADDRESS, PROFILE
+		FROM BID_LIST_REALVIEW
+		WHERE DELI_PD_ID = 'deli_20'
+		ORDER BY PRICE desc;
 
 COMMIT;
 
+
+SELECT * FROM BID_LIST WHERE DELI_PD_ID = 'deli_20' AND U_ID = 'test33';
+
+SELECT *
+FROM BID_SUCCESS;
+WHERE BS_ID ='bs_4';
+
+DELETE
+FROM BID_LIST;
+
+DELETE
+FROM BID_LIST
+WHERE BID_CODE = 'bid_16';
+-- ○ 해당 상품이 낙찰 되었는지 조회
+SELECT BS.BS_ID AS BS_ID, BS.BID_CODE AS BID_CODE, BL.BID_PRICE AS FINAL_PRICE
+     , BL.U_ID AS U_ID, BL.DELI_PD_ID AS PD_ID
+FROM BID_SUCCESS BS JOIN BID_LIST BL
+     ON BS.BID_CODE = BL.BID_CODE
+WHERE BL.DELI_PD_ID = 'deli_1' ;
+--==>> bs_1	bid_1	155000	test1	deli_1
+
+
+COMMIT;
+-- ○ 해당 상품이 낙찰 되었는지 조회
+SELECT COUNT(*) AS BUY_COUNT
+FROM BID_SUCCESS BS JOIN BID_LIST BL
+     ON BS.BID_CODE = BL.BID_CODE
+WHERE BL.DELI_PD_ID = 'deli_1';
+
+-- ○ 해당 상품을 입찰한 사람이 낙찰하였는지 조회
+SELECT COUNT(*) AS BS_COUNT
+FROM BID_SUCCESS BS JOIN BID_LIST BL
+     ON BS.BID_CODE = BL.BID_CODE
+WHERE BL.DELI_PD_ID = 'deli_20' AND BL.U_ID = 'test33';
+SELECT *
+FROM BID_LIST;
+
+-- ○ 낙찰된 상품의 입찰코드와 가격을 조회
+SELECT BL.BID_CODE, BL.BID_PRICE AS FINAL_PRICE
+FROM BID_SUCCESS BS JOIN BID_LIST BL
+      ON BS.BID_CODE = BL.BID_CODE
+WHERE BL.DELI_PD_ID = 'd320';      
+
+SELECT ROUND(SYSDATE - PD_HOPE_EDATE) AS END_DATE
+FROM DIRECT_PRODUCT
+WHERE DIRE_PD_ID = 'dire_1';
 
 

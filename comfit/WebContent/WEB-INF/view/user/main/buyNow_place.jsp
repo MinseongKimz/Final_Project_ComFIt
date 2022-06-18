@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>입찰</title>
+<title>즉시구매</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -27,10 +27,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
-    function bid()
+    function buy()
    {
-		var suggest_price = document.getElementById("price").value;
-		alert(suggest_price);
+		var price = document.getElementById("price").value;
+		alert(price);
 		
 		var address = document.getElementById("address").value;
 		alert(address);
@@ -44,10 +44,10 @@
 		var pd_id = document.getElementById("pd_id").value;
 		alert(pd_id);
 		 
-		var url = "suggest_price=" + suggest_price + "&address=" + address
+		var url = "price=" + price + "&address=" + address
 				+ "&addr_detail=" + addr_detail + "&u_id="+u_id + "&pd_id=" +pd_id;
 		
-		location.href = "bid.action?"+url;
+		location.href = "buy.action?" + url;
 		
  
 	}
@@ -141,15 +141,17 @@
   				     <label for="addr2">장소상세</label>
   				</th>
   				<td colspan="2">
-  				     <input type="text" class="form-control" name="addr_detail" id="addr_detail" style="width: 300px; height: 35px;"/>
+  				     <input type="text" class="form-control" name="addr_detail" id="addr_detail" style="width: 300px; height: 35px;"
+  				     required="required"/>
   				</td>
   			</tr>
   			<tr>
   				<th>
-  					 <label for="hope_price">제안금액</label>
+  					 <label for="hope_price">즉시구매가</label>
   				</th>
   				<td colspan="2">
- 				      <input type="text" class="form-control" id="price" style="width: 300px; height: 35px;" />
+ 				      <input type="text" class="form-control" id="price" style="width: 300px; height: 35px;" readonly="readonly"
+ 				      value="${imdPrice }" />
   				</td>
   			</tr>
 		</table>
@@ -157,7 +159,7 @@
        <%-- <button type="button" id="suggestion" class="btn-primary" style="width: 150px; height: 35px; margin-left: 20%;"
         value="${u_id }">제안하기</button> --%>
         <button type="button" id="bidding" class="btn btn-primary" style="width: 150px; height: 35px; margin-left: 20%;"
-        	value="${u_id }" onclick="bid()">입찰하기</button>
+        	value="${u_id }" onclick="buy()">즉시구매하기</button>
        <button type="reset" class="btn btn-secondary" style="width: 150px; height: 35px;">취소</button>
 	</div>
     

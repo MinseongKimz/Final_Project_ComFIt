@@ -87,7 +87,7 @@
    
    
     <!-- 검색기능 구현중 -->
-	<select id="adminSearchUserList" resultType="com.test.mybatis.userDTO">  
+	<!-- <select id="adminSearchUserList" resultType="com.test.mybatis.userDTO">  
 		SELECT U_ID, U_EMAIL, U_NAME, U_NICKNAME, U_TEL, U_JOINDATE, 
 		(
 		  SELECT COUNT(*) AS COUNT
@@ -114,7 +114,7 @@
 		and U_ID LIKE '%' || #{searchvalue} || '%'	 
 		OR U_EMAIL = U_EMAIL
 		and U_EMAIL LIKE '%' || #{searchvalue} || '%'	 	 
-	</select>   
+	</select>    -->
     
    <select id="adminUseroutList" resultType="com.test.mybatis.useroutDTO">
       SELECT U_EMAIL, U_NAME, U_NICKNAME, U_EXITDATE
@@ -158,9 +158,7 @@
 		ON A.ASK_CATE_ID = AC.ASK_CATE_ID
 	</select>  	
 	
-	<insert id="AskInsert">
-	
-	</insert>
+
 
    <!-- 
    <insert id="add">

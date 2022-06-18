@@ -145,7 +145,7 @@ public class AdminController
 
       IAdmin dao = sqlSession.getMapper(IAdmin.class);
 
-      model.addAttribute("usersearchList", dao.adminSearchUserList(searchvalue));
+     // model.addAttribute("usersearchList", dao.adminSearchUserList(searchvalue));
       //model.addAttribute("productlistdelivery1", dao.adminProductDeliveryList_1(pd_num));
 
       result = "/WEB-INF/view/admin/ad_userlist_search.jsp";

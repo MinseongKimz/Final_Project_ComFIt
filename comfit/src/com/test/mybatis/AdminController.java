@@ -9,8 +9,6 @@ package com.test.mybatis;
 
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -64,47 +62,6 @@ public class AdminController
 			return "redirect:ad_loginform.action";
 		} 
     } 
-	
-   
-    // 관리자 로그인		
-  
-    @RequestMapping("/ad_loginform.action")
-    public String adLogin() 
-    {   
-    	return "/WEB-INF/view/admin/ad_loginform.jsp";
-    }
-	 
-    
-    // 관리자 로그인 확인
-    /*
-    @RequestMapping(value = "/ad_login.action", method = RequestMethod.POST)
-    public String adminLogin(AdminLoginDTO dto, HttpServletRequest request, Model model) 
-    {  
-    	IAdmin dao = sqlSession.getMapper(IAdmin.class); 
-    	AdminLoginDTO admin = new AdminLoginDTO();
-    	
-    	try
-		{			
-        	String result = null;
-    		admin = dao.adminLogin(admin);
-    		HttpSession session = request.getSession();
-    		
-			session.setAttribute("ad_id", admin.getAd_id());
-			session.setAttribute("ad_pw", admin.getAd_pw());
-			
-			System.out.println(session.getAttribute("ad_id"));
-   
-			result = "/ad_main.action";
-			return result;
-
-    		
-		} catch (Exception e)
-		{
-			System.out.println(e.toString());
-		}
- 
-    }
-    */
 
 
    // 관리자 메인
@@ -134,9 +91,6 @@ public class AdminController
    
 
    // 관리자 유저검색
-
-   // 관리자 검색
-
    @RequestMapping(value = "/admin_usersearchlist.action", method = RequestMethod.GET)
    public String adSearchUserList(Model model, String searchvalue)
    {

@@ -6,6 +6,10 @@
 <meta charset="UTF-8">
 <title>메인화면</title>
 <link rel="stylesheet" href="css/main.css" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <style type="text/css">
 
@@ -47,6 +51,110 @@
    		background-color: #CEECF5;
    		cursor:pointer;
    }
+
+/* 메인 건드린 부분 */
+ .box {
+	 width: 1920px;
+	 height: 400px;
+	 border-radius: 0px;
+	 box-shadow: ;
+	 background: ;
+	 position: relative;
+	 overflow: ;
+	 transform: translate3d(0, 0, 0);
+}
+ .wave {
+	 opacity: 0.4;
+	 position: absolute;
+	 top: 3%;
+	 left: 50%;
+	 background: #0af;
+	 width: 2000px;
+	 height: 1920px;
+	 margin-left: -250px;
+	 margin-top: -250px;
+	 transform-origin: 50% 48%;
+	 border-radius: 43%;
+	 animation: drift 3000ms infinite linear;
+}
+ .wave.-three {
+	 animation: drift 5000ms infinite linear;
+}
+ .wave.-two {
+	 animation: drift 7000ms infinite linear;
+	 opacity: 0.3;
+	 background: cyan;
+}
+ .box:after {
+	 content: '';
+	 display: block;
+	 left: 0;
+	 top: 0;
+	 width: 100%;
+	 height: 100%;
+	 background: ;
+	 z-index: 11;
+	 transform: translate3d(0, 0, 0);
+}
+ .title {
+	 position: absolute;
+	 left: 0;
+	 top: 0;
+	 width: 100%;
+	 z-index: 1;
+	 line-height: 150px;
+	 text-align: center;
+	 transform: translate3d(0, 0, 0);
+	 color: white;
+	 text-transform: uppercase;
+	 font-family: 'Playfair Display', serif;
+	 letter-spacing: 0.4em;
+	 font-size: 24px;
+	 text-shadow: 0 1px 0 rgba(0, 0, 0, .1);
+	 text-indent: 0.3em;
+}
+ @keyframes drift {
+	 from {
+		 transform: rotate(0deg);
+	}
+	 from {
+		 transform: rotate(360deg);
+	}
+}
+
+h3 {
+  font-size: 20px;
+  min-width:px;
+  white-space: nowrap;
+  margin: 0;
+  position: fixed;
+  color: white;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+}
+
+h3::before {
+  content: "지금 나에게 딱!! 맞는 컴퓨터";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: black;
+  overflow: hidden;
+  border-right: 1px solid black;
+  animation: typing 5s steps(31) infinite;
+}
+
+@keyframes typing{
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 100%;
+  }
+} 
 
    
 </style>
@@ -226,11 +334,19 @@
 
 <!-- 220610 추가한 부분 지워도 됩니다! 큼직하게 이미지 넣는게 밀도있을 것 같아보여서 추가했어요 -->
 <section>
-  <div style="">
-  	<img src="images/comfit_main.jpg" alt=""  style="background-size: cover; width: 100%; height: 500px;" />
-      <!-- <h1 class="display-4 fw-normal">COMFIT 나에게 딱맞는 컴퓨터</h1>
-      <p class="lead fw-normal">The best choice, fast deal, trustless trust, no stress. <br />this is comfit</p>
-      <a class="btn btn-outline-secondary" href="#">Coming soon</a> -->
+  <!-- 	<img src="images/comfit_main.jpg" alt=""  style="background-size: cover; width: 100%; height: 500px;" /> -->
+  <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" style="border: ;">
+	<div class='box' style="border: 2px solid gray">
+	  <div class='wave -one'></div>
+	  <div class='wave -two'></div>
+	  <div class='wave -three'></div>
+	  <div class='title col-md-5 p-lg-5 mx-auto my-5'>
+		  <h1 class="display-4 fw-normal animate__animated animate__lightSpeedInRight"><b>COMFIT</b></h1>
+	      <!-- <p class="lead fw-normal animate__animated animate__bounceInLeft">나에게 딱! 맞는 컴퓨터</p> -->
+	      <h3>지금 나에게 딱!! 맞는 컴퓨터</h3>
+	      <a class="btn btn-outline-secondary animate__animated animate__fadeIn" href="#" style="margin-top: 50px">어서옵쇼</a>
+	  </div>
+	</div>   
   </div>
 </section>  
 <!-- 220610 추가한 부분 -->  

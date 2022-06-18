@@ -283,8 +283,8 @@ $(document).ready(function()
 			<th>물품검색<span class="star">*</span></th>
 			<td colspan="2">
 				<div><!--  class="input-group mb-6" -->
-				<span class="input-group-text" id="basic-addon1" onclick="location.href='searchproduct2.action';" style="width: 50px; display: inline-block;"><i class="bi bi-search"></i></span>
 				<input type="text" class="<!-- form-control  -->" placeholder="판매할 물품을 검색해주세요" style="height:40px; width: 260px; display: inline-block; font-style: italic;" readonly="readonly">
+				<span class="input-group-text" id="basic-addon1" onclick="location.href='searchproduct2.action';" style="width: 50px; display: inline-block;"><i class="bi bi-search"></i></span>
 				</div>
 			</td>
 		 </tr>

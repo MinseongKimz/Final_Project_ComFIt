@@ -195,6 +195,7 @@ public class UserMyPageInfoController
 			
 			IUserMyPage mypage = sqlSession.getMapper(IUserMyPage.class);
 			model.addAttribute("point", mypage.myPoint(u_id));
+			model.addAttribute("u_name", mypage.nameSearch(u_id));
 			
 			result = "/WEB-INF/view/user/mypage/user_mypage_point_input.jsp";
 		}
@@ -205,6 +206,23 @@ public class UserMyPageInfoController
 		
 		return result;
 	}
+	
+	
+	// 마이페이지 입금 실제 insert 액션
+	@RequestMapping(value = "/insertmoney.action", method = RequestMethod.POST)
+	public String insertMoney(insertMoneyDTO dto, HttpServletRequest request)
+	{
+		String result = null;
+		
+		IUserMyPage dao = sqlSession.getMapper(IUserMyPage.class);
+		
+		dao.insertMoney(dto);
+		
+		result = "redirect:user_mypage.action";
+		
+		return result;
+	}
+	
 
 	
 	// 마이페이지 출금 폼 액션
@@ -213,10 +231,63 @@ public class UserMyPageInfoController
 	{
 		String result = null;
 		
+		IUserMyPage dao = sqlSession.getMapper(IUserMyPage.class);
+		
+		model.addAttribute("bankList", dao.bankList());
+		
 		result = "/WEB-INF/view/user/mypage/user_mypage_point_output.jsp";
 		
 		return result;
 	}
 	
+	
+	//마이페이지 프로필 사진 변경 액션
+	@RequestMapping(value = "/changeprofileform.action", method = RequestMethod.GET)
+	public String changeProfileForm(Model model, @RequestParam("u_id") String u_id)
+	{
+		String result = null;		
+		
+		System.out.println(u_id);
+		
+		result = "/WEB-INF/view/user/mypage/user_mypage_changProfile.jsp";
+		
+		
+		return result;
+	}
+	
+	// 마이페이지 프로필 변경 
+	@RequestMapping(value = "/changeprofile.action", method = RequestMethod.POST)
+	public String changeProfile(HttpServletRequest request, userDTO dto, Model model)
+	{
+		try
+		{
+			String u_id = (String)request.getAttribute("u_id");
+			String u_profile = (String)request.getAttribute("u_profile");
+			
+			dto.setU_id(u_id);
+			dto.setU_profile(u_profile);
+			
+			IUserMyPage dao = sqlSession.getMapper(IUserMyPage.class);
+			
+			int result = dao.changeProfile(dto);
+			
+			if(result!=1)
+			{
+				model.addAttribute("msg", "DB 오류 발생");
+				model.addAttribute("url", "user_mypage.action");
+				return "alert.jsp";
+			}
+			
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		
+		model.addAttribute("msg", "프로필 변경 성공!!");
+		model.addAttribute("url", "user_mypage.action");
+		return "alert.jsp";
+		
+	}
 	
 }

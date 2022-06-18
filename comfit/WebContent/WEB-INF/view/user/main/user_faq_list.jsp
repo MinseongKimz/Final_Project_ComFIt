@@ -109,7 +109,7 @@ div {
 		<div style="margin-left: 30%; margin-right: 30%;">
 
 			<br />
-			<c:forEach var="faq" items="${userfaqList }">
+			<c:forEach var="faq" items="${userfaqList }" varStatus="status">
 			<div class="accordion" id="accordionExample">
 				<div class="accordion-item">
 					<h2 class="accordion-header" id="headingOne">

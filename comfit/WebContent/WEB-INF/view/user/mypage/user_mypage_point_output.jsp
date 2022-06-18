@@ -67,75 +67,73 @@ h5
 <body>
 
 
+<!--Sidebar-->
+<div style="float:left; margin-left: 10px; margin-top: 20%; position: fixed;">
+	<c:import url="/WEB-INF/view/user/main/user_sidebar.jsp" ></c:import>
+</div>
 
-<div>
-	<div class="header">
-	      <c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
-	</div>
 
-	<div class="title">
-		마이페이지
-		<br><br>
-	</div>
+
+<div class="header">
+	<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
+</div>
+
 	
+	
+<div class ="container" style="text-align: center;">
+	<p style="font-size: 28pt; font-weight: bolder;">
+		포인트 출금
+	</p>
 	<div>
-		<div class="row">
-			<div style="float:left; margin-left:15%;">
-								<c:import url="/WEB-INF/view/user/main/user_sidebar.jsp" ></c:import>
-			</div>		 
-
-			<div class="col-lg-10 col-sm-12 col-md-12"  style="margin-left: 5%; width: 60%;">
-				<div class="d-flex justify-content-between">
-					<p class="ibgum" style="font-size: 18pt; font-weight: bolder;">출금하기</p>
-				</div>
-				
-				<!-- 테이블  -->
-				<div >
-					<table class="table table-borderless" id="drawtable" style="width: 60%;">
-						<tr>
-							<th colspan="2">보유금액</th><th class="ibgum">80,000P</th>
-						</tr>
-						<tr>
-							<th>출금</th> <td><input type="text" class="form-control" placeholder="원하는 금액을 입력하세요"
-													id="withdrawMoney"></td><th>원</th>
-						</tr>
-						<tr>
-							<th colspan="3">출금 계좌 입력</th> 
-						</tr>
-						<tr>
-							<th>은행</th>
-							<td colspan="2">
-								<select class="form-control" id="bankName"> 
-									<option selected="selected">--은행을 선택하세요--</option>
-									<option value="1">국민은행</option>
-									<option value="2">기업은행</option>
-									<option value="3">우리은행</option>
-									<option value="4">하나은행</option>
-									<option value="5">외환은행</option>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<th>계좌번호</th>
-							<td colspan="2">
-								<input type="text" class="form-control" id="accountNum" placeholder="계좌번호를 입력해 주세요">
-							</td>
-						
-						</tr>
-						<tr>
-							<td colspan="3" style="text-align: center;">
-								<button class="btn btn-primary" style="margin-right: 5%; width: 100px;"
-								data-bs-toggle="modal" data-bs-target="#withdrawOk"
-								>확인</button>
-								<button class="btn btn-secondary"  style="width: 100px;">취소</button>
-							</td>
-						</tr>
-					</table>
-				</div>
+			
+			<!-- 테이블  -->
+			<div style="width: 50%; display: inline-block;">
+				<table class="table table-borderless" id="drawtable" style="width: 100%;">
+					<tr>
+						<th>보유금액</th><th class="ibgum" style="text-align: left;">80,000P</th>
+					</tr>
+					<tr>
+						<th>출금</th> <td><input type="text" class="form-control" placeholder="출금할 금액을 입력하세요"
+						id="output_Money" style="width: 50%; display: inline-block; float: left;"></td>
+					</tr>
+					<tr>
+						<th colspan="3">출금 계좌 입력</th> 
+					</tr>
+					<tr>
+						<th>은행</th>
+						<td colspan="2">
+							<select class="form-control" id="bankName" style="width: 50%;"> 
+								<!-- <option selected="selected">[은행을 선택해주세요]<<</option>
+								<option value="1">국민은행</option>
+								<option value="2">기업은행</option>
+								<option value="3">우리은행</option>
+								<option value="4">하나은행</option>
+								<option value="5">외환은행</option> -->
+								<option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<th>계좌번호</th>
+						<td colspan="2">
+							<input type="text" class="form-control" id="accountNum" placeholder="계좌번호를 입력해 주세요">
+						</td>
+					
+					</tr>
+					<tr>
+						<td colspan="3" style="text-align: center;">
+							<button class="btn btn-primary" style="margin-right: 5%; width: 100px;"
+							data-bs-toggle="modal" data-bs-target="#withdrawOk"
+							>확인</button>
+							<button class="btn btn-secondary"  style="width: 100px;">취소</button>
+						</td>
+					</tr>
+				</table>
 			</div>
 		</div>
 	</div>
-	
+	</div>
+
 
 </div>
 

@@ -36,9 +36,17 @@ public interface IProduct
 	// 판매횟수 뽑기
 	public int sellCount(String userId);
 	
+	// 비회원 상품리스트
 	public ArrayList<ProductDTO> non_user_pdList();
 	
+	// 택배 상품리스트
 	public ArrayList<ProductDTO> deli_user_pdList();
+	// 택배경매종료일
+	public int end_date(String pd_id);
+	
+	// 내 입찰여부
+	public int ub_Check(SuggestUserDTO dto);
+	
 	
 	public int deli_check_id(String u_id, String pd_id);
 	public int dire_check_id(String u_id, String pd_id);
@@ -61,7 +69,15 @@ public interface IProduct
 	
 	// 직거래 채택
 	public int selectSuggest(String suggest_code);
-	public int selCheck(String pd_id);
-	public String sugCheck(String pd_id);
 	
+	
+	
+	// 직거래 조건확인
+	public String sugCheck(String pd_id);
+
+	public int selCheck(String pd_id);
+	public int slCheck(String pd_id);
+	public int usCheck(SuggestUserDTO su);
+
 }
+	

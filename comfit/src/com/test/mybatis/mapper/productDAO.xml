@@ -166,14 +166,14 @@
 		 WHERE DIRE_PD_ID = #{pd_id}
 	</select>
 	
-	<select  id="userLevel" resultType="java.lang.Integer">
+	<select id="userLevel" resultType="java.lang.Integer">
 		SELECT CASE TRUNC(SQRT((SUM(USER_EXP))/2))
-       			WHEN 0
-       			THEN 1
-       			ELSE TRUNC(SQRT((SUM(USER_EXP))/2)) 
-       			END AS USER_LEVEL
-		FROM USER_LEVEL_VIEW
-		WHERE U_ID = #{userId}
+	    WHEN 0
+	    THEN 1
+	    ELSE TRUNC(SQRT((SUM(USER_EXP))/2)) 
+	    END AS USER_LEVEL
+		FROM USER_LEVEL_VIEW2
+		WHERE U_ID = #{u_id}
 	</select>
 	
 	<select id="sellCount" resultType="java.lang.Integer">

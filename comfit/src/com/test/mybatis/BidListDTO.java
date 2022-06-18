@@ -2,9 +2,19 @@ package com.test.mybatis;
 
 public class BidListDTO
 {
-	private String bid_code, u_nickname, price, bid_date, address;
+	private String bid_code, u_nickname, price, bid_date, address, profile;
 
 	
+	public String getProfile()
+	{
+		return profile;
+	}
+
+	public void setProfile(String profile)
+	{
+		this.profile = profile;
+	}
+
 	public String getBid_code()
 	{
 		return bid_code;

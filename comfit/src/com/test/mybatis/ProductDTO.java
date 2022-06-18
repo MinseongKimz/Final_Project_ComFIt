@@ -5,11 +5,24 @@ public class ProductDTO
 	private String pd_id, pd_name, price, distatnce, category_name;
 	private String pd_title, system, status, pd_photo;
 	
+	private String profile;
+	
 	private int pd_price;
 	
 	private String lat, lon;
 	
 	
+	
+	public String getProfile()
+	{
+		return profile;
+	}
+
+	public void setProfile(String profile)
+	{
+		this.profile = profile;
+	}
+
 	public String getCategory_name()
 	{
 		return category_name;

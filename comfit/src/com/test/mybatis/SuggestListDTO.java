@@ -5,9 +5,20 @@ public class SuggestListDTO
 	private String suggest_code, u_nickname
 	, price, suggest_time, suggest_place
 	, place_detail, suggest_date
-	, pd_id, u_id;
+	, pd_id, u_id
+	, profile;
 	
 	 
+
+	public String getProfile()
+	{
+		return profile;
+	}
+
+	public void setProfile(String profile)
+	{
+		this.profile = profile;
+	}
 
 	public String getPd_id()
 	{

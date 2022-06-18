@@ -39,6 +39,7 @@
 		ON UI.U_ID = UE.U_ID
 		WHERE U_EMAIL = #{u_email}
 		AND U_PASSWORD = CRYPTPACK.ENCRYPT(#{u_password}, #{u_password})
+		AND UE.AU_CATE_ID=1
 	</select>
 
 	<select id="userEmail" resultType="com.test.mybatis.userDTO">
@@ -88,8 +89,8 @@
 	</select>
 	
 	<!-- 이메일 인증 사용 여부 -->
-	<select id="checkUseAuth" resultType="java.lang.Integer">
-		SELECT NVL(TO_CHAR(AUTH_USE_DATE, 'YYYY-MM-DD'), 0)    
+	<select id="checkUseAuth" resultType="java.lang.String">
+		SELECT NVL(TO_CHAR(AUTH_USE_DATE, 'YYYY-MM-DD'), 'X')    
 		FROM USER_EMAIL_AUTH
 		WHERE AUTH_CODE = #{authKey}
 	</select>
@@ -100,6 +101,9 @@
 		SET AUTH_USE_DATE = SYSDATE 
 		WHERE AUTH_CODE = #{authKey}
 	</update>
+	
+
+	
 	
 	
 </mapper>

@@ -20,11 +20,13 @@ public class Maillog
 		IUserLoginDAO dao = sqlSession.getMapper(IUserLoginDAO.class);		
 		
 		// 여기선 인증키를 받아서 먼저 사용 여부를 확인한다.
-		int check = dao.checkUseAuth(authKey);
 		
 		try
 		{
-			if (check!=0)
+			String check = dao.checkUseAuth(authKey);
+			System.out.println(check);
+			
+			if (!check.equals("X"))
 				return "redirect:comfit.action";
 		} catch (Exception e)
 		{
@@ -33,11 +35,11 @@ public class Maillog
 		
 		
 		// 체크를 벗어났다면 인증을 시켜주자
-		dao.authCheck(authKey);
+		dao.authCheck(authKey);		
 		
 		// 인증이 완료됬으면 이제 로그인 폼으로 가자.
 		
-		return "redirect:comfit.action?hello=1";		
+		return "SignWellcom.jsp";		
 	}
 
 }

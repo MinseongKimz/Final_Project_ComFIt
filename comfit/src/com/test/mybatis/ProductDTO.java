@@ -2,17 +2,37 @@ package com.test.mybatis;
 
 public class ProductDTO
 {
-	// SELECT PD_TITLE, PD_PRICE, SYSTEM, STATUS, PD_PHOTO
-
-	private String pd_id, pd_name, price, distatnce;
-	
+	private String pd_id, pd_name, price, distatnce, category_name;
 	private String pd_title, system, status, pd_photo;
+	
+	private String profile;
 	
 	private int pd_price;
 	
 	private String lat, lon;
 	
 	
+	
+	public String getProfile()
+	{
+		return profile;
+	}
+
+	public void setProfile(String profile)
+	{
+		this.profile = profile;
+	}
+
+	public String getCategory_name()
+	{
+		return category_name;
+	}
+
+	public void setCategory_name(String category_name)
+	{
+		this.category_name = category_name;
+	}
+
 	public String getPd_title()
 	{
 		return pd_title;

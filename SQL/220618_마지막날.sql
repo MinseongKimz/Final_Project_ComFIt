@@ -1,0 +1,165 @@
+SELECT CASE TRUNC(SQRT((SUM(USER_EXP))/2))
+       			WHEN 0
+       			THEN 1
+       			ELSE TRUNC(SQRT((SUM(USER_EXP))/2)) 
+       			END AS USER_MY_LEVEL
+		FROM USER_MYPAGE_INFO
+		WHERE U_ID = 'test33';
+EXEC ADD_SUGGEST(200000, '2022-06-19', '14:00:00', '인천 청천', '공장', 'test2', 'dire_42');        
+
+SELECT U_POINT as V_POINT
+FROM ALL_USER_POINT_VIEW2
+WHERE U_ID = 'test2';
+SELECT *
+FROM SEQ;
+
+-- ○ 해당 상품에 구매제안이 하나라도 달려있다면 숫자반환, 없으면 0반환
+SELECT COUNT(*) AS SL_CHECK
+FROM SUGGEST_LIST
+WHERE DIRE_PD_ID = 'dire_2';
+
+-- ○ 해당 상품에 입찰이 하나라도 달려있다면 숫자반환, 없으면 0 반환(삭제, 수정 불가)
+SELECT COUNT(*) AS BL_CHECK
+FROM BID_LIST
+WHERE DELI_PD_ID = 'deli_1';
+
+-- ○ 해당 상품에 내가 입찰을 하였다면 숫자 반환
+SELECT COUNT(*) AS UB_CHECK
+FROM BID_LIST
+WHERE DELI_PD_ID = 'deli_1' AND U_ID = 'test';
+
+-- ○ 해당 택배상품에 입찰 가격 중 가장 높은가격 반환'
+SELECT B.BID_PRICE
+FROM 
+(
+SELECT BID_PRICE
+FROM BID_LIST
+ORDER BY BID_DATE DESC;
+) B
+WHERE B.RANK = 1;
+
+SELECT *
+FROM BID_LIST;
+-- ○ 입찰 프로시저 생성
+CREATE OR REPLACE PROCEDURE ADD_BID
+(
+    V_PRICE IN BID_LIST.BID_PRICE%TYPE  -- 가격
+  , V_ADDRESS IN BID_LIST.ADDRESS%TYPE  -- 주소
+  , V_ADDR_DETAIL IN BID_LIST.ADDR_DETAIL%TYPE  -- 주소상세
+  , V_U_ID  IN BID_LIST.U_ID%TYPE -- 사람코드
+  , V_DELI_PD_ID IN BID_LIST.DELI_PD_ID%TYPE --  상품코드  
+
+)
+IS
+    V_POINT             NUMBER := 0;
+    V_HIGHPRICE         NUMBER := 0;
+    V_BID_CHECK         NUMBER := 0; 
+    USER_DEFINE_ERROR   EXCEPTION;
+BEGIN
+    
+    -- 포인트 확인
+    SELECT U_POINT INTO V_POINT
+    FROM ALL_USER_POINT_VIEW2
+    WHERE U_ID = V_U_ID;
+  
+    IF V_POINT < V_PRICE
+        THEN RAISE USER_DEFINE_ERROR;
+    END IF;
+    
+       
+    -- 해당 상품이 입찰목록에 있는지 확인 없으면 0 반환
+    SELECT COUNT(*) INTO V_BID_CHECK
+     FROM BID_LIST
+    WHERE DELI_PD_ID = V_DELI_PD_ID;
+    
+     -- 있다면 가격확인 V_HIGHPRICE
+    SELECT B.BID_PRICE INTO V_HIGHPRICE
+     FROM
+        (
+        SELECT BID_PRICE, RANK() OVER(ORDER BY BID_PRICE DESC) AS RANK
+        FROM BID_LIST
+        WHERE DELI_PD_ID = V_DELI_PD_ID
+        )B
+    WHERE B.RANK = 1;
+    
+    -- 없다면 바로 인서트
+    IF V_BID_CHECK = 0
+        THEN    -- 입력
+            INSERT INTO BID_LIST(BID_CODE, BID_PRICE, ADDRESS, ADDR_DETAIL, U_ID, DELI_PD_ID)
+            VALUES (CONCAT('deli_', TO_CHAR(BID_SEQ.NEXTVAL) ), V_PRICE, V_ADDRESS, V_ADDR_DETAIL, V_U_ID, V_DELI_PD_ID);
+    ELSIF  V_PRICE > V_HIGHPRICE
+        THEN INSERT INTO BID_LIST(BID_CODE, BID_PRICE, ADDRESS, ADDR_DETAIL, U_ID, DELI_PD_ID)
+             VALUES (CONCAT('bid_', TO_CHAR(BID_SEQ.NEXTVAL)), V_PRICE, V_ADDRESS, V_ADDR_DETAIL, V_U_ID, V_DELI_PD_ID);
+    ELSE  RAISE USER_DEFINE_ERROR;        
+    END IF;
+    
+    COMMIT;    
+     
+    
+    
+    EXCEPTION
+        WHEN USER_DEFINE_ERROR
+            THEN RAISE_APPLICATION_ERROR(-20003, '인서트오류 발생');
+            ROLLBACK;
+        WHEN OTHERS
+            THEN ROLLBACK;     
+END ADD_BID;
+--==>> Procedure ADD_BID이(가) 컴파일되었습니다.
+
+-- ○ 입찰 프로시저 호출
+EXEC ADD_BID( 156000, '인천광역시 중구 신포2동', '아파트앞삼거리', 'test2', 'deli_1');     
+
+-- ○ 포인트조회
+SELECT *
+FROM ALL_USER_POINT_VIEW2;
+
+-- ○ 해당 상품에 입찰이 있는지 반환
+SELECT COUNT(*)
+ FROM BID_LIST
+WHERE DELI_PD_ID = 'deli_1';
+
+SELECT *
+FROM BID_LIST;
+COMMIT;    
+INSERT INTO BID_LIST(BID_CODE, BID_PRICE, ADDRESS, ADDR_DETAIL, U_ID, DELI_PD_ID)
+VALUES (CONCAT('bid_', TO_CHAR(BID_SEQ.NEXTVAL) ), 160000, '인천광역시 중구 신포2동', '아파트앞삼거리', 'test33', 'deli_1');
+
+ROLLBACK;
+-- 높은가격 추출
+SELECT BID_PRICE
+FROM
+(
+SELECT BID_PRICE, RANK() OVER(ORDER BY BID_PRICE DESC) AS RANK
+FROM BID_LIST
+WHERE DELI_PD_ID = 'deli_1'
+)B
+WHERE B.RANK = 1;
+     
+     
+SELECT COUNT(*) AS COUNT
+FROM BID_LIST
+WHERE DELI_PD_ID = 'deli_1';
+
+COMMIT;
+
+CREATE SEQUENCE BID_SEQ
+NOCACHE;
+
+-- ○ 경매 종료 기준점 '0' 반환하는 쿼리문
+SELECT  ROUND(REMAIN_DATE-SYSDATE) AS END_DATE
+FROM
+(
+SELECT (PD_REGIT_DATE+5) AS REMAIN_DATE
+		FROM DELI_PD_LIST_REALVIEW
+		WHERE PD_ID = 'deli_1'
+) ;
+
+
+
+
+-- ○ 해당 상품에 해당 회원이 구매제안을 했다면 :
+SELECT COUNT(*) AS US_CHECK
+FROM SUGGEST_LIST
+WHERE DIRE_PD_ID = 'dire_2' AND U_ID = 'test';
+
+

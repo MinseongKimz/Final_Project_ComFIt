@@ -7,13 +7,21 @@ import javax.servlet.http.HttpServletRequest;
 public interface IAdmin
 {
 	//관리자 로그인 메소드;
+<<<<<<< HEAD
 	public AdminLoginDTO adminLogin(AdminLoginDTO dto);
 	
+=======
+	public AdminLoginDTO adminLogin(AdminLoginDTO admin);
+
+>>>>>>> b9d4d7ba9198d1cd6121fc4b7be13254b05c3aa9
 	// 관리자모드 회원 리스트 출력 메소드
 	public ArrayList<userDTO> adminUserList(HttpServletRequest request); 
 	
 	// 관리자모드 회원 검색 리스트 출력 메소드
 	public ArrayList<userDTO> adminSearchUserList(String searchvalue);	
+	
+	// 관리자모드 회원 검색 리스트 출력 메소드
+	public ArrayList<userDTO> adminSearchUserList(String searchvalue);
 	
 	// 관리자모드 차단 회원 리스트 출력 메소드
 	public ArrayList<userDTO> adminBannedList();
@@ -116,11 +124,14 @@ public interface IAdmin
 	public ArrayList<FaqDTO> userfaqList();
 	// 메인페이지 문의내역 출력
 	public ArrayList<AskDTO> asklist();
-	// 메인페이지 문의카테고리 출력
-	public ArrayList<AskDTO> askcatelist();
-	// 문의 수정 폼 페이지 이동
-	public AskDTO AskModifyForm(String ask_id);
+	// 메인페이지 문의 폼 이동
+	public AskDTO askModifyForm(String ask_id);
 	// 문의 수정 메소드
 	public int AskModify(AskDTO dto);
+
+
+	
+	
+	
 }
 

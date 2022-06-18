@@ -23,6 +23,7 @@
 </style>
 <script type="text/javascript">
 
+
 	$(document).ready(function()
 	{
 		
@@ -62,13 +63,40 @@
 			$(this).addClass("btn-secondary");
 		});		
 		
+		 
+		
 	});
-	
+
 </script>
+
+</head>
+
+<body>
+
 
 <div class = "header">
 	<c:import url = "/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
 </div>
+<form action="user_ask_modify.action" method="POST" name="insert">
+
+<%
+	String u_id = (String)session.getAttribute("u_id");
+	
+	if(u_id != null)
+	{	
+%>
+		<div class="header">
+			<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
+		</div>
+<%	}
+	else
+	{
+%>
+	<div>
+   		<c:import url="/WEB-INF/view/user/main/comfit_header_nolog.jsp"></c:import>
+	</div>
+<%	} %>	
+<form action="" method="get" name="insert">
 
 <div class="content">
 <br /><br /><br />
@@ -76,9 +104,9 @@
 	<br />
 	<!-- 버튼 3개 -->
 	<div class="btns" style="text-align: center;">
-		<button type="button" id="notice" class="btn btn-secondary" style="margin: 7px;" onclick="location.href='user_notice_list.jsp'">공지사항</button>
-		<button type="button" id="faq" class="btn btn-secondary" style="margin: 7px;" onclick="location.href='user_faq_list.jsp'">자주묻는질문</button>
-		<button type="button" id="ask" class="btn btn-secondary" style="margin: 7px;" onclick="location.href='user_ask_list.jsp'">내 문의내역</button>
+		<button type="button" id="notice" class="btn btn-secondary" style="margin: 7px;" onclick="location.href='user_notice_list.action'">공지사항</button>
+		<button type="button" id="faq" class="btn btn-secondary" style="margin: 7px;" onclick="location.href='user_faq_list.action'">자주묻는질문</button>
+		<button type="button" id="ask" class="btn btn-primary" style="margin: 7px;" onclick="location.href='user_ask_list.action'">내 문의내역</button>
 	</div>
 	<br /><br />
 	
@@ -89,31 +117,32 @@
 		<br />
 		
 		
-		<c:forEach var="askcatelist"items="${askcatelist }">
-		<div style="display: inline-block;">
+	
+		<%-- <div style="display: inline-block;">
 			<select class="form-select" id="" style="padding-bottom: 6px;">
 				<option>${askcatelist.ask_cate_name }</option>
 			</select>
-		</div>
-		</c:forEach>
+		</div> --%>
 		
+		<c:forEach var="asklist" items="${asklist }">
 		<!-- 문의 제목 입력 창 -->
 		<div style="display: inline-block;">
-			<input type="text" name="" id="" style="width: 700px; height: 37px; margin: 2px; padding-bottom:3px; resize: none;" placeholder="문의 제목을 입력해주세요." />
+			<input type="text" name="ask_title" id="ask_title" value="${asklist.ask_title }" style="width: 700px; height: 37px; margin: 2px; padding-bottom:3px; resize: none;" placeholder="${asklist.ask_title }" />
 		</div>
 		
 		<br /><br />
 		
 		<!-- 문의내용 입력 창 -->
 		<div>
-			<textarea name="" id="" cols="98" rows="10" style="resize: none;" placeholder="문의 내용을 입력해주세요."></textarea>
+			<textarea name="ask_contents" id="ask_contents" cols="98" rows="10"  style="resize: none;" placeholder="${asklist.ask_contents }">${asklist.ask_contents }</textarea>
 		</div>
-				
+		</c:forEach>		
 		<div style="float: right; margin-right: 11%">
-		<button type="button" class="btn btn-primary" id="account" style="margin: 7px; float: right;" data-bs-toggle="modal" data-bs-target="#Modal">등록</button>
+		<%-- <input type="text" style="display:none;" value="${askModifyForm.ask_id }"> --%>
+		<button type="submit" class="btn btn-primary" id="ask_id" name="ask_id" value="${askModifyForm.ask_id}" style="margin: 7px; float: right;" data-bs-toggle="modal" data-bs-target="#Modal">등록</button>
 		<button type="button" class="btn btn-primary" id="reset" style="margin: 7px; float: right;" onclick="location.href='user_ask_list.action'">취소</button>
 		</div>
-
+		
 
 		<!-- Modal -->
 		<div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
@@ -124,23 +153,26 @@
 		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="닫기"></button>
 		      </div>
 		      <div class="modal-body" style="text-align: center;">
+		      <%-- <input type="text" style="display:none;"value="${askModifyForm.ask_id }" > --%>
 		      	수정이 완료되었습니다
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" style="width: 100%;" onclick="location.href='user_ask_list.action'">확인</button>
+		        <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" style="width: 100%;" onclick="location.href='user_ask_list.action'">확인</button>
 		        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">삭제하기</button> -->
 		      </div>
 		    </div>
 		  </div>
-		</div>
+		</div> 
 		
 		
 			
 		
 	</div>
 </div>
+</form>
 
-</head>
+</body>
+
 </html>
 
 

@@ -22,6 +22,8 @@
 		$("#searchBtn").click(function()
 		{
 			
+			//alert("확인");
+			
 			// 카테고리 설정 안하고 검색했을때 걸러내기
 			if ($(".listselect").val() == "카테고리")
 			{
@@ -29,10 +31,17 @@
 				return;
 			}
 			
+<<<<<<< HEAD
 			alert($("#listselect").val()); //u_email, 
 			alert($("#searchvalue").val()); //서치값
 			
 			// 분기
+=======
+			alert($(".listselect").val()); //u_email, 
+			alert($("#searchvalue").val()); //서치값
+			
+			// 분기완료
+>>>>>>> b9d4d7ba9198d1cd6121fc4b7be13254b05c3aa9
 			/*
 			if ($(".listselect").val()=='u_nickname')
 			{
@@ -47,10 +56,15 @@
 				$(location).attr("href", "admin_usersearch.action?u_name="+$("#searchvalue").val());	
 			}
 			*/
+<<<<<<< HEAD
 			
 			$(location).attr("href", "/comfit/admin_usersearchlist.action?listselect="+$("#listselect").val()+"&searchvalue="+$("#searchvalue").val());
+=======
+>>>>>>> b9d4d7ba9198d1cd6121fc4b7be13254b05c3aa9
 			
-		});
+			$(location).attr("href", "/comfit/admin_usersearchlist.action?searchvalue="+$("#searchvalue").val());
+			
+		})
 		
 		$(".userblock").change(function()
 		{
@@ -60,10 +74,7 @@
 			
 			$(location).attr('href', '/admin_userblock.action');
 			
-		});
-		
-		
-		
+		});		
 	});
 
 </script>
@@ -148,7 +159,7 @@
 						<td>${user.u_joindate }</td>
 						<td style="margin-left: 20px">
 						
-							<!-- 셀렉트박스 -->
+							
 							<div style="text-align: center;">
 							<select class="form-select userblock" style="width: 80%; display: inline-block;">
 							    <option selected>정상</option>
@@ -174,7 +185,11 @@
 				    <option value="u_nickname">닉네임</option>
 				</select> 
 	        <div class="input-group" style="width:100%; text-align: right;">
+<<<<<<< HEAD
 	           <input type="text" class="form-control" id="searchvalue"  placeholder="검색어를 입력하세요">
+=======
+	           <input type="text" id="searchvalue" class="form-control" placeholder="검색어를 입력하세요">
+>>>>>>> b9d4d7ba9198d1cd6121fc4b7be13254b05c3aa9
 	            <button id="searchBtn" type="button" class="btn btn-outline-primary">
 	          		<i class="bi bi-search"></i>
 	            </button>

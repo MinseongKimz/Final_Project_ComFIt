@@ -28,7 +28,7 @@ public interface IUserLoginDAO
 	public String searchId();
 	
 	// 이메일 인증 키 사용 여부 체크
-	public int checkUseAuth(String authKey);
+	public String checkUseAuth(String authKey);
 	
 	// 이메일 인증 하기(변경쿼리)
 	public int authCheck(String authKey);

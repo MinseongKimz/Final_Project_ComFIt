@@ -41,8 +41,6 @@ public class MainController
 			System.out.println(e.toString());
 		}
 		
-		
-		
 		return result;
 	}
 	

@@ -1065,6 +1065,7 @@ SELECT PD_NUM, B_U_ID, SUGGEST_DATE, SUGGEST_PRICE, DEAL_STATUS
 FROM TOTAL_DIRECT_VIEW5
 WHERE PD_NUM = '1';
 
+<<<<<<< HEAD
 --------------------------------------------------------------------------------
 -- 문의 리스트 수정
 
@@ -1090,6 +1091,9 @@ SELECT COUNT(*)
 FROM ADMIN
 WHERE AD_ID = #{ad_id}
 AND AD_PW = '#{ad_pw};
+=======
+
+>>>>>>> b9d4d7ba9198d1cd6121fc4b7be13254b05c3aa9
 
 --------------------------------------------------------------------------------
 
@@ -1124,6 +1128,7 @@ SELECT U_ID, U_EMAIL, U_NAME, U_NICKNAME, U_TEL, U_JOINDATE,
   WHERE U_ID = REPORTED
 ) AS BANCOUNT
 FROM USER_INFORMATION
+<<<<<<< HEAD
 WHERE u_name = u_name and u_name LIKE '%연주%';
 OR U_nickname = U_nickname and U_nickname like '%%'
 OR U_EMAIL = U_EMAIL and U_EMAIL like '%%';
@@ -1168,3 +1173,14 @@ where om.OUT_MONEY is not null or im.IN_MONEY is not null;
 SELECT COUNT(*) AS COUNT
 FROM ADMIN
 WHERE AD_ID = 'cf_admin' AND AD_PW = 'comfit006$';
+=======
+WHERE U_NAME = U_NAME and u_name like '%%'
+OR U_ID = U_ID and U_ID like '%%'
+OR U_EMAIL = U_EMAIL and U_EMAIL like '%%';
+--
+SELECT 컬럼
+FROM 테이블
+WHERE 카테고리=#{카테고리} AND 컬럼 LIKE '%' || #{검색내용} || '%'
+
+--------------------------------------------------------------------------------
+>>>>>>> b9d4d7ba9198d1cd6121fc4b7be13254b05c3aa9

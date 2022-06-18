@@ -59,7 +59,7 @@ function CountDownTimer(dt, id)
         if (distance < 0)
         {
             clearInterval(timer);
-            document.getElementById(id).innerHTML = '타임딜 종료됨';
+            document.getElementById(id).innerHTML = '경매 종료';
             return;
         }
         var days = Math.floor(distance / _day);
@@ -78,11 +78,27 @@ function CountDownTimer(dt, id)
 	{
 		
 		var remain_date = document.getElementById("remain_date").value;
-		alert(remain_date);
+		/* alert(remain_date); */
 		CountDownTimer(remain_date, 'demo');		
 	};
 
 
+	function searchAddr()
+	{
+	    var pd_id = document.getElementById("pd_id").value;
+
+	    /* var hope_sdate = document.getElementById("hope_sdate").value;
+	    var hope_edate = document.getElementById("hope_edate").value;
+	    var hope_stime = document.getElementById("hope_stime").value;
+	    var hope_etime = document.getElementById("hope_etime").value; */
+	    //alert(hope_stime);
+	    //alert(hope_etime);
+	    var url = "bid_place.action?pd_id=" + pd_id
+	    
+	    window.open(url, "입찰", "top=100px, left=100px, height=250px, width=450px, resizable=no");
+	  
+	    
+	}
 
 
 
@@ -140,10 +156,32 @@ d-block
 <body>
 	
 
-<div class="header">
-	<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
-</div>
+<%
+	String u_id = (String)session.getAttribute("u_id");
+	
+	if(u_id != null)
+	{	
+%>
+		<div class="header">
+			<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
+		</div>
+<%	}
+	else
+	{
+%>
+	<div>
+   		<c:import url="/WEB-INF/view/user/main/comfit_header_nolog.jsp"></c:import>
+	</div>
+<%	} %>	
 
+<%
+	int end_date = (Integer)request.getAttribute("end_date");
+
+	// 음수 : 경매시간이 끝났다면
+	if(end_date < 0)
+	{
+%>
+<!-- 종료된 경매페이지 출력 -->
 <div class="container">
 	<div style="padding-top: 5%;">
 	<c:forEach var="dlPd"  items="${dlPdList }">
@@ -209,7 +247,248 @@ d-block
 			</tr>
 			<tr>
 				<td colspan="2" style="border-bottom: 2px solid gray; "><p>경매 종료까지</p>
-				<input type="text" id="remain_date" value="종료일 : ${dlPd.remain_date }" >
+				<input type="hidden" id="remain_date" value="종료일 : ${dlPd.remain_date }" >
+				<!-- 경매 종료시간 적용/경매 종료시 경매종료라고 표기 -->
+				<!-- <td colspan="2" style="border-bottom: 2px solid gray;"><p>경매 종료</p> -->
+				<p class="fs-2" style="font-weight: bold;">[<span class="fs-2 countDown" style="color: #ffd700;" id="demo"></span>]</p>
+				
+				<!-- 종료 시 최종가 표기  -->
+				<!-- <p class="content_text" style="color: blue;">최종 가격 : 143,000원</p> -->
+
+				</td>
+			</tr>
+			<tr>
+				<td style="padding-top: 10px;">
+					<p>제조사/물품명</p>
+				</td>
+				<th style="padding-top: 10px;">
+
+					<!-- 제조사/물품명 표기 --> 
+					<p style="font-weight: bold;">${dlPd.maker_name }(${dlPd.maker_name2 }) / ${dlPd.pd_name }</p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p>즉시구매가격</p>
+				</td>
+				<th>
+
+					<!-- 즉시구매가 표기 -->
+					<p>${dlPd.imdprice }</p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p>Comfit 추천가격</p>
+				</td>
+				<th>
+					<!-- 상품에 따른 추천가 표기 -->
+					<p style="color: blue;">${dlPd.cf_price } 원</p>
+
+				</th>
+			</tr>
+			
+			<tr>
+				<td colspan="2">
+				<button type="button" class="btn btn-danger" style="width: 96%;" disabled="disabled">종료된 경매입니다.</button>
+				</td>
+			</tr>
+		</table>
+		</div>
+		<div>
+			<div class="col-md-6" style="width:100%; display: inline-block; float:left;">
+			<table style="margin-left:5%; width:90%;">
+				<tr class="table-secondary">
+					<th style="height:25px; width: 100%; text-align: center;">
+						<p style="font-size: 18pt;">상품 상세정보</p>
+					</th>
+				</tr>
+				
+				<!-- 공간분리용 tr -->
+				<tr style="height: 10px;">
+				</tr>
+				
+				<tr class="table-secondary">
+					<td style="padding:5%;">
+					<p>상품 상세정보<br><br>
+					1. 제조사 A/S 가능여부 : ${dlPd.pd_as_name } / ${dlPd.pd_as_remain } 까지 가능<br><br>
+					2. 특이사항 : ${dlPd.comments }
+					</p>
+					</td>
+				</tr>
+			</table>
+			</div>
+			
+			<!-- 구매자) 판매자 정보 -->
+			<div class="seller_info col-md-5" style="display: inline-block; padding-left: 3%; height: 270px;">
+			
+			<div class="card" style="width: 100%; padding:3%;">
+				<div>
+					<div class="user_image" style="float: left;">
+						<img alt="" src="images/${dlPd.profile }"
+						style="object-fit:cover; height: 100%; width: 100%;">
+					</div>
+					<div style="padding-left: 25%;">
+						<p class="fs-2" style="margin-top: 5%; font-weight: bold;">${dlPd.u_nickname } 
+						<span class="fs-6" style="color: green;">Level : ${userLevel }</span>
+						</p>
+					</div>
+				</div>
+				    
+				  <div class="card-body" style="height: 85px;">
+				    <h5 class="card-title"></h5>
+				    <div style="text-align: right;">
+				    	<p class="card-text" style="font-weight: bold;">누적 판매 수 : ${sellCount }회</p>
+				    	<a href="user_detail_sell.jsp" style="text-decoration: none;">상세보기</a>
+				    </div>
+				  </div>
+				</div>
+				<!-- 판매자 정보 아래 버튼  -->
+			</div>
+		</div>
+		
+		</c:forEach>
+		
+		<!-- 입찰정보가 출력될 폼 -->
+		<div class="content_bid" style="margin-top: 5%; margin-left: 5%; margin-right:9%;">
+		<p class="fs-3" style="padding-left: 4%; font-weight: bold;">현재 입찰 정보</p>
+		
+			<!-- 입찰 폼 한개 -->
+			<c:forEach var="bl"  items="${bidList }">
+			<div class="shadow-lg p-3 mb-5 bg-body rounded" style="font-weight: bold;">
+			<table style="width: 100%;">
+			<tr>
+				<td style="width: 20%; padding-left: 3%;">
+					<div class="user_image">
+						<img alt="" src="images/${bl.profile }"
+						style="object-fit:cover; height: 100%; width: 100%;">
+					</div>
+				</td>
+				<th style="padding-left: 2%;">
+					<p class="fs-4">
+					${bl.u_nickname }
+					</p>
+				</th>
+				<td>
+					<p style="padding-left:10%;">가격 : ${bl.price }원</p><br>
+					<p style="padding-left:10%;">배송지 : ${bl.address }</p>
+				</td>
+				<td style="text-align: right; margin-left: 20%;">
+					<p>${bl.bid_date }</p>
+					<button type="button" class="btn btn-primary">낙찰예정</button>
+				</td>
+			</tr>
+			</table>
+			</div>
+			</c:forEach>
+		</div>
+	
+<!-- bootstrap card 사용해서 구성 가능 -->	
+<!-- 
+<div class="card">
+  <div class="card-header">
+    Featured
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+ -->
+		
+	<br />
+	<br />
+	<br />	
+	<br />
+	<br />
+	<br />
+	<br />
+	
+	</div>
+</div>
+
+
+
+</body>
+</html>
+
+
+
+<%
+	}
+	else
+	{
+%>
+<!-- 일반 경매페이지 출력 -->
+
+<div class="container">
+	
+	<div style="padding-top: 5%;">
+	<c:forEach var="dlPd"  items="${dlPdList }">
+		<input type="hidden" id="pd_id" value="${dlPd.pd_id }"/>
+			<p class="fs-2" style="text-align: center; font-weight: bold;">[${dlPd.category_name }] ${dlPd.pd_title}</p>
+		
+		<div class="content">
+		<div class="col-md-6" style="float: left; width: 560px; height: 420px; padding-top: 3%; margin-right: 3%;">	
+			<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-touch="false" data-bs-ride="true">
+			  <div class="carousel-indicators">
+			    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+			    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+			    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+			    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+			    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+			  </div>
+			  <div class="carousel-inner">
+			    <div class="carousel-item active">
+			      <img src="https://cdn.pixabay.com/photo/2015/09/04/23/28/wordpress-923188__340.jpg" class="d-block w-100 rounded" alt="...">
+			    </div>
+			    <div class="carousel-item">
+			      <img src="https://cdn.pixabay.com/photo/2016/03/26/13/09/cup-of-coffee-1280537__340.jpg" class="d-block w-100 rounded" alt="...">
+			    </div>
+			    <div class="carousel-item">
+			      <img src="https://cdn.pixabay.com/photo/2016/06/15/16/16/man-1459246__340.png" class="d-block w-100 rounded" alt="...">
+			    </div>
+			    <div class="carousel-item">
+			      <img src="https://cdn.pixabay.com/photo/2015/09/04/23/28/wordpress-923188__340.jpg" class="d-block w-100 rounded" alt="...">
+			    </div>
+			    <div class="carousel-item">
+			      <img src="https://cdn.pixabay.com/photo/2016/03/26/13/09/cup-of-coffee-1280537__340.jpg" class="d-block w-100 rounded" alt="...">
+			    </div>
+			  </div>
+			  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+			    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			    <span class="visually-hidden">Previous</span>
+			  </button>
+			  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+			    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+			    <span class="visually-hidden">Next</span>
+			  </button>
+			</div>
+		</div>
+		
+		<table class="col-md-5">
+			<tr>
+				<td colspan="2"><p>거래방식</p>
+				<!-- 속성에 따라 직거래/배송 표기 -->
+				<p class="content_text">택배거래</p></td>
+			</tr>
+			<tr>
+				<td colspan="2"><p>시작가격</p>
+				<p class="content_text">${dlPd.price } 원</p></td>
+			</tr>
+			<tr>
+				<td colspan="2"><p>현재가격</p>
+
+					<!-- 입찰최고가가 반영 -->
+					<!-- 입찰이 완료된 상품입니다. -->
+					<!-- <p class="content_text" style="color: blue;">입찰이 완료된 상품입니다.</p> -->
+					<p class="content_text" style="color: blue;">100,000 원</p>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" style="border-bottom: 2px solid gray; "><p>경매 종료까지</p>
+				<input type="hidden" id="remain_date" value="종료일 : ${dlPd.remain_date }" >
 				<!-- 경매 종료시간 적용/경매 종료시 경매종료라고 표기 -->
 				<!-- <td colspan="2" style="border-bottom: 2px solid gray;"><p>경매 종료</p> -->
 				<p class="fs-2" style="font-weight: bold;">[<span class="fs-2 countDown" style="color: #ffd700;" id="demo"></span>]</p>
@@ -273,8 +552,15 @@ d-block
 					else
 					{
 				%>
-				<button type="button" class="btn btn-primary" style="width: 48%;">입찰하기</button>
-				<button type="button" class="btn btn-secondary" id="productDelBtn" style="width: 48%;">즉시구매하기</button>
+					<c:choose>
+						<c:when test="${ub_Check == 0 }">
+						<button type="button" class="btn btn-primary" style="width: 48%;" onclick="searchAddr()">입찰하기</button>
+						<button type="button" class="btn btn-secondary" id="productDelBtn" style="width: 48%;">즉시구매하기</button>
+						</c:when>
+						<c:otherwise>
+						<button type="button" class="btn btn-success" style="width: 96%;" disabled="disabled">입찰완료</button>
+						</c:otherwise>
+					</c:choose>
 				<%
 					}
 				%>
@@ -312,7 +598,7 @@ d-block
 			<div class="card" style="width: 100%; padding:3%;">
 				<div>
 					<div class="user_image" style="float: left;">
-						<img alt="" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"
+						<img alt="" src="images/${dlPd.profile }"
 						style="object-fit:cover; height: 100%; width: 100%;">
 					</div>
 					<div style="padding-left: 25%;">
@@ -351,7 +637,7 @@ d-block
 			<tr>
 				<td style="width: 20%; padding-left: 3%;">
 					<div class="user_image">
-						<img alt="" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"
+						<img alt="" src="images/${bl.profile }"
 						style="object-fit:cover; height: 100%; width: 100%;">
 					</div>
 				</td>
@@ -398,8 +684,9 @@ d-block
 	
 	</div>
 </div>
-
-
-
 </body>
 </html>
+
+<%
+	}
+%>

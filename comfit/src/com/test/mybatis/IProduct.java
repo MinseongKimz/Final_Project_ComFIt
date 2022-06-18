@@ -1,6 +1,10 @@
 package com.test.mybatis;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
+
+import com.test.util.ConfirmDeliveryDTO;
+import com.test.util.ConfirmDirectDTO;
 
 public interface IProduct
 {
@@ -29,14 +33,23 @@ public interface IProduct
 	
 	public ArrayList<MakerDTO> makerList2(String optionValue);
 	
+	// 배송거래 글쓰기 insert
 	public int deliveryInsert(deliveryInsertDTO dto);
 	
 	// 판매횟수 뽑기
 	public int sellCount(String userId);
 	
+	// 비회원 상품리스트
 	public ArrayList<ProductDTO> non_user_pdList();
 	
+	// 택배 상품리스트
 	public ArrayList<ProductDTO> deli_user_pdList();
+	// 택배경매종료일
+	public int end_date(String pd_id);
+	
+	// 내 입찰여부
+	public int ub_Check(SuggestUserDTO dto);
+	
 	
 	public int deli_check_id(String u_id, String pd_id);
 	public int dire_check_id(String u_id, String pd_id);
@@ -50,6 +63,28 @@ public interface IProduct
 	public ArrayList<ProductDTO> search_pdListDirect(String searchKey);
 	public ArrayList<ProductDTO> search_pdListDelivery(String searchKey);
 	
+	// 카테고리선택
+	public ArrayList<ProductDTO> categorySelect(String categoryName);
 	
+	
+	// 직거래 글쓰기 insert
+	public int directInsert(directinsertDTO dto);
+	
+	// 직거래 채택
+	public int selectSuggest(String suggest_code);
+	
+	// 택배거래 구매확정
+	public int confirmDeliveryBuy(ConfirmDeliveryDTO dto);
+	
+	// 택배거래 판매확정
+	public int confirmDeliverySell(ConfirmDeliveryDTO dto);
+	
+	// 직거래 조건확인
+	public String sugCheck(String pd_id);
+
+	public int selCheck(String pd_id);
+	public int slCheck(String pd_id);
+	public int usCheck(SuggestUserDTO su);
 
 }
+	

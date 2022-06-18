@@ -2,9 +2,50 @@ package com.test.mybatis;
 
 public class BidListDTO
 {
-	private String bid_code, u_nickname, price, bid_date, address;
-
+	private String bid_code, u_nickname, price, bid_date, address, addr_detail
+	, u_id, pd_id, profile;
 	
+	public String getPd_id()
+	{
+		return pd_id;
+	}
+
+	public void setPd_id(String pd_id)
+	{
+		this.pd_id = pd_id;
+	}
+
+	public String getAddr_detail()
+	{
+		return addr_detail;
+	}
+
+	public void setAddr_detail(String addr_detail)
+	{
+		this.addr_detail = addr_detail;
+	}
+
+	public String getU_id()
+	{
+		return u_id;
+	}
+
+	public void setU_id(String u_id)
+	{
+		
+		this.u_id = u_id;
+	}
+
+	public String getProfile()
+	{
+		return profile;
+	}
+
+	public void setProfile(String profile)
+	{
+		this.profile = profile;
+	}
+
 	public String getBid_code()
 	{
 		return bid_code;

@@ -3,11 +3,73 @@ package com.test.mybatis;
 public class MypageProductDTO
 {
 	private String pd_id, pd_title, pd_price, system, pd_regit_date
-	, time, comp_date, seller_id, buyer_id, address, status;
+	, time, comp_date, seller_id, buyer_id, address, status
+	, selected_id, selected_date, buyer_code, seller_code
+	, bs_id, bs_date;
 
 	public String getPd_id()
 	{
 		return pd_id;
+	}
+
+	public String getBs_id()
+	{
+		return bs_id;
+	}
+
+	public void setBs_id(String bs_id)
+	{
+		this.bs_id = bs_id;
+	}
+
+	public String getBs_date()
+	{
+		return bs_date;
+	}
+
+	public void setBs_date(String bs_date)
+	{
+		this.bs_date = bs_date;
+	}
+
+	public String getSelected_id()
+	{
+		return selected_id;
+	}
+
+	public void setSelected_id(String selected_id)
+	{
+		this.selected_id = selected_id;
+	}
+
+	public String getSelected_date()
+	{
+		return selected_date;
+	}
+
+	public void setSelected_date(String selected_date)
+	{
+		this.selected_date = selected_date;
+	}
+
+	public String getBuyer_code()
+	{
+		return buyer_code;
+	}
+
+	public void setBuyer_code(String buyer_code)
+	{
+		this.buyer_code = buyer_code;
+	}
+
+	public String getSeller_code()
+	{
+		return seller_code;
+	}
+
+	public void setSeller_code(String seller_code)
+	{
+		this.seller_code = seller_code;
 	}
 
 	public void setPd_id(String pd_id)

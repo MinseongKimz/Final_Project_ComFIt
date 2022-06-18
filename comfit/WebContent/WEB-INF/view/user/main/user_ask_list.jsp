@@ -58,14 +58,38 @@
 			$(this).addClass("btn-secondary");      
 		});		     
 		*/
+		
+		$("#ask_id").click(function()
+		{
+			//alert("수정");
+			location.href="user_ask_modify_form.action?ask_id="+$(this).val();
+		}) 
 	})
 	
 
 </script>
+</head>
+<body>
+	
+<%
+	String u_id = (String)session.getAttribute("u_id");
+	
+	if(u_id != null)
+	{	
+%>
+		<div class="header">
+			<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
+		</div>
+<%	}
+	else
+	{
+%>
+	<div>
+   		<c:import url="/WEB-INF/view/user/main/comfit_header_nolog.jsp"></c:import>
+	</div>
+<%	} %>	
 
-<div class = "header">
-	<c:import url = "/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
-</div>
+
 
 <div class="container">
 <br /><br /><br />
@@ -93,28 +117,27 @@
 		  </thead>
 		  <tbody>
 		    <tr>
-		      <td class="col-md-7" onclick="location.href='user_ask_my_list.action'">${asklist.ask_contents }</td>
+		      <td class="col-md-7"  onclick="location.href='user_ask_my_list.action'">${asklist.ask_contents }</td>
 		      <td class="col-md-2">${asklist.ask_date }</td>
 		      <!-- <td class="col-md-1.5">처리완료</td> -->
-		      <td class="col-md-1.5">${asklist.ask_cate_id }</td>
+		      <td class="col-md-1.5">${asklist.ask_cate_name }</td>
 		    </tr>
 		   
 		   
 		  </tbody>
 		</table>
-	</c:forEach>
+	</c:forEach> 
 		
 		<div>
 			<button type="button" class="btn btn-primary" style="float: right;" onclick="location.href='user_ask_add.jsp'">문의등록</button>
 		</div>
 		
 		
-	</div>
-</div>
 
-
-
-
+				</div>
+			</div>
+</body>
+</html>
 
 
 

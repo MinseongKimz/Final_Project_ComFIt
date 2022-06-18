@@ -6,16 +6,38 @@ public class userDTO
 	private String u_id, u_email, u_name, u_nickname, u_joindate
 	, u_tel, bancount, u_password, u_profile ,u_address;
 	
+<<<<<<< HEAD
 	// 검색값 / 카테고리값
 	private String searchvalue;
 
+=======
+	// 검색값
+	private String searchvalue;
+	
+>>>>>>> b9d4d7ba9198d1cd6121fc4b7be13254b05c3aa9
 	// 차단회원 리스트 속성
 	private String ban_cate_name, ban_date, ban_end_date, rep_cate_name, ban_rea_detail;
 
 	// 이메일 인증 여부
 	private String auth , random;
 
+<<<<<<< HEAD
 	public String getU_id()
+=======
+	
+
+	public String getSearchvalue()
+	{
+		return searchvalue;
+	}
+
+	public void setSearchvalue(String searchvalue)
+	{
+		this.searchvalue = searchvalue;
+	}
+	
+    public String getU_id()
+>>>>>>> b9d4d7ba9198d1cd6121fc4b7be13254b05c3aa9
 	{
 		return u_id;
 	}

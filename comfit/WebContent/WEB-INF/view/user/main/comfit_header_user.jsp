@@ -81,9 +81,24 @@
 		{
 			//alert($("#searchProduct").val());
 			
-			$(location).attr("href", "searchlist.action?searchKey="+$("#searchProduct").val()
-									+"&sort=1");
-			
+			if (!$("#searchProduct").val() == "")
+			{
+				$(location).attr("href", "searchlist.action?searchKey="+$("#searchProduct").val()
+						+"&sort=1");
+			}
+			else
+			{
+				alert("검색어를 입력해 주세요.");	
+			}
+		});
+		
+		$("#searchProduct").on("keyup", function(key)
+		{
+			if (key.keyCode == 13)
+			{
+				$("#searchBtn").click();
+			}
+
 		});
 		
 	});
@@ -110,7 +125,7 @@
             
               	<div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
               		<br />
-                 	<form class="form-inline" style="width: 100%;">
+                 	<form class="form-inline" style="width: 100%;" onsubmit="return false;">
 				     	<div class="input-group" style="width:75%; padding-left: 20%">
 						     <input id="searchProduct" type="text" class="form-control" placeholder="원하시는 상품을 검색하세요.">
 					         <button id="searchBtn" type="button" class="btn btn-outline-primary">
@@ -158,7 +173,7 @@
 	              판매하기
 	         </button>
 	         <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-	            <li class="dropdown-item"><a class="dropdown-item" href="direct_sell.action">직거래 판매하기</a></li>
+	            <li class="dropdown-item"><a class="dropdown-item" href="user_direct_seller_edit.action">직거래 판매하기</a></li>
 	            <li class="dropdown-item"><a class="dropdown-item" href="user_delivery_seller_edit.action">택배거래 판매하기</a></li>
 	         </ul>
 	</div>

@@ -188,9 +188,23 @@
 </head>
 <body>
 
-<div class="header">
-	<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
-</div>
+<%
+	String u_id = (String)session.getAttribute("u_id");
+	
+	if(u_id != null)
+	{	
+%>
+		<div class="header">
+			<c:import url="/WEB-INF/view/user/main/comfit_header_user.jsp"></c:import>
+		</div>
+<%	}
+	else
+	{
+%>
+	<div>
+   		<c:import url="/WEB-INF/view/user/main/comfit_header_nolog.jsp"></c:import>
+	</div>
+<%	} %>	
 <script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
 <div class="container" style="padding-top: 80px;">
 	<p class="fs-3" style="font-weight: bold;">

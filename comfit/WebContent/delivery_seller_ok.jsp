@@ -13,16 +13,16 @@
 <%
 	/* Write_ok.jsp */
 	
-	System.out.println("jsp");
+	//System.out.println("jsp");
 	
 	// ① 주요 속성값들 준비 (multipart request 를 위한 속성값 준비)
 	String root = "/";
 	root = pageContext.getServletContext().getRealPath(root);
 	
-	String savePath = root + "pds" + File.separator + "saveFile";
+	String savePath = "C:\\Final_Project_ComFIt\\comfit\\WebContent\\images";
 	// 			                           "\\"
 	
-	out.println(savePath + "<br>");
+	//out.println(savePath + "<br>");
 	String encType = "UTF-8";
 	int maxFileSize = 5*1024*1024;
 	
@@ -55,7 +55,6 @@
 		String pd_photo = req.getFilesystemName("uploadFile");
 
 		
-		
 		request.setAttribute("pd_title", pd_title);
 		request.setAttribute("pd_name", pd_name);
 		request.setAttribute("pd_as_remain", pd_as_remain);
@@ -65,7 +64,7 @@
 		request.setAttribute("cf_price", cf_price);
 		request.setAttribute("comments", comments);
 		request.setAttribute("imd_price", imd_price);
-		request.setAttribute("pd_photo", pd_photo);
+		request.setAttribute("pd_photo", pd_photo); 
 		
 		//response.sendRedirect("deliveryinsert.action");
 		

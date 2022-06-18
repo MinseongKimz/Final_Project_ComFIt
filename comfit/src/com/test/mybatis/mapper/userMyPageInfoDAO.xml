@@ -4,15 +4,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.test.mybatis.IUserMyPage">
 
+
+	<!-- 내 정보 자세히보기 비밀번호 받아서 하는 걸로 변경 예정 
 	<select id="myDetailInfo" resultType="com.test.mybatis.userDTO">
 		SELECT U_EMAIL, U_NICKNAME, U_NAME
-		, SUBSTR(CRYPTPACK.DECRYPT(U_PASSWORD,'1234'),1,1) 
-		|| LPAD('*',LENGTH(CRYPTPACK.DECRYPT(U_PASSWORD,'1234'))-1,'*') as U_PASSWORD
+        , LPAD('*',LENGTH(CRYPTPACK.DECRYPT(U_PASSWORD,#{u_password})),'*') as U_PASSWORD
 		, U_TEL, U_ADDRESS
 		FROM USER_INFORMATION
 		WHERE U_ID = #{u_id}
+        AND U_PASSWORD = CRYPTPACK.ENCRYPT(#{u_password},#{u_password})
 	</select>
-	
+	 -->
+	 <select id="myDetailInfo" resultType="com.test.mybatis.userDTO">
+	 SELECT U_EMAIL, U_NICKNAME, U_NAME, U_PROFILE
+        , LPAD('*',LENGTH(CRYPTPACK.DECRYPT(U_PASSWORD,'1234')),'*') as U_PASSWORD
+		, U_TEL, U_ADDRESS
+		FROM USER_INFORMATION
+		WHERE U_ID = #{u_id}
+	 </select>
+	 
 	<select id="myInfo" resultType="com.test.mybatis.userDTO">
 		SELECT U_NICKNAME, U_PROFILE
 		FROM USER_INFORMATION
@@ -26,6 +36,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    ELSE '에러' END AS INOUT
 		FROM MONEY_INOUT_VIEW
 		WHERE U_ID = #{u_id}
+		ORDER BY M_DATE DESC
+		
 	</select>
 	
 	<select id="myPoint" resultType="java.lang.Integer">
@@ -34,13 +46,43 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE U_ID = #{u_id}
 	</select>
 	
+	<select id="nameSearch" resultType="java.lang.String">
+		select u_name
+		FROM USER_INFORMATION
+		where u_id = #{u_id}
+	</select>
+	
+	<!-- 입금 -->
+	<insert id="insertMoney">
+		INSERT INTO INPUT_MONEY(IN_M_ID, IN_MONEY, IN_DATE, IN_ACCOUNT, U_ID, BANK_ID)
+		VALUES(CONCAT('inm_', INPUT_MONEY_SEQ.NEXTVAL), #{in_money}, SYSDATE, '941602-00-228699', #{u_id}, 4)
+	</insert>
+	
+	<!-- 출금 -->
+	<insert id="outMoney">
+		INSERT INTO OUTPUT_MONEY(OUT_M_ID, OUT_MONEY, OUT_DATE, OUT_ACCOUNT, U_ID, BANK_ID)
+		VALUES(CONCAT('outm_', OUTPUT_MONEY_SEQ.NEXTVAL), #{out_money}, SYSDATE, #{out_account}, #{u_id}, #{bank_id})
+	</insert>
+	
+	
+	<!-- 은행 리스크 select option 출력 -->
+	<select id="bankList" resultType="com.test.mybatis.BankDTO">
+		SELECT BANK_ID, BANK_NAME
+		FROM BANK
+	</select>
+	
 	<select id="sellList" resultType="com.test.mybatis.MypageProductDTO">
-		SELECT PD_ID, PD_TITLE, PD_PRICE, SYSTEM, PD_REGIT_DATE, TIME, COMP_DATE, SELLER_ID, BUYER_ID, ADDRESS, STATUS
+		SELECT PD_ID, PD_TITLE, NVL(PD_PRICE, -1) AS PD_PRICE, SYSTEM, PD_REGIT_DATE
+		, TIME, COMP_DATE, SELLER_ID, BUYER_ID, ADDRESS, STATUS
+		, SELECTED_ID, SELECTED_DATE, BUYER_CODE, SELLER_CODE
+		, BS_ID, BS_DATE
 		FROM
 		(
 		SELECT PD_ID, PD_TITLE, PD_PRICE, SYSTEM, PD_REGIT_DATE, TIME, COMP_DATE, SELLER_ID, BUYER_ID, ADDRESS, STATUS
+		, SELECTED_ID, SELECTED_DATE, BUYER_CODE, SELLER_CODE
+		, BS_ID, BS_DATE
 		, ROW_NUMBER() OVER(PARTITION BY PD_ID ORDER BY COMP_DATE ASC) AS RN
-        FROM MY_PRODUCT_LIST
+		FROM DETAIL_BUYLIST_VIEW
 		WHERE SELLER_ID = #{u_id}
 		ORDER BY PD_REGIT_DATE DESC
 		)
@@ -48,8 +90,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="buyList" resultType="com.test.mybatis.MypageProductDTO">
-		SELECT PD_ID, PD_TITLE, PD_PRICE, SYSTEM, PD_REGIT_DATE, TIME, COMP_DATE, SELLER_ID, BUYER_ID, ADDRESS, STATUS
-		FROM MY_PRODUCT_LIST
+		SELECT PD_ID, PD_TITLE, PD_PRICE, SYSTEM, PD_REGIT_DATE
+		, TIME, COMP_DATE, SELLER_ID, BUYER_ID, ADDRESS, STATUS
+        , SELECTED_ID, SELECTED_DATE, BUYER_CODE, SELLER_CODE
+        , BS_ID, BS_DATE
+		FROM DETAIL_BUYLIST_VIEW
 		WHERE BUYER_ID = #{u_id}
 		ORDER BY PD_REGIT_DATE DESC
 	</select>
@@ -64,7 +109,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE U_ID = #{u_id}
 	</select>
 	
-	
+	<!-- 프로필 변경 -->
+	<update id="changeProfile">
+		UPDATE USER_INFORMATION
+		SET U_PROFILE = #{u_profile}
+		WHERE U_ID = #{u_id}
+	</update>
 	
 	
 <!-- 

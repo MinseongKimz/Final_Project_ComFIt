@@ -34,9 +34,8 @@ public class BidListDTO
 	public void setU_id(String u_id)
 	{
 		this.u_id = u_id;
-    
+	}
 
-	
 	public String getProfile()
 	{
 		return profile;

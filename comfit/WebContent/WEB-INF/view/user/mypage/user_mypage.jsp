@@ -104,7 +104,7 @@
 				<tr>
 					<td style="width: 20%; padding-left:15%;">
 						<div class="user_image">	
-							<img alt="경로에 해당사진없음!" src="${myInfo.u_profile }"
+							<img alt="..." src="images/${myInfo.u_profile }"
 							style="object-fit:cover; height: 100%; width: 100%;">
 						</div>
 					</td>

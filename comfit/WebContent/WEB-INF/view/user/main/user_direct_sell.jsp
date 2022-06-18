@@ -204,6 +204,8 @@ function select_suggest(idx)
 <%
 	int check_id = (int)session.getAttribute("check_id");
 %>
+
+<!-- 판매자 / 구매자 분기 -->
 <%
 	// 판매자인 경우
 	if(check_id == 1)
@@ -234,21 +236,9 @@ function select_suggest(idx)
 			  </div>
 			  <div class="carousel-inner">
 			    <div class="carousel-item active">
-			      <img src="https://cdn.pixabay.com/photo/2015/09/04/23/28/wordpress-923188__340.jpg" class="d-block w-100 rounded" alt="...">
+			    	<img src="images/${drPd.pd_photo}" class="d-block w-100 rounded" alt="...">
 			    </div>
-			    <div class="carousel-item">
-			      <img src="https://cdn.pixabay.com/photo/2016/03/26/13/09/cup-of-coffee-1280537__340.jpg" class="d-block w-100 rounded" alt="...">
-			    </div>
-			    <div class="carousel-item">
-			      <img src="https://cdn.pixabay.com/photo/2016/06/15/16/16/man-1459246__340.png" class="d-block w-100 rounded" alt="...">
-			    </div>
-			    <div class="carousel-item">
-			      <img src="https://cdn.pixabay.com/photo/2015/09/04/23/28/wordpress-923188__340.jpg" class="d-block w-100 rounded" alt="...">
-			    </div>
-			    <div class="carousel-item">
-			      <img src="https://cdn.pixabay.com/photo/2016/03/26/13/09/cup-of-coffee-1280537__340.jpg" class="d-block w-100 rounded" alt="...">
-			    </div>
-			  </div>
+			  </div><!-- close.img -->
 			  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
 			    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
 			    <span class="visually-hidden">Previous</span>
@@ -291,8 +281,15 @@ function select_suggest(idx)
 				<td colspan="2" style="border-bottom: 2px solid gray;"><p>경매 종료까지</p>
 				<!-- 경매 종료시간 적용/경매 종료시 경매종료라고 표기 -->
 				<!-- <td colspan="2" style="border-bottom: 2px solid gray;"><p>경매 종료</p> -->
-				<input type="text" id="remain_date" value="종료일 : ${drPd.remain_date }" >
-				<p class="fs-2" style="font-weight: bold;">[<span class="fs-2" style="color: #ffd700;" id="demo"></span>]</p>
+				<input type="hidden" id="remain_date" value="종료일 : ${drPd.remain_date }" >
+				<c:choose>
+					<c:when test="${sel_Check !=0 }">
+						<p class="fs-2" style="font-weight: bold;">[<span class="fs-2" style="color: #ffd700;" id="dems">거래종료</span>]</p>	
+					</c:when>
+					<c:otherwise>
+						<p class="fs-2" style="font-weight: bold;">[<span class="fs-2" style="color: #ffd700;" id="demo"></span>]</p>
+					</c:otherwise>
+				</c:choose>
 				
 				<!-- 종료 시 최종가 표기  -->
 				<!-- <p class="content_text" style="color: blue;">최종 가격 : 143,000원</p> -->
@@ -329,8 +326,24 @@ function select_suggest(idx)
 				<!-- 판매자)입찰자 없을 때 :수정하기/삭제하기-->
 				<!-- 판매자)입찰자 있을 때 :즉시낙찰/삭제하기 -->
 				<!-- <button type="button" class="btn btn-warning" style="width: 48%;">즉시낙찰</button> -->
-				<button type="button" class="btn btn-primary" style="width: 48%;">수정하기</button>
-				<button type="button" class="btn btn-secondary" style="width: 48%;">삭제하기</button>
+				<c:choose>
+					<c:when test="${sel_Check != 0 }">
+						<button type="button" class="btn btn-success" style="width: 96%;" disabled="disabled">채택완료</button>
+					</c:when>
+					<c:otherwise>
+						<c:choose>
+							<c:when test="${sl_check == 0 }">
+								<button type="button" class="btn btn-primary" style="width: 48%;">수정하기</button>
+								<button type="button" class="btn btn-secondary" style="width: 48%;">삭제하기</button>
+							</c:when>
+							<c:otherwise>
+								<button type="button" class="btn btn-secondary" style="width: 48%;" disabled="disabled">수정하기</button>
+								<button type="button" class="btn btn-secondary" style="width: 48%;" disabled="disabled">삭제하기</button>								
+							</c:otherwise>
+						</c:choose>
+					</c:otherwise>
+				</c:choose>
+				
 </td>
 			</tr>
 		</table>
@@ -369,7 +382,7 @@ function select_suggest(idx)
 			<div class="card" style="width: 100%; padding:3%;">
 				<div>
 					<div class="user_image" style="float: left;">
-						<img alt="" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"
+						<img alt="" src="images/${drPd.profile }"
 						style="object-fit:cover; height: 100%; width: 100%;">
 					</div>
 					<div style="padding-left: 25%;">
@@ -408,7 +421,7 @@ function select_suggest(idx)
 			<tr>
 				<td style="width: 15%; padding-left: 3%;">
 					<div class="user_image">
-						<img alt="" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"
+						<img alt="" src="images/${suggest.profile }"
 						style="object-fit:cover; height: 100%; width: 100%;">
 					</div>
 				</td>
@@ -494,16 +507,7 @@ function select_suggest(idx)
 			  </div>
 			  <div class="carousel-inner">
 			    <div class="carousel-item active">
-			      <img src="https://cdn.pixabay.com/photo/2015/09/04/23/28/wordpress-923188__340.jpg" class="d-block w-100 rounded" alt="...">
-			    </div>
-			    <div class="carousel-item">
-			      <img src="https://cdn.pixabay.com/photo/2016/03/26/13/09/cup-of-coffee-1280537__340.jpg" class="d-block w-100 rounded" alt="...">
-			    </div>
-			    <div class="carousel-item">
-			      <img src="https://cdn.pixabay.com/photo/2016/06/15/16/16/man-1459246__340.png" class="d-block w-100 rounded" alt="...">
-			    </div>
-			    <div class="carousel-item">
-			      <img src="https://cdn.pixabay.com/photo/2015/09/04/23/28/wordpress-923188__340.jpg" class="d-block w-100 rounded" alt="...">
+			    	<img src="images/${drPd.pd_photo}" class="d-block w-100 rounded" alt="...">
 			    </div>
 			    <div class="carousel-item">
 			      <img src="https://cdn.pixabay.com/photo/2016/03/26/13/09/cup-of-coffee-1280537__340.jpg" class="d-block w-100 rounded" alt="...">
@@ -551,9 +555,16 @@ function select_suggest(idx)
 				<td colspan="2" style="border-bottom: 2px solid gray;"><p>경매 종료까지</p>
 				<!-- 경매 종료시간 적용/경매 종료시 경매종료라고 표기 -->
 				<!-- <td colspan="2" style="border-bottom: 2px solid gray;"><p>경매 종료</p> -->
-				<input type="text" id="remain_date" value="종료일 : ${drPd.remain_date }" >
-				<p class="fs-2" style="font-weight: bold;">[<span class="fs-2" style="color: #ffd700;" id="demo"></span>]</p>
-				
+				<%-- <input type="text" id="remain_date" value="종료일 : ${drPd.remain_date }" > --%>
+					<c:choose>
+						<c:when test="${sel_Check2 == 0 }">
+						<p class="fs-2" style="font-weight: bold;">[<span class="fs-2" style="color: #ffd700;" id="demo"></span>]</p>
+						</c:when>
+						<c:otherwise>
+						<p class="fs-2" style="font-weight: bold;">[<span class="fs-2" style="color: #ffd700;" id="dems">거래종료</span>]</p>							
+						</c:otherwise>
+					</c:choose>
+						
 				<!-- 종료 시 최종가 표기  -->
 				<!-- <p class="content_text" style="color: blue;">최종 가격 : 143,000원</p> -->
 
@@ -583,15 +594,25 @@ function select_suggest(idx)
 			
 			<tr>
 				<td colspan="2">
-
-				
-				<!-- 상태에 따라 버튼 변경 -->
-				<!-- 판매자)입찰자 없을 때 :수정하기/삭제하기-->
-				<!-- 판매자)입찰자 있을 때 :즉시낙찰/삭제하기 -->
-				<!-- <button type="button" class="btn btn-warning" style="width: 48%;">즉시낙찰</button> -->
-			<button type="button" class="btn btn-primary" style="width: 48%;" id="suggest"
+				<c:choose>
+					<c:when test="${sel_Check != 0 }">
+						<button type="button" class="btn btn-success" style="width: 96%;" disabled="disabled">채택완료</button>
+					</c:when>
+					<c:otherwise>
+						<c:choose>
+							<c:when test="${us_Check != 0 }">
+								<button type="button" class="btn btn-primary" style="width: 48%;" id="suggest"
 				                onclick="searchAddr()">구매제안</button>
-				<button type="button" class="btn btn-secondary" style="width: 48%;">신고하기</button>
+							<button type="button" class="btn btn-secondary" style="width: 48%;">신고하기</button>
+							</c:when>
+							<c:otherwise>
+							<button type="button" class="btn btn-success" style="width: 96%;">구매제안완료</button>
+							</c:otherwise>
+						</c:choose>
+					</c:otherwise>
+				</c:choose>
+		
+  			    
 
 				</td>
 			</tr>
@@ -631,7 +652,7 @@ function select_suggest(idx)
 			<div class="card" style="width: 100%; padding:3%;">
 				<div>
 					<div class="user_image" style="float: left;">
-						<img alt="" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"
+						<img alt="" src="images/${drPd.profile }"
 						style="object-fit:cover; height: 100%; width: 100%;">
 					</div>
 					<div style="padding-left: 25%;">
@@ -663,14 +684,14 @@ function select_suggest(idx)
 		<div class="content_bid" style="margin-top: 5%; margin-left: 5%; margin-right:9%;">
 		<p class="fs-3" style="padding-left: 4%; font-weight: bold;">현재 제안 정보</p>
 		
-			<c:forEach var="suggest" items="${suggestList }">
+			<c:forEach var="suggest" items="${suggestList }" varStatus="status">
 			<!-- 입찰 폼 한개 -->
 			<div class="shadow p-3 mb-5 bg-body rounded">
 			<table style="width: 100%;">
 			<tr>
 				<td style="width: 15%; padding-left: 3%;">
 					<div class="user_image">
-						<img alt="" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"
+						<img alt="" src="images/${suggest.profile }"
 						style="object-fit:cover; height: 100%; width: 100%;">
 					</div>
 				</td>
@@ -686,6 +707,18 @@ function select_suggest(idx)
 				</td>
 				<td style="text-align: right; margin-left: 20%;">
 					<p>${suggest.suggest_date }</p>
+					<c:choose>
+							<c:when test="${suggest.suggest_code eq suggest_code }">
+							<button type="button" id="sel${status.count }" disabled="disabled"
+							 class="btn btn-success" value="${suggest.suggest_code }">채택</button>	
+							</c:when>
+							<c:otherwise>
+								<button type="button" id="sel${status.count }" disabled="disabled"
+								 class="btn btn-danger" value="${suggest.suggest_code }">미채택</button>		
+							</c:otherwise>
+						</c:choose>
+				</td>
+						
 				</td>
 			</tr>
 			</table>

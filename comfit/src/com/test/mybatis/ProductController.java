@@ -1,5 +1,7 @@
 package com.test.mybatis;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -100,8 +102,7 @@ public class ProductController
 		return result;
 
 	}
-
-	// 내 문의 내역 출력  [ 고객센터 ] 카테고리 안나옴
+	// 내 문의 내역 클릭 -> 내 문의 내역 출력 [1]
 	@RequestMapping(value = "/user_ask_list.action", method = RequestMethod.GET)
 	public String svcAsk(Model model)
 	{
@@ -110,41 +111,26 @@ public class ProductController
 		IAdmin dao = sqlsession.getMapper(IAdmin.class);
 
 		model.addAttribute("asklist", dao.asklist());
-
-		//model.addAttribute("askcatelist", dao.askcatelist());
 		
 		result = "/WEB-INF/view/user/main/user_ask_list.jsp";
 
+		
+		
 		return result;
 
 	}
-
-	// 내 문의 내역 상세 출력  [ 고객센터 ]
-	@RequestMapping(value = "/user_ask_my_update.action", method = RequestMethod.GET)
-	public String myAsk(Model model, String ask_cate_id)
-	{
-		String result = null;
-
-		IAdmin dao = sqlsession.getMapper(IAdmin.class);
-
-		model.addAttribute("askcatelist", dao.askcatelist());
-
-		result = "/WEB-INF/view/user/main/user_ask_update.jsp";
-
-		return result;
-
-	}
-	// 상세내역 [ 고객센터 ] 카테고리 안나옴
+	
+	// 내 문의내역 버튼 -> 상세 내역 출력   [2]                                      
 	@RequestMapping(value = "/user_ask_my_list.action", method = RequestMethod.GET)
-	public String Askcate(Model model )
+	public String Askcate(Model model,String ask_id)
 	{
 		String result = null;
 
 		IAdmin dao = sqlsession.getMapper(IAdmin.class);
 
 		model.addAttribute("asklist", dao.asklist());
-		//model.addAttribute("askcatelist", dao.askcatelist());
 		
+		model.addAttribute("askModifyForm",dao.askModifyForm(ask_id));
 		
 		result = "/WEB-INF/view/user/main/user_ask.jsp";
 
@@ -153,23 +139,31 @@ public class ProductController
 	}
 	
 	
-	//문의 수정폼 이동
-	@RequestMapping(value="/user_ask_modify_form.action",method=RequestMethod.GET)
-	public String AskModifyForm(Model model, String ask_id)
+	//문의 수정폼 이동  --------
+	@RequestMapping(value="/user_ask_modify_form.action",method = RequestMethod.GET)
+	public String AskModifyForm(Model model,String ask_id)
    {
-	   
+	   String result = null;
+		
 	   IAdmin dao = sqlsession.getMapper(IAdmin.class);
-	   
-	   //model.addAttribute("askcatelist", dao.askcatelist());
 
-	   model.addAttribute("AskModifyForm", dao.AskModifyForm(ask_id));
+	   model.addAttribute("asklist", dao.asklist());
+		
+	   model.addAttribute("askModifyForm",dao.askModifyForm(ask_id));
 	   
-	   return "/WEB-INF/view/user/main/user_ask_update.jsp";
+	  
+	   
+	   result = "/WEB-INF/view/user/main/user_ask_update.jsp";
+	   
+	   return result;
    }
+
 	
 	
+	
+	//----------------------------------------------------------------------------------------
 	//문의 수정 하기
-	@RequestMapping(value="/user_ask_modify.action",method=RequestMethod.POST)
+	@RequestMapping(value="/user_ask_modify.action",method = RequestMethod.POST)
 	public String AskModify(AskDTO dto , @RequestParam("ask_id") String ask_id)
    {
 	   
@@ -177,15 +171,22 @@ public class ProductController
 		
 	   IAdmin dao = sqlsession.getMapper(IAdmin.class);
 	   
-	   dto.setAsk_id(ask_id);
+	   //System.out.println(ask_id);
+	  
 	   
+	   
+	   dto.setAsk_id(ask_id);
+	  
 	   dao.AskModify(dto);
+	   System.out.println(ask_id);
+	   
 	   
 	   result = "redirect:user_ask_my_list.action";
 	   
 	   return result;
 	   
    }
+	
 
 
 

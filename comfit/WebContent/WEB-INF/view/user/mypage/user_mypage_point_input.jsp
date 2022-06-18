@@ -77,11 +77,11 @@
 		$("#checkMoney_btn").click(function()
 		{
 			var input_money = $("#in_money").val();
-			var point = $("#user_point").val();
-			var result = input_money + point;
+			var point = $("#returnPoint").val();
+			var sum = parseInt($("#in_money").val()) + parseInt($("#returnPoint").val());
 			
 			$("#money_span").text(input_money);
-			$("#result_point").text(result);
+			$("#result_point").text(sum);
 		})
 		
 		$("#insertMoney_btn").click(function()
@@ -120,11 +120,12 @@
 		
 		<!-- u_id 받아놓는 보이지않는 input -->
 		<input type="text" name="u_id" style="display: none;" value="${u_id }"/>
+		<input type="text" id="returnPoint" value="${point }" style="display: none;" />
 		
 			<!-- 테이블시작 -->
 			<table class="table table-bordered" style="width: 100%; display: inline-table;">
 				<tr>
-					<th colspan="2">보유금액</th><th class="ibgum" id="user_point">${point }P</th>
+					<th colspan="2">보유금액</th><th class="ibgum">${point }P</th>
 				</tr>
 				<tr>
 					<td colspan="3">
@@ -178,7 +179,7 @@
       <div class="modal-body">
          <h3><span class="ibgum" id="money_span"></span> P 가 입금되었습니다.</h3><br />
          
-         잔여 포인트 : <span class="ibgum" id="result_point" ></span> p<br />
+         입금 후 잔여 포인트 : <span class="ibgum" id="result_point" ></span> p<br />
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" id="insertMoney_btn" aria-label="Close" data-bs-dismiss="modal">확인</button>

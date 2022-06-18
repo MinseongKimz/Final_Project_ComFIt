@@ -52,10 +52,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where u_id = #{u_id}
 	</select>
 	
+	<!-- 입금 -->
 	<insert id="insertMoney">
 		INSERT INTO INPUT_MONEY(IN_M_ID, IN_MONEY, IN_DATE, IN_ACCOUNT, U_ID, BANK_ID)
 		VALUES(CONCAT('inm_', INPUT_MONEY_SEQ.NEXTVAL), #{in_money}, SYSDATE, '941602-00-228699', #{u_id}, 4)
 	</insert>
+	
+	<!-- 출금 -->
+	<insert id="outMoney">
+		INSERT INTO OUTPUT_MONEY(OUT_M_ID, OUT_MONEY, OUT_DATE, OUT_ACCOUNT, U_ID, BANK_ID)
+		VALUES(CONCAT('outm_', OUTPUT_MONEY_SEQ.NEXTVAL), #{out_money}, SYSDATE, #{out_account}, #{u_id}, #{bank_id})
+	</insert>
+	
 	
 	<!-- 은행 리스크 select option 출력 -->
 	<select id="bankList" resultType="com.test.mybatis.BankDTO">

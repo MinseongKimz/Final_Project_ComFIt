@@ -24,7 +24,7 @@
 
 <div class="container">
 	<div class="row">
-	<h1><b>관리자모드_상품관리</b></h1> <!-- 왜 서체가? 배민서체지? 커스텀 css해놔서 그럼 -->
+	<h1><b>관리자모드_상품상세_직거래</b></h1> <!-- 왜 서체가? 배민서체지? 커스텀 css해놔서 그럼 -->
 		<table class="table table-bordered" style="text-align: center; border: 1px solid #dddddd; width: 700px">
 			<thead><!-- 제목 -->
 			<c:forEach var="direct" items="${productlistdirect1}">
@@ -171,7 +171,7 @@
 			<tbody>
 			<c:forEach var="direct" items="${productlistdirect5}">
 				<tr>
-				    <td>${direct.b_u_id }</td>
+				    <td>${direct.s_u_id }</td>
 				    <td>${direct.suggest_date }</td>
 				    <td>${direct.suggest_price }</td>
 				    <td>${direct.deal_status }</td>

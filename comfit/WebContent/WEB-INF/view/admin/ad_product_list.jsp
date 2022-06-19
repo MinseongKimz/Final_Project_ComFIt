@@ -28,8 +28,8 @@
 				return;
 			}
 			
-			alert($("#listselect").val()); //u_email, 
-			alert($("#searchvalue").val()); //서치값
+			//alert($("#listselect").val()); //u_email, 
+			//alert($("#searchvalue").val()); //서치값
 			
 			// 분기
 			/*
@@ -61,7 +61,7 @@
 			var id_check = $(this).attr("id");
 			
 			// 아이디값 체크
-			alert(id_check);
+			//alert(id_check);
 			
 			// 분기 			
 			if (id_check=='deli')

@@ -94,17 +94,11 @@ body {
 				return;
 			}
 			
-			$("#ad_id").attr("action","")
-<<<<<<< HEAD
-			$("form").submit();
-			
-=======
-		
-			$("loginform").submit();
+			$("#ad_id").attr("action","");
 
->>>>>>> b9d4d7ba9198d1cd6121fc4b7be13254b05c3aa9
-		});
-	});
+			$("form").submit();
+				
+			$("loginform").submit();
 
 </script>
 

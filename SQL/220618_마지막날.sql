@@ -332,3 +332,32 @@ FROM DIRECT_PRODUCT
 WHERE DIRE_PD_ID = 'dire_1';
 
 
+-- ○ 현재 가격을 조회
+SELECT BID_PRICE
+FROM BID_LIST
+WHERE DELI_PD_ID = 'deli_3';
+
+
+
+-- ○ 현재가격에서 가장 높은가격 조회
+SELECT B.BID_PRICE AS NOW_PRICE
+  FROM
+            (
+             SELECT BID_PRICE, RANK() OVER(ORDER BY BID_PRICE DESC) AS RANK
+             FROM BID_LIST
+             WHERE DELI_PD_ID = 'deli_3'
+            )B
+WHERE B.RANK = 1;
+          
+-- ○ 입찰이 존재한다면
+SELECT COUNT(*)
+FROM BID_LIST
+WHERE DELI_PD_ID='deli_3'
+          
+deli_9
+deli_12
+
+
+
+
+

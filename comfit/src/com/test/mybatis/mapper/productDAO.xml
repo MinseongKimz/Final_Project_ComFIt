@@ -241,7 +241,7 @@
 
 	
 	<insert id="confirmDeliveryBuy">
-		INSERT INTO DELI_COMPLETE_BUY(DELI_COMP_SELL_ID, REVIEW, BS_ID)
+		INSERT INTO DELI_COMPLETE_BUY(DELI_COMP_BUY_ID, REVIEW, BS_ID)
 		VALUES(CONCAT('dcbuy_', DELI_COMPLETE_SEQ.NEXTVAL), #{review}, #{bs_id})
 	</insert>
 	

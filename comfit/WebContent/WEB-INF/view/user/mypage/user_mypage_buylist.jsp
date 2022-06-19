@@ -116,7 +116,7 @@
 								<button type="button" class="btn btn-primary btn-sm"
 									id="sellBtn"
 									style="width: 40%; font-size: 6pt;"
-									data-bs-toggle="modal" data-bs-target="#directSellCheck">구매확정</button>
+									data-bs-toggle="modal" data-bs-target="#directSellCheck${buy.pd_id }">구매확정</button>
 								<button type="button" class="btn btn-danger btn-sm"
 									id="danger"
 									style="width: 40%; font-size: 6pt;">신고하기</button>		
@@ -127,7 +127,7 @@
 								<button type="button" class="btn btn-primary btn-sm"
 									id="sellBtn"
 									style="width: 40%; font-size: 6pt;"
-									data-bs-toggle="modal" data-bs-target="#deliverySellCheck">구매확정</button>
+									data-bs-toggle="modal" data-bs-target="#deliverySellCheck${buy.pd_id }">구매확정</button>
 								<button type="button" class="btn btn-danger btn-sm"
 									id="danger"
 									style="width: 40%; font-size: 6pt;">신고하기</button>
@@ -140,7 +140,7 @@
 					</tr>
 					
 					<!-- 직거래 구매확정 모달 -->
-					<div class="modal fade" id="directSellCheck" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+					<div class="modal fade" id="directSellCheck${buy.pd_id}" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 					  <div class="modal-dialog">
 					    <div class="modal-content">
 					      <div class="modal-header">
@@ -171,7 +171,7 @@
 					</div>
 					
 					<!-- 택배거래 구매확정 모달 -->
-					<div class="modal fade" id="deliverySellCheck" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+					<div class="modal fade" id="deliverySellCheck${buy.pd_id }" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 					  <div class="modal-dialog">
 					    <div class="modal-content">
 					      <div class="modal-header">

@@ -163,7 +163,7 @@ public class FindController
 			
 			int check =  dao.changePassword(auth, password);
 			
-			if (check!=1)	// 비밀번호 변경 실피시
+			if (check!=1)	// 비밀번호 변경 실패시
 			{
 				model.addAttribute("msg", "서버 에러");
 				model.addAttribute("url", "comfit.action");

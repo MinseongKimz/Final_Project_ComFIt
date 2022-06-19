@@ -124,6 +124,7 @@
 							</td>
 						</c:when>
 						<c:when test="${(sell.status eq '거래중' || sell.status eq '판매확정대기중') && sell.system eq '택배(경매)' }">
+							<td style="text-align: center;">
 							<button type="button" class="btn btn-primary btn-sm"
 								id="sellBtn"
 								style="width: 40%; font-size: 6pt;"
@@ -131,11 +132,13 @@
 							<button type="button" class="btn btn-danger btn-sm"
 								id="danger"
 								style="width: 40%; font-size: 6pt;">신고하기</button>
+							</td>
 						</c:when>
 						<c:otherwise>
 							<td></td>
 						</c:otherwise>
 					</c:choose>	
+					
 				</tr>
 
 					<!-- 직거래 판매확정 모달 -->

@@ -32,7 +32,9 @@
   		display: inline-table;
   		width:100%;
   		font-weight: bold;
+  		font-size: 10pt;
   	}
+
 
 </style>
 
@@ -82,9 +84,9 @@
 					<th>최종 금액</th>
 					<th>상품정보</th>
 					<th>방식</th>
-					<th>예정 장소</th>
-					<th>직거래 예정 일시</th>
-					<th>거래완료일</th>
+					<th>예정 장소(입력한 주소)</th>
+					<th style="font-size: 10pt;">직거래 예정 일시</th>
+					<th style="font-size: 10pt;">거래완료일</th>
 					<th>상태</th>
 					<th style="width: 10%;" ></th>
 				</tr>
@@ -104,7 +106,7 @@
 							${sell.pd_title }
 						</a>
 					</td>
-					<td>${sell.system }</td>
+					<td style="font-size: 10pt;">${sell.system }</td>
 					<td style="font-size: 10pt;">${sell.address }</td>
 					<td style="font-size: 10pt;">${sell.time }</td>
 					<td style="font-size: 10pt;">${sell.comp_date }</td>

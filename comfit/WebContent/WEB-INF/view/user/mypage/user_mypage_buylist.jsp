@@ -88,8 +88,8 @@
 		            <th>상품정보</th>
 		            <th>방식</th>
 		            <th>예정 장소</th>
-		            <th>직거래 예정 일시</th>
-		            <th>거래완료일</th>
+		            <th style="font-size:10pt;">직거래 예정 일시</th>
+		            <th style="font-size:10pt;">거래완료일</th>
 		            <th>상태</th>
 		            <th style="width: 10%;" ></th>
 		        </tr>

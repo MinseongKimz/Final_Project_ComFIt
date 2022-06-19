@@ -1,3 +1,9 @@
+SELECT COUNT(*)
+FROM TAB
+WHERE TABTYPE = 'VIEW';
+--==>> 49
+--==>> 76
+
 SELECT CASE TRUNC(SQRT((SUM(USER_EXP))/2))
        			WHEN 0
        			THEN 1

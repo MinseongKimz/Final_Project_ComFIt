@@ -100,11 +100,10 @@ function searchAddr()
     var hope_edate = document.getElementById("hope_edate").value;
     var hope_stime = document.getElementById("hope_stime").value;
     var hope_etime = document.getElementById("hope_etime").value;
-    alert(hope_stime.charAt(0));
-    if (hope_stime.charAt(0) < 10)
+    var hope_rtime = hope_stime.substring(0, 5);
+    if (hope_stime.substring(0, 2) < 10)
 	{
 		hope_stime = "0"+hope_stime;
-		alert(hope_stime);
 	}
     //alert(hope_stime);
     //alert(hope_etime);
@@ -132,7 +131,7 @@ function CountDownTimer(dt, id)
         if (distance < 0)
         {
             clearInterval(timer);
-            document.getElementById(id).innerHTML = '타임딜 종료됨';
+            document.getElementById(id).innerHTML = '거래종료';
             return;
         }
         var days = Math.floor(distance / _day);

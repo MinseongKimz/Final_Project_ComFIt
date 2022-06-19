@@ -92,6 +92,8 @@ public interface IProduct
 	public int final_price(String pd_id);
 	
 	public int end_day(String pd_id);
+	public int now_price(String pd_id);
+	public int blCheck(String pd_id);
 
 
 }

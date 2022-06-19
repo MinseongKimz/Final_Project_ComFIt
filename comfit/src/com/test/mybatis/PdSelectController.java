@@ -100,14 +100,25 @@ public class PdSelectController
 				// 나의 입찰이 있다면..
 				int ub_Check = dao.ub_Check(dto);
 				
-				// 입찰 목록이 존재한다면
+				// 낙찰이 존재한다면
 				int buy_count = dao.buy_count(pd_id);
+				
 				int final_price = 0;
+				int now_price = 0;
 				if (buy_count != 0)
 					final_price = dao.final_price(pd_id);
 				
+				int blCheck = dao.blCheck(pd_id);
+				
+				// 입찰리스트 존재한다면
+				if (blCheck != 0)
+					now_price = dao.now_price(pd_id);
+				
 				int bs_check = dao.bsCheck(dto);
 				
+				
+				
+	
 				
 				System.out.println(buy_count);
 				userId = dao.deliuserId(pd_id);
@@ -117,6 +128,8 @@ public class PdSelectController
 					check_id = 1;
 				
 				session.setAttribute("check_id", check_id);
+				model.addAttribute("blCheck", blCheck);
+				model.addAttribute("now_price", now_price);
 				model.addAttribute("buy_count", buy_count);
 				model.addAttribute("final_price", final_price);
 				model.addAttribute("ub_Check", ub_Check);

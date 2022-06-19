@@ -281,6 +281,22 @@
 		  FROM DIRECT_PRODUCT
 		 WHERE DIRE_PD_ID = #{pd_id}
 	</select>
+	<select id="now_price" resultType="java.lang.Integer">
+	SELECT B.BID_PRICE AS NOW_PRICE
+  	  FROM
+            (
+             SELECT BID_PRICE, RANK() OVER(ORDER BY BID_PRICE DESC) AS RANK
+             FROM BID_LIST
+             WHERE DELI_PD_ID = #{pd_id}
+            )B
+	WHERE B.RANK = 1
+	</select>
+	<select id="blCheck" resultType="java.lang.Integer" >
+	SELECT COUNT(*)
+	  FROM BID_LIST
+	 WHERE DELI_PD_ID=#{pd_id}
+	</select>
+	
 </mapper>
 
 

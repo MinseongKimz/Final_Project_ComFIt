@@ -493,7 +493,15 @@ d-block
 					<!-- 입찰최고가가 반영 -->
 					<!-- 입찰이 완료된 상품입니다. -->
 					<!-- <p class="content_text" style="color: blue;">입찰이 완료된 상품입니다.</p> -->
-					<p class="content_text" style="color: blue;">100,000 원</p>
+					<c:choose>
+						<c:when test="${blCheck == 0 }">
+							<p class="content_text">${dlPd.price } 원</p>		
+						</c:when>
+						<c:otherwise>
+							<p class="content_text">${now_price } 원</p>
+						</c:otherwise>
+					</c:choose>
+					
 				</td>
 			</tr>
 			<tr>

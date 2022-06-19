@@ -31,7 +31,7 @@
 	   var hope_sdate = $("#hope_sdate").val();
 	   var hope_edate =	$("#hope_edate").val();
 			   
-	   var today = new Date();
+	/*    var today = new Date();
 	   var sday = new Date(hope_sdate);
 	   
 	   var nowYear = today.getFullYear();
@@ -65,7 +65,7 @@
 		   alert("연도다름, 연도비교");
 		   hope_sdate = today;
 	   }
-	 
+	  */
 	  
 	   $("#datePicker").datepicker({
 		   

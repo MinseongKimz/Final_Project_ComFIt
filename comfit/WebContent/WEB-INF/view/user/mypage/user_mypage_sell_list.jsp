@@ -117,29 +117,32 @@
 							<button type="button" class="btn btn-primary btn-sm"
 								id="sellBtn"
 								style="width: 40%; font-size: 6pt;"
-								data-bs-toggle="modal" data-bs-target="#directSellCheck">판매확정</button>
+								data-bs-toggle="modal" data-bs-target="#directSellCheck${sell.pd_id }">판매확정</button>
 							<button type="button" class="btn btn-danger btn-sm"
 								id="danger"
 								style="width: 40%; font-size: 6pt;">신고하기</button>		
 							</td>
 						</c:when>
 						<c:when test="${(sell.status eq '거래중' || sell.status eq '판매확정대기중') && sell.system eq '택배(경매)' }">
+							<td style="text-align: center;">
 							<button type="button" class="btn btn-primary btn-sm"
 								id="sellBtn"
 								style="width: 40%; font-size: 6pt;"
-								data-bs-toggle="modal" data-bs-target="#deliverySellCheck">판매확정</button>
+								data-bs-toggle="modal" data-bs-target="#deliverySellCheck${sell.pd_id }">판매확정</button>
 							<button type="button" class="btn btn-danger btn-sm"
 								id="danger"
 								style="width: 40%; font-size: 6pt;">신고하기</button>
+							</td>
 						</c:when>
 						<c:otherwise>
 							<td></td>
 						</c:otherwise>
 					</c:choose>	
+					
 				</tr>
 
 					<!-- 직거래 판매확정 모달 -->
-					<div class="modal fade" id="directSellCheck" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+					<div class="modal fade" id="directSellCheck${sell.pd_id }" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 					  <div class="modal-dialog">
 					    <div class="modal-content">
 					      <div class="modal-header">
@@ -171,19 +174,26 @@
 
 
 				<!-- 택배거래 판매확정 모달 -->
-					<div class="modal fade" id="deliverySellCheck" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+					<div class="modal fade" id="deliverySellCheck${sell.pd_id }" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 					  <div class="modal-dialog">
 					    <div class="modal-content">
 					      <div class="modal-header">
 					        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					      </div>
 					      <div class="modal-body">
-					         <h5 style="font-weight: bold;">"${buy.pd_title }" <br>상품을 판매확정합니다.</h5>
-					         <h5>낙찰가격 : ${buy.pd_price }원</h5>
-					         <h5>낙찰일자 : ${buy.bs_date }일</h5>
+					         <h5 style="font-weight: bold;">"${sell.pd_title }" <br>상품을 판매확정합니다.</h5>
+					         <h5>낙찰가격 : ${sell.pd_price }원</h5>
+					         <h5>
+					         	<c:if test="${sell.bs_date == null }">
+					         		즉시구매
+					         	</c:if>
+					         	<c:if test="${sell.bs_date != null }">
+					         		낙찰일자 : ${sell.bs_date }일
+					         	</c:if>
+					         </h5>
 					         <br />
 					         <form action="completedeliverysell.action" method="post">
-					         	<input type="hidden" id="bs_id" name="bs_id" value="${buy.bs_id }"/>
+					         	<input type="hidden" id="bs_id" name="bs_id" value="${sell.bs_id }"/>
 					         	<br /><br />
 					         	<h5>한줄 후기를 입력해 주세요</h5>
 					         	<input type="text" id="review" name="review" placeholder="한줄 후기 입력" style="width: 90%; margin-top: 2px;">
@@ -198,27 +208,6 @@
 					  </div>
 					</div>
 				</c:forEach>
-				
-				<!-- 
-				<tr>
-					<td>2022-04-30</td>
-					<td>80,000</td>
-					<td>커세어 무선 헤드셋</td>
-					<td>직거래(구매제안)</td>
-					<td style="font-size: 8pt;">인천 계양구 새빛 아파트 경비실 뒤</td>
-					<td style="font-size: 8pt;">2022-05-18 18시30분</td>
-					<td style="font-size: 8pt;"></td>
-					<td>채택 &nbsp;
-						<button type="button" class="btn btn-primary btn-sm"
-							id="sellBtn"
-							style="width: 60px; height: 30px; font-size: 6pt;"
-							data-bs-toggle="modal" data-bs-target="#directSellCheck">판매확정</button>
-						<button type="button" class="btn btn-danger btn-sm"
-							id="danger"
-							style="width: 60px; height: 30px; font-size: 6pt;">신고하기</button>
-					</td>
-				</tr>
-				-->
 			</tbody>
 		</table>
 	</div>

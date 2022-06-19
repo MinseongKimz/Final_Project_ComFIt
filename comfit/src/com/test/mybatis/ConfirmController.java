@@ -105,7 +105,7 @@ public class ConfirmController
 		IProduct dao = sqlSession.getMapper(IProduct.class);
 		try
 		{
-			dao.confirmDeliveryBuy(dto);
+			dao.confirmDeliverySell(dto);
 			
 			result = "redirect:user_selllist.action";
 			

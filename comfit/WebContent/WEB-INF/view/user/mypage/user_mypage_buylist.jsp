@@ -181,6 +181,7 @@
 					         <h5 style="font-weight: bold;">"${buy.pd_title }" <br>상품을 구매확정합니다.</h5>
 					         <h5>낙찰가격 : ${buy.pd_price }원</h5>
 					         <h5>낙찰일자 : ${buy.bs_date }일</h5>
+					         <h5>운송장번호 : ${buy.bs_date }일</h5>
 					         <br />
 					         <form action="completedeliverybuy.action" method="post">
 					         	<input type="hidden" id="bs_id" name="bs_id" value="${buy.bs_id }"/>

@@ -104,14 +104,14 @@ function CountDownTimer(dt, id)
 		var result = confirm("즉시구매 시 해당 가격으로 자동 낙찰됩니다. \n 계속 진행하시겠습니까??");
 	    var pd_id = document.getElementById("pd_id").value;
 	    var imdPrice = document.getElementById("imdprice").innerText;
-		alert(imdPrice);
+		//alert(imdPrice);
 	    var url = "buy_place.action?pd_id=" + pd_id + "&imdPrice=" + imdPrice
 	    
 
 
 		if (result)
 		{
-			alert("즉시구매하기");
+			//alert("즉시구매하기");
 		    window.open(url, "즉시구매", "top=100px, left=100px, height=250px, width=450px, resizable=no");
 
 		}

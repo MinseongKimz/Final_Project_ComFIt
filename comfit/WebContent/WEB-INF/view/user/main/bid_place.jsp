@@ -30,19 +30,19 @@
     function bid()
    {
 		var suggest_price = document.getElementById("price").value;
-		alert(suggest_price);
+		//alert(suggest_price);
 		
 		var address = document.getElementById("address").value;
-		alert(address);
+		//alert(address);
 		
 		var addr_detail = document.getElementById("addr_detail").value;
-		alert(addr_detail);
+		//alert(addr_detail);
 		
 		var u_id = document.getElementById("bidding").value;
-		alert(u_id);
+		//alert(u_id);
 		
 		var pd_id = document.getElementById("pd_id").value;
-		alert(pd_id);
+		//alert(pd_id);
 		 
 		var url = "suggest_price=" + suggest_price + "&address=" + address
 				+ "&addr_detail=" + addr_detail + "&u_id="+u_id + "&pd_id=" +pd_id;

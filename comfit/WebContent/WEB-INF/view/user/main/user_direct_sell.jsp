@@ -100,11 +100,15 @@ function searchAddr()
     var hope_edate = document.getElementById("hope_edate").value;
     var hope_stime = document.getElementById("hope_stime").value;
     var hope_etime = document.getElementById("hope_etime").value;
-    var hope_rtime = hope_stime.substring(0, 5);
-    if (hope_stime.substring(0, 2) < 10)
-	{
-		hope_stime = "0"+hope_stime;
-	}
+    
+        
+  	
+    
+    	if (hope_stime.length < 8)
+		{
+    		hope_stime = "0"+hope_stime;
+		}
+	
     //alert(hope_stime);
     //alert(hope_etime);
     var url = "direct_place.action?pd_id=" + pd_id + "&hope_sdate=" + hope_sdate

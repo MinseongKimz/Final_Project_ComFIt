@@ -5,7 +5,7 @@ public class AskDTO
 	
 	
 	//문의 내역
-	private String ask_id, ask_title , ask_date ,ask_cate_id,ask_contents;
+	private String ask_id, ask_title , ask_date , ask_cate_id , ask_contents;
 
 	//문의 카테고리
 	private String ask_cate_name;

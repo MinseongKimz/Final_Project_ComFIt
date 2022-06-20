@@ -7,6 +7,7 @@
 	String searchKey = (String)request.getAttribute("searchKey");
 	int sort = (int)request.getAttribute("sort");
 	String categoryName = (String)request.getAttribute("categoryName");
+	
 %>
 
 <!DOCTYPE html>
@@ -131,7 +132,7 @@
 			
 		</div>
 		<%if(searchKey != null)
-		{ 
+		{
 		%>
 		<div style="text-align: right; margin-top: 2%;">
 			<button id="sort1Btn" type="button" class="btn btn-secondary">최신순</button>
@@ -152,7 +153,8 @@
 		        
 		        	<c:forEach var="product" items="${searchList }">
 		        	   <div class="card">
-		           	   <img src="images/ssd.jpg" class="card-img-top">
+		           	     <img alt="" src="images/${product.pd_photo }"
+						class="card-img-top" style="width: 220px; height: 140px;">
 		             	 <div class="card-body">
 		                 <h5 class="card-title" style="text-align: center;">${product.pd_title }</h5>
 		                 <p class="card-text"  style="text-align: center;">${product.pd_price }</p>

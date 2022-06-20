@@ -104,7 +104,7 @@
 				<tr>
 					<td style="width: 20%; padding-left:15%;">
 						<div class="user_image">	
-							<img alt="경로에 해당사진없음!" src="${myInfo.u_profile }"
+							<img alt="..." src="images/${myInfo.u_profile }"
 							style="object-fit:cover; height: 100%; width: 100%;">
 						</div>
 					</td>
@@ -163,22 +163,29 @@
 		<table class="table table-bordered table-hover" style="width: 100%;">
 		    <thead>
 		        <tr class="table-primary">
-		            <th style="width: 25%;">낙찰일/채택일</th>
+		            <th style="width: 20%;">상품등록일</th>
 		            <th style="width: 15%;">최고가/낙찰가</th>
 		            <th style="width: 30%;">상품정보</th>
 		            <th style="width: 15%;">방식</th>
 		            <th>상태</th>
+		            <th style="width: 10%;">거래완료일</th>
 		        </tr>
 		    </thead>
 		    <tbody>
 		    	<c:forEach var="sell" items="${sellList }" 
 		    	begin="0" end="3">
-		        <tr onclick="alert('해당 상품 페이지로');">
-		            <td>${sell.comp_date }</td>
-		            <td>${sell.pd_price }</td>
+		        <tr onclick="location.href='pd_detail.action?pd_id=${sell.pd_id }';">
+		            <td>${sell.pd_regit_date }</td>
+		            <c:if test="${sell.pd_price == -1}">
+		            	<td>제안받는중</td>
+		            </c:if>
+		            <c:if test="${sell.pd_price != -1}">
+		            	<td>${sell.pd_price }</td>
+		            </c:if>
 		            <td>${sell.pd_title }</td>
 		            <td>${sell.system }</td>
-		            <td>${sell.status }</td>
+		            <td style="font-size: 12pt;">${sell.status }</td>
+		            <td>${sell.comp_date }</td>
 		        </tr>
 		        </c:forEach>
 		    </tbody>
@@ -186,11 +193,9 @@
 		
 		<!-- button -->
 		<div style="text-align: right;">
-
 		<button type="button" class="btn btn-primary btn-sm" id="sellBtn" style="width: 20%; height: 40px; font-size: 15pt;"
-
 			    onclick="location.href='user_selllist.action'">판매내역 자세히보기</button>
-		</div>      
+		</div>
 		
 		<div>
 		<p class="fs-3">내 구매</p> 
@@ -198,33 +203,26 @@
 		<table class="table table-bordered table-hover" style="width: 100%;">
 		    <thead>
 		        <tr class="table-primary">
-		            <th style="width: 25%;">낙찰일/채택일</th>
+		            <th style="width: 20%;">제안/입찰일</th>
 		            <th style="width: 15%;">금액</th>
 		            <th style="width: 30%;">상품정보</th>
 		            <th style="width: 15%;">방식</th>
 		            <th>상태</th>
+		            <th style="width: 10%;">거래완료일</th>
 		        </tr>
 		    </thead>
 		    <tbody>
 		    	<c:forEach var="buy" items="${buyList }" 
 		    	begin="0" end="3">
-		        <tr onclick="alert('해당 상품 페이지로');">
-		            <td>${buy.comp_date }</td>
+		        <tr onclick="location.href='pd_detail.action?pd_id=${buy.pd_id }';">
+		            <td>${buy.pd_regit_date }</td>
 		            <td>${buy.pd_price }</td>
 		            <td>${buy.pd_title }</td>
 		            <td>${buy.system }</td>
-		            <td>${buy.status }</td>
+		            <td style="font-size: 12pt;">${buy.status }</td>
+		            <td>${buy.comp_date }</td>
 		        </tr>
-		        </c:forEach>
-		        <!-- <tr>
-		            <td>2022-05-20</td>
-		            <td>40,000</td>
-		            <td>레이저 무선마우스</td>
-		            <td>배송(경매)</td>
-		            <td>낙찰
-		            	<button type="button" class="btn btn-primary btn-sm" id="buyBtn" style="width: 60px; height: 30px; font-size: 6pt;">구매확정</button>
-		            </td>
-		        </tr> -->     
+		        </c:forEach>   
 		    </tbody>
 		</table>
 			<div style="text-align: right;">

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class sellerEditController
@@ -71,7 +72,10 @@ public class sellerEditController
 		      
 		      dao.deliveryInsert(dto);
 		      
-		      result = "user_mainlist.action";
+		      
+		      
+		      
+		      result = "redirect:redirect.action";	// PRG패턴이라나 뭐라나..
 		      
 		      return result;
 		      
@@ -93,14 +97,6 @@ public class sellerEditController
 			result = "/WEB-INF/view/user/main/user_direct_seller_edit.jsp";
 			
 			return result;
-		}
-		
-		
-		// 직거래 판매글 희망 거래 장소 검색
-		@RequestMapping(value = "/geotest.action", method = RequestMethod.GET)
-		public String geotest()
-		{
-			return "/comfit/WebContent/GeoTest.jsp";
 		}
 		
 		
@@ -151,15 +147,18 @@ public class sellerEditController
 			
 			dao.directInsert(dto);
 			
-			result = "redirect:user_mainlist.action";
+			result = "redirect:redirect.action";	// PRG패턴
 			
 			return result;
 		}
 	
 		
-		
-		
-		
+		//판매 등록 후 다시 메인 보내기;
+		@RequestMapping("/redirect.action") // PRG패턴
+		public String redirect()
+		{
+			return "NewFile.jsp";
+		}
 		
 		
 		

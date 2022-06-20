@@ -31,41 +31,82 @@
 	   var hope_sdate = $("#hope_sdate").val();
 	   var hope_edate =	$("#hope_edate").val();
 			   
-	   /* var hope_stime = $("#hope_stime").val();
-	   var hope_etime = $("#hope_etime").val();
-	   alert(stime);
-	   alert(etime); */
+	/*    var today = new Date();
+	   var sday = new Date(hope_sdate);
 	   
+	   var nowYear = today.getFullYear();
+	   var sYear = sday.getFullYear();
+	   
+	   var nowMonth = today.getFullMonth()+1;
+	   var sMonth = sday.getFullMonth()+1;
+	   
+	   var nowDay = today.getDate();
+	   var sDay = today.getDate();
+	   
+	   // 연도비교
+	   if (nowYear == sYear)
+	   {
+			alert("연도같음, 월비교");
+			if (nowMonth == sMonth)
+			{
+				alert("월 같음, 일비교");
+				if (nowDay > sDay) // 오늘이 미래라면
+				{
+					hope_sdate = today;
+				}
+			}
+			else if(nowMonth > sMonth) // 지금월 이 미래라면
+			{
+				hope_sdate = today;
+			}
+	   }
+	   else
+	   {
+		   alert("연도다름, 연도비교");
+		   hope_sdate = today;
+	   }
+	  */
+	  
 	   $("#datePicker").datepicker({
 		   
 		   dateFormat: "yy-mm-dd" //데이터 포맷 형식(yyyy : 년 mm : 월 dd : 일 )
-	     , minDate: hope_sdate
-	     , maxDate: hope_edate
+	     , minDate: new Date(hope_sdate)
+	     , maxDate: new Date(hope_edate)
 	     , dayNamesMin: ['일', '월', '화', '수', '목', '금', '토']
 	     , monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
 	     , autoclose: true
-	     
-	    
+	     , onSelect: function() { 
+	            var date = $.datepicker.formatDate("yymmdd",$("#datePicker").datepicker("getDate")); 
+	            date = $("#datePicker").val();
+	     }
+	   })
 	   
-	   }).onClose (function()
-		{
-			alert(selectedDate);
-		});
+	   
 	});
-      
-/*    
-      .on('changeDate', function (e) {
-         //show : datePicker가 보이는 순간 호출
-         //hide : datePicker가 숨겨지는 순간 호출
-         //clearDate: clear 버튼 누르면 호출
-         //changeDate : 사용자가 클릭해서 날짜가 변경되면 호출 (개인적으로 가장 많이 사용함)
-         //changeMonth : 월이 변경되면 호출
-         //changeYear : 년이 변경되는 호출
-         //changeCentury : 한 세기가 변경되면 호출 ex) 20세기에서 21세기가 되는 순간
+   
+   function suggest()
+   {
+		var suggest_price = document.getElementById("price").value;
+		var suggest_place = document.getElementById("suggest_place").value;
+		var place_detail = document.getElementById("place_detail").value;
+		var suggest_date = document.getElementById("datePicker").value;
+		var suggest_time = ""
+		var hour = document.getElementById("suggest_hour").value;
+		var minute = document.getElementById("suggest_minute").value;
+		if (minute<10)
+		{
+			minute = "0"+minute;
+		}
+		
+		suggest_time = hour+":"+minute+":00";
+		var u_id = document.getElementById("suggestion").value;
+		var pd_id = document.getElementById("pd_id").value;
+		var url = "suggest_price=" + suggest_price + "&suggest_place=" + suggest_place
+				+ "&place_detail=" + place_detail + "&suggest_date=" + suggest_date + "&suggest_time=" + suggest_time
+				+ "&u_id="+u_id + "&pd_id=" +pd_id;
+		location.href = "suggest.action?"+url;
+	}
  
-         console.log(e);
-         // e.date를 찍어보면 Thu Jun 27 2019 00:00:00 GMT+0900 (한국 표준시) 위와 같은 형태로 보인다.
-      }); */
 </script>
 </head>
 <body>
@@ -76,6 +117,7 @@
 	</c:forEach>
 	<input type="hidden" id="hope_sdate" value="${hope_sdate }" />
 	<input type="hidden" id="hope_edate" value="${hope_edate }" />
+	<input type="hidden" id="pd_id" value="${pd_id }" />
 	<%-- <input type="hidden" id="hope_stime" value="${hope_stime }" />
 	<input type="hidden" id="hope_etime" value="${hope_etime }" /> --%>
 </div>
@@ -86,19 +128,18 @@
         <span class="title">지도중심기준 행정동 주소정보</span>
         <span id="centerAddr"></span>
     
-    
+    </div>
     <br />
 </div>
     
-<div>
-   <form action="suggest_insert.action" method="get">
+	<div style="margin-top: 30%">
 	   <table class="table table-borderless" style="width: 500px;">
   			<tr>
   				<th>
   					<label for="addr1">희망장소</label>		
   				</th>
   				<td colspan="2">
-  					<input type="text"  class="form-control" id="addr" placeholder="지도에서 클릭해주세요" readonly="readonly"
+  					<input type="text"  class="form-control" name="hope_place" id="suggest_place" placeholder="지도에서 클릭해주세요" readonly="readonly"
   					 style="width: 300px; height: 35px; text-align: center;" />		
   				</td>
   			</tr>
@@ -107,7 +148,7 @@
   				     <label for="addr2">장소상세</label>
   				</th>
   				<td colspan="2">
-  				     <input type="text" class="form-control" id="addr2" style="width: 300px; height: 35px;" required="required"/>
+  				     <input type="text" class="form-control" name="place_detail" id="place_detail" style="width: 300px; height: 35px;"/>
   				</td>
   			</tr>
   			<tr>
@@ -115,7 +156,8 @@
   					<label for="hope_date">거래희망날짜</label>
   				</th>
   				<td colspan="2">
-  					<input  id="datePicker" class="form-control" placeholder="날짜를선택해주세요" style="width: 300px; height: 35px; text-align: center;"/>
+  					<input  id="datePicker" class="form-control" placeholder="날짜를선택해주세요" name="suggest_date" 
+  					 style="width: 300px; height: 35px; text-align: center;"/>
   				</td>
   			</tr>
   			<tr>
@@ -123,7 +165,8 @@
 				      <label for="hope_time">거래희망시간</label>
   				</th>
   				<td>
-  				     <select class="form-select  form-select-sm" aria-label="Default select example" style="width: 150px; height: 35px; text-align: center;">
+  				     <select class="form-select  form-select-sm" aria-label="Default select example" id="suggest_hour"
+  				      style="width: 150px; height: 35px; text-align: center;">
   						<c:forEach var="time" begin="${stime }" end="${etime }" step="1">
   							<option value="${time }" style="font-size: 12pt;">${time}시</option>
   						</c:forEach>
@@ -131,7 +174,8 @@
 					
   				</td>
   				<td>
-  				      <select class="form-select  form-select-sm" aria-label="Default select example" style="width: 150px; height: 35px; text-align: center;">
+  				      <select class="form-select  form-select-sm" aria-label="Default select example" id="suggest_minute"
+  				       style="width: 150px; height: 35px; text-align: center;">
   				      <c:forEach var="minute" begin="0" end="59" step="10">
   						<option value="${minute }" style="font-size: 12pt;">${minute }분</option>
 					</c:forEach>  						
@@ -143,16 +187,19 @@
   					 <label for="hope_price">제안금액</label>
   				</th>
   				<td colspan="2">
- 				      <input type="text" class="form-control" id="hope_price" required="required" style="width: 300px; height: 35px;" />
+ 				      <input type="text" class="form-control" id="price" style="width: 300px; height: 35px;" />
   				</td>
   			</tr>
 		</table>
-       <button type="submit" class="btn btn-primary" style="width: 150px; height: 35px; margin-left: 20%;" >제안하기</button>
+	
+       <%-- <button type="button" id="suggestion" class="btn-primary" style="width: 150px; height: 35px; margin-left: 20%;"
+        value="${u_id }">제안하기</button> --%>
+        <button type="button" id="suggestion" class="btn-primary" style="width: 150px; height: 35px; margin-left: 20%;"
+        	value="${u_id }" onclick="suggest()">제안하기</button>
        <button type="reset" class="btn btn-secondary" style="width: 150px; height: 35px;">취소</button>
-   </form>
-</div>
+	</div>
     
-</div>
+
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=86ec7935feee50bc358cd41148ffd4e2&libraries=services"></script>
 <script>
 	// 해당상품의 위도
@@ -202,7 +249,7 @@
                infowindow.setContent(content);
                infowindow.open(map, marker);
                
-               document.getElementById("addr").value = result[0].address.address_name;
+               document.getElementById("suggest_place").value = result[0].address.address_name;
                
            }   
        });

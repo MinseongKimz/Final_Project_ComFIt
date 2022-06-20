@@ -2,14 +2,18 @@ package com.test.mybatis;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
 public interface IAdmin
 {
 	//관리자 로그인 메소드;
 	public AdminLoginDTO adminLogin(AdminLoginDTO admin);
-	
-	
+
 	// 관리자모드 회원 리스트 출력 메소드
-	public ArrayList<userDTO> adminUserList(); 
+	public ArrayList<userDTO> adminUserList(HttpServletRequest request); 
+	
+	// 관리자모드 회원 검색 리스트 출력 메소드
+	public ArrayList<userDTO> adminSearchUserList(String searchvalue);
 	
 	// 관리자모드 차단 회원 리스트 출력 메소드
 	public ArrayList<userDTO> adminBannedList();
@@ -28,8 +32,7 @@ public interface IAdmin
 	
 	// 관리자모드 공지사항 리스트 출력메소드 ok
 	public ArrayList<NoticeDTO> noticeList();
-	
-	
+
 	// 관리자모드 공지사항 추가 메소드
 	public int noticeInsert(NoticeDTO notice);
 	
@@ -62,6 +65,9 @@ public interface IAdmin
 	// 관리자모드 상품 출력 메소드
 	public ArrayList<adProductDTO> adminProductList();
 	
+	// 관리자모드 상품 검색 출력 메소드
+	public ArrayList<adProductDTO> adminProductSearchList(String searchvalue);
+	
 	// 관리자모드 택배상품 세부 출력 메소드
 	public ArrayList<adProductDTO> adminProductDeliveryList_1(String pd_num);
 	public ArrayList<adProductDTO> adminProductDeliveryList_2(String pd_num);
@@ -80,6 +86,7 @@ public interface IAdmin
 	public ArrayList<adMoneyDTO> adminMoneyList();
 	
 	// 관리자모드 입출금 검색 메소드 구현하기...
+	public ArrayList<adMoneyDTO> adminMoneySearchList(String searchvalue);
 
 	// 관리자모드 FAQ 리스트 출력 메소드
 	public ArrayList<FaqDTO> faqList();
@@ -97,24 +104,19 @@ public interface IAdmin
 	public int faqDelete(String faq_id);
 
 	
-	
-	
-	
-	
-	
-	
 	// 메인페이지 공지사항 출력
 	public ArrayList<NoticeDTO> usernoticeList();
 	// 메인페이지 FAQ 출력
 	public ArrayList<FaqDTO> userfaqList();
 	// 메인페이지 문의내역 출력
 	public ArrayList<AskDTO> asklist();
-	// 메인페이지 문의카테고리 출력
-	public ArrayList<AskDTO> askcatelist();
-	// 문의 수정 폼 페이지 이동
-	public AskDTO AskModifyForm(String ask_id);
+	// 메인페이지 문의 폼 이동
+	public AskDTO askModifyForm(String ask_id);
 	// 문의 수정 메소드
 	public int AskModify(AskDTO dto);
+
+
+	
 	
 	
 }

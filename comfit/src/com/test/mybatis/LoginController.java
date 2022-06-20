@@ -54,7 +54,6 @@ public class LoginController
 				String result = null;
 				result = "user_mainlist.action"; // 링크를 통한 매핑 처리 필요, 거기서는 세션 확인해야함.
 				return result;
-				
 			}	
 			
 			
@@ -62,7 +61,7 @@ public class LoginController
 		{
 			System.out.println(e.toString());
 			
-			return "redirect:loginform.action";
+			return "loginform.action";
 		}
 	}
 	

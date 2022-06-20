@@ -10,7 +10,34 @@
 <meta charset="UTF-8">
 <!-- 기기별 크기 담당 -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- 디자인 담당 -->
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+	
+	// 행 클릭하면... 뜨는거
+	$(document).ready(function()
+	{
+		$("#ask_id").click(function()
+		{
+			alert("확인");
+			//alert();
+			location.href="ad_ask_list_reply.action?announce_id="+ $(this).val();
+			//alert($("#btn_edit").val());
+		})
+		
+		
+		/*
+		$(".btn_edit").click(function()
+		{
+			alert("확인");
+			location.href="ad_ask_list_reply.action?announce_id="+ $(this).val();
+			//alert($("#btn_edit").val());
+		})
+		*/
+	})
+	
+	
+	
+</script>
 <title>ad_userbanned_list.jsp</title>
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/main.css">
 </head>
@@ -35,7 +62,7 @@
 			</thead>
 			<tbody style="background: white;">
 			<c:forEach var="ask" items="${adminAskList }">
-				<tr onClick="location.href='ad_ask_list_reply.action'" style="">
+				<tr id="ask_id">
 					<td>${ask.u_id }</td>
 					<td>${ask.ask_title }</td>
 					<td>${ask.ask_date }</td>

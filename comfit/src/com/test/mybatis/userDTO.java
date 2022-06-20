@@ -7,6 +7,10 @@ public class userDTO
 	, u_tel, bancount, u_password, u_profile ,u_address;
 	
 
+	// 검색값 / 카테고리값
+	private String searchvalue;
+
+	
 
 	// 차단회원 리스트 속성
 	private String ban_cate_name, ban_date, ban_end_date, rep_cate_name, ban_rea_detail;
@@ -14,10 +18,19 @@ public class userDTO
 	// 이메일 인증 여부
 	private String auth , random;
 
+
+
+	public String getSearchvalue()
+	{
+		return searchvalue;
+	}
+
+	public void setSearchvalue(String searchvalue)
+	{
+		this.searchvalue = searchvalue;
+	}
 	
-
-
-  public String getU_id()
+    public String getU_id()
 	{
 		return u_id;
 	}
@@ -187,6 +200,4 @@ public class userDTO
 		this.u_address = u_address;
 	}
 
-	
-	
 }

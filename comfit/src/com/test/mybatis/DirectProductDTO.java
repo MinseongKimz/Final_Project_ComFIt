@@ -6,8 +6,41 @@ public class DirectProductDTO
     , pd_hope_sdate, pd_hope_edate, pd_hope_stime, pd_hope_etime, pd_hope_place
     , pd_regit_date, pd_maker_id, pd_as_id, pd_as_name, category_name, seller
     , u_nickname, maker_name, maker_name2, cf_price, comments
-    , remain_date, distance, lat, lon;
+    , remain_date, distance, lat, lon, price, sel_check, profile; 
 	
+	
+	
+	
+	public String getProfile()
+	{
+		return profile;
+	}
+
+	public void setProfile(String profile)
+	{
+		this.profile = profile;
+	}
+
+	public String getSel_check()
+	{
+		return sel_check;
+	}
+
+	public void setSel_check(String sel_check)
+	{
+		this.sel_check = sel_check;
+	}
+
+	public String getPrice()
+	{
+		return price;
+	}
+
+	public void setPrice(String price)
+	{
+		this.price = price;
+	}
+
 	private String u_id, pd_hope_mgrs;
 
 	

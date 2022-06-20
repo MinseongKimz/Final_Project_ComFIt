@@ -101,7 +101,7 @@ public class SignController
       {
          System.out.println(e.toString());
       }
-      return "redirect:comfit.action?hello=1";     
+      return "redirect:comfit.action";     
 
    }
 

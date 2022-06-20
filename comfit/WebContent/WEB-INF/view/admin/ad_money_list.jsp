@@ -30,10 +30,10 @@
 				return;
 			}
 			
-			alert($(".listselect").val());
+			alert($("#listselect").val()); //u_email, 
+			alert($("#searchvalue").val()); //서치값
 			
-			$(location).attr('href', '/admin_moneysearch.action');
-			
+			$(location).attr("href", "/comfit/admin_money_searchlist.action?listselect="+$("#listselect").val()+"&searchvalue="+$("#searchvalue").val());
 		});		
 	});
 
@@ -61,7 +61,7 @@
 			<tbody>
 			<c:forEach var="moneylist" items="${moneylist}">
 				<tr>
-					<td>afdj12</td>
+					<td>${moneylist.u_email }</td>
 					<td>${moneylist.u_name }</td>
 					<td>${moneylist.io_type }</td>
 					<td>${moneylist.io_date }</td>
@@ -75,13 +75,14 @@
 
 		<div style="text-align: right;">
 		<div class="btn-group" style="width: 30%;">
-			<select class="form-select listselect" style="width: 40%;">
-			    <option selected value="u_name">이름</option>
+			<select class="form-select listselect" id="listselect" style="width: 40%;">
+				<option selected>카테고리</option>
+			    <option value="u_name">이름</option>
 			    <option value="io_type">입출금</option>
 			    <option value="bank_name">은행</option>
 			</select> 
         <div class="input-group" style="width:100%;">
-           <input type="text" class="form-control" placeholder="검색어를 입력하세요">
+           <input type="text" class="form-control" id="searchvalue" placeholder="검색어를 입력하세요">
             <button id="searchBtn" type="button" class="btn btn-outline-primary">
           <i class="bi bi-search"></i>
             </button>                          

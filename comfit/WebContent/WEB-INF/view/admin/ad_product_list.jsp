@@ -28,9 +28,26 @@
 				return;
 			}
 			
-			alert($(".listselect").val());
+			//alert($("#listselect").val()); //u_email, 
+			//alert($("#searchvalue").val()); //서치값
 			
-			$(location).attr('href', '/admin_productsearch.action');
+			// 분기
+			/*
+			if ($(".listselect").val()=='u_nickname')
+			{
+				$(location).attr("href", "admin_usersearch.action?u_nickname="+$("#searchvalue").val());
+			}
+			else if ($(".listselect").val()=='u_mail') 
+			{
+				$(location).attr("href", "admin_usersearch.action?e_mail="+$("#searchvalue").val());				
+			}
+			else
+			{
+				$(location).attr("href", "admin_usersearch.action?u_name="+$("#searchvalue").val());	
+			}
+			*/
+			
+			$(location).attr("href", "/comfit/admin_product_searchlist.action?listselect="+$("#listselect").val()+"&searchvalue="+$("#searchvalue").val());
 			
 		});		
 	});
@@ -44,7 +61,7 @@
 			var id_check = $(this).attr("id");
 			
 			// 아이디값 체크
-			alert(id_check);
+			//alert(id_check);
 			
 			// 분기 			
 			if (id_check=='deli')
@@ -103,13 +120,14 @@
 			<input type="checkbox" name="xxx" value="yyy" checked>블라인드 처리된 게시글만 보기
 		</div>
 		<div class="btn-group" style="width: 30%; text-align: right;">
-			<select class="form-select listselect" style="width: 40%; display: inline-block;">
+			<select class="form-select listselect" id="listselect" style="width: 40%; display: inline-block;">
 			    <option selected>카테고리</option>
-			    <option value="1">1</option>
-			    <option value="2">2</option>
+			    <option value="1">상품 카테고리</option>
+			    <option value="2">판매자ID</option>
+			    <option value="2">제목</option>
 			</select> 
         <div class="input-group" style="width:100%; text-align: right;">
-           <input type="text" class="form-control" placeholder="검색어를 입력하세요">
+           <input type="text" class="form-control" id="searchvalue" placeholder="검색어를 입력하세요">
             <button id="searchBtn" type="button" class="btn btn-outline-primary">
           <i class="bi bi-search"></i>
             </button>                          

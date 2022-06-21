@@ -16,7 +16,7 @@ public class DBConn
 		{
 			try
 			{
-				String url = "jdbc:oracle:thin:@211.238.142.165:1521:xe";
+				String url = "jdbc:oracle:thin:@118.46.221.21:1521:xe";
 				String user = "comfit";
 				String pwd = "comfit006$";
 				

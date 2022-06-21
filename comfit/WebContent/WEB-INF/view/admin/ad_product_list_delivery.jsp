@@ -75,10 +75,7 @@
 				    <th style="background-color: #eeeeee; text-align: center;">제조사</th>
 				    <td>${delivery.maker_name }</td>
 				</tr>			
-				<tr>
-				    <th style="background-color: #eeeeee; text-align: center;">희망 가격</th>
-				    <td style="color: red;">아직없어용</td>
-				</tr>	
+	
 			</c:forEach>								
 			</thead>
 		</table>		
@@ -125,7 +122,7 @@
 				</tr>				
 				<tr>
 				    <th style="background-color: #eeeeee; text-align: center;">운송장</th>
-				    <td style="color: red;">우체국</td>
+				    <td style="color: ;">우체국</td>
 				    <td id="set">${delivery.pd_deli_num }</td> 
 				</tr>	
 			</c:forEach>							

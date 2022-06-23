@@ -92,6 +92,19 @@ d-block
 
 <script type="text/javascript">
 
+function deletePd()
+{
+	var result = confirm("해당 상품(게시물)을 삭제하시겠습니까??");
+	var pd_id = document.getElementById("pd_id").value;
+	
+	if (result)
+	{
+		
+		location.href="deletedrproduct.action?pd_id="+pd_id;
+	}
+}
+
+
 function searchAddr()
 {
   
@@ -355,7 +368,7 @@ function select_suggest(idx)
 								<c:choose>
 									<c:when test="${sl_check == 0 }">
 										<button type="button" class="btn btn-primary" style="width: 48%;">수정하기</button>
-										<button type="button" class="btn btn-secondary" style="width: 48%;">삭제하기</button>
+										<button type="button" class="btn btn-secondary" style="width: 48%;" onclick="deletePd()">삭제하기</button>
 									</c:when>
 									<c:otherwise>
 										<button type="button" class="btn btn-secondary" style="width: 48%;" disabled="disabled">수정하기</button>

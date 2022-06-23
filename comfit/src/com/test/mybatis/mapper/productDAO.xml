@@ -297,6 +297,10 @@
 	 WHERE DELI_PD_ID=#{pd_id}
 	</select>
 	
+	
+	
+	
+	
 </mapper>
 
 

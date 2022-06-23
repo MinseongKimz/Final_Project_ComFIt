@@ -94,7 +94,9 @@ public interface IProduct
 	public int end_day(String pd_id);
 	public int now_price(String pd_id);
 	public int blCheck(String pd_id);
-
+	
+	public int deleteDirePd(String pd_id);
+	public int deleteDeliPd(String pd_id);
 
 }
 	

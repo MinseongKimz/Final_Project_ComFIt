@@ -22,6 +22,14 @@ public class LoginController
 	{
 		IUserLoginDAO dao = sqlSession.getMapper(IUserLoginDAO.class); 
 		userDTO user = new userDTO(); 
+		
+		String lat = request.getParameter("lat"); 	// 위도
+		String lon = request.getParameter("lon");	// 경도
+		
+		HttpSession session = request.getSession();
+		
+		session.setAttribute("lat", lat);
+		session.setAttribute("lon", lon);
 		//System.out.println(email + password);
 		try
 		{
@@ -41,10 +49,7 @@ public class LoginController
 			else 
 			{
 				
-				HttpSession session = request.getSession();
 				session.setAttribute("u_id", user.getU_id());
-				
-
 				
 				System.out.println(session.getAttribute("u_id"));
 				
@@ -61,7 +66,9 @@ public class LoginController
 		{
 			System.out.println(e.toString());
 			
+			session.invalidate();
 			return "loginform.action";
+			
 		}
 	}
 	

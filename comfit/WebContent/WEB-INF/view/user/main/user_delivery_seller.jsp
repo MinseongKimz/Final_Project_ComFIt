@@ -104,14 +104,14 @@ function CountDownTimer(dt, id)
 		var result = confirm("즉시구매 시 해당 가격으로 자동 낙찰됩니다. \n 계속 진행하시겠습니까??");
 	    var pd_id = document.getElementById("pd_id").value;
 	    var imdPrice = document.getElementById("imdprice").innerText;
-		alert(imdPrice);
+		//alert(imdPrice);
 	    var url = "buy_place.action?pd_id=" + pd_id + "&imdPrice=" + imdPrice
 	    
 
 
 		if (result)
 		{
-			alert("즉시구매하기");
+			//alert("즉시구매하기");
 		    window.open(url, "즉시구매", "top=100px, left=100px, height=250px, width=450px, resizable=no");
 
 		}
@@ -217,9 +217,13 @@ d-block
 			    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
 			  </div>
 			  <div class="carousel-inner">
-			    <div class="carousel-item active">
+			  		<div class="carousel-item active">
+				    	<img src="images/${dlPd.pd_photo}" class="d-block w-100 rounded" alt="...">
+				    </div>
+				  
+			    <!-- <div class="carousel-item active">
 			      <img src="https://cdn.pixabay.com/photo/2015/09/04/23/28/wordpress-923188__340.jpg" class="d-block w-100 rounded" alt="...">
-			    </div>
+			    </div> -->
 			    <div class="carousel-item">
 			      <img src="https://cdn.pixabay.com/photo/2016/03/26/13/09/cup-of-coffee-1280537__340.jpg" class="d-block w-100 rounded" alt="...">
 			    </div>
@@ -450,9 +454,12 @@ d-block
 			    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
 			  </div>
 			  <div class="carousel-inner">
-			    <div class="carousel-item active">
-			      <img src="https://cdn.pixabay.com/photo/2015/09/04/23/28/wordpress-923188__340.jpg" class="d-block w-100 rounded" alt="...">
+			  	<div class="carousel-item active">
+			    	<img src="images/${dlPd.pd_photo}" class="d-block w-100 rounded" alt="...">
 			    </div>
+			   <!--  <div class="carousel-item active">
+			      <img src="https://cdn.pixabay.com/photo/2015/09/04/23/28/wordpress-923188__340.jpg" class="d-block w-100 rounded" alt="...">
+			    </div> -->
 			    <div class="carousel-item">
 			      <img src="https://cdn.pixabay.com/photo/2016/03/26/13/09/cup-of-coffee-1280537__340.jpg" class="d-block w-100 rounded" alt="...">
 			    </div>

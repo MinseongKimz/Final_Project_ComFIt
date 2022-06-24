@@ -5,7 +5,17 @@ public class MypageProductDTO
 	private String pd_id, pd_title, pd_price, system, pd_regit_date
 	, time, comp_date, seller_id, buyer_id, address, status
 	, selected_id, selected_date, buyer_code, seller_code
-	, bs_id, bs_date;
+	, bs_id, bs_date, deli_num;
+
+	public String getDeli_num()
+	{
+		return deli_num;
+	}
+
+	public void setDeli_num(String deli_num)
+	{
+		this.deli_num = deli_num;
+	}
 
 	public String getPd_id()
 	{

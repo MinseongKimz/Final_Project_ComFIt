@@ -39,7 +39,7 @@
    
    .card
    {
-		width: 14rem;
+		width: 16rem;
    }
    .MultiCarousel .MultiCarousel-inner .item .pad15:hover
    {

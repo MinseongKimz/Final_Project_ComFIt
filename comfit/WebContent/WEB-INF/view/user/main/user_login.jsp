@@ -136,6 +136,20 @@
 				}
 				else
 				{
+					
+					if(navigator.geolocation)
+					{	
+						//alert("sd");
+						navigator.geolocation.getCurrentPosition(function(pos) //  좌표값 가져오는 함수 (회원 로그인시 메인에 보여줄)
+						{													   //  상품들을 이 좌표를 통해 판단함. 
+						    var lat = pos.coords.latitude;	// 위도
+						    var lon = pos.coords.longitude; // 경도
+						    
+						   	$("#lat").val(lat);
+						   	$("#lon").val(lon);
+						   	//alert(	$("#lon").val());
+						});
+					}
 					$("#loginForm").submit();
 					
 				}
@@ -178,6 +192,9 @@
 	<br /><br /><br />
 	<div style="width: 400px; margin: auto;">
 		<form action="login.action" class="form form-group" id="loginForm" method="post">
+			
+			  <input type="hidden" id="lat" name="lat">
+			  <input type="hidden" id="lon" name="lon" >
 			
 			<h2 class="h3 mb-3"><b>로그인</b></h2>
 			

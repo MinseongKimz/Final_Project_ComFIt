@@ -79,23 +79,8 @@
 		$("#loginBtn0").click(function()
 		{
 			//alert("ㅎㅇ");
-			if(navigator.geolocation)
-			{	
-				//alert("sd");
-				navigator.geolocation.getCurrentPosition(function(pos) //  좌표값 가져오는 함수 (회원 로그인시 메인에 보여줄)
-				{													   //  상품들을 이 좌표를 통해 판단함. 
-				    var lat = pos.coords.latitude;	// 위도
-				    var lon = pos.coords.longitude; // 경도
-				    
-				   	$("#lat").val(lat);
-				   	$("#lon").val(lon);
-				   	//alert(	$("#lon").val());
-				   
-				   	
-				});
-				$("#login").submit();
-				
-			}
+		
+			$("#login").submit();
 			
 		});
 		
@@ -135,8 +120,7 @@
 <body>
 <div>
 	<form style="display: none" action="loginform.action" method="POST" id="login" name="login">
-	  <input type="hidden" id="lat" name="lat">
-	  <input type="hidden" id="lon" name="lon" >
+	
 	</form>
   
 

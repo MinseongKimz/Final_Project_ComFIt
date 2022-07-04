@@ -233,4 +233,63 @@ public class PdSelectController
 	
 	
 	
+	// 직거래 상품 삭제하기
+	@RequestMapping(value = "/deletedrpd.action", method = RequestMethod.GET)
+	public String deleteDireProduct(Model model, HttpServletRequest request)
+	{
+		String result = "";
+		IProduct dao = sqlSession.getMapper(IProduct.class);
+		String pd_id = request.getParameter("pd_id");
+		
+		try
+		{
+			int delCount = dao.deleteDirePd(pd_id);
+			if (delCount ==1)
+			{
+				result = "redirect:user_mainlist.action";
+			}
+			
+			
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		
+		return result;
+		
+	}
+	
+	// 택배상품 삭제하기
+	@RequestMapping(value = "/deletedlpd.action", method = RequestMethod.GET)
+	public String deleteDeliProduct(Model model, HttpServletRequest request)
+	{
+		String result = "";
+		IProduct dao = sqlSession.getMapper(IProduct.class);
+		String pd_id = request.getParameter("pd_id");
+		
+		try
+		{
+			int delCount = dao.deleteDeliPd(pd_id);
+			if (delCount ==1)
+			{
+				result = "redirect:user_mainlist.action";
+			}
+			
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		
+		return result;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 }

@@ -48,26 +48,39 @@
 	</select>
 	
 	<select id="user_pdList" resultType="com.test.mybatis.ProductDTO">
-		  SELECT V.PD_ID AS PD_ID, V.PD_TITLE AS PD_TITLE, V.PRICE AS PRICE, V.DISTANCE AS DISTANCE, V.PD_PHOTO AS PD_PHOTO
-			FROM
-			(
-			SELECT PD_ID, PD_NAME, PRICE, PD_PHOTO, PD_TITLE
-			     , ROUND(DISTANCE_WGS84(LAT, LON, #{lat}, #{lon}), 2) AS DISTANCE
-			FROM DIRE_PD_NEAR_VIEW
-			) V
-			ORDER BY V.DISTANCE
+		
+		SELECT V.PD_ID AS PD_ID, V.PD_TITLE AS PD_TITLE, V.PRICE AS PRICE, V.DISTANCE AS DISTANCE, V.PD_PHOTO AS PD_PHOTO
+		     , CASE  WHEN SYSDATE - V.PD_HOPE_EDATE <![CDATA[>]]> 14 THEN 'X'
+		             WHEN (V.PD_HOPE_EDATE <![CDATA[<]]> SYSDATE) THEN '1'
+		       ELSE '0' END AS PD_HOPE_EDATE 
+		FROM
+		    (
+		    SELECT PD_ID, PD_NAME, PRICE, PD_PHOTO, PD_TITLE, PD_HOPE_EDATE
+		         , ROUND(DISTANCE_WGS84(LAT, LON, 33, 123), 2) AS DISTANCE
+		    FROM DIRE_PD_NEAR_VIEW
+		    ) V
+		ORDER BY PD_HOPE_EDATE ,V.DISTANCE
+		
+		
+		
+		
+		
 	</select>
 	<select id="deli_user_pdList" resultType="com.test.mybatis.ProductDTO">
-		  SELECT PD_ID, PD_TITLE, PRICE, PD_REGIT_DATE, PD_PHOTO
-		    FROM DELI_PD_LIST_REALVIEW
+		SELECT PD_ID, PD_TITLE, PRICE, PD_REGIT_DATE, PD_PHOTO
+		     , CASE WHEN SYSDATE - PD_REGIT_DATE <![CDATA[>]]> 19 THEN 'X'
+		       WHEN (PD_REGIT_DATE+5 <![CDATA[<]]> SYSDATE) THEN '1' 
+		       ELSE '0'
+		       END AS PD_HOPE_EDATE
+		FROM DELI_PD_LIST_REALVIEW
+		ORDER BY PD_HOPE_EDATE
 	</select>
+	
 	<select id="cateList" resultType="com.test.mybatis.CategoryDTO">
 		SELECT PD_CATEGORY_ID, CATEGORY_NAME
 		FROM PRODUCT_CATEGORY
 	</select>
 
-	
-	
 	
 	<select id="drPdList" resultType="com.test.mybatis.DirectProductDTO">
 		SELECT PD_ID, PD_TITLE, PD_NAME, PD_PHOTO, PD_AS_REMAIN, PD_HITCOUNT, PRICE
@@ -296,6 +309,10 @@
 	  FROM BID_LIST
 	 WHERE DELI_PD_ID=#{pd_id}
 	</select>
+	
+	
+	
+	
 	
 </mapper>
 

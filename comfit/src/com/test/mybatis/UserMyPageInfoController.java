@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.test.util.ArticlePage;
+
 @Controller
 public class UserMyPageInfoController
 {
@@ -33,14 +35,24 @@ public class UserMyPageInfoController
 				return "logout.action";
 			}
 			
+			MoneyDTO mDto = new MoneyDTO();
+			MypageProductDTO mpdDto = new MypageProductDTO();
+			
+			mDto.setStart("1");
+			mDto.setEnd("4");
+			mDto.setU_id(u_id);
+			
+			mpdDto.setStart("1");
+			mpdDto.setEnd("4");
+			mpdDto.setU_id(u_id);
 			
 			IUserMyPage mypage = sqlSession.getMapper(IUserMyPage.class);
 			model.addAttribute("myInfo", mypage.myInfo(u_id));
 			model.addAttribute("level", mypage.myLevel(u_id));
 			model.addAttribute("point", mypage.myPoint(u_id));
-			model.addAttribute("myMoneyList", mypage.myMoneyList(u_id));
-			model.addAttribute("buyList", mypage.buyList(u_id));
-			model.addAttribute("sellList", mypage.sellList(u_id));
+			model.addAttribute("myMoneyList", mypage.myMoneyList(mDto));
+			model.addAttribute("buyList", mypage.buyList(mpdDto));
+			model.addAttribute("sellList", mypage.sellList(mpdDto));
 			
 			result = "/WEB-INF/view/user/mypage/user_mypage.jsp";
 			
@@ -83,7 +95,9 @@ public class UserMyPageInfoController
 	
 	// 마이페이지 구매내역 액션
 	@RequestMapping(value = "/user_buylist.action", method = RequestMethod.GET)
-	public String userBuylist(Model model, HttpServletRequest request)
+	public String userBuylist(Model model, HttpServletRequest request, ArticlePage vo
+			,@RequestParam(value="nowPage" , required=false) String nowPage
+			,@RequestParam(value="cntPerPage", required=false) String cntPerPage)
 	{
 		String result = null;
 		try
@@ -93,7 +107,30 @@ public class UserMyPageInfoController
 			
 			IUserMyPage mypage = sqlSession.getMapper(IUserMyPage.class);
 			
-			model.addAttribute("buyList", mypage.buyList(u_id));
+			int total = mypage.buyListCount(u_id);
+			
+			if (nowPage == null && cntPerPage == null) 
+			{
+				nowPage = "1";
+				cntPerPage = "5";
+			} else if (nowPage == null) 
+			{
+				nowPage = "1";
+			} else if (cntPerPage == null) 
+			{ 
+				cntPerPage = "5";
+			}
+			
+			vo = new ArticlePage(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+			
+			MypageProductDTO mpdDto = new MypageProductDTO();
+			
+			mpdDto.setU_id(u_id);
+			mpdDto.setStart(Integer.toString(vo.getStart()));
+			mpdDto.setEnd(Integer.toString(vo.getEnd()));
+			
+			model.addAttribute("buyList", mypage.buyList(mpdDto));
+			model.addAttribute("paging", vo);
 			
 			result = "/WEB-INF/view/user/mypage/user_mypage_buylist.jsp";
 			
@@ -108,7 +145,9 @@ public class UserMyPageInfoController
 
 	// 마이페이지 판매내역 액션
 	@RequestMapping(value = "/user_selllist.action", method = RequestMethod.GET)
-	public String userSelllist(Model model, HttpServletRequest request)
+	public String userSelllist(Model model, HttpServletRequest request, ArticlePage vo
+			,@RequestParam(value="nowPage" , required=false) String nowPage
+			,@RequestParam(value="cntPerPage", required=false) String cntPerPage)
 	{
 		String result = null;
 		
@@ -119,7 +158,31 @@ public class UserMyPageInfoController
 			
 			IUserMyPage mypage = sqlSession.getMapper(IUserMyPage.class);
 			
-			model.addAttribute("sellList", mypage.sellList(u_id));
+			int total = mypage.sellListCount(u_id);
+			
+			if (nowPage == null && cntPerPage == null) 
+			{
+				nowPage = "1";
+				cntPerPage = "5";
+			} else if (nowPage == null) 
+			{
+				nowPage = "1";
+			} else if (cntPerPage == null) 
+			{ 
+				cntPerPage = "5";
+			}
+			
+			vo = new ArticlePage(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+			
+			MypageProductDTO mpdDto = new MypageProductDTO();
+			
+			mpdDto.setU_id(u_id);
+			mpdDto.setStart(Integer.toString(vo.getStart()));
+			mpdDto.setEnd(Integer.toString(vo.getEnd()));
+
+			
+			model.addAttribute("sellList", mypage.sellList(mpdDto));
+			model.addAttribute("paging", vo);
 			
 			result = "/WEB-INF/view/user/mypage/user_mypage_sell_list.jsp";
 			
@@ -133,10 +196,11 @@ public class UserMyPageInfoController
 	
 	// 마이페이지 입출금내역 액션
 	@RequestMapping(value = "/user_moneylist.action", method = RequestMethod.GET)
-	public String userMoneylist(Model model, HttpServletRequest request)
+	public String userMoneylist(Model model, HttpServletRequest request, ArticlePage vo
+			,@RequestParam(value="nowPage" , required=false) String nowPage
+			,@RequestParam(value="cntPerPage", required=false) String cntPerPage)
 	{
 		String result = null;
-		
 		try
 		{
 			HttpSession session = request.getSession();
@@ -144,7 +208,29 @@ public class UserMyPageInfoController
 			
 			IUserMyPage mypage = sqlSession.getMapper(IUserMyPage.class);
 			
-			model.addAttribute("myMoneyList", mypage.myMoneyList(u_id));
+			int total = mypage.moneyListCount(u_id);
+			
+			if (nowPage == null && cntPerPage == null) 
+			{
+				nowPage = "1";
+				cntPerPage = "5";
+			} else if (nowPage == null) 
+			{
+				nowPage = "1";
+			} else if (cntPerPage == null) 
+			{ 
+				cntPerPage = "5";
+			}
+			
+			vo = new ArticlePage(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		
+			MoneyDTO mDto = new MoneyDTO();
+			mDto.setU_id(u_id);
+			mDto.setStart(Integer.toString(vo.getStart()));
+			mDto.setEnd(Integer.toString(vo.getEnd()));
+			
+			model.addAttribute("paging", vo);
+			model.addAttribute("myMoneyList", mypage.myMoneyList(mDto));
 			model.addAttribute("point", mypage.myPoint(u_id));
 			
 			result = "/WEB-INF/view/user/mypage/user_mypage_pointlist.jsp";

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.mybatis.IAdmin">
+
+
+	
+
+
+	<!-- 공지사항 리스트 출력  -->
+	<select id="usernoticeList" resultType="com.test.mybatis.NoticeDTO">
+		SELECT ANNOUNCE_ID,ANNOUNCE_TITLE,ANNOUNCE_CONTENTS
+		FROM ANNOUNCE
+	</select>
+	
+	<!-- 공지사항 카테고리 출력  -->
+	<select id="noticecateList" resultType="com.test.mybatis.NoticeDTO">
+		SELECT ANOUN_CATE_ID,ANOUN_CATE_NAME
+		FROM ANNOUNCE_CATEGORY
+	</select> 
+	
+	
+	<!-- 공지사항 추가 등록  -->
+	<insert id="noticeInsert">
+		INSERT INTO ANNOUNCE (ANNOUNCE_ID,ANNOUNCE_TITLE,ANNOUNCE_CONTENTS,ANOUN_CATE_ID)
+		VALUES(CONCAT('ann_', ANNOUNCE_SEQ.NEXTVAL), #{announce_title},#{announce_contents},#{anoun_cate_id})
+	</insert>
+	
+
+	<!-- 공지사항 수정 폼 출력 -->
+	<select id="noticeModifyForm" resultType="com.test.mybatis.NoticeDTO">
+		SELECT ANNOUNCE_ID,ANNOUNCE_TITLE,ANNOUNCE_CONTENTS,ANOUN_CATE_ID
+		FROM ANNOUNCE
+		WHERE announce_id= #{announce_id}
+	</select>
+	
+	
+	
+	
+	<!-- 공지사항 수정  -->
+	<update id="noticeModify">
+		UPDATE ANNOUNCE
+		SET ANNOUNCE_TITLE =#{announce_title}
+    	,ANNOUNCE_CONTENTS = #{announce_contents}
+    	,ANOUN_CATE_ID=#{anoun_cate_id}
+		WHERE announce_id=#{announce_id}
+	</update>
+	
+	<!-- 공지사항 삭제  -->
+	<delete id="noticeDelete">
+		DELETE
+		FROM ANNOUNCE
+		WHERE ANNOUNCE_ID=#{anoun_cate_id}
+	</delete>
+
+</mapper>

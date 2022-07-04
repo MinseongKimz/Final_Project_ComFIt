@@ -5,7 +5,39 @@ public class MypageProductDTO
 	private String pd_id, pd_title, pd_price, system, pd_regit_date
 	, time, comp_date, seller_id, buyer_id, address, status
 	, selected_id, selected_date, buyer_code, seller_code
-	, bs_id, bs_date, deli_num;
+	, bs_id, bs_date, deli_num, start, end, u_id;
+	
+	
+
+	public String getU_id()
+	{
+		return u_id;
+	}
+
+	public void setU_id(String u_id)
+	{
+		this.u_id = u_id;
+	}
+
+	public String getStart()
+	{
+		return start;
+	}
+
+	public void setStart(String start)
+	{
+		this.start = start;
+	}
+
+	public String getEnd()
+	{
+		return end;
+	}
+
+	public void setEnd(String end)
+	{
+		this.end = end;
+	}
 
 	public String getDeli_num()
 	{

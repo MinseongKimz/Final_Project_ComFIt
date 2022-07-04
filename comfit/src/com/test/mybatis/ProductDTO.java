@@ -4,6 +4,7 @@ public class ProductDTO
 {
 	private String pd_id, pd_name, price, distatnce, category_name;
 	private String pd_title, system, status, pd_photo;
+	private String pd_hope_edate;
 	
 	private String profile;
 	
@@ -12,7 +13,16 @@ public class ProductDTO
 	private String lat, lon;
 	
 	
-	
+	public String getPd_hope_edate()
+	{
+		return pd_hope_edate;
+	}
+
+	public void setPd_hope_edate(String pd_hope_edate)
+	{
+		this.pd_hope_edate = pd_hope_edate;
+	}
+
 	public String getProfile()
 	{
 		return profile;

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- ○ mapper 엘리먼트의 『namespace="패키지 경로가 포함된 인터페이스"』 -->
+<!--    - 인터페이스 내부에 <<메소드명>>이 선언되어 있어야 한다. -->
+<!--    - 이 ★<<메소드 명과 id="식별자"가 일치>>★해야 한다 -->
+<mapper namespace="com.test.mybatis.IAdmin">
+
+   <!-- ○ 『id="식별자"』 속성 추가 -->
+   <!--     - 인터페이스에 선언된 메소드의 이름과 일치해야 하며 -->
+   <!--     호출 메소드명 역할을 수행하게 된다. -->
+   
+   <!-- ○ 『resultType="패키지 경로가 포함된 자료형 클래스"』 속성 추가 -->
+   <!--    - string : java.lang.String
+           - byte : java.lang.Byte
+           - long : java.lang.Long
+           - short : java.lang.Short
+           - int : java.lang.Integer
+           - Integer : java.lang.Integer
+           - double : java.lang.Double
+           - float : java.lang.Float
+           - boolean : java.lang.Boolean
+           - decimal : java.math.BigDecimal
+           - Object : java.lang.Object
+           - map : java.util.Map
+           - hashmap : java.util.HashMap
+           - list : java.lang.List
+           - arraylist : java.util.Arraylist
+           - collection : java.util.Collection
+           - iterator : java.util.Iterator
+   -->
+   
+   <!-- ○ 쿼리 내부에 있는 컬럼명의 정보가 -->
+   <!--    자료형 클래스(DTO) 멤버 변수(속성)와 일치하는 경우 -->
+   <!--    <<자동 매핑>>이 이루어진다. -->
+   <!--    또한 SQL 문 내부에 세미콜론(;) 이 있으면 안된다. -->
+   <select id="adminUserList" resultType="com.test.mybatis.userDTO">
+      SELECT U_ID, U_EMAIL, U_NAME, U_NICKNAME, U_TEL, U_JOINDATE, 
+      (
+          SELECT COUNT(*) AS COUNT
+          FROM
+          (
+          SELECT BAN_ID, BAN_DATE, REPORTED, REPORTER
+          FROM DIRECT_TRANS_BANNED_VIEW
+          UNION
+          SELECT BAN_ID, BAN_DATE, REPORTED, REPORTER
+          FROM DELIVERY_TRANS_BANNED_VIEW
+          UNION
+          SELECT BAN_ID, BAN_DATE, REPORTED, REPORTER
+          FROM DIRECT_PD_BANNED_VIEW
+          UNION
+          SELECT BAN_ID, BAN_DATE, REPORTED, REPORTER
+          FROM DELIVERY_PD_BANNED_VIEW
+          )
+          WHERE U_ID = REPORTED
+      ) AS BANCOUNT
+      FROM USER_INFORMATION
+      ORDER BY U_JOINDATE DESC
+   </select>
+
+   <select id="adminSearchUserList" resultType="com.test.mybatis.userDTO">
+		SELECT U_ID, U_EMAIL, U_NAME, U_NICKNAME, U_TEL, U_JOINDATE, 
+		(
+		  SELECT COUNT(*) AS COUNT
+		  FROM
+		  (
+		  SELECT BAN_ID, BAN_DATE, REPORTED, REPORTER
+		  FROM DIRECT_TRANS_BANNED_VIEW
+		  UNION
+		  SELECT BAN_ID, BAN_DATE, REPORTED, REPORTER
+		  FROM DELIVERY_TRANS_BANNED_VIEW
+		  UNION
+		  SELECT BAN_ID, BAN_DATE, REPORTED, REPORTER
+		  FROM DIRECT_PD_BANNED_VIEW
+		  UNION
+		  SELECT BAN_ID, BAN_DATE, REPORTED, REPORTER
+		  FROM DELIVERY_PD_BANNED_VIEW
+		  )
+		  WHERE U_ID = REPORTED
+		) AS BANCOUNT
+		FROM USER_INFORMATION
+		WHERE u_name = u_name and u_name LIKE '%' || #{searchvalue} || '%'
+		OR U_EMAIL = U_EMAIL and U_EMAIL LIKE '%' || #{searchvalue} || '%'
+		OR U_NICKNAME = U_NICKNAME and U_NICKNAME LIKE '%' || #{searchvalue} || '%'
+   </select>
+
+   <select id="adminUseroutList" resultType="com.test.mybatis.useroutDTO">
+      SELECT U_EMAIL, U_NAME, U_NICKNAME, U_EXITDATE
+      FROM USER_INFORMATION_BACKUP
+   </select>   
+   
+   <select id="adminBannedList" resultType="com.test.mybatis.userDTO">
+		SELECT U_ID, U_EMAIL, U_NICKNAME, BAN_CATE_NAME
+		, BAN_DATE, BAN_END_DATE, REP_CATE_NAME, BAN_REA_DETAIL
+		FROM BANNED_USER_VIEW
+	</select>
+		
+   <select id="adminReportList" resultType="com.test.mybatis.adReportDTO">
+		SELECT U_ID, PD_ID, R_U_ID, REP_CONTENTS, HAN_CATE_NAME, REP_DATE, REP_HAN_DATE
+		FROM TOTAL_REPORT_VIEW
+	</select>   
+
+   <select id="adminAskList" resultType="com.test.mybatis.adAskDTO">
+		SELECT A.U_ID U_ID, A.ASK_TITLE ASK_TITLE, A.ASK_DATE ASK_DATE
+		, CASE
+		WHEN AA.ANSWER_CONTENTS IS NOT NULL
+		THEN '처리완료'
+		ELSE '미처리'
+		END AS ASK_STATUS
+		, AA.ANSWER_DATE ANSWER_DATE
+		FROM ASK A LEFT JOIN ASK_ANSWER AA
+		ON A.ASK_ID = AA.ASK_ID
+	</select>  
+	
+   <select id="adAskListReply" resultType="com.test.mybatis.adAskDTO">
+		SELECT A.U_ID U_ID, A.ASK_TITLE ASK_TITLE, A.ASK_DATE ASK_DATE, AC.ASK_CATE_NAME ASK_CATE_NAME, A.ASK_CONTENTS ASK_CONTENTS
+		, CASE
+		WHEN AA.ANSWER_CONTENTS IS NOT NULL
+		THEN '처리완료'
+		ELSE '미처리'
+		END AS ASK_STATUS
+		, AA.ANSWER_DATE ANSWER_DATE
+		FROM ASK A LEFT JOIN ASK_ANSWER AA
+		ON A.ASK_ID = AA.ASK_ID
+		JOIN ASK_CATEGORY AC 
+		ON A.ASK_CATE_ID = AC.ASK_CATE_ID
+	</select>  	
+
+
+
+   <!-- 
+   <insert id="add">
+      INSERT INTO TBL_STUDENT(SID, NAME, TEL)
+      VALUES(#{sid}, #{name}, #{tel})
+   </insert>
+   -->
+   
+   
+   
+   
+   <!-- <select id="search" resultType="com.test.mybatis.StudentDTO">
+      SELECT SID, NAME, TEL
+      FROM TBL_STUDENT
+      WHERE SID = #{sid}
+   </select> -->
+
+
+</mapper>

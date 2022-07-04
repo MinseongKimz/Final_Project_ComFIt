@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.mybatis.IAdmin">
+
+	<select id="adminProductList" resultType="com.test.mybatis.adProductDTO">
+		select PD_NUM ,PD_ID, PD_REGIT_DATE, PD_TITLE, DEAL_TYPE, U_ID, DEAL_STATUS, CATEGORY_NAME
+		from 
+		(
+		SELECT PD_NUM, PD_ID, CATEGORY_NAME, PD_REGIT_DATE, U_ID, PD_TITLE, DEAL_TYPE, DEAL_STATUS, rank() over (partition by PD_NUM order by DEAL_STATUS) as rank
+		FROM TOTAL_PRODUCT_VIEW)
+		where rank = 1
+		ORDER BY PD_REGIT_DATE DESC
+	</select>
+	
+	<select id="adminProductDeliveryList_1" resultType="com.test.mybatis.adProductDTO">		
+		select PD_NUM ,PD_ID, PD_REGIT_DATE, PD_TITLE, DEAL_TYPE, U_ID, DEAL_STATUS
+		from 
+		(
+		SELECT PD_NUM ,PD_ID, PD_REGIT_DATE, PD_TITLE, DEAL_TYPE, U_ID, DEAL_STATUS, rank() over (partition by PD_NUM order by DEAL_STATUS) as rank
+        , rownum
+		FROM DIRECT_BOX1_VIEW
+		WHERE PD_NUM = #{pd_num})
+		where rank = 1 and rownum = 1			
+	</select>
+	
+	<select id="adminProductDeliveryList_2" resultType="com.test.mybatis.adProductDTO">
+		SELECT PD_NUM, PD_ID, CATEGORY_NAME, PD_NAME, MAKER_NAME
+		FROM DELIVERY_BOX2_VIEW
+		WHERE PD_NUM = #{pd_num}
+	</select>	
+	
+	<select id="adminProductDeliveryList_3" resultType="com.test.mybatis.adProductDTO">
+		SELECT PD_NUM, PD_ID, B_U_ID, BID_PRICE, BID_DATE, ADDRESS, BS_ID
+		FROM DELIVERY_BOX3_VIEW
+		WHERE PD_NUM = #{pd_num} AND BS_ID IS NOT NULL
+	</select>		
+	
+	<select id="adminProductDeliveryList_4" resultType="com.test.mybatis.adProductDTO">
+		SELECT PD_NUM, PD_ID, BUY_COMP_DATE, SELL_COMP_DATE, PD_DELI_NUM
+		FROM DELIVERY_BOX4_VIEW
+		WHERE PD_NUM = #{pd_num}
+	</select>	
+	
+	<select id="adminProductDeliveryList_5" resultType="com.test.mybatis.adProductDTO">
+		SELECT PD_NUM, PD_ID, B_U_ID, BID_DATE, BID_PRICE, DEAL_STATUS
+		FROM DELIVERY_BOX5_VIEW
+		WHERE PD_NUM = #{pd_num} and b_u_id is not null
+	</select>	
+		
+	
+	
+	<select id="adminProductDirectList_1" resultType="com.test.mybatis.adProductDTO">
+		select PD_NUM, PD_REGIT_DATE, PD_TITLE, DEAL_TYPE, U_ID, DEAL_STATUS, BUYER_CODE, SELLER_CODE, SELL_OK, BUY_OK
+		from 
+		(
+		SELECT PD_NUM, PD_REGIT_DATE, PD_TITLE, DEAL_TYPE, U_ID, DEAL_STATUS, BUYER_CODE, SELLER_CODE, SELL_OK, BUY_OK, rank() over (partition by PD_NUM order by DEAL_STATUS) AS RANK
+		, ROWNUM
+		FROM TOTAL_DIRECT_VIEW
+		WHERE PD_NUM = #{pd_num})
+		WHERE RANK = 1 AND ROWNUM = 1
+	</select>	
+		
+	<select id="adminProductDirectList_2" resultType="com.test.mybatis.adProductDTO">
+		SELECT DISTINCT PD_NUM, CATEGORY_NAME, PD_NAME, MAKER_NAME, PD_HOPEPRICE, PD_HOPE_PLACE, HOPE_SATE, HOPE_TIME
+		FROM TOTAL_DIRECT_VIEW2
+		WHERE PD_NUM = #{pd_num}
+	</select>	
+	
+	<select id="adminProductDirectList_3" resultType="com.test.mybatis.adProductDTO">
+		SELECT DISTINCT PD_NUM, U_ID, SUGGEST_PRICE, SUGGEST_TIME, HOPE_SATE
+		FROM TOTAL_DIRECT_VIEW3
+		WHERE PD_NUM = #{pd_num}
+	</select>
+	
+	<select id="adminProductDirectList_4" resultType="com.test.mybatis.adProductDTO">
+		SELECT DISTINCT PD_NUM, BUY_COMP_DATE, SUGGEST_PRICE, SUGGEST_TIME, HOPE_SATE
+		FROM TOTAL_DIRECT_VIEW4
+		WHERE PD_NUM = #{pd_num}
+	</select>			
+	
+	<select id="adminProductDirectList_5" resultType="com.test.mybatis.adProductDTO">
+		SELECT PD_NUM, S_U_ID, SUGGEST_DATE, SUGGEST_PRICE, DEAL_STATUS
+		FROM TOTAL_DIRECT_VIEW5
+		WHERE PD_NUM = #{pd_num} 
+	</select>		
+	
+	<select id="adminProductSearchList" resultType="com.test.mybatis.adProductDTO">
+		SELECT ROWNUM, PD_NUM, PD_ID, CATEGORY_NAME, PD_REGIT_DATE, U_ID, PD_TITLE, DEAL_TYPE, DEAL_STATUS
+		FROM TOTAL_PRODUCT_VIEW
+		WHERE PD_NUM IS NOT NULL
+		AND CATEGORY_NAME = CATEGORY_NAME and CATEGORY_NAME LIKE '%' || #{searchvalue} || '%'
+		OR U_ID = U_ID and U_ID LIKE '%' || #{searchvalue} || '%'
+		OR PD_TITLE = PD_TITLE and PD_TITLE LIKE '%' || #{searchvalue} || '%'
+	</select>	
+	
+
+	
+			
+</mapper>

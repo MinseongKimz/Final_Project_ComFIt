@@ -13,9 +13,58 @@
 <style type="text/css">
 
 /* div {border: 1px solid black;} */
-div {
+div
+{
 	font-weight: bold;
 }
+
+*{
+  box-sizing: border-box; 
+}
+  
+.que:first-child{
+    border-top: 1px solid black;
+  }
+  
+.que{
+  position: relative;
+  padding: 17px 0;
+  cursor: pointer;
+  font-size: 14px;
+  border-bottom: 1px solid #dddddd;
+  
+}
+  
+.que::before{
+  display: inline-block;
+  content: 'Q';
+  font-size: 14px;
+  color: #006633;
+  margin-right: 5px;
+}
+
+.que.on>span{
+  font-weight: bold;
+  color: #0080FF; 
+}
+  
+.anw {
+  display: none;
+    overflow: hidden;
+  font-size: 14px;
+  background-color: #f4f4f2;
+  padding: 27px 0;
+}
+  
+.anw::before {
+  display: inline-block;
+  content: 'A';
+  font-size: 14px;
+  font-weight: bold;
+  color: #666;
+  margin-right: 5px;
+}
+
 </style>
 <script type="text/javascript">
 	$(document).ready(function()
@@ -107,29 +156,33 @@ div {
 		<br /> <br />
 		
 		<div style="margin-left: 30%; margin-right: 30%;">
-
 			<br />
-			<c:forEach var="faq" items="${userfaqList }" varStatus="status">
-			<div class="accordion" id="accordionExample">
-				<div class="accordion-item">
-					<h2 class="accordion-header" id="headingOne">
-						<button class="accordion-button que" type="button"
-							data-bs-toggle="collapse" data-bs-target="#collapseOne"
-							aria-expanded="false" aria-controls="collapseOne"
-							style="overflow: hidden">
-							<strong>${faq.faq_title }</strong>
-						</button>
-					</h2>
-					<div id="collapseOne" class="accordion-collapse collapse anw"
-						aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-						<div class="accordion-body">${faq.faq_contents }</div>
-
-					</div>
-				</div>
+			
+			<div id="Accordion">
+		
+			<c:forEach var="faq" items="${userfaqList }">
+			<div class="que">
+				<span>${faq.faq_title }</span>
 			</div>
+		     
+			<div class="anw" style="padding-left: 20px">
+				<span>${faq.faq_contents }</span>
+				<div style="margin-top: 50px; text-align: right;">
+				</div>
+		    </div>
 			</c:forEach>
+			</div>
+			
 		</div>
 	</div>
+
+<script type="text/javascript">
+$(".que").click(function() {
+	  $(this).next(".anw").stop().slideToggle(300);
+	  $(this).toggleClass('on').siblings().removeClass('on');
+	  $(this).next(".anw").siblings(".anw").slideUp(300); // 1개씩 펼치기
+	});
+</script>
 
 </body>
 </html>

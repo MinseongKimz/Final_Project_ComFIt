@@ -12,6 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="usernoticeList" resultType="com.test.mybatis.NoticeDTO">
 		SELECT ANNOUNCE_ID,ANNOUNCE_TITLE,ANNOUNCE_CONTENTS
 		FROM ANNOUNCE
+		ORDER BY ANNOUNCE_ID DESC
 	</select>
 	
 	<!-- 공지사항 카테고리 출력  -->

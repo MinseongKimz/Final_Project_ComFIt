@@ -19,7 +19,49 @@
 		margin-bottom: 10px;		
 	}
 	
+/* 	.que:first-child{
+    border-top: 1px solid black;
+  } */
+  
+.que{
+  position: relative;
+  padding: 17px 0;
+  cursor: pointer;
+  font-size: 14px;
+  border-bottom: 1px solid #dddddd;
+  
+}
+  
+.que::before{
+  display: inline-block;
+  content: 'Q';
+  font-size: 14px;
+  color: #006633;
+  margin-right: 5px;
+}
+.que.on>span{
+  font-weight: bold;
+  color: #0080FF; 
+}
+  
+.anw {
+  display: none;
+    overflow: hidden;
+  font-size: 14px;
+  background-color: #f4f4f2;
+  padding: 27px 0;
+}
+  
+.anw::before {
+  display: inline-block;
+  content: 'A';
+  font-size: 14px;
+  font-weight: bold;
+  color: #666;
+  margin-right: 5px;
+}
 </style>
+
 <script type="text/javascript">
 
 	$(document).ready(function()
@@ -66,7 +108,7 @@
 		});		                                  
 		                                        
 	
-		
+		/*
 		var acc = document.getElementsByClassName("accordion-item");
 		alert(acc.length);
 		for (var i = 0; i < acc.length; i++) {
@@ -93,7 +135,7 @@
 		 
 			  }
 		}
-		
+		*/
 	})
 	
 
@@ -133,24 +175,28 @@
 		<div style="text-align: center; font-weight: bold; font-size: 22pt; background-color: #EFF2FB; height: 70px; line-height:70px; border: 1px solid black;">공지사항</div>
 		<br />
 		
-	<c:forEach var = "notice" items="${usernoticeList}">
-		<div class="accordion" id="accordionExample">
-		  <div class="accordion-item">
-		    <h2 class="accordion-header" id="headingOne">
-		      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-		        ${notice.announce_title }
-		      </button>
-		    </h2>
-		    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-		      <div class="accordion-body">
-		        ${notice.announce_contents }
-		      </div>
-		    </div>
-		  </div>
-		 </div>
-		</c:forEach>
-	  </div>
-
+		<div id="Accordion">
+		<c:forEach var = "notice" items="${usernoticeList}">
+		     <div class="que">
+		     	<span>${notice.announce_title }</span>
+		     </div>	
+						     
+			<div class="anw" style="padding-left: 20px">
+				<span>${notice.announce_contents }</span>
+			</div>
+		</c:forEach>		 
+		</div>
+  	</div>
+</div>
+  	
+  	
+	<script type="text/javascript">
+	$(".que").click(function() {
+		  $(this).next(".anw").stop().slideToggle(300);
+		  $(this).toggleClass('on').siblings().removeClass('on');
+		  $(this).next(".anw").siblings(".anw").slideUp(300); // 1개씩 펼치기
+		});
+	</script>
 
 </body>
 </html>

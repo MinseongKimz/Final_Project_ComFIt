@@ -8,6 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="userfaqList" resultType="com.test.mybatis.FaqDTO">
 		SELECT FAQ_ID, FAQ_TITLE, FAQ_CONTENTS
 		FROM FAQ
+		ORDER BY FAQ_ID DESC
 	</select>
 	
 	
@@ -15,6 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="faqList" resultType="com.test.mybatis.FaqDTO">
 		SELECT FAQ_ID, FAQ_TITLE, FAQ_CONTENTS
 		FROM FAQ
+		ORDER BY FAQ_ID DESC
 	</select>
 	
 	<!-- faq 추가등록 -->

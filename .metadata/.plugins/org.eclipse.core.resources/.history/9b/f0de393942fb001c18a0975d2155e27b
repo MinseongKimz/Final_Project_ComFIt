@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.mybatis.IUserMyPage">
+
+
+	<!-- 내 정보 자세히보기 비밀번호 받아서 하는 걸로 변경 예정 
+	<select id="myDetailInfo" resultType="com.test.mybatis.userDTO">
+		SELECT U_EMAIL, U_NICKNAME, U_NAME
+        , LPAD('*',LENGTH(CRYPTPACK.DECRYPT(U_PASSWORD,#{u_password})),'*') as U_PASSWORD
+		, U_TEL, U_ADDRESS
+		FROM USER_INFORMATION
+		WHERE U_ID = #{u_id}
+        AND U_PASSWORD = CRYPTPACK.ENCRYPT(#{u_password},#{u_password})
+	</select>
+	 -->
+	 <select id="myDetailInfo" resultType="com.test.mybatis.userDTO">
+	 SELECT U_EMAIL, U_NICKNAME, U_NAME, U_PROFILE
+        , LPAD('*',LENGTH(CRYPTPACK.DECRYPT(U_PASSWORD,'1234')),'*') as U_PASSWORD
+		, U_TEL, U_ADDRESS
+		FROM USER_INFORMATION
+		WHERE U_ID = #{u_id}
+	 </select>
+	 
+	<select id="myInfo" resultType="com.test.mybatis.userDTO">
+		SELECT U_NICKNAME, U_PROFILE
+		FROM USER_INFORMATION
+		WHERE U_ID = #{u_id}
+	</select>
+	
+	<select id="myMoneyList" resultType="com.test.mybatis.MoneyDTO">
+		SELECT M_DATE, M_MONEY
+		, CASE WHEN SUBSTR(M_ID,1,3) = 'inm' THEN '입금'
+		        WHEN SUBSTR(M_ID,1,4) = 'outm' THEN '출금'
+		    ELSE '에러' END AS INOUT
+		FROM MONEY_INOUT_VIEW
+		WHERE U_ID = #{u_id}
+		ORDER BY M_DATE DESC
+		
+	</select>
+	
+	<select id="myPoint" resultType="java.lang.Integer">
+		SELECT POINT
+		FROM ALL_USER_POINT_VIEW
+		WHERE U_ID = #{u_id}
+	</select>
+	
+	<select id="nameSearch" resultType="java.lang.String">
+		select u_name
+		FROM USER_INFORMATION
+		where u_id = #{u_id}
+	</select>
+	
+	<!-- 입금 -->
+	<insert id="insertMoney">
+		INSERT INTO INPUT_MONEY(IN_M_ID, IN_MONEY, IN_DATE, IN_ACCOUNT, U_ID, BANK_ID)
+		VALUES(CONCAT('inm_', INPUT_MONEY_SEQ.NEXTVAL), #{in_money}, SYSDATE, '941602-00-228699', #{u_id}, 4)
+	</insert>
+	
+	<!-- 출금 -->
+	<insert id="outMoney">
+		INSERT INTO OUTPUT_MONEY(OUT_M_ID, OUT_MONEY, OUT_DATE, OUT_ACCOUNT, U_ID, BANK_ID)
+		VALUES(CONCAT('outm_', OUTPUT_MONEY_SEQ.NEXTVAL), #{out_money}, SYSDATE, #{out_account}, #{u_id}, #{bank_id})
+	</insert>
+	
+	
+	<!-- 은행 리스크 select option 출력 -->
+	<select id="bankList" resultType="com.test.mybatis.BankDTO">
+		SELECT BANK_ID, BANK_NAME
+		FROM BANK
+	</select>
+	
+	<select id="sellList" resultType="com.test.mybatis.MypageProductDTO">
+		SELECT PD_ID, PD_TITLE, NVL(PD_PRICE, -1) AS PD_PRICE, SYSTEM, PD_REGIT_DATE
+		, TIME, COMP_DATE, SELLER_ID, BUYER_ID, ADDRESS, STATUS
+		, SELECTED_ID, SELECTED_DATE, BUYER_CODE, SELLER_CODE
+		, BS_ID, BS_DATE
+		FROM
+		(
+		SELECT PD_ID, PD_TITLE, PD_PRICE, SYSTEM, PD_REGIT_DATE, TIME, COMP_DATE, SELLER_ID, BUYER_ID, ADDRESS, STATUS
+		, SELECTED_ID, SELECTED_DATE, BUYER_CODE, SELLER_CODE
+		, BS_ID, BS_DATE
+		, ROW_NUMBER() OVER(PARTITION BY PD_ID ORDER BY COMP_DATE ASC, BS_DATE ASC, SELECTED_DATE ASC) AS RN
+		FROM DETAIL_BUYLIST_VIEW
+		WHERE SELLER_ID = #{u_id}
+		ORDER BY PD_REGIT_DATE DESC
+		)
+		WHERE RN=1
+	</select>
+	
+	<select id="buyList" resultType="com.test.mybatis.MypageProductDTO">
+		SELECT PD_ID, PD_TITLE, PD_PRICE, SYSTEM, PD_REGIT_DATE
+		, TIME, COMP_DATE, SELLER_ID, BUYER_ID, ADDRESS, STATUS
+        , SELECTED_ID, SELECTED_DATE, BUYER_CODE, SELLER_CODE
+        , BS_ID, BS_DATE, DELI_NUM
+		FROM DETAIL_BUYLIST_VIEW
+		WHERE BUYER_ID = #{u_id}
+		ORDER BY PD_REGIT_DATE DESC
+	</select>
+	
+	<select id="myLevel" resultType="java.lang.Integer">
+		SELECT CASE TRUNC(SQRT((SUM(USER_EXP))/2))
+	    WHEN 0
+	    THEN 1
+	    ELSE TRUNC(SQRT((SUM(USER_EXP))/2)) 
+	    END AS USER_LEVEL
+		FROM USER_LEVEL_VIEW2
+		WHERE U_ID = #{u_id}
+	</select>
+	
+	<!-- 프로필 변경 -->
+	<update id="changeProfile">
+		UPDATE USER_INFORMATION
+		SET U_PROFILE = #{u_profile}
+		WHERE U_ID = #{u_id}
+	</update>
+	
+	
+<!-- 
+	<insert id="categoryInsert">
+		INSERT INTO PRODUCT_CATEGORY(PD_CATEGORY_ID, CATEGORY_NAME)
+		VALUES(PRODUCT_CATEGORY_SEQ.NEXTVAL, #{category_name})
+	</insert>
+	
+	<delete id="categoryDelete">
+		DELETE PRODUCT_CATEGORY
+		WHERE PD_CATEGORY_ID = #{pd_category_id}
+	</delete>
+	 -->
+</mapper>

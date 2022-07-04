@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.mybatis.IProduct">
+
+	<!-- 배송 판매글 등록폼에 관련한 DAO -->
+
+	<select id="categoryList" resultType="com.test.mybatis.CategoryDTO">
+		SELECT PD_CATEGORY_ID, CATEGORY_NAME
+		FROM PRODUCT_CATEGORY
+	</select>
+	
+	<select id="makerList" resultType="com.test.mybatis.MakerDTO">
+		SELECT PD.PD_CATEGORY_ID AS PD_CATEGORY_ID, MAKER_NAME, MAKER_NAME2, PD_MAKER_ID 
+		FROM PRODUCT_MAKER PD JOIN PRODUCT_CATEGORY CA
+		ON PD.PD_CATEGORY_ID = CA.PD_CATEGORY_ID
+		WHERE CA.CATEGORY_NAME = #{category}
+	</select>
+
+	<select id="makerList2" resultType="com.test.mybatis.MakerDTO">
+		SELECT PD.PD_MAKER_ID, PD.MAKER_NAME
+		FROM PRODUCT_MAKER PD JOIN PRODUCT_CATEGORY CA
+		ON PD.PD_CATEGORY_ID = CA.PD_CATEGORY_ID
+		WHERE PD.PD_CATEGORY_ID = #{optionValue}
+	</select>
+	
+	<insert id="deliveryInsert">
+	INSERT INTO DELIVERY_PRODUCT(DELI_PD_ID, PD_TITLE, PD_NAME, PD_PHOTO, PD_AS_REMAIN, PD_START_PRICE, PD_HITCOUNT, PD_MAKER_ID, PD_AS_ID, U_ID, CF_PRICE, COMMENTS, IMD_PRICE)
+	VALUES(CONCAT('deli_', DELI_PD_SEQ.NEXTVAL), #{pd_title}, #{pd_name}, #{pd_photo}, #{pd_as_remain}, #{pd_start_price}, 0 , #{pd_maker_id}, #{pd_as_id}, #{u_id}, #{cf_price}, #{comments}, #{imd_price})
+	</insert>
+	
+	
+	<insert id="directInsert">
+		INSERT INTO DIRECT_PRODUCT(DIRE_PD_ID, PD_TITLE, PD_NAME, PD_PHOTO, PD_AS_REMAIN, PD_HITCOUNT, PD_HOPEPRICE, PD_HOPE_SDATE, PD_HOPE_EDATE, PD_HOPE_STIME, PD_HOPE_ETIME, PD_HOPE_PLACE, PD_HOPE_MGRS, PD_MAKER_ID, PD_AS_ID, U_ID ,CF_PRICE, COMMENTS)
+		VALUES(CONCAT('dire_', DIRE_PD_SEQ.NEXTVAL), #{pd_title}, #{pd_name}, #{pd_photo}, #{pd_as_remain}, 0, #{pd_hopeprice}, TO_DATE(#{pd_hope_sdate},'YYYY/MM/DD'), TO_DATE(#{pd_hope_edate},'YYYY/MM/DD'), #{pd_hope_stime}, #{pd_hope_etime}, #{pd_hope_place}, #{pd_hope_mgrs}, #{pd_maker_id}, #{pd_as_id}, #{u_id}, #{cf_price}, #{comments})                 
+	</insert>
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+

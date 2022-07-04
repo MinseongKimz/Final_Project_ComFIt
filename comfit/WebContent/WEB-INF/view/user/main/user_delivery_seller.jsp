@@ -17,29 +17,20 @@
 <link rel="stylesheet" href="<%=cp %>/css/bootstrap.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap.js"></script>
-<script type="text/javascript">
 
-	$(document).ready(function()
-	{
-		$("#productDelBtn").click(function() 
-		{
-			var result = confirm('정말로 삭제하시겠습니까?');
-		
-			if(result) 
-			{
-				//삭제 명령 넣어야됨
-				alert("『글제목』 게시물이 정상적으로 삭제되었습니다.");
-			} 
-			else 
-			{
-			    return;
-			}
-		});
-		
-					
-	});
+
+<script type="text/javascript">
+function deletePd()
+{
+	var result = confirm("해당 상품(게시물)을 삭제하시겠습니까??");
+	var pd_id = document.getElementById("pd_id").value;
 	
-	</script>
+	if (result)
+	{
+		location.href="deletedlpd.action?pd_id="+pd_id;
+	}
+}
+</script>
 
 <script type="text/javascript">
 
@@ -562,7 +553,7 @@ d-block
 					{
 				%>
 				<button type="button" class="btn btn-primary" style="width: 48%;">수정하기</button>
-				<button type="button" class="btn btn-secondary" id="productDelBtn" style="width: 48%;">삭제하기</button>
+				<button type="button" class="btn btn-secondary" id="productDelBtn" onclick="deletePd()" style="width: 48%;">삭제하기</button>
 				<%
 					}
 					else

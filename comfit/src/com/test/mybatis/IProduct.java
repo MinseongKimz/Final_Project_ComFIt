@@ -67,7 +67,8 @@ public interface IProduct
 	
 	// 카테고리선택
 	public ArrayList<ProductDTO> categorySelect(String categoryName);
-	
+	// 무한스크롤용
+	public ArrayList<ProductDTO> categorySelectScroll(ProductDTO dto);
 	
 	// 직거래 글쓰기 insert
 	public int directInsert(directinsertDTO dto);

@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>주소검색</title>
 <link rel="stylesheet" href="css/main.css" type="text/css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -97,7 +97,7 @@
 		<label for="address">주소검색</label><br />
 		<input type="text" class="form-control" name="addr" id="address" placeholder="클릭해주세요" required="required" readonly="readonly" style="width: 400px;" onclick="searchAddr()">
 		<br />
-		<button type="button" class="btn btn-secondary" id="geoBtn" style="margin-left: 60%;">주소선택완료</button>
+		<button type="submit" class="btn btn-secondary" id="geoBtn" style="margin-left: 60%;">주소선택완료</button>
 	</form>
 </div>
 

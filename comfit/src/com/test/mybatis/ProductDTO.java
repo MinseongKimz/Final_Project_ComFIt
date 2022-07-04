@@ -3,9 +3,33 @@ package com.test.mybatis;
 public class ProductDTO
 {
 	private String pd_id, pd_name, price, distatnce, category_name;
-	private String pd_title, system, status, pd_photo;
+	private String pd_title, system, status, pd_photo, lastbno;
+	private String rn;
 	private String pd_hope_edate;
 	
+	
+	
+
+	public String getRn()
+	{
+		return rn;
+	}
+
+	public void setRn(String rn)
+	{
+		this.rn = rn;
+	}
+
+	public String getLastbno()
+	{
+		return lastbno;
+	}
+
+	public void setLastbno(String lastbno)
+	{
+		this.lastbno = lastbno;
+	}
+
 	private String profile;
 	
 	private int pd_price;

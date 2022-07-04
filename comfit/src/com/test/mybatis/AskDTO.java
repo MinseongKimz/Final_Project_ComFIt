@@ -5,18 +5,16 @@ public class AskDTO
 	
 	
 	//문의 내역
-	private String ask_id, ask_title , ask_date , ask_cate_id , ask_contents;
+	private String ask_id, ask_title , ask_date , ask_cate_id , ask_contents, u_id;
 
 	//문의 카테고리
 	private String ask_cate_name;
-	
-	
-	
-	
 
 	
-
-	//getter/setter
+	
+	
+	
+	
 	public String getAsk_id()
 	{
 		return ask_id;
@@ -57,8 +55,6 @@ public class AskDTO
 		this.ask_cate_id = ask_cate_id;
 	}
 
-	
-
 	public String getAsk_contents()
 	{
 		return ask_contents;
@@ -68,7 +64,17 @@ public class AskDTO
 	{
 		this.ask_contents = ask_contents;
 	}
-	
+
+	public String getU_id()
+	{
+		return u_id;
+	}
+
+	public void setU_id(String u_id)
+	{
+		this.u_id = u_id;
+	}
+
 	public String getAsk_cate_name()
 	{
 		return ask_cate_name;
@@ -79,6 +85,10 @@ public class AskDTO
 		this.ask_cate_name = ask_cate_name;
 	}
 	
+	
+	
+	
+
 	
 	
 	

@@ -105,31 +105,31 @@
 	<div style="margin-left: 10%; font-weight: bold; font-size: 22pt;">내 문의내역</div>
 	<br /><br />
 	<div style="margin-left: 10%; margin-right: 10%;">
-		<c:forEach var="asklist" items ="${asklist }">
 		<table class="table">
 		  <thead>
 		    <tr style="background-color: #EFF2FB;">
-		      <th class="col-md-7">${asklist.ask_title }</th>
+		      <th class="col-md-7">제목</th>
 		      <th class="col-md-2">문의 날짜</th>
 		      <!-- <th class="col-md-1.5">처리상태</th> -->
 		      <th class="col-md-1.5">문의 카테고리</th>
 		    </tr>
 		  </thead>
 		  <tbody>
+		  <c:forEach var="asklist" items ="${asklist }">
 		    <tr>
-		      <td class="col-md-7"  onclick="location.href='user_ask_my_list.action'">${asklist.ask_contents }</td>
+		      <td class="col-md-7" onclick="location.href='user_ask_my_list.action?ask_id='${asklist.ask_id}'">${asklist.ask_title }</td>
 		      <td class="col-md-2">${asklist.ask_date }</td>
 		      <!-- <td class="col-md-1.5">처리완료</td> -->
 		      <td class="col-md-1.5">${asklist.ask_cate_name }</td>
 		    </tr>
-		   
-		   
+		  </c:forEach> 
 		  </tbody>
+		  
 		</table>
-	</c:forEach> 
+		
 		
 		<div>
-			<button type="button" class="btn btn-primary" style="float: right;" onclick="location.href='user_ask_add.jsp'">문의등록</button>
+			<button type="button" class="btn btn-primary" style="float: right;" onclick="location.href='user_ask_add_form.action'">문의등록</button>
 		</div>
 		
 		

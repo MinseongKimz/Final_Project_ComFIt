@@ -65,18 +65,18 @@
 	</select>
 	
 	<select id="deli_user_pdList" resultType="com.test.mybatis.ProductDTO">
-	SELECT RN, PD_ID, PD_TITLE, PRICE, PD_REGIT_DATE, PD_PHOTO
+	SELECT ROWNUM AS RNN, PD_ID, PD_TITLE, PRICE, PD_REGIT_DATE, PD_PHOTO, PD_HOPE_EDATE
 	FROM
-	(
-		SELECT ROWNUM AS RN, PD_ID, PD_TITLE, PRICE, PD_REGIT_DATE, PD_PHOTO
-		     , CASE WHEN SYSDATE - PD_REGIT_DATE <![CDATA[>]]> 19 THEN 'X'
-		       WHEN (PD_REGIT_DATE+5 <![CDATA[<]]> SYSDATE) THEN '1' 
-		       ELSE '0'
-		       END AS PD_HOPE_EDATE
-		FROM DELI_PD_LIST_REALVIEW
-		ORDER BY PD_HOPE_EDATE
-	)
-	WHERE RN <![CDATA[<=]]> 16
+		(
+				SELECT ROWNUM AS RN, PD_ID, PD_TITLE, PRICE, PD_REGIT_DATE, PD_PHOTO
+				     , CASE WHEN SYSDATE - PD_REGIT_DATE <![CDATA[>]]> 19 THEN 'X'
+				       WHEN (PD_REGIT_DATE+5 <![CDATA[<]]> SYSDATE) THEN '1' 
+				       ELSE '0'
+				       END AS PD_HOPE_EDATE
+				FROM DELI_PD_LIST_REALVIEW
+				ORDER BY PD_HOPE_EDATE, RN DESC
+		)
+	WHERE ROWNUM <![CDATA[<=]]> 16
 	</select>
 	
 	<select id="cateList" resultType="com.test.mybatis.CategoryDTO">

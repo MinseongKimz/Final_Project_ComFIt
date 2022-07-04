@@ -450,3 +450,9 @@
 0:0:0:0:0:0:0:1 - - [04/Jul/2022:11:43:27 +0900] "GET /comfit/images/20138695528.20220610100245.jpg HTTP/1.1" 304 -
 0:0:0:0:0:0:0:1 - - [04/Jul/2022:11:43:27 +0900] "GET /comfit/images/apple-touch-icon.png HTTP/1.1" 404 792
 0:0:0:0:0:0:0:1 - - [04/Jul/2022:11:43:27 +0900] "GET /comfit/images/apple-touch-icon1.png HTTP/1.1" 404 793
+127.0.0.1 - - [04/Jul/2022:11:44:16 +0900] "GET / HTTP/1.1" 404 750
+0:0:0:0:0:0:0:1 - - [04/Jul/2022:11:44:22 +0900] "POST /comfit/user_mainlist.action HTTP/1.1" 200 48792
+0:0:0:0:0:0:0:1 - - [04/Jul/2022:11:44:22 +0900] "GET /comfit/headers.css HTTP/1.1" 404 772
+0:0:0:0:0:0:0:1 - - [04/Jul/2022:11:44:22 +0900] "GET /comfit/images/20138695528.20220610100245.jpg HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [04/Jul/2022:11:44:22 +0900] "GET /comfit/images/apple-touch-icon1.png HTTP/1.1" 404 793
+0:0:0:0:0:0:0:1 - - [04/Jul/2022:11:44:22 +0900] "GET /comfit/images/apple-touch-icon.png HTTP/1.1" 404 792

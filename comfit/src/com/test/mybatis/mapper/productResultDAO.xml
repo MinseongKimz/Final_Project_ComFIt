@@ -36,6 +36,17 @@
 		VALUES(CONCAT('dire_', DIRE_PD_SEQ.NEXTVAL), #{pd_title}, #{pd_name}, #{pd_photo}, #{pd_as_remain}, 0, #{pd_hopeprice}, TO_DATE(#{pd_hope_sdate},'YYYY/MM/DD'), TO_DATE(#{pd_hope_edate},'YYYY/MM/DD'), #{pd_hope_stime}, #{pd_hope_etime}, #{pd_hope_place}, #{pd_hope_mgrs}, #{pd_maker_id}, #{pd_as_id}, #{u_id}, #{cf_price}, #{comments})                 
 	</insert>
 	
+	<delete id="deleteDirePd">
+			DELETE
+			FROM DIRECT_PRODUCT
+			WHERE DIRE_PD_ID = #{pd_id}
+	</delete>
+	
+	<delete id="deleteDeliPd">
+			DELETE
+			FROM DELIVERY_PRODUCT
+			WHERE DELI_PD_ID = #{pd_id}
+	</delete>
 	
 </mapper>
 

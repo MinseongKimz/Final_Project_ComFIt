@@ -109,12 +109,13 @@ public interface IAdmin
 	// 메인페이지 FAQ 출력
 	public ArrayList<FaqDTO> userfaqList();
 	// 메인페이지 문의내역 출력
-	public ArrayList<AskDTO> asklist();
+	public ArrayList<AskDTO> asklist(String u_id);
 	// 메인페이지 문의 폼 이동
 	public AskDTO askModifyForm(String ask_id);
 	// 문의 수정 메소드
 	public int AskModify(AskDTO dto);
-
+	// 문의 추가 메소드
+	public int AskAdd(AskDTO dto);
 
 	
 	

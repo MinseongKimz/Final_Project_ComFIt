@@ -108,16 +108,16 @@
 		      <span>[공지] 외부 채널 유도 관련 운영정책 강화 안내</span>
 		     </div> -->
 		     <c:forEach var = "noticeModifyForm" items="${noticeList}">
-							     <div class="que">
-							     	<span>${noticeModifyForm.announce_title }</span>
-							     </div>	
+			     <div class="que">
+			     	<span>${noticeModifyForm.announce_title }</span>
+			     </div>	
 							     
-		     	<div class="anw" style="padding-left: 20px">
-				 <span>${noticeModifyForm.announce_contents }</span>
-			 				    <div style="margin-top: 50px; text-align: right;">
-									<button type="submit"class="btn btn-primary btn_edit" value="${noticeModifyForm.announce_id }"  id="btn_edit"  style="width: 100px;">수정하기</button>
-									<button class="btn btn-outline-secondary btn_delete" value="${noticeModifyForm.announce_id }"  id="btn_delete" style="width: 100px;">삭제하기</button>			 
-		     					</div>		 
+				<div class="anw" style="padding-left: 20px">
+					<span>${noticeModifyForm.announce_contents }</span>
+			    	<div style="margin-top: 50px; text-align: right;">
+						<button type="submit"class="btn btn-primary btn_edit" value="${noticeModifyForm.announce_id }"  id="btn_edit"  style="width: 100px;">수정하기</button>
+						<button class="btn btn-outline-secondary btn_delete" value="${noticeModifyForm.announce_id }"  id="btn_delete" style="width: 100px;">삭제하기</button>			 
+  					</div>		 
 		     	</div>
 		     </c:forEach>
   		</div>

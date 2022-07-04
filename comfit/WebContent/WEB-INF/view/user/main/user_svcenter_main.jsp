@@ -12,62 +12,105 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 <style type="text/css">
 
-/* div {border: 1px solid black;} */
+	/* div {border: 1px solid black;} */
+	
+	div #b
+	{
+		margin-bottom: 10px;		
+	}
+	
+/* 	.que:first-child{
+    border-top: 1px solid black;
+  } */
+  
+.que{
+  position: relative;
+  padding: 17px 0;
+  cursor: pointer;
+  font-size: 14px;
+  border-bottom: 1px solid #dddddd;
+  
+}
+  
+.que::before{
+  display: inline-block;
+  content: 'Q';
+  font-size: 14px;
+  color: #006633;
+  margin-right: 5px;
+}
+.que.on>span{
+  font-weight: bold;
+  color: #0080FF; 
+}
+  
+.anw {
+  display: none;
+    overflow: hidden;
+  font-size: 14px;
+  background-color: #f4f4f2;
+  padding: 27px 0;
+}
+  
+.anw::before {
+  display: inline-block;
+  content: 'A';
+  font-size: 14px;
+  font-weight: bold;
+  color: #666;
+  margin-right: 5px;
+}
 </style>
+
 <script type="text/javascript">
+
 	$(document).ready(function()
 	{
-		$("#a").hover(function()
-		{
-			$(this).css('color', 'grey');
-		}, function()
-		{
-			$(this).css('color', 'black');
-		});
 		
-		$("#a").click(function()
-		{
-			$( '#b' ).toggle(150);
-		})
-		                                               
-		$("#notice").hover(function()                  
-		{                                              
-			//alert("테스트");                            
-			                                           
-			$(this).removeClass("btn-secondary");      
-			$(this).addClass("btn-primary");           
-		}, function()                                  
-		{                                              
-			$(this).removeClass("btn-primary");        
-			$(this).addClass("btn-secondary");         
-		});	                                           
-		                                               
-		$("#faq").hover(function()                     
-		{                                              
-			//alert("테스트");                            
-			                                           
-			$(this).removeClass("btn-secondary");      
-			$(this).addClass("btn-primary");           
-		}, function()                                  
-		{                                              
-			$(this).removeClass("btn-primary");        
-			$(this).addClass("btn-secondary");         
-		});                                            
-		                                               
-		$("#ask").hover(function()                     
-		{                                              
-			//alert("테스트");                            
-			                                           
-			$(this).removeClass("btn-secondary");      
-			$(this).addClass("btn-primary");           
-		}, function()                                  
-		{                                              
-			$(this).removeClass("btn-primary");        
-			$(this).addClass("btn-secondary");         
-		});		 
 		
-		var acc = document.getElementsByClassName("accordion");
-
+		/*
+		$("#notice").hover(function()             
+		{                                         
+			//alert("테스트");                       
+			                                      
+			$(this).removeClass("btn-secondary"); 
+			$(this).addClass("btn-primary");      
+		}, function()                             
+		{                                         
+			$(this).removeClass("btn-primary");   
+			$(this).addClass("btn-secondary");    
+		});	                                      
+		*/
+		
+		$("#faq").hover(function()                
+		{                                         
+			//alert("테스트");                       
+			                                      
+			$(this).removeClass("btn-secondary"); 
+			$(this).addClass("btn-primary");      
+		}, function()                             
+		{                                         
+			$(this).removeClass("btn-primary");   
+			$(this).addClass("btn-secondary");    
+		});                                       
+		                                          
+		                                        
+		$("#ask").hover(function()                
+		{                                         
+			//alert("테스트");                       
+			                                      
+			$(this).removeClass("btn-secondary"); 
+			$(this).addClass("btn-primary");      
+		}, function()                             
+		{                                         
+			$(this).removeClass("btn-primary");   
+			$(this).addClass("btn-secondary");    
+		});		                                  
+		                                        
+	
+		/*
+		var acc = document.getElementsByClassName("accordion-item");
+		alert(acc.length);
 		for (var i = 0; i < acc.length; i++) {
 
 			  acc[i].onclick = function() {	 
@@ -92,14 +135,13 @@
 		 
 			  }
 		}
-
-
-		                             
+		*/
 	})
 	
+
 </script>
 </head>
-<body>
+
 <%
 	String u_id = (String)session.getAttribute("u_id");
 	
@@ -118,51 +160,45 @@
 	</div>
 <%	} %>	
 
-
-	<div class="content">
-		<br />
-		<br />
-		<br />
-		<div class="container">
-			<span style="font-weight: bold; font-size: 26pt; font: '맑은 고딕'">고객센터</span>
-		</div>
-		<br />
-		<div class="btns" style="text-align: center;">
-			<button type="button" id="notice" class="btn btn-secondary"
-				style="margin: 7px;"
-				onclick="location.href='user_notice_list.action'">공지사항</button>
-			<button type="button" id="faq" class="btn btn-secondary"
-				style="margin: 7px;" onclick="location.href='user_faq_list.action'">자주묻는질문</button>
-			<button type="button" id="ask" class="btn btn-secondary"
-				style="margin: 7px;" onclick="location.href='user_ask_list.action'">내
-				문의내역</button>
-		</div>
-		<br />
-		<br />
-		
-		<div style="margin-left: 20%; margin-right: 20%;">
+<div class="content">
+<br /><br /><br />
+	
+	<br />
+	<div class="btns" style="text-align: center;">
+		<button type="button" id="notice" class="btn btn-primary" style="margin: 7px;" onclick="location.href='user_notice_list.action'">공지사항</button>
+		<button type="button" id="faq" class="btn btn-secondary" style="margin: 7px;" onclick="location.href='user_faq_list.action'">자주묻는질문</button>
+		<button type="button" id="ask" class="btn btn-secondary" style="margin: 7px;" onclick="location.href='user_ask_list.action'">내 문의내역</button>
+	</div>
+	<br /><br />
+	
+	<div style="margin-left: 20%; margin-right: 20%;">
 		<div style="text-align: center; font-weight: bold; font-size: 22pt; background-color: #EFF2FB; height: 70px; line-height:70px; border: 1px solid black;">공지사항</div>
 		<br />
 		
-	<c:forEach var = "notice" items="${usernoticeList}">
-		<div class="accordion" id="accordionExample">
-		  <div class="accordion-item">
-		    <h2 class="accordion-header" id="headingOne">
-		      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-		        ${notice.announce_title }
-		      </button>
-		    </h2>
-		    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-		      <div class="accordion-body">
-		        ${notice.announce_contents }
-		      </div>
-		    </div>
-		  </div>
-		 </div>
-		</c:forEach>
-	  </div>
+		<div id="Accordion">
+		<c:forEach var = "notice" items="${usernoticeList}">
+		     <div class="que">
+		     	<span>${notice.announce_title }</span>
+		     </div>	
+						     
+			<div class="anw" style="padding-left: 20px">
+				<span>${notice.announce_contents }</span>
+			</div>
+		</c:forEach>		 
+		</div>
 		
-	</div>
+  		</div>
+  		
+  	</div>
+  	
+  	
+	<script type="text/javascript">
+	$(".que").click(function() {
+		  $(this).next(".anw").stop().slideToggle(300);
+		  $(this).toggleClass('on').siblings().removeClass('on');
+		  $(this).next(".anw").siblings(".anw").slideUp(300); // 1개씩 펼치기
+		});
+	</script>
 
 </body>
 </html>

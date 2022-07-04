@@ -14,6 +14,24 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 <style type="text/css">
 
+	.text
+	{
+	  position: absolute;
+	  text-align:center;
+	  font-family: 맑은 고딕;
+	  color:red;
+	  font-size: 18pt;
+	  top: 50%;
+	  left: 50%;
+	  width:100%;
+	  height:100%;
+	  transform: translate(-50%, -50%);
+	  background-color: rgba( 0, 0, 0, 0.5 );
+	  display : flex;
+	  justify-content : center;
+	  align-items : center;
+	}
+
    /* div {border: 1px solid black;} */
    .MultiCarousel { float: left; overflow: hidden; padding: 15px; width: 100%; position:relative; }
     .MultiCarousel .MultiCarousel-inner { transition: 1s ease all; float: left; }
@@ -69,8 +87,6 @@
        });
    
        ResCarouselSize();
-   
-   
    
    
        $(window).resize(function () {
@@ -203,8 +219,6 @@
       
 	})
 
-      
-
 
 </script>
 
@@ -315,17 +329,28 @@
        <div class="col-md-12 text-center">
    
          <div class="newList">
+        
          	<c:forEach var="product" items="${pdList }">
+         	 <c:if test="${product.pd_hope_edate ne 'X'}"> <!-- 거래 종료 14일 이하 상품 -->
          	   <div class="card">
- 				<img alt="" src="images/${product.pd_photo }"
-						class="card-img-top" style="width: 220px; height: 140px;"> 	   	
+         	   <div class="box" style="position:relative;">
+         	   <!-- 상품 이미지 -->
+ 				<img alt="" src="images/${product.pd_photo }" 
+						class="card-img-top" style="width: 220px; height: 140px; position: relative;"> 	
+				<c:if test="${product.pd_hope_edate eq '1'}" > <!-- 거래 완료 상품이라면.. -->
+					<div class="text"> 거래 종료 </div>		
+				</c:if>
+						
+              	 </div>
               	 <div class="card-body">
-                  <h5 class="card-title" style="text-align: center;">${product.pd_title }</h5>
-                  <p class="card-text"  style="text-align: center;">${product.price }</p>
+                  <h5 class="card-title" style="text-align: center;">${product.pd_title }</h5> <!-- 상품 제목 -->
+                  <p class="card-text"  style="text-align: center;">${product.price }</p> <!-- 상품 가격 -->
                   <a href="pd_detail.action?pd_id=${product.pd_id }" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
                	</div>
-            </div>		
+            </div>
+            </c:if>		
          	</c:forEach>
+         	
          </div><!-- newList.close -->
          <br />   
       </div><!-- col-md-12 text-center.close -->
@@ -348,15 +373,28 @@
    
          <div class="newList">
            <c:forEach var="product" items="${deli_pdList }">
+            <c:if test="${product.pd_hope_edate ne 'X'}"> <!-- 거래 종료 14일 이하 상품 -->
          	   <div class="card">
-            	   <img alt="" src="images/${product.pd_photo }"
-						class="card-img-top" style="width: 220px; height: 140px;">
+         	   
+         	   
+            	  <div class="box" style="position:relative;">
+         	   <!-- 상품 이미지 -->
+ 				<img alt="" src="images/${product.pd_photo }" 
+						class="card-img-top" style="width: 220px; height: 140px; position: relative;"> 	
+				<c:if test="${product.pd_hope_edate eq '1'}" > <!-- 거래 완료 상품이라면.. -->
+					<div class="text"> 거래 종료 </div>		
+				</c:if>
+						
+              	 </div>
+						
+						
               	 <div class="card-body">
                   <h5 class="card-title" style="text-align: center;">${product.pd_title }</h5>
                   <p class="card-text"  style="text-align: center;">${product.price }</p>
                   <a href="pd_detail.action?pd_id=${product.pd_id }" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
                	</div>
-            </div>		
+            </div>
+            </c:if>		
          	</c:forEach>
          </div><!-- newList.close -->
       </div><!-- col-md-12 text-center.close -->

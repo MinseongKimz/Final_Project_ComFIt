@@ -39,8 +39,10 @@ BEGIN
             ROLLBACK;
         WHEN DISCODE_ERROR
             THEN RAISE_APPLICATION_ERROR(-20005, '코드가 다릅니다.');
+            ROLLBACK;
         WHEN COUNTOVER_ERROR
             THEN RAISE_APPLICATION_ERROR(-20006, '이미 구매확정된 글입니다.');
+            ROLLBACK;
         WHEN OTHERS
             THEN ROLLBACK;
 END;

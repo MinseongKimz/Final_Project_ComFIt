@@ -26,7 +26,6 @@ public class SearchContoller
 		String result = null;
 		
 		IProduct dao = sqlSession.getMapper(IProduct.class);
-		model.addAttribute("searchKey", searchKey);
 		model.addAttribute("sort", sort);
 		
 		searchKey = "%" + searchKey + "%";
@@ -48,10 +47,66 @@ public class SearchContoller
 			default: break;
 		}
 		
-		result = "/WEB-INF/view/user/main/user_search_list.jsp";
+		result = "/WEB-INF/view/user/main/user_search_list2.jsp";
 		
 		return result;
 	}
+	
+	@RequestMapping(value = "search_listScroll.action", method = RequestMethod.GET)
+	public String search_listScroll(Model model, HttpServletRequest request)
+	{
+		String result = null;
+		IProduct dao = sqlSession.getMapper(IProduct.class);
+		int sort = Integer.parseInt(request.getParameter("sort"));
+		
+		try
+		{
+			ProductDTO dto = new ProductDTO();
+			
+			String searchKey = request.getParameter("searchKey");
+			String lastbno = request.getParameter("lastbno");
+			if (searchKey == null)
+			{
+				searchKey = "%%";
+			}
+			System.out.println(searchKey);
+			System.out.println(lastbno);
+			dto.setLastbno(lastbno);
+			dto.setSearchKey(searchKey);
+			switch (sort)
+			{
+			case 1:
+				model.addAttribute("scrollList", dao.search_pdListDefaultScroll(dto));
+				break;
+			case 2:
+				model.addAttribute("scrollList", dao.search_pdListPriceHScroll(dto));
+				break;	
+			case 3:
+				model.addAttribute("scrollList", dao.search_pdListPriceLScroll(dto));
+				break;
+			case 4:
+				model.addAttribute("scrollList", dao.search_pdListDirectScroll(dto));
+				break;
+			case 5:
+				model.addAttribute("scrollList", dao.search_pdListDeliveryScroll(dto));
+				break;
+				
+			default: break;
+
+			}
+			
+		result = "/WEB-INF/view/user/main/user_scroll_list.jsp";
+			
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		
+		return result;
+	}
+
+	
 	
 	// 검색기능 int만 넘겨줬을때
 	@RequestMapping(value="/sortlist.action", method = RequestMethod.GET)
@@ -63,7 +118,7 @@ public class SearchContoller
 		model.addAttribute("sort", sort);
 		
 		String searchKey = "%%";
-
+		model.addAttribute("searchKey", searchKey);
 
 		switch (sort)
 		{
@@ -81,7 +136,7 @@ public class SearchContoller
 			default: break;
 		}
 		
-		result = "/WEB-INF/view/user/main/user_search_list.jsp";
+		result = "/WEB-INF/view/user/main/user_search_list2.jsp";
 		
 		return result;
 	}

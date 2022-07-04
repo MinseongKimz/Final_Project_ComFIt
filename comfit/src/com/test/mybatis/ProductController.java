@@ -1,6 +1,5 @@
 package com.test.mybatis;
 
-import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -72,12 +71,12 @@ public class ProductController
 	
 	// 공지사항 출력 [ 고객센터 ]
 	@RequestMapping(value = "/user_svc.action", method = RequestMethod.GET)
-	public String svcCenter(Model model)
+	public String svcCenter(Model model, HttpServletRequest request )
 	{
 		String result = null;
 
 		IAdmin dao = sqlsession.getMapper(IAdmin.class);
-
+		
 		model.addAttribute("usernoticeList", dao.usernoticeList());
 
 		result = "/WEB-INF/view/user/main/user_svcenter_main.jsp";
@@ -104,13 +103,17 @@ public class ProductController
 	}
 	// 내 문의 내역 클릭 -> 내 문의 내역 출력 [1]
 	@RequestMapping(value = "/user_ask_list.action", method = RequestMethod.GET)
-	public String svcAsk(Model model)
+	public String svcAsk(Model model, HttpServletRequest request)
 	{
 		String result = null;
 
 		IAdmin dao = sqlsession.getMapper(IAdmin.class);
+		
+		// 로그인해서 진입한 회원
+		HttpSession session = request.getSession();
+		String u_id = (String)session.getAttribute("u_id");
 
-		model.addAttribute("asklist", dao.asklist());
+		model.addAttribute("asklist", dao.asklist(u_id));
 		
 		result = "/WEB-INF/view/user/main/user_ask_list.jsp";
 
@@ -122,13 +125,18 @@ public class ProductController
 	
 	// 내 문의내역 버튼 -> 상세 내역 출력   [2]                                      
 	@RequestMapping(value = "/user_ask_my_list.action", method = RequestMethod.GET)
-	public String Askcate(Model model,String ask_id)
+	public String Askcate(Model model,String ask_id, HttpServletRequest request)
 	{
 		String result = null;
 
 		IAdmin dao = sqlsession.getMapper(IAdmin.class);
+		
+		// 로그인해서 진입한 회원
+		HttpSession session = request.getSession();
+		String u_id = (String)session.getAttribute("u_id");
+		
 
-		model.addAttribute("asklist", dao.asklist());
+		model.addAttribute("asklist", dao.asklist(u_id));
 		
 		model.addAttribute("askModifyForm",dao.askModifyForm(ask_id));
 		
@@ -139,15 +147,53 @@ public class ProductController
 	}
 	
 	
+	// 문의 추가 등록 폼 이동
+	@RequestMapping(value = "/user_ask_add_form.action", method = RequestMethod.GET)
+	public String AskAddForm(Model model, HttpServletRequest request)
+	{
+		String result = null;
+		
+		// 로그인해서 진입한 회원
+		HttpSession session = request.getSession();
+		String u_id = (String)session.getAttribute("u_id");
+		
+		model.addAttribute("u_id", u_id);
+		
+		result = "/WEB-INF/view/user/main/user_ask_add.jsp";
+		
+		return result;
+	}
+	
+	// 문의 추가 등록 액션 처리
+	@RequestMapping(value = "/user_ask_add.action", method = RequestMethod.POST)
+	public String AskAdd(Model model, AskDTO dto)
+	{
+		String result = null;
+		
+		IAdmin dao = sqlsession.getMapper(IAdmin.class);
+		
+		
+		model.addAttribute(dao.AskAdd(dto));
+		
+		result = "redirect:user_ask_list.action";
+		
+		return result;
+	}
+	
+	
 	//문의 수정폼 이동  --------
 	@RequestMapping(value="/user_ask_modify_form.action",method = RequestMethod.GET)
-	public String AskModifyForm(Model model,String ask_id)
+	public String AskModifyForm(Model model,String ask_id, HttpServletRequest request)
    {
 	   String result = null;
 		
 	   IAdmin dao = sqlsession.getMapper(IAdmin.class);
-
-	   model.addAttribute("asklist", dao.asklist());
+	   
+		// 로그인해서 진입한 회원
+		HttpSession session = request.getSession();
+		String u_id = (String)session.getAttribute("u_id");
+		
+	   model.addAttribute("asklist", dao.asklist(u_id));
 		
 	   model.addAttribute("askModifyForm",dao.askModifyForm(ask_id));
 	   
@@ -157,6 +203,8 @@ public class ProductController
 	   
 	   return result;
    }
+	
+	
 
 	
 	
@@ -172,8 +220,8 @@ public class ProductController
 	   IAdmin dao = sqlsession.getMapper(IAdmin.class);
 	   
 	   //System.out.println(ask_id);
-	  
 	   
+
 	   
 	   dto.setAsk_id(ask_id);
 	  

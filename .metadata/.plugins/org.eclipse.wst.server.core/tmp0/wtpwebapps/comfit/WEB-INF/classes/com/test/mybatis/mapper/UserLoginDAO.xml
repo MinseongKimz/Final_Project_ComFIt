@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 유저로그인용 DAO -->
+<mapper namespace="com.test.mybatis.IUserLoginDAO">
+
+	<!-- ○ 『id="식별자"』 속성 추가 -->
+	<!--     - 인터페이스에 선언된 메소드의 이름과 일치해야 하며 -->
+	<!--     호출 메소드명 역할을 수행하게 된다. -->
+	
+	<!-- ○ 『resultType="패키지 경로가 포함된 자료형 클래스"』 속성 추가 -->
+	<!--    - string : java.lang.String
+	        - byte : java.lang.Byte
+	        - long : java.lang.Long
+	        - short : java.lang.Short
+	        - int : java.lang.Integer
+	        - Integer : java.lang.Integer
+	        - double : java.lang.Double
+	        - float : java.lang.Float
+	        - boolean : java.lang.Boolean
+	        - decimal : java.math.BigDecimal
+	        - Object : java.lang.Object
+	        - map : java.util.Map
+	        - hashmap : java.util.HashMap
+	        - list : java.lang.List
+	        - arraylist : java.util.Arraylist
+	        - collection : java.util.Collection
+	        - iterator : java.util.Iterator
+	-->
+	
+	<!-- ○ 쿼리 내부에 있는 컬럼명의 정보가 -->
+	<!--    자료형 클래스(DTO) 멤버 변수(속성)와 일치하는 경우 -->
+	<!--    <<자동 매핑>>이 이루어진다. -->
+	<!--    또한 SQL 문 내부에 세미콜론(;) 이 있으면 안된다. -->
+	<select id="userLogin" resultType="com.test.mybatis.userDTO">
+		SELECT UI.U_ID AS U_ID , NVL(TO_CHAR(UE.AUTH_USE_DATE,'YYYY-MM-DD'), '0') AS AUTH
+		FROM USER_INFORMATION UI JOIN USER_EMAIL_AUTH UE
+		ON UI.U_ID = UE.U_ID
+		WHERE U_EMAIL = #{u_email}
+		AND U_PASSWORD = CRYPTPACK.ENCRYPT(#{u_password}, #{u_password})
+		AND UE.AU_CATE_ID=1
+	</select>
+
+	<select id="userEmail" resultType="com.test.mybatis.userDTO">
+		SELECT UI.U_EMAIL, UI.U_NICKNAME
+		FROM COMFIT_USER CU JOIN USER_INFORMATION UI
+		ON CU.U_ID = UI.U_ID
+		WHERE CU.U_ID = #{u_id}
+	</select>
+	
+	<select  id="nickCheck" resultType="java.lang.Integer">
+		SELECT COUNT (*) COUNT
+		FROM USER_INFORMATION
+		WHERE U_NICKNAME = #{nickName}
+	</select>
+	
+	<select  id="emailCheck" resultType="java.lang.Integer">
+		SELECT COUNT (*) COUNT
+		FROM USER_INFORMATION
+		WHERE U_EMAIL = #{email}
+	</select>
+
+
+	<insert id="makeId">
+		INSERT INTO COMFIT_USER(U_ID)
+		VALUES(CONCAT('test', COMFIT_USER_SEQ.NEXTVAL))	
+	</insert>
+
+	<insert id="insertUserInfo">
+		INSERT INTO USER_INFORMATION (U_EMAIL, U_NAME, U_ADDRESS, U_PASSWORD, U_TEL, U_NICKNAME, U_ID)
+		VALUES(#{u_email}, #{u_name}, #{u_address}
+		, CRYPTPACK.ENCRYPT(#{u_password},#{u_password}), #{u_tel}, #{u_nickname}, #{u_id})
+	</insert>
+	
+	<insert id="insertAuth">
+		INSERT INTO USER_EMAIL_AUTH(E_AUTH_ID, AUTH_CODE, U_ID, AU_CATE_ID )
+		VALUES(CONCAT('auth_', USER_EMAIL_AUTH_SEQ.NEXTVAL), #{random} ,#{u_id}, 1)
+	</insert>
+	
+	<select id="searchId" resultType="java.lang.String">
+		SELECT U_ID
+		FROM (
+		    SELECT * 
+		    FROM COMFIT_USER
+		    ORDER BY CDATE DESC
+		)
+		WHERE ROWNUM =1
+	</select>
+	
+	<!-- 이메일 인증 사용 여부 -->
+	<select id="checkUseAuth" resultType="java.lang.String">
+		SELECT NVL(TO_CHAR(AUTH_USE_DATE, 'YYYY-MM-DD'), 'X')    
+		FROM USER_EMAIL_AUTH
+		WHERE AUTH_CODE = #{authKey}
+	</select>
+	
+	<!-- 이메일 인증 하기 -->
+	<update id="authCheck">
+		UPDATE USER_EMAIL_AUTH
+		SET AUTH_USE_DATE = SYSDATE 
+		WHERE AUTH_CODE = #{authKey}
+	</update>
+	
+
+	
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+

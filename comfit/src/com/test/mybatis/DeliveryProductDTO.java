@@ -7,9 +7,6 @@ public class DeliveryProductDTO
     , u_nickname, maker_name, maker_name2, cf_price, comments, imdprice
     , remain_date, profile;
    
-   
-   
-   
 
     public String getProfile()
 	{

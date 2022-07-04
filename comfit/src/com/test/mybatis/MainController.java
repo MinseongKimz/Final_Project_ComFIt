@@ -48,13 +48,6 @@ public class MainController
 	@RequestMapping(value = "/loginform.action", method = RequestMethod.POST)
 	public String login(Model model, HttpServletRequest request)
 	{
-		String lat = request.getParameter("lat"); 	// 위도
-		String lon = request.getParameter("lon");	// 경도
-		
-		
-		HttpSession session = request.getSession();
-		session.setAttribute("lat", lat);
-		session.setAttribute("lon", lon);
 		
 		return "/WEB-INF/view/user/main/user_login.jsp";
 	}

@@ -268,9 +268,6 @@
 	   <br />
 	   <br />
 	   <div class="row">
-	   	<span hidden="hidden" id="categoryName"><%=(String)request.getAttribute("categoryName") %> </span>
-	   </div>
-	   <div class="row">
 			<div class="col-md-12 text-center">
 		        <div class="newList">
 			        	<%-- <c:forEach var="product" items="${searchList }">
@@ -302,7 +299,7 @@
 <div class="footer">
 </div>
 
-
+<span hidden="hidden" id="categoryName"><%=categoryName %> </span>
 
 </body>
 </html>

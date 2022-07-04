@@ -95,6 +95,7 @@ public class SearchContoller
 		
 		try
 		{
+			model.addAttribute("categoryName", categoryName);
 			model.addAttribute("searchList", dao.categorySelect(categoryName));
 			model.addAttribute("sort", 1);
 			
@@ -109,6 +110,28 @@ public class SearchContoller
 		return result;
 	}
 	
+	// 회원 카테고리 선택 후 스크롤 내리면
+	@RequestMapping(value = "categorySelectScroll.action", method = RequestMethod.GET)
+	public String categorySelectScroll(Model model, HttpServletRequest request)
+	{
+		String result = null;
+		IProduct dao = sqlSession.getMapper(IProduct.class);
+		try
+		{
+			ProductDTO dto = new ProductDTO();
+			dto.setCategory_name(request.getParameter("categoryName"));
+			dto.setLastbno(request.getParameter("lastbno"));
+			model.addAttribute("scrollList", dao.categorySelectScroll(dto));
+			result = "/WEB-INF/view/user/main/user_scroll_list.jsp";
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		
+		return result;
+	}
+
 	
 	// 배송거래에서 - 물품검색 첫화면 접속
 	@RequestMapping(value = "/searchproduct.action", method = RequestMethod.GET)

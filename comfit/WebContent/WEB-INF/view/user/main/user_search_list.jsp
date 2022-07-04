@@ -18,6 +18,15 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 <style>
+   a#MOVE_TOP_BTN {
+      position: fixed;
+      right: 2%;
+      bottom: 10px;
+      display: none;
+      z-index: 999;
+   }
+</style>
+<style>
     
    .newList > div.card 
    {
@@ -34,7 +43,119 @@
 		width: 14rem;
    }   
 </style>
+
 <script type="text/javascript">
+	$(function()
+	{
+	    $(window).scroll(function()
+	    {
+	    	var docHeight = $(window).height();
+	    	
+	        if ($(this).scrollTop() > docHeight)
+	        {
+	           $('#MOVE_TOP_BTN').fadeIn();
+	        }
+	        else
+	        {
+	           $('#MOVE_TOP_BTN').fadeOut();
+	        }
+	    });
+	    
+	    $("#MOVE_TOP_BTN").click(function()
+	    {
+	        $('html, body').animate(
+	        {
+	           scrollTop : 0
+	        }, 400);
+	        return false;
+	    });
+	});
+
+	$(document).ready(function()
+	{
+			// 초기 게시물 구성 → 스크롤 생성 -----------------------------------
+			// § 참고 : 셋팅값 - 화면 100% 기준 ▼ (개인 차 있음)
+			var docheight = $(document).height();
+			var x = $(window).scrollTop();
+			//alert(x);
+			// 테스트(문서의 높이)
+			// alert(docheight);
+			// --==>> 606
+			
+			// 테스트(스크롤 높이)
+			var scrollheight = $(window).scrollTop() + $(window).height();
+			//alert(scrollheight);
+			// --==>> 667
+			
+			// 최초 페이지 요청했을때 5개 뜸
+			var lists = "<c:forEach var='product' items='${searchList }'>"
+					          + "<div class='card'>"
+					          + "<img alt='' src='images/${product.pd_photo }'"
+					          + "class='card-img-top' style='width: 220px; height: 140px;'>"
+					          + "<div class='card-body'>"
+					          + "<h5 class='card-title' style='text-align: center;'>${product.pd_title }</h5>"
+					          + "<p class='card-text'  style='text-align: center;'>${product.pd_price }</p>"
+					          + "<p class='card-text'  style='text-align: center;'>${product.system }</p>"
+					          + "<a href='pd_detail.action?pd_id=${product.pd_id }' class='btn btn-secondary hover' style='margin: auto; display: block;'>상세페이지</a>"
+					          + "<input class='rn' type='hidden' data-bno='${product.rn}'>"
+					          + "</div>"
+					          + "</div>"
+					          + "</c:forEach>";
+			$(".newList").html(lists);       		
+		
+			
+			// ----------------------------------- 초기 게시물 구성 → 스크롤 생성
+		
+				
+			
+			$(window).scroll(function()
+			{
+				
+				// 속성 : 게시물 마지막값
+				var lastbno = $(".rn:last").attr("data-bno");
+			
+				//alert(lastbno);
+				var categoryName = $("#categoryName").text();
+				//alert(categoryName);
+				//alert(lastbno);	
+			
+				
+				var docHeight = $(document).height();
+				var scrollHeight = $(window).scrollTop() + $(window).height();
+				
+				// 스크롤이 바닥으로 내려졌을 때..
+				// 태그 10개 추가하여 body 에 붙이기
+				if (docHeight == scrollHeight)
+				{
+					var params = "lastbno=" + lastbno + "&categoryName=" +categoryName;
+					//alert("스크롤");
+					//$(".newList").html("바보");
+					// Ajax 요청
+					
+					$.ajax
+					({
+						url : "categorySelectScroll.action",
+						type : "GET",
+						data : params,
+						success : function(data)
+						{
+							$(".newList").append(data);
+						},
+						error: function(e)
+						{
+							alert(e.responseText);
+						}
+							 
+						
+					})
+				}
+			});
+			
+				
+	});
+</script>
+<script type="text/javascript">
+
 
 	$(document).ready(function()
 	{
@@ -146,33 +267,36 @@
 		%>
 	   <br />
 	   <br />
-	   
+	   <div class="row">
+	   	<span hidden="hidden" id="categoryName"><%=(String)request.getAttribute("categoryName") %> </span>
+	   </div>
 	   <div class="row">
 			<div class="col-md-12 text-center">
 		        <div class="newList">
-		        
-		        	<c:forEach var="product" items="${searchList }">
-		        	   <div class="card">
-		           	     <img alt="" src="images/${product.pd_photo }"
-						class="card-img-top" style="width: 220px; height: 140px;">
-		             	 <div class="card-body">
-		                 <h5 class="card-title" style="text-align: center;">${product.pd_title }</h5>
-		                 <p class="card-text"  style="text-align: center;">${product.pd_price }</p>
-		                 <p class="card-text"  style="text-align: center;">${product.system }</p>
-		                 <c:if test="${product.status }!= '입찰중' || '입찰받는중' || '제안받는중'">
-		                 	<p class="card-text"  style="text-align: center;">거래완료상품</p>
-		                 </c:if>
-		                 <a href="pd_detail.action?pd_id=${product.pd_id }" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
-		              	</div>
-		           </div>
-		        </c:forEach>
-		        	</div><!-- newList.close -->
+			        	<%-- <c:forEach var="product" items="${searchList }">
+			        	   <div class="card">
+			           	     <img alt="" src="images/${product.pd_photo }"
+							class="card-img-top" style="width: 220px; height: 140px;">
+			             	 <div class="card-body">
+			                 <h5 class="card-title" style="text-align: center;">${product.pd_title }</h5>
+			                 <p class="card-text"  style="text-align: center;">${product.pd_price }</p>
+			                 <p class="card-text"  style="text-align: center;">${product.system }</p>
+			                 <c:if test="${product.status }!= '입찰중' || '입찰받는중' || '제안받는중'">
+			                 	<p class="card-text"  style="text-align: center;">거래완료상품</p>
+			                 </c:if>
+			                 <a href="pd_detail.action?pd_id=${product.pd_id }" class="btn btn-secondary hover" style="margin: auto; display: block;">상세페이지</a>
+			              	</div>
+			         	   </div>
+			       	    </c:forEach> --%>
+		        </div><!-- newList.close -->
 		        <br/>   
 	    	</div><!-- col-md-12 text-center.close -->
 	    </div>
 	</div>
-</div>	<!-- content  -->
 	
+<a id="MOVE_TOP_BTN" href="#">맨 위로</a>	
+</div>	<!-- content  -->
+
 	
 <!-- Footer 영역 -->
 <div class="footer">

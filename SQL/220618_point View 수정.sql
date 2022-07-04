@@ -487,3 +487,8 @@ SELECT *
 FROM DELI_COMPLETE_SELL;
 
 COMMIT;
+
+select *
+from direct_product;
+
+commit;

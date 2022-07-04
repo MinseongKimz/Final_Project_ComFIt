@@ -2,9 +2,26 @@ package com.test.mybatis;
 
 public class MoneyDTO
 {
-	private String u_id, m_date, inout;
+	private String u_id, m_date, inout, start, end;
 	private int m_money;
 	
+	
+	public String getStart()
+	{
+		return start;
+	}
+	public void setStart(String start)
+	{
+		this.start = start;
+	}
+	public String getEnd()
+	{
+		return end;
+	}
+	public void setEnd(String end)
+	{
+		this.end = end;
+	}
 	public String getU_id()
 	{
 		return u_id;

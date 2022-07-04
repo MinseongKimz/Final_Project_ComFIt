@@ -10,6 +10,16 @@
 <head>
 <meta charset="UTF-8">
 <title>구매내역 리스트</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+
+	function selChange() 
+	{
+		var sel = document.getElementById('cntPerPage').value;
+		location.href="/comfit/user_buylist.action?nowPage=${paging.nowPage}&cntPerPage="+sel;
+	}
+	
+</script>
 <style type="text/css">
 
 	.title 
@@ -46,6 +56,7 @@
   	
   	
 </style>
+
 </head>
 <body>
 
@@ -78,7 +89,18 @@
 			<br>
 		</div>
     	-->
-    	
+		<div style="float: right;">
+			<select id="cntPerPage" name="sel" onchange="selChange()">
+				<option value="5"
+					<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄 보기</option>
+				<option value="10"
+					<c:if test="${paging.cntPerPage == 10}">selected</c:if>>10줄 보기</option>
+				<option value="15"
+					<c:if test="${paging.cntPerPage == 15}">selected</c:if>>15줄 보기</option>
+				<option value="20"
+					<c:if test="${paging.cntPerPage == 20}">selected</c:if>>20줄 보기</option>
+			</select>
+		</div>
     	<!--table  -->
    		<table class="table table-borderd table-hover" style="margin-top: 2%;">
 			<thead>
@@ -136,7 +158,7 @@
 							<c:otherwise>
 								<td></td>
 							</c:otherwise>
-						</c:choose>					
+						</c:choose>	
 					</tr>
 					
 					<!-- 직거래 구매확정 모달 -->
@@ -181,6 +203,8 @@
 					         <h5 style="font-weight: bold;">"${buy.pd_title }" <br>상품을 구매확정합니다.</h5>
 					         <h5>낙찰가격 : ${buy.pd_price }원</h5>
 					         <h5>낙찰일자 : ${buy.bs_date }일</h5>
+					         <h5>운송장번호 : ${buy.deli_num }</h5>
+
 					         <br />
 					         <form action="completedeliverybuy.action" method="post">
 					         	<input type="hidden" id="bs_id" name="bs_id" value="${buy.bs_id }"/>
@@ -198,6 +222,25 @@
 				</c:forEach>
 		    	</tbody>
 		</table>
+		<div style="display: block; text-align: center;">		
+			<c:if test="${paging.startPage != 1 }">
+				<a href="/comfit/user_buylist.action?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+			</c:if>
+			<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+				<c:choose>
+					<c:when test="${p == paging.nowPage }">
+						<b>${p }</b>
+					</c:when>
+					<c:when test="${p != paging.nowPage }">
+						<a href="/comfit/user_buylist.action?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+					</c:when>
+				</c:choose>
+			</c:forEach>
+			<c:if test="${paging.endPage != paging.lastPage}">
+				<a href="/comfit/user_buylist.action?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+			</c:if>
+		</div>
+		
     </div>		
 </div>
 

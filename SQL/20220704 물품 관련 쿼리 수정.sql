@@ -1,0 +1,65 @@
+-- 종료일부터 14일 ... 종료부터 2주 지난 게시물 메인리스트에서 안보이게 하기
+SELECT V.PD_ID AS PD_ID, V.PD_TITLE AS PD_TITLE, V.PRICE AS PRICE, V.DISTANCE AS DISTANCE, V.PD_PHOTO AS PD_PHOTO
+     , CASE  WHEN SYSDATE - V.PD_HOPE_EDATE > 15 THEN 'X'
+             WHEN (V.PD_HOPE_EDATE < SYSDATE) THEN '1'
+       ELSE '0' END AS PD_HOPE_EDATE  
+FROM
+    (
+    SELECT PD_ID, PD_NAME, PRICE, PD_PHOTO, PD_TITLE, PD_HOPE_EDATE
+         , ROUND(DISTANCE_WGS84(LAT, LON, 33, 123), 2) AS DISTANCE
+    FROM DIRE_PD_NEAR_VIEW
+    ) V
+ORDER BY PD_HOPE_EDATE , V.DISTANCE
+;
+            
+            
+            
+CREATE OR REPLACE VIEW DIRE_PD_NEAR_VIEW
+AS
+SELECT DP.DIRE_PD_ID AS PD_ID, PD_NAME AS PD_NAME
+     , DP.PD_HOPEPRICE AS PRICE
+     , TO_NUMBER(SUBSTR(DP.PD_HOPE_MGRS, 0, INSTR(DP.PD_HOPE_MGRS, '/', 1)-1)) AS LAT
+     , TO_NUMBER(SUBSTR(DP.PD_HOPE_MGRS, INSTR(DP.PD_HOPE_MGRS, '/', 1)+1)) AS LON
+     , DP.PD_PHOTO, DP.PD_TITLE
+     , dp.pd_hope_edate
+FROM DIRECT_PRODUCT DP JOIN PRODUCT_MAKER PM
+     ON DP.PD_MAKER_ID = PM.PD_MAKER_ID
+        JOIN PRODUCT_CATEGORY PC
+          ON PM.PD_CATEGORY_ID = PC.PD_CATEGORY_ID
+             JOIN COMFIT_USER CU
+               ON DP.U_ID = CU.U_ID
+                  JOIN USER_INFORMATION UI
+                    ON CU.U_ID = UI.U_ID
+WHERE DP.DIRE_PD_ID != (SELECT DISTINCT(PD_ID)
+                        FROM DIRE_PD_REP_VIEW
+                        WHERE PD_ID = 'dire_1');            
+            
+            
+-- 등록일로부터 19일 ... 종료부터 2주 지난 게시물 메인리스트에서 안보이게 하기
+SELECT PD_ID, PD_TITLE, PRICE, PD_REGIT_DATE, PD_PHOTO
+     , CASE WHEN SYSDATE - PD_REGIT_DATE > 19 THEN 'X'
+            WHEN (PD_REGIT_DATE+5 < SYSDATE) THEN '0' 
+            ELSE '1'
+       END AS EDATE  
+FROM DELI_PD_LIST_REALVIEW;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            

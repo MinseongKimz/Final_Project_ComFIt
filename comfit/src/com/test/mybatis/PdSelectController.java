@@ -233,4 +233,83 @@ public class PdSelectController
 	
 	
 	
+	// 직거래 상품 삭제하기 (사용자측)
+	@RequestMapping(value = "/deletedrpd.action", method = RequestMethod.GET)
+	public String deleteDireProduct(Model model, HttpServletRequest request)
+	{
+		String result = "";
+		IProduct dao = sqlSession.getMapper(IProduct.class);
+		String pd_id = request.getParameter("pd_id");
+		
+		HttpSession session = request.getSession();
+		String u_id = (String)session.getAttribute("u_id");
+		
+		try
+		{
+			if(u_id==null)
+			{
+				model.addAttribute("msg", "올바르지 않은 접근입니다. 메인으로 이동합니다.");
+				model.addAttribute("url", "comfit.action");
+				return "alert.jsp";
+			}
+			
+			int delCount = dao.deleteDirePd(pd_id);
+			
+			if (delCount ==1)
+			{
+				return "redirect:delredirect.action";
+			}	
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		
+		return result;
+		
+	}
+	
+	// 택배상품 삭제하기
+	@RequestMapping(value = "/deletedlpd.action", method = RequestMethod.GET)
+	public String deleteDeliProduct(Model model, HttpServletRequest request)
+	{
+		String result = "";
+		IProduct dao = sqlSession.getMapper(IProduct.class);
+		String pd_id = request.getParameter("pd_id");
+		
+		HttpSession session = request.getSession();
+		String u_id = (String)session.getAttribute("u_id");
+		
+		try
+		{
+			if(u_id==null)
+			{
+				model.addAttribute("msg", "올바르지 않은 접근입니다. 메인으로 이동합니다.");
+				model.addAttribute("url", "comfit.action");
+				return "alert.jsp";
+			}
+			
+			int delCount = dao.deleteDeliPd(pd_id);
+			
+			if (delCount ==1)
+				return "redirect:delredirect.action";
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		
+		return result;
+		
+	}
+	
+	@RequestMapping("delredirect.action")
+	public String delRedirect()
+	{
+		return "alert2.jsp";
+	}
+	
+	
+	
+	
 }

@@ -73,11 +73,12 @@
 	           				
 							$("#pd_hope_place", opener.document).val($("#address").val());
 		     				$("#address", opener.document).val(result[0].y+"/"+result[0].x);
-		     				window.close();
+		     				
      						
 	           			}	
+	           			window.close();
 					})
-	    			
+					
 	    			
 	    		}
                

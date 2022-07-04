@@ -6,9 +6,20 @@ public class ProductDTO
 	private String pd_title, system, status, pd_photo, lastbno;
 	private String rn;
 	private String pd_hope_edate;
+	private String searchKey;
 	
 	
 	
+
+	public String getSearchKey()
+	{
+		return searchKey;
+	}
+
+	public void setSearchKey(String searchKey)
+	{
+		this.searchKey = searchKey;
+	}
 
 	public String getRn()
 	{

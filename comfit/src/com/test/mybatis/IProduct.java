@@ -59,11 +59,26 @@ public interface IProduct
 	public ArrayList<DirectProductDTO> mgrs(String pd_id);
 
 	// 검색한 리스트 출력하기
+	// 기본검색
 	public ArrayList<ProductDTO> search_pdListDefault(String searchKey);
+	public ArrayList<ProductDTO> search_pdListDefaultScroll(ProductDTO dto);
+	
+	// 정렬 : 고가순
 	public ArrayList<ProductDTO> search_pdListPriceH(String searchKey);
+	public ArrayList<ProductDTO> search_pdListPriceHScroll(ProductDTO dto);
+	
+	// 정렬 : 저가순
 	public ArrayList<ProductDTO> search_pdListPriceL(String searchKey);
+	public ArrayList<ProductDTO> search_pdListPriceLScroll(ProductDTO dto);
+	
+	// 정렬 : 직거래만
 	public ArrayList<ProductDTO> search_pdListDirect(String searchKey);
+	public ArrayList<ProductDTO> search_pdListDirectScroll(ProductDTO dto);
+	
+	// 정렬 : 택배거래만
 	public ArrayList<ProductDTO> search_pdListDelivery(String searchKey);
+	public ArrayList<ProductDTO> search_pdListDeliveryScroll(ProductDTO dto);
+	
 	
 	// 카테고리선택
 	public ArrayList<ProductDTO> categorySelect(String categoryName);

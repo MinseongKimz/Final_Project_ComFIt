@@ -27,7 +27,7 @@ public class SearchContoller
 		
 		IProduct dao = sqlSession.getMapper(IProduct.class);
 		model.addAttribute("sort", sort);
-		
+		model.addAttribute("searchKey", searchKey);
 		searchKey = "%" + searchKey + "%";
 
 
@@ -71,6 +71,7 @@ public class SearchContoller
 			}
 			System.out.println(searchKey);
 			System.out.println(lastbno);
+			System.out.println(sort);
 			dto.setLastbno(lastbno);
 			dto.setSearchKey(searchKey);
 			switch (sort)

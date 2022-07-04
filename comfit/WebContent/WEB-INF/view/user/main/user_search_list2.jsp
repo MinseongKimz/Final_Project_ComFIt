@@ -131,7 +131,7 @@
 				if (docHeight == scrollHeight)
 				{
 					var params = "lastbno=" + lastbno + "&searchKey=" + searchKey + "&sort=" +sort;
-					//alert("스크롤");
+					alert("스크롤");
 					//$(".newList").html("바보");
 					// Ajax 요청
 					

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.mybatis.IAdmin">
+	
+	
+	
+	<!-- 문의 내역 출력 수정필요  -->
+	<select id="asklist" resultType="com.test.mybatis.AskDTO">
+	SELECT AC.ASK_CATE_ID AS ASK_CATE_ID,AC.ASK_CATE_NAME AS ASK_CATE_NAME
+	,A.ASK_TITLE AS ASK_TITLE
+	,A.ASK_CONTENTS AS ASK_CONTENTS
+	,A.ASK_DATE AS ASK_DATE
+	,A.ASK_ID AS ASK_ID
+	FROM ASK_CATEGORY AC JOIN ASK A 
+	ON AC.ASK_CATE_ID = A.ASK_CATE_ID
+	</select>
+	
+	<!-- 문의 아이디 얻기  -->
+	<select id="askModifyForm" resultType="com.test.mybatis.AskDTO">
+	SELECT AC.ASK_CATE_ID AS ASK_CATE_ID,AC.ASK_CATE_NAME AS ASK_CATE_NAME
+	,A.ASK_TITLE AS ASK_TITLE
+	,A.ASK_CONTENTS AS ASK_CONTENTS
+	,A.ASK_DATE AS ASK_DATE
+	,A.ASK_ID AS ASK_ID
+	FROM ASK_CATEGORY AC JOIN ASK A 
+	ON AC.ASK_CATE_ID = A.ASK_CATE_ID
+	</select>
+	
+	
+	<!-- 문의 수정  -->
+	<update id="AskModify">
+	UPDATE USER_ASK_VIEW
+	SET ASK_TITLE=#{ask_title}
+	,ASK_CONTENTS=#{ask_contents}
+	WHERE ASK_ID=#{ask_id}
+	</update>
+	
+	<!-- 문의 삭제  -->
+	<delete id="AskDelete">
+	DELETE
+	FROM ASK
+	WHERE ASK_ID=#{ask_id}
+	</delete>
+	<!-- 문의 입력  -->
+</mapper>

@@ -234,6 +234,7 @@ public class PdSelectController
 	
 	
 	// 직거래 상품 삭제하기 (사용자측)
+
 	@RequestMapping(value = "/deletedrpd.action", method = RequestMethod.GET)
 	public String deleteDireProduct(Model model, HttpServletRequest request)
 	{
@@ -308,7 +309,6 @@ public class PdSelectController
 	{
 		return "alert2.jsp";
 	}
-	
 	
 	
 	

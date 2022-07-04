@@ -1,4 +1,4 @@
--- Á¾·áÀÏºÎÅÍ 14ÀÏ ... Á¾·áºÎÅÍ 2ÁÖ Áö³­ °Ô½Ã¹° ¸ÞÀÎ¸®½ºÆ®¿¡¼­ ¾Èº¸ÀÌ°Ô ÇÏ±â
+-- ì¢…ë£Œì¼ë¶€í„° 14ì¼ ... ì¢…ë£Œë¶€í„° 2ì£¼ ì§€ë‚œ ê²Œì‹œë¬¼ ë©”ì¸ë¦¬ìŠ¤íŠ¸ì—ì„œ ì•ˆë³´ì´ê²Œ í•˜ê¸°
 SELECT V.PD_ID AS PD_ID, V.PD_TITLE AS PD_TITLE, V.PRICE AS PRICE, V.DISTANCE AS DISTANCE, V.PD_PHOTO AS PD_PHOTO
      , CASE  WHEN SYSDATE - V.PD_HOPE_EDATE > 15 THEN 'X'
              WHEN (V.PD_HOPE_EDATE < SYSDATE) THEN '1'
@@ -10,6 +10,7 @@ FROM
     FROM DIRE_PD_NEAR_VIEW
     ) V
 ORDER BY PD_HOPE_EDATE , V.DISTANCE
+
 ;
             
             
@@ -35,7 +36,7 @@ WHERE DP.DIRE_PD_ID != (SELECT DISTINCT(PD_ID)
                         WHERE PD_ID = 'dire_1');            
             
             
--- µî·ÏÀÏ·ÎºÎÅÍ 19ÀÏ ... Á¾·áºÎÅÍ 2ÁÖ Áö³­ °Ô½Ã¹° ¸ÞÀÎ¸®½ºÆ®¿¡¼­ ¾Èº¸ÀÌ°Ô ÇÏ±â
+-- ë“±ë¡ì¼ë¡œë¶€í„° 19ì¼ ... ì¢…ë£Œë¶€í„° 2ì£¼ ì§€ë‚œ ê²Œì‹œë¬¼ ë©”ì¸ë¦¬ìŠ¤íŠ¸ì—ì„œ ì•ˆë³´ì´ê²Œ í•˜ê¸°
 SELECT PD_ID, PD_TITLE, PRICE, PD_REGIT_DATE, PD_PHOTO
      , CASE WHEN SYSDATE - PD_REGIT_DATE > 19 THEN 'X'
             WHEN (PD_REGIT_DATE+5 < SYSDATE) THEN '0' 

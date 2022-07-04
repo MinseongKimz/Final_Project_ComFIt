@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.mybatis.IAdmin">
+
+	<select id="categoryList" resultType="com.test.mybatis.CategoryDTO">
+		SELECT PD_CATEGORY_ID, CATEGORY_NAME
+		FROM PRODUCT_CATEGORY
+	</select>
+
+	<insert id="categoryInsert">
+		INSERT INTO PRODUCT_CATEGORY(PD_CATEGORY_ID, CATEGORY_NAME)
+		VALUES(PRODUCT_CATEGORY_SEQ.NEXTVAL, #{category_name})
+	</insert>
+	
+	<delete id="categoryDelete">
+		DELETE PRODUCT_CATEGORY
+		WHERE PD_CATEGORY_ID = #{pd_category_id}
+	</delete>
+	
+</mapper>

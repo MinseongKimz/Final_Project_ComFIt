@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMethod"/>
+<fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
+<fullyQualifiedTypeName name="com.sun.org.apache.xerces.internal.impl.dtd.models.MixedContentModel"/>
+<fullyQualifiedTypeName name="org.springframework.ui.Model"/>
+<fullyQualifiedTypeName name="com.test.mybatis.ConfirmDirectDTO"/>
+<fullyQualifiedTypeName name="java.sql.CallableStatement"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="com.test.mybatis.DBConn"/>
+<fullyQualifiedTypeName name="com.test.util.ConfirmDAO"/>
+<fullyQualifiedTypeName name="java.sql.SQLException"/>
+<fullyQualifiedTypeName name="com.test.util.IConfirmDAO"/>
+<fullyQualifiedTypeName name="com.test.util.ConfirmDirectDTO"/>
+<fullyQualifiedTypeName name="com.test.util.ConfirmDeliveryDTO"/>
+<fullyQualifiedTypeName name="com.test.mybatis.IProduct"/>
+</qualifiedTypeNameHistroy>

@@ -99,8 +99,7 @@ function deletePd()
 	
 	if (result)
 	{
-		
-		location.href="deletedrproduct.action?pd_id="+pd_id;
+		location.href="deletedrpd.action?pd_id="+pd_id;
 	}
 }
 

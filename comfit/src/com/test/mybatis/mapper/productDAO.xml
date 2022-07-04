@@ -93,6 +93,7 @@
 		FROM DIRE_PD_LIST_REALVIEW
 		WHERE PD_ID =  #{pd_id}
 	</select>
+	
 	<select id="dlPdList" resultType="com.test.mybatis.DeliveryProductDTO">
 		SELECT PD_ID, PD_TITLE, PD_NAME, PD_PHOTO, PD_AS_REMAIN, PD_HITCOUNT, PRICE
 		     , PD_REGIT_DATE, PD_MAKER_ID, PD_AS_ID, PD_AS_NAME, CATEGORY_NAME, SELLER
@@ -324,6 +325,7 @@
             )B
 	WHERE B.RANK = 1
 	</select>
+	
 	<select id="blCheck" resultType="java.lang.Integer" >
 	SELECT COUNT(*)
 	  FROM BID_LIST
